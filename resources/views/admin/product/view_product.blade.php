@@ -1,5 +1,4 @@
 @extends('admin.layout.default')
-@section('title', 'All Transection')
 @section('content')
 
 

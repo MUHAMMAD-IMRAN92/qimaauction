@@ -16,9 +16,10 @@ class JuryMail extends Mailable
      *
      * @return void
      */
-    public function __construct($sendJury)
+    public $jury;
+    public function __construct($jury)
     {
-        $this->sendJury = $sendJury;
+        $this->jury = $jury;
     }
 
     /**
@@ -28,8 +29,8 @@ class JuryMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('jury_email', [
-            'weight' => $this->sendJury->weight,
+        return $this->from('admin@qima.com')->markdown('jury_email',[
+            'jury' => $this->jury,
         ]);
     }
 }

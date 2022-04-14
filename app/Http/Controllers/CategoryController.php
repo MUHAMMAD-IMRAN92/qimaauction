@@ -12,14 +12,13 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        $this->middleware(function ($request , $next)
-        {
-            $this->user = Auth::user();   
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
             return $next($request);
         });
-         
     }
-    public function index(){
+    public function index()
+    {
         // return $this->user;   
         return view('admin.categories.index');
     }
@@ -29,21 +28,21 @@ class CategoryController extends Controller
         $start = $request->get('start');
         $length = $request->get('length');
         $search = $request->search['value'];
-        $categories_count = Category::when($search , function($q) use( $search){
-            $q->where('category_title' , 'LIKE' , "%$search%")->where('is_hidden' , '0');
+        $categories_count = Category::when($search, function ($q) use ($search) {
+            $q->where('category_title', 'LIKE', "%$search%")->where('is_hidden', '0');
         })->count();
-        $categories = Category::when($search , function($q) use( $search){
-            $q->where('category_title' , 'LIKE' , "%$search%");
+        $categories = Category::when($search, function ($q) use ($search) {
+            $q->where('category_title', 'LIKE', "%$search%");
         });
 
-        $categories = $categories->where('is_hidden' , '0')->skip((int)$start)->take((int)$length)->get();  
+        $categories = $categories->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $categories_count,
             'recordsFiltered' => $categories_count,
             'data' => $categories,
         );
-       return response()->json($data);
+        return response()->json($data);
     }
     public function create(Request $request)
     {
@@ -54,30 +53,29 @@ class CategoryController extends Controller
         $category = new  Category();
         $category->category_title = $request->title;
         $category->category_description = $request->description;
-        if($request->has('image')){
-            $fileName=$request->image->getClientOriginalName();
-             $request->file('image')->storeAs(
+        if ($request->has('image')) {
+            $fileName = $request->image->getClientOriginalName();
+            $request->file('image')->storeAs(
                 'category',
                 $fileName,
                 'public'
             );
-            $category->category_image=$fileName;
-
+            $category->category_image = $fileName;
         }
         $category->save();
         return redirect('/categories/index');
     }
-    public function delete(Request $request , $id)
-    {   
-        $category =Category::find(base64_decode($id));
-        $category->delete();
-        return redirect('/categories/index')->with('msg' , 'Category Deleted Successfully');
-    }
-    public function edit(Request $request , $id)
-    {  
+    public function delete(Request $request, $id)
+    {
         $category = Category::find(base64_decode($id));
-      
-        return view('admin.categories.edit' ,[
+        $category->delete();
+        return redirect('/categories/index')->with('msg', 'Category Deleted Successfully');
+    }
+    public function edit(Request $request, $id)
+    {
+        $category = Category::find(base64_decode($id));
+
+        return view('admin.categories.edit', [
             'category' =>  $category,
         ]);
     }
@@ -86,14 +84,14 @@ class CategoryController extends Controller
         $category = Category::find($request->id);
         $category->category_title = $request->title;
         $category->category_description = $request->description;
-        if($request->has('image')){
-            $fileName=$request->image->getClientOriginalName();
-             $request->file('image')->storeAs(
+        if ($request->has('image')) {
+            $fileName = $request->image->getClientOriginalName();
+            $request->file('image')->storeAs(
                 'category',
                 $fileName,
                 'public'
             );
-            $category->category_image=$fileName;
+            $category->category_image = $fileName;
         }
         $category->save();
         return redirect('/categories/index');
