@@ -19,9 +19,7 @@ class CreateReviewsTable extends Migration
             $table->longText('cupping_profile')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('jury_id')->nullable();
-            $table->foreign('jury_id')->references('id')->on('jury');
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('product');
             $table->timestamps();
         });
     }
