@@ -174,10 +174,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <label>Weight: </label>
+                                                        <label>Samples: </label>
                                                         <div class="form-group">
-                                                            <input type="number" placeholder="Please Enter Weight Of Sample"
-                                                                name="sample_weight" class="form-control">
+                                                            <input type="text" placeholder="Please Enter Sample Seprated With commas"
+                                                                name="samples" class="form-control">
                                                         </div>
                                                         <label>Message: </label>
                                                         <div class="form-group">

@@ -166,16 +166,19 @@ class ProductController extends Controller
     }
     public function SentToJury(Request $request)
     {
-        $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
+        $sampleArr = explode(',', $request->samples);
         $juries  = $request->jury;
+        $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($juries as $jury) {
-            $sampleSent = new SentToJury();
-            $sampleSent->jury_id = $jury;
-            $sampleSent->product_id = $request->product_id;
-            $sampleSent->temporary_link = $tempLink;
-            $sampleSent->sample_weight = $request->sample_weight;
-            $sampleSent->message = $request->msg;
-            $sampleSent->save();
+            // foreach ($sampleArr as $sample) {
+                $sampleSent = new SentToJury();
+                $sampleSent->jury_id = $jury;
+                $sampleSent->product_id = $request->product_id;
+                $sampleSent->temporary_link = $tempLink;
+                $sampleSent->samples =  $request->samples;
+                $sampleSent->message = $request->msg;
+                $sampleSent->save();
+            // }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
@@ -189,10 +192,12 @@ class ProductController extends Controller
             if ($sampleSent->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
             } else {
+                $samplesArr = explode(',', $sampleSent->samples);
                 return view('admin.jury.review_form', [
                     'productId' => $pId,
                     'juryId' =>  $jId,
-                    'link' => $link
+                    'link' => $link,
+                    'samples' => $samplesArr
                 ]);
             }
         }

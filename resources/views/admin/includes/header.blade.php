@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" 
+    <meta name="description"
         content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
@@ -17,6 +17,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href={{ asset('public/app-assets/vendors/css/vendors.min.css') }}>
+    <link rel="stylesheet" type="text/css"
+        href={{ asset('public/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}>
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/charts/apexcharts.css') }}">
@@ -44,12 +47,13 @@
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css"
-    href="{{ asset('public/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
+        href="{{ asset('public/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('public/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-   
+
 
 </head>
 <!-- END: Head-->
@@ -210,17 +214,20 @@
                                 @php
                                     $user = Auth::user();
                                 @endphp
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"> {{ Str::upper($user->name) }}</span><span class="user-status">Admin</span></div><span><img
-                                        class="round"
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
+                                        {{ Str::upper($user->name) }}</span><span
+                                        class="user-status">Admin</span></div><span><img class="round"
                                         src="../../../public/app-assets/images/portrait/small/avatar-s-11.jpg"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
-                                href="{{ route('logout') }}"  onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Logout</a>
+                                    href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="feather icon-power"></i>
+                                    Logout</a>
                             </div>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
                                 @csrf
                             </form>
                         </li>
@@ -422,4 +429,3 @@
         </div>
     </div>
     <!-- END: Main Menu-->
-   

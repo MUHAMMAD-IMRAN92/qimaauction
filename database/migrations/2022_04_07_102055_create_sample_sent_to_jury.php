@@ -17,7 +17,7 @@ class CreateSampleSentToJury extends Migration
             $table->id();
             $table->unsignedBigInteger('jury_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->float('sample_weight')->nullable();
+            $table->string('samples')->nullable();
             $table->longText('message')->nullable();
             $table->string('temporary_link')->nullable();
             $table->enum('is_hidden', [0, 1])->default(0)->nullable();

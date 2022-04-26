@@ -57,9 +57,9 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <textarea id="email" class="form-control" name="email">
-                                                          {{ $jury->email }}
-                                                        </textarea>
+                        
+                                                        <input id="email" type="email" value="{{ $jury->email }}" class="form-control" name="email">
+                                                      
                                                         <label for="email">Email</label>
                                                     </div>
                                                 </div>

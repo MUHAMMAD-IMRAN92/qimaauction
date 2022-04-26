@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input id="email" class="form-control" name="email">
+                                                        <input id="email" type="email" class="form-control" name="email">
                                                       
                                                         <label for="email">Email</label>
                                                     </div>
