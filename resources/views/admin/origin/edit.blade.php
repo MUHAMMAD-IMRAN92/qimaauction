@@ -51,7 +51,7 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="hidden" class="form-control" placeholder="Origin Title" name="id" value={{ $origin->id }}>
-                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title" value={{ $origin->region_name }}>
+                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title" value="{{ $origin->region_name }}">
                                                         <label for="origin-title">Origin Title</label>
                                                     </div>
                                                 </div>
