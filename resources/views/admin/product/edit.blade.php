@@ -69,7 +69,7 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <textarea id="product-description" class="form-control" name="description">
-                                                            {{ $product->product_title }}
+                                                            {{ $product->product_description }}
                                                         </textarea>
                                                             <label for="product-description">Product Description</label>
                                                         </div>

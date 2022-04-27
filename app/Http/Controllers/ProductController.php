@@ -133,19 +133,21 @@ class ProductController extends Controller
         $product->flavour_id = $request->pro_flavour;
         $product->origin_id = $request->pro_origin;
         $product->save();
-
-        foreach ($request->image as $img) {
-            $fileName = $img->getClientOriginalName();
-            $img->storeAs(
-                'product',
-                $fileName,
-                'public'
-            );
-            $productImage = new ProductImage();
-            $productImage->product_id =  $product->id;
-            $productImage->image_name = $fileName;
-            $productImage->save();
+        if ($request->image) {
+            foreach ($request->image as $img) {
+                $fileName = $img->getClientOriginalName();
+                $img->storeAs(
+                    'product',
+                    $fileName,
+                    'public'
+                );
+                $productImage = new ProductImage();
+                $productImage->product_id =  $product->id;
+                $productImage->image_name = $fileName;
+                $productImage->save();
+            }
         }
+
 
         return redirect('/product/index');
     }
@@ -171,13 +173,13 @@ class ProductController extends Controller
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($juries as $jury) {
             // foreach ($sampleArr as $sample) {
-                $sampleSent = new SentToJury();
-                $sampleSent->jury_id = $jury;
-                $sampleSent->product_id = $request->product_id;
-                $sampleSent->temporary_link = $tempLink;
-                $sampleSent->samples =  $request->samples;
-                $sampleSent->message = $request->msg;
-                $sampleSent->save();
+            $sampleSent = new SentToJury();
+            $sampleSent->jury_id = $jury;
+            $sampleSent->product_id = $request->product_id;
+            $sampleSent->temporary_link = $tempLink;
+            $sampleSent->samples =  $request->samples;
+            $sampleSent->message = $request->msg;
+            $sampleSent->save();
             // }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));

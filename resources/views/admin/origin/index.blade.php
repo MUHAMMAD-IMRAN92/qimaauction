@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-3">
                     <a href="{{ url('/origin/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Oring<a>
+                        Origin<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
