@@ -56,13 +56,14 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="hidden" id="product-title" class="form-control"
+                                                        <input type="hidden" id="product-title" class="form-control"
                                                             placeholder="Product Title" name="id"
-                                                            value={{ $product->id }}>
+                                                            value={{ $product->id }} >
+                                                        <div class="form-label-group">
+
                                                             <input type="text" id="product-title" class="form-control"
                                                                 placeholder="Product Title" name="title"
-                                                                value={{ $product->product_title }}>
+                                                                value="{{ $product->product_title }}">
                                                             <label for="product-title">Product Title</label>
                                                         </div>
                                                     </div>
@@ -70,7 +71,7 @@
                                                         <div class="form-label-group">
                                                             <textarea id="product-description" class="form-control" name="description">
                                                             {{ $product->product_description }}
-                                                        </textarea>
+                                                             </textarea>
                                                             <label for="product-description">Product Description</label>
                                                         </div>
                                                     </div>
@@ -139,8 +140,9 @@
                                                                 <img width="100px" height="100px"
                                                                     src="{{ url('storage/app/public/product/' . $img->image_name) }}"
                                                                     alt="">
-                                                                  <a href="{{ url('/product/delete_product_image/'.$img->id ) }}">  <i class="fa fa-times cross"
-                                                                    aria-hidden="true"></i></a>
+                                                                <a
+                                                                    href="{{ url('/product/delete_product_image/' . $img->id) }}">
+                                                                    <i class="fa fa-times cross" aria-hidden="true"></i></a>
                                                             @endforeach
                                                         </div>
                                                     </div>

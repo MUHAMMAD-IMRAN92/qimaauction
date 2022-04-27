@@ -109,6 +109,7 @@ class ProductController extends Controller
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
         $product = product::where('id', base64_decode($id))->with('images')->first();
+        // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
             'category' => $category,
