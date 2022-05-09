@@ -121,7 +121,12 @@
                                                     <div class="form-body">
 
                                                         <div class="row">
-
+                                                            {{-- <input type="number" id="aroma" name="aroma"
+                                                                class="touchspin" value="0">
+                                                            <input type="number" id="aroma" name="aroma"
+                                                                class="touchspin" value="0">
+                                                            <input type="number" id="aroma" name="aroma"
+                                                                class="touchspin" value="0"> --}}
                                                             <div class="col-md-2 col-2 input-group">
                                                                 <span>Aroma:</span>
                                                             </div>
@@ -777,10 +782,10 @@
             });
 
             function total() {
-              $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
+                $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
                         '#sweetness').html()) -
                     parseInt($('#defect').html()));
-                    // console.log(total);
+                // console.log(total);
                 $('#totalvalue').val(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) +
                     parseInt($('#sweetness').html()) -
                     parseInt($('#defect').html()));
