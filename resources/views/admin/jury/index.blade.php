@@ -24,8 +24,10 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                    <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light">Send To
                         Jury<a>
+                            <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                                Jury<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -117,7 +119,7 @@
                             row.name + '</td>';
                     }
                 },
-                
+
                 {
 
                     "mRender": function(data, type, row) {
@@ -142,12 +144,14 @@
                 {
 
                     "mRender": function(data, type, row) {
-                                    var ids = btoa(row.id);
-                                    return `<td>` +
-                                        `<a class="" href="/jury/edit/`+ids+`"><i class='fa fa-edit' style='font-size:30px;color:#7367f0'></i></a>&nbsp&nbsp` +
-                                            `<a class="" href="/jury/delete/`+ids+`"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>` +
-                                        '</td>'
-                                }
+                        var ids = btoa(row.id);
+                        return `<td>` +
+                            `<a class="" href="/jury/edit/` + ids +
+                            `"><i class='fa fa-edit' style='font-size:30px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                            `<a class="" href="/jury/delete/` + ids +
+                            `"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>` +
+                            '</td>'
+                    }
                 },
             ],
             "columnDefs": [{

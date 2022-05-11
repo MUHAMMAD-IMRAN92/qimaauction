@@ -8,6 +8,9 @@ class DevTestController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard.index');
+        // return view('admin.dashboard.index');
+       $en = encrypt(1);
+
+       return decrypt($en);
     }
 }

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
+Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 Route::middleware(['auth'])->group(function () {
     //Dashboard Route
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/origin/edit', [App\Http\Controllers\OriginController::class, 'update']);
     Route::get('/origin/delete/{id}', [App\Http\Controllers\OriginController::class, 'delete']);
 
-    //Product CRUD Product
+    //Product CRUD 
     Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index']);
     Route::get('/product/allproduct', [App\Http\Controllers\ProductController::class, 'allProduct']);
     Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create']);
@@ -63,8 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
     //Product & Jury
     Route::post('/product/sent_to_jury',  [App\Http\Controllers\ProductController::class, 'sentToJury']);
-
-    //Product CRUD jury
+    
+    //jury CRUD 
     Route::get('/jury/index', [App\Http\Controllers\JuryController::class, 'index']);
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
     Route::get('/jury/create', [App\Http\Controllers\JuryController::class, 'create']);
@@ -72,6 +72,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jury/edit/{id}', [App\Http\Controllers\JuryController::class, 'edit']);
     Route::post('/jury/edit', [App\Http\Controllers\JuryController::class, 'update']);
     Route::get('/jury/delete/{id}', [App\Http\Controllers\JuryController::class, 'delete']);
+    Route::get('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJury']);
+    Route::post('/jury/send_to_jury',  [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
+
 });
 
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks']);

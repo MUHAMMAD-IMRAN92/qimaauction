@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JuryMail;
 use App\Models\Jury;
+use App\Models\Product;
 use App\Models\SentToJury;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class JuryController extends Controller
 {
@@ -85,12 +89,47 @@ class JuryController extends Controller
         return redirect('/jury/index');
     }
 
+    public function sendToJury()
+    {
+        $juries = Jury::all();
+        $products = Product::all();
+
+        return view('admin.jury.send_to_jury', [
+            'juries' =>  $juries,
+            'products' => $products
+        ]);
+    }
+    public function sendToJuryPost(Request $request)
+    {
+        // return $request->all();
+        $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
+        foreach ($request->juries as $jury) {
+            foreach ($request->products as $key => $product) {
+
+                $sampleSent = new SentToJury();
+                $sampleSent->jury_id = $jury;
+                $sampleSent->product_id = $product;
+                $sampleSent->temporary_link = $tempLink;
+                $sampleSent->samples = $request->samples[$key];
+                $sampleSent->save();
+            }
+            $jury =    Jury::find($sampleSent->jury_id);
+            Mail::to($jury->email)->send(new JuryMail($jury));
+        }
+        return redirect('/jury/index');
+    }
+
     public function juryLinks(Request $request, $id)
     {
-        $juryId = base64_decode($id);
-        $samples = SentToJury::where('jury_id', $juryId)->where('is_hidden', '0')->get();
-        return view('admin.jury.jury_links', [
-            'samples' => $samples
-        ]);
+        $juryId = decrypt($id);
+        $jury = Jury::find($juryId);
+        if ($jury) {
+            $samples = SentToJury::where('jury_id', $juryId)->where('is_hidden', '0')->get();
+            return view('admin.jury.jury_links', [
+                'samples' => $samples
+            ]);
+        } else {
+            return view('admin.404');
+        }
     }
 }

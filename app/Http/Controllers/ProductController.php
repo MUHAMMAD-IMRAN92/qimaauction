@@ -13,6 +13,7 @@ use App\Models\SentToJury;
 use Facade\FlareClient\Flare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Mail;
 
@@ -161,7 +162,7 @@ class ProductController extends Controller
     public function view($id)
     {
         $jury = Jury::where('is_hidden', '0')->get();
-        $product = product::where('id', base64_decode($id))->where('is_hidden', '0')->with('category', 'origin')->first();
+        $product = product::where('id', Crypt::decryptString($id))->where('is_hidden', '0')->with('category', 'origin')->first();
         return view('admin.product.view_product', [
             'product' =>  $product,
             'juries' => $jury
@@ -190,7 +191,7 @@ class ProductController extends Controller
     }
     public function review(Request $request, $link, $pId, $jId)
     {
-        $sampleSent = SentToJury::where('jury_id',  $request->jId)->where('product_id', $request->pId)->where('temporary_link', $request->link)->first();
+        $sampleSent = SentToJury::where('jury_id',  decrypt($request->jId))->where('product_id', decrypt($request->pId))->where('temporary_link', decrypt($request->link))->first();
         if ($sampleSent) {
             if ($sampleSent->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');

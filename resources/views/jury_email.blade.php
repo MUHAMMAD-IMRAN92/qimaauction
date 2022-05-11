@@ -348,7 +348,7 @@
                                         <span class="">Please click below link to give your opinion about
                                             sample coffee.</span>
                                       
-                                            <p style="margin-left:25%"> <a href="{{ url('jury/links/' . base64_encode($jury->id)) }}"
+                                            <p style="margin-left:25%"> <a href="{{ url('jury/links/' . encrypt($jury->id)) }}"
                                                     class="btn btn-primary">Give Review</a></p>
                                         
 
