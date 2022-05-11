@@ -71,7 +71,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr</th>
-                                                   
+
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -81,7 +81,7 @@
                                                         <td>{{ $loop->iteration }}</td>
 
                                                         <td> <a class="btn btn-success"
-                                                                href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . encrypt($sample->product_id) . '/' . encrypt($sample->jury_id) }}">Give
+                                                                href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }}">Give
                                                                 Review</td>
                                                     </tr>
                                                 @endforeach
