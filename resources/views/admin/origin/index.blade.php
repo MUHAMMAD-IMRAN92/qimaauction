@@ -136,8 +136,8 @@
                     "mRender": function(data, type, row) {
                                     var ids = btoa(row.id);
                                     return `<td>` +
-                                        `<a class="" href="/origin/edit/`+ids+`"><i class='fa fa-edit' style='font-size:30px;color:#7367f0'></i></a>&nbsp&nbsp` +
-                                            `<a class="" href="/origin/delete/`+ids+`"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>` +
+                                        `<a class="" href="/origin/edit/`+ids+`"><i class='fa fa-edit' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                                            `<a class="" href="/origin/delete/`+ids+`"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>` +
                                         '</td>'
                                 }
                 },
