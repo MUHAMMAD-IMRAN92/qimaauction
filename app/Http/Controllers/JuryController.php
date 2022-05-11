@@ -87,10 +87,17 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
-        $juryId = base64_decode($id);
+        $juryId = decrypt($id);
+        $jury = Jury::find($juryId);
+
+        if($jury){
         $samples = SentToJury::where('jury_id', $juryId)->where('is_hidden', '0')->get();
         return view('admin.jury.jury_links', [
             'samples' => $samples
         ]);
+        }
+        else{
+            return view('admin.404');
+        }
     }
 }

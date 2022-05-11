@@ -163,11 +163,11 @@
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/product/edit/` + ids +
-                            `"><i class='fa fa-edit' style='font-size:30px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                            `"><i class='fa fa-edit' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
                             `<a class="" href="/product/delete/` + ids +
-                            `"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></a>&nbsp&nbsp` +
+                            `"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>&nbsp&nbsp` +
                             `<a class="" href="/product/view/` + ids +
-                            `"><i class="fa fa-eye" style="font-size:30;color:#7367f0"></i></a>` +
+                            `"><i class="fa fa-eye" style="font-size:20;color:#7367f0"></i></a>` +
                             '</td></tr>'
                     }
                 },

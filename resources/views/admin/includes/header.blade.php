@@ -353,7 +353,7 @@
                 <li class="nav-item mr-auto"><a class="navbar-brand"
                         href="{{ url('/') }}">
                         <div class="brand-logo"></div>
-                        <h2 class="brand-text mb-0">Qima Auction</h2>
+                        <h2 class="brand-text mb-0">QIMA Auction</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
@@ -364,8 +364,8 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li><a href="index.html"><i class="feather icon-home"></i><span class="menu-title"
-                            data-i18n="Dashboard">Product Management</span></a>
+                <li><a href="index.html"><i class="fa fa-product-hunt" aria-hidden="true"></i>
+                    <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a>
                     <ul class="menu-content">
                         <li @if (request()->is('categories/*')) class= 'active' @endif><a
                                 href="{{ url('/categories/index') }}"><i class="feather icon-circle"></i><span
