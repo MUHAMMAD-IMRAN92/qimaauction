@@ -2787,9 +2787,14 @@ tr.group {
     font-size: 5rem !important;
   }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px)
+ {
   div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    justify-content: center; } }
+    justify-content: center; } 
+    .custom_mobile_btn{
+      margin: 2rem 0;
+    }
+  }
 /* ----------- */
 .custom_btn_align{
 text-align: right !important;

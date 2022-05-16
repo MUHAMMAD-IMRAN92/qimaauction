@@ -110,14 +110,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 <div class="col-lg-12 col-12 p-0">
 <div class="card rounded-0 mb-0 p-2">
 <div class="card-header pt-50 pb-1">
-
+{{-- <div class="card-title">
+    <h4 class="mb-0">Coffee Review</h4>
+</div>
+</div> --}}
 <div class="col-12">
     <div class="site-logo">
         <img src="{{asset('/public/app-assets/images/logo/logo_admin.png')}}">
        </div>
-       <p class="px-2">Fill the below form to submit your review.</p>
    </div>
-
+<p class="px-2">Fill the below form to submit your review.</p>
 <div class="card-content">
 <div class="card-body pt-0">
 
@@ -131,58 +133,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 <div class="sample-text">
                     <h3>SAMPLE</h3>
                     <h5>Lorem ipsum</h5>
-                </div>
-                  <div class="row purity">
-                    <div class="col-12">
-                        <div class="aroma-text">
-                            <h3 class="entity-text">AROMA</h3>
-                            <div class="row aroma-data">
-                                <div class="col-md-4">
-                                    <h5>DRY</h5>
-                                    <div class="custom_slider">
-                                        <div class="range-slider"
-                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                            <input type="range" min="0" max="8"
-                                                step="0.5" value="0"
-                                                oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                            <output></output>
-                                            <div class='range-slider__progress'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5>CRUST</h5>
-                                    <div class="custom_slider">
-                                        <div class="range-slider"
-                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                            <input type="range" min="0" max="8"
-                                                step="0.5" value="0"
-                                                oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                            <output></output>
-                                            <div class='range-slider__progress'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5>CRUST</h5>
-                                    <div class="custom_slider">
-                                        <div class="range-slider"
-                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                            <input type="range" min="0" max="8"
-                                                step="0.5" value="0"
-                                                oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                            <output></output>
-                                            <div class='range-slider__progress'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         
-                        </div>
-                    </div>
                 </div>
                 <div class="row purity">
                     <div class="col-md-4">
@@ -251,7 +201,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </div>
                     </div>
                 </div>
-              
                 <div class="row purity">
                     <div class="col-md-4">
                         <div class="roast-text">
@@ -393,7 +342,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         <div class="deffects-text">
                             <h3 class="entity-text total-area">TOTAL
                             </h3>
-                            <h6>45</h6>
+                            <h6>SLIDER COMES HERE</h6>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -406,13 +355,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     </div>
                 </div>
 
-                <div class="row custom_mobile_btn">
+                <div class="row">
                     <div class="col-12">
                       <div class="submit-btn">
                         <input class="submit-form-btn" type="submit" value="SUBMIT">
                       </div>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
 
