@@ -7,10 +7,10 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
+                <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            <h2 class="content-header-title float-left mb-0">Jury</h2>
+                            {{-- <h2 class="content-header-title float-left mb-0">Jury</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -23,11 +23,11 @@
 
                     </div>
                 </div>
-                <div class="col-3">
-                    <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light">Send To
-                        Jury<a>
-                            <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                                Jury<a>
+                <div class="col-6 custom_btn_align">
+                    <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light custom_btn">Send To
+                        Jury</a>
+                            <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light custom_btn">Create
+                                Jury</a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -147,7 +147,7 @@
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
-                            `"><i class='fa fa-edit' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                            `"><i class='fa fa-pencil' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
                             `<a class="" href="/jury/delete/` + ids +
                             `"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>` +
                             '</td>'

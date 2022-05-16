@@ -77,7 +77,7 @@
                                     class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                                         class="ficon feather icon-menu"></i></a></li>
                         </ul>
-                        <ul class="nav navbar-nav bookmark-icons">
+                        <ul style="display:none" class="nav navbar-nav bookmark-icons">
                             <!-- li.nav-item.mobile-menu.d-xl-none.mr-auto-->
                             <!--   a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')-->
                             <!--     i.ficon.feather.icon-menu-->
@@ -94,7 +94,7 @@
                                     data-toggle="tooltip" data-placement="top" title="Calendar"><i
                                         class="ficon feather icon-calendar"></i></a></li>
                         </ul>
-                        <ul class="nav navbar-nav">
+                        {{-- <ul class="nav navbar-nav">
                             <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i
                                         class="ficon feather icon-star warning"></i></a>
                                 <div class="bookmark-input search-input">
@@ -109,7 +109,7 @@
                                 <!--   option todo-->
                                 <!--   option Calendar-->
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"
@@ -364,29 +364,41 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li><a href="index.html"><i class="fa fa-product-hunt" aria-hidden="true"></i>
+                <li>
+                    <a>
+                    {{-- <i class="fa fa-product-hunt" aria-hidden="true"></i> --}}
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a>
-                    <ul class="menu-content">
+                    <ul class="menu-content custom_bullets">
                         <li @if (request()->is('categories/*')) class= 'active' @endif><a
-                                href="{{ url('/categories/index') }}"><i class="feather icon-circle"></i><span
+                                href="{{ url('/categories/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span
                                     class="menu-item" data-i18n="Analytics">Category</span></a>
                         </li>
                         <li @if (request()->is('flavour/*')) class= 'active' @endif><a
-                                href="{{ url('/flavour/index') }}"><i class="feather icon-circle"></i><span
+                                href="{{ url('/flavour/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span
                                     class="menu-item " data-i18n="eCommerce">Flavour</span></a>
                         </li>
                         <li @if (request()->is('origin/*')) class= 'active' @endif><a
-                                href="{{ url('/origin/index') }}"><i class="feather icon-circle"></i><span
+                                href="{{ url('/origin/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span
                                     class="menu-item @if (request()->is('origin/*')) 'active' @endif"
                                     data-i18n="eCommerce">Origin</span></a>
                         </li>
                         <li @if (request()->is('product/*')) class= 'active' @endif><a
-                                href="{{ url('/product/index') }}"><i class="feather icon-circle"></i><span
+                                href="{{ url('/product/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span
                                     class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
                         </li>
                         <li @if (request()->is('jury/*')) class= 'active' @endif><a
-                                href="{{ url('/jury/index') }}"><i class="feather icon-circle"></i><span
+                                href="{{ url('/jury/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span
                                     class="menu-item @if (request()->is('jury/*')) 'active' @endif"
                                     data-i18n="eCommerce">Jury</span></a>
                         </li>

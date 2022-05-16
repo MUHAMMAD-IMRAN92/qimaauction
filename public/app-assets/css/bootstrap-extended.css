@@ -2384,10 +2384,10 @@ _:-ms-lang(x),
         background: #7367f0;
         color: #fff; }
   .pagination .page-item.prev .page-link:before, .pagination .page-item.previous .page-link:before {
-    content: "\e843";
+    /* content: "\e843"; */
     font-family: 'feather'; }
   .pagination .page-item.next .page-link:after {
-    content: "\e844";
+    /* content: "\e844"; */
     font-family: 'feather'; }
   .pagination .page-item .page-link {
     border: none;

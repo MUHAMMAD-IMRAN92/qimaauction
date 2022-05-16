@@ -12,7 +12,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Product Details</h2>
+                            {{-- <h2 class="content-header-title float-left mb-0">Product Details</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -121,7 +121,7 @@
                                         <a href="#" type="button" class="" data-toggle="modal"
                                             data-target="#inlineForm"> <button
                                                 class="btn btn-primary mr-0 mr-sm-1 mb-1 mb-sm-0"><i
-                                                    class="fa fa-plane mr-25"></i>Send To Jury</button></a>
+                                                    class="fa fa-plane mr-25"></i>Send To Jury123</button></a>
                                         {{-- <button class="btn btn-outline-danger"><i class="feather icon-heart mr-25"></i>WISHLIST</button> --}}
                                     </div>
                                     {{-- <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#inlineForm">

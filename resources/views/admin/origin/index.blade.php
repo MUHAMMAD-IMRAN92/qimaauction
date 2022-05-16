@@ -7,10 +7,10 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
+                <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            <h2 class="content-header-title float-left mb-0">Origins</h2>
+                            {{-- <h2 class="content-header-title float-left mb-0">Origins</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -23,7 +23,7 @@
 
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6 custom_btn_align">
                     <a href="{{ url('/origin/create') }}" class="btn btn-primary waves-effect waves-light">Create
                         Origin<a>
                 </div>
@@ -136,7 +136,7 @@
                     "mRender": function(data, type, row) {
                                     var ids = btoa(row.id);
                                     return `<td>` +
-                                        `<a class="" href="/origin/edit/`+ids+`"><i class='fa fa-edit' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                                        `<a class="" href="/origin/edit/`+ids+`"><i class='fa fa-pencil' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
                                             `<a class="" href="/origin/delete/`+ids+`"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>` +
                                         '</td>'
                                 }
