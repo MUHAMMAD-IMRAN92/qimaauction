@@ -8,13 +8,11 @@ use App\Models\Flavour;
 use App\Models\Jury;
 use App\Models\Origin;
 use App\Models\Product;
-use App\Models\ProductImage;
+use App\Models\Image;
 use App\Models\SentToJury;
-use Facade\FlareClient\Flare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
@@ -90,7 +88,7 @@ class ProductController extends Controller
                 $fileName,
                 'public'
             );
-            $productImage = new ProductImage();
+            $productImage = new Image();
             $productImage->product_id =  $product->id;
             $productImage->image_name = $fileName;
             $productImage->save();
@@ -143,7 +141,7 @@ class ProductController extends Controller
                     $fileName,
                     'public'
                 );
-                $productImage = new ProductImage();
+                $productImage = new Image();
                 $productImage->product_id =  $product->id;
                 $productImage->image_name = $fileName;
                 $productImage->save();
@@ -155,14 +153,14 @@ class ProductController extends Controller
     }
     public function deleteImage($id)
     {
-        ProductImage::where('id', $id)->delete();
+        Image::where('id', $id)->delete();
 
         return back()->with('msg', 'Image Has Deleted');
     }
     public function view($id)
     {
         $jury = Jury::where('is_hidden', '0')->get();
-        $product = product::where('id', Crypt::decryptString($id))->where('is_hidden', '0')->with('category', 'origin')->first();
+        $product = product::where('id', base64_decode($id))->where('is_hidden', '0')->with('category', 'origin')->first();
         return view('admin.product.view_product', [
             'product' =>  $product,
             'juries' => $jury

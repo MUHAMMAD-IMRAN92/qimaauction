@@ -118,10 +118,11 @@
 
 
                                     <div class="d-flex flex-column flex-sm-row">
-                                        <a href="#" type="button" class="" data-toggle="modal"
-                                            data-target="#inlineForm"> <button
+                                        {{-- <a href="#" type="button" class="" data-toggle="modal"
+                                            data-target="#inlineForm">
+                                             <button
                                                 class="btn btn-primary mr-0 mr-sm-1 mb-1 mb-sm-0"><i
-                                                    class="fa fa-plane mr-25"></i>Send To Jury</button></a>
+                                                    class="fa fa-plane mr-25"></i>Send To Jury</button></a> --}}
                                         {{-- <button class="btn btn-outline-danger"><i class="feather icon-heart mr-25"></i>WISHLIST</button> --}}
                                     </div>
                                     {{-- <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#inlineForm">

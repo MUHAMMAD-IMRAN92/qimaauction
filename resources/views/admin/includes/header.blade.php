@@ -53,8 +53,10 @@
         href="{{ asset('public/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
@@ -390,6 +392,11 @@
                                     class="menu-item @if (request()->is('jury/*')) 'active' @endif"
                                     data-i18n="eCommerce">Jury</span></a>
                         </li>
+                        <li @if (request()->is('auction/*')) class= 'active' @endif><a
+                            href="{{ url('/auction/index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item @if (request()->is('auction/*')) 'active' @endif"
+                                data-i18n="eCommerce">Auction</span></a>
+                    </li>
                     </ul>
                 </li>
                 {{-- <li class=" navigation-header"><span>Apps</span>

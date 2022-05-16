@@ -135,6 +135,13 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
+                                                            <input type="file" id="image" class="form-control"
+                                                                name="image[]" multiple>
+                                                            <label for="city-column">Product Image</label>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
                                                             <span>Select Image:</span> <br>
                                                             @foreach ($product->images as $img)
                                                                 <img width="100px" height="100px"
@@ -168,6 +175,4 @@
         </div>
     </div>
 @endsection
-<script>
 
-</script>

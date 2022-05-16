@@ -74,6 +74,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jury/delete/{id}', [App\Http\Controllers\JuryController::class, 'delete']);
     Route::get('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJury']);
     Route::post('/jury/send_to_jury',  [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
+    //option CRUD
+    Route::get('/auction/index', [App\Http\Controllers\AuctionController::class, 'index']);
+    Route::get('/auction/allauction', [App\Http\Controllers\AuctionController::class, 'allauction']);
+    Route::get('/auction/create', [App\Http\Controllers\AuctionController::class, 'create']);
+    Route::get('/auction/edit/{id}', [App\Http\Controllers\AuctionController::class, 'edit']);
+    Route::post('/auction/update/', [App\Http\Controllers\AuctionController::class, 'update']);
+    Route::post('/auction/create', [App\Http\Controllers\AuctionController::class, 'save']);
+    Route::get('/auction/delete/{id}', [App\Http\Controllers\AuctionController::class, 'delete']);
+    Route::get('/auction/delete_product_image/{id}', [App\Http\Controllers\AuctionController::class, 'deleteImage']);
 
 });
 
