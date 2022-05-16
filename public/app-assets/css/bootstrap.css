@@ -7715,3 +7715,71 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #f8f8f8; } }
+.custom_btn{
+margin:5px;
+}
+ul.custom_bullets{
+list-style-type: none !important;
+}
+ul.menu-content
+{
+  list-style-type: none !important;
+}
+
+
+/*form*/
+.form-section{
+  margin: 20px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 30px;
+}
+.sample-text{
+  text-align: center;
+  color:#d1af69;
+}
+.purity{
+  margin: 5rem;
+}
+.entity-text{
+  background-color: #d1af69;
+  border-radius: 20px;
+  padding: 5px;
+}
+.roast-text, .aroma-text, .deffects-text{
+  text-align: center;
+}
+.aroma-data{
+  text-align: center;
+}
+.score-flex{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.score_first_number{
+  width: 20%;
+  text-align: center;
+}
+.multiply{
+  font-size: 20px;
+  padding: 0 5px;
+}
+.submit-btn{
+  text-align: center;
+}
+.submit-form-btn{
+  background-color: #d1af69;
+  border: none;
+  color: black;
+  border-radius: 20px;
+  width: 30%;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+/*form*/
+
+/*media query*/
+
+/*media query*/

@@ -58,4 +58,8 @@ class ReviewController extends Controller
 
         return view('admin.jury.success');
     }
+    public function form()
+    {
+        return view('admin.jury.form');
+    }
 }

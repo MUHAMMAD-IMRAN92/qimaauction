@@ -542,12 +542,14 @@ body.fixed-footer footer.footer-dark {
       align-items: center;
       margin-top: 1.35rem; }
       .main-menu .navbar-header .navbar-brand .brand-logo {
-        background: url("../../app-assets/images/logo/vuexy-logo.png") no-repeat;
-        background-position: -65px -54px;
-        height: 24px;
-        width: 35px; }
+        background: url("../../app-assets/images/logo/logo_admin.png") no-repeat;
+        /* background-position: -65px -54px; */
+        background-position: center;
+        height: 37px;
+        width: 50px; }
       .main-menu .navbar-header .navbar-brand .brand-text {
-        color: #7367f0;
+        /* color: #7367f0; */
+        color: #d1af69;
         padding-left: 1rem;
         font-weight: 600;
         letter-spacing: 0.01rem;
@@ -2631,8 +2633,8 @@ input[type="month"].form-control {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15) !important; }
   .select2-container--classic .select2-selection--multiple .select2-selection__choice,
   .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: #7367f0 !important;
-    border-color: #4839eb !important;
+    /* background-color: #7367f0 !important;
+    border-color: #4839eb !important; */
     color: #fff;
     padding: 5px; }
   .select2-container--classic .select2-selection--multiple .select2-selection__rendered li .select2-search__field,
@@ -2640,9 +2642,10 @@ input[type="month"].form-control {
     margin-top: 10px; }
   .select2-container--classic .select2-selection--multiple .select2-selection__choice__remove,
   .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-    color: #fff !important;
+    color: #000 !important;
     float: right;
-    margin-left: 0.5rem; }
+    /* margin-left: 0.5rem;  */
+  }
   .select2-container--classic .select2-selection--multiple i,
   .select2-container--default .select2-selection--multiple i {
     position: relative;
@@ -2727,7 +2730,8 @@ table.dataTable {
     border-bottom: 1px solid #f8f8f8;
     border-top: 0; }
   table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
+    font-size: 16px;
     border: 0; }
   table.dataTable thead tr {
     background-color: #f8f8f8; }
@@ -2779,6 +2783,39 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 tr.group {
   background-color: #ededed; }
 
+  .table-heading{
+    font-size: 5rem !important;
+  }
+
 @media only screen and (max-width: 768px) {
   div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     justify-content: center; } }
+/* ----------- */
+.custom_btn_align{
+text-align: right !important;
+}
+textarea {
+  width: 100%;
+  /* / height: 150px; / */
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  resize: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.descriptors{
+    align-items: center;
+}
+.total-area{
+    margin-top: 3rem;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+  padding-left: 15px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  color: #000 !important;
+}

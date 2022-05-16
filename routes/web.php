@@ -89,3 +89,5 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks']);
 Route::get('/jury/link/give_review/{link}/{pId}/{jId}', [App\Http\Controllers\ProductController::class, 'review']);
 Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
+
+Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
