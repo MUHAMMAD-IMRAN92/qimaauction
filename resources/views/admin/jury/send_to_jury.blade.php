@@ -123,7 +123,9 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    $(function() {
+   
+    $(function() { 
+        var jq14 = jQuery.noConflict(true); 
         $('#product_select').change(function() {
             // console.log($('#product_select').options);
             // var selected = $("#product_select :selected").map((_, e) => e.text).get();
