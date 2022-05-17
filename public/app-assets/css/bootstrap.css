@@ -7763,7 +7763,10 @@ ul.menu-content
   width: 20%;
   text-align: center;
 }
-
+.score_second_number{
+  width: 20%;
+  text-align: center;
+}
 .multiply{
   font-size: 20px;
   padding: 0 5px;
