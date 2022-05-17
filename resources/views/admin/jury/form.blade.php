@@ -122,7 +122,9 @@
                                             <div class="card-content" style="margin: 0 auto;">
                                                 <div class="card-body pt-0">
                                                     <!-- Form start -->
-                                                    <form action="">
+                                                    <form  action="{{ url('/jury/link/reviewSave') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
                                                         <div class="row">
                                                             <div class="col-12">
 
@@ -140,7 +142,7 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
+                                                                                            <input type="range" min="0" name="aroma_dry"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -156,7 +158,7 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
+                                                                                            <input type="range" min="0" name="aroma_crust"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -172,7 +174,7 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
+                                                                                            <input type="range" min="0" name="aroma_break"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -195,7 +197,19 @@
                                                                             <h3 class="entity-text">ROAST</h3>
                                                                             <h5>COLOR DEVIATION</h5>
                                                                             <div class="custom_slider">
+<<<<<<< HEAD
                                                                                 <input type="range" name="color_dev"/>
+=======
+                                                                                <div class="range-slider"
+                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    <input type="range" min="0" max="8" name="roast_color"
+                                                                                        step="0.5" value="0"
+                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                    <output></output>
+                                                                                    <div class='range-slider__progress'>
+                                                                                    </div>
+                                                                                </div>
+>>>>>>> master
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -211,7 +225,7 @@
                                                                                         name="FirstNumber">
                                                                                     <span
                                                                                         class="multiply">X</span>
-                                                                                    <input class="score_first_number"
+                                                                                    <input class="score_second_number"
                                                                                         type="number" id="quantity"
                                                                                         name="SecondNumber">
                                                                                     <span
@@ -221,7 +235,7 @@
                                                                                     <span
                                                                                         class="multiply">=</span>
                                                                                     <span
-                                                                                        class="multiply">?</span>
+                                                                                        class="multiply4">?</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -509,7 +523,15 @@
             (function() {
 
                 "use strict"
+                
+                $(".score_second_number").keyup(function(){
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    var third=first * second * 4;
+                    $('.multiply4').html(third);
 
+                //   $("input").css("background-color", "pink");
+                });
                 // Plugin Constructor
                 var TagsInput = function(opts) {
                     this.options = Object.assign(TagsInput.defaults, opts);

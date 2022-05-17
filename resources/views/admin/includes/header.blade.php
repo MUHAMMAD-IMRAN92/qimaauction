@@ -405,7 +405,9 @@
                                     data-i18n="eCommerce">Jury</span></a>
                         </li>
                         <li @if (request()->is('auction/*')) class= 'active' @endif><a
-                            href="{{ url('/auction/index') }}"><i class="feather icon-circle"></i><span
+                            href="{{ url('/auction/index') }}">
+                            {{-- <i class="feather icon-circle"></i> --}}
+                            <span
                                 class="menu-item @if (request()->is('auction/*')) 'active' @endif"
                                 data-i18n="eCommerce">Auction</span></a>
                     </li>

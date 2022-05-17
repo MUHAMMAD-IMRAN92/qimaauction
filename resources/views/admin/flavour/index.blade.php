@@ -126,7 +126,7 @@
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/flavour/edit/` + ids +
-                            `"><i class='fa fa-pencil' style='font-size:20px;color:#7367f0'></i></a>&nbsp&nbsp` +
+                            `"><i class='fa fa-pencil' style='font-size:20px;color:#d1af69'></i></a>&nbsp&nbsp` +
                             `<a class="" href="/flavour/delete/` + ids +
                             `"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>` +
                             '</td>'

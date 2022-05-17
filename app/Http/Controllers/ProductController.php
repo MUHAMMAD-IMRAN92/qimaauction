@@ -189,13 +189,13 @@ class ProductController extends Controller
     }
     public function review(Request $request, $link, $pId, $jId)
     {
-        $sampleSent = SentToJury::where('jury_id',  decrypt($request->jId))->where('product_id', decrypt($request->pId))->where('temporary_link', decrypt($request->link))->first();
+        $sampleSent = SentToJury::where('jury_id', $request->jId)->where('product_id', $request->pId)->where('temporary_link', $request->link)->first();
         if ($sampleSent) {
             if ($sampleSent->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
             } else {
                 $samplesArr = explode(',', $sampleSent->samples);
-                return view('admin.jury.review_form', [
+                return view('admin.jury.form', [
                     'productId' => $pId,
                     'juryId' =>  $jId,
                     'link' => $link,

@@ -221,9 +221,11 @@
         </div>
     </div>
 </div>
-
+   
 <script>  
+$.noConflict();
       $(document).ready(function(){
+
         // jQuery.datetimepicker.setLocale('de');
         CKEDITOR.replace( 'product_detail' );
         $.datetimepicker.setDateFormatter({
