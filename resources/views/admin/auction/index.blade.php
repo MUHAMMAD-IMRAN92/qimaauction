@@ -23,7 +23,7 @@
 
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 custom_btn_align">
                             <a href="{{ url('/auction/create') }}" class="btn btn-primary waves-effect waves-light">Create
                                 Auction<a>
                 </div>

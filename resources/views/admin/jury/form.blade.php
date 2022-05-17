@@ -195,15 +195,7 @@
                                                                             <h3 class="entity-text">ROAST</h3>
                                                                             <h5>COLOR DEVIATION</h5>
                                                                             <div class="custom_slider">
-                                                                                <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0"
-                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                                    <output></output>
-                                                                                    <div class='range-slider__progress'>
-                                                                                    </div>
-                                                                                </div>
+                                                                                <input type="range" name="color_dev"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
