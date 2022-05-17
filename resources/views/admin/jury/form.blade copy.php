@@ -114,12 +114,12 @@
                                             <div class="col-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{ asset('/public/app-assets/images/logo/form_logo.png') }}">
+                                                        src="{{ asset('/public/app-assets/images/logo/logo_admin.png') }}">
                                                 </div>
                                                 <p class="px-2">Fill the below form to submit your review.</p>
                                             </div>
 
-                                            <div class="card-content" style="margin: 0 auto;">
+                                            <div class="card-content">
                                                 <div class="card-body pt-0">
                                                     <!-- Form start -->
                                                     <form action="">
@@ -130,7 +130,9 @@
                                                                     <h3>SAMPLE</h3>
                                                                     <h5>Lorem ipsum</h5>
                                                                 </div>
-                                                                <div class="row purity" style="margin-top: 5rem">
+
+                                                               
+                                                                <div class="row purity" style="margin-top: 5rem;">
                                                                     <div class="col-12">
                                                                         <div class="aroma-text">
                                                                             <h3 class="entity-text">AROMA</h3>
@@ -168,7 +170,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4">
-                                                                                    <h5>BREAK</h5>
+                                                                                    <h5>CRUST</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
@@ -190,7 +192,7 @@
                                                                 </div>
                                                                 <div class="row purity">
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">ROAST</h3>
                                                                             <h5>COLOR DEVIATION</h5>
@@ -205,41 +207,24 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
+                                                                            
                                                                         </div>
                                                                     </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <div class="deffects-text">
-                                                                            <h3 class="entity-text">DEFECTS</h3>
-                                                                            <h5>SCORE</h5>
-                                                                            <div class="custom_slider">
-                                                                                <div class="score-flex">
-                                                                                    <input class="score_first_number"
-                                                                                        type="number" id="quantity"
-                                                                                        name="FirstNumber">
-                                                                                    <span
-                                                                                        class="multiply">X</span>
-                                                                                    <input class="score_first_number"
-                                                                                        type="number" id="quantity"
-                                                                                        name="SecondNumber">
-                                                                                    <span
-                                                                                        class="multiply">X</span>
-                                                                                    <span
-                                                                                        class="multiply">4</span>
-                                                                                    <span
-                                                                                        class="multiply">=</span>
-                                                                                    <span
-                                                                                        class="multiply">?</span>
+                                                                    <div class="col-md-4">
+                                                                        <div class="aroma-text">
+                                                                            <h3 class="entity-text">AROMA</h3>
+                                                                            <div class="row aroma-data">
+                                                                                <div class="col-md-4">
+                                                                                    <h5>DRY</h5>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <h5>CRUST</h5>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <h5>CRUST</h5>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row purity">
-                                                                    <div class="col-md-4">
-                                                                        <div class="roast-text">
-                                                                            <h3 class="entity-text">MOUTH FEEL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
@@ -250,40 +235,43 @@
                                                                                     <div class='range-slider__progress'>
                                                                                     </div>
                                                                                 </div>
-
-                                                                                <div class="radio_button">
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-
-                                                                                            <input type="radio"
-                                                                                                checked="checked"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-
-                                                                                        </label>
-                                                                                        <h5>H</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>M</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>L</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="deffects-text">
+                                                                            <h3 class="entity-text">DEFECTS</h3>
+                                                                            <h5>SCORE</h5>
+                                                                            <div class="score-flex">
+                                                                                <input class="score_first_number"
+                                                                                    type="number" id="quantity"
+                                                                                    name="FirstNumber">
+                                                                                <span class="multiply">X</span>
+                                                                                <input class="score_first_number"
+                                                                                    type="number" id="quantity"
+                                                                                    name="SecondNumber">
+                                                                                <span class="multiply">X</span>
+                                                                                <span class="multiply">4</span>
+                                                                                <span class="multiply">=</span>
+                                                                                <span class="multiply">?</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row purity">
+                                                                    <div class="col-md-4">
+                                                                        <div class="roast-text">
+                                                                            <h3 class="entity-text">CLEAN CUP</h3>
+                                                                            <div class="custom_slider">
+                                                                                <div class="range-slider"
+                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    <input type="range" min="0" max="8"
+                                                                                        step="0.5" value="0"
+                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                    <output></output>
+                                                                                    <div class='range-slider__progress'>
                                                                                     </div>
                                                                                 </div>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -316,39 +304,6 @@
                                                                                     <div class='range-slider__progress'>
                                                                                     </div>
                                                                                 </div>
-                                                                                
-                                                                                <div class="radio_button">
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-
-                                                                                            <input type="radio"
-                                                                                                checked="checked"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-
-                                                                                        </label>
-                                                                                        <h5>H</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>M</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>L</h5>
-                                                                                    </div>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -356,7 +311,7 @@
                                                                 <div class="row purity">
                                                                     <div class="col-md-4">
                                                                         <div class="roast-text">
-                                                                            <h3 class="entity-text">CLEAN CUP</h3>
+                                                                            <h3 class="entity-text">MOUTH FEEL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
@@ -372,7 +327,7 @@
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="aroma-text">
-                                                                            <h3 class="entity-text">FLAVOR</h3>
+                                                                            <h3 class="entity-text">FLAVOUR</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
