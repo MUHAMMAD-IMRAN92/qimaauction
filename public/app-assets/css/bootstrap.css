@@ -7740,12 +7740,13 @@ ul.menu-content
   color:#d1af69;
 }
 .purity{
-  margin: 0 5rem;
+  margin: 3rem;
 }
 .entity-text{
-  background-color: #d1af69;
-  border-radius: 20px;
+  background-color: #c0c0c0;
+  border-radius: 0px;
   padding: 5px;
+  color: #fff;
 }
 .roast-text, .aroma-text, .deffects-text{
   text-align: center;
@@ -7772,19 +7773,23 @@ ul.menu-content
   padding: 0 5px;
 }
 .submit-btn{
-  text-align: center;
+  text-align: right;
 }
 .submit-form-btn{
   background-color: #d1af69;
   border: none;
   color: black;
-  border-radius: 20px;
-  width: 30%;
+  border-radius: 10px;
+  width: 20%;
   font-size: 1.75rem;
   font-weight: 500;
 }
 /*form*/
-
+.paginate_button{
+  margin: 0 5;
+  border: 1px solid;
+  padding: 1px;
+}
 /*media query*/
 
 /*media query*/

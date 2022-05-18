@@ -11,7 +11,6 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            {{-- <h2 class="content-header-title float-left mb-0">Create Product</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -127,7 +126,7 @@
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="file" id="image" class="form-control"
+                                                            <input  type="file" id="image" class="form-control"
                                                                 name="image[]" multiple>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
