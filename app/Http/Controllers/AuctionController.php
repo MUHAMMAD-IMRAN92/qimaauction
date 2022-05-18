@@ -42,7 +42,9 @@ class AuctionController extends Controller
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
         $auction->startDate = $request->startDate;
+        $auction->startTime = $request->startTime;
         $auction->endDate = $request->endDate;
+        $auction->endTime = $request->endTime;
         $auction->weight = $request->weight;
         $auction->size = $request->size;
         $auction->start_bid_price = $request->start_bid_price;
@@ -110,12 +112,20 @@ class AuctionController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'title' => 'required||max:255',
+            'startDate' => 'required',
+            'image' => 'required|mimes:jpeg,jpg',
+            'endDate' => 'required',
+        ]);
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
         $auction->startDate = $request->startDate;
+        $auction->startTime = $request->startTime;
         $auction->endDate = $request->endDate;
+        $auction->endTime = $request->endTime;
         $auction->weight = $request->weight;
         $auction->size = $request->size;
         $auction->farm = $request->farm;

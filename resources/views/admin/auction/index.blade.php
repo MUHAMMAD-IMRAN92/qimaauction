@@ -124,14 +124,14 @@
                 {
                 "mRender": function(data, type, row) {
                     return '<td>' +
-                        row.startDate + '</td>';
+                        row.startDate + ' ' + row.startTime + '</td>';
                 }
                 },
                 {
 
                 "mRender": function(data, type, row) {
                     return '<td>' +
-                        row.endDate + '</td>';
+                        row.endDate + ' ' + row.endTime + '</td>';
                 }
                 },
                 {

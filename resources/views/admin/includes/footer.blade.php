@@ -44,10 +44,16 @@
 <script src="{{ asset('public/app-assets/js/scripts/datatables/datatable.js') }}"></script>
 <script src="{{ asset('public/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
 <script src="{{ asset('public/app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('public/datepicker/jquery.datetimepicker.css')}}">
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('public/datepicker/jquery.datetimepicker.css')}}">
 <script src="{{ asset('public/datepicker/jquery.js')}}"></script>
 <script src="{{ asset('public/datepicker/jquery.datetimepicker.js')}}"></script>
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
+<script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+<script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+<script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+<script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script>
+<script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
+<script src="{{asset('public/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script>
 
 </body>
 <!-- END: Body-->

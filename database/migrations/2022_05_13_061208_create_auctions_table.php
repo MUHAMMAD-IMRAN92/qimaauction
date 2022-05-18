@@ -26,7 +26,9 @@ class CreateAuctionsTable extends Migration
             $table->decimal('reserved_bid_price', 8, 2);
             $table->unsignedBigInteger('product_id')->nullable();
             $table->string('startDate')->nullable();
+            $table->string('startTime')->nullable();
             $table->string('endDate')->nullable();
+            $table->string('endTime')->nullable();
             $table->boolean('is_hidden')->default(0);
             $table->string('product_detail')->nullable();
             $table->timestamps();

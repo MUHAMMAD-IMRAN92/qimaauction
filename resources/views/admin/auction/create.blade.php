@@ -101,20 +101,31 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="datetimepicker" class="form-control @error('startDate') is-invalid @enderror" name="startDate">
-                                                        <label for="date">Start Date</label>
-                                                        @error('startDate')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
+                                                       <div class="row">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control pickadate" name="startDate" placeholder="select Start Date"/>
+                                                        </div>
+                                                        <div class="col-lg-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time" />
+                                                        </div>
+                                                       </div>
+                                                       <input type="hidden" name="">
+                                                       <label for="date">Start Date & Time</label> 
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="datetimepicker1" class="form-control @error('endDate') is-invalid @enderror" name="endDate">
-                                                        <label for="date">End Date</label>
-                                                        @error('endDate')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                            <input type="text" class="form-control pickadate" placeholder="select End  Date" name="endDate"/>
+                                                        </div>
+                                                        <div class="col-sm-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" placeholder="select End Time" name="endTime" />
+                                                        </div>
+                                                        </div>
+                                                        <input type="hidden" name="">
+                                                        <label for="date">End Date & Time</label>    
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-12 col-12">
@@ -197,9 +208,12 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="file" id="image" class="form-control"
+                                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror"
                                                             name="image[]" multiple>
                                                         <label for="city-column">Auction Image</label>
+                                                        @error('image')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div> 
                                                    
@@ -223,32 +237,14 @@
 </div>
    
 <script>  
-$.noConflict();
+  $(document).load(function(){
+$('.datepicker').pickadate({
+  editable: true
+})
+});
       $(document).ready(function(){
-
-        // jQuery.datetimepicker.setLocale('de');
         CKEDITOR.replace( 'product_detail' );
-        $.datetimepicker.setDateFormatter({
-            parseDate: function (date, format) {
-                var d = moment(date, format);
-                return d.isValid() ? d.toDate() : false;
-            },
-            formatDate: function (date, format) {
-                return moment(date).format(format);
-            },
-        });
-        jQuery('#datetimepicker').datetimepicker({
-            format:'DD-MM-YYYY h:mm',
-            formatTime:'h:mm',
-            formatDate:'DD.MM.YYYY',
-            minDate: new Date(),
-            });
-        jQuery('#datetimepicker1').datetimepicker({
-        format:'DD-MM-YYYY h:mm',
-        formatTime:'h:mm',
-        formatDate:'DD.MM.YYYY',
-        minDate: new Date(),
-        });
+     
     });
  </script>
 @endsection
