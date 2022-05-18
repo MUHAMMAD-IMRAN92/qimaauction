@@ -2410,7 +2410,7 @@ _:-ms-lang(x),
     .pagination .page-item.active .page-link {
       z-index: 3;
       border-radius: 5rem;
-      background-color: #7367f0;
+      background-color: #d1af69 ;
       color: #fff;
       transform: scale(1.05); }
   .pagination .page-item:first-child:not(.prev-item).active {
