@@ -10,7 +10,6 @@
                 <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            <h2 class="content-header-title float-left mb-0">Auction</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>

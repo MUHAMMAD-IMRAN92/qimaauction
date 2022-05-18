@@ -50,7 +50,7 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title">
+                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title" required>
                                                         <label for="origin-title">Origin Title</label>
                                                     </div>
                                                 </div>
@@ -63,7 +63,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="file" id="image" class="form-control" name="image">
+                                                        <input type="file" id="image" class="form-control" name="image" accept="image/png, image/jpeg"  required>
                                                         <label for="city-column">Origin Image</label>
                                                     </div>
                                                 </div>

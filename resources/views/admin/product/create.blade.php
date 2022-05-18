@@ -63,7 +63,7 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="product-title" class="form-control"
-                                                                placeholder="Product Title" name="title">
+                                                                placeholder="Product Title" name="title" required>
                                                             <label for="product-title">Product Title</label>
                                                         </div>
                                                     </div>
@@ -127,7 +127,7 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input  type="file" id="image" class="form-control"
-                                                                name="image[]" multiple>
+                                                            accept="image/png, image/jpeg" name="image[]" multiple required>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
                                                     </div>

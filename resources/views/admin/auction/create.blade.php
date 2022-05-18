@@ -9,8 +9,8 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Create Auction</h2>
-                        {{-- <div class="breadcrumb-wrapper col-12">
+                        {{-- <h2 class="content-header-title float-left mb-0">Create Auction</h2> --}}
+                        <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/') }}">Home</a>
                                 </li>
@@ -19,7 +19,7 @@
                                 <li class="breadcrumb-item active"><a href="#">Create Jury</a>
                                 </li>
                             </ol>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" placeholder="Title" name="title">
+                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" placeholder="Title" name="title" required>
                                                         <label for="name">Title</label>
                                                         @error('title')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -208,8 +208,8 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror"
-                                                            name="image[]" multiple>
+                                                        <input type="file" id="image" class="form-control"
+                                                        accept="image/png, image/jpeg"  name="image[]" multiple required>
                                                         <label for="city-column">Auction Image</label>
                                                         @error('image')
                                                         <div class="alert alert-danger">{{ $message }}</div>
