@@ -16,6 +16,7 @@ class CreateAuctionsTable extends Migration
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('lottitle')->nullable();
             $table->integer('lotnumber')->nullable();
             $table->string('farm')->nullable();
             $table->string('rank')->nullable();

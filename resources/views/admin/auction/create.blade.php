@@ -51,7 +51,7 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" name="title" required>
-                                                        <label for="name">Lot Title</label>
+                                                        <label for="name">Title</label>
                                                         @error('title')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
@@ -59,11 +59,29 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror"  name="lotnumber" required>
-                                                        <label for="name">Lot No</label>
-                                                        @error('lotnumber')
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
+                                                        <textarea id="product-detail" class="form-control" name="product_detail" @error('product_detail') is-invalid @enderror>
+                                                    </textarea>
+                                                        <label for="product-detail">Auction Detail</label>
+                                                        @error('product_detail')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Product</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="product_id"
+                                                                id="product_id">
+                                                                <option selected disabled>Please Select product</option>
+                                                                @foreach ($products as $key => $prod)
+                                                                    <option value="{{ $prod->id }}">
+                                                                        {{ $prod->product_title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
@@ -102,46 +120,34 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <textarea id="product-detail" class="form-control" name="product_detail" @error('product_detail') is-invalid @enderror>
-                                                    </textarea>
-                                                        <label for="product-detail">Auction Detail</label>
-                                                        @error('product_detail')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    </div>
-                                                </div> 
-                                                {{-- <div class="col-md-12 col-12">
-                                                    <div class="form-label-group">
-                                                        <div class="text-bold-600 font-medium-2">
-                                                            Please Select Product
-                                                        </div>
-                                                        <p> <strong>Note:</strong> You can select multiple Products.</p>
-                                                        <select class="select2 form-control" multiple="multiple"
-                                                            name="products[]" id="product_select">
-                                                            @foreach ($products as $key => $product)
-                                                                <option value="{{ $product->id }}">
-                                                                    {{ $product->product_title }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div> --}}
-                                                <div class="col-md-12 col-12">
-                                                    <div class="form-label-group">
-                                                        <label for="product-category">Select Product</label>
-                                                        <div class="form-group">
-                                                            <select class="select2 form-control" name="product_id"
-                                                                id="product_id">
-                                                                <option selected disabled>Please Select product</option>
-                                                                @foreach ($products as $key => $prod)
-                                                                    <option value="{{ $prod->id }}">
-                                                                        {{ $prod->product_title }}</option>
-                                                                @endforeach
-
-                                                            </select>
-                                                           
-                                                        </div>
+                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror"  name="lotnumber" required>
+                                                        <label for="name">Lot No</label>
+                                                        @error('lotnumber')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="lottitle" class="form-control @error('lottitle') is-invalid @enderror"  name="lottitle" required>
+                                                        <label for="name">Lot Title</label>
+                                                        @error('lottitle')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="farm" class="form-control @error('farm') is-invalid @enderror"  name="farm">
+                                                        <label for="name">Farm</label>
+                                                        @error('farm')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                         @enderror
+                                                    </div>
+                                                </div>
+                                           
+                                               
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                        <div class="row">
@@ -240,15 +246,7 @@
                                                                 @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 col-12">
-                                                    <div class="form-label-group">
-                                                        <input type="text" id="farm" class="form-control @error('farm') is-invalid @enderror"  name="farm">
-                                                        <label for="name">Farm</label>
-                                                        @error('farm')
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                         @enderror
-                                                    </div>
-                                                </div>
+                                               
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="file" id="image" class="form-control"

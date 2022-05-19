@@ -43,6 +43,7 @@ class AuctionController extends Controller
         ]);
         $auction = new Auction();
         $auction->title = $request->title;
+        $auction->lottitle = $request->lottitle;
         $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
@@ -128,6 +129,7 @@ class AuctionController extends Controller
         ]);
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
+        $auction->lottitle = $request->lottitle;
         $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
