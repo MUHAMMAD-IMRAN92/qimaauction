@@ -115,7 +115,7 @@
                                             <div class="col-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{ asset('/public/app-assets/images/logo/form_logo.png') }}">
+                                                        src="{{ asset('/public/app-assets/images/logo/logo_new.png') }}">
                                                 </div>
                                                 <p class="px-2">Fill the below form to submit your review.</p>
                                             </div>
@@ -123,17 +123,24 @@
                                             <div class="card-content" style="margin: 0 auto;">
                                                 <div class="card-body pt-0">
                                                     <!-- Form start -->
-                                                    <form  action="{{ url('/jury/link/reviewSave') }}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
+                                                    <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col-12">
-
                                                                 <div class="sample-text">
-                                                                    <h3>SAMPLE</h3>
-                                                                    <h5>Lorem ipsum</h5>
+                                                                    <h3>SAMPLE :</h3>
+                                                                    <h5>TYB123</h5>
                                                                 </div>
-                                                                <div class="row purity" style="margin-top: 5rem">
+                                                                <div class="row purity">
+                                                                    <div class="col-12">
+                                                                        <div class="user_name" style="display:flex">
+                                                                            <label>Name : </label>
+                                                                           <h5 class="m-0" style="padding: 4px !important;">User name</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row purity">
                                                                     <div class="col-12">
                                                                         <div class="aroma-text">
                                                                             <h3 class="entity-text">AROMA</h3>
@@ -143,9 +150,9 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" name="aroma_dry"
-                                                                                                max="8" step="0.5"
-                                                                                                value="0"
+                                                                                            <input type="range" min="0"
+                                                                                                name="aroma_dry" max="8"
+                                                                                                step="0.5" value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -159,7 +166,8 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" name="aroma_crust"
+                                                                                            <input type="range" min="0"
+                                                                                                name="aroma_crust"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -175,7 +183,8 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" name="aroma_break"
+                                                                                            <input type="range" min="0"
+                                                                                                name="aroma_break"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -187,26 +196,34 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-
+                                                                            <div class="aroma_input">
+                                                                                <input type="text" name="" id=""
+                                                                                    placeholder="Note"
+                                                                                    class="aroma_note">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
 
-                                                                    <div class="col-md-6">
-                                                                        <div class="roast-text">
-                                                                            <h3 class="entity-text">ROAST</h3>
-                                                                            <h5>COLOR DEVIATION</h5>
+                                                                    <div class="col-md-12">
+                                                                        <div class=" user_name">
+                                                                            <label>ROAST : </label>
+                                                                        </div>
+                                                                        <div class="user_name">
                                                                             <div class="custom_slider">
-                                                                                <input type="range" name="color_dev"/>
+                                                                                <input type="range" name="color_dev"
+                                                                                    class="dev_slider" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="row purity">
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="deffects-text">
                                                                             <h3 class="entity-text">DEFECTS</h3>
-                                                                            <h5>SCORE</h5>
+
                                                                             <div class="custom_slider">
                                                                                 <div class="score-flex">
                                                                                     <input class="score_first_number"
@@ -227,6 +244,62 @@
                                                                                         class="multiply4">?</span>
                                                                                 </div>
                                                                             </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="roast-text">
+                                                                            <h3 class="entity-text">CLEAN UP</h3>
+
+
+                                                                            <div class="custom_slider">
+                                                                                <div class="range-slider"
+                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    <input type="range" min="0" max="8"
+                                                                                        step="0.5" value="0"
+                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                    <output></output>
+                                                                                    <div class='range-slider__progress'>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="roast-text">
+                                                                            <h3 class="entity-text">SWEETNESS</h3>
+
+
+                                                                            <div class="custom_slider">
+                                                                                <div class="range-slider"
+                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    <input type="range" min="0" max="8"
+                                                                                        step="0.5" value="0"
+                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                    <output></output>
+                                                                                    <div class='range-slider__progress'>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-12" style="display: flex;">
+                                                                        <div class="col-4 pl-0">
+                                                                            <div class="aroma_input">
+                                                                                <input type="text" name="defects_note" id="defects_note"
+                                                                                    placeholder="Note"
+                                                                                    class="aroma_note">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-8 p-0">
+                                                                            <div class="aroma_input">
+                                                                                <input type="text" name="clean_sweet_note" id="clean_sweet_note"
+                                                                                    placeholder="Note"
+                                                                                    class="aroma_note">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -234,6 +307,57 @@
                                                                 <div class="row purity">
                                                                     <div class="col-md-4">
                                                                         <div class="roast-text">
+                                                                            <h3 class="entity-text">ACIDITY</h3>
+                                                                            <div class="custom_slider">
+                                                                                <div class="range-slider"
+                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    <input type="range" min="0" max="8"
+                                                                                        step="0.5" value="0"
+                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                    <output></output>
+                                                                                    <div class='range-slider__progress'>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            
+                                                                            <div class="radio_button">
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio"
+                                                                                            checked="checked"
+                                                                                            name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+
+                                                                                    </label>
+                                                                                    <h5>H</h5>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio"
+                                                                                            name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                    </label>
+                                                                                    <h5>M</h5>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio"
+                                                                                            name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                    </label>
+                                                                                    <h5>L</h5>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="deffects-text">
                                                                             <h3 class="entity-text">MOUTH FEEL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
@@ -246,45 +370,47 @@
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="radio_button">
-                                                                                    <div>
-                                                                                        <label class="radio_container">
+                                                                               
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                                <div>
+                                                                                    <label class="radio_container">
 
-                                                                                            <input type="radio"
-                                                                                                checked="checked"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
+                                                                                        <input type="radio"
+                                                                                            checked="checked"
+                                                                                            name="acidity_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
 
-                                                                                        </label>
-                                                                                        <h5>H</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>M</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="fm_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>L</h5>
-                                                                                    </div>
+                                                                                    </label>
+                                                                                    <h5>H</h5>
                                                                                 </div>
-
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio"
+                                                                                            name="acidity_chk">
+                                                                                        <div
+                                                                                            class="checkmark">
+                                                                                        </div>
+                                                                                    </label>
+                                                                                    <h5>M</h5>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio"
+                                                                                            name="acidity_chk">
+                                                                                        <div
+                                                                                            class="checkmark">
+                                                                                        </div>
+                                                                                    </label>
+                                                                                    <h5>L</h5>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="aroma-text">
-                                                                            <h3 class="entity-text">SWEETNESS</h3>
+                                                                            <h3 class="entity-text">FLAVOUR</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
@@ -296,93 +422,18 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <div class="deffects-text">
-                                                                            <h3 class="entity-text">ACIDITY</h3>
-                                                                            <div class="custom_slider">
-                                                                                <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0"
-                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                                    <output></output>
-                                                                                    <div class='range-slider__progress'>
-                                                                                    </div>
-                                                                                </div>
-                                                                                
-                                                                                <div class="radio_button">
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-
-                                                                                            <input type="radio"
-                                                                                                checked="checked"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-
-                                                                                        </label>
-                                                                                        <h5>H</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>M</h5>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <label class="radio_container">
-                                                                                            <input type="radio"
-                                                                                                name="acidity_chk">
-                                                                                            <div class="checkmark">
-                                                                                            </div>
-                                                                                        </label>
-                                                                                        <h5>L</h5>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="aroma_input">
+                                                                                <input type="text" name="" id=""
+                                                                                    placeholder="Note"
+                                                                                    class="aroma_note">
                                                                             </div>
                                                                         </div>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
                                                                     <div class="col-md-4">
                                                                         <div class="roast-text">
-                                                                            <h3 class="entity-text">CLEAN CUP</h3>
-                                                                            <div class="custom_slider">
-                                                                                <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0"
-                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                                    <output></output>
-                                                                                    <div class='range-slider__progress'>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <div class="aroma-text">
-                                                                            <h3 class="entity-text">FLAVOR</h3>
-                                                                            <div class="custom_slider">
-                                                                                <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0"
-                                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                                    <output></output>
-                                                                                    <div class='range-slider__progress'>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <div class="deffects-text">
                                                                             <h3 class="entity-text">AFTER TASTE</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
@@ -397,10 +448,8 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row purity">
-                                                                    <div class="col-md-6">
-                                                                        <div class="roast-text">
+                                                                    <div class="col-md-4">
+                                                                        <div class="aroma-text">
                                                                             <h3 class="entity-text">BALANCE</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
@@ -413,11 +462,13 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
                                                                         </div>
+
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="aroma-text">
-                                                                            <h3 class="entity-text">OVERALL</h3>
+                                                                    <div class="col-md-4">
+                                                                        <div class="deffects-text">
+                                                                            <h3 class="entity-text">OVER ALL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
@@ -430,30 +481,34 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
-
                                                                 </div>
+
                                                                 <div class="row purity descriptors">
-                                                                    <div class="col-md-4">
-                                                                        <div class="deffects-text">
-                                                                            <h3 class="entity-text total-area">TOTAL
-                                                                            </h3>
-                                                                            <h6>45</h6>
+
+                                                                    <div class="col-md-12" style="display: flex">
+                                                                        <div class="col-4" style="text-align: center">
+                                                                            <h3 for="descriptors">Add Descriptors</h3>
+                                                                        </div>
+                                                                        <div class="col-8 p-0">
+                                                                            <select class="js-example-basic-multiple"
+                                                                                name="states[]" multiple="multiple">
+                                                                                <option value="AL">Alabama</option>
+                                                                                <option value="WY">Wyoming</option>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-8">
-                                                                        <h3 for="descriptors">Add Descriptors</h3>
-                                                                        {{-- <textarea rows="5">Some text...</textarea> --}}
-                                                                        <select class="js-example-basic-multiple"
-                                                                            name="states[]" multiple="multiple">
-                                                                            <option value="AL">Alabama</option>
-                                                                            <option value="WY">Wyoming</option>
-                                                                        </select>
+                                                                </div>
+                                                                <div class="row purity">
+                                                                    <div class="col-md-12" style="display: flex; justify-content: center;">
+                                                                        <div class="deffects-text">
+                                                                            <h3 class="entity-total">TOTAL
+                                                                            </h3>
+                                                                            <h2>45</h2>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="row custom_mobile_btn">
+                                                                <div class="row purity custom_mobile_btn">
                                                                     <div class="col-12">
                                                                         <div class="submit-btn">
                                                                             <input class="submit-form-btn"
@@ -746,6 +801,7 @@
             min-width: 250px;
         }
 
+
         .range-slider.grad {
             --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
             --progress-flll-shadow: var(--progress-shadow);
@@ -813,7 +869,7 @@
         }
 
         .range-slider {
-            --primary-color: #d1af69;
+            --primary-color: #5D5D5D;
             --value-offset-y: var(--ticks-gap);
             --value-active-color: white;
             --value-background: transparent;
@@ -827,7 +883,7 @@
             --min-max-opacity: 0.5;
             --min-max-x-offset: 10%;
             --thumb-size: 15px;
-            --thumb-color: #d1af69;
+            --thumb-color: #5D5D5D;
             --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
                 0 0 0 99px var(--thumb-color) inset;
             --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
@@ -977,6 +1033,8 @@
             cursor: grab;
             outline: none;
             background: none;
+            height: 21px;
+
         }
 
         .range-slider>input:not(:only-of-type) {
