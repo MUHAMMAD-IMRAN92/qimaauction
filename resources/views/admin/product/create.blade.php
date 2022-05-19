@@ -80,7 +80,7 @@
                                                             <label for="product-category">Select Category</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_category"
-                                                                    id="product-category">
+                                                                    id="product-category" required>
                                                                     <option selected>Please Select Category</option>
                                                                     @foreach ($category as $key => $cat)
                                                                         <option value="{{ $cat->id }}">
@@ -96,7 +96,7 @@
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_flavour"
-                                                                    id="product-flavour">
+                                                                    id="product-flavour" required>
                                                                     <option selected>Please Select Flavour</option>
                                                                     @foreach ($flavour as $key => $flv)
                                                                         <option value="{{ $flv->id }}">
@@ -112,7 +112,7 @@
                                                             <label for="product-origin">Select Origin</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_origin"
-                                                                    id="product-origin">
+                                                                    id="product-origin" required>
                                                                     <option selected>Please Select Origin</option>
                                                                     @foreach ($origin as $key => $org)
                                                                         <option value="{{ $org->id }}">

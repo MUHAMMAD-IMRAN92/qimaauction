@@ -75,7 +75,7 @@ function DatePicker( picker, settings ) {
     })( calendar.item.disable )
 
     calendar.
-        set( 'min', settings.min ).
+        set( 'min', new Date() ).
         set( 'max', settings.max ).
         set( 'now' )
 

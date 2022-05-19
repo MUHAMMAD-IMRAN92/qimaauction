@@ -50,11 +50,54 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" placeholder="Title" name="title" required>
-                                                        <label for="name">Title</label>
+                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" name="title" required>
+                                                        <label for="name">Lot Title</label>
                                                         @error('title')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror"  name="lotnumber" required>
+                                                        <label for="name">Lot No</label>
+                                                        @error('lotnumber')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Genetics</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="genetic_id"
+                                                                id="genetic_id">
+                                                                <option selected disabled>Please Select genetics</option>
+                                                                @foreach ($genetics as $key => $prod)
+                                                                    <option value="{{ $prod->id }}">
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Process</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="process_id"
+                                                                id="process_id">
+                                                                <option selected disabled>Please Select process</option>
+                                                                @foreach ($process as $key => $prod)
+                                                                    <option value="{{ $prod->id }}">
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
@@ -101,20 +144,31 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="datetimepicker" class="form-control @error('startDate') is-invalid @enderror" name="startDate">
-                                                        <label for="date">Start Date</label>
-                                                        @error('startDate')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
+                                                       <div class="row">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control pickadate" name="startDate" placeholder="select Start Date"/>
+                                                        </div>
+                                                        <div class="col-lg-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time" />
+                                                        </div>
+                                                       </div>
+                                                       <input type="hidden" name="">
+                                                       <label for="date">Start Date & Time</label> 
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="datetimepicker1" class="form-control @error('endDate') is-invalid @enderror" name="endDate">
-                                                        <label for="date">End Date</label>
-                                                        @error('endDate')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                            <input type="text" class="form-control pickadate" placeholder="select End  Date" name="endDate"/>
+                                                        </div>
+                                                        <div class="col-sm-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" placeholder="select End Time" name="endTime" />
+                                                        </div>
+                                                        </div>
+                                                        <input type="hidden" name="">
+                                                        <label for="date">End Date & Time</label>    
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-12 col-12">
@@ -200,6 +254,9 @@
                                                         <input type="file" id="image" class="form-control"
                                                         accept="image/png, image/jpeg"  name="image[]" multiple required>
                                                         <label for="city-column">Auction Image</label>
+                                                        @error('image')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div> 
                                                    
@@ -223,32 +280,14 @@
 </div>
    
 <script>  
-$.noConflict();
+  $(document).load(function(){
+$('.datepicker').pickadate({
+  editable: true
+})
+});
       $(document).ready(function(){
-
-        // jQuery.datetimepicker.setLocale('de');
         CKEDITOR.replace( 'product_detail' );
-        $.datetimepicker.setDateFormatter({
-            parseDate: function (date, format) {
-                var d = moment(date, format);
-                return d.isValid() ? d.toDate() : false;
-            },
-            formatDate: function (date, format) {
-                return moment(date).format(format);
-            },
-        });
-        jQuery('#datetimepicker').datetimepicker({
-            format:'DD-MM-YYYY h:mm',
-            formatTime:'h:mm',
-            formatDate:'DD.MM.YYYY',
-            minDate: new Date(),
-            });
-        jQuery('#datetimepicker1').datetimepicker({
-        format:'DD-MM-YYYY h:mm',
-        formatTime:'h:mm',
-        formatDate:'DD.MM.YYYY',
-        minDate: new Date(),
-        });
+     
     });
  </script>
 @endsection

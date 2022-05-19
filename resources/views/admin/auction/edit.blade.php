@@ -51,12 +51,54 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control" value="{{$auction->title}}" placeholder="Title" name="title">
-                                                        <label for="name">Title</label>
+                                                        <label for="name">Lot Title</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <textarea id="product-detail" class="form-control" name="product_detail">
+                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror" value="{{$auction->lotnumber}}" name="lotnumber" required>
+                                                        <label for="name">Lot No</label>
+                                                        @error('lotnumber')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Genetics</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="genetic_id"
+                                                                id="genetic_id">
+                                                                <option selected disabled>Please Select genetics</option>
+                                                                @foreach ($genetics as $key => $prod)
+                                                                    <option value="{{ $prod->id }}" {{($prod->id == $auction->genetic_id) ? 'selected' : ''}}>
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Process</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="process_id"
+                                                                id="process_id">
+                                                                <option selected disabled>Please Select process</option>
+                                                                @foreach ($process as $key => $prod)
+                                                                    <option value="{{ $prod->id }}" {{($prod->id == $auction->process_id) ? 'selected' : ''}}>
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <textarea id="product-detail" class="form-control" name="product_detail" rows="2" cols="5">
                                                             {{ $auction->product_detail }}
                                                          </textarea>
                                                         <label for="product-detail">Auction Detail</label>
@@ -81,16 +123,33 @@
                                                 <input type="hidden" name="id" value="{{$auction->id}}">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input id="datetimepicker" class="form-control" name="startDate" value="{{$auction->startDate}}">
-                                                        <label for="date">Start Date</label>
+                                                       <div class="row">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control pickadate" name="startDate" value="{{$auction->startDate}}"/>
+                                                        </div>
+                                                        <div class="col-lg-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" name="startTime" value="{{$auction->startTime}}" />
+                                                        </div>
+                                                       </div>
+                                                       <input type="hidden" name="">
+                                                       <label for="date">Start Date & Time</label> 
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input id="datetimepicker1" class="form-control datetimepicker" name="endDate" value="{{$auction->endDate}}">
-                                                        <label for="date">End Date</label>
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                            <input type="text" class="form-control pickadate" name="endDate" value="{{$auction->endDate}}"/>
+                                                            </div>
+                                                        <div class="col-sm-2" style="margin-left: -30px">
+                                                            <input type='text' class="form-control pickatime" name="endTime" value="{{$auction->endTime}}" />
+                                                        </div>
+                                                        </div>
+                                                        <input type="hidden" name="">
+                                                        <label for="date">End Date & Time</label>    
                                                     </div>
-                                                </div>  
+                                                </div> 
                                             
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
@@ -173,9 +232,12 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="file" id="image" class="form-control"
+                                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror""
                                                             name="image[]" multiple>
                                                         <label for="city-column">Auction Image</label>
+                                                        @error('image')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-12 col-12">

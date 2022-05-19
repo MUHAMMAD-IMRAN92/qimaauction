@@ -32,6 +32,7 @@ class ProductController extends Controller
     }
     public function allProduct(Request $request)
     {
+        // dd(Product::with('category', 'origin')->get());
         $draw = $request->get('draw');
         $start = $request->get('start');
         $length = $request->get('length');
@@ -41,9 +42,10 @@ class ProductController extends Controller
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
-        })->with('category', 'origin');
+        })->with('category', 'origin')->whereHas('category')->whereHas('origin');
 
         $product = $product->skip((int)$start)->take((int)$length)->get();
+
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $product_count,

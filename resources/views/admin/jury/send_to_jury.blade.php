@@ -125,7 +125,7 @@
 <script>
    
     $(function() { 
-        var jq14 = jQuery.noConflict(true); 
+        // var jq14 = jQuery.noConflict(true); 
         $('#product_select').change(function() {
             // console.log($('#product_select').options);
             // var selected = $("#product_select :selected").map((_, e) => e.text).get();

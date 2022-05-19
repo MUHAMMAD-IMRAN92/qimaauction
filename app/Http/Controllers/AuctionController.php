@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\Genetic;
 use App\Models\Product;
+use App\Models\Process;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,9 @@ class AuctionController extends Controller
     public function create()
     {
         $products=Product::all();
-        return view('admin.auction.create',compact('products'));
+        $genetics=Genetic::all();
+        $process=Process::all();
+        return view('admin.auction.create',compact('products','genetics','process'));
     }
     public function save(Request $request)
     {
@@ -39,10 +43,15 @@ class AuctionController extends Controller
         ]);
         $auction = new Auction();
         $auction->title = $request->title;
+        $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
+        $auction->process_id = $request->process_id;
+        $auction->genetic_id = $request->genetic_id;
         $auction->startDate = $request->startDate;
+        $auction->startTime = $request->startTime;
         $auction->endDate = $request->endDate;
+        $auction->endTime = $request->endTime;
         $auction->weight = $request->weight;
         $auction->size = $request->size;
         $auction->start_bid_price = $request->start_bid_price;
@@ -98,8 +107,10 @@ class AuctionController extends Controller
         $auction = Auction::find(base64_decode($id));
         $auctionimages=Auction::where('id', base64_decode($id))->with('images')->first();
         $products = Product::all();
+        $genetics=Genetic::all();
+        $process=Process::all();
         return view('admin.auction.edit', [
-            'auction' =>  $auction,'auctionimages' =>  $auctionimages,'products' =>  $products,
+            'genetics' =>  $genetics, 'process' =>  $process, 'auction' =>  $auction,'auctionimages' =>  $auctionimages,'products' =>  $products,
         ]);
     }
     public function deleteImage($id)
@@ -110,12 +121,22 @@ class AuctionController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'title' => 'required||max:255',
+            'startDate' => 'required',
+            'endDate' => 'required',
+        ]);
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
+        $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
         $auction->product_id = $request->product_id;
+        $auction->process_id = $request->process_id;
+        $auction->genetic_id = $request->genetic_id;
         $auction->startDate = $request->startDate;
+        $auction->startTime = $request->startTime;
         $auction->endDate = $request->endDate;
+        $auction->endTime = $request->endTime;
         $auction->weight = $request->weight;
         $auction->size = $request->size;
         $auction->farm = $request->farm;

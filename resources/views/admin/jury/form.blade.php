@@ -101,6 +101,7 @@
         <div class="content-wrapper">
             <div class="content-header row">
             </div>
+
             <div class="content-body">
                 <section class="row flexbox-container">
                     <div class="col-12 d-flex justify-content-center">
@@ -566,14 +567,14 @@
             (function() {
 
                 "use strict"
-
-                $(".score_second_number").keyup(function() {
+                
+                $(".score_second_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
-                    var third = first * second * 4;
+                    var third=first * second * 4;
                     $('.multiply4').html(third);
 
-                    //   $("input").css("background-color", "pink");
+                //   $("input").css("background-color", "pink");
                 });
                 // Plugin Constructor
                 var TagsInput = function(opts) {

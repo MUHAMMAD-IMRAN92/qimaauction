@@ -57,6 +57,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
+  
+    
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
