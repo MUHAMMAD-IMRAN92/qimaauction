@@ -7738,21 +7738,43 @@ ul.menu-content
 .sample-text{
   text-align: center;
   color:#d1af69;
+  display: flex;
+  justify-content: center;
+}
+.sample-text h3{
+  margin: 0 10px;
+  font-weight: 600;
+}
+.sample-text h5{
+  padding: 3px;
+  margin: 0px !important;
 }
 .purity{
-  margin: 3rem;
+  margin: 2rem;
 }
 .entity-text{
-  background-color: #c0c0c0;
-  border-radius: 0px;
-  padding: 5px;
+  background-color: #5D5D5D;
+  border-radius: 5px;
+  padding: 10px;
   color: #fff;
+}
+
+.entity-total{
+  background-color: #5D5D5D;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+ 
 }
 .roast-text, .aroma-text, .deffects-text{
   text-align: center;
 }
 .aroma-data{
   text-align: center;
+  margin: 20px 0 0 0;
+}
+.aroma-data h5{
+  font-weight: bold;
 }
 .score-flex{
   display: flex;
@@ -7778,8 +7800,8 @@ ul.menu-content
 .submit-form-btn{
   background-color: #d1af69;
   border: none;
-  color: black;
-  border-radius: 10px;
+  color: #000;
+  border-radius: 5px;
   width: 20%;
   font-size: 1.75rem;
   font-weight: 500;
