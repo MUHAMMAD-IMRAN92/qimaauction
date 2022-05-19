@@ -50,11 +50,54 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" placeholder="Title" name="title" required>
-                                                        <label for="name">Title</label>
+                                                        <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" name="title" required>
+                                                        <label for="name">Lot Title</label>
                                                         @error('title')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror"  name="lotnumber" required>
+                                                        <label for="name">Lot No</label>
+                                                        @error('lotnumber')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Genetics</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="genetic_id"
+                                                                id="genetic_id">
+                                                                <option selected disabled>Please Select genetics</option>
+                                                                @foreach ($genetics as $key => $prod)
+                                                                    <option value="{{ $prod->id }}">
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Process</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="process_id"
+                                                                id="process_id">
+                                                                <option selected disabled>Please Select process</option>
+                                                                @foreach ($process as $key => $prod)
+                                                                    <option value="{{ $prod->id }}">
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">

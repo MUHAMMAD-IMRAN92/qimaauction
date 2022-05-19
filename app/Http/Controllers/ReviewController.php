@@ -60,6 +60,7 @@ class ReviewController extends Controller
     }
     public function form()
     {
+    
         return view('admin.jury.form');
     }
 }

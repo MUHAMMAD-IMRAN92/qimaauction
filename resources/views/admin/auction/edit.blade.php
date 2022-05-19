@@ -51,12 +51,54 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control" value="{{$auction->title}}" placeholder="Title" name="title">
-                                                        <label for="name">Title</label>
+                                                        <label for="name">Lot Title</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <textarea id="product-detail" class="form-control" name="product_detail">
+                                                        <input type="number" id="lotnumber" class="form-control @error('lotnumber') is-invalid @enderror" value="{{$auction->lotnumber}}" name="lotnumber" required>
+                                                        <label for="name">Lot No</label>
+                                                        @error('lotnumber')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Genetics</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="genetic_id"
+                                                                id="genetic_id">
+                                                                <option selected disabled>Please Select genetics</option>
+                                                                @foreach ($genetics as $key => $prod)
+                                                                    <option value="{{ $prod->id }}" {{($prod->id == $auction->genetic_id) ? 'selected' : ''}}>
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-category">Select Process</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="process_id"
+                                                                id="process_id">
+                                                                <option selected disabled>Please Select process</option>
+                                                                @foreach ($process as $key => $prod)
+                                                                    <option value="{{ $prod->id }}" {{($prod->id == $auction->process_id) ? 'selected' : ''}}>
+                                                                        {{ $prod->title }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <textarea id="product-detail" class="form-control" name="product_detail" rows="2" cols="5">
                                                             {{ $auction->product_detail }}
                                                          </textarea>
                                                         <label for="product-detail">Auction Detail</label>
