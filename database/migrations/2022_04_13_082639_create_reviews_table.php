@@ -14,25 +14,27 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->id();
-            $table->string('sample_name')->nullable();
-            $table->float('aroma', 8, 2)->default(0)->nullable();
-            $table->float('acidity', 8, 2)->default(0)->nullable();
-            $table->float('intensity', 8, 2)->default(0)->nullable();
-            $table->float('dry', 8, 2)->default(0)->nullable();
-            $table->float('break', 8, 2)->default(0)->nullable();
-            $table->float('flavour', 8, 2)->default(0)->nullable();
-            $table->float('body', 8, 2)->default(0)->nullable();
-            $table->float('afterstate', 8, 2)->default(0)->nullable();
-            $table->float('balance', 8, 2)->default(0)->nullable();
-            $table->float('uniformity', 8, 2)->default(0)->nullable();
-            $table->float('clean_cup', 8, 2)->default(0)->nullable();
-            $table->float('sweetness', 8, 2)->default(0)->nullable();
-            $table->float('defect', 8, 2)->default(0)->nullable();
-            $table->float('overall', 8, 2)->default(0)->nullable();
-            $table->float('roast', 8, 2)->default(0)->nullable();
-            $table->string('message')->nullable();
-            $table->float('final_score', 8, 2)->default(0)->nullable();
+            $table->id(); 
+            $table->float('aroma_dry',8,2)->default(0)->nullable();     
+            $table->float('aroma_crust',8,2)->default(0)->nullable();     
+            $table->float('aroma_break',8,2)->default(0)->nullable();  
+            $table->string('aroma_note')->nullable();     
+            $table->float('color_dev',8,2)->default(0)->nullable();     
+            $table->float('clean_up',8,2)->default(0)->nullable();     
+            $table->float('sweetness',8,2)->default(0)->nullable();  
+            $table->string('defects_note')->nullable();  
+            $table->string('clean_sweet_note')->nullable();   
+            $table->float('acidity',8,2)->default(0)->nullable();  
+            $table->string('acidity_chk')->nullable();   
+            $table->string('fm_chk')->nullable(); 
+            $table->string('discriptor')->nullable();
+            $table->float('mouth_feel',8,2)->default(0)->nullable();         
+            $table->float('flavour',8,2)->default(0)->nullable();  
+            $table->string('flavor_note')->nullable();     
+            $table->float('after_taste',8,2)->default(0)->nullable();     
+            $table->float('balance',8,2)->default(0)->nullable();     
+            $table->float('overall',8,2)->default(0)->nullable();     
+            $table->float('total_score',8,2)->default(0)->nullable();     
             $table->unsignedBigInteger('jury_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->timestamps();

@@ -115,7 +115,7 @@
                                             <div class="col-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{ asset('/public/app-assets/images/logo/logo_new.png') }}">
+                                                        src="{{  asset('/public/app-assets/images/logo/form_logo.png') }}">
                                                 </div>
                                                 <p class="px-2">Fill the below form to submit your review.</p>
                                             </div>
@@ -150,8 +150,8 @@
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
-                                                                                                name="aroma_dry" max="8"
+                                                                                            <input type="range" min="0" class="aroma_dry"
+                                                                                            id="aroma_dry" name="aroma_dry" max="8"  id="aroma_dry"
                                                                                                 step="0.5" value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
@@ -167,7 +167,7 @@
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
                                                                                             <input type="range" min="0"
-                                                                                                name="aroma_crust"
+                                                                                                name="aroma_crust" id="aroma_crust" class="aroma_crust"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -184,7 +184,7 @@
                                                                                         <div class="range-slider"
                                                                                             style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
                                                                                             <input type="range" min="0"
-                                                                                                name="aroma_break"
+                                                                                                name="aroma_break" id="aroma_break"
                                                                                                 max="8" step="0.5"
                                                                                                 value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -197,25 +197,35 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="aroma_input">
-                                                                                <input type="text" name="" id=""
+                                                                                <input type="text" name="aroma_note" id="aroma_note"
                                                                                     placeholder="Note"
                                                                                     class="aroma_note">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <input type="hidden" name="product_id" value="{{$productId}}">
+                                                                <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                                 <div class="row purity">
 
                                                                     <div class="col-md-12">
-                                                                        <div class=" user_name">
+                                                                      
+                                                                        <div class="user_name pt-0">
                                                                             <label>ROAST : </label>
                                                                         </div>
                                                                         <div class="user_name">
-                                                                            <div class="custom_slider">
-                                                                                <input type="range" name="color_dev"
-                                                                                    class="dev_slider" />
+                                                                            <div class="range-slider"
+                                                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0";'>
+                                                                            <input type="range" min="0" max="8"
+                                                                                step="0.5" value="0"
+                                                                                oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                            <output></output>
+                                                                            <div class='range-slider__progress'>
                                                                             </div>
                                                                         </div>
+                                                                           
+                                                                        </div>
+                                                                  
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
@@ -255,7 +265,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="clean_up" id="clean_up"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -274,7 +284,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="sweetness" id="sweetness"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -312,7 +322,7 @@
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0"
+                                                                                        step="0.5" value="0" name="acidity" id="acidity"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -327,7 +337,7 @@
 
                                                                                         <input type="radio"
                                                                                             checked="checked"
-                                                                                            name="fm_chk">
+                                                                                            name="acidity_chk" name="high">
                                                                                         <div class="checkmark">
                                                                                         </div>
 
@@ -337,7 +347,7 @@
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio"
-                                                                                            name="fm_chk">
+                                                                                            name="acidity_chk" name="medium">
                                                                                         <div class="checkmark">
                                                                                         </div>
                                                                                     </label>
@@ -346,7 +356,7 @@
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio"
-                                                                                            name="fm_chk">
+                                                                                            name="acidity_chk" name="low">
                                                                                         <div class="checkmark">
                                                                                         </div>
                                                                                     </label>
@@ -362,7 +372,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -377,8 +387,8 @@
                                                                                     <label class="radio_container">
 
                                                                                         <input type="radio"
-                                                                                            checked="checked"
-                                                                                            name="acidity_chk">
+                                                                                            checked="checked" value="high"
+                                                                                            name="fm_chk">
                                                                                         <div class="checkmark">
                                                                                         </div>
 
@@ -387,8 +397,8 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio"
-                                                                                            name="acidity_chk">
+                                                                                        <input type="radio" value="medium"
+                                                                                            name="fm_chk">
                                                                                         <div
                                                                                             class="checkmark">
                                                                                         </div>
@@ -397,8 +407,8 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio"
-                                                                                            name="acidity_chk">
+                                                                                        <input type="radio" value="low"
+                                                                                            name="fm_chk">
                                                                                         <div
                                                                                             class="checkmark">
                                                                                         </div>
@@ -414,7 +424,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="flavour" id="flavour"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -423,7 +433,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="aroma_input">
-                                                                                <input type="text" name="" id=""
+                                                                                <input type="text" name="flavor_note" id="flavor_note"
                                                                                     placeholder="Note"
                                                                                     class="aroma_note">
                                                                             </div>
@@ -438,7 +448,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="after_taste" id="after_taste"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -454,7 +464,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="balance" id="balance"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -472,7 +482,7 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                    <input type="range" min="0" max="8"
+                                                                                    <input type="range" min="0" max="8" name="overall" id="overall"
                                                                                         step="0.5" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
@@ -492,7 +502,7 @@
                                                                         </div>
                                                                         <div class="col-8 p-0">
                                                                             <select class="js-example-basic-multiple"
-                                                                                name="states[]" multiple="multiple">
+                                                                                name="discriptor[]" multiple="multiple">
                                                                                 <option value="AL">Alabama</option>
                                                                                 <option value="WY">Wyoming</option>
                                                                             </select>
@@ -504,7 +514,8 @@
                                                                         <div class="deffects-text">
                                                                             <h3 class="entity-total">TOTAL
                                                                             </h3>
-                                                                            <h2>45</h2>
+                                                                            <input type="hidden" name="total_score" id="total_score" value="">
+                                                                            <h2 class="totalScore">45</h2>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -561,18 +572,69 @@
     <!-- BEGIN: Page JS-->
 
     <script src="{{ asset('public/app-assets/js/scripts/forms/number-input.js') }}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- END: Page JS-->
     <script>
+         var subtotal=0;
+        //  var a=0,b=0,c=0,d=0;
         $('document').ready(function() {
             (function() {
-
                 "use strict"
-                
-                $(".score_second_number").keyup(function(){
+                function subtotaldata()
+                {
+                    var a = $('#aroma_dry').val();
+                    var b = $('#aroma_crust').val();
+                    var c = $('#clean_up').val();
+                    var d = $('#aroma_break').val();
+                    var e = $('#sweetness').val();
+                    var f = $('#acidity').val();
+                    var g = $('#mouth_feel').val();
+                    var h = $('#flavour').val();
+                    var i = $('#balance').val();
+                    var j = $('#overall').val();
+                    var k = $('#after_taste').val();
+                     subtotal = +a + +b + +c + +d + +e + +f + +g + +h + +i + +j + +k;
+                    return subtotal;
+                }
+                $('input[type=range]').on('input', function () {
+                    var step=0;
+                    if ($(this).val() >= 0 && $(this).val() <= 6) {
+                            step = 1;
+                        }else {
+                            step = 0.5;
+                        }
+                        $(this).attr('step', step);
+                                subtotal=subtotaldata(); 
+                      var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    if(second && first)
+                    {
+                        var defect =first * second * 4;
+                        var raw = subtotal - defect;
+                           var total = 36 + raw;
+                           $('#total_score').val(total);
+                           $('.totalScore').html(total);
+                    }
+                    else
+                    {
+                        var defect = 0;
+                        var raw = subtotal - defect;
+                           var total = 36 + raw;
+                           $('.totalScore').html(total); 
+                    }     
+                    $(this).trigger('change');
+                });
+
+                $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
-                    var third=first * second * 4;
-                    $('.multiply4').html(third);
+                    var defect=first * second * 4;
+                    $('.multiply4').html(defect);
+                    subtotal=subtotaldata(); 
+                    var raw = subtotal - defect;
+                           var total = 36 + raw;
+                           $('#total_score').val(total);
+                           $('.totalScore').html(total);
 
                 //   $("input").css("background-color", "pink");
                 });
@@ -926,6 +988,72 @@
             padding-top: calc(var(--flip-y) * var(--ticks-gap));
             position: relative;
             z-index: 1;
+        }
+        
+.user_name{
+    padding: 20px 0;
+}
+        .user_name .range-slider{
+            / background-image: linear-gradient(to right,#fff , #000) !important; /
+            --primary-color: #5D5D5D;
+            --value-offset-y: var(--ticks-gap);
+            --value-active-color: white;
+            --value-background: transparent;
+            --value-background-hover: var(--primary-color);
+            --value-font: 700 12px/1 Arial;
+            --fill-color: var(--primary-color);
+            --progress-background: #fff  !important;
+            --progress-radius: 20px;
+            --track-height: calc(var(--thumb-size) / 2);
+            --min-max-font: 12px Arial;
+            --min-max-opacity: 0.5;
+            --min-max-x-offset: 10%;
+            --thumb-size: 10px;
+            --thumb-color: #5D5D5D;
+            --thumb-radius: 0 !important;
+            --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
+                0 0 0 99px var(--thumb-color) inset;
+            --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+                0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+            --thumb-shadow-hover: var(--thumb-shadow);
+            --step: 1;
+            --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
+            --maxTicksAllowed: 30;
+            --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
+            --x-step: Max(var(--step),
+                    var(--too-many-ticks) * (var(--max) - var(--min)));
+            --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
+            --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+            --value-a: Clamp(var(--min),
+                    var(--value, 0),
+                    var(--max));
+            --value-b: var(--value, 0);
+            --text-value-a: var(--text-value, "");
+            --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --ca: Min(var(--completed-a), var(--completed-b));
+            --cb: Max(var(--completed-a), var(--completed-b));
+            --thumbs-too-close: Clamp(-1,
+                    1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+                    1);
+            --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
+            --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
+            display: inline-block;
+            height: max(var(--track-height), var(--thumb-size));
+            background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
+            background-size: var(--tickIntervalPerc) var(--ticks-height);
+            background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+            background-position-y: var(--flip-y, bottom);
+            padding-bottom: var(--flip-y, var(--ticks-gap));
+            padding-top: calc(var(--flip-y) * var(--ticks-gap));
+            position: relative;
+            z-index: 1;
+            width: 100% !important;
+        }
+        .user_name .range-slider input{
+            background-image: linear-gradient(to right,#fff , #000) !important;
+            height: 50px;
+            border: 1px solid #5D5D5D;
         }
 
         .range-slider[data-ticks-position=top] {
