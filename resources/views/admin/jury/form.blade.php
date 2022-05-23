@@ -599,14 +599,13 @@
                             step = 0.5;
                         }
                         $(this).attr('step', step);
-                                subtotal=subtotaldata(); 
+                    subtotal=subtotaldata(); 
                       var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
                     if(second && first)
                     {
                         var defect =first * second * 4;
                         var raw = subtotal - defect;
-
                            var total = 36 + raw;
                            $('#total_score').val(total);
                            $('.totalScore').html(total);
@@ -615,7 +614,14 @@
                     {
                         var defect = 0;
                         var raw = subtotal - defect;
-                           var total = 36 + +raw;
+                         if(raw == 0)
+                            {
+                                var total = 0;
+                            }
+                            else
+                            {
+                                var total = 36 + raw;
+                            }
                            $('.totalScore').html(total); 
                     }     
                     $(this).trigger('change');
