@@ -6,6 +6,7 @@ use App\Mail\JuryMail;
 use App\Models\Category;
 use App\Models\Flavour;
 use App\Models\Jury;
+use App\Models\Tag;
 use App\Models\Origin;
 use App\Models\Product;
 use App\Models\Image;
@@ -191,6 +192,9 @@ class ProductController extends Controller
     }
     public function review(Request $request, $link, $pId, $jId)
     {
+        $tags = Tag::where('jury_id',$jId)->get();
+           $juery = Jury::where('ID',$jId)->first();
+           $name = $juery->name;
         $sampleSent = SentToJury::where('jury_id', $request->jId)->where('product_id', $request->pId)->where('temporary_link', $request->link)->first();
         if ($sampleSent) {
             if ($sampleSent->is_hidden == '1') {
@@ -200,6 +204,8 @@ class ProductController extends Controller
                 return view('admin.jury.form', [
                     'productId' => $pId,
                     'juryId' =>  $jId,
+                    'juryName' => $name,
+                    'tags' => $tags,
                     'link' => $link,
                     'samples' => $samplesArr
                 ]);

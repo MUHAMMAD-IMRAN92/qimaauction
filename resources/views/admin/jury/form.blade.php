@@ -136,7 +136,7 @@
                                                                     <div class="col-12">
                                                                         <div class="user_name" style="display:flex">
                                                                             <label>Name : </label>
-                                                                           <h5 class="m-0" style="padding: 4px !important;">User name</h5>
+                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -149,10 +149,10 @@
                                                                                     <h5>DRY</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" class="aroma_dry"
-                                                                                            id="aroma_dry" name="aroma_dry" max="8"  id="aroma_dry"
-                                                                                                step="0.5" value="0"
+                                                                                            style='--min:1; --max:3; --step:1; --value:0; --text-value:"1"; width: 200px;'>
+                                                                                            <input type="range" min="1" class="aroma_dry"
+                                                                                            id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
+                                                                                                step="1" value="1"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -165,11 +165,11 @@
                                                                                     <h5>CRUST</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
+                                                                                            style='--min:1; --max:3; --step:1; --value:1; --text-value:"1"; width: 200px;'>
+                                                                                            <input type="range" min="1"
                                                                                                 name="aroma_crust" id="aroma_crust" class="aroma_crust"
-                                                                                                max="8" step="0.5"
-                                                                                                value="0"
+                                                                                                max="3" step="1"
+                                                                                                value="1"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -182,11 +182,11 @@
                                                                                     <h5>BREAK</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0"
+                                                                                            style='--min:1; --max:3; --step:1; --value:1; --text-value:"1"; width: 200px;'>
+                                                                                            <input type="range" min="1"
                                                                                                 name="aroma_break" id="aroma_break"
-                                                                                                max="8" step="0.5"
-                                                                                                value="0"
+                                                                                                max="3" step="1"
+                                                                                                value="1"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -214,14 +214,11 @@
                                                                             <label>ROAST : </label>
                                                                         </div>
                                                                         <div class="user_name">
-                                                                            <div class="range-slider"
-                                                                            style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0";'>
-                                                                            <input type="range" min="0" max="8"
-                                                                                step="0.5" value="0"
-                                                                                oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                            <output></output>
+                                                                            <div class="range-slider">
+                                                                            <input type="range" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                            {{-- <output></output>
                                                                             <div class='range-slider__progress'>
-                                                                            </div>
+                                                                            </div> --}}
                                                                         </div>
                                                                            
                                                                         </div>
@@ -264,9 +261,9 @@
 
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="clean_up" id="clean_up"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -283,9 +280,9 @@
 
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="sweetness" id="sweetness"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -320,9 +317,9 @@
                                                                             <h3 class="entity-text">ACIDITY</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8"
-                                                                                        step="0.5" value="0" name="acidity" id="acidity"
+                                                                                        step="1" value="0" name="acidity" id="acidity"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -371,9 +368,9 @@
                                                                             <h3 class="entity-text">MOUTH FEEL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -423,9 +420,9 @@
                                                                             <h3 class="entity-text">FLAVOUR</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="flavour" id="flavour"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -447,9 +444,9 @@
                                                                             <h3 class="entity-text">AFTER TASTE</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="after_taste" id="after_taste"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -463,9 +460,9 @@
                                                                             <h3 class="entity-text">BALANCE</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="balance" id="balance"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -481,9 +478,9 @@
                                                                             <h3 class="entity-text">OVER ALL</h3>
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
-                                                                                    style='--min:0; --max:8; --step:0.5; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                    style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                     <input type="range" min="0" max="8" name="overall" id="overall"
-                                                                                        step="0.5" value="0"
+                                                                                        step="1" value="0"
                                                                                         oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                     <output></output>
                                                                                     <div class='range-slider__progress'>
@@ -501,11 +498,13 @@
                                                                             <h3 for="descriptors">Add Descriptors</h3>
                                                                         </div>
                                                                         <div class="col-8 p-0">
-                                                                            <select class="js-example-basic-multiple"
+                                                                            <select  id="select"
                                                                                 name="discriptor[]" multiple="multiple">
-                                                                                <option value="AL">Alabama</option>
-                                                                                <option value="WY">Wyoming</option>
-                                                                            </select>
+                                                                                @foreach($tags as $tag)
+                                                                                    <option value="{{$tag->tag}}">{{str_replace('_', ' ',$tag->tag)}}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>                                                  
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -515,7 +514,7 @@
                                                                             <h3 class="entity-total">TOTAL
                                                                             </h3>
                                                                             <input type="hidden" name="total_score" id="total_score" value="">
-                                                                            <h2 class="totalScore">45</h2>
+                                                                            <h2 class="totalScore">0</h2>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -529,15 +528,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                         <!--row end-->
                                                     </form>
                                                     <!-- Form end -->
-
-
-                                                </div>
-
+                                               </div>
                                             </div>
                                         </div>
                                     </div>
@@ -546,23 +540,14 @@
                         </div>
                     </div>
                 </section>
-
             </div>
         </div>
     </div>
     <!-- END: Content-->
-
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script> --}}
-    <!-- BEGIN: Vendor JS-->
-
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
-    <!-- BEGIN Vendor JS-->
-
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('public/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
     <!-- END: Page Vendor JS-->
-
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('public/app-assets/js/core/app-menu.js') }}"></script>
     <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
@@ -570,22 +555,30 @@
     <!-- END: Theme JS-->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- BEGIN: Page JS-->
-
     <script src="{{ asset('public/app-assets/js/scripts/forms/number-input.js') }}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- END: Page JS-->
     <script>
          var subtotal=0;
         //  var a=0,b=0,c=0,d=0;
+    
         $('document').ready(function() {
+  
+            $("#select").select2(
+                {
+                    tags:true,
+                    maximumInputLength: 16,
+                });
             (function() {
                 "use strict"
                 function subtotaldata()
                 {
-                    var a = $('#aroma_dry').val();
-                    var b = $('#aroma_crust').val();
+                    // var d=e=f=g=h=i=j=k=0;
+                    // var a = $('#aroma_dry').val();
+                    // var b = $('#aroma_crust').val();
+                    // var d = $('#aroma_break').val();
                     var c = $('#clean_up').val();
-                    var d = $('#aroma_break').val();
+                    
                     var e = $('#sweetness').val();
                     var f = $('#acidity').val();
                     var g = $('#mouth_feel').val();
@@ -593,7 +586,9 @@
                     var i = $('#balance').val();
                     var j = $('#overall').val();
                     var k = $('#after_taste').val();
-                     subtotal = +a + +b + +c + +d + +e + +f + +g + +h + +i + +j + +k;
+             
+                     subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+                    
                     return subtotal;
                 }
                 $('input[type=range]').on('input', function () {
@@ -611,6 +606,7 @@
                     {
                         var defect =first * second * 4;
                         var raw = subtotal - defect;
+
                            var total = 36 + raw;
                            $('#total_score').val(total);
                            $('.totalScore').html(total);
@@ -619,7 +615,7 @@
                     {
                         var defect = 0;
                         var raw = subtotal - defect;
-                           var total = 36 + raw;
+                           var total = 36 + +raw;
                            $('.totalScore').html(total); 
                     }     
                     $(this).trigger('change');

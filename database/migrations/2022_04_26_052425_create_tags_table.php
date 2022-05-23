@@ -17,6 +17,9 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('tag')->nullable();
             $table->unsignedBigInteger('review_id')->nullable();
+            $table->unsignedBigInteger('jury_id')->nullable();
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
+            $table->foreign('jury_id')->references('id')->on('juries')->onDelete('cascade');
             $table->timestamps();
         });
     }

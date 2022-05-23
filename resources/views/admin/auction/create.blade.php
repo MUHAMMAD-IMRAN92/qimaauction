@@ -277,15 +277,15 @@
     </div>
 </div>
    
-<script>  
+<script> 
+  $(document).ready(function(){
+        CKEDITOR.replace('product_detail');
+        }); 
   $(document).load(function(){
-$('.datepicker').pickadate({
-  editable: true
-})
-});
-      $(document).ready(function(){
-        CKEDITOR.replace( 'product_detail' );
-     
-    });
+        $('.datepicker').pickadate({
+        editable: true
+        })
+   });
+    
  </script>
 @endsection

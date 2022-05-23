@@ -11,21 +11,20 @@ class ReviewController extends Controller
 {
     public function saveReview(Request $request)
     {
-        // return  $request->discriptor[0];
+        // return  $request->all();
         // $validated = $request->validate([
         //     'cupping_score' => 'required|numeric',
         //     'cupping_profile' => 'required',
         //     'price_per_kg' => 'required|numeric',
         // ]);
-        // $sampleSent = SentToJury::where('jury_id',  $request->jury_id)->where('product_id', $request->product_id)->where('temporary_link', $request->link)->first();
-        // dd($sampleSent);
-        // if ($sampleSent->is_hidden == '1') {
-        //     return view('admin.jury.alredy_submit');
-        // }
-        // if ($sampleSent) {
-        //     $sampleSent->is_hidden = '1';
-        //     $sampleSent->save();
-        // }
+        $sampleSent = SentToJury::where('jury_id',  $request->jury_id)->where('product_id', $request->product_id)->first();
+        if ($sampleSent->is_hidden == '1') {
+            return view('admin.jury.alredy_submit');
+        }
+        if ($sampleSent) {
+            $sampleSent->is_hidden = '1';
+            $sampleSent->save();
+        }
         $review = new Review();
         $review->aroma_dry              = $request->aroma_dry;
         $review->aroma_crust            = $request->aroma_crust;
@@ -45,25 +44,28 @@ class ReviewController extends Controller
         $review->after_taste            = $request->after_taste;
         $review->balance                = $request->balance;
         $review->overall                = $request->overall;
-        $review->total_score            = $request->total_score;
+        $review->total_score            = (isset($request->total_score)) ? $request->total_score : 0;
         $review->jury_id                = $request->jury_id;
-        $review->discriptor             = $request->discriptor[0];
         $review->product_id             = $request->product_id;
         $review->save();
-
-        // foreach ($request->tags as $tag) {
-        //     $descriptor = new Tag();
-        //     $descriptor->tag = $tag;
-        //     $descriptor->review_id = $review->id;
-        //     $descriptor->save();
-        // }
-
-
+        if(isset($request->discriptor))
+        {
+                foreach ($request->discriptor as $tag) {
+                    $data = Tag::where('tag',$tag)->first();
+                    if(!isset($data))
+                    {
+                        $descriptor = new Tag();
+                        $descriptor->tag = $tag;
+                        $descriptor->review_id = $review->id;
+                        $descriptor->jury_id = $review->jury_id;
+                        $descriptor->save();
+                    }
+                }
+        }
         return view('admin.jury.success');
     }
     public function form()
     {
-    
         return view('admin.jury.form');
     }
 }
