@@ -14,7 +14,9 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
+            $table->integer('defect'); 
+            $table->integer('roast')->default(0)->nullable(); 
             $table->float('aroma_dry',8,2)->default(0)->nullable();     
             $table->float('aroma_crust',8,2)->default(0)->nullable();     
             $table->float('aroma_break',8,2)->default(0)->nullable();  

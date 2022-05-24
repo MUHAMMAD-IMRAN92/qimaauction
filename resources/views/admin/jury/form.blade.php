@@ -204,6 +204,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                             
+                                                                <input type="hidden" name="link" value="{{$link}}">
                                                                 <input type="hidden" name="product_id" value="{{$productId}}">
                                                                 <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                                 <div class="row purity">
@@ -215,7 +217,7 @@
                                                                         </div>
                                                                         <div class="user_name">
                                                                             <div class="range-slider">
-                                                                            <input type="range" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                            <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                             {{-- <output></output>
                                                                             <div class='range-slider__progress'>
                                                                             </div> --}}
@@ -257,8 +259,6 @@
                                                                     <div class="col-md-4">
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">CLEAN UP</h3>
-
-
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
@@ -273,11 +273,10 @@
                                                                         </div>
 
                                                                     </div>
+                                                                    <input type="hidden" name="defect" id="defect" value="">
                                                                     <div class="col-md-4">
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">SWEETNESS</h3>
-
-
                                                                             <div class="custom_slider">
                                                                                 <div class="range-slider"
                                                                                     style='--min:0; --max:8; --step:1; --value:0; --text-value:"0"; width: 200px;'>
@@ -631,10 +630,12 @@
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
                     var defect=first * second * 4;
+                    $('#defect').val(defect);
                     $('.multiply4').html(defect);
                     subtotal=subtotaldata(); 
                     var raw = subtotal - defect;
                            var total = 36 + raw;
+
                            $('#total_score').val(total);
                            $('.totalScore').html(total);
 
