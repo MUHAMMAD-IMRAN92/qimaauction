@@ -130,7 +130,7 @@
                                                             <div class="col-12">
                                                                 <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
-                                                                    <h5>TYB123</h5>
+                                                                    <h5>{{$sampleName}}</h5>
                                                                 </div>
                                                                 <div class="row purity">
                                                                     <div class="col-12">

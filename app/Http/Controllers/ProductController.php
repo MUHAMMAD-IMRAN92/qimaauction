@@ -207,6 +207,7 @@ class ProductController extends Controller
                     'juryName' => $name,
                     'tags' => $tags,
                     'link' => $link,
+                    'sampleName' => $sampleSent->samples, 
                     'samples' => $samplesArr
                 ]);
             }
