@@ -66,7 +66,7 @@
                                 <div class="card-body text-center">
                                     <h1 class="font-large-2 my-1">Congrats!</h1>
                                     <p class="px-2">
-                                        You have seccesssfully submitted your review!
+                                        You have seccessfully submitted your review!
                                     </p>
                                 </div>
                             </div>

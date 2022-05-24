@@ -76,6 +76,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @if(isset($samples))
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
@@ -85,6 +86,9 @@
                                                                 Review </a></td>
                                                     </tr>
                                                 @endforeach
+                                                @else
+                                                   <h4>No Pending Review</h4>
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
