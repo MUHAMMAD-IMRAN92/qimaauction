@@ -76,18 +76,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($samples))
+                                                @if(count($samples) >0)
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $sample->samples }}</td>
                                                         <td> <a class="btn btn-success"
                                                                 href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }}">Give
-                                                                Review </a></td>
+                                                                Review
+                                                             </a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                                 @else
-                                                   <h4>No Pending Review</h4>
+                                                   <tr>
+                                                       <td class="ml-5">
+                                                        No Pending Review
+                                                       </td>
+                                                   </tr>
                                                 @endif
                                             </tbody>
                                         </table>
