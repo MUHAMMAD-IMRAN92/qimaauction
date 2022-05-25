@@ -53,6 +53,7 @@
         href="{{ asset('public/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
@@ -62,6 +63,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ asset('public/app-assets/js/select2.js') }}" type="text/javascript"></script>
+    
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
@@ -415,11 +417,11 @@
                                 class="menu-item @if (request()->is('auction/*')) 'active' @endif"
                                 data-i18n="eCommerce">Auction</span></a>
                         </li>
-                        <li @if (request()->is('/reviewed_samples')) class= 'active' @endif><a
-                            href="{{ url('/reviewed_samples') }}">
+                        <li @if (request()->is('review/*')) class= 'active' @endif><a
+                            href="{{ url('review/reviewed_samples') }}">
                             <span
                                 class="menu-item 'active'"
-                                data-i18n="eCommerce">Jury Feedback</span></a>
+                                data-i18n="eCommerce">Manage Feedback</span></a>
                         </li>
                     </ul>
                 </li>

@@ -50,14 +50,16 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="name" class="form-control" placeholder="Name" name="name">
+                                                        <input type="text" id="name" class="form-control" name="name">
                                                         <label for="name">Name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input id="email" type="email" class="form-control" name="email">
-                                                      
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                                                        @error('email')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <label for="email">Email</label>
                                                     </div>
                                                 </div>
@@ -65,6 +67,12 @@
                                                     <div class="form-label-group">
                                                         <input type="tel" id="phone" class="form-control" name="phone">
                                                         <label for="phone">Phone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="tel" id="phone" class="form-control" name="phone">
+                                                        <label for="phone">Company</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">

@@ -55,12 +55,15 @@ class JuryController extends Controller
     }
     public function save(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:juries,email',
+        ]);
         $jury = new  Jury();
         $jury->name = $request->name;
         $jury->email = $request->email;
         $jury->phone = $request->phone;
         $jury->address = $request->address;
-
         $jury->save();
         return redirect('/jury/index');
     }
@@ -101,7 +104,11 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
-        // return $request->all();
+        $request->validate([
+            'products' => 'required|array',
+            'juries' => 'required|array',
+            'samples' => 'required|array',
+        ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury) {
             foreach ($request->products as $key => $product) {
@@ -121,12 +128,15 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
+
         $juryId = decrypt($id);
         $jury = Jury::find($juryId);
         if ($jury) {
             $samples = SentToJury::where('jury_id', $juryId)->where('is_hidden', '0')->get();
+               $juryName = Jury::where('id', $juryId)->first();
             return view('admin.jury.jury_links', [
-                'samples' => $samples
+                'samples' => $samples,
+                'juryName' => $juryName->name,
             ]);
         } else {
             return view('admin.404');

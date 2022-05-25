@@ -59,12 +59,22 @@
             </div>
             <div class="content-body">
                 <!-- maintenance -->
-                <h1></h1>
-                <section class="row flexbox-container" style="margin-top: -15%">
+                <h1 class="container">
+                   
+                </h1>
+                <section class="row flexbox-container" style="margin-top: 2%">
                     <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
                         <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                             <div class="card-content">
-                                <div class="card-body text-center">
+                                <div class="card-header">
+                                    @if(count($samples) > 0)
+                                    <h5 class="card-title">Dear <b>{{$juryName}}</b>, you have the following pending review forms. Please give your reviews</h5>
+                                     @else
+                                     <h1 class="card-title" style="margin-top: -25%">Dear <b>{{$juryName}}</b>, you have no pending review</h1>
+                                    @endif
+                                </div>
+                                @if(count($samples) > 0)
+                                <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered mb-0"
                                             style="background-color: rgb(255, 255, 255)">
@@ -72,33 +82,29 @@
                                                 <tr>
                                                     <th>Sr</th>
                                                      <th>Title</th>
+                                                     <th>Jury Name</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(count($samples) >0)
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $sample->samples }}</td>
+                                                        <td>{{$juryName}}</td>
                                                         <td> <a class="btn btn-success"
                                                                 href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }}">Give
                                                                 Review
                                                              </a>
                                                         </td>
                                                     </tr>
-                                                @endforeach
-                                                @else
-                                                   <tr>
-                                                       <td class="ml-5">
-                                                        No Pending Review
-                                                       </td>
-                                                   </tr>
-                                                @endif
+                                                @endforeach 
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                @endif
+                              
                             </div>
                         </div>
                     </div>

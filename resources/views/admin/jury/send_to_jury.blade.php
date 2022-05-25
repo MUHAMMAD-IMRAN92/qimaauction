@@ -52,25 +52,41 @@
                                                         Please Select Jury
                                                     </div>
                                                     <p> <strong>Note:</strong> You can select multiple juries.</p>
-                                                    <select class="select2 form-control" multiple="multiple"
-                                                        name="juries[]">
+                                                    <select class="select2 form-control  @error('juries') is-invalid @enderror" multiple="multiple" name="juries[]">
+                                                         @php
+                                                              $arr = array();
+                                                         @endphp
                                                         @foreach ($juries as $key => $jury)
-                                                            <option value="{{ $jury->id }}">{{ $jury->name }}</option>
+                                                          @if(in_array($jury->name,$arr))
+                                                            <option value="{{ $jury->id }}">{{ $jury->name.'('.$jury->email.')' }}</option>
+                                                          @else
+                                                             @php
+                                                                 array_push($arr,$jury->name)
+                                                             @endphp
+                                                          <option value="{{ $jury->id }}">{{ $jury->name }}</option>
+                                                          @endif
                                                         @endforeach
                                                     </select>
+                                                    @error('juries')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2">
                                                         Please Select Product
                                                     </div>
                                                     <p> <strong>Note:</strong> You can select multiple Products.</p>
-                                                    <select class="select2 form-control" multiple="multiple"
-                                                        name="products[]" id="product_select">
+                                                    <select class="select2 form-control  @error('products') is-invalid @enderror"  multiple="multiple"
+                                                        name="products[]" id="product_select" >
                                                         @foreach ($products as $key => $product)
                                                             <option value="{{ $product->id }}">
-                                                                {{ $product->product_title }}</option>
+                                                                {{ $product->product_title }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
+                                                    @error('products')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group" id="pro_div">
                                                     <!-- Striped rows start -->
@@ -88,12 +104,10 @@
                                                                         <table class="table table-striped mb-0">
                                                                             <thead>
                                                                                 <th>Product Title</th>
-                                                                                <th>Sample Title</th>
+                                                                                <th>Sample ID</th>
                                                                                 <th></th>
                                                                             </thead>
                                                                             <tbody id="product_table_body">
-
-
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
@@ -137,7 +151,7 @@
                 html += `<tr>`;
                 html += ` <td scope = "col">` + e.text + `</td>`;
                 html +=
-                    `<td scope = "col">  <input type="text" name="samples[]" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important"></td>`;
+                    `<td scope = "col">  <input type="text" name="samples[]" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important" required></td>`;
                 html += `<td scope = "col"><input type="hidden" name="product_ids[]" value="` +
                     e.value +
                     `" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important"></td>`

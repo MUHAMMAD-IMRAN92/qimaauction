@@ -236,12 +236,12 @@
                                                                             <div class="custom_slider">
                                                                                 <div class="score-flex">
                                                                                     <input class="score_first_number"
-                                                                                        type="number" id="quantity"
+                                                                                        type="number" id="quantity" value="first_number"
                                                                                         name="FirstNumber">
                                                                                     <span
                                                                                         class="multiply">X</span>
                                                                                     <input class="score_second_number"
-                                                                                        type="number" id="quantity"
+                                                                                        type="number" id="quantity" value="second_number"
                                                                                         name="SecondNumber">
                                                                                     <span
                                                                                         class="multiply">X</span>
@@ -333,7 +333,7 @@
 
                                                                                         <input type="radio"
                                                                                             checked="checked"
-                                                                                            name="acidity_chk" name="high">
+                                                                                            name="acidity_chk" value="H">
                                                                                         <div class="checkmark">
                                                                                         </div>
 
@@ -343,7 +343,7 @@
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio"
-                                                                                            name="acidity_chk" name="medium">
+                                                                                            name="acidity_chk" value="M">
                                                                                         <div class="checkmark">
                                                                                         </div>
                                                                                     </label>
@@ -352,7 +352,7 @@
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio"
-                                                                                            name="acidity_chk" name="low">
+                                                                                            name="acidity_chk" value="L">
                                                                                         <div class="checkmark">
                                                                                         </div>
                                                                                     </label>
@@ -383,7 +383,7 @@
                                                                                     <label class="radio_container">
 
                                                                                         <input type="radio"
-                                                                                            checked="checked" value="high"
+                                                                                            checked="checked" value="H"
                                                                                             name="fm_chk">
                                                                                         <div class="checkmark">
                                                                                         </div>
@@ -393,7 +393,7 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio" value="medium"
+                                                                                        <input type="radio" value="M"
                                                                                             name="fm_chk">
                                                                                         <div
                                                                                             class="checkmark">
@@ -403,7 +403,7 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio" value="low"
+                                                                                        <input type="radio" value="L"
                                                                                             name="fm_chk">
                                                                                         <div
                                                                                             class="checkmark">

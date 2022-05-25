@@ -35,6 +35,8 @@ class CreateReviewsTable extends Migration
             $table->string('flavor_note')->nullable();     
             $table->float('after_taste',8,2)->default(0)->nullable();     
             $table->float('balance',8,2)->default(0)->nullable();     
+            $table->integer('first_number')->default(0)->nullable(); 
+            $table->integer('second_number')->default(0)->nullable(); 
             $table->float('overall',8,2)->default(0)->nullable();     
             $table->float('total_score',8,2)->default(0)->nullable();     
             $table->unsignedBigInteger('jury_id')->nullable();

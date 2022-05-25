@@ -56,7 +56,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Sr</th>
-                                                        <th>Name</th>
+                                                        <th>Full Name</th>
                                                         <th>Email</th>
                                                         <th>Ph#</th>
                                                         <th>Address</th>
@@ -67,17 +67,6 @@
                                                 <tbody>
 
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Sr</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Ph#</th>
-                                                        <th>Address</th>
-                                                        <th>Action</th>
-
-                                                    </tr>
-                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
