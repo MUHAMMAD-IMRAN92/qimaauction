@@ -71,6 +71,12 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
+                                                        <input type="tel" id="company" class="form-control" value="{{ $jury->company }}" name="company">
+                                                        <label for="company">Company</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
                                                         <input type="text" id="address" class="form-control" value="{{ $jury->address }}" name="address">
                                                         <label for="address">Address</label>
                                                     </div>

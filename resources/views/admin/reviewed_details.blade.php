@@ -32,7 +32,7 @@
                                     <table class="table table-bordered mb-0"
                                         style="background-color: rgb(255, 255, 255)">                                   
                                         <tr>
-                                            <td><b></b></td>
+                                            <td style="margin-top: 6px"><b></b></td>
                                             <td><b>Jury</b></td>
                                             <td><b>Aroma Dry</b></td>
                                             <td><b>Aroma Crust</b></td>
@@ -56,7 +56,7 @@
                                                 @foreach ($samp as $value => $sample)
                                                 @if($value == "aroma_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note")
                                                  <td><button type="button" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
-                                                    <i class="fas fa-info-circle"></i>
+                                                    <b><i class="fas fa-info-circle"></i></b>
                                                   </button>
                                                 </td>
                                                  @else

@@ -15,6 +15,9 @@
                     <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                         <div class="card-content">
                             <div class="card-body text-center">
+                                <p class="text-right">  
+                                      <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light custom_btn">Send To
+                                    Jury</a></p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered mb-0"
                                         style="background-color: rgb(255, 255, 255)">

@@ -17,6 +17,7 @@ class CreateJuriesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('company')->nullable();
             $table->text('phone')->nullable();
             $table->string('address')->nullable();
             $table->enum('is_hidden' , [0,1])->default(0)->nullable();

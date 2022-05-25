@@ -33,6 +33,8 @@ class ReviewController extends Controller
         $review->aroma_dry              = $request->aroma_dry;
         $review->aroma_crust            = $request->aroma_crust;
         $review->roast                  = $request->roast;
+        $review->first_number            = $request->first_number;
+        $review->second_number          = $request->second_number;
         $review->aroma_break            = $request->aroma_break;
         $review->aroma_note             = $request->aroma_note;
         $review->color_dev              = $request->color_dev;
@@ -112,7 +114,7 @@ class ReviewController extends Controller
              $data[$key]['balance'] =    $review->balance ?? '0.0';
              $data[$key]['overall'] =    $review->overall ?? '0.0';
              $data[$key]['roast'] =    isset($review->roast) ? $review->roast.'%' : "0%";
-             $data[$key]['defect'] =    isset($review->defect) ? -$review->defect : "0.0";
+             $data[$key]['defect'] =    isset($review->defect) ? '('.$review->first_number.'*'.$review->second_number.'*4)='.$review->defect : "0.0";
              $data[$key]['defect_note'] =    $review->defect_note ?? '---';
        }
   

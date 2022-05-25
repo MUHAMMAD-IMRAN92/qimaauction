@@ -71,7 +71,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="tel" id="phone" class="form-control" name="phone">
+                                                        <input type="tel" id="company" class="form-control" name="company">
                                                         <label for="phone">Company</label>
                                                     </div>
                                                 </div>

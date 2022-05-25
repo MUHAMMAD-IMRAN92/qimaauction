@@ -237,12 +237,12 @@
                                                                                 <div class="score-flex">
                                                                                     <input class="score_first_number"
                                                                                         type="number" id="quantity" value="first_number"
-                                                                                        name="FirstNumber">
+                                                                                        name="first_number">
                                                                                     <span
                                                                                         class="multiply">X</span>
                                                                                     <input class="score_second_number"
                                                                                         type="number" id="quantity" value="second_number"
-                                                                                        name="SecondNumber">
+                                                                                        name="second_number">
                                                                                     <span
                                                                                         class="multiply">X</span>
                                                                                     <span

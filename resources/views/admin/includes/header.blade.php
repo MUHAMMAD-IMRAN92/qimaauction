@@ -72,7 +72,7 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
+<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
 
     <!-- BEGIN: Header-->
@@ -373,10 +373,10 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li>
-                    <a>
-                    {{-- <i class="fa fa-product-hunt" aria-hidden="true"></i> --}}
-                    <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a>
+                <li class="has-sub sidebar-group-active open">
+                    {{-- <a>
+                    <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                    <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
                         <li @if (request()->is('categories/*')) class='active' @endif><a
                                 href="{{ url('/categories/index') }}">
@@ -404,24 +404,29 @@
                                     class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
                         </li>
-                        <li @if (request()->is('jury/*')) class='active' @endif><a
-                                href="{{ url('/jury/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span
-                                    class="menu-item @if (request()->is('jury/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Jury</span></a>
-                        </li>
                         <li @if (request()->is('auction/*')) class='active' @endif><a
                             href="{{ url('/auction/index') }}">
                             <span
                                 class="menu-item @if (request()->is('auction/*')) 'active' @endif"
                                 data-i18n="eCommerce">Auction</span></a>
                         </li>
-                        <li @if (request()->is('review/*')) class= 'active' @endif><a
-                            href="{{ url('review/reviewed_samples') }}">
-                            <span
-                                class="menu-item 'active'"
-                                data-i18n="eCommerce">Manage Feedback</span></a>
+                      
+                        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Ecommerce">Jury Management</span></a>
+                            <ul class="menu-content">
+                                <li @if (request()->is('jury/*')) class='active' @endif><a
+                                    href="{{ url('/jury/index') }}">
+                                    <span
+                                        class="menu-item @if (request()->is('jury/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Jury</span></a>
+                              </li>
+                                <li @if (request()->is('review/*')) class= 'active' @endif><a
+                                    href="{{ url('review/reviewed_samples') }}">
+                                    <span
+                                        class="menu-item"
+                                        data-i18n="eCommerce">Manage Feedback</span></a>
+                                </li>
+                    
+                            </ul>
                         </li>
                     </ul>
                 </li>

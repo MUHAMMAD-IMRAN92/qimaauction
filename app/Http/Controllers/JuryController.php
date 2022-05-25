@@ -58,11 +58,13 @@ class JuryController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:juries,email',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
         $jury = new  Jury();
         $jury->name = $request->name;
         $jury->email = $request->email;
         $jury->phone = $request->phone;
+        $jury->company = $request->company;
         $jury->address = $request->address;
         $jury->save();
         return redirect('/jury/index');
@@ -87,6 +89,7 @@ class JuryController extends Controller
         $jury->name = $request->name;
         $jury->email = $request->email;
         $jury->phone = $request->phone;
+        $jury->company = $request->company;
         $jury->address = $request->address;
         $jury->save();
         return redirect('/jury/index');
