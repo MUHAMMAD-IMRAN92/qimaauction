@@ -1,37 +1,6 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
- <style>
-     input[type=checkbox]
-        {
-        /* Double-sized Checkboxes */
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
-        transform: scale(2);
-        padding: 10px;
-        }
-        label {
-                display: table-row;
-            }
-        .chk {
-            display: table;
-            float: left;
-            margin-right: 15px;
-        }
-        #chk {
-    display: table-row;
-    width: 100%;
-}
-        /* Might want to wrap a span around your checkbox text */
-        .checkboxtext
-        {
-        /* Checkbox text */
-        font-size: 110%;
-        display: inline;
-        }
- </style>
     <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -80,20 +49,6 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2">
-                                                        Please Select Auction
-                                                    </div>
-                                                    <p> <strong>Note:</strong> You can select auction.</p>
-                                                    <select class="form-control  @error('auction') is-invalid @enderror" name="auction">
-                                                        @foreach ($auctions as $key => $jury)
-                                                          <option value="{{ $jury->id }}">{{ $jury->title }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('juries')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="text-bold-600 font-medium-2">
                                                         Please Select Jury
                                                     </div>
                                                     <p> <strong>Note:</strong> You can select multiple juries.</p>
@@ -118,13 +73,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2">
-                                                        Samples Table
+                                                        Please Select Product
                                                     </div>
-                                                    <p> <strong>Note:</strong> You can select Products.</p>
+                                                    <p> <strong>Note:</strong> You can select multiple Products.</p>
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <select class="form-control  @error('products') is-invalid @enderror"
-                                                                name="products" id="product_select">
+                                                                name="products[]" id="product_select" >
                                                                 @foreach ($products as $key => $product)
                                                                     <option value="{{ $product->id }}">
                                                                         {{ $product->product_title }}
@@ -133,37 +88,20 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-4">
-                                                           <input type="text" class="form-control" id="sampleId" placeholder="Enter SampleId">
+                                                         <input type="checkbox" class="col-md-1 p-5" name="table1" id="table1">
+                                                         <input type="checkbox" class="col-md-1 p-5" name="table2" id="table2">
+                                                         <input type="checkbox" class="col-md-1 p-5" name="table3" id="table3">
+                                                         <input type="checkbox" class="col-md-1 p-5" name="table4" id="table4">
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <div class="row-md-4">
-                                                                <div class="chk">
-                                                                    <label for="male" class="pb-1"> <b>T1</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
-                                                                </div>
-                                                                <div class="chk">
-                                                                    <label for="male" class="pb-1"> <b>T2</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
-                                                                </div>
-                                                                 <div class="chk">
-                                                                    <label for="male" class="pb-1"> <b>T3</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
-                                                                 </div>
-                                                                 <div class="chk">
-                                                                    <label for="male" class="pb-1"> <b>T4</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
-                                                                 </div>
-                                                            </div>
-                                                         </div>
-                                                        <div class="pt-5">
-                                                            <button type="button" class="btn btn-primary btn-sm ml-1" id="samples">Save</button>
+                                                           <input type="text" name="sampleId" id="sampleId">
                                                         </div>
                                                     </div>
                                                     @error('products')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group">
+                                                {{-- <div class="form-group" id="pro_div">
                                                     <!-- Striped rows start -->
                                                     <div class="row" id="table-striped">
                                                         <div class="col-12">
@@ -178,10 +116,9 @@
                                                                     <div class="">
                                                                         <table class="table table-striped mb-0">
                                                                             <thead>
-                                                                                <th>Table1:<b> Natural</b></th>
-                                                                                <th>Table2:<b> Natural</b></th>
-                                                                                <th>Table3:<b> Processed</b></th>
-                                                                                <th>Table4:<b> Processed</b></th>
+                                                                                <th>Product Title</th>
+                                                                                <th>Sample ID</th>
+                                                                                <th></th>
                                                                             </thead>
                                                                             <tbody id="product_table_body">
                                                                             </tbody>
@@ -192,9 +129,9 @@
                                                         </div>
                                                     </div>
                                                     <!-- Striped rows end -->
-                                                </div>
+                                                </div> --}}
                                                 <div style="margin-left: 39%">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-primary ">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -216,42 +153,25 @@
    
     $(function() { 
         // var jq14 = jQuery.noConflict(true); 
-        $('#samples').click(function() {
-            var productId = $('#product_select').find(":selected").val();
-            var product =  $('#product_select').find(":selected").text();
-            var sample =  $('#sampleId').val();
+        $('#product_select').change(function() {
             // console.log($('#product_select').options);
             // var selected = $("#product_select :selected").map((_, e) => e.text).get();
             // alert(selected);
-            // var html = '';
-            // $(".checkbox :checked").map((_, e) => {
-            //     alert("dkdk");
-            //     html += `<tr>`;
-            //     html += ` <td scope = "col">` + e.text + `</td>`;
-            //     html +=
-            //         `<td scope = "col">  <input type="text" name="samples[]" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important" required></td>`;
-            //     html += `<td scope = "col"><input type="hidden" name="product_ids[]" value="` +e.value + `" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important"></td>`
-            //     html += `</tr>`;
-            // });
-            var sList = "";
             var html = '';
-            html += `<tr>`;
-                $('input[type=checkbox]').each(function () {
-                    if(this.checked)
-                    {
-                        html += ``;
-                        html += `<td><b>` + product + '</b>:' + sample + `<input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sample + `" required></td>`;
-                    } 
-                    else
-                    {
-                        html += ``;
-                        html += `<td>  -</td>`;
-                    }     
-                });
+            $("#product_select :selected").map((_, e) => {
+                // html += '<input pleaceholder="this"/>';
+                // console.log(element);
+                html += `<tr>`;
+                html += ` <td scope = "col">` + e.text + `</td>`;
+                html +=
+                    `<td scope = "col">  <input type="text" name="samples[]" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important" required></td>`;
+                html += `<td scope = "col"><input type="hidden" name="product_ids[]" value="` +
+                    e.value +
+                    `" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important"></td>`
                 html += `</tr>`;
+            });
             // console.log(html);
-            $('#product_table_body').append(html);
-            $('#sampleId').val('')
+            $('#product_table_body').html(html);
         });
     });
 </script>

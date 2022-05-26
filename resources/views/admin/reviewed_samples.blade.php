@@ -10,7 +10,7 @@
         <div class="content-body">
             <!-- maintenance -->
             <h1>Reviewed Samples</h1>
-            <section class="row flexbox-container" style="margin-top: 10%">
+            <section class="row flexbox-container">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                         <div class="card-content">
@@ -35,9 +35,9 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $sample->samples }}</td>
-                                                    <td>{{$dateArr[$value]}}</td>
+                                                    <td>{{date('m-d-Y',strtotime($dateArr[$value]))}}</td>
                                                     <td>{{$sample->total}}</td>
-                                                    <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><i class="fa fa-eye-slash" aria-hidden="true"></i></a></td>
+                                                    <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

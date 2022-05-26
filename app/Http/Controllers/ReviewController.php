@@ -6,6 +6,7 @@ use App\Models\Jury;
 use App\Models\Review;
 use App\Models\SentToJury;
 use App\Models\Tag;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use DB;
 class ReviewController extends Controller
@@ -94,12 +95,15 @@ class ReviewController extends Controller
     public function reviewDetail($sample)
     {
        $data =array();
-       $juries = SentToJury::where('samples',$sample)->pluck('jury_id');
+       $juries = SentToJury::where('samples',$sample)->get()->toArray();
        foreach ($juries as $key => $value) {
-             $jury=Jury::where('id',$value)->first();
-             $review=Review::where('jury_id',$value)->first();
-             $data[$key]['total'] =      $review->total_score ?? '0.0';
+             $jury=Jury::where('id',$value['jury_id'])->first();
+            $product=Product::where('id',$value["product_id"])->first();
+            $review=Review::where(['jury_id'=>$value['jury_id'],'product_id'=>$value['product_id']])->first();
              $data[$key]['name'] = $jury->name;
+             $data[$key]['total'] =      $review->total_score ?? '0';
+             $data[$key]['productName'] = $product->product_title;
+             $data[$key]['sample'] = $value['samples'];
              $data[$key]['aroma_dry'] =   $review->aroma_dry ?? '0.0';
              $data[$key]['aroma_crust'] =  $review->aroma_crust ?? '0.0';
              $data[$key]['aroma_break'] =    $review->aroma_break ?? '0.0';
@@ -107,22 +111,22 @@ class ReviewController extends Controller
              $data[$key]['clean_up'] =   $review->clean_up ?? '0.0';
              $data[$key]['clean_sweet_note'] =   $review->clean_sweet_note ?? '----';
              $data[$key]['sweetness'] =  $review->sweetness ?? '0.0';
-             $data[$key]['acidity'] =    $review->acidity.'-'.(isset($review->acidity_chk) ? $review->acidity_chk : 'L') ?? '0.0-L';
+             $data[$key]['acidity'] =    isset($review->acidity) ? $review->acidity : '0.0'.'-'.(isset($review->acidity_chk) ? $review->acidity_chk : 'L') ?? '0.0-L';
              $data[$key]['flavour'] =    $review->flavour ?? '0.0';
              $data[$key]['flavour_note'] =    $review->flavour_note ?? '---';
-             $data[$key]['after_taste']= $review->after_taste .'-'.(isset($review->fm_chk) ? $review->fm_chk : 'L') ?? '0.0-L';
+             $data[$key]['after_taste']= isset($review->after_taste) ? $review->after_taste : '0.0'.'-'.(isset($review->fm_chk) ? $review->fm_chk : 'L') ?? '0.0-L';
              $data[$key]['balance'] =    $review->balance ?? '0.0';
              $data[$key]['overall'] =    $review->overall ?? '0.0';
              $data[$key]['roast'] =    isset($review->roast) ? $review->roast.'%' : "0%";
-             $data[$key]['defect'] =    isset($review->defect) ? '('.$review->first_number.'*'.$review->second_number.'*4)='.$review->defect : "0.0";
+             $data[$key]['defect'] =    isset($review->defect) ? '('.$review->first_number.'*'.$review->second_number.'*4)='.$review->defect : "(0*0*4)=0";
              $data[$key]['defect_note'] =    $review->defect_note ?? '---';
        }
-  
-       foreach ($data as $key => $value) {
+
+    //    foreach ($data as $key => $value) {
             //  foreach ($value as $key => $value1) {
             //      dd($key);
             //  }
-       }
+    //    }
     //    dd($data);
        return view('admin.reviewed_details',compact('data'));
     }

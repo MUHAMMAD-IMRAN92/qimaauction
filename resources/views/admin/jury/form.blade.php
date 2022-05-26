@@ -88,6 +88,18 @@
         display: inline-block;
         cursor: pointer;
     }
+    @media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+    }
+
+    @media (max-width: @screen-sm) {
+        body{font-size: 14px;}
+    }
+
+
+    h5{
+        font-size: 1.4rem;
+    }  
 
 </style>
 
@@ -149,8 +161,8 @@
                                                                                     <h5>DRY</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:1; --max:3; --step:1; --value:0; --text-value:"1"; width: 200px;'>
-                                                                                            <input type="range" min="1" class="aroma_dry"
+                                                                                            style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                            <input type="range" min="0" class="aroma_dry"
                                                                                             id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
                                                                                                 step="1" value="1"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -165,8 +177,8 @@
                                                                                     <h5>CRUST</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:1; --max:3; --step:1; --value:1; --text-value:"1"; width: 200px;'>
-                                                                                            <input type="range" min="1"
+                                                                                            style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
+                                                                                            <input type="range" min="0"
                                                                                                 name="aroma_crust" id="aroma_crust" class="aroma_crust"
                                                                                                 max="3" step="1"
                                                                                                 value="1"
@@ -182,8 +194,8 @@
                                                                                     <h5>BREAK</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:1; --max:3; --step:1; --value:1; --text-value:"1"; width: 200px;'>
-                                                                                            <input type="range" min="1"
+                                                                                            style='--min:0; --max:3; --step:1; --value:1; --text-value:"0"; width: 200px;'>
+                                                                                            <input type="range" min="0"
                                                                                                 name="aroma_break" id="aroma_break"
                                                                                                 max="3" step="1"
                                                                                                 value="1"
@@ -493,10 +505,9 @@
                                                                 <div class="row purity descriptors">
 
                                                                     <div class="col-md-12" style="display: flex">
-                                                                        <div class="col-4" style="text-align: center">
-                                                                            <h3 for="descriptors">Add Descriptors</h3>
-                                                                        </div>
-                                                                        <div class="col-8 p-0">
+                                                    
+                                                                        <div class="col-md-12">
+                                                                            <label for="discriptor">Add Descriptors</label>
                                                                             <select  id="select"
                                                                                 name="discriptor[]" multiple="multiple">
                                                                                 @foreach($tags as $tag)
@@ -518,7 +529,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity custom_mobile_btn">
-                                                                    <div class="col-12">
+                                                                    <div class="col-md-12">
                                                                         <div class="submit-btn">
                                                                             <input class="submit-form-btn"
                                                                                 type="submit" value="SUBMIT">

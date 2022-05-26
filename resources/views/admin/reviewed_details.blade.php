@@ -2,19 +2,26 @@
 @section('title', 'All Reviewed Samples')
 @section('content')
 <style>
-    table{
-        margin-left:-23%; 
+    table tbody{
+        margin-left: -5%;
+        flex-wrap: no-wrap;
+        overflow-x: auto;
+        margin: 20px;
     }
-   table tr {
+
+   table tbody tr {
     display: inline-flex;
     flex-direction: column;
-}
+    flex-wrap: wrap;
+   
+    /* width: 7%; */
+   }
 </style>
 <div class="app-content content">
   
     <div class="content-wrapper">
       
-        <div class="content-body" style="margin-top: -10%,margin-left:-10%">
+        <div class="content-body" style="margin-top: -10%,margin-left:-7%">
             <!-- maintenance -->
             <h1>Review Detail</h1>
             {{-- <td>
@@ -28,12 +35,15 @@
                     <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                         <div class="card-content">
                             <div class="card-body text-center">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered mb-0"
+                                <div class="" style="overflow-x:auto;">
+                                    <table class="table table-striped table-responsive mb-0"
                                         style="background-color: rgb(255, 255, 255)">                                   
                                         <tr>
-                                            <td style="margin-top: 6px"><b></b></td>
+                                            {{-- <td style="margin-top: 6px;"><b></b></td> --}}
                                             <td><b>Jury</b></td>
+                                            <td><b>Total</b></td>
+                                            <td><b>Product Title</b></td>
+                                            <td><b>Sample</b></td>
                                             <td><b>Aroma Dry</b></td>
                                             <td><b>Aroma Crust</b></td>
                                             <td><b>Aroma Break</b></td> 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\JuryMail;
 use App\Models\Jury;
 use App\Models\Product;
+use App\Models\Auction;
 use App\Models\SentToJury;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
@@ -99,14 +100,17 @@ class JuryController extends Controller
     {
         $juries = Jury::all();
         $products = Product::all();
+        $auctions = Auction::all();
 
         return view('admin.jury.send_to_jury', [
             'juries' =>  $juries,
-            'products' => $products
+            'products' => $products,
+            'auctions' => $auctions
         ]);
     }
     public function sendToJuryPost(Request $request)
     {
+
         $request->validate([
             'products' => 'required|array',
             'juries' => 'required|array',
@@ -126,16 +130,19 @@ class JuryController extends Controller
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
-        return redirect('/jury/index');
+        return redirect('/jury/index')->with('success','Emailed Successfully to Juries');
+        ;
     }
 
     public function juryLinks(Request $request, $id)
     {
-
         $juryId = decrypt($id);
         $jury = Jury::find($juryId);
         if ($jury) {
-            $samples = SentToJury::where('jury_id', $juryId)->where('is_hidden', '0')->get();
+            $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
+             ->select('products.*','sample_sent_to_jury.*')
+            ->where('sample_sent_to_jury.jury_id', $juryId)->where('sample_sent_to_jury.is_hidden', '0')
+            ->get();
                $juryName = Jury::where('id', $juryId)->first();
             return view('admin.jury.jury_links', [
                 'samples' => $samples,

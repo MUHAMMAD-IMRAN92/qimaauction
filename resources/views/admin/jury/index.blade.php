@@ -3,9 +3,15 @@
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
-        <div class="content-overlay"></div>
+        <div class="content-overlay">
+        </div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+                </div>
+            @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
@@ -20,7 +26,7 @@
                                 </ol>
                             </div>
                         </div>
-
+                     
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">

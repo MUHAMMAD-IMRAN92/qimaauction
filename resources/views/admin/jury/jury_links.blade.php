@@ -81,7 +81,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr</th>
-                                                     <th>Title</th>
+                                                     <th>Product Title</th>
+                                                     <th>Sample ID</th>
                                                      <th>Jury Name</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -90,6 +91,7 @@
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $sample->product_title }}</td>
                                                         <td>{{ $sample->samples }}</td>
                                                         <td>{{$juryName}}</td>
                                                         <td> <a class="btn btn-success"
