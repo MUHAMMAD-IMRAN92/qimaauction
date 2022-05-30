@@ -45,7 +45,7 @@ class ProductController extends Controller
             $q->where('product_title', 'LIKE', "%$search%");
         })->with('category', 'origin')->whereHas('category')->whereHas('origin');
 
-        $product = $product->skip((int)$start)->take((int)$length)->get();
+        $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
         $data = array(
             'draw' => $draw,
@@ -102,7 +102,8 @@ class ProductController extends Controller
     public function delete(Request $request, $id)
     {
         $product = Product::find(base64_decode($id));
-        $product->delete();
+        $product->is_hidden = '1';
+        $product->save();
         return redirect('/product/index')->with('msg', 'product Deleted Successfully');
     }
     public function edit(Request $request, $id)

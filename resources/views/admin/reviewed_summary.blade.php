@@ -9,7 +9,7 @@
         </div>
         <div class="content-body">
             <!-- maintenance -->
-            <h1>Reviewed Samples Summary </h1>
+            <h4 class="pt-5">Reviewed Samples Summary </h4>
             <section class="row flexbox-container">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">

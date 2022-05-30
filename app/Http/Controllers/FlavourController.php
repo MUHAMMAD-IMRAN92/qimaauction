@@ -58,9 +58,10 @@ class FlavourController extends Controller
     public function delete(Request $request, $id)
     {
         $flavour = Flavour::find(base64_decode($id));
+    
         if ($flavour) {
-
-            $flavour->delete();
+            $flavour->is_hidden = '1';
+            $flavour->save();
         }
         // return $flavour;
         return redirect('/flavour/index')->with('msg', 'flavour Deleted Successfully');

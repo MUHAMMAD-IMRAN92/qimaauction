@@ -67,8 +67,9 @@ class CategoryController extends Controller
     }
     public function delete(Request $request, $id)
     {
-        $category = Category::find(base64_decode($id));
-        $category->delete();
+        $category = Category::where('id',base64_decode($id))->first();
+        $category->is_hidden = '1';
+        $category->save();
         return redirect('/categories/index')->with('msg', 'Category Deleted Successfully');
     }
     public function edit(Request $request, $id)

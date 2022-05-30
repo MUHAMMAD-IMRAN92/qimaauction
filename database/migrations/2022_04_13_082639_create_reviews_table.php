@@ -40,7 +40,6 @@ class CreateReviewsTable extends Migration
             $table->float('overall',8,2)->default(0)->nullable();     
             $table->float('total_score',8,2)->default(0)->nullable();     
             $table->unsignedBigInteger('jury_id')->nullable();
-            $table->unsignedBigInteger('sample_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->timestamps();
         });

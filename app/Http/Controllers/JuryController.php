@@ -73,7 +73,8 @@ class JuryController extends Controller
     public function delete(Request $request, $id)
     {
         $jury = Jury::find(base64_decode($id));
-        $jury->delete();
+        $jury->is_hidden = '1';
+        $jury->save();
         return redirect('/jury/index')->with('msg', 'jury Deleted Successfully');
     }
     public function edit(Request $request, $id)

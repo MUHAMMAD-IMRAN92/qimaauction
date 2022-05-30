@@ -139,7 +139,7 @@
                             `<a class="" href="/auction/edit/` + ids +
                             `"><i class='fa fa-pencil' style='font-size:20px;color:#d1af69'></i></a>&nbsp&nbsp` +
                             `<a class="" href="/auction/delete/` + ids +
-                            `"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a>` +
+                            `"><i class="fa fa-eye-slash" style="font-size:20px;color:red"></i></a>` +
                             '</td>'
                     }
                 },

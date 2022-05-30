@@ -65,7 +65,8 @@ class OriginController extends Controller
     public function delete(Request $request, $id)
     {
         $origin = Origin::find(base64_decode($id));
-        $origin->delete();
+        $origin->is_hidden = '1';
+        $origin->save();
         return redirect('/origin/index')->with('msg', 'origin Deleted Successfully');
     }
     public function edit(Request $request, $id)

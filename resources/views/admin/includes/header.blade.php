@@ -79,7 +79,9 @@
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
             <div class="navbar-container content">
+            
                 <div class="navbar-collapse" id="navbar-mobile">
+                    <h3> Best Of Yamen Coffee</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a
@@ -218,7 +220,9 @@
                                         href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
                         </li> --}}
-                        <li class="dropdown dropdown-user nav-item"><a
+                        <li class="dropdown dropdown-user nav-item">
+                            
+                            <a
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 @php
                                     $user = Auth::user();
@@ -361,13 +365,13 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand"
                         href="{{ url('/') }}">
-                        <div class="brand-logo"></div>
-                        <h4 class="brand-text">QIMA Auction</h4>
+                        <div class="brand-logo ml-5"></div>
+                        {{-- <h4 class="brand-text">QIMA Auction</h4> --}}
                     </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
+                {{-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
                             class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary"
-                            data-ticon="icon-disc"></i></a></li>
+                            data-ticon="icon-disc"></i></a></li> --}}
             </ul>
         </div>
         <div class="shadow-bottom"></div>
