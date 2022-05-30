@@ -59,7 +59,10 @@
             </div>
             <div class="content-body">
                 <!-- maintenance -->
-                <section class="row flexbox-container">
+                <h1 class="container">
+                   
+                </h1>
+                <section class="row flexbox-container" style="margin-top: 2%">
                     <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
                         <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                             <div class="card-content">
@@ -70,53 +73,36 @@
                                         </div>
                                     @endif
                                     @if(count($samples) > 0)
-                                    <h5 class="card-title">Dear <b>{{$juryName}}</b>, you have the following pending review forms. Please give your reviews</h5>
+                                    <h5 class="card-title">Dear <b>{{$samples->first()->name}}</b>, you have the following pending review forms. Please give your reviews</h5>
                                      @else
-                                     <h1 class="card-title" style="margin-top: -25%">Dear <b>{{$juryName}}</b>, you have no pending review</h1>
+                                     <h1 class="card-title" style="margin-top: -25%">Dear <b>{{$samples->first()->name}}</b>, you have no pending review</h1>
                                     @endif
                                 </div>
                                 @if(count($samples) > 0)
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                           {{-- @foreach ($samples as $sample )
-                                           <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-                                               Table.{{$sample->tables}}.'-'{{$sample->total}}.Samples
-                                            </button>
-                                          </li>
-                                           @endforeach --}}
-                                            {{-- <li class="nav-item" role="presentation">
-                                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-                                            </li> --}}
-                                          </ul>
-                                          {{-- <div class="tab-content" id="pills-tabContent">
-                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-                                          </div> --}}
                                         <table class="table table-bordered mb-0"
                                             style="background-color: rgb(255, 255, 255)">
-                                            <thead class="hide">
+                                            <thead>
                                                 <tr>
                                                     <th>Sr</th>
-                                                     <th>Tables</th>
-                                                     <th>No of Samples</th>
-                                                     <th>Action</th>
+                                                     <th>Product Title</th>
+                                                     <th>Sample ID</th>
+                                                     <th>Jury Name</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ 'Tabel-'.$sample->tables }}</td>
-                                                        <td>{{ $sample->total }}</td>
-                                                        <td> <a href="{{route('sampletable',['juryId'=>$juryId,'table'=>$sample->tables ])}}">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
+                                                        <td>{{ $sample->product_title }}</td>
+                                                        <td>{{ $sample->samples }}</td>
+                                                        <td>{{$sample->name}}</td>
+                                                        <td> <a class="btn btn-success"
+                                                                href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }}">Give
+                                                                Review
+                                                             </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach 
@@ -136,7 +122,7 @@
         </div>
     </div>
     <!-- END: Content-->
-  
+
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
@@ -149,11 +135,8 @@
     <script src="{{ asset('public/app-assets/js/core/app-menu.js') }}"></script>
     <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
     <script src="{{ asset('public/app-assets/js/scripts/components.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
     <!-- END: Theme JS-->
-    <script>
-        var id = {{$juryId}};
-         </script>
+
 
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->

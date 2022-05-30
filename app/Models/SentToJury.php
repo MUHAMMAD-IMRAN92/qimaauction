@@ -9,4 +9,9 @@ class SentToJury extends Model
 {
     use HasFactory;
     protected $table ='sample_sent_to_jury';
+
+    public function juries()
+    {
+        return $this->belongsToMany(Jury::class);
+    }
 }

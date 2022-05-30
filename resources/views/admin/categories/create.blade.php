@@ -66,6 +66,10 @@
                                                         <label for="city-column">Category Image</label>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        alt="" style="max-height: 100px;max-width: 100px;">
+                                                </div>
                                                 
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
@@ -79,6 +83,25 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    $(document).ready(function (e) {
+                     
+                     
+                     $('#image').change(function(){
+                             
+                     let reader = new FileReader();
+             
+                     reader.onload = (e) => { 
+             
+                         $('#preview-image-before-upload').attr('src', e.target.result); 
+                     }
+             
+                     reader.readAsDataURL(this.files[0]); 
+                     
+                     });
+                     
+                     });
+             </script>
             </section>
             <!-- // Basic Floating Label Form section end -->
 

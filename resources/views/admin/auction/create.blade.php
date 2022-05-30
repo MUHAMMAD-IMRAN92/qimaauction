@@ -14,9 +14,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{url('jury/index') }}">Juries</a>
+                                <li class="breadcrumb-item"><a href="{{url('jury/index') }}">Auction</a>
                                 </li>
-                                <li class="breadcrumb-item active"><a href="#">Create Jury</a>
+                                <li class="breadcrumb-item active"><a href="#">Create Auction</a>
                                 </li>
                             </ol>
                         </div>
@@ -67,7 +67,7 @@
                                                     @enderror
                                                     </div>
                                                 </div> 
-                                                <div class="col-md-12 col-12">
+                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Product</label>
                                                         <div class="form-group">
@@ -246,7 +246,7 @@
                                                                 @enderror
                                                     </div>
                                                 </div>
-                                               
+                                                --}}
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="file" id="image" class="form-control"
@@ -255,6 +255,10 @@
                                                         @error('image')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
+                                                    </div>
+                                                    <div class="col-md-12 mb-2">
+                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                            alt="" style="max-height: 100px;max-width: 100px;">
                                                     </div>
                                                 </div> 
                                                    
@@ -278,9 +282,26 @@
 </div>
    
 <script> 
-  $(document).ready(function(){
-        CKEDITOR.replace('product_detail');
-        }); 
+//   $(document).ready(function(){
+//         CKEDITOR.replace('product_detail');
+//         }); 
+        $(document).ready(function (e) {
+        
+        
+        $('#image').change(function(){
+                
+        let reader = new FileReader();
+
+        reader.onload = (e) => { 
+
+            $('#preview-image-before-upload').attr('src', e.target.result); 
+        }
+
+        reader.readAsDataURL(this.files[0]); 
+        
+        });
+        
+        });
   $(document).load(function(){
         $('.datepicker').pickadate({
         editable: true

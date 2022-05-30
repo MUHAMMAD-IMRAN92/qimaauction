@@ -92,4 +92,6 @@ Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::cla
 
 Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
 Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::class, 'reviewedSamples']);
-Route::get('/review/review_detail/{sample?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
+Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
+Route::get('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
+Route::get('/review/review_detail/{sample?}/{productId?}/{juryId?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');

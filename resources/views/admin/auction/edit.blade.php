@@ -62,7 +62,7 @@
                                                         <label for="product-detail">Auction Detail</label>
                                                     </div>
                                                 </div> 
-                                                <div class="col-md-12 col-12">
+                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Product</label>
                                                         <div class="form-group">
@@ -77,9 +77,9 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                
-                                                <div class="col-md-12 col-12">
+                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Genetics</label>
                                                         <div class="form-group">
@@ -95,8 +95,8 @@
                                                            
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12">
+                                                </div> --}}
+                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Process</label>
                                                         <div class="form-group">
@@ -239,7 +239,7 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                              
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
@@ -251,6 +251,10 @@
                                                          @enderror
                                                     </div>
                                                 </div> 
+                                                <div class="col-md-12 mb-2">
+                                                    <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        alt="" style="max-height: 100px;max-width: 100px;">
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <span>Select Image:</span> <br>
@@ -285,8 +289,20 @@
 </div>
 <script>  
     $(document).ready(function(){
+        $('#image').change(function(){
+                
+                let reader = new FileReader();
+        
+                reader.onload = (e) => { 
+        
+                    $('#preview-image-before-upload').attr('src', e.target.result); 
+                }
+        
+                reader.readAsDataURL(this.files[0]); 
+                
+                });
       // jQuery.datetimepicker.setLocale('de');
-      CKEDITOR.replace( 'product_detail' );
+    //   CKEDITOR.replace( 'product_detail' );
       $.datetimepicker.setDateFormatter({
           parseDate: function (date, format) {
               var d = moment(date, format);

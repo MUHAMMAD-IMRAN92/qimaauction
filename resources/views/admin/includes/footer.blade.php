@@ -54,7 +54,15 @@
 <script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}"></script>
 <script src="{{asset('public/app-assets/vendors/js/pickers/pickadate/legacy.js')}}"></script>
 <script src="{{asset('public/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script>
-
+ <script>
+     $('document').ready(function()
+        {
+            $('textarea').each(function(){
+                    $(this).val($(this).val().trim());
+                }
+            );
+        });
+     </script>
 </body>
 <!-- END: Body-->
 

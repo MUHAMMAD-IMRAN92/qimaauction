@@ -63,14 +63,14 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="product-title" class="form-control"
-                                                                placeholder="Product Title" name="title" required>
+                                                                name="title" required>
                                                             <label for="product-title">Product Title</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <textarea id="product-description" class="form-control" name="description">
-                                                        </textarea>
+                                                            <textarea id="product-description" class="form-control" name="description" >
+                                                           </textarea>
                                                             <label for="product-description">Product Description</label>
                                                         </div>
                                                     </div>
@@ -131,6 +131,10 @@
                                                             <label for="city-column">Product Image</label>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12 mb-2">
+                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                            alt="" style="max-height: 100px;max-width: 100px;">
+                                                    </div>
 
                                                     <div class="col-12" style="margin-left: 39%">
                                                         <button type="submit"
@@ -152,4 +156,20 @@
             </div>
         </div>
     </div>
+    <script>
+          $(document).ready(function (e) {        
+                    $('#image').change(function(){
+                            
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => { 
+
+                        $('#preview-image-before-upload').attr('src', e.target.result); 
+                    }
+
+                    reader.readAsDataURL(this.files[0]); 
+                    
+                    });
+        });
+    </script>
 @endsection

@@ -50,7 +50,10 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="name" class="form-control" name="name">
+                                                        <input type="text" id="name" class="form-control class="form-control @error('name') is-invalid @enderror" name="name">
+                                                        @error('email')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <label for="name">Name</label>
                                                     </div>
                                                 </div>
@@ -65,7 +68,10 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="tel" id="phone" class="form-control" name="phone">
+                                                        <input type="number" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone">
+                                                        @error('phone')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                         <label for="phone">Phone</label>
                                                     </div>
                                                 </div>

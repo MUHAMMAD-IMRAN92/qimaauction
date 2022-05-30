@@ -14,4 +14,8 @@ class Jury extends Model
     // {
     //     return Crypt::encryptString($value);
     // }
+    public function samples()
+    {
+        return $this->belongsToMany(SentToJury::class);
+    }
 }

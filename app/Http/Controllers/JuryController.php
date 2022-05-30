@@ -11,7 +11,7 @@ use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use DB;
 class JuryController extends Controller
 {
     private $user;
@@ -41,7 +41,7 @@ class JuryController extends Controller
             $q->where('name', 'LIKE', "%$search%");
         });
 
-        $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $jury_count,
@@ -59,7 +59,7 @@ class JuryController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:juries,email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
         ]);
         $jury = new  Jury();
         $jury->name = $request->name;
@@ -110,27 +110,29 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
-
         $request->validate([
-            'products' => 'required|array',
             'juries' => 'required|array',
             'samples' => 'required|array',
+            'auction_id' => 'required'
         ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
-        foreach ($request->juries as $jury) {
+        foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
-
                 $sampleSent = new SentToJury();
-                $sampleSent->jury_id = $jury;
+                $sampleSent->jury_id = $jury1;
+                $sampleSent->tables = $request->tables[$key];
                 $sampleSent->product_id = $product;
+                $sampleSent->auction_id = $request->auction_id;
                 $sampleSent->temporary_link = $tempLink;
                 $sampleSent->samples = $request->samples[$key];
                 $sampleSent->save();
+                // $jury = Jury::find($jury1);
+                //  $sampleSent->juries()->attach($jury); 
             }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
-        return redirect('/jury/index')->with('success','Emailed Successfully to Juries');
+        return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
         ;
     }
 
@@ -139,14 +141,25 @@ class JuryController extends Controller
         $juryId = decrypt($id);
         $jury = Jury::find($juryId);
         if ($jury) {
-            $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
-             ->select('products.*','sample_sent_to_jury.*')
-            ->where('sample_sent_to_jury.jury_id', $juryId)->where('sample_sent_to_jury.is_hidden', '0')
-            ->get();
-               $juryName = Jury::where('id', $juryId)->first();
+                 
+            $samples= SentToJury::groupBy('tables')
+            ->select('tables', DB::raw('count(*) as total'))
+            ->where('sample_sent_to_jury.is_hidden','=','0')
+            ->where('sample_sent_to_jury.jury_id',$juryId)
+            ->orderBy('created_at','desc')
+             ->get();
+            //  dd($samples);
+            // $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
+            //                       ->select('products.*','sample_sent_to_jury.*')
+            //                       ->where('sample_sent_to_jury.jury_id', $juryId)
+            //                       ->where('sample_sent_to_jury.is_hidden', '0')
+            //                       ->get();
+
+            $juryName = Jury::where('id', $juryId)->first();
             return view('admin.jury.jury_links', [
                 'samples' => $samples,
                 'juryName' => $juryName->name,
+                'juryId' => $juryId,
             ]);
         } else {
             return view('admin.404');

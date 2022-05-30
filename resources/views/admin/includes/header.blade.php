@@ -14,7 +14,7 @@
     <title>Qima Auction Dashboard</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="apple-touch-icon" href="{{ asset('public/app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href={{ asset('public/app-assets/vendors/css/vendors.min.css') }}>
@@ -362,7 +362,7 @@
                 <li class="nav-item mr-auto"><a class="navbar-brand"
                         href="{{ url('/') }}">
                         <div class="brand-logo"></div>
-                        <h2 class="brand-text mb-0">QIMA Auction</h2>
+                        <h4 class="brand-text">QIMA Auction</h4>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
@@ -419,11 +419,17 @@
                                         class="menu-item @if (request()->is('jury/*')) 'active' @endif"
                                         data-i18n="eCommerce">Jury</span></a>
                               </li>
-                                <li @if (request()->is('review/*')) class= 'active' @endif><a
+                                <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
                                     href="{{ url('review/reviewed_samples') }}">
                                     <span
                                         class="menu-item"
                                         data-i18n="eCommerce">Manage Feedback</span></a>
+                                </li>
+                                <li @if (request()->is('review/summary')) class= 'active' @endif><a
+                                    href="{{ url('review/summary') }}">
+                                    <span
+                                        class="menu-item @if (request()->is('review/summary')) 'active' @endif"
+                                        data-i18n="eCommerce">Feedback Summary</span></a>
                                 </li>
                     
                             </ul>

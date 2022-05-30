@@ -50,14 +50,13 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title" required>
+                                                        <input type="text" id="origin-title" class="form-control" placeholder="Origin Title" name="title" required autofocus>
                                                         <label for="origin-title">Origin Title</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <textarea id="origin-description" class="form-control" name="description">
-                                                        </textarea>
+                                                        <textarea id="origin-description" class="form-control" name="description" autofocus></textarea>
                                                         <label for="origin-description">Origin Description</label>
                                                     </div>
                                                 </div>
@@ -66,6 +65,10 @@
                                                         <input type="file" id="image" class="form-control" name="image" accept="image/png, image/jpeg"  required>
                                                         <label for="city-column">Origin Image</label>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        alt="" style="max-height: 100px;max-width: 100px;">
                                                 </div>
                                                 
                                                 <div class="col-12" style="margin-left: 39%">
@@ -86,4 +89,23 @@
         </div>
     </div>
 </div>
+<script>
+       $(document).ready(function (e) {
+        
+        
+        $('#image').change(function(){
+                
+        let reader = new FileReader();
+
+        reader.onload = (e) => { 
+
+            $('#preview-image-before-upload').attr('src', e.target.result); 
+        }
+
+        reader.readAsDataURL(this.files[0]); 
+        
+        });
+        
+        });
+</script>
 @endsection

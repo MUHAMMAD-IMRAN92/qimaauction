@@ -71,7 +71,10 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <span>Selected Image:</span>
+                                                  
                                                     <div class="form-label-group">
+                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        alt="" style="max-height: 100px;max-width: 100px;">
                                                         <img width="100px" height="100px" src="{{ url('/storage/app/public/origin/' . $origin->region_image); }}" alt="">
                                                     </div>
                                                 </div>
@@ -93,4 +96,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function (e) {
+     
+     
+     $('#image').change(function(){
+             
+     let reader = new FileReader();
+
+     reader.onload = (e) => { 
+
+         $('#preview-image-before-upload').attr('src', e.target.result); 
+     }
+
+     reader.readAsDataURL(this.files[0]); 
+     
+     });
+     
+     });
+</script>
 @endsection

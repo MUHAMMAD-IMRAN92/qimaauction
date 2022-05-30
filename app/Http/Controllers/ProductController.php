@@ -195,7 +195,11 @@ class ProductController extends Controller
         $tags = Tag::where('jury_id',$jId)->get();
            $juery = Jury::where('ID',$jId)->first();
            $name = $juery->name;
-        $sampleSent = SentToJury::where('jury_id', $request->jId)->where('product_id', $request->pId)->where('temporary_link', $request->link)->first();
+        $sampleSent = SentToJury::where('jury_id', $request->jId)
+                                  ->where('product_id', $request->pId)
+                                  ->where('temporary_link', $request->link)
+                                  ->where('is_hidden','0')
+                                  ->first();
         if ($sampleSent) {
             if ($sampleSent->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
@@ -207,7 +211,8 @@ class ProductController extends Controller
                     'juryName' => $name,
                     'tags' => $tags,
                     'link' => $link,
-                    'sampleName' => $sampleSent->samples, 
+                    'sampleName' => $sampleSent->samples,
+                    'sentSampleId' => $sampleSent->id,  
                     'samples' => $samplesArr
                 ]);
             }

@@ -14,7 +14,7 @@
     <title>Review</title>
 
     <link rel="apple-touch-icon" href="{{ asset('public/app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href={{ asset('public/app-assets/vendors/css/vendors.min.css') }}>
     <link rel="stylesheet" type="text/css"
@@ -52,6 +52,9 @@
 
 <!-- BEGIN: Body-->
 <style>
+    body{
+        overflow-x: hidden; 
+    }
     .bootstrap-touchspin .bootstrap-touchspin-injected {
         margin: -8px !important;
     }
@@ -164,7 +167,7 @@
                                                                                             style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                             <input type="range" min="0" class="aroma_dry"
                                                                                             id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
-                                                                                                step="1" value="1"
+                                                                                                step="1" value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -181,7 +184,7 @@
                                                                                             <input type="range" min="0"
                                                                                                 name="aroma_crust" id="aroma_crust" class="aroma_crust"
                                                                                                 max="3" step="1"
-                                                                                                value="1"
+                                                                                                value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -194,11 +197,11 @@
                                                                                     <h5>BREAK</h5>
                                                                                     <div class="custom_slider">
                                                                                         <div class="range-slider"
-                                                                                            style='--min:0; --max:3; --step:1; --value:1; --text-value:"0"; width: 200px;'>
+                                                                                            style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                             <input type="range" min="0"
                                                                                                 name="aroma_break" id="aroma_break"
                                                                                                 max="3" step="1"
-                                                                                                value="1"
+                                                                                                value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                                                             <output></output>
                                                                                             <div
@@ -220,6 +223,7 @@
                                                                 <input type="hidden" name="link" value="{{$link}}">
                                                                 <input type="hidden" name="product_id" value="{{$productId}}">
                                                                 <input type="hidden" name="jury_id" value="{{$juryId}}">
+                                                                <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
                                                                 <div class="row purity">
 
                                                                     <div class="col-md-12">
@@ -240,20 +244,19 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
-
                                                                     <div class="col-md-4">
                                                                         <div class="deffects-text">
                                                                             <h3 class="entity-text">DEFECTS</h3>
 
                                                                             <div class="custom_slider">
                                                                                 <div class="score-flex">
-                                                                                    <input class="score_first_number"
-                                                                                        type="number" id="quantity" value="first_number"
+                                                                                    <input class="score_first_number" oninput="if (this.value > 3) this.value = 0;"
+                                                                                        type="number" id="quantity"  value="first_number"
                                                                                         name="first_number">
                                                                                     <span
                                                                                         class="multiply">X</span>
-                                                                                    <input class="score_second_number"
-                                                                                        type="number" id="quantity" value="second_number"
+                                                                                    <input class="score_second_number" oninput="if (this.value > 5) this.value = 0"
+                                                                                        type="number" id="quantity" maxlength="5" value="second_number"
                                                                                         name="second_number">
                                                                                     <span
                                                                                         class="multiply">X</span>
@@ -531,7 +534,7 @@
                                                                 <div class="row purity custom_mobile_btn">
                                                                     <div class="col-md-12">
                                                                         <div class="submit-btn">
-                                                                            <input class="submit-form-btn"
+                                                                            <input style="width: auto;" class="submit-form-btn"
                                                                                 type="submit" value="SUBMIT">
                                                                         </div>
                                                                     </div>
@@ -622,6 +625,9 @@
                     }
                     else
                     {
+                        $('.score_first_number').val(0);
+                        $('.score_second_number').val(0);
+                        $('.multiply4').html(0);
                         var defect = 0;
                         var raw = subtotal - defect;
                          if(raw == 0)
@@ -632,6 +638,7 @@
                             {
                                 var total = 36 + raw;
                             }
+                            $('#total_score').val(total);
                            $('.totalScore').html(total); 
                     }     
                     $(this).trigger('change');
