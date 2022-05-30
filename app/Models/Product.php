@@ -16,6 +16,10 @@ class Product extends Model
    {
        return $this->hasOne(Origin::class ,'id' , 'origin_id');
    }
+   public function flavor()
+   {
+       return $this->hasOne(Flavour::class ,'id' , 'flavour_id');
+   }
    public function images()
    {
        return $this->hasMany(Image::class, 'product_id' ,'id' );

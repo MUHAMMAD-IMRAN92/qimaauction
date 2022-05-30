@@ -59,6 +59,7 @@
                                                         {{-- <th>Image</th> --}}
                                                         <th>Category</th>
                                                         <th>Origin</th>
+                                                        <th>Flavor</th>
                                                         <th>Action</th>
 
                                                     </tr>
@@ -74,7 +75,8 @@
                                                         {{-- <th>Image</th> --}}
                                                         <th>Category</th>
                                                         <th>Origin</th>
-                                                        <th>Action</th>
+                                                        <th>Flavor</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </tfoot>
@@ -160,14 +162,26 @@
                 {
 
                     "mRender": function(data, type, row) {
+                        return '<td>' +
+                            
+                                row.flavor.flavour_title+
+                        
+                            `</td>` 
+                        
+
+                    }
+                    },
+                {
+
+                    "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/product/edit/` + ids +
-                            `"><i class='fa fa-pencil' style='font-size:15px;color:#d1af69'></i></a>&nbsp&nbsp` +
-                            `<a class="" href="/product/delete/` + ids +
-                            `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>&nbsp&nbsp` +
-                            `<a class="" href="/product/view/` + ids +
-                            `"><i class="fa fa-eye" style="font-size:15px;color:#d1af69"></i></a>` +
+                            `">Edit</a>&nbsp&nbsp` +
+                            // `<a class="" href="/product/delete/` + ids +
+                            // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>&nbsp&nbsp` +
+                            // `<a class="" href="/product/view/` + ids +
+                            // `"><i class="fa fa-eye" style="font-size:15px;color:#d1af69"></i></a>` +
                             '</td></tr>'
                     }
                 },

@@ -50,7 +50,7 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="flavour-title" class="form-control" placeholder="Flavour Title" name="title">
+                                                        <input type="text" id="flavour-title" class="form-control" name="title" required>
                                                         <label for="flavour-title">Flavour Title</label>
                                                     </div>
                                                 </div>

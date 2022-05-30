@@ -55,10 +55,7 @@
                                                         <th>Sr</th>
                                                         <th>Title</th>
                                                         <th>Detail</th>
-                                                        <th>Bid Amount</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>
@@ -113,33 +110,13 @@
                     }
                 },
                 {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                            row.start_bid_price +'$' + '</td>';
-                    }
-                },
-                {
-                "mRender": function(data, type, row) {
-                    return '<td>' +
-                        row.startDate + ' ' + row.startTime + '</td>';
-                }
-                },
-                {
-
-                "mRender": function(data, type, row) {
-                    return '<td>' +
-                        row.endDate + ' ' + row.endTime + '</td>';
-                }
-                },
-                {
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/auction/edit/` + ids +
-                            `"><i class='fa fa-pencil' style='font-size:20px;color:#d1af69'></i></a>&nbsp&nbsp` +
-                            `<a class="" href="/auction/delete/` + ids +
-                            `"><i class="fa fa-eye-slash" style="font-size:20px;color:red"></i></a>` +
+                            `">Edit</a>&nbsp&nbsp` +
+                            // `<a class="" href="/auction/delete/` + ids +
+                            // `"><i class="fa fa-eye-slash" style="font-size:20px;color:red"></i></a>` +
                             '</td>'
                     }
                 },

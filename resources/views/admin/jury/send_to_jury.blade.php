@@ -282,6 +282,7 @@
             var html = '';
             html += `<tr>`;
                 $('input[type=checkbox]').each(function (key) {
+                  if(sample){
                     if(this.checked)
                     {
                         html += ``;
@@ -293,6 +294,7 @@
                         html += `<td>-</td><td>-</td>`;
                     }   
                     $(this).prop('checked', false);  
+                  }
                 });
                 html += `</tr>`;
             // console.log(html);

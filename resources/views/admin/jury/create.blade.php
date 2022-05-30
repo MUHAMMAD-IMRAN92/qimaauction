@@ -51,7 +51,7 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control class="form-control @error('name') is-invalid @enderror" name="name">
-                                                        @error('email')
+                                                        @error('name')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
                                                         <label for="name">Name</label>

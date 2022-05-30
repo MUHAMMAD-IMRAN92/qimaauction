@@ -67,7 +67,8 @@
                                                     @enderror
                                                     </div>
                                                 </div> 
-                                                {{-- <div class="col-md-12 col-12">
+                                                {{-- 
+                                                    <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Product</label>
                                                         <div class="form-group">
@@ -146,7 +147,7 @@
                                                          @enderror
                                                     </div>
                                                 </div>
-                                           
+                                            --}}
                                                
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
@@ -163,7 +164,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="col-md-12 col-12">
+                                               {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <div class="row">
                                                             <div class="col-sm-10">

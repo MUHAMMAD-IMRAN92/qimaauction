@@ -48,6 +48,7 @@ class FlavourController extends Controller
     }
     public function save(Request $request)
     {
+        
         $flavour = new  Flavour();
         $flavour->flavour_title = $request->title;
         $flavour->flavour_description = $request->description;

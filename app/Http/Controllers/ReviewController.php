@@ -95,7 +95,6 @@ class ReviewController extends Controller
         $samples= SentToJury::groupBy('samples')
                         ->select('samples', DB::raw('count(*) as total'))
                         ->where('sample_sent_to_jury.is_hidden','=','0')
-                        ->orderBy('created_at','desc')
                          ->get();
 
         if(count($samples) > 0){

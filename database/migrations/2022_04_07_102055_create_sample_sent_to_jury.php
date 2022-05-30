@@ -16,9 +16,8 @@ class CreateSampleSentToJury extends Migration
         Schema::create('sample_sent_to_jury', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jury_id')->nullable();
-            $table->unsignedBigInteger('auction_id')->nullable();
+            // $table->unsignedBigInteger('auction_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->integer('tables')->default(1);
             $table->string('samples')->nullable();
             $table->longText('message')->nullable();
             $table->string('temporary_link')->nullable();

@@ -228,8 +228,7 @@
                                     $user = Auth::user();
                                 @endphp
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                        {{ Str::upper($user->name) }}</span><span
-                                        class="user-status">Admin</span></div><span><img class="round"
+                                        {{ Str::upper($user->name) }}</span></div><span><img class="round"
                                         src="../../../public/app-assets/images/portrait/small/avatar-s-11.jpg"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
@@ -421,7 +420,7 @@
                                     href="{{ url('/jury/index') }}">
                                     <span
                                         class="menu-item @if (request()->is('jury/*')) 'active' @endif"
-                                        data-i18n="eCommerce">Jury</span></a>
+                                        data-i18n="eCommerce">Manage Jury</span></a>
                               </li>
                                 <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
                                     href="{{ url('review/reviewed_samples') }}">

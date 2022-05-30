@@ -57,23 +57,13 @@
                                                         <th>Title</th>
                                                         <th>Description</th>
                                                         <th>Image</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Sr</th>
-                                                        <th>Title</th>
-                                                        <th>Description</th>
-                                                        <th>Image</th>
-                                                        <th>Action</th>
-
-                                                    </tr>
-                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -136,8 +126,8 @@
                     "mRender": function(data, type, row) {
                                     var ids = btoa(row.id);
                                     return `<td>` +
-                                        `<a class="" href="/origin/edit/`+ids+`"><i class='fa fa-pencil' style='font-size:15px;color:#d1af69'></i></a>&nbsp&nbsp` +
-                                            `<a class="" href="/origin/delete/`+ids+`"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
+                                        `<a class="" href="/origin/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
+                                            // `<a class="" href="/origin/delete/`+ids+`"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
                                         '</td>'
                                 }
                 },

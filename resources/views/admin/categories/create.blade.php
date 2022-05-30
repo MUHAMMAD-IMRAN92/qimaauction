@@ -49,7 +49,7 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="category-title" class="form-control" placeholder="Category Title" name="title" required>
+                                                        <input type="text" id="category-title" class="form-control"  name="title" required>
                                                         <label for="category-title">Category Title</label>
                                                     </div>
                                                 </div>

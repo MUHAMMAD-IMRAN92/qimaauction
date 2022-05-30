@@ -57,12 +57,12 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <input type="hidden" id="product-title" class="form-control"
-                                                            placeholder="Product Title" name="id"
+                                                            name="id"
                                                             value={{ $product->id }} >
                                                         <div class="form-label-group">
 
                                                             <input type="text" id="product-title" class="form-control"
-                                                                placeholder="Product Title" name="title"
+                                                                name="title"
                                                                 value="{{ $product->product_title }}">
                                                             <label for="product-title">Product Title</label>
                                                         </div>
@@ -154,8 +154,8 @@
                                                     <div class="col-12" style="margin-left: 39%">
                                                         <button type="submit"
                                                             class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                        <button type="reset"
-                                                            class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                        <button type="submit"
+                                                            class="btn btn-outline-warning mr-1 mb-1">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -50,8 +50,8 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="hidden" class="form-control" placeholder="Category Title" name="id" value={{ $category->id }}>
-                                                        <input type="text" id="category-title" class="form-control" placeholder="Category Title" name="title" value={{ $category->category_title }}>
+                                                        <input type="hidden" class="form-control"  name="id" value={{ $category->id }}>
+                                                        <input type="text" id="category-title" class="form-control"  name="title" value={{ $category->category_title }}>
                                                         <label for="category-title">First Name</label>
                                                     </div>
                                                 </div>
@@ -72,12 +72,14 @@
                                                 <div class="col-md-12 col-12">
                                                     <span>Selected Image:</span>
                                                     <div class="form-label-group">
+                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        alt="" style="max-height: 100px;max-width: 100px;">
                                                         <img width="100px" height="100px" src="{{ url('/storage/app/public/category/' . $category->category_image); }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                    <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                    <button type="submit" class="btn btn-outline-warning mr-1 mb-1">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,4 +95,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function (e) {
+     
+     
+     $('#image').change(function(){
+             
+     let reader = new FileReader();
+
+     reader.onload = (e) => { 
+
+         $('#preview-image-before-upload').attr('src', e.target.result); 
+     }
+
+     reader.readAsDataURL(this.files[0]); 
+     
+     });
+     
+     });
+</script>
 @endsection
