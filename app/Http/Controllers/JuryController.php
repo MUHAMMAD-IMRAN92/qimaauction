@@ -179,7 +179,7 @@ class JuryController extends Controller
             ->select('samples', DB::raw('count(*) as total'))
             ->where('sample_sent_to_jury.is_hidden','=','0')
             ->where('sample_sent_to_jury.jury_id',$juryId)
-            ->orderBy('created_at','desc')
+            // ->orderBy('created_at','desc')
              ->get();
             //  dd($samples);
             // $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
