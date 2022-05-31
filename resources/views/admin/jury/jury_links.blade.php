@@ -103,7 +103,7 @@
                                             <thead class="hide">
                                                 <tr>
                                                     <th>Sr</th>
-                                                     <th>Tables</th>
+                                                     <th>Samples</th>
                                                      <th>No of Samples</th>
                                                      <th>Action</th>
                                                 </tr>
@@ -112,9 +112,9 @@
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ 'Tabel-'.$sample->tables }}</td>
+                                                        <td>{{ $sample->samples }}</td>
                                                         <td>{{ $sample->total }}</td>
-                                                        <td> <a href="{{route('sampletable',['juryId'=>$juryId,'table'=>$sample->tables ])}}">
+                                                        <td> <a href="{{route('sampletable',['juryId'=>$juryId,'table'=>$sample->samples ])}}">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
                                                         </td>

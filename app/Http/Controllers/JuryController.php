@@ -54,6 +54,15 @@ class JuryController extends Controller
     {
         return view('admin.jury.create');
     }
+    public function sampleSearch(Request $request)
+    {
+            $isExists = SentToJury::where('samples',$request->sample)->first();
+            if($isExists){
+                return response()->json(array("exists" => true));
+            }else{
+                return response()->json(array("exists" => false));
+            }
+    }
     public function save(Request $request)
     {
         $request->validate([
@@ -109,6 +118,29 @@ class JuryController extends Controller
             'auctions' => $auctions
         ]);
     }
+    public function ajaxSendToJuryPost(Request $request)
+    {
+        $request->validate([
+            'juries' => 'required|array',
+            'auction_id' => 'required',
+            'productId' => 'required',
+        ]);
+        $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
+       foreach ($request->juries as $key => $jury) {
+            $sampleSent = new SentToJury();
+            $sampleSent->jury_id = $jury;
+            $sampleSent->tables = $request->table;
+            $sampleSent->product_id = $request->productId;
+            $sampleSent->auction_id = $request->auction_id;
+            $sampleSent->temporary_link = $tempLink;
+            $sampleSent->samples = $request->samples;
+            $sampleSent->save();
+            $jury =    Jury::find($sampleSent->jury_id);
+            Mail::to($jury->email)->send(new JuryMail($jury));
+        }
+
+            return response()->json(array("exists" => true));
+    }
     public function sendToJuryPost(Request $request)
     {
         $request->validate([
@@ -143,8 +175,8 @@ class JuryController extends Controller
         $jury = Jury::find($juryId);
         if ($jury) {
                  
-            $samples= SentToJury::groupBy('tables')
-            ->select('tables', DB::raw('count(*) as total'))
+            $samples= SentToJury::groupBy('samples')
+            ->select('samples', DB::raw('count(*) as total'))
             ->where('sample_sent_to_jury.is_hidden','=','0')
             ->where('sample_sent_to_jury.jury_id',$juryId)
             ->orderBy('created_at','desc')

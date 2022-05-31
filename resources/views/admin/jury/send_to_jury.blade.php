@@ -94,14 +94,15 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <form action="{{ url('/jury/send_to_jury') }}" method="POST" autocomplete="off">
+                                            {{-- {{ url('/jury/send_to_jury') }} --}}
+                                            <form action="" method="POST" autocomplete="off">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2 pb-1">
                                                         Please Select Auction
                                                     </div>
                                                     {{-- <p> <strong>Note:</strong> You can select auction.</p> --}}
-                                                    <select class="form-control  @error('auction') is-invalid @enderror" name="auction_id">
+                                                    <select class="form-control  @error('auction') is-invalid @enderror" name="auction_id" id="auction_id">
                                                         @foreach ($auctions as $key => $jury)
                                                           <option value="{{ $jury->id }}">{{ $jury->title }}</option>
                                                         @endforeach
@@ -115,7 +116,7 @@
                                                         Please Select Jury
                                                     </div>
                                                     <p> <strong>Note:</strong> You can select multiple juries.</p>
-                                                    <select class="select2 form-control  @error('juries') is-invalid @enderror" multiple="multiple" name="juries[]">
+                                                    <select class="select2 form-control  @error('juries') is-invalid @enderror" multiple="multiple" name="juries[]" id="juries">
                                                          @php
                                                               $arr = array();
                                                          @endphp
@@ -151,31 +152,37 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                    
                                                         <div class="col-md-4">
-                                                           <input type="text" class="form-control"  id="sampleId" placeholder="Enter Sample Id">
+                                                            <span id="exist" class="danger"></span>
+                                                           <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
+                                                           <input type="text" class="form-control s1"  id="sampleId2" placeholder="Enter Sample Id">
+                                                           <input type="text" class="form-control s1"  id="sampleId3" placeholder="Enter Sample Id">
+                                                           <input type="text" class="form-control s1"  id="sampleId4" placeholder="Enter Sample Id">
+                                                           
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <div class="row-md-4">
-                                                                <div class="chk">
+                                                            {{-- <div class="row-md-4"> --}}
+                                                                <div class="chk row-md-4">
                                                                     <label class="check-label" for="male"> <b>T1</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
+                                                                    <input type="checkbox" id="chk1" value="1" class="chk1 pt-5" >
                                                                 </div>
-                                                                <div class="chk">
+                                                                <div class="chk row-md-4">
                                                                     <label class="check-label" for="male"> <b>T2</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
+                                                                    <input type="checkbox" id="chk2" value="2" class="chk2 pt-5">
                                                                 </div>
-                                                                 <div class="chk">
+                                                                 <div class="chk row-md-4">
                                                                     <label class="check-label" for="male"> <b>T3</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
+                                                                    <input type="checkbox" id="chk3" value="3" class="chk3 pt-5">
                                                                  </div>
-                                                                 <div class="chk">
+                                                                 <div class="chk row-md-4">
                                                                     <label class="check-label" for="male"> <b>T4</b> </label>
-                                                                    <input type="checkbox" id="chk" class="pt-5">
+                                                                    <input type="checkbox" id="chk4" value="4" class="chk4 pt-5">
                                                                  </div>
-                                                            </div>
+                                                            {{-- </div> --}}
                                                          </div>
                                                         <div class="pt-2">
-                                                            <button type="button" class="btn btn-primary btn-sm ml-1" id="samples">Save</button>
+                                                            <button type="button" class="btn btn-primary btn-sm ml-1" id="save">Save</button>
                                                         </div>
                                                     </div>
                                                     @error('products')
@@ -260,33 +267,96 @@
 <script>
    
     $(function() { 
+        // $(".s1").on('keyup',function(cb){delay(cb,1000);});
+        //   $("#name").on('focusout',handler(function(cb){cb();}));
         // var jq14 = jQuery.noConflict(true); 
-        $('#samples').click(function() {
+        $('.s1').keyup(function(e) {
+            $.ajax({
+                    type:'POST',
+                    url:`{{route('sample_search')}}`,
+                    data:{
+                        sample:$(this).val(),
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function( msg ) {
+                       if(msg.exists)
+                        {
+                            $('#exist').html('Alreay Exist');
+                        }
+                        else
+                        {
+                            $('#exist').html('');
+                        }   
+                    }
+                });
+            });
+
+        // });
+       
+            $(".s1").focusout(function() {
+            var productId = $('#product_select').find(":selected").val();
+            var juries = $('#juries').val();
+            var auction_id = $('#auction_id').val();
+             var table  = $('.chk1').val()
+            var samples =  $(this).val();
+            $.ajax({
+                    type:'POST',
+                    url:`{{route('ajax_send_to_jury')}}`,
+                    data:{
+                        juries:juries,
+                        auction_id:auction_id,
+                        table:table,
+                        samples:samples,
+                        productId:productId,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function( msg ) {
+                        if(msg.exists)
+                        {
+                            $('#exist').html('Alreay Exist');
+                        }
+                        else
+                        {
+                            $('#exist').html('Created Successfuly');
+                        }   
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+            });
+         
+
+            
+        $('.chk1').click(function (key) {
+            $("#sampleId1").removeAttr("disabled");
+        });
+        $('.chk2').click(function (key) {
+            $("#sampleId2").removeAttr("disabled");
+        });
+        $('.chk3').click(function (key) {
+            $("#sampleId3").removeAttr("disabled");
+        });
+        $('.chk4').click(function (key) {
+            $("#sampleId4").removeAttr("disabled");
+        });
+      
+
+        $('#save').click(function() {
             var productId = $('#product_select').find(":selected").val();
             var product =  $('#product_select').find(":selected").text();
-            var sample =  $('#sampleId').val();
-            // console.log($('#product_select').options);
-            // var selected = $("#product_select :selected").map((_, e) => e.text).get();
-            // alert(selected);
-            // var html = '';
-            // $(".checkbox :checked").map((_, e) => {
-            //     alert("dkdk");
-            //     html += `<tr>`;
-            //     html += ` <td scope = "col">` + e.text + `</td>`;
-            //     html +=
-            //         `<td scope = "col">  <input type="text" name="samples[]" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important" required></td>`;
-            //     html += `<td scope = "col"><input type="hidden" name="product_ids[]" value="` +e.value + `" class="form-control"  id="basicInput" placeholder="Enter sample title" style="width:28% !important"></td>`
-            //     html += `</tr>`;
-            // });
+            
             var sList = "";
             var html = '';
             html += `<tr>`;
                 $('input[type=checkbox]').each(function (key) {
+                    var index = ++key;
+                    var sample =  $('#sampleId'+ index +'').val();
                   if(sample){
                     if(this.checked)
                     {
                         html += ``;
-                        html += `<td>` + product + `</td><td>` + sample + `</td><input type="hidden" name="tables[]" value="` + ++key + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sample + `" required>`;
+                        html += `<td>` + product + `</td><td>` + sample + `</td><input type="hidden" name="tables[]" value="` + index + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sample + `" required>`;
                     } 
                     else
                     {
@@ -295,6 +365,8 @@
                     }   
                     $(this).prop('checked', false);  
                   }
+                  $('#sampleId'+ index +'').val('');
+                  $('#sampleId'+ index +'').attr("disabled", true);
                 });
                 html += `</tr>`;
             // console.log(html);

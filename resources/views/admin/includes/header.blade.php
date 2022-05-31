@@ -422,12 +422,12 @@
                                         class="menu-item @if (request()->is('jury/*')) 'active' @endif"
                                         data-i18n="eCommerce">Manage Jury</span></a>
                               </li>
-                                <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
+                                {{-- <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
                                     href="{{ url('review/reviewed_samples') }}">
                                     <span
                                         class="menu-item"
                                         data-i18n="eCommerce">Manage Feedback</span></a>
-                                </li>
+                                </li> --}}
                                 <li @if (request()->is('review/summary')) class= 'active' @endif><a
                                     href="{{ url('review/summary') }}">
                                     <span
