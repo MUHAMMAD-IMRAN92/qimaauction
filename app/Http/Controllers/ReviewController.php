@@ -53,7 +53,7 @@ class ReviewController extends Controller
         $review->overall                = $request->overall;
         $review->total_score            = (isset($request->total_score)) ? $request->total_score : 0;
         $review->jury_id                = $request->jury_id;
-        $review->sample_id         = $request->sent_sample_id;
+        $review->sample_id              = $request->sent_sample_id;
         $review->product_id             = $request->product_id;
         $review->save();
         if(isset($request->discriptor))
@@ -70,7 +70,8 @@ class ReviewController extends Controller
                     }
                 }
         }
-        return redirect('jury/links/' . encrypt($review->jury_id))->with('success','Review submitted Succesully');
+        
+        return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables])->with('success','Review submitted Succesully');
         // return view('admin.jury.success');
     }
     public function form()
@@ -84,7 +85,7 @@ class ReviewController extends Controller
                                 ->join('juries','juries.id','sample_sent_to_jury.jury_id')
                                   ->select('products.*','sample_sent_to_jury.*','juries.name')
                                   ->where('sample_sent_to_jury.jury_id', $request->juryId)
-                                  ->where('sample_sent_to_jury.samples', $request->sample)
+                                  ->where('sample_sent_to_jury.tables', $request->table)
                                   ->where('sample_sent_to_jury.is_hidden', '0')
                                   ->get();
                                 //   return response($samples);

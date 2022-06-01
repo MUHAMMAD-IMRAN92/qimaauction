@@ -93,6 +93,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
@@ -100,7 +101,7 @@
                                                         <td>{{ $sample->samples }}</td>
                                                         <td>{{$sample->name}}</td>
                                                         <td> <a class="btn btn-success"
-                                                                href="{{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }}">Give
+                                                                href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">Give
                                                                 Review
                                                              </a>
                                                         </td>

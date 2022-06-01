@@ -89,11 +89,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
-Route::get('/jury/link/give_review/{link}/{pId}/{jId}', [App\Http\Controllers\ProductController::class, 'review']);
+Route::get('/jury/link/give_review/{table}/{juryId}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
 Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
 
 Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
 Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::class, 'reviewedSamples']);
 Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
-Route::get('/review/tabledata/{juryId?}/{sample?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
+Route::get('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
 Route::get('/review/review_detail/{sample?}/{productId?}/{juryId?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');

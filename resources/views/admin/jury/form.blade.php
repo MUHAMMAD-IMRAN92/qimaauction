@@ -41,7 +41,9 @@
         href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/authentication.css') }}">
     <!-- END: Page CSS-->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
@@ -110,11 +112,12 @@
     class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
-    <div class="app-content content">
+    <div class="app-content content h-100">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
+            <div class="content-header row mt-5">
+                
             </div>
 
             <div class="content-body">
@@ -122,11 +125,14 @@
                     <div class="col-12 d-flex justify-content-center">
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
-
                                 <div class="col-lg-12 col-12 p-0">
                                     <div class="card rounded-0 mb-0 p-2">
                                         <div class="card-header pt-50 pb-1">
-
+                                            @if (session('success'))
+                                            <div class="col-md-12 alert alert-success">
+                                                {{ session('success') }}
+                                                </div>
+                                            @endif
                                             <div class="col-12">
                                                 <div class="site-logo">
                                                     <img
@@ -148,11 +154,28 @@
                                                                     <h5>{{$sampleName}}</h5>
                                                                 </div>
                                                                 <div class="row purity">
-                                                                    <div class="col-12">
+                                                                    <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
-                                                                            <label>Name : </label>
-                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
+                                                                            <label>Name </label>
+                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5><br>
+                                                                           <label>Table </label>
+                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
                                                                         </div>
+                                                                        <div class="row m-0">
+                                                                          
+                                                                           <div class="col-md-12 pl-0">
+                                                                               <div class="row">
+                                                                                @foreach ($alltablesamples as $samp)
+                                                                                <div class="col-md-2 col-lg-2 mb-2">
+                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                        {{$samp->productTitle.'('.$samp->samples.')'}}
+                                                                                    </a>
+                                                                                </div>
+                                                                               @endforeach
+                                                                               </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
@@ -535,7 +558,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="submit-btn">
                                                                             <input style="width: auto;" class="submit-form-btn"
-                                                                                type="submit" value="SUBMIT">
+                                                                                type="submit" value="Save & Next >>">
                                                                         </div>
                                                                     </div>
                                                                 </div>

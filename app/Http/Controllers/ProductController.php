@@ -191,29 +191,64 @@ class ProductController extends Controller
 
         return redirect('/product/index');
     }
-    public function review(Request $request, $link, $pId, $jId)
+    // public function subform(Request $request)
+    // {
+    //     $sampleSent = SentToJury::where('id', $request->id)->where('jury_id', $request->juryId)
+    //       ->where('is_hidden','0')
+    //       ->first();
+    //       return view('admin.jury.form', [
+    //         'productId' => 1,
+    //         'juryId' =>  $sampleSent->jury_id,
+    //         'juryName' => $name,
+    //         'tags' => $tags,
+    //         'alltablesamples'=> $alltablesamples,
+    //         'link' => '$link',
+    //         'sampleName' => $sampleSent->samples,
+    //         'sentSampleId' => $sampleSent->id,  
+    //         'samples' => $samplesArr
+    //     ]);
+    // }
+    public function review(Request $request)
     {
-        $tags = Tag::where('jury_id',$jId)->get();
-           $juery = Jury::where('ID',$jId)->first();
+        $tags = Tag::where('jury_id',$request->juryId)->get();
+           $juery = Jury::where('ID',$request->juryId)->first();
            $name = $juery->name;
-        $sampleSent = SentToJury::where('jury_id', $request->jId)
-                                  ->where('product_id', $request->pId)
-                                  ->where('temporary_link', $request->link)
-                                  ->where('is_hidden','0')
-                                  ->first();
-        if ($sampleSent) {
-            if ($sampleSent->is_hidden == '1') {
+
+        $alltablesamples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
+        ->join('juries','juries.id','sample_sent_to_jury.jury_id')
+        ->select('products.id as productId','products.product_title as productTitle',
+        'sample_sent_to_jury.id as sampleId','sample_sent_to_jury.jury_id as juryId',
+        'sample_sent_to_jury.samples as samples','sample_sent_to_jury.tables as sampleTable',
+        'juries.name as juryName')
+        ->where('sample_sent_to_jury.jury_id', $request->juryId)
+        ->where('sample_sent_to_jury.tables', $request->table)
+        ->where('sample_sent_to_jury.is_hidden', '0')
+        ->get();
+        if(isset($request->sampleId))
+        {
+            $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
+            ->first();
+        }
+        else
+        {
+            $firstsample=$alltablesamples->first();
+        }
+       
+        if ($firstsample) {
+            if ($firstsample->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
             } else {
-                $samplesArr = explode(',', $sampleSent->samples);
+                $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form', [
-                    'productId' => $pId,
-                    'juryId' =>  $jId,
+                    'productId' => $firstsample->product_id,
+                    'juryId' =>  $firstsample->jury_id,
                     'juryName' => $name,
+                    'table' => $request->table,
                     'tags' => $tags,
-                    'link' => $link,
-                    'sampleName' => $sampleSent->samples,
-                    'sentSampleId' => $sampleSent->id,  
+                    'alltablesamples'=> $alltablesamples,
+                    'link' => $firstsample->temporary_link,
+                    'sampleName' => $firstsample->samples,
+                    'sentSampleId' => $firstsample->id,  
                     'samples' => $samplesArr
                 ]);
             }

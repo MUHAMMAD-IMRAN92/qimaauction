@@ -174,9 +174,8 @@ class JuryController extends Controller
         $juryId = decrypt($id);
         $jury = Jury::find($juryId);
         if ($jury) {
-                 
-            $samples= SentToJury::groupBy('samples')
-            ->select('samples', DB::raw('count(*) as total'))
+            $samples= SentToJury::groupBy('tables')
+            ->select('tables', DB::raw('count(*) as total'))
             ->where('sample_sent_to_jury.is_hidden','=','0')
             ->where('sample_sent_to_jury.jury_id',$juryId)
             // ->orderBy('created_at','desc')

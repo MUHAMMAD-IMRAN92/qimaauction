@@ -154,11 +154,15 @@
                                                         </div>
                                                     
                                                         <div class="col-md-4">
-                                                            <span id="exist" class="danger"></span>
+                                                            {{-- <span id="exist" class="danger"></span> --}}
                                                            <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
+                                                           <span id="exist1" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId2" placeholder="Enter Sample Id">
+                                                           <span id="exist2" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId3" placeholder="Enter Sample Id">
+                                                           <span id="exist3" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId4" placeholder="Enter Sample Id">
+                                                           <span id="exist4" class="danger"></span>
                                                            
                                                         </div>
                                                         <div class="col-md-4">
@@ -270,76 +274,75 @@
         // $(".s1").on('keyup',function(cb){delay(cb,1000);});
         //   $("#name").on('focusout',handler(function(cb){cb();}));
         // var jq14 = jQuery.noConflict(true); 
-        $('.s1').keyup(function(e) {
-            $.ajax({
-                    type:'POST',
-                    url:`{{route('sample_search')}}`,
-                    data:{
-                        sample:$(this).val(),
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function( msg ) {
-                       if(msg.exists)
-                        {
-                            $('#exist').html('Alreay Exist');
-                        }
-                        else
-                        {
-                            $('#exist').html('');
-                        }   
-                    }
-                });
-            });
+        // $('.s1').keyup(function(e) {
+        //     $.ajax({
+        //             type:'POST',
+        //             url:`{{route('sample_search')}}`,
+        //             data:{
+        //                 sample:$(this).val(),
+        //                 _token: "{{ csrf_token() }}"
+        //             },
+        //             success: function( msg ) {
+        //                if(msg.exists)
+        //                 {
+        //                     $('#exist').html('SampleId Alreay Exist');
+        //                 }
+        //                 else
+        //                 {
+        //                     $('#exist').html('');
+        //                 }   
+        //             }
+        //         });
 
         // });
        
-            $(".s1").focusout(function() {
-            var productId = $('#product_select').find(":selected").val();
-            var juries = $('#juries').val();
-            var auction_id = $('#auction_id').val();
-             var table  = $('.chk1').val()
-            var samples =  $(this).val();
-            $.ajax({
-                    type:'POST',
-                    url:`{{route('ajax_send_to_jury')}}`,
-                    data:{
-                        juries:juries,
-                        auction_id:auction_id,
-                        table:table,
-                        samples:samples,
-                        productId:productId,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function( msg ) {
-                        if(msg.exists)
-                        {
-                            $('#exist').html('Alreay Exist');
-                        }
-                        else
-                        {
-                            $('#exist').html('Created Successfuly');
-                        }   
-                    },
-                    error:function(err){
-                        console.log(err);
-                    }
-                });
-            });
+            // $(".s1").focusout(function() {
+            // var productId = $('#product_select').find(":selected").val();
+            // var juries = $('#juries').val();
+            // var auction_id = $('#auction_id').val();
+            //  var table  = $('.chk1').val()
+            // var samples =  $(this).val();
+            // $.ajax({
+            //         type:'POST',
+            //         url:`{{route('ajax_send_to_jury')}}`,
+            //         data:{
+            //             juries:juries,
+            //             auction_id:auction_id,
+            //             table:table,
+            //             samples:samples,
+            //             productId:productId,
+            //             _token: "{{ csrf_token() }}"
+            //         },
+            //         success: function( msg ) {
+            //             if(msg.exists)
+            //             {
+            //                 $('#exist').html('Alreay Exist');
+            //             }
+            //             else
+            //             {
+            //                 $('#exist').html('Created Successfuly');
+            //             }   
+            //         },
+            //         error:function(err){
+            //             console.log(err);
+            //         }
+            //     });
+            // });
          
 
             
-        $('.chk1').click(function (key) {
-            $("#sampleId1").removeAttr("disabled");
-        });
-        $('.chk2').click(function (key) {
-            $("#sampleId2").removeAttr("disabled");
-        });
-        $('.chk3').click(function (key) {
-            $("#sampleId3").removeAttr("disabled");
-        });
-        $('.chk4').click(function (key) {
-            $("#sampleId4").removeAttr("disabled");
-        });
+        // $('.chk1').click(function (key) {
+        //     $("#sampleId1").removeAttr("disabled");
+        // });
+        // $('.chk2').click(function (key) {
+        //     $("#sampleId2").removeAttr("disabled");
+        // });
+        // $('.chk3').click(function (key) {
+        //     $("#sampleId3").removeAttr("disabled");
+        // });
+        // $('.chk4').click(function (key) {
+        //     $("#sampleId4").removeAttr("disabled");
+        // });
       
 
         $('#save').click(function() {
@@ -349,29 +352,52 @@
             var sList = "";
             var html = '';
             html += `<tr>`;
+                var shouldappend;
                 $('input[type=checkbox]').each(function (key) {
-                    var index = ++key;
-                    var sample =  $('#sampleId'+ index +'').val();
-                  if(sample){
-                    if(this.checked)
-                    {
-                        html += ``;
-                        html += `<td>` + product + `</td><td>` + sample + `</td><input type="hidden" name="tables[]" value="` + index + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sample + `" required>`;
-                    } 
-                    else
-                    {
-                        html += ``;
-                        html += `<td>-</td><td>-</td>`;
-                    }   
-                    $(this).prop('checked', false);  
-                  }
-                  $('#sampleId'+ index +'').val('');
-                  $('#sampleId'+ index +'').attr("disabled", true);
+                    var index = ++key;        
+                    var sampleid =  $('#sampleId'+ index +'').val();
+                     if(sampleid){
+                        $.ajax({
+                                type:'POST',
+                                url:`{{route('sample_search')}}`,
+                                data:{
+                                    sample:sampleid,
+                                    _token: "{{ csrf_token() }}"
+                                },
+                                success: function( msg ) {
+                                if(msg.exists)
+                                    {
+                                        $('#exist'+ index +'').html('SampleId Already Exist');
+                                        // this.shouldappend = false;
+                                        return false;
+                                    }
+                                    else
+                                    {
+                                        // this.shouldappend = true;
+                                        $('#exist'+ index +'').html('');
+                                    }   
+                                }
+                            });
+                            if(this.checked)
+                            {
+                                html += ``;
+                                html += `<td>` + product + `</td><td>` + sampleid + `</td><input type="hidden" name="tables[]" value="` + index + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sampleid + `" required>`;
+                            } 
+                            else
+                            {
+                                html += ``;
+                                html += `<td>-</td><td>-</td>`;
+                            }   
+                      $(this).prop('checked', false);  
+                     }
+                //   $('#sampleId'+ index +'').val('');
+                //   $('#sampleId'+ index +'').attr("disabled", true);
                 });
                 html += `</tr>`;
-            // console.log(html);
-            $('#product_table_body').append(html);
-            $('#sampleId').val('');
+            // console.log(html);\
+                $('#product_table_body').append(html);
+               $('#sampleId').val('');
+            
         });
     });
 </script>
