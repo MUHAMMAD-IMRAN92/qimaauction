@@ -49,6 +49,9 @@
                 table.jury-table.tbody{
                     overflow-x: hidden;
                 }
+        .checkbox-pad{
+            margin-bottom: 10px;
+        }        
  </style>
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -95,7 +98,7 @@
 
                                         <div class="table-responsive">
                                             {{-- {{ url('/jury/send_to_jury') }} --}}
-                                            <form action="" method="POST" autocomplete="off">
+                                            <form action="{{ url('/jury/send_to_jury') }}" method="POST" autocomplete="off">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2 pb-1">
@@ -142,52 +145,52 @@
                                                     {{-- <p> <strong>Note:</strong> You can select Product.</p> --}}
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            <select class="form-control  @error('products') is-invalid @enderror"
-                                                                name="products" id="product_select">
-                                                                {{-- <option value="" selected disabled>Plese Select Product</option> --}}
                                                                 @foreach ($products as $key => $product)
-                                                                    <option value="{{ $product->id }}">
-                                                                        {{ $product->product_title }}
-                                                                    </option>
+                                                                <input type="hidden" name="products[]" value="{{ $product->id }}">
+                                                                    <input type="text" class="form-control"  id="products" value="{{ $product->product_title }}">
                                                                 @endforeach
-                                                            </select>
                                                         </div>
                                                     
                                                         <div class="col-md-4">
+                                                            @foreach ($products as $key => $product)
+                                                            <input type="text" class="form-control"  name="samples[]" id="samples" placeholder="Enter Sample Id">
+                                                        @endforeach
                                                             {{-- <span id="exist" class="danger"></span> --}}
-                                                           <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
+                                                           {{-- <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
                                                            <span id="exist1" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId2" placeholder="Enter Sample Id">
                                                            <span id="exist2" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId3" placeholder="Enter Sample Id">
                                                            <span id="exist3" class="danger"></span>
                                                            <input type="text" class="form-control s1"  id="sampleId4" placeholder="Enter Sample Id">
-                                                           <span id="exist4" class="danger"></span>
+                                                           <span id="exist4" class="danger"></span> --}}
                                                            
                                                         </div>
                                                         <div class="col-md-4">
-                                                            {{-- <div class="row-md-4"> --}}
-                                                                <div class="chk row-md-4">
+                                                            @foreach ($products as $key => $product)
+                                                               <div class="row checkbox-pad">
+                                                                <div class="chk">
                                                                     <label class="check-label" for="male"> <b>T1</b> </label>
-                                                                    <input type="checkbox" id="chk1" value="1" class="chk1 pt-5" >
+                                                                    <input type="radio" name="{{$key}}" value="1" class="chk1 pt-5" >
                                                                 </div>
-                                                                <div class="chk row-md-4">
+                                                                <div class="chk">
                                                                     <label class="check-label" for="male"> <b>T2</b> </label>
-                                                                    <input type="checkbox" id="chk2" value="2" class="chk2 pt-5">
+                                                                    <input type="radio" name="{{$key}}" value="2" class="chk2 pt-5">
                                                                 </div>
-                                                                 <div class="chk row-md-4">
+                                                                 <div class="chk">
                                                                     <label class="check-label" for="male"> <b>T3</b> </label>
-                                                                    <input type="checkbox" id="chk3" value="3" class="chk3 pt-5">
+                                                                    <input type="radio" name="{{$key}}" value="3" class="chk3 pt-5">
                                                                  </div>
-                                                                 <div class="chk row-md-4">
+                                                                 <div class="chk">
                                                                     <label class="check-label" for="male"> <b>T4</b> </label>
-                                                                    <input type="checkbox" id="chk4" value="4" class="chk4 pt-5">
+                                                                    <input type="radio"  name="{{$key}}" value="4" class="chk4 pt-5">
                                                                  </div>
-                                                            {{-- </div> --}}
+                                                               </div>
+                                                                 @endforeach
                                                          </div>
-                                                        <div class="pt-2">
+                                                        {{-- <div class="pt-2">
                                                             <button type="button" class="btn btn-primary btn-sm ml-1" id="save">Save</button>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     @error('products')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -201,7 +204,7 @@
                                                                 {{-- <div class="card-header">
                                                                     <h4 class="card-title">Select Products:</h4>
                                                                 </div> --}}
-                                                                <div class="card-content">
+                                                                {{-- <div class="card-content">
                                                                     <div class="card-body">
 
                                                                     </div>
@@ -222,28 +225,14 @@
                                                                                         Sample ID
                                                                                     </td>
                                                                                     <td>
-                                                                                        Product
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Sample ID
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Product
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Sample ID
-                                                                                    </td><td>
-                                                                                        Product
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Sample ID
+                                                                                        Table
                                                                                     </td>
                                                                                 </tr>
                                                                                 
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -270,7 +259,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
    
-    $(function() { 
+    $(function() {
+        $(document).on('click', 'input[type="checkbox"]', function() {      
+                $('input[type="checkbox"]').not(this).prop('checked', false);      
+            }); 
         // $(".s1").on('keyup',function(cb){delay(cb,1000);});
         //   $("#name").on('focusout',handler(function(cb){cb();}));
         // var jq14 = jQuery.noConflict(true); 
@@ -345,59 +337,59 @@
         // });
       
 
-        $('#save').click(function() {
-            var productId = $('#product_select').find(":selected").val();
-            var product =  $('#product_select').find(":selected").text();
+        // $('#save').click(function() {
+        //     var productId = $('#product_select').find(":selected").val();
+        //     var product =  $('#product_select').find(":selected").text();
             
-            var sList = "";
-            var html = '';
-            html += `<tr>`;
-                var shouldappend;
-                $('input[type=checkbox]').each(function (key) {
-                    var index = ++key;        
-                    var sampleid =  $('#sampleId'+ index +'').val();
-                     if(sampleid){
-                        $.ajax({
-                                type:'POST',
-                                url:`{{route('sample_search')}}`,
-                                data:{
-                                    sample:sampleid,
-                                    _token: "{{ csrf_token() }}"
-                                },
-                                success: function( msg ) {
-                                if(msg.exists)
-                                    {
-                                        $('#exist'+ index +'').html('SampleId Already Exist');
-                                        // this.shouldappend = false;
-                                        return false;
-                                    }
-                                    else
-                                    {
-                                        // this.shouldappend = true;
-                                        $('#exist'+ index +'').html('');
-                                    }   
-                                }
-                            });
-                            if(this.checked)
-                            {
-                                html += ``;
-                                html += `<td>` + product + `</td><td>` + sampleid + `</td><input type="hidden" name="tables[]" value="` + index + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sampleid + `" required>`;
-                            } 
-                            else
-                            {
-                                html += ``;
-                                html += `<td>-</td><td>-</td>`;
-                            }   
-                      $(this).prop('checked', false);  
-                     }
-                //   $('#sampleId'+ index +'').val('');
-                //   $('#sampleId'+ index +'').attr("disabled", true);
-                });
-                html += `</tr>`;
-            // console.log(html);\
-                $('#product_table_body').append(html);
-               $('#sampleId').val('');
+        //     var sList = "";
+        //     var html = '';
+        //     html += `<tr>`;
+        //         var shouldappend;
+        //         $('input[type=checkbox]').each(function (key) {
+        //             var index = ++key;        
+        //             var sampleid =  $('#sampleId'+ index +'').val();
+        //              if(sampleid){
+        //                 $.ajax({
+        //                         type:'POST',
+        //                         url:`{{route('sample_search')}}`,
+        //                         data:{
+        //                             sample:sampleid,
+        //                             _token: "{{ csrf_token() }}"
+        //                         },
+        //                         success: function( msg ) {
+        //                         if(msg.exists)
+        //                             {
+        //                                 $('#exist'+ index +'').html('SampleId Already Exist');
+        //                                 // this.shouldappend = false;
+        //                                 return false;
+        //                             }
+        //                             else
+        //                             {
+        //                                 // this.shouldappend = true;
+        //                                 $('#exist'+ index +'').html('');
+        //                             }   
+        //                         }
+        //                     });
+        //                     if(this.checked)
+        //                     {
+        //                         html += ``;
+        //                         html += `<td>` + product + `</td><td>` + sampleid + `</td><input type="hidden" name="tables[]" value="` + index + `" required><input type="hidden" name="products[]" value="` + productId + `" required><input type="hidden" name="samples[]" value="` + sampleid + `" required>`;
+        //                     } 
+        //                     else
+        //                     {
+        //                         html += ``;
+        //                         html += `<td>-</td><td>-</td>`;
+        //                     }   
+        //               $(this).prop('checked', false);  
+        //              }
+        //         //   $('#sampleId'+ index +'').val('');
+        //         //   $('#sampleId'+ index +'').attr("disabled", true);
+        //         });
+        //         html += `</tr>`;
+        //     // console.log(html);\
+        //         $('#product_table_body').append(html);
+        //        $('#sampleId').val('');
             
-        });
+        // });
     });
 </script>
