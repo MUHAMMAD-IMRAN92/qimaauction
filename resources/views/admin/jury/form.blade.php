@@ -174,19 +174,19 @@ line-height: 1 !important;
                                                             <div class="col-12">
                                                                 <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
-                                                                    <h5>{{$sampleName}}</h5>
+                                                                    <h3 style="color:black">{{$sampleName}}</h3>
                                                                 </div>
                                                                 <div class="row purity">
                                                                     <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
-                                                                           <div class="row m-5">
-                                                                            <label>Name </label>
+                                                                           <div class="row ml-2">
+                                                                            <label>Name:</label>
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
                                                                            </div>
-                                                                           <div class="row m-5">
+                                                                           {{-- <div class="row m-5">
                                                                             <label>Table </label>
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
-                                                                           </div>
+                                                                           </div> --}}
                                                                         </div>
                                                                         <div class="row m-0">
                                                                           
@@ -197,11 +197,11 @@ line-height: 1 !important;
                                                                                
                                                                                 <div class="col-md-2 col-lg-2 mb-2">
                                                                                      @if($samp->sampleId == $sentSampleId)
-                                                                                    <a class="btn btn-info w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                                         {{$samp->samples}}
                                                                                     </a>
                                                                                     @else
-                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                    <a class="btn btn-secondary  w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                                         {{$samp->samples}}
                                                                                     </a>
                                                                                     @endif
