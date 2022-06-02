@@ -49,6 +49,9 @@
                 table.jury-table.tbody{
                     overflow-x: hidden;
                 }
+         .sample-id-fields input{
+             margin-bottom: 10px;
+         }       
  </style>
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -153,7 +156,7 @@
                                                             </select>
                                                         </div>
                                                     
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4 sample-id-fields">
                                                             {{-- <span id="exist" class="danger"></span> --}}
                                                            <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
                                                            <span id="exist1" class="danger"></span>

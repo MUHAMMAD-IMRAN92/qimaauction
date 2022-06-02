@@ -59,8 +59,8 @@
                                                         {{-- <th>Image</th> --}}
                                                         <th>Category</th>
                                                         <th>Origin</th>
-                                                        <th>Flavor</th>
-                                                        <th>Action</th>
+                                                        <th>Flavour</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>

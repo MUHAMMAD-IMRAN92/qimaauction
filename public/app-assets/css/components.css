@@ -542,7 +542,8 @@ body.fixed-footer footer.footer-dark {
       align-items: center;
       margin-top: 1.35rem; }
       .main-menu .navbar-header .navbar-brand .brand-logo {
-        background: url("../../app-assets/images/logo/logo_admin.png") no-repeat;
+        /* background: url("../../app-assets/images/logo/logo_admin.png") no-repeat; */
+        /* background: url("../../app-assets/images/logo/logo_new.png") no-repeat; */
         /* background-position: -65px -54px; */
         background-position: center;
         height: 37px;

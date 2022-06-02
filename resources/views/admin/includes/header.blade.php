@@ -81,7 +81,7 @@
             <div class="navbar-container content">
             
                 <div class="navbar-collapse" id="navbar-mobile">
-                    <h3> Best Of Yamen Coffee</h3>
+                    <h3> Best Of Yemen Coffee 2022</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a
@@ -362,10 +362,15 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand"
-                        href="{{ url('/') }}">
-                        <div class="brand-logo ml-5"></div>
+                <li class="nav-item mr-auto">
+                    <a class="navbar-brand"
+                        href="{{ url('/') }}" style="margin-top:0;">
+                        <div class="brand-logo">
+                            <img src="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
+                            {{-- <img src="{{ asset('public/app-assets/images/ico/logo_admin.png.png') }}"> --}}
+                        </div>
                         {{-- <h4 class="brand-text">QIMA Auction</h4> --}}
+                       
                     </a></li>
                 {{-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
