@@ -67,8 +67,8 @@
                                                 {{-- <th>Sr</th> --}}
                                                 <th>Jury</th>
                                                 <th>Product</th>
-                                                <th>SampleId</th>
-                                                <th>total</th>
+                                                <th>Sample Id</th>
+                                                <th>Total</th>
                                             </tr>
                                         {{-- </thead> --}}
                                         {{-- <tbody> --}}
@@ -81,7 +81,7 @@
                                                 <td>{{$sample->total}}</td>
                                             </tr>
                                             @empty
-                                                <tr><td></td><td></td><td>No Sample for review</td></tr>
+                                                <tr><td></td><td></td><td></td><td>No Sample for review</td></tr>
                                             @endforelse
                                         {{-- </tbody> --}}
                                     </table>
