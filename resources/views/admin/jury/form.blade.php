@@ -105,7 +105,30 @@
     h5{
         font-size: 1.4rem;
     }  
-
+.w-70{
+    width: 70% !important;
+    height: 45px;
+    border-radius: 0.4rem;
+}
+@media only screen and (max-width:450px){
+    .mbl-mar{
+        margin-left: 3rem;
+    }
+    body {
+    padding-top: 0 !important;
+    gap: 8%;
+}
+}
+.btn-lg{
+line-height: 1 !important;
+}
+.discriptor{
+    font-size: 16px;
+}
+.alert-success{
+    color: white !important;
+    background-color:rgb(209, 175, 105) !important;
+}
 </style>
 
 <body
@@ -116,7 +139,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row mt-5">
+            <div class="content-header row">
                 
             </div>
 
@@ -151,33 +174,34 @@
                                                             <div class="col-12">
                                                                 <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
-                                                                    <h5>{{$sampleName}}</h5>
+                                                                    <h3 style="color:black">{{$sampleName}}</h3>
                                                                 </div>
                                                                 <div class="row purity">
                                                                     <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
-                                                                           <div class="row m-5">
-                                                                            <label>Name </label>
+                                                                           <div class="row ml-2">
+                                                                            <label>Name:</label>
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
                                                                            </div>
-                                                                           <div class="row m-5">
+                                                                           {{-- <div class="row m-5">
                                                                             <label>Table </label>
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
-                                                                           </div>
+                                                                           </div> --}}
                                                                         </div>
                                                                         <div class="row m-0">
                                                                           
                                                                            <div class="col-md-12 pl-0">
-                                                                               <div class="row">
+                                                                               {{-- <div class="row" style="justify-content: space-between; max-width:100%; overflow-x: scroll; flex-wrap:nowrap;"> --}}
+                                                                                <div class="" style="justify-content: space-between;width: 1200px;overflow: hidden;white-space: nowrap;overflow-x: auto;">
                                                                                 @foreach ($alltablesamples as $samp)
                                                                                
-                                                                                <div class="col-md-2 col-lg-2 mb-2">
+                                                                                <div class="col-md-2 col-lg-2 mb-2 button-item">
                                                                                      @if($samp->sampleId == $sentSampleId)
-                                                                                    <a class="btn btn-info w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                                         {{$samp->samples}}
                                                                                     </a>
                                                                                     @else
-                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                    <a class="btn btn-secondary  w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                                         {{$samp->samples}}
                                                                                     </a>
                                                                                     @endif
@@ -544,7 +568,7 @@
                                                                     <div class="col-md-12" style="display: flex">
                                                     
                                                                         <div class="col-md-12">
-                                                                            <label for="discriptor">Add Descriptors</label>
+                                                                            <label class="discriptor" for="discriptor">Add Descriptors</label>
                                                                             <select  id="select"
                                                                                 name="discriptor[]" multiple="multiple">
                                                                                 @foreach($tags as $tag)
@@ -584,15 +608,16 @@
                                                                 <div class="row purity">
                                                                      
                                                                     <div class="col-md-12">
-                                                                        <div class="anchor-flex">
-                                                                           <div>
-                                                                            <a style="width: auto;" class="btn btn-lg btn-primary" type="button"
+                                                                        <div class="anchor-flex" style="display: flex; justify-content:space-around; align-items:center;">
+                                                                           <div style="position: relative; margin-bottom: 3.5rem;">
+                                                                            <a style="width: auto; height:40px;" class="btn btn-lg btn-primary" type="button"
                                                                             href="{{route('juryLinks',['id'=>encrypt($juryId)])}}" value="Back">
                                                                             Back
                                                                            </a>
                                                                            </div>
-                                                                           <div class="submit-btn">
-                                                                               <input  class="submit-form-btn" type="submit" value="Save & Next >>">
+                                                                           <div class="">
+                                                                            <input style="width: auto; color:white; height:40px;" class="submit-form-btn btn-lg"
+                                                                            type="submit" value="Save & Continue >>">
                                                                            </div>
                                                                         </div>
                                                                    </div>
