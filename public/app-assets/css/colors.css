@@ -2144,7 +2144,8 @@ input:focus ~ .bg-secondary {
   .btn-secondary:hover {
     border-color: #a9b5c1 !important;
     color: #fff !important;
-    box-shadow: 0 8px 25px -8px #b8c2cc; }
+    box-shadow: none !important; 
+  }
   .btn-secondary:focus, .btn-secondary:active {
     color: #fff !important; }
 

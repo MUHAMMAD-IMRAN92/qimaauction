@@ -39,17 +39,12 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 <style>
-    .nav-item.active{
-        background-color: white !important;
-    }
-    /*nav css */
-    .tab {overflow: hidden; border: 1px solid #ccc; 
+   .tab {overflow: hidden; border: 1px solid #ccc; 
 background-color: #f1f1f1;}
 
 .tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc;
@@ -87,8 +82,9 @@ tr:nth-child(even) {
 .disable{ color: red; font-weight: bold}
 .intraining{color: blue; font-weight: bold}
 .vacation{ font-weight: bold}
-
-    /*nav css*/
+.active{
+    background-color: #d8940d;
+}
 </style>
 <body
     class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
@@ -124,99 +120,18 @@ tr:nth-child(even) {
                                 @if(count($samples) > 0)
                                 <div class="card-body mt-5">
                                     <div class="table-responsive">
-                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                           {{-- @foreach ($samples as $sample )
-                                           <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-                                               Table.{{$sample->tables}}.'-'{{$sample->total}}.Samples
-                                            </button>
-                                          </li>
-                                           @endforeach --}}
-                                            {{-- <li class="nav-item" role="presentation">
-                                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-                                            </li> --}}
-                                          </ul>
-                                          {{-- <div class="tab-content" id="pills-tabContent">
-                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-                                          </div> --}}
-                                        {{-- <table class="table table-bordered mb-0"
-                                            style="background-color: rgb(255, 255, 255)">
-                                            <thead class="hide">
-                                                <tr>
-                                                    <th>Sr</th>
-                                                     <th>Tables</th>
-                                                     <th>No of Samples</th>
-                                                     <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($samples as $sample)
-                                                    <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ 'Tabel-'.$sample->tables }}</td>
-                                                        <td><a href="{{route('sampletable',['juryId'=>$juryId,'table'=>$sample->tables ])}}">{{ $sample->total }}</a></td>
-                                                        <td> <a href="{{route('give_review',['juryId'=>$juryId,'table'=>$sample->tables ])}}">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach 
-                                            </tbody>
-                                        </table> --}}
-                                        <!--Nav-->
                                         <div class="container w3-animate-opacity">
                                             <div class="tab">
-                                                {{-- <button class="tablinks" onclick="openCity(event, 'Servers')">Servers List</button>
-                                                <button class="tablinks" onclick="openCity(event, 'Fruits')">Fruits Price</button>
-                                                <button class="tablinks" onclick="openCity(event, 'Workers')">Workers List</button> --}}
                                                 @foreach ($samples as $sample)
-                                                <button class="tablinks" id="{{$sample->tables}}"  onclick='javascript:sampleData({{$sample->tables}})'>Table-{{$sample->tables}}</button>
+                                                <button class="tablinks tablinks-custom-{{$sample->tables}} " id="{{$sample->tables}}" onclick='javascript:sampleData({{$sample->tables}},{{$sample->tables}})'>Table-{{$sample->tables}}</button>
                                                 @endforeach
-                                           </div>
-                                        {{-- <div id="Servers" class="tabcontent">
-                                          check 1
-                                        </div>
-                                        
-                                        <div id="Fruits" class="tabcontent w3-animate-opacity">
-                                         check 2
-                                        </div>
-                                        
-                                        <div id="Workers" class="tabcontent w3-animate-opacity">
-                                          check 3
-                                        </div> --}}
-                                        </div>
-                                        <!--Nav-->
-                                        {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                            <a class="navbar-brand" href="#"><b>Samples Table</b></a>
-                                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                              <span class="navbar-toggler-icon"></span>
-                                            </button>
-                                            <div class="collapse navbar-collapse" id="navbarNav">
-                                              <ul class="navbar-nav">
-                                               
-                                                @foreach ($samples as $sample)
-                                                <div class="submit-btn">
-
-                                                      <li class="nav-item">
-                                                        <a class="nav-link tableData" id="{{$sample->tables}}"  onclick='javascript:sampleData({{$sample->tables}})'>Table-{{$sample->tables}}</a>
-                                                      </li>
-                                                </div>
-                                                @endforeach
-                                              </ul>
                                             </div>
-                                          
-                                          </nav> --}}
-                                          <div class="content_data mt-5">
+                                            <div class="content_data">
 
-                                          </div>
-                                          
+                                            </div>
                                     </div>
                                 </div>
+                            </div>
                                 @endif
                               
                             </div>
@@ -243,14 +158,15 @@ tr:nth-child(even) {
     <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
     <script src="{{ asset('public/app-assets/js/scripts/components.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- END: Theme JS-->
     <script  type='text/javascript'>
         var juryId = {{$juryId}};
         var table ={{$firstsample->tables}};
-        sampleData(table);
-        // $(function() {
-           function  sampleData(table) {
+       
+        sampleData(table,table);
+           function  sampleData(element,table) {
+                    jQuery(".tablinks").removeClass("active");
+        jQuery(".tablinks-custom-"+element).addClass("active");
                     jQuery.ajax({
                                 type:'POST',
                                 url:`{{route('sampletable')}}`,
@@ -260,33 +176,12 @@ tr:nth-child(even) {
                                     _token: "{{ csrf_token() }}"
                                 },
                                 success: function( data ) {
-                                    // jQuery('#'+table+'').addClass('bg-white');
-                                    // console.log(data.html);
                                     jQuery('.content_data').html(data.html);
                                 }
                             });  
-                       };
-        // });
+                       }
          </script>
-         {{-- <script>
-             function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";}
-        
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace("active", "");}
-
-document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += "active";}
-         </script> --}}
-
-    <!-- BEGIN: Page JS-->
-    <!-- END: Page JS-->
 
 </body>
-<!-- END: Body-->
 
 </html>
