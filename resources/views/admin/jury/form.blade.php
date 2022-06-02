@@ -192,10 +192,10 @@ line-height: 1 !important;
                                                                           
                                                                            <div class="col-md-12 pl-0">
                                                                                {{-- <div class="row" style="justify-content: space-between; max-width:100%; overflow-x: scroll; flex-wrap:nowrap;"> --}}
-                                                                                <div class="row" style="justify-content: space-between;">
+                                                                                <div class="" style="justify-content: space-between;width: 1200px;overflow: hidden;white-space: nowrap;overflow-x: auto;">
                                                                                 @foreach ($alltablesamples as $samp)
                                                                                
-                                                                                <div class="col-md-2 col-lg-2 mb-2">
+                                                                                <div class="col-md-2 col-lg-2 mb-2 button-item">
                                                                                      @if($samp->sampleId == $sentSampleId)
                                                                                     <a class="btn btn-success w-100 d-flex align-items-center justify-content-center w-70 mbl-mar" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                                         {{$samp->samples}}
