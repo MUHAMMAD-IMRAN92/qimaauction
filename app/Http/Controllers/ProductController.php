@@ -232,6 +232,7 @@ class ProductController extends Controller
         else
         {
             $firstsample=$alltablesamples->first();
+           
             if(!isset($firstsample))
             {
                 $firstsample=SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)

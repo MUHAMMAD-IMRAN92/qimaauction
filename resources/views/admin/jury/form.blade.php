@@ -56,6 +56,7 @@
 <style>
     body{
         overflow-x: hidden; 
+        box-sizing: border-box;
     }
     .bootstrap-touchspin .bootstrap-touchspin-injected {
         margin: -8px !important;
@@ -105,6 +106,28 @@
     h5{
         font-size: 1.4rem;
     }  
+.btns-group{
+    display: flex;
+    position: relative;
+    overflow-x: scroll;
+    white-space: nowrap;
+    height: 72px;
+    overflow-y: hidden;
+    justify-content: space-evenly;
+}
+/* .btns-group .row .float-horizontal{
+    display: inline-block;
+    float: none;
+} */
+.hamza {
+    margin: 0 10px;
+    display: block;
+    position: relative;
+}
+.hamza a{
+    display: inline-block !important;
+    min-width: 100px;
+}
 
 </style>
 
@@ -165,27 +188,24 @@
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
                                                                            </div>
                                                                         </div>
-                                                                        <div class="row m-0">
-                                                                          
-                                                                           <div class="col-md-12 pl-0">
-                                                                               <div class="row">
-                                                                                @foreach ($alltablesamples as $samp)
-                                                                               
-                                                                                <div class="col-md-2 col-lg-2 mb-2">
-                                                                                     @if($samp->sampleId == $sentSampleId)
-                                                                                    <a class="btn btn-info w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                                        {{$samp->samples}}
-                                                                                    </a>
-                                                                                    @else
-                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                                        {{$samp->samples}}
-                                                                                    </a>
-                                                                                    @endif
-                                                                                </div>
-                                                                               @endforeach
-                                                                               </div>
-                                                                           </div>
+
+                                                                        <div class="btns-group">
+                                                                                         @foreach ($alltablesamples as $samp)
+                                                                                        
+                                                                                         <div class="hamza">
+                                                                                              @if($samp->sampleId == $sentSampleId)
+                                                                                             <a class="btn btn-secondary w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                                 {{$samp->samples}}
+                                                                                             </a>
+                                                                                             @else
+                                                                                             <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                                 {{$samp->samples}}
+                                                                                             </a>
+                                                                                             @endif
+                                                                                         </div>
+                                                                                        @endforeach
                                                                         </div>
+                                                                        
                                                                      
                                                                     </div>
                                                                 </div>

@@ -1,7 +1,8 @@
 
-                                        <table class="table table-bordered mb-0 table-striped"
+                                        {{-- <div id="{{$tables}}" class="tabcontent"> --}}
+                                            <table class="table table-striped"
                                             style="background-color: rgb(255, 255, 255)">
-                                            <thead class="bg-light black">
+                                            <thead style="color: #d8940d; border:#d8940d" class="table-bordered">
                                                 <tr>
                                                     <th>Sr</th>
                                                      <th>Product Title</th>
@@ -27,5 +28,6 @@
                                                 @endforeach 
                                             </tbody>
                                         </table>
+                                        {{-- </div> --}}
                             
                              
