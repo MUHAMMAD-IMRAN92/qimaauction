@@ -156,20 +156,31 @@
                                                                 <div class="row purity">
                                                                     <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
+                                                                           <div class="row m-5">
                                                                             <label>Name </label>
-                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5><br>
-                                                                           <label>Table </label>
-                                                                           <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
+                                                                            <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
+                                                                           </div>
+                                                                           <div class="row m-5">
+                                                                            <label>Table </label>
+                                                                            <h5 class="m-0" style="padding: 4px !important;">{{$table}}</h5>
+                                                                           </div>
                                                                         </div>
                                                                         <div class="row m-0">
                                                                           
                                                                            <div class="col-md-12 pl-0">
                                                                                <div class="row">
                                                                                 @foreach ($alltablesamples as $samp)
+                                                                               
                                                                                 <div class="col-md-2 col-lg-2 mb-2">
-                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                                        {{$samp->productTitle.'('.$samp->samples.')'}}
+                                                                                     @if($samp->sampleId == $sentSampleId)
+                                                                                    <a class="btn btn-info w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                        {{$samp->samples}}
                                                                                     </a>
+                                                                                    @else
+                                                                                    <a class="btn btn-success w-100 d-flex align-items-center justify-content-center" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                                        {{$samp->samples}}
+                                                                                    </a>
+                                                                                    @endif
                                                                                 </div>
                                                                                @endforeach
                                                                                </div>
@@ -554,14 +565,40 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row purity custom_mobile_btn">
+                                                                {{-- <div class="row purity">
                                                                     <div class="col-md-12">
+                                                                     <div class="save-back-cta">
+                                                                        <div>
+                                                                            <a style="width: auto; margin-left: auto; text-allign:center" class="btn btn-lg btn-primary text-center" type="button"
+                                                                            href="{{route('juryLinks',['id'=>encrypt($juryId)])}}" value="Back">
+                                                                            Back
+                                                                           </a>
+                                                                           </div>
                                                                         <div class="submit-btn">
                                                                             <input style="width: auto;" class="submit-form-btn"
                                                                                 type="submit" value="Save & Next >>">
                                                                         </div>
+                                                                     </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
+                                                                <div class="row purity">
+                                                                     
+                                                                    <div class="col-md-12">
+                                                                        <div class="anchor-flex">
+                                                                           <div>
+                                                                            <a style="width: auto;" class="btn btn-lg btn-primary" type="button"
+                                                                            href="{{route('juryLinks',['id'=>encrypt($juryId)])}}" value="Back">
+                                                                            Back
+                                                                           </a>
+                                                                           </div>
+                                                                           <div class="submit-btn">
+                                                                            <input style="width: auto;" class="submit-form-btn"
+                                                                            type="submit" value="Save & Next >>">
+                                                                           </div>
+                                                                        </div>
+                                                                   </div>
+                                                                    
+                                                               </div>
                                                             </div>
                                                         </div>
                                                         <!--row end-->

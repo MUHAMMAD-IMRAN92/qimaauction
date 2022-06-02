@@ -2875,9 +2875,10 @@ input:focus ~ .bg-success {
   background-color: #d1af69 !important;
   color: #fff; }
   .btn-success:hover {
-    border-color: #24b263 !important;
+    border-color: transparent !important;
     color: #fff !important;
-    box-shadow: 0 8px 25px -8px #28c76f; }
+    box-shadow: none;
+   }
   .btn-success:focus, .btn-success:active {
     color: #fff !important; }
 
@@ -3790,7 +3791,8 @@ input:focus ~ .bg-info {
   .btn-info:hover {
     border-color: #00b8cf !important;
     color: #fff !important;
-    box-shadow: 0 8px 25px -8px #00cfe8; }
+    box-shadow: none;
+  }
   .btn-info:focus, .btn-info:active {
     color: #fff !important; }
 

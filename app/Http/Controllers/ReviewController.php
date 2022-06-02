@@ -80,7 +80,6 @@ class ReviewController extends Controller
     }
     public function reviewTableData(Request $request)
     {
-        
         $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
                                 ->join('juries','juries.id','sample_sent_to_jury.jury_id')
                                   ->select('products.*','sample_sent_to_jury.*','juries.name')
@@ -89,7 +88,9 @@ class ReviewController extends Controller
                                   ->where('sample_sent_to_jury.is_hidden', '0')
                                   ->get();
                                 //   return response($samples);
-         return view('admin.sample_table',compact('samples'));
+         $data= view('admin.sample_table',compact('samples'))->render();
+         return response()->json(array('success' => true, 'html'=>$data));
+
     }
     public function reviewedSamples()
     {

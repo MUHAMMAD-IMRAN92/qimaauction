@@ -143,24 +143,24 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
-        $request->validate([
-            'juries' => 'required|array',
-            'samples' => 'required|array',
-            'auction_id' => 'required'
-        ]);
+        dump($request->all());
+      
+        // $request->validate([
+        //     'juries' => 'required|array',
+        //     'samples' => 'required|array',
+        //     'auction_id' => 'required'
+        // ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
                 $sampleSent = new SentToJury();
                 $sampleSent->jury_id = $jury1;
-                $sampleSent->tables = $request->tables[$key];
+                $sampleSent->tables = $request->$key;
                 $sampleSent->product_id = $product;
                 $sampleSent->auction_id = $request->auction_id;
                 $sampleSent->temporary_link = $tempLink;
                 $sampleSent->samples = $request->samples[$key];
-                $sampleSent->save();
-                // $jury = Jury::find($jury1);
-                //  $sampleSent->juries()->attach($jury); 
+                $sampleSent->save();  
             }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
@@ -188,8 +188,10 @@ class JuryController extends Controller
             //                       ->get();
 
             $juryName = Jury::where('id', $juryId)->first();
+             $firstsample =   $samples->first();
             return view('admin.jury.jury_links', [
                 'samples' => $samples,
+                'firstsample' => $firstsample,
                 'juryName' => $juryName->name,
                 'juryId' => $juryId,
             ]);
