@@ -49,9 +49,9 @@
                 table.jury-table.tbody{
                     overflow-x: hidden;
                 }
-         .sample-id-fields input{
-             margin-bottom: 10px;
-         }       
+        .checkbox-pad{
+            margin-bottom: 10px;
+        }        
  </style>
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -151,7 +151,10 @@
                                                                 @endforeach
                                                         </div>
                                                     
-                                                        <div class="col-md-4 sample-id-fields">
+                                                        <div class="col-md-4">
+                                                            @foreach ($products as $key => $product)
+                                                            <input type="text" class="form-control"  name="samples[]" id="samples" placeholder="Enter Sample Id">
+                                                        @endforeach
                                                             {{-- <span id="exist" class="danger"></span> --}}
                                                            {{-- <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
                                                            <span id="exist1" class="danger"></span>
