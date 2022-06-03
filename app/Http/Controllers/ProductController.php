@@ -164,7 +164,8 @@ class ProductController extends Controller
     public function view($id)
     {
         $jury = Jury::where('is_hidden', '0')->get();
-        $product = product::where('id', base64_decode($id))->where('is_hidden', '0')->with('category', 'origin')->first();
+        $product = product::where('id', base64_decode($id))
+        ->where('is_hidden', '0')->with('category', 'origin')->first();
         return view('admin.product.view_product', [
             'product' =>  $product,
             'juries' => $jury
@@ -231,27 +232,29 @@ class ProductController extends Controller
         }
         else
         {
-            $firstsample=$alltablesamples->first();
            
+            $firstsample=$alltablesamples->first();
+  
             if(!isset($firstsample))
             {
                 $firstsample=SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
                 ->first(); 
+               
                 return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
             }
               
         }
-       
+    //    dd($firstsample);
         if ($firstsample) {
             if ($firstsample->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
             } else {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form', [
-                    'productId' => $firstsample->product_id,
-                    'juryId' =>  $firstsample->jury_id,
+                    'productId' => $firstsample->product_id ?? $firstsample->productId,
+                    'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
                     'juryName' => $name,
-                    'table' => $request->table,
+                    'table' => $request->table ?? $firstsample->sampleTable,
                     'tags' => $tags,
                     'alltablesamples'=> $alltablesamples,
                     'link' => $firstsample->temporary_link,
