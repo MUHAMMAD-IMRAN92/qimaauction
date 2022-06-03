@@ -13,13 +13,12 @@ class ReviewController extends Controller
 {
     public function saveReview(Request $request)
     {
-        // return  $request->all();
         $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
                                  ->where('product_id', $request->product_id)
                                  ->where('temporary_link',$request->link)
                                  ->where('is_hidden','0')
                                  ->first();
-
+                                //  return  $sampleSent;
         if ($sampleSent->is_hidden == '1') {
             return view('admin.jury.alredy_submit');
         }
@@ -86,7 +85,7 @@ class ReviewController extends Controller
                                   ->select('products.*','sample_sent_to_jury.*','juries.name')
                                   ->where('sample_sent_to_jury.jury_id', $request->juryId)
                                   ->where('sample_sent_to_jury.tables', $request->table)
-                                //   ->where('sample_sent_to_jury.is_hidden', '0')
+                                  ->where('sample_sent_to_jury.is_hidden', '0')
                                   ->get();
                                 //   return response($samples);
          $data= view('admin.sample_table',compact('samples','tables'))->render();
@@ -121,7 +120,7 @@ class ReviewController extends Controller
         $reviews = Review::join('juries','reviews.jury_id','juries.id')
                     ->join('products','reviews.product_id','products.id')
                     ->join('sample_sent_to_jury','reviews.sample_id','sample_sent_to_jury.id')
-                    ->select('sample_sent_to_jury.samples as sampleId',
+                    ->select('sample_sent_to_jury.samples as sampleId','sample_sent_to_jury.jury_id as jury_id',
                              'juries.name as name','products.product_title as product',
                               'reviews.total_score as total')
                     ->where('sample_sent_to_jury.is_hidden','1')

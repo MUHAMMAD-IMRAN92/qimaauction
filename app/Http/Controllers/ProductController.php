@@ -164,7 +164,8 @@ class ProductController extends Controller
     public function view($id)
     {
         $jury = Jury::where('is_hidden', '0')->get();
-        $product = product::where('id', base64_decode($id))->where('is_hidden', '0')->with('category', 'origin')->first();
+        $product = product::where('id', base64_decode($id))
+        ->where('is_hidden', '0')->with('category', 'origin')->first();
         return view('admin.product.view_product', [
             'product' =>  $product,
             'juries' => $jury
@@ -241,7 +242,7 @@ class ProductController extends Controller
             }
               
         }
-       
+    //    dd($firstsample);
         if ($firstsample) {
             if ($firstsample->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
