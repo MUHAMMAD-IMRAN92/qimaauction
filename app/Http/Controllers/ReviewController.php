@@ -13,9 +13,10 @@ class ReviewController extends Controller
 {
     public function saveReview(Request $request)
     {
+
         $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
                                  ->where('product_id', $request->product_id)
-                                 ->where('temporary_link',$request->link)
+                                //  ->where('temporary_link',$request->link)
                                  ->where('is_hidden','0')
                                  ->first();
                                 //  return  $sampleSent;
