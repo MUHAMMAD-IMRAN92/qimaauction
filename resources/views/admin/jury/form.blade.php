@@ -129,6 +129,40 @@ line-height: 1 !important;
     color: white !important;
     background-color:rgb(209, 175, 105) !important;
 }
+.main-title{
+    /* position: absolute; */
+    width: 51px;
+    height: 6px;
+    color: #A4A3A3;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-feature-settings: 'kern' off;
+}
+.line{
+    position: absolute;
+    width: 615px;
+    height: 0px;
+    margin-left:22%; 
+    border: 1px solid #A4A3A3;
+}
+.dry-verticle{
+  position: absolute;
+  bottom: -150%;
+  left: 25%;
+  transform: rotate(-90deg);
+  transform-origin: left 0;
+}
+
+.dry{
+  position: relative;
+}
 </style>
 
 <body
@@ -159,29 +193,34 @@ line-height: 1 !important;
                                             <div class="col-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{  asset('/public/app-assets/images/logo/form_logo.png') }}">
+                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 29%;">
                                                 </div>
-                                                <p class="px-2">Fill the below form to submit your review.</p>
+                                                <p class="px-2" style="font-family: 'Montserrat';">CUPPER/ADEEL QURESHI - COMPANY/QIMA COFFEE</p>
+                                                <div class="line"></div>
+                                                  <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';">SAMPLE ID</p>
+                                                  {{-- <div> --}}
+                                                    <p class="px-2" style="color: #040404;margin-left:40%; width: 234px;font-family: 'Garamond Premier Pro';font-weight: 400;">21345</p>
+                                                  {{-- </div> --}}
                                             </div>
 
-                                            <div class="card-content" style="margin: 0 auto;">
+
+                                            <div class="card-content" style="margin-top: -5%">
                                                 <div class="card-body pt-0">
                                                     <!-- Form start -->
-                                                    <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
-                                                        enctype="multipart/form-data">
+                                                    <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                <div class="sample-text">
+                                                                {{-- <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
                                                                     <h3 style="color:black">{{$sampleName}}</h3>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="row purity">
                                                                     <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
                                                                            <div class="row ml-2">
-                                                                            <label>Name:</label>
-                                                                            <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
+                                                                            {{-- <label>Name:</label>
+                                                                            <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5> --}}
                                                                            </div>
                                                                            {{-- <div class="row m-5">
                                                                             <label>Table </label>
@@ -193,7 +232,7 @@ line-height: 1 !important;
                                                                            <div class="col-md-12 pl-0">
                                                                                {{-- <div class="row" style="justify-content: space-between; max-width:100%; overflow-x: scroll; flex-wrap:nowrap;"> --}}
                                                                                 <div class="" style="justify-content: space-between;width: 1200px;overflow: hidden;white-space: nowrap;overflow-x: auto;">
-                                                                                @foreach ($alltablesamples as $samp)
+                                                                                {{-- @foreach ($alltablesamples as $samp)
                                                                                
                                                                                 <div class="col-md-2 col-lg-2 mb-2 button-item">
                                                                                      @if($samp->sampleId == $sentSampleId)
@@ -206,7 +245,7 @@ line-height: 1 !important;
                                                                                     </a>
                                                                                     @endif
                                                                                 </div>
-                                                                               @endforeach
+                                                                               @endforeach --}}
                                                                                </div>
                                                                            </div>
                                                                         </div>
@@ -215,15 +254,38 @@ line-height: 1 !important;
                                                                 </div>
                                                                 <div class="row purity">
                                                                     <div class="col-12">
+                                                                        <div class="row purity">
+
+                                                                            <div class="col-md-12">
+                                                                              
+                                                                                {{-- <div class="user_name pt-0">
+                                                                                    <label>ROAST : </label>
+                                                                                </div> --}}
+                                                                                <div class="user_name">
+                                                                                    <div class="range-slider">
+                                                                                    <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); 
+                                                                                         this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                                </div>
+                                                                                   
+                                                                                </div>
+                                                                          
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="aroma-text">
+                                                                                <div class="aroma_input">
+                                                                                    <input type="text" name="defects_note" id="defects_note"
+                                                                                        placeholder="Notes"
+                                                                                        class="aroma_note">
+                                                                                </div>
+                                                                          
                                                                             <h3 class="entity-text">AROMA</h3>
                                                                             <div class="row aroma-data">
                                                                                 <div class="col-md-4">
                                                                                     <h5>DRY</h5>
-                                                                                    <div class="custom_slider">
-                                                                                        <div class="range-slider"
+                                                                                    <div class="custom_slider ">
+                                                                                        <div class="range-slider dry"
                                                                                             style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" class="aroma_dry"
+                                                                                            <input type="range" min="0" class="aroma_dry dry-verticle" 
                                                                                             id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
                                                                                                 step="1" value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
@@ -237,7 +299,7 @@ line-height: 1 !important;
                                                                                 <div class="col-md-4">
                                                                                     <h5>CRUST</h5>
                                                                                     <div class="custom_slider">
-                                                                                        <div class="range-slider"
+                                                                                        <div class="range-slider" 
                                                                                             style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                                             <input type="range" min="0"
                                                                                                 name="aroma_crust" id="aroma_crust" class="aroma_crust"
@@ -282,27 +344,9 @@ line-height: 1 !important;
                                                                 <input type="hidden" name="product_id" value="{{$productId}}">
                                                                 <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                                 <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                 
                                                                 <div class="row purity">
-
                                                                     <div class="col-md-12">
-                                                                      
-                                                                        <div class="user_name pt-0">
-                                                                            <label>ROAST : </label>
-                                                                        </div>
-                                                                        <div class="user_name">
-                                                                            <div class="range-slider">
-                                                                            <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                            {{-- <output></output>
-                                                                            <div class='range-slider__progress'>
-                                                                            </div> --}}
-                                                                        </div>
-                                                                           
-                                                                        </div>
-                                                                  
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row purity">
-                                                                    <div class="col-md-4">
                                                                         <div class="deffects-text">
                                                                             <h3 class="entity-text">DEFECTS</h3>
 
@@ -329,7 +373,9 @@ line-height: 1 !important;
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-4">
+                                                                </div>
+                                                                <div class="row purity">
+                                                                    <div class="col-md-12">
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">CLEAN UP</h3>
                                                                             <div class="custom_slider">
@@ -344,10 +390,15 @@ line-height: 1 !important;
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                     <input type="hidden" name="defect" id="defect" value="">
-                                                                    <div class="col-md-4">
+                                                                </div>
+                                                                    <div class="col-md-12">
+                                                                    
+                                                                        <input type="text" name="clean_sweet_note" id="clean_sweet_note"
+                                                                        placeholder="Note"
+                                                                        class="aroma_note">
+                                        
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">SWEETNESS</h3>
                                                                             <div class="custom_slider">
@@ -365,7 +416,7 @@ line-height: 1 !important;
                                                                         </div>
 
                                                                     </div>
-                                                                    <div class="col-12" style="display: flex;">
+                                                                    {{-- <div class="col-12" style="display: flex;">
                                                                         <div class="col-4 pl-0">
                                                                             <div class="aroma_input">
                                                                                 <input type="text" name="defects_note" id="defects_note"
@@ -380,7 +431,7 @@ line-height: 1 !important;
                                                                                     class="aroma_note">
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
 
                                                                 <div class="row purity">
