@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jury/sample_search', [App\Http\Controllers\JuryController::class, 'sampleSearch'])->name('sample_search');
     Route::post('/jury/ajax_send_to_jury',  [App\Http\Controllers\JuryController::class, 'ajaxSendToJuryPost'])->name('ajax_send_to_jury');
     Route::post('/jury/send_to_jury',  [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
+    Route::post('/jury/update_send_to_jury',  [App\Http\Controllers\JuryController::class, 'updateSentToJury'])->name('updateSentToJury');
     //option CRUD
     Route::get('/auction/index', [App\Http\Controllers\AuctionController::class, 'index']);
     Route::get('/auction/allauction', [App\Http\Controllers\AuctionController::class, 'allauction']);

@@ -86,14 +86,33 @@ class JuryController extends Controller
         $jury->save();
         return redirect('/jury/index')->with('msg', 'jury Deleted Successfully');
     }
+    // public function edit(Request $request, $id)
+    // {
+    //     $jury = Jury::find(base64_decode($id));
+    //      $data=SentToJury::where('jury_id',base64_decode($id))->get();
+    //     return view('admin.jury.edit', [
+    //         'jury' =>  $jury,
+    //     ]);
+    // }
     public function edit(Request $request, $id)
     {
-        $jury = Jury::find(base64_decode($id));
-
-        return view('admin.jury.edit', [
-            'jury' =>  $jury,
+        $selectedjury = Jury::find(base64_decode($id));
+        $juries = Jury::all();
+        $products = Product::all();
+        $auctions = Auction::all();
+         $senttojury=SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
+                               ->select('products.*','sample_sent_to_jury.*')
+                              ->where('jury_id',base64_decode($id))
+                              ->get();
+         return view('admin.jury.edit_sent_to_jury', [
+            'senttojury' =>  $senttojury,
+            'juries' =>  $juries,
+            'selectedjury' =>  $selectedjury,
+            'products' => $products,
+            'auctions' => $auctions
         ]);
     }
+   
     public function update(Request $request)
     {
         $jury = Jury::find($request->id);
@@ -111,12 +130,12 @@ class JuryController extends Controller
         $juries = Jury::all();
         $products = Product::all();
         $auctions = Auction::all();
-
         return view('admin.jury.send_to_jury', [
             'juries' =>  $juries,
             'products' => $products,
             'auctions' => $auctions
         ]);
+       
     }
     public function ajaxSendToJuryPost(Request $request)
     {
@@ -164,8 +183,44 @@ class JuryController extends Controller
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
         return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
-        ;
     }
+    public function updateSentToJury(Request $request){
+        // dd($request->all());
+        $request->validate([
+            'juries' => 'required|array',
+            'products' => 'required|array',
+            'auction_id' => 'required'
+        ]);
+        $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
+        foreach ($request->juries as $jury1) {
+            foreach ($request->products as $key => $product) {
+                $sampleSent=SentToJury::where('product_id',$product)->first();
+            
+                 if(isset($sampleSent))
+                 {
+                    $sampleSent->jury_id = $jury1;
+                    $sampleSent->tables = $request->$key;
+                    $sampleSent->product_id = $product;
+                    $sampleSent->auction_id = $request->auction_id;
+                    $sampleSent->temporary_link = $tempLink;
+                    $sampleSent->samples = $request->samples[$key];
+                    $sampleSent->save();  
+                 }
+                else
+                {
+                    $sampleSent = new SentToJury();
+                    $sampleSent->jury_id = $jury1;
+                    $sampleSent->tables = $request->$key;
+                    $sampleSent->product_id = $product;
+                    $sampleSent->auction_id = $request->auction_id;
+                    $sampleSent->temporary_link = $tempLink;
+                    $sampleSent->samples = $request->samples[$key];
+                    $sampleSent->save();  
+                }
+            }
+        }
+        return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
+ }
 
     public function juryLinks(Request $request, $id)
     {
@@ -179,13 +234,6 @@ class JuryController extends Controller
             ->where('sample_sent_to_jury.tables','!=',null)
             // ->orderBy('created_at','desc')
              ->get();
-            //  dd($samples);
-            // $samples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
-            //                       ->select('products.*','sample_sent_to_jury.*')
-            //                       ->where('sample_sent_to_jury.jury_id', $juryId)
-            //                       ->where('sample_sent_to_jury.is_hidden', '0')
-            //                       ->get();
-
             $juryName = Jury::where('id', $juryId)->first();
              $firstsample =   $samples->first();
             return view('admin.jury.jury_links', [
