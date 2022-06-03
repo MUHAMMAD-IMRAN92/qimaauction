@@ -129,7 +129,6 @@ line-height: 1 !important;
     color: white !important;
     background-color:rgb(209, 175, 105) !important;
 }
-<<<<<<< HEAD
 .main-title{
     /* position: absolute; */
     width: 51px;
@@ -164,8 +163,6 @@ line-height: 1 !important;
 .dry{
   position: relative;
 }
-=======
->>>>>>> 190b5304db661d2780486f908253a5ea32c38254
 </style>
 
 <body
@@ -217,22 +214,13 @@ line-height: 1 !important;
                                                                 {{-- <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
                                                                     <h3 style="color:black">{{$sampleName}}</h3>
-<<<<<<< HEAD
                                                                 </div> --}}
-=======
-                                                                </div>
->>>>>>> 190b5304db661d2780486f908253a5ea32c38254
                                                                 <div class="row purity">
                                                                     <div class="col-md-12">
                                                                         <div class="user_name" style="display:flex">
                                                                            <div class="row ml-2">
-<<<<<<< HEAD
                                                                             {{-- <label>Name:</label>
                                                                             <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5> --}}
-=======
-                                                                            <label>Name:</label>
-                                                                            <h5 class="m-0" style="padding: 4px !important;">{{$juryName}}</h5>
->>>>>>> 190b5304db661d2780486f908253a5ea32c38254
                                                                            </div>
                                                                            {{-- <div class="row m-5">
                                                                             <label>Table </label>
@@ -244,11 +232,7 @@ line-height: 1 !important;
                                                                            <div class="col-md-12 pl-0">
                                                                                {{-- <div class="row" style="justify-content: space-between; max-width:100%; overflow-x: scroll; flex-wrap:nowrap;"> --}}
                                                                                 <div class="" style="justify-content: space-between;width: 1200px;overflow: hidden;white-space: nowrap;overflow-x: auto;">
-<<<<<<< HEAD
                                                                                 {{-- @foreach ($alltablesamples as $samp)
-=======
-                                                                                @foreach ($alltablesamples as $samp)
->>>>>>> 190b5304db661d2780486f908253a5ea32c38254
                                                                                
                                                                                 <div class="col-md-2 col-lg-2 mb-2 button-item">
                                                                                      @if($samp->sampleId == $sentSampleId)
