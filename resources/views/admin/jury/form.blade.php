@@ -179,10 +179,10 @@ line-height: 1 !important;
 
             <div class="content-body">
                 <section class="row flexbox-container">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-lg-12 d-flex justify-content-center">
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
-                                <div class="col-lg-12 col-12 p-0">
+                                <div class="col-lg-12  p-0">
                                     <div class="card rounded-0 mb-0 p-2">
                                         <div class="card-header pt-50 pb-1">
                                             @if (session('success'))
@@ -190,7 +190,7 @@ line-height: 1 !important;
                                                 {{ session('success') }}
                                                 </div>
                                             @endif
-                                            <div class="col-12">
+                                            <div class="col-lg-12">
                                                 <div class="site-logo">
                                                     <img
                                                         src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 29%;">
@@ -210,7 +210,7 @@ line-height: 1 !important;
                                                     <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="row">
-                                                            <div class="col-12">
+                                                            <div class="col-lg-12">
                                                                 {{-- <div class="sample-text">
                                                                     <h3>SAMPLE :</h3>
                                                                     <h3 style="color:black">{{$sampleName}}</h3>
@@ -253,7 +253,7 @@ line-height: 1 !important;
                                                                     </div>
                                                                 </div>
                                                                 <div class="row purity">
-                                                                    <div class="col-12">
+                                                                    <div class="col-lg-12">
                                                                         <div class="row purity">
 
                                                                             <div class="col-md-12">
@@ -416,7 +416,7 @@ line-height: 1 !important;
                                                                         </div>
 
                                                                     </div>
-                                                                    {{-- <div class="col-12" style="display: flex;">
+                                                                    {{-- <div class="col-lg-12" style="display: flex;">
                                                                         <div class="col-4 pl-0">
                                                                             <div class="aroma_input">
                                                                                 <input type="text" name="defects_note" id="defects_note"
@@ -435,7 +435,7 @@ line-height: 1 !important;
                                                                 </div>
 
                                                                 <div class="row purity">
-                                                                    <div class="col-md-4">
+                                                                    <div class="col-lg-12">
                                                                         <div class="roast-text">
                                                                             <h3 class="entity-text">ACIDITY</h3>
                                                                             <div class="custom_slider">
