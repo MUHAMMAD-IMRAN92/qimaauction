@@ -68,6 +68,7 @@
 .section-2 img {
     height: auto;
     width: 655px;
+    max-width: 100%;
 }
 a.btn.btn-outline-light {
     padding: 28px 29px;
