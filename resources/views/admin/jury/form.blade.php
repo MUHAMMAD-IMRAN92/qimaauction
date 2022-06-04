@@ -193,7 +193,7 @@ line-height: 1 !important;
                                             <div class="col-lg-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 29%;">
+                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;">
                                                 </div>
                                                 <p class="px-2" style="font-family: 'Montserrat';">CUPPER/ADEEL QURESHI - COMPANY/QIMA COFFEE</p>
                                                 <div class="line"></div>
