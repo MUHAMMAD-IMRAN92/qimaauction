@@ -200,7 +200,7 @@ line-height: 1 !important;
                                                 <div class="line"></div>
                                                   <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';">SAMPLE ID</p>
                                                   {{-- <div> --}}
-                                                    <p class="px-2" style="color: #040404;margin-left:40%; width: 234px;font-family: 'Garamond Premier Pro';font-weight: 400;">21345</p>
+                                                    <p class="px-2" style="color: #040404;margin-left:40%; width: 234px;font-family: 'Garamond Premier Pro';font-weight: 400;">{{$sentSampleId}}</p>
                                                   {{-- </div> --}}
                                             </div>
 
