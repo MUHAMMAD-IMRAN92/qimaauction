@@ -289,7 +289,18 @@ a.btn-outline-light:hover{
     font-size: 36px;
 }
 /* Media Quries */
+a.banner{
+    padding: 5px !important;
+    font-size: 18px !important;
+    margin-top: -4px !important;
+}
+
 @media only screen and (max-width: 425px) {
+    a.banner {
+        padding: 5px !important;
+        font-size: 18px !important;
+        margin-top: 56px !important;
+    }
     .video-img img {
         height: 100px !important;
         width: auto !important;
@@ -319,8 +330,19 @@ a.btn-outline-light:hover{
     }
 
 }
-
+@media only screen and (min-width:1440px) {
+    a.banner{
+        padding: 28px 29px !important;
+        font-size: 28px !important;
+        margin-top: 30px !important;
+    }
+}
 @media only screen and (max-width: 1440px) and (min-width: 1025px) {
+    a.banner{
+        padding: 28px 29px !important;
+        font-size: 28px !important;
+        margin-top: 30px !important;
+    }
     .overlay {
         /* top: 80px !important; */
     }
