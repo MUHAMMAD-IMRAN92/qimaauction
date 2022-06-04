@@ -193,9 +193,10 @@ line-height: 1 !important;
                                             <div class="col-lg-12">
                                                 <div class="site-logo">
                                                     <img
-                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;">
+                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
                                                 </div>
-                                                <p class="px-2" style="font-family: 'Montserrat';">CUPPER/ADEEL QURESHI - COMPANY/QIMA COFFEE</p>
+                                                <p class="px-2" style="font-family: 'Montserrat';">CUPPER: {{ $juryName }}</p>
+                                                <p class="px-2" style="font-family: 'Montserrat';">COMPANY: {{$juryCompany}}</p>
                                                 <div class="line"></div>
                                                   <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';">SAMPLE ID</p>
                                                   {{-- <div> --}}

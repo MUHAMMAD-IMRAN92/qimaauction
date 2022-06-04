@@ -214,6 +214,7 @@ class ProductController extends Controller
         $tags = Tag::where('jury_id',$request->juryId)->get();
            $juery = Jury::where('ID',$request->juryId)->first();
            $name = $juery->name;
+           $company = $juery->company;
 
         $alltablesamples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
         ->join('juries','juries.id','sample_sent_to_jury.jury_id')
@@ -254,6 +255,7 @@ class ProductController extends Controller
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
                     'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
                     'juryName' => $name,
+                    'juryCompany' => $company,
                     'table' => $request->table ?? $firstsample->sampleTable,
                     'tags' => $tags,
                     'alltablesamples'=> $alltablesamples,
