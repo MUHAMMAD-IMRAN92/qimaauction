@@ -283,9 +283,9 @@ line-height: 1 !important;
                                                                                 <div class="col-md-4">
                                                                                     <h5>DRY</h5>
                                                                                     <div class="custom_slider ">
-                                                                                        <div class="range-slider dry"
+                                                                                        <div class="range-slider"
                                                                                             style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                                            <input type="range" min="0" class="aroma_dry dry-verticle" 
+                                                                                            <input type="range" min="0" class="aroma_dry" 
                                                                                             id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
                                                                                                 step="1" value="0"
                                                                                                 oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
