@@ -29,7 +29,7 @@ class JuryMail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@qima.com')->markdown('jury_email',[
+        return $this->from('noreply@mg.bestofyemenauction.com')->markdown('jury_email',[
             'jury' => $this->jury,
         ]);
     }
