@@ -53,9 +53,10 @@
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-<style>
+<style type="text/css">
     body{
         overflow-x: hidden; 
+        font-family:'Montserrat';
     }
     .bootstrap-touchspin .bootstrap-touchspin-injected {
         margin: -8px !important;
@@ -105,63 +106,161 @@
     h5{
         font-size: 1.4rem;
     }  
-.w-70{
-    width: 70% !important;
-    height: 45px;
-    border-radius: 0.4rem;
-}
-@media only screen and (max-width:450px){
-    .mbl-mar{
-        margin-left: 3rem;
+    .w-70{
+        width: 70% !important;
+        height: 45px;
+        border-radius: 0.4rem;
     }
-    body {
-    padding-top: 0 !important;
-    gap: 8%;
-}
-}
-.btn-lg{
-line-height: 1 !important;
-}
-.discriptor{
-    font-size: 16px;
-}
-.alert-success{
-    color: white !important;
-    background-color:rgb(209, 175, 105) !important;
-}
-.main-title{
-    /* position: absolute; */
-    width: 51px;
-    height: 6px;
-    color: #A4A3A3;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    font-feature-settings: 'kern' off;
-}
-.line{
+    @media only screen and (max-width:450px){
+        .mbl-mar{
+            margin-left: 3rem;
+        }
+        body {
+        padding-top: 0 !important;
+        gap: 8%;
+    }
+    }
+    .btn-lg{
+    line-height: 1 !important;
+    }
+    .discriptor{
+        font-size: 16px;
+    }
+    .alert-success{
+        color: white !important;
+        background-color:rgb(209, 175, 105) !important;
+    }
+    .main-title{
+        /* position: absolute; */
+        width: 51px;
+        height: 6px;
+        color: #A4A3A3;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-feature-settings: 'kern' off;
+    }
+    .line{
+        position: absolute;
+        width: 615px;
+        height: 0px;
+        margin-left:22%; 
+        border: 1px solid #A4A3A3;
+    }
+    .dry-verticle{
     position: absolute;
-    width: 615px;
-    height: 0px;
-    margin-left:22%; 
-    border: 1px solid #A4A3A3;
-}
-.dry-verticle{
-  position: absolute;
-  bottom: -150%;
-  left: 25%;
-  transform: rotate(-90deg);
-  transform-origin: left 0;
-}
+    bottom: -150%;
+    left: 25%;
+    transform: rotate(-90deg);
+    transform-origin: left 0;
+    }
 
-.dry{
-  position: relative;
+    .dry{
+    position: relative;
+    }
+    h3.entity-text{
+        width:100%;
+        text-align:center;
+    }
+    .entity-label{
+        font-family:'Montserrat';
+        font-size:32px;
+        color:#A4A3A3;
+        text-align:center;
+        padding-top:10px;
+        padding-bottom:20px;
+    }
+    .aroma-bg{
+        background-color:#6A2AF1;
+    }
+    .defects-bg{
+        background-color:#B22AF1;
+    }
+    .cleancup-bg{
+        background-color:#2AE5F1;
+    }
+    .total-bg{
+        background-color:#000;
+    }
+    .roast-bg{
+        background-color:transparent;
+        border:1px solid #000;
+        color:#000;
+    }
+    .overall-bg{
+        background-color:#95E2AF;
+    }
+    .balance-bg{
+        background-color:#29672C;
+    }
+    .flavor-bg{
+        background-color:#F32C38;
+    }
+    .aftertaste-bg{
+        background-color:#E7936E;
+    }
+    .sweetness-bg{
+        background-color:#E2959A;
+    }
+    .acidity-bg{
+        background-color:#FDBF86;
+    }
+    .mouthfeel-bg{
+        background-color:#38DFB7;
+    }
+    .multiply,.score_first_number,.score_second_number,.multiply4{
+        font-family:'Montserrat';
+        font-size:32px;
+    }
+    .score_first_number,.score_second_number{
+        width:80px;
+    }
+    .entity_note {
+        width: 80%;
+        margin: auto;
+        padding: 10px;
+        font-size: 18px;
+        font-family: 'Montserrat';
+    }
+    .entity_input {
+        width: 100%;
+        text-align: center;
+        padding-top: 29px;
+        padding-bottom:20px;
+    }
+    h2.totalScore {
+        text-align: center;
+        font-size: 300px;
+        font-family: 'EB Garamond';
+    }
+    .submit-form-btn {
+    background: transparent;
+    color: #A4A3A3 !important;
+    border: 1px solid #A4A3A3 !important;
+    padding: 22px;
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+}
+.scrollable{
+    width: 77vh;
+    overflow: auto;
+}
+.pager{
+    width: 216px;
+    font-size:24px;
+    background-color:#C4C4C4;
+}
+.pager.btn-success{
+    background-color:#000 !important;
+    color:#FFF;
 }
 </style>
 
@@ -195,12 +294,384 @@ line-height: 1 !important;
                                                     <img
                                                         src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
                                                 </div>
-                                                <p class="px-2" style="font-family: 'Montserrat';">CUPPER: {{ $juryName }}</p>
-                                                <p class="px-2" style="font-family: 'Montserrat';">COMPANY: {{$juryCompany}}</p>
-                                                <div class="line"></div>
-                                                  <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';">SAMPLE ID: {{$sentSampleId}}</p>
+                                                <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
+                                                <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p>
+                                                <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';font-size:25px;">SAMPLE ID: @foreach ($alltablesamples as $samp)
+                                                                                    
+                                                                                    @if($samp->sampleId == $sentSampleId)
+                                                                    {{$samp->samples}}
+
+                                                                                    @endif
+                                                            @endforeach</p>
                                             </div>
 
+                                            <div class="col-lg-12">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="link" value="{{$link}}">
+                                                                <input type="hidden" name="product_id" value="{{$productId}}">
+                                                                <input type="hidden" name="jury_id" value="{{$juryId}}">
+                                                                <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                                    <div class="row">
+                                                    <h3 class="entity-text roast-bg">ROAST</h3>
+
+                                                        <div class="user_name">
+                                                            <div class="range-slider">
+                                                            <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); 
+                                                                    this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                    <h3 class="entity-text aroma-bg">AROMA</h3>
+
+                                                        <div class="row aroma-data">
+                                                            <div class="col-lg-12">
+                                                                <h5>DRY</h5>
+                                                                <div class="custom_slider ">
+                                                                    <div class="range-slider"
+                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
+                                                                        <input type="range" min="0" class="aroma_dry" 
+                                                                        id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
+                                                                            step="1" value="0"
+                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                        <output></output>
+                                                                        <div
+                                                                            class='range-slider__progress'>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <h5>CRUST</h5>
+                                                                <div class="custom_slider">
+                                                                    <div class="range-slider" 
+                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
+                                                                        <input type="range" min="0"
+                                                                            name="aroma_crust" id="aroma_crust" class="aroma_crust"
+                                                                            max="3" step="1"
+                                                                            value="0"
+                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                        <output></output>
+                                                                        <div
+                                                                            class='range-slider__progress'>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <h5>BREAK</h5>
+                                                                <div class="custom_slider">
+                                                                    <div class="range-slider"
+                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
+                                                                        <input type="range" min="0"
+                                                                            name="aroma_break" id="aroma_break"
+                                                                            max="3" step="1"
+                                                                            value="0"
+                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                        <output></output>
+                                                                        <div
+                                                                            class='range-slider__progress'>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="aroma_input">
+                                                                                <input type="text" name="aroma_note" id="aroma_note"
+                                                                                    placeholder="Note"
+                                                                                    class="aroma_note">
+                                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <input class="score_first_number" oninput="if (this.value > 3) this.value = 0;"
+                                                                type="number" id="quantity"  value="first_number"
+                                                                name="first_number">
+                                                            <span
+                                                                class="multiply">X</span>
+                                                            <input class="score_second_number" oninput="if (this.value > 5) this.value = 0"
+                                                                type="number" id="quantity" maxlength="5" value="second_number"
+                                                                name="second_number">
+                                                            <span
+                                                                class="multiply">X</span>
+                                                            <span
+                                                                class="multiply">4</span>
+                                                            <span
+                                                                class="multiply">=</span>
+                                                            <span
+                                                                class="multiply4">?</span>
+                                                        </div>
+                                                        <div class="entity_input">
+                                                            <input type="text" name="defect_note" id="defect_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="hidden" name="defect" id="defect" value="">
+
+                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 100%;'>
+                                                                    <input type="range" min="0" max="8" name="clean_up" id="clean_up"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="entity_input">
+                                                            <input type="text" name="cleanup_note" id="cleanup_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="sweetness" id="sweetness"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="entity_input">
+                                                            <input type="text" name="sweetness_note" id="sweetness_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8"
+                                                                        step="1" value="6" name="acidity" id="acidity"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio"
+                                                                            name="acidity_chk" value="H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio"
+                                                                            name="acidity_chk" value="M">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                    <h5>M</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio"
+                                                                            checked="checked"
+                                                                            name="acidity_chk" value="L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                    <h5>L</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="acidity_note" id="acidity_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio"
+                                                                             value="H"
+                                                                            name="fm_chk">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" value="M"
+                                                                            name="fm_chk">
+                                                                        <div
+                                                                            class="checkmark">
+                                                                        </div>
+                                                                        <h5>M</h5>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" value="L" checked="checked"
+                                                                            name="fm_chk">
+                                                                        <div
+                                                                            class="checkmark">
+                                                                        </div>
+                                                                        <h5>L</h5>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="flavour" id="flavour"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="flavor_note" id="flavor_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="after_taste" id="after_taste"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="aftertaste_note" id="aftertaste_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text balance-bg">BALANCE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="balance" id="balance"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="balance_note" id="balance_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="range-slider"
+                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
+                                                                    <input type="range" min="0" max="8" name="overall" id="overall"
+                                                                        step="1" value="6"
+                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                                    <output></output>
+                                                                    <div class='range-slider__progress'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="overall_note" id="overall_note"
+                                                                    placeholder="NOTES"
+                                                                    class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text total-bg">TOTAL</h3>
+                                                    <p class="entity-label">(+36)</p>
+                                                    <input type="hidden" name="total_score" id="total_score" value="">
+                                                    <h2 class="totalScore">0</h2>
+                                                    <div class="scrollable" style="overflow:auto;">
+                                                        <div class="button-group" style="width:{{count($alltablesamples)>0?(count($alltablesamples)*220).'px':'100%'}}">
+                                                            @foreach ($alltablesamples as $samp)
+                                                                                    
+                                                                @if($samp->sampleId == $sentSampleId)
+                                                                <a class="btn btn-success pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                    {{$samp->samples}}
+                                                                </a>
+                                                                @else
+                                                                <a class="btn btn-secondary pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                    {{$samp->samples}}
+                                                                </a>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    <input class="submit-form-btn" type="submit" value="SUBMIT TABLE">
+                                                </form>
+                                            </div>
 
                                             
                                         </div>
@@ -531,13 +1002,14 @@ line-height: 1 !important;
                 $('#volspan').html($(this).val() + '%');
                 $('#roastvalue').val($(this).val());
             })
+            $('input[type=range]').first().trigger('input');
         });
     </script>
 
     <!-- Range slider Start -->
     <style class="INLINE_PEN_STYLESHEET_ID">
         .range-slider {
-            width: clamp(250px, 50vw, 250px) !important;
+            width: clamp(250px, 80vw, 1250px) !important;
             min-width: 250px;
         }
 
@@ -615,7 +1087,7 @@ line-height: 1 !important;
             --value-background: transparent;
             --value-background-hover: var(--primary-color);
             --value-font: 700 12px/1 Arial;
-            --fill-color: var(--primary-color);
+            --fill-color: transparent;
             --progress-background: #e4e4e4;
             --progress-radius: 20px;
             --track-height: calc(var(--thumb-size) / 2);
@@ -670,9 +1142,10 @@ line-height: 1 !important;
         
 .user_name{
     padding: 20px 0;
+    width: 100%;
 }
         .user_name .range-slider{
-            / background-image: linear-gradient(to right,#fff , #000) !important; /
+            / background-image: linear-gradient(to right,#fff , #88592D) !important; /
             --primary-color: #5D5D5D;
             --value-offset-y: var(--ticks-gap);
             --value-active-color: white;
@@ -729,7 +1202,7 @@ line-height: 1 !important;
             width: 100% !important;
         }
         .user_name .range-slider input{
-            background-image: linear-gradient(to right,#fff , #000) !important;
+            background-image: linear-gradient(to right,#fff , #88592D) !important;
             height: 50px;
             border: 1px solid #5D5D5D;
         }
@@ -983,9 +1456,9 @@ line-height: 1 !important;
         }
 
         a {
-            position: fixed;
+            /* position: fixed;
             top: 1em;
-            left: 1em;
+            left: 1em; */
             display: inline-block;
             height: 2em;
         }
