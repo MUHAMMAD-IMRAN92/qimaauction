@@ -56,7 +56,7 @@
                                                         <th>Sr</th>
                                                         <th>Title</th>
                                                         <th>Description</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>
@@ -68,7 +68,7 @@
                                                         <th>Sr</th>
                                                         <th>Title</th>
                                                         <th>Description</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </tfoot>

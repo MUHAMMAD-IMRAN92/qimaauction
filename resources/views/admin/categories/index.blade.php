@@ -63,7 +63,7 @@
                                                         <th>Title</th>
                                                         <th>Description</th>
                                                         <th>Image</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>
@@ -76,7 +76,7 @@
                                                         <th>Title</th>
                                                         <th>Description</th>
                                                         <th>Image</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </tfoot>

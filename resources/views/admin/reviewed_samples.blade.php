@@ -27,7 +27,7 @@
                                                 <th>Samples</th>
                                                 <th>Date</th>
                                                 <th>Jury Members</th>
-                                                <th>Action</th>
+                                                <th>Action(s)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
