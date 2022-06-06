@@ -129,7 +129,7 @@ a.btn.btn-outline-light.banner:hover{
 }
 a.btn-outline-dark{
     font-family: 'Montserrat';
-    font-size: 26px; 
+    font-size: 17px; 
     font-weight: 400;
     border: 3px solid #232B38;
     border-radius: 10px;
@@ -386,9 +386,6 @@ a.banner{
         padding: 28px 29px !important;
         font-size: 28px !important;
         margin-top: 30px !important;
-    }
-    .overlay {
-        /* top: 80px !important; */
     }
 
     .video-img img {
