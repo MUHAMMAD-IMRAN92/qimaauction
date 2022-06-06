@@ -309,6 +309,17 @@
 .customslider.ui-slider-pips .ui-slider-pip{
     top:14px;
 }
+.roastslider.ui-slider-horizontal {
+    height: 50px;
+    border-radius: 0;
+    background-image: linear-gradient(to right,#fff , #88592D) !important;
+}
+.roastslider .ui-slider-handle {
+    height: 62px;
+    border-radius: 5px;
+    background-color: gray;
+    border-color: grey;
+}
 </style>
 
 <body
