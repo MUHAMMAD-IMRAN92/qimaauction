@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            {{-- <h2 class="content-header-title float-left mb-0">Flavours</h2> --}}
+                            {{-- <h2 class="content-header-title float-left mb-0">Governorators</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Flavours
+                                    <li class="breadcrumb-item active">Governorators
                                     </li>
                                 </ol>
                             </div>
