@@ -170,14 +170,29 @@ class JuryController extends Controller
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
-                $sampleSent = new SentToJury();
-                $sampleSent->jury_id = $jury1;
-                $sampleSent->tables = $request->$key;
-                $sampleSent->product_id = $product;
-                $sampleSent->auction_id = $request->auction_id;
-                $sampleSent->temporary_link = $tempLink;
-                $sampleSent->samples = $request->samples[$key];
-                $sampleSent->save();  
+                $sampleSent=SentToJury::where('product_id',$product)->first();
+            
+                if(isset($sampleSent))
+                {
+                   $sampleSent->jury_id = $jury1;
+                   $sampleSent->tables = $request->$key;
+                   $sampleSent->product_id = $product;
+                   $sampleSent->auction_id = $request->auction_id;
+                   $sampleSent->temporary_link = $tempLink;
+                   $sampleSent->samples = $request->samples[$key];
+                   $sampleSent->save();  
+                }
+               else
+               {
+                   $sampleSent = new SentToJury();
+                   $sampleSent->jury_id = $jury1;
+                   $sampleSent->tables = $request->$key;
+                   $sampleSent->product_id = $product;
+                   $sampleSent->auction_id = $request->auction_id;
+                   $sampleSent->temporary_link = $tempLink;
+                   $sampleSent->samples = $request->samples[$key];
+                   $sampleSent->save();  
+               }  
             }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
