@@ -1569,7 +1569,7 @@
     })
     .on("slidechange", function( e, ui ) {
         console.log(ui);
-        console.log(ui.parentNode.find('input'));
+        console.log(ui.parentNode);
         // ui.value;
     })
     .slider("float",{labels: hanzi});
