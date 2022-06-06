@@ -256,7 +256,7 @@
     margin-top: 40px;
 }
 .scrollable{
-    width: 77vh;
+    width: calc(100vh - 180px);
     overflow: auto;
 }
 .pager{
@@ -651,7 +651,7 @@
                                                     <input type="hidden" name="total_score" id="total_score" value="">
                                                     <h2 class="totalScore">0</h2>
                                                     <div class="scrollable" style="overflow:auto;">
-                                                        <div class="button-group" style="width:{{count($alltablesamples)>0?(count($alltablesamples)*121).'px':'100%'}}">
+                                                        <div class="button-group" style="white-space:nowrap">
                                                             @foreach ($alltablesamples as $samp)
                                                                                     
                                                                 @if($samp->sampleId == $sentSampleId)
