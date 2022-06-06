@@ -47,6 +47,12 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+    
+                
+<!-- plus a jQuery UI theme, here I use "flick" -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+<link rel="stylesheet" href="{{ asset('public/app-assets/css/pips.css') }}">
+<script src="{{ asset('public/app-assets/js/pips.js') }}" defer></script>
 
 
 </head>
@@ -262,6 +268,37 @@
     background-color:#000 !important;
     color:#FFF;
 }
+.ui-slider-pips .ui-slider-line {
+    background: #999;
+    width: 2px;
+    height: 50px !important;
+    position: absolute;
+    left: 50%;
+    top: -38px !important;
+}
+.ui-slider-pips .ui-slider-label {
+    top: 30px;
+}
+.ui-state-focus{
+    color: #000 !important;
+    border-color: black !important;
+}
+.ui-state-default{
+    color: #000 !important;
+}
+.ui-slider-pips [class*=ui-slider-pip-selected] {
+    font-weight: bold;
+    color: black;
+}
+.ui-corner-all{
+    border-radius: 50%;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid black;
+    background: black url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
+    font-weight: bold;
+    color: black;
+}
 </style>
 
 <body
@@ -294,6 +331,9 @@
                                                     <img
                                                         src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
                                                 </div>
+                                                {{-- <div class="design-slider mt-5 mb-5">
+                                                    <div class="customslider"></div>
+                                                </div> --}}
                                                 <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
                                                 <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p>
                                                 <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';font-size:25px;">SAMPLE ID: @foreach ($alltablesamples as $samp)
@@ -341,7 +381,9 @@
                                                                             class='range-slider__progress'>
                                                                         </div>
                                                                     </div>
+                                                                    
                                                                 </div>
+                                                                
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <h5>CRUST</h5>
@@ -359,6 +401,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <h5>BREAK</h5>
@@ -376,6 +419,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                
                                                             </div>
                                                             <!-- <div class="aroma_input">
                                                                                 <input type="text" name="aroma_note" id="aroma_note"
@@ -417,7 +461,7 @@
                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 100%;'>
                                                                     <input type="range" min="0" max="8" name="clean_up" id="clean_up"
@@ -427,6 +471,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
@@ -438,7 +485,7 @@
                                                     <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="sweetness" id="sweetness"
@@ -448,6 +495,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
@@ -459,7 +509,7 @@
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8"
@@ -469,6 +519,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
@@ -515,7 +568,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="custom_slider">
-                                                                <div class="range-slider"
+                                                                {{-- <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
                                                                         step="1" value="6"
@@ -523,6 +576,9 @@
                                                                     <output></output>
                                                                     <div class='range-slider__progress'>
                                                                     </div>
+                                                                </div> --}}
+                                                                <div class="design-slider mt-5 mb-5">
+                                                                    <div class="customslider"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="radio_button">
@@ -568,7 +624,7 @@
                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="flavour" id="flavour"
@@ -578,6 +634,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="flavor_note" id="flavor_note"
@@ -589,7 +648,7 @@
                                                     <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="after_taste" id="after_taste"
@@ -599,6 +658,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="aftertaste_note" id="aftertaste_note"
@@ -610,7 +672,7 @@
                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="balance" id="balance"
@@ -620,6 +682,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="balance_note" id="balance_note"
@@ -631,7 +696,7 @@
                                                     <h3 class="entity-text overall-bg">OVERALL</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
+                                                            {{-- <div class="custom_slider">
                                                                 <div class="range-slider"
                                                                     style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
                                                                     <input type="range" min="0" max="8" name="overall" id="overall"
@@ -641,6 +706,9 @@
                                                                     <div class='range-slider__progress'>
                                                                     </div>
                                                                 </div>
+                                                            </div> --}}
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="overall_note" id="overall_note"
@@ -1486,7 +1554,19 @@
     <script>
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
+            $(".customslider")
+    .slider({
+        max: 8,
+        step: 0.5 
+    })
+    .slider("pips", {
+        rest: "label",
+        step: 2
+    })
+    .slider("float");
+    
         });
+        
     </script>
 </body>
 <!-- END: Body-->
