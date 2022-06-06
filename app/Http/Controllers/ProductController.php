@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Mail\JuryMail;
 use App\Models\Category;
 use App\Models\Flavour;
+use App\Models\Governorate;
 use App\Models\Jury;
 use App\Models\Tag;
 use App\Models\Origin;
 use App\Models\Product;
+use App\Models\Region;
 use App\Models\Image;
 use App\Models\SentToJury;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -60,9 +63,15 @@ class ProductController extends Controller
         $category = Category::where('is_hidden', '0')->get();
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
+        $region = Region::where('is_hidden', '0')->get();
+        $village = Village::where('is_hidden', '0')->get();
+        $governorator = Governorate::where('is_hidden', '0')->get();
         return view('admin.product.create', [
             'category' => $category,
             'flavour' => $flavour,
+            'governorator' => $governorator,
+            'village' => $village,
+            'region' => $region,
             'origin' => $origin
         ]);
     }
@@ -71,11 +80,20 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'table' => 'required',
+            'postion' => 'required',
             'pro_category' => 'required',
             'pro_flavour' => 'required',
             'pro_origin' => 'required',
         ]);
         $product = new  Product();
+        $product->product_title = $request->title;
+        $product->sample = $request->sample;
+        $product->postion = $request->postion;
+        $product->table = $request->table;
+        $product->governorate_id = $request->governorate_id;
+        $product->village_id = $request->village_id;
+        $product->region_id = $request->region_id;
         $product->product_title = $request->title;
         $product->product_description = $request->description;
         $product->user_id = $this->user->id;

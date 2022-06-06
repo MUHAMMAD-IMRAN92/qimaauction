@@ -153,9 +153,11 @@
                                                           @endif                       
                                                         </div>
                                                         <div class="col-md-2">
+                                                            @if(count($senttojury) > 0)
                                                             @foreach ($products as $key => $product)
-                                                            <input type="number" class="form-control" name="" id="" placeholder="Postion">
+                                                            <input type="number" class="form-control" name="postion[]" id="postion" value="{{$product->postion}}" placeholder="Postion">
                                                             @endforeach
+                                                            @endif
                                                         </div>
                                                         <div class="col-md-4">
                                                             @if(count($senttojury) > 0)

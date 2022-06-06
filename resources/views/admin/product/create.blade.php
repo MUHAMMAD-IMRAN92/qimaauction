@@ -62,9 +62,40 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="product-title" class="form-control"
-                                                                name="title" required>
+                                                            <input type="text" id="product-title " class="form-control  @error('title') is-invalid @enderror"
+                                                                name="title">
                                                             <label for="product-title">Product Title</label>
+                                                            @error('title')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
+                                                                name="sample">
+                                                            <label for="product-title">SampleId</label>
+                                                            @error('sample')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="number" class="form-control @error('postion') is-invalid @enderror" name="postion" id="postion"  oninput="if (this.value > 9) this.value = 0;">
+                                                            <label for="product-title">Postion</label>
+                                                            @error('postion')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="number" class="form-control  @error('table') is-invalid @enderror" name="table" id="table"  oninput="if (this.value > 5 ) this.value = 1;">
+                                                            <label for="product-title">Table</label>
+                                                            @error('table')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-12">
@@ -117,6 +148,54 @@
                                                                     @foreach ($origin as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->region_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Region</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="region_id"
+                                                                    id="product-origin" required>
+                                                                    <option selected>Please Select Region</option>
+                                                                    @foreach ($region as $key => $org)
+                                                                        <option value="{{ $org->id }}">
+                                                                            {{ $org->title }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Village</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="village_id"
+                                                                    id="village_id" required>
+                                                                    <option selected>Please Select Village</option>
+                                                                    @foreach ($village as $key => $org)
+                                                                        <option value="{{ $org->id }}">
+                                                                            {{ $org->title }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Governorator</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="governorate_id"
+                                                                    id="governorate_id" required>
+                                                                    <option selected>Please Select Governorator</option>
+                                                                    @foreach ($governorator as $key => $org)
+                                                                        <option value="{{ $org->id }}">
+                                                                            {{ $org->title }}</option>
                                                                     @endforeach
 
                                                                 </select>

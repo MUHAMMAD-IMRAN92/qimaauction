@@ -2,6 +2,12 @@
     font-family: "Garamond-Pro";
     src: url("./assets/Garamond\ Premier\ Pro\ Light\ Display.otf") format('woff');
 }
+.font-fam{
+    font-family: "Garamond-Pro";
+} 
+.font-fam span{
+    font-family: "Garamond-Pro";
+}
 .container-all {
     position: relative;
     min-height: 100vh;
@@ -57,11 +63,11 @@
     font-style: normal;
     /* font-weight: 600; */
     font-size: 35px;
-    line-height: 75px;
+    line-height: 55px;
     /* display: flex; */
     /* align-items: center; */
     text-align: center;
-    font-feature-settings: 'kern' off;
+    /* font-feature-settings: 'kern' off; */
     color: #fff;
 }
 
@@ -87,9 +93,13 @@ a.btn.btn-outline-light {
     color:#fff !important;
     border-color:#fff !important;
 }
-a.btn.btn-outline-light.banner{
+.banner-btns{
     background-color: #FFF !important;
     color: #232B38 !important;
+}
+.banner-btns:hover{
+    background-color: transparent !important;
+    color: #FFF !important;
 }
 a.btn.btn-outline-light.banner:hover{
     background-color: transparent !important;
@@ -292,12 +302,12 @@ a.btn-outline-light:hover{
 .section-3-custom-text{
     font-family: 'Montserrat';
     font-weight: 500;
-    font-size: 20px;
+    font-size: large;
     margin-top:30px;
 }
 .section-3-custom-text-one{
     font-family: 'Montserrat';
-    font-size: 26px;
+    font-size: x-large;
 }
 /* Media Quries */
 a.banner{
@@ -309,7 +319,7 @@ a.banner{
 @media only screen and (max-width: 425px) {
     a.banner {
         /* padding: 5px !important; */
-        font-size: 14px !important;
+        font-size: 16px !important;
         margin-top: 20px !important;
     }
     /* .video-text-1 span */
@@ -341,7 +351,7 @@ a.banner{
         width: 100px !important;
     }
     a.btn.btn-outline-light{
-        padding: 2px 10px !important;
+        padding: 5px 10px !important;
     }
     .section-3-heading span{
         font-size: 35px !important;
@@ -353,7 +363,7 @@ a.banner{
         padding: 8px 10px;
     }
     .section-3-custom-text{
-        font-size: medium;
+        font-size: large;
     }
     .section-3{
         padding-top: 0px !important;
@@ -389,7 +399,7 @@ a.banner{
     .video-text-1 span {
         font-size: 75px !important;
         line-height: 65px !important;
-        font-weight: 800;
+        /* font-weight: 800; */
         color: #fff;
     }
 
@@ -398,10 +408,7 @@ a.banner{
     }
 }
 
-@media only screen and (max-width: 2560px) and (min-width: 1441px) {
-    .overlay {
-        /* top: 40px !important; */
-    }
+@media only screen and (max-width: 2560px) and (min-width: 1440px) {
 
     .video-img img {
         height: 270px !important;
@@ -411,8 +418,11 @@ a.banner{
     .video-text-1 span {
         font-size: 75px !important;
         line-height: 95px !important;
-        font-weight: 400;
+        /* font-weight: 400; */
         color: #fff;
+    }
+    .main-img-logo img{
+        width: 400px !important;
     }
 
     .video-text-2 p {

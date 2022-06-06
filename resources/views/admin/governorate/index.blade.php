@@ -91,7 +91,7 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/governorator/allgovernorator') ?>'
+                url: '<?= asset('/governorate/allgovernorator') ?>'
             },
             "columns": [{
                     "data": null  
