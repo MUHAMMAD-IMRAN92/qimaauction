@@ -2,7 +2,9 @@
 @section('title', 'All Reviewed Samples')
 @section('content')
 <style>
-  
+    table .table-bordered  thead, .table-bordered td {
+     border: 1px solid #eacf99;
+    }
 </style>
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -58,10 +60,10 @@
                                         style="background-color: rgb(255, 255, 255)">
                                         <thead>
                                             <tr>
-                                                <td></td>
+                                                <td>Samples</td>
                                                 @forelse ($all_samples as $jury=>$sample)
                                                 {{-- <td>{{ $loop->iteration }}</td> --}}
-                                                <td>{{ $sample }}</td>
+                                                <td><b>{{ $sample }}</b></td>
                                             @empty
                                             @endforelse
                                                 {{-- <th>Sr</th> --}}

@@ -132,6 +132,8 @@ tr:nth-child(even) {
                                     </div>
                                 </div>
                             </div>
+                            @else
+                              <h3 class="ml-5">No Pending Reviews</h3>
                                 @endif
                               
                             </div>
@@ -161,7 +163,7 @@ tr:nth-child(even) {
     <!-- END: Theme JS-->
     <script  type='text/javascript'>
         var juryId = {{$juryId}};
-        var table ={{$firstsample->tables}};
+        var table ={{isset($firstsample->tables) ? $firstsample->tables : 0}};
        
         sampleData(table,table);
            function  sampleData(element,table) {

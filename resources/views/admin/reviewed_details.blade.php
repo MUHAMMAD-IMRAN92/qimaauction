@@ -26,11 +26,11 @@
         flex-direction: column;
         /* height: 100%; */
     }
-    table.review-table tbody tr td,table.review-table tbody tr th{
+    /* table.review-table tbody tr td,table.review-table tbody tr th{
         flex: 1;
         min-width: max-content;
-        min-height: 50px;
-    }
+        min-height: 20px;
+    } */
     table.review-table.table-bordered th, .table-bordered td {
      border: 1px solid #eacf99;
     }
@@ -45,6 +45,14 @@
    }
    table.review-table tr td:nth-child(odd), table.review-table tr th:nth-child(odd) {
     background: rgba(34, 41, 47, 0.05);
+}
+.body-tags td{
+    /* min-height: 54px !important; */
+    /* padding: 15.5px !important; */
+}
+
+tbody tr th{
+    padding: 15.5px !important;
 }
 </style>
 <div class="app-content content">
@@ -73,22 +81,26 @@
                                             {{-- <td style="margin-top: 6px;"><b></b></td> --}}
                                             <th>Jury</th>
                                             <th>Total</th>
-                                            <th>Product Title</th>
-                                           
+                                            <th>Product Title</th>       
                                             <th>Sample</th>
                                             <th>Aroma Dry</th>
                                             <th>Aroma Crust</th>
                                             <th>Aroma Break</th> 
-                                            <th>Aroma Note</th>
+                                            {{-- <th>Aroma Note</th> --}}
                                             <th>CleanUp</th>
                                             <th>Clean Sweet Note</th>
                                             <th>Sweetness</th>
+                                            <th>Sweetness Note</th>
                                             <th>Acidity</th>
+                                            <th>Acidity Note</th>
                                             <th>Flavour</th>
                                             <th>Flavour Note</th>
                                             <th>AfterTaste</th>
+                                            <th>AfterTaste Note</th>
                                             <th>Balance</th>
+                                            <th>Balance Note</th>
                                             <th>Overall</th>
+                                            <th>Overall Note</th>
                                             <th>Roast</th>                 
                                             <th>Defect</th>
                                             <th>Defect Note</th>  
@@ -96,10 +108,9 @@
                                             @foreach ($data as $samp)
                                             <tr>
                                                 @foreach ($samp as $value => $sample)
-                                                @if($value == "aroma_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note")
-                                                 <td><button type="button" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
-                                                    <i class="fas fa-info-circle"></i>
-                                                  </button>
+                                                @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note")
+                                                 <td class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
+                                                    <i class="fas fa-info-circle fa-3x" style="font-size: 20px;"></i>
                                                 </td>
                                                  @else
                                                 <td>{{ $sample }}</td>

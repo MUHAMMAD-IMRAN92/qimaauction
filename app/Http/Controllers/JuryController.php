@@ -234,14 +234,17 @@ class JuryController extends Controller
             ->where('sample_sent_to_jury.tables','!=',null)
             // ->orderBy('created_at','desc')
              ->get();
-            $juryName = Jury::where('id', $juryId)->first();
-             $firstsample =   $samples->first();
-            return view('admin.jury.jury_links', [
-                'samples' => $samples,
-                'firstsample' => $firstsample,
-                'juryName' => $juryName->name,
-                'juryId' => $juryId,
-            ]);
+
+                $juryName = Jury::where('id', $juryId)->first();
+                $firstsample =   $samples->first();
+               return view('admin.jury.jury_links', [
+                   'samples' => $samples,
+                   'firstsample' => $firstsample,
+                   'juryName' => $juryName->name,
+                   'juryId' => $juryId,
+               ]);
+            
+          
         } else {
             return view('admin.404');
         }
