@@ -140,6 +140,9 @@ class ProductController extends Controller
             'product' =>  $product,
             'category' => $category,
             'flavour' => $flavour,
+            'governorator' => $governorator,
+            'village' => $village,
+            'region' => $region,
             'origin' => $origin
         ]);
     }
