@@ -5,9 +5,9 @@
                                             <thead style="color: #d8940d; border:#d8940d" class="table-bordered">
                                                 <tr>
                                                     <th>Sr</th>
-                                                     <th>Product Title</th>
+                                                     <!-- <th>Product Title</th> -->
                                                      <th>Sample ID</th>
-                                                     <th>Jury Name</th>
+                                                     <th>Position</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -16,9 +16,9 @@
                                                 @foreach ($samples as $sample)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $sample->product_title }}</td>
+                                                        <!-- <td>{{ $sample->product_title }}</td> -->
                                                         <td>{{ $sample->samples }}</td>
-                                                        <td>{{$sample->name}}</td>
+                                                        <td>{{$sample->postion}}</td>
                                                         <td> <a class="btn btn-success"
                                                                 href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">Give
                                                                 Review
