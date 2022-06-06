@@ -69,6 +69,26 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
+                                                            <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
+                                                                name="sample" value="{{$product->sample}}">
+                                                            <label for="product-title">Sample ID</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="number" class="form-control @error('postion') is-invalid @enderror" name="postion" id="postion"
+                                                            value="{{$product->postion}}"  oninput="if (this.value > 9) this.value = 0;">
+                                                            <label for="product-title">Position</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="number" class="form-control  @error('table') is-invalid @enderror" value="{{$product->table}}" name="table" id="table"  oninput="if (this.value > 5 ) this.value = 1;">
+                                                            <label for="product-title">Table</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
                                                             <textarea id="product-description" class="form-control" name="description">
                                                             {{ $product->product_description }}
                                                              </textarea>
@@ -111,6 +131,34 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
+                                                            <label for="product-lot-type">Lot Type</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="pro_lot_type"
+                                                                    id="product-lot-type" required>
+                                                                    <option >Please Select Lot Type</option>
+                                                                    <option {{ 1 == $product->pro_lot_type ? 'selected' : '' }} value="1">Farmer Lot</option>
+                                                                    <option {{ 2 == $product->pro_lot_type ? 'selected' : '' }} value="2">Community Lot</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-process">Select Process</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="pro_process"
+                                                                    id="product-process" required>
+                                                                    <option>Please Select Process</option>
+                                                                    <option {{ 1 == $product->pro_process ? 'selected' : '' }}  value="1">Natural</option>
+                                                                    <option {{ 2 == $product->pro_process ? 'selected' : '' }}  value="2">Slow Dried</option>
+                                                                    <option {{ 3 == $product->pro_process ? 'selected' : '' }}  value="3">Alchemy</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
                                                             <label for="product-origin">Select Origin</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_origin"
@@ -120,6 +168,57 @@
                                                                         <option value="{{ $org->id }}"
                                                                             {{ $org->id == $product->origin_id ? 'selected' : '' }}>
                                                                             {{ $org->region_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Region</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="region_id"
+                                                                    id="product-origin" required>
+                                                                    <option selected>Please Select Region</option>
+                                                                    @foreach ($region as $key => $org)
+                                                                        <option value="{{ $org->id }}"
+                                                                        {{ $org->id == $product->region_id ? 'selected' : '' }}>
+                                                                            {{ $org->title }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Village</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="village_id"
+                                                                    id="village_id" required>
+                                                                    <option selected>Please Select Village</option>
+                                                                    @foreach ($village as $key => $org)
+                                                                        <option value="{{ $org->id }}"
+                                                                        {{ $org->id == $product->village_id ? 'selected' : '' }}>
+                                                                            {{ $org->title }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Governorate</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="governorate_id"
+                                                                    id="governorate_id" required>
+                                                                    <option selected>Please Select Governorate</option>
+                                                                    @foreach ($governorator as $key => $org)
+                                                                        <option value="{{ $org->id }}"
+                                                                        {{ $org->id == $product->governorate_id ? 'selected' : '' }}>
+                                                                            {{ $org->title }}</option>
                                                                     @endforeach
 
                                                                 </select>
