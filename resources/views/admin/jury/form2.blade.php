@@ -1597,7 +1597,7 @@
                     inputvalue = 7.25;
                 elseif(inputvalue==7.5)
                     inputvalue = 7.75;
-                $(ui.handle).parent().find('input').val(inputvalue));
+                $(ui.handle).parent().find('input').val(inputvalue);
                 // ui.value;
             })
             .slider("float",{labels: hanzi});
