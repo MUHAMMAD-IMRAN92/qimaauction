@@ -31,7 +31,8 @@ class GovernorateController extends Controller
             $q->where('title', 'LIKE', "%$search%");
         });
 
-        $governorate = $governorate->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        // $governorate = $governorate->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $governorate = $governorate->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $flavour_count,
