@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
 Route::get('/jury/link/give_review/{table}/{juryId}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
+Route::get('/jury/link/give_review2/{table}/{juryId}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review2'])->name('give_review2');
 Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
 
 Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
