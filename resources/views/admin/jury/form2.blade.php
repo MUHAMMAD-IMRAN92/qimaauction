@@ -1601,7 +1601,9 @@
                 // ui.value;
             })
             .slider("float",{labels: hanzi});
-            $(".customslider").trigger("slidechange");
+            $(".customslider")
+            .slider( "value", 4 )
+            .slider("pips", "refresh");
             
         });
         
