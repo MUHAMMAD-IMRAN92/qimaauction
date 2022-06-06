@@ -497,7 +497,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="clean_up" id="clean_up"></div>
+                                                                <div class="customslider"><input type="text" name="sweetness" id="sweetness"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
@@ -521,7 +521,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="acidity" id="acidity"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
@@ -578,7 +578,7 @@
                                                                     </div>
                                                                 </div> --}}
                                                                 <div class="design-slider mt-5 mb-5">
-                                                                    <div class="customslider"></div>
+                                                                    <div class="customslider"><input type="text" name="mouth_feel" id="mouth_feel"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="radio_button">
@@ -636,7 +636,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="flavour" id="flavour"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="flavor_note" id="flavor_note"
@@ -660,7 +660,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="after_taste" id="after_taste"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="aftertaste_note" id="aftertaste_note"
@@ -684,7 +684,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="balance" id="balance"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="balance_note" id="balance_note"
@@ -708,7 +708,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="overall" id="overall"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="overall_note" id="overall_note"
