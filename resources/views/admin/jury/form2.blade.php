@@ -1498,6 +1498,9 @@
             .slider({
                     max: 100,
                     value: 50
+                }).on("slidechange", function( e, ui ) {
+                $(ui.handle).parent().find('input').val(inputvalue);
+
                 });
             $(".customslider")
             .slider({
