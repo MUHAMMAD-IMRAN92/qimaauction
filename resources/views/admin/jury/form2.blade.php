@@ -497,7 +497,7 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"></div>
+                                                                <div class="customslider"><input type="text" name="clean_up" id="clean_up"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
