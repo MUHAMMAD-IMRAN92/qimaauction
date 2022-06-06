@@ -188,11 +188,11 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <label for="product-origin">Select Governorator</label>
+                                                            <label for="product-origin">Select Governorate</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="governorate_id"
                                                                     id="governorate_id" required>
-                                                                    <option selected>Please Select Governorator</option>
+                                                                    <option selected>Please Select Governorate</option>
                                                                     @foreach ($governorator as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
