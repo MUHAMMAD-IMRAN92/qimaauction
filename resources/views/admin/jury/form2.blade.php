@@ -1560,7 +1560,7 @@
     .slider({
         max: 8,
         step: 0.5,
-        value: 6 
+        value: 4
     })
     .slider("pips", {
         rest: "label",
