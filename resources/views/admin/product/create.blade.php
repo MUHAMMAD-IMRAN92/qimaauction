@@ -74,7 +74,7 @@
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
                                                                 name="sample">
-                                                            <label for="product-title">SampleId</label>
+                                                            <label for="product-title">Sample ID</label>
                                                             @error('sample')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
@@ -83,7 +83,7 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="number" class="form-control @error('postion') is-invalid @enderror" name="postion" id="postion"  oninput="if (this.value > 9) this.value = 0;">
-                                                            <label for="product-title">Postion</label>
+                                                            <label for="product-title">Position</label>
                                                             @error('postion')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
@@ -138,7 +138,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    <!-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Origin</label>
                                                             <div class="form-group">
@@ -153,7 +153,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Region</label>

@@ -84,7 +84,7 @@ class ProductController extends Controller
             'postion' => 'required',
             'pro_category' => 'required',
             'pro_flavour' => 'required',
-            'pro_origin' => 'required',
+            // 'pro_origin' => 'required',
         ]);
         $product = new  Product();
         $product->product_title = $request->title;
@@ -99,7 +99,7 @@ class ProductController extends Controller
         $product->user_id = $this->user->id;
         $product->category_id = $request->pro_category;
         $product->flavour_id = $request->pro_flavour;
-        $product->origin_id = $request->pro_origin;
+        // $product->origin_id = $request->pro_origin;
         $product->save();
 
         foreach ($request->image as $img) {
