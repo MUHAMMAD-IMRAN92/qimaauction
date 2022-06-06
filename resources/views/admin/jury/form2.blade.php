@@ -299,6 +299,16 @@
     font-weight: bold;
     color: black;
 }
+.ui-slider-horizontal{
+    height:1px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -9px;
+    margin-left: -8px;
+}
+.ui-slider-pips .ui-slider-pip{
+    top:14px;
+}
 </style>
 
 <body
@@ -432,13 +442,13 @@
                                                     <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <input class="score_first_number" oninput="if (this.value > 3) this.value = 0;"
+                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;"
                                                                 type="number" id="quantity"  value="first_number"
                                                                 name="first_number">
                                                             <span
                                                                 class="multiply">X</span>
-                                                            <input class="score_second_number" oninput="if (this.value > 5) this.value = 0"
-                                                                type="number" id="quantity" maxlength="5" value="second_number"
+                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0"
+                                                                type="number" id="quantity" maxlength="3" value="second_number"
                                                                 name="second_number">
                                                             <span
                                                                 class="multiply">X</span>
@@ -461,19 +471,8 @@
                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 100%;'>
-                                                                    <input type="range" min="0" max="8" name="clean_up" id="clean_up"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="clean_up" id="clean_up"></div>
+                                                                <div class="customslider"><input type="hidden" name="clean_up" id="clean_up"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
@@ -485,19 +484,8 @@
                                                     <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="sweetness" id="sweetness"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="sweetness" id="sweetness"></div>
+                                                                <div class="customslider"><input type="hidden" name="sweetness" id="sweetness"></div>
                                                             </div>
                                                         </div>
                                                         <div class="entity_input">
@@ -509,19 +497,8 @@
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8"
-                                                                        step="1" value="6" name="acidity" id="acidity"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="acidity" id="acidity"></div>
+                                                                <div class="customslider"><input type="hidden" name="acidity" id="acidity"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
@@ -568,17 +545,8 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="custom_slider">
-                                                                {{-- <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div> --}}
                                                                 <div class="design-slider mt-5 mb-5">
-                                                                    <div class="customslider"><input type="text" name="mouth_feel" id="mouth_feel"></div>
+                                                                    <div class="customslider"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="radio_button">
@@ -624,19 +592,8 @@
                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="flavour" id="flavour"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="flavour" id="flavour"></div>
+                                                                <div class="customslider"><input type="hidden" name="flavour" id="flavour"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="flavor_note" id="flavor_note"
@@ -648,19 +605,8 @@
                                                     <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="after_taste" id="after_taste"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="after_taste" id="after_taste"></div>
+                                                                <div class="customslider"><input type="hidden" name="after_taste" id="after_taste"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="aftertaste_note" id="aftertaste_note"
@@ -672,19 +618,8 @@
                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="balance" id="balance"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="balance" id="balance"></div>
+                                                                <div class="customslider"><input type="hidden" name="balance" id="balance"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="balance_note" id="balance_note"
@@ -696,19 +631,8 @@
                                                     <h3 class="entity-text overall-bg">OVERALL</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            {{-- <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="overall" id="overall"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="text" name="overall" id="overall"></div>
+                                                                <div class="customslider"><input type="hidden" name="overall" id="overall"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="overall_note" id="overall_note"
