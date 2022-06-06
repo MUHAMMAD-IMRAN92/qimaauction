@@ -1554,7 +1554,7 @@
     <script>
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
-            var hanzi = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+            var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
 
             $(".customslider")
     .slider({
