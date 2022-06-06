@@ -299,14 +299,14 @@
     font-weight: bold;
     color: black;
 }
-.customslider .ui-slider-horizontal{
+.customslider.ui-slider-horizontal{
     height:1px;
 }
-.customslider .ui-slider-horizontal .ui-slider-handle {
+.customslider.ui-slider-horizontal .ui-slider-handle {
     top: -9px;
     margin-left: -8px;
 }
-.customslider .ui-slider-pips .ui-slider-pip{
+.customslider.ui-slider-pips .ui-slider-pip{
     top:14px;
 }
 </style>
