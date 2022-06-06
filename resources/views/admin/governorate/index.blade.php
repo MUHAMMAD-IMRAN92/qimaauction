@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            {{-- <h2 class="content-header-title float-left mb-0">Governorators</h2> --}}
+                            {{-- <h2 class="content-header-title float-left mb-0">Governorates</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Governorators
+                                    <li class="breadcrumb-item active">Governorates
                                     </li>
                                 </ol>
                             </div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-6 custom_btn_align">
                     <a href="{{ url('/governorate/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Governorator<a>
+                        Governorate<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">

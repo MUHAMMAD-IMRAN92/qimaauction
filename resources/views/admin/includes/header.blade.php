@@ -408,7 +408,7 @@
                             href="{{ url('/governorate/index') }}">
                             {{-- <i class="feather icon-circle"></i> --}}
                             <span
-                                class="menu-item " data-i18n="eCommerce">Governorator</span></a>
+                                class="menu-item " data-i18n="eCommerce">Governorate</span></a>
                         </li>
                         <li @if (request()->is('region/*')) class='active' @endif><a
                             href="{{ url('/region/index') }}">
