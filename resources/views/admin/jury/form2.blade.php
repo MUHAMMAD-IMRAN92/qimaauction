@@ -1570,7 +1570,7 @@
     .on("slidechange", function( e, ui ) {
         console.log(ui);
         
-        console.log(ui.handle.parent());
+        console.log($(ui.handle).parent());
         // ui.value;
     })
     .slider("float",{labels: hanzi});
