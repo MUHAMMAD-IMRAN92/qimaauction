@@ -66,7 +66,7 @@
                                                         <th>Email</th>
                                                         <th>Ph#</th>
                                                         <th>Address</th>
-                                                        <th>Action</th>
+                                                        <th>Action(s)</th>
 
                                                     </tr>
                                                 </thead>
