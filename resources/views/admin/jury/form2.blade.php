@@ -1070,7 +1070,6 @@
                 $('#volspan').html($(this).val() + '%');
                 $('#roastvalue').val($(this).val());
             })
-            $('input[type=range]').first().trigger('input');
         });
     </script>
 
@@ -1599,11 +1598,14 @@
                     inputvalue = 7.75;
                 $(ui.handle).parent().find('input').val(inputvalue);
                 // ui.value;
+            $('input[type=range]').first().trigger('input');
+
             })
             .slider("float",{labels: hanzi});
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
+            $('input[type=range]').first().trigger('input');
             
         });
         
