@@ -16,6 +16,7 @@ class CreateRegionsTable extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
              $table->string('title');
+             $table->enum('is_hidden', [0,1])->default(0);
             $table->timestamps();
         });
     }

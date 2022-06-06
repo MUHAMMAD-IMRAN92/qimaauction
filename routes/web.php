@@ -42,6 +42,34 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/flavour/edit', [App\Http\Controllers\FlavourController::class, 'update']);
     Route::get('/flavour/delete/{id}', [App\Http\Controllers\FlavourController::class, 'delete']);
 
+    //Village CRUD Routes
+    Route::get('/village/index', [App\Http\Controllers\VillageController::class, 'index']);
+    Route::get('/village/allvillage', [App\Http\Controllers\VillageController::class, 'allvillage']);
+    Route::get('/village/create', [App\Http\Controllers\VillageController::class, 'create']);
+    Route::post('/village/create', [App\Http\Controllers\VillageController::class, 'save']);
+    Route::get('/village/edit/{id}', [App\Http\Controllers\VillageController::class, 'edit']);
+    Route::post('/village/edit', [App\Http\Controllers\VillageController::class, 'update']);
+    Route::get('/village/delete/{id}', [App\Http\Controllers\VillageController::class, 'delete']);
+
+    //Governorator CRUD Routes
+    Route::get('/governorator/index', [App\Http\Controllers\GovernorateController::class, 'index']);
+    Route::get('/governorator/allgovernorator', [App\Http\Controllers\GovernorateController::class, 'allgovernorator']);
+    Route::get('/governorator/create', [App\Http\Controllers\GovernorateController::class, 'create']);
+    Route::post('/governorator/create', [App\Http\Controllers\GovernorateController::class, 'save']);
+    Route::get('/governorator/edit/{id}', [App\Http\Controllers\GovernorateController::class, 'edit']);
+    Route::post('/governorator/edit', [App\Http\Controllers\GovernorateController::class, 'update']);
+    Route::get('/governorator/delete/{id}', [App\Http\Controllers\GovernorateController::class, 'delete']);
+
+    //Governorator CRUD Routes
+    Route::get('/region/index', [App\Http\Controllers\RegionController::class, 'index']);
+    Route::get('/region/allvillage', [App\Http\Controllers\RegionController::class, 'allregion']);
+    Route::get('/region/create', [App\Http\Controllers\RegionController::class, 'create']);
+    Route::post('/region/create', [App\Http\Controllers\RegionController::class, 'save']);
+    Route::get('/region/edit/{id}', [App\Http\Controllers\RegionController::class, 'edit']);
+    Route::post('/region/edit', [App\Http\Controllers\RegionController::class, 'update']);
+    Route::get('/region/delete/{id}', [App\Http\Controllers\RegionController::class, 'delete']);
+    
+
     //Origin CRUD Routes
     Route::get('/origin/index', [App\Http\Controllers\OriginController::class, 'index']);
     Route::get('/origin/allorigin', [App\Http\Controllers\OriginController::class, 'allorigin']);

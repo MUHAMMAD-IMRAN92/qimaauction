@@ -91,7 +91,7 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/village/allgovernorate') ?>'
+                url: '<?= asset('/village/allvillage') ?>'
             },
             "columns": [{
                     "data": null  
@@ -118,7 +118,7 @@
             ],
             "columnDefs": [{
                 "orderable": false,
-                "targets": [0, 1, 2]
+                "targets": [0, 1]
             }, ]
         });
 

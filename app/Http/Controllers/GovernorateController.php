@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Governorate;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class GovernorateController extends Controller
 {
     private $user;
@@ -18,7 +18,7 @@ class GovernorateController extends Controller
         // return $this->user;   
         return view('admin.governorate.index');
     }
-    public function allGovernorate(Request $request)
+    public function allgovernorator(Request $request)
     {
         $draw = $request->get('draw');
         $start = $request->get('start');

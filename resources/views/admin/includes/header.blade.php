@@ -398,6 +398,24 @@
                                 <span
                                     class="menu-item " data-i18n="eCommerce">Flavour</span></a>
                         </li>
+                        <li @if (request()->is('village/*')) class='active' @endif><a
+                            href="{{ url('/village/index') }}">
+                            {{-- <i class="feather icon-circle"></i> --}}
+                            <span
+                                class="menu-item " data-i18n="eCommerce">Village</span></a>
+                        </li>
+                        <li @if (request()->is('governorator/*')) class='active' @endif><a
+                            href="{{ url('/governorator/index') }}">
+                            {{-- <i class="feather icon-circle"></i> --}}
+                            <span
+                                class="menu-item " data-i18n="eCommerce">Governorator</span></a>
+                        </li>
+                        <li @if (request()->is('region/*')) class='active' @endif><a
+                            href="{{ url('/region/index') }}">
+                            {{-- <i class="feather icon-circle"></i> --}}
+                            <span
+                                class="menu-item " data-i18n="eCommerce">Region</span></a>
+                        </li>
                         <li @if (request()->is('origin/*')) class='active' @endif><a
                                 href="{{ url('/origin/index') }}">
                                 {{-- <i class="feather icon-circle"></i> --}}

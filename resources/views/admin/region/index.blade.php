@@ -91,7 +91,7 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/region/allgovernorate') ?>'
+                url: '<?= asset('/region/allregion') ?>'
             },
             "columns": [{
                     "data": null  

@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-6 custom_btn_align">
                     <a href="{{ url('/governorate/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Flavour<a>
+                        Governorator<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -91,7 +91,7 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/governorate/allgovernorate') ?>'
+                url: '<?= asset('/governorator/allgovernorator') ?>'
             },
             "columns": [{
                     "data": null  

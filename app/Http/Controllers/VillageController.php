@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Village;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class VillageController extends Controller
 {
     private $user;
