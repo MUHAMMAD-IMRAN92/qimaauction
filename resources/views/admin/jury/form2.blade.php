@@ -1557,24 +1557,52 @@
             var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
 
             $(".customslider")
-    .slider({
-        max: 8,
-        step: 0.5,
-        value: 4
-    })
-    .slider("pips", {
-        rest: "label",
-        step: 2,
-        labels: hanzi
-    })
-    .on("slidechange", function( e, ui ) {
-        console.log(ui);
-        
-        console.log($(ui.handle).parent().find('input').val(ui.value));
-        // ui.value;
-    })
-    .slider("float",{labels: hanzi});
-    
+            .slider({
+                max: 8,
+                step: 0.5,
+                value: 4
+            })
+            .slider("pips", {
+                rest: "label",
+                step: 2,
+                labels: hanzi
+            })
+            .on("slidechange", function( e, ui ) {
+                inputvalue = ui.value;
+                if(inputvalue==0.5)
+                    inputvalue = 1;
+                elseif(inputvalue==1)
+                    inputvalue = 2;
+                elseif(inputvalue==1.5)
+                    inputvalue = 3;
+                elseif(inputvalue==2)
+                    inputvalue = 4;
+                elseif(inputvalue==2.5)
+                    inputvalue = 4.5;
+                elseif(inputvalue==3)
+                    inputvalue = 5;
+                elseif(inputvalue==3.5)
+                    inputvalue = 5.5;
+                elseif(inputvalue==4)
+                    inputvalue = 6;
+                elseif(inputvalue==4.5)
+                    inputvalue = 6.25;
+                elseif(inputvalue==5)
+                    inputvalue = 6.5;
+                elseif(inputvalue==5.5)
+                    inputvalue = 6.75;
+                elseif(inputvalue==6)
+                    inputvalue = 7;
+                elseif(inputvalue==6.5)
+                    inputvalue = 7.25;
+                elseif(inputvalue==7.5)
+                    inputvalue = 7.75;
+                $(ui.handle).parent().find('input').val(inputvalue));
+                // ui.value;
+            })
+            .slider("float",{labels: hanzi});
+            $(".customslider").trigger("slidechange");
+            
         });
         
     </script>
