@@ -1497,7 +1497,6 @@
             $(".roastslider")
             .slider({
                     max: 100,
-                    range: true,
                     value: 50
                 });
             $(".customslider")
