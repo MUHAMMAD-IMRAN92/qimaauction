@@ -309,7 +309,7 @@ a.banner{
 @media only screen and (max-width: 425px) {
     a.banner {
         /* padding: 5px !important; */
-        font-size: 8px !important;
+        font-size: 14px !important;
         margin-top: 20px !important;
     }
     /* .video-text-1 span */
