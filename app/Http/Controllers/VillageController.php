@@ -26,12 +26,14 @@ class VillageController extends Controller
         $search = $request->search['value'];
         $flavour_count = Village::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
-        })->where('is_hidden', '0')->count();
+        })->count();
+    // })->where('is_hidden', '0')->count();
         $village = Village::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
 
-        $village = $village->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $village = $village->skip((int)$start)->take((int)$length)->get();
+        // $village = $village->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $flavour_count,
