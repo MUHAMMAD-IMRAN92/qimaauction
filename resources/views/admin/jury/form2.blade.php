@@ -256,8 +256,9 @@
     margin-top: 40px;
 }
 .scrollable{
-    width: calc(100vh - 20%);
+    width: calc(100vh - 42%);
     overflow: auto;
+    margin:auto;
 }
 .pager{
     width: 121px;
@@ -661,20 +662,22 @@
                                                     <p class="entity-label">(+36)</p>
                                                     <input type="hidden" name="total_score" id="total_score" value="">
                                                     <h2 class="totalScore">0</h2>
-                                                    <div class="scrollable" style="overflow:auto;">
-                                                        <div class="button-group" style="white-space:nowrap">
-                                                            @foreach ($alltablesamples as $samp)
-                                                                                    
-                                                                @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                    {{$samp->samples}}
-                                                                </a>
-                                                                @else
-                                                                <a class="btn btn-secondary pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                    {{$samp->samples}}
-                                                                </a>
-                                                                @endif
-                                                            @endforeach
+                                                    <div class="row">
+                                                        <div class="scrollable" style="overflow:auto;">
+                                                            <div class="button-group" style="white-space:nowrap">
+                                                                @foreach ($alltablesamples as $samp)
+                                                                                        
+                                                                    @if($samp->sampleId == $sentSampleId)
+                                                                    <a class="btn btn-success pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                        {{$samp->samples}}
+                                                                    </a>
+                                                                    @else
+                                                                    <a class="btn btn-secondary pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                        {{$samp->samples}}
+                                                                    </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <input class="submit-form-btn" type="submit" value="SUBMIT TABLE">
