@@ -99,6 +99,8 @@ class ProductController extends Controller
         $product->user_id = $this->user->id;
         $product->category_id = $request->pro_category;
         $product->flavour_id = $request->pro_flavour;
+        $product->pro_lot_type  = $request->pro_lot_type;
+        $product->pro_process  = $request->pro_process;
         // $product->origin_id = $request->pro_origin;
         $product->save();
 
@@ -149,11 +151,19 @@ class ProductController extends Controller
         ]);
         $product = product::find($request->id);
         $product->product_title = $request->title;
+        $product->sample = $request->sample;
+        $product->postion = $request->postion;
+        $product->table = $request->table;
+        $product->governorate_id = $request->governorate_id;
+        $product->village_id = $request->village_id;
+        $product->region_id = $request->region_id;
+        $product->product_title = $request->title;
         $product->product_description = $request->description;
         $product->user_id = $this->user->id;
         $product->category_id = $request->pro_category;
         $product->flavour_id = $request->pro_flavour;
-        $product->origin_id = $request->pro_origin;
+        $product->pro_lot_type  = $request->pro_lot_type;
+        $product->pro_process  = $request->pro_process;
         $product->save();
         if ($request->image) {
             foreach ($request->image as $img) {

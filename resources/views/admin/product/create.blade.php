@@ -138,6 +138,34 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-lot-type">Lot Type</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="pro_lot_type"
+                                                                    id="product-lot-type" required>
+                                                                    <option selected>Please Select Lot Type</option>
+                                                                    <option value="1">Farmer Lot</option>
+                                                                    <option value="2">Community Lot</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-process">Select Process</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="pro_process"
+                                                                    id="product-process" required>
+                                                                    <option selected>Please Select Process</option>
+                                                                    <option value="1">Natural</option>
+                                                                    <option value="2">Slow Dried</option>
+                                                                    <option value="3">Alchemy</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <!-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Origin</label>
