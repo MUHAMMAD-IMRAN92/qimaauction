@@ -26,7 +26,8 @@ class GovernorateController extends Controller
         $search = $request->search['value'];
         $flavour_count = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
-        })->where('is_hidden', '0')->count();
+        })->count();
+    // })->where('is_hidden', '0')->count();
         $governorate = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
