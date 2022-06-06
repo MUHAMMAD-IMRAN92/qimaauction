@@ -262,6 +262,40 @@
     background-color:#000 !important;
     color:#FFF;
 }
+.main-title{
+    /* position: absolute; */
+    width: 51px;
+    height: 6px;
+    color: #A4A3A3;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-feature-settings: 'kern' off;
+}
+.line{
+    position: absolute;
+    width: 615px;
+    height: 0px;
+    margin-left:22%; 
+    border: 1px solid #A4A3A3;
+}
+.dry-verticle{
+  position: absolute;
+  bottom: -150%;
+  left: 25%;
+  transform: rotate(-90deg);
+  transform-origin: left 0;
+}
+
+.dry{
+  position: relative;
+}
 </style>
 
 <body
