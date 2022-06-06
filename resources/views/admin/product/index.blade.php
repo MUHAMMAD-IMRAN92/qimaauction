@@ -58,7 +58,7 @@
                                                         <th>Description</th>
                                                         {{-- <th>Image</th> --}}
                                                         <th>Category</th>
-                                                        <th>Origin</th>
+                                                        <!-- <th>Origin</th> -->
                                                         <th>Flavour</th>
                                                         <th>Action(s)</th>
 
@@ -74,7 +74,7 @@
                                                         <th>Description</th>
                                                         {{-- <th>Image</th> --}}
                                                         <th>Category</th>
-                                                        <th>Origin</th>
+                                                        <!-- <th>Origin</th> -->
                                                         <th>Flavor</th>
                                                         <th>Action(s)</th>
 
@@ -147,18 +147,18 @@
                           
                     }
                 },
-                {
+                // {
 
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
                             
-                                row.origin.region_name+
+                //                 row.origin.region_name+
                            
-                            `</td>` 
+                //             `</td>` 
                            
 
-                    }
-                },
+                //     }
+                // },
                 {
 
                     "mRender": function(data, type, row) {

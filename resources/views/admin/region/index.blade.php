@@ -15,7 +15,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Villages
+                                    <li class="breadcrumb-item active">Region
                                     </li>
                                 </ol>
                             </div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-6 custom_btn_align">
                     <a href="{{ url('/region/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Village<a>
+                        Region<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -118,7 +118,7 @@
             ],
             "columnDefs": [{
                 "orderable": false,
-                "targets": [0, 1, 2]
+                "targets": [0, 1]
             }, ]
         });
 

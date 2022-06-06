@@ -26,12 +26,14 @@ class RegionController extends Controller
         $search = $request->search['value'];
         $flavour_count = Region::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
-        })->where('is_hidden', '0')->count();
+        })->count();
+    // })->where('is_hidden', '0')->count();
         $region = Region::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
 
-        $region = $region->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $region = $region->skip((int)$start)->take((int)$length)->get();
+        // $region = $region->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $flavour_count,

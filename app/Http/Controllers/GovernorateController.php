@@ -26,12 +26,14 @@ class GovernorateController extends Controller
         $search = $request->search['value'];
         $flavour_count = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
-        })->where('is_hidden', '0')->count();
+        })->count();
+    // })->where('is_hidden', '0')->count();
         $governorate = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
 
-        $governorate = $governorate->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        // $governorate = $governorate->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $governorate = $governorate->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $flavour_count,
