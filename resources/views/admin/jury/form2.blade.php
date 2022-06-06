@@ -299,14 +299,14 @@
     font-weight: bold;
     color: black;
 }
-.ui-slider-horizontal{
+.customslider .ui-slider-horizontal{
     height:1px;
 }
-.ui-slider-horizontal .ui-slider-handle {
+.customslider .ui-slider-horizontal .ui-slider-handle {
     top: -9px;
     margin-left: -8px;
 }
-.ui-slider-pips .ui-slider-pip{
+.customslider .ui-slider-pips .ui-slider-pip{
     top:14px;
 }
 </style>
@@ -364,13 +364,18 @@
                                                                 <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
                                                     <div class="row">
                                                     <h3 class="entity-text roast-bg">ROAST</h3>
-
+                                                        
                                                         <div class="user_name">
                                                             <div class="range-slider">
                                                             <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); 
                                                                     this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
                                                             </div>
 
+                                                        </div>
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -1478,7 +1483,12 @@
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
             var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
-
+            $(".roastslider")
+            .slider({
+                    max: 100,
+                    range: true,
+                    value: 50
+                });
             $(".customslider")
             .slider({
                 max: 8,
