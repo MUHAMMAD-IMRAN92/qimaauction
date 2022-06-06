@@ -1571,31 +1571,31 @@
                 inputvalue = ui.value;
                 if(inputvalue==0.5)
                     inputvalue = 1;
-                elseif(inputvalue==1)
+                else if(inputvalue==1)
                     inputvalue = 2;
-                elseif(inputvalue==1.5)
+                else if(inputvalue==1.5)
                     inputvalue = 3;
-                elseif(inputvalue==2)
+                else if(inputvalue==2)
                     inputvalue = 4;
-                elseif(inputvalue==2.5)
+                else if(inputvalue==2.5)
                     inputvalue = 4.5;
-                elseif(inputvalue==3)
+                else if(inputvalue==3)
                     inputvalue = 5;
-                elseif(inputvalue==3.5)
+                else if(inputvalue==3.5)
                     inputvalue = 5.5;
-                elseif(inputvalue==4)
+                else if(inputvalue==4)
                     inputvalue = 6;
-                elseif(inputvalue==4.5)
+                else if(inputvalue==4.5)
                     inputvalue = 6.25;
-                elseif(inputvalue==5)
+                else if(inputvalue==5)
                     inputvalue = 6.5;
-                elseif(inputvalue==5.5)
+                else if(inputvalue==5.5)
                     inputvalue = 6.75;
-                elseif(inputvalue==6)
+                else if(inputvalue==6)
                     inputvalue = 7;
-                elseif(inputvalue==6.5)
+                else if(inputvalue==6.5)
                     inputvalue = 7.25;
-                elseif(inputvalue==7.5)
+                else if(inputvalue==7.5)
                     inputvalue = 7.75;
                 $(ui.handle).parent().find('input').val(inputvalue);
                 // ui.value;
