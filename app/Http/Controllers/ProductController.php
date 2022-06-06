@@ -251,7 +251,7 @@ class ProductController extends Controller
                 return view('admin.jury.alredy_submit');
             } else {
                 $samplesArr = explode(',', $firstsample->samples);
-                return view('admin.jury.form', [
+                return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
                     'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
                     'juryName' => $name,
