@@ -19,10 +19,17 @@
                                                         <!-- <td>{{ $sample->product_title }}</td> -->
                                                         <td>{{ $sample->samples }}</td>
                                                         <td>{{$sample->postion}}</td>
-                                                        <td> <a class="btn btn-success"
+                                                        <td> 
+                                                            @if($sample->is_hidden==0)
+                                                            <a class="btn btn-success"
                                                                 href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">Give
                                                                 Review
                                                              </a>
+                                                             @elseif
+                                                             <a class="btn btn-disabled"
+                                                                >Completed
+                                                             </a>
+                                                             @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach 

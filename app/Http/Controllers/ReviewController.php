@@ -91,7 +91,7 @@ class ReviewController extends Controller
                                   ->select('products.*','sample_sent_to_jury.*','juries.name')
                                   ->where('sample_sent_to_jury.jury_id', $request->juryId)
                                   ->where('sample_sent_to_jury.tables', $request->table)
-                                  ->where('sample_sent_to_jury.is_hidden', '0')
+                                //   ->where('sample_sent_to_jury.is_hidden', '0')
                                   ->get();
                                 //   return response($samples);
          $data= view('admin.sample_table',compact('samples','tables'))->render();
