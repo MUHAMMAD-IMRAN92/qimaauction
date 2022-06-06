@@ -13,7 +13,6 @@ class ReviewController extends Controller
 {
     public function saveReview(Request $request)
     {
-
         $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
@@ -50,6 +49,12 @@ class ReviewController extends Controller
         $review->flavor_note            = $request->flavor_note;
         $review->after_taste            = $request->after_taste;
         $review->balance                = $request->balance;
+        $review->sweetness_note          = $request->sweetness_note;  
+        $review->acidity_note            = $request->acidity_note;  
+        $review->mouthfeel_note          = $request->mouthfeel_note;   
+        $review->aftertaste_note         = $request->aftertaste_note;  
+        $review->balance_note            = $request->balance_note;  
+        $review->overall_note            = $request->overall_note;  
         $review->overall                = $request->overall;
         $review->total_score            = (isset($request->total_score)) ? $request->total_score : 0;
         $review->jury_id                = $request->jury_id;

@@ -412,7 +412,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" name="defect" id="defect" value="">
+                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
 
                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                     <div class="row">
