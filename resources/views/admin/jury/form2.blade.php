@@ -256,7 +256,7 @@
     margin-top: 40px;
 }
 .scrollable{
-    width: calc(100vh - 180px);
+    width: calc(100vh - 20%);
     overflow: auto;
 }
 .pager{
@@ -1499,7 +1499,7 @@
                     max: 100,
                     value: 50
                 }).on("slidechange", function( e, ui ) {
-                $(ui.handle).parent().find('input').val(inputvalue);
+                $(ui.handle).parent().find('input').val(ui.value);
 
                 });
             $(".customslider")
