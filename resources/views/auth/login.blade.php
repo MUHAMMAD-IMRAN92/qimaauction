@@ -82,8 +82,8 @@
                                                             {{-- <div class="text-right"><a href="auth-forgot-password.html"
                                                                     class="card-link">Forgot Password?</a></div> --}}
                                                         </div>
-                                                        <a  href="{{ route('register') }}"
-                                                            class="btn btn-outline-primary float-left btn-inline">Register</a>
+                                                        {{-- <a  href="{{ route('register') }}"
+                                                            class="btn btn-outline-primary float-left btn-inline">Register</a> --}}
                                                         <button type="submit"
                                                             class="btn btn-primary float-right btn-inline">Login</button>
                                                     </form>
