@@ -1567,6 +1567,11 @@
         step: 2,
         labels: hanzi
     })
+    .on("slidechange", function( e, ui ) {
+        console.log(e);
+        console.log(ui);
+        // ui.value;
+    })
     .slider("float",{labels: hanzi});
     
         });
