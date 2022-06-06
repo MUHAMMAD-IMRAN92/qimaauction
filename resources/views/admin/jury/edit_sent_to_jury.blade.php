@@ -120,19 +120,6 @@
                                                     </div>
                                                     <p> <strong>Note:</strong> You can select multiple juries.</p>
                                                     <select class="select2 form-control  @error('juries') is-invalid @enderror" multiple="multiple" name="juries[]" id="juries">
-                                                         {{-- @php
-                                                              $arr = array();
-                                                         @endphp
-                                                        @foreach ($juries as $key => $jury)
-                                                          @if(in_array($jury->name,$arr))
-                                                            <option value="{{ $jury->id }}" {{ $jury->id == $selectedjury->id ? 'selected' : '' }}>{{ $jury->name.'('.$jury->email.')' }}</option>
-                                                          @else
-                                                             @php
-                                                                 array_push($arr,$jury->name)
-                                                             @endphp
-                                                          <option value="{{ $jury->id }}">{{ $jury->name }}</option>
-                                                          @endif
-                                                        @endforeach --}}
                                                         <option value="{{ $selectedjury->id }}" selected>{{ $selectedjury->name }}</option>
                                                     </select>
                                                     @error('juries')
@@ -151,21 +138,24 @@
                                                                 <input type="hidden" name="products[]" value="{{ $product->product_id }}">
                                                                     <input type="text" class="form-control"  id="products" value="{{ $product->product_title }}">
                                                                 @endforeach
-                                                                @else
-                                                                  <p>No Jury sample Sent yet</p>
-                                                                @endif
+                                                            @else
+                                                                <p>No Jury sample Sent yet</p>
+                                                            @endif
                                                         </div>
                                                     
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-2">
                                                             @if(count($senttojury) > 0)
                                                             @foreach ($senttojury as $key => $product)
                                                             <input type="text" class="form-control"  name="samples[]" id="samples"  value="{{ $product->samples }}" placeholder="Enter Sample Id">
                                                             @endforeach
                                                             @else
                                                             {{-- <p>No Jury sample Sent yet</p> --}}
-                                                          @endif
-                            
-                                                           
+                                                          @endif                       
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            @foreach ($products as $key => $product)
+                                                            <input type="number" class="form-control" name="" id="" placeholder="Postion">
+                                                            @endforeach
                                                         </div>
                                                         <div class="col-md-4">
                                                             @if(count($senttojury) > 0)

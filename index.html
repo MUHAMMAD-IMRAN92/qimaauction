@@ -37,7 +37,7 @@
             <div class="video-text-2">
                 <p>AUGUST 9<sup>th</sup><br>
                     <a type="button" class="btn btn-outline-light banner" href="https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/">Purchase Sample Set</a>&nbsp;&nbsp;&nbsp;
-                    <a type="button" class="btn btn-outline-light banner" href="https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/">Register for the auction</a>
+                    <a type="button" class="btn btn-outline-light banner" href="https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/">Register for auction</a>
                 </p>
                 
             </div>
@@ -45,10 +45,10 @@
     </div>
     <section id="backgroung-img-section-2">
         <div class="container-fluid" style="margin-top: -8px;">
-            <div class="row" style="padding-top:57px;padding-bottom:37px">
-                <div class="col-lg-12 text-center pt-4 pb-3">
+            <div class="row" style="padding-top:40px;padding-bottom:40px">
+                <!-- <div class="col-lg-12 text-center pt-4 pb-3">
                     <a href="https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/" type="button" class="btn btn-outline-light">BUY SAMPLE SET</a>
-                </div>
+                </div> -->
                 <div class="col-lg-12 section-2 text-center pt-3 pb-3">
                     <img src="./images/LOGO_0001_Vector-Smart-Object 1.png" alt="">
                 </div>
@@ -62,19 +62,19 @@
                 <div class="col-lg-12 text-center pt-2 section-2-logos">
                     <!-- <div class="row"> -->
                     <!-- <div class="col-lg-12 text-center"> -->
-                    <img src="./images/LOGO_0000_Vector-Smart-Object 1.png" alt="">
-                    <img src="./images/LOGO_0005_Vector-Smart-Object 1.png" alt="">
+                    <img class="mr-2" src="./images/LOGO_0000_Vector-Smart-Object 1.png" alt="">
+                    <img class="ml-2" src="./images/LOGO_0005_Vector-Smart-Object 1.png" alt="">
                     <!-- </div> -->
                     <!-- </div> -->
                 </div>
-                <div class="col-lg-12 text-center pt-3 pb-4 section-2-logos">
+                <div class="col-lg-12 text-center pt-3 section-2-logos">
                     <img src="./images/LOGO_0004_Vector-Smart-Object 1.png" alt="">
                 </div>
             </div>
         </div>
     </section>
     <section class="section-3">
-        <div class="container py-4">
+        <div class="container py-3">
             <div class="row">
                 <div class="col-lg-12 section-3-heading">
                     <span>
@@ -201,11 +201,45 @@
                         <span class="text-color-size">For the latest news and updates</span>
                     </div>
                     <div class="col-12">
-                        <a type="button" class="btn btn-outline-light" href="https://qimafoundation.org/">FIND OUT MORE</a>
+                        <a type="button" class="btn btn-outline-light" id="signup-for-newsletter" href="javascript:void(0)">SIGN UP FOR NEWSLETTER</a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+    <section>
+        <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" placeholder="Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" placeholder="Email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark">Submit</button>
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
     </section>
 </body>
 
@@ -268,6 +302,9 @@
         //     document.getElementById("demo").innerHTML = "EXPIRED";
         //   }
         }, 1000);
+        $("#signup-for-newsletter").on("click", function () {
+            $("#newsltterModel").modal("show");
+        });
         </script>
 
 </html>

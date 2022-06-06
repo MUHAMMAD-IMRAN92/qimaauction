@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Garamond-Pro";
+    src: url("./assets/Garamond\ Premier\ Pro\ Light\ Display.otf") format('woff');
+}
 .container-all {
     position: relative;
 }
@@ -20,20 +23,21 @@
 
 .overlay {
     position: absolute;
-    top: 35px;
+    top: 35px;}
+    .video-text-1 span{
     left: 0;
     z-index: 1;
-}
 
+}
 .video-text-1 {
     text-align: center;
 }
 
 .video-text-1 span {
-    font-family: 'EB Garamond';
+    font-family: 'Garamond-Pro';
     font-style: normal;
-    font-weight: 400;
-    font-size: 50px;
+    /* font-weight: 400; */
+    font-size: 75px;
     line-height: 50px;
     font-weight: 400;
     color: #fff;
@@ -44,9 +48,9 @@
 }
 
 .video-text-2 p {
-    font-family: 'EB Garamond';
+    font-family: "Garamond-Pro";
     font-style: normal;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 35px;
     line-height: 75px;
     /* display: flex; */
@@ -67,11 +71,11 @@
 
 .section-2 img {
     height: auto;
-    width: 655px;
+    width: 270px;
     max-width: 100%;
 }
 a.btn.btn-outline-light {
-    padding: 28px 29px;
+    padding: 8px 15px !important;
     font-size: 28px;
     margin-top:30px;
     margin-bottom: 50px;
@@ -88,6 +92,7 @@ a.btn.btn-outline-light.banner:hover{
 }
 .section-2-text p {
     color: #fff;
+    font-size: large;
 }
 
 .section-2-logos img {
@@ -98,12 +103,12 @@ a.btn.btn-outline-light.banner:hover{
 
 .section-3 {
     background-color: #E9AB00;
-    padding-top:50px;
-    padding-bottom:50px;
+    padding-top:40px;
+    padding-bottom:40px;
 }
 
 .section-3-img img {
-    width: 527px;
+    width: 270px;
     height: auto;
     max-width: 100%;
 }
@@ -113,7 +118,7 @@ a.btn-outline-dark{
     font-weight: 400;
     border: 3px solid #232B38;
     border-radius: 10px;
-    padding:35px;
+    padding: 8px 15px;
 }
 a.btn-outline-dark:hover{
     color:#fff !important;
@@ -127,7 +132,7 @@ a.btn-outline-light:hover{
 }
 .footerz a.btn-outline-light{
     font-family: 'Montserrat';
-    font-size: 24px; 
+    font-size: 17px; 
     font-weight: 400;
     border: 3px solid #A4A3A3;
     border-radius: 10px;
@@ -139,7 +144,7 @@ a.btn-outline-light:hover{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    font-size: 62px;
+    font-size: 50px;
     line-height: 88px;
     align-items: center;
     text-align: center;
@@ -221,7 +226,7 @@ a.btn-outline-light:hover{
 
 .section-4 img {
     height: auto;
-    width: 447px;
+    width: 270px;
     max-width: 100%;
 }
 
@@ -239,16 +244,16 @@ a.btn-outline-light:hover{
 
 .section-4-text-1 .time {
     font-style: normal;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-size: 35px;
-    font-family: 'EB Garamond';
+    font-family: "Garamond-Pro";
 }
 
 .section-4-text-1 .date {
     font-style: normal;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-size: 30px;
-    font-family: 'EB Garamond';
+    font-family: "Garamond-Pro";
 }
 
 .bg-none {
@@ -282,12 +287,12 @@ a.btn-outline-light:hover{
 .section-3-custom-text{
     font-family: 'Montserrat';
     font-weight: 500;
-    font-size: 26px;
+    font-size: 20px;
     margin-top:30px;
 }
 .section-3-custom-text-one{
     font-family: 'Montserrat';
-    font-size: 36px;
+    font-size: 26px;
 }
 /* Media Quries */
 a.banner{
@@ -298,26 +303,27 @@ a.banner{
 
 @media only screen and (max-width: 425px) {
     a.banner {
-        padding: 5px !important;
-        font-size: 18px !important;
-        margin-top: 56px !important;
+        /* padding: 5px !important; */
+        font-size: 8px !important;
+        /* margin-top: 16px !important; */
     }
+    /* .video-text-1 span */
     .video-img img {
-        height: 100px !important;
-        width: auto !important;
+        height: 70px !important;
+        /* width: auto !important; */
     }
 
     .video-text-1 span {
-        font-size: 40px !important;
+        font-size: 25px !important;
         line-height: 20px !important;
     }
 
     .overlay {
-        top: 15px !important;
+        top: 10px !important;
     }
 
     .video-text-2 p {
-        font-size: 25px !important;
+        font-size: 20px !important;
         line-height: 38px !important;
     }
 
@@ -329,13 +335,35 @@ a.banner{
         height: auto;
         width: 100px !important;
     }
+    a.btn.btn-outline-light{
+        padding: 2px 10px !important;
+    }
+    .section-3-heading span{
+        font-size: 35px !important;
+    }
+    .section-3-custom-text-one {
+        font-size: large;
+    }
+    a.btn-outline-dark{
+        padding: 8px 10px;
+    }
+    .section-3-custom-text{
+        font-size: medium;
+    }
+    .section-3{
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    a.btn-outline-dark{
+        font-size: 12px !important;
+    }
 
 }
 @media only screen and (min-width:1440px) {
     a.banner{
         padding: 28px 29px !important;
         font-size: 28px !important;
-        margin-top: 30px !important;
+        margin-top: 100px !important;
     }
 }
 @media only screen and (max-width: 1440px) and (min-width: 1025px) {
@@ -354,14 +382,14 @@ a.banner{
     }
 
     .video-text-1 span {
-        font-size: 96px !important;
+        font-size: 75px !important;
         line-height: 65px !important;
         font-weight: 800;
         color: #fff;
     }
 
     .video-text-2 p {
-        font-size: 45px !important;
+        font-size: 35px !important;
     }
 }
 
@@ -371,18 +399,19 @@ a.banner{
     }
 
     .video-img img {
-        height: 550px !important;
+        height: 270px !important;
         width: auto !important;
     }
 
     .video-text-1 span {
-        font-size: 120px !important;
+        font-size: 75px !important;
         line-height: 95px !important;
         font-weight: 400;
         color: #fff;
     }
 
     .video-text-2 p {
-        font-size: 60px !important;
+        font-size: 40px !important;
+        line-height: 30px !important;
     }
 }

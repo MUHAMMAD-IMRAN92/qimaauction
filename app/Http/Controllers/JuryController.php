@@ -162,11 +162,12 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     { 
-        $request->validate([
-            'juries' => 'required|array',
-            'products' => 'required|array',
-            'auction_id' => 'required'
-        ]);
+        dump($request->all());
+        // $request->validate([
+        //     'juries' => 'required|array',
+        //     'products' => 'required|array',
+        //     'auction_id' => 'required'
+        // ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
@@ -177,6 +178,7 @@ class JuryController extends Controller
                    $sampleSent->jury_id = $jury1;
                    $sampleSent->tables = $request->$key;
                    $sampleSent->product_id = $product;
+                   $sampleSent->postion = $request->postion[$key];
                    $sampleSent->auction_id = $request->auction_id;
                    $sampleSent->temporary_link = $tempLink;
                    $sampleSent->samples = $request->samples[$key];
@@ -188,6 +190,7 @@ class JuryController extends Controller
                    $sampleSent->jury_id = $jury1;
                    $sampleSent->tables = $request->$key;
                    $sampleSent->product_id = $product;
+                   $sampleSent->postion = $product[$key];
                    $sampleSent->auction_id = $request->auction_id;
                    $sampleSent->temporary_link = $tempLink;
                    $sampleSent->samples = $request->samples[$key];
@@ -209,8 +212,7 @@ class JuryController extends Controller
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
-                $sampleSent=SentToJury::where('product_id',$product)->first();
-            
+                $sampleSent=SentToJury::where('product_id',$product)->first();       
                  if(isset($sampleSent))
                  {
                     $sampleSent->jury_id = $jury1;

@@ -151,20 +151,16 @@
                                                                 @endforeach
                                                         </div>
                                                     
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-2">
                                                             @foreach ($products as $key => $product)
                                                             <input type="text" class="form-control"  name="samples[]" id="samples" placeholder="Enter Sample Id">
                                                         @endforeach
-                                                            {{-- <span id="exist" class="danger"></span> --}}
-                                                           {{-- <input type="text" class="form-control s1"  id="sampleId1" placeholder="Enter Sample Id">
-                                                           <span id="exist1" class="danger"></span>
-                                                           <input type="text" class="form-control s1"  id="sampleId2" placeholder="Enter Sample Id">
-                                                           <span id="exist2" class="danger"></span>
-                                                           <input type="text" class="form-control s1"  id="sampleId3" placeholder="Enter Sample Id">
-                                                           <span id="exist3" class="danger"></span>
-                                                           <input type="text" class="form-control s1"  id="sampleId4" placeholder="Enter Sample Id">
-                                                           <span id="exist4" class="danger"></span> --}}
                                                            
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            @foreach ($products as $key => $product)
+                                                            <input type="number" class="form-control" name="postion[]" id="postion" placeholder="Postion" oninput="if (this.value > 9) this.value = 0;">
+                                                            @endforeach
                                                         </div>
                                                         <div class="col-md-4">
                                                             @foreach ($products as $key => $product)
