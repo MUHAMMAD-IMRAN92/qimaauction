@@ -1554,6 +1554,8 @@
     <script>
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
+            var hanzi = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+
             $(".customslider")
     .slider({
         max: 8,
@@ -1561,9 +1563,10 @@
     })
     .slider("pips", {
         rest: "label",
-        step: 2
+        step: 2,
+        labels: hanzi
     })
-    .slider("float");
+    .slider("float",{labels: hanzi});
     
         });
         
