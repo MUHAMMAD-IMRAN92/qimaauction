@@ -242,7 +242,7 @@
     }
     h2.totalScore {
         text-align: center;
-        font-size: 300px;
+        font-size: 150px;
         font-family: 'EB Garamond';
     }
     .submit-form-btn {
