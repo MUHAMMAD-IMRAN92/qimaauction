@@ -132,6 +132,9 @@ class ProductController extends Controller
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
         $product = product::where('id', base64_decode($id))->with('images')->first();
+        $region = Region::where('is_hidden', '0')->get();
+        $village = Village::where('is_hidden', '0')->get();
+        $governorator = Governorate::where('is_hidden', '0')->get();
         // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
@@ -279,7 +282,7 @@ class ProductController extends Controller
                 return view('admin.jury.alredy_submit');
             } else {
                 $samplesArr = explode(',', $firstsample->samples);
-                return view('admin.jury.form', [
+                return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
                     'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
                     'juryName' => $name,
