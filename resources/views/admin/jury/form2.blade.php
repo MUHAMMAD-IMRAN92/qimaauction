@@ -404,9 +404,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                    <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                        <h3 class="entity-text aroma-bg">AROMA</h3>
 
-                                                            <div class="row aroma-data">
+                                                            <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <h5>DRY</h5>
                                                                     <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
