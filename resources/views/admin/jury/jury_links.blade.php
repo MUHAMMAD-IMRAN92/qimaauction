@@ -44,16 +44,16 @@
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 <style>
-   .tab {overflow: hidden; border: 1px solid #ccc; 
+   .tab {overflow: hidden; border: 1px solid #ccc;
 background-color: #f1f1f1;}
 
 .tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc;
     border-top: none;}
-    
+
 .tab button {background-color: inherit; float: left; border: none;
-    outline: none; cursor: pointer; padding: 14px 16px; 
+    outline: none; cursor: pointer; padding: 14px 16px;
     transition: 0.3s;}
-    
+
 .tab button:hover {background-color: #ddd;}
 
 .tab .active {background-color: #ccc;}
@@ -65,7 +65,7 @@ border: 1px solid #ccc; border-top: none;}
 table {font-family: arial, sans-serif; border-collapse: collapse;
     width: 100%;}
 
-td, th {border: 1px solid #dddddd; padding: 8px; 
+td, th {border: 1px solid #dddddd; padding: 8px;
     text-align: center;}
 
 /*Change color to gray*/
@@ -84,6 +84,58 @@ tr:nth-child(even) {
 .vacation{ font-weight: bold}
 .active{
     background-color: #d8940d;
+
+}
+
+    /*no more table*/
+
+@media only screen and (max-width: 800px) {
+    /* Force table to not be like tables anymore */
+    #no-more-tables table,
+    #no-more-tables thead,
+    #no-more-tables tbody,
+    #no-more-tables th,
+    #no-more-tables td,
+    #no-more-tables tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #no-more-tables tr { border: 1px solid #ccc; }
+
+    #no-more-tables td {
+        /* Behave like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align:left;
+    }
+
+    #no-more-tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+    }
+
+    /*
+    Label the data
+    */
+    #no-more-tables td:before { content: attr(data-title); }
 }
 </style>
 <body
@@ -119,7 +171,7 @@ tr:nth-child(even) {
                                 </div>
                                 @if(count($samples) > 0)
                                 <div class="card-body mt-5">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" id="no-more-tables">
                                         <div class="container w3-animate-opacity">
                                             <div class="tab">
                                                 @foreach ($samples as $sample)
@@ -135,7 +187,7 @@ tr:nth-child(even) {
                             @else
                               <h3 class="ml-5">No Pending Reviews</h3>
                                 @endif
-                              
+
                             </div>
                         </div>
                     </div>
@@ -146,7 +198,7 @@ tr:nth-child(even) {
         </div>
     </div>
     <!-- END: Content-->
-  
+
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
@@ -164,7 +216,7 @@ tr:nth-child(even) {
     <script  type='text/javascript'>
         var juryId = {{$juryId}};
         var table ={{isset($firstsample->tables) ? $firstsample->tables : 0}};
-       
+
         sampleData(table,table);
            function  sampleData(element,table) {
                     jQuery(".tablinks").removeClass("active");
@@ -180,7 +232,7 @@ tr:nth-child(even) {
                                 success: function( data ) {
                                     jQuery('.content_data').html(data.html);
                                 }
-                            });  
+                            });
                        }
          </script>
 
