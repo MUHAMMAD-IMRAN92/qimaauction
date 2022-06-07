@@ -7,15 +7,15 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
+                <div class="content-header-left col-md-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            {{-- <h2 class="content-header-title float-left mb-0">Products</h2> --}}
+                            {{-- <h2 class="content-header-title float-left mb-0">Villages</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Products
+                                    <li class="breadcrumb-item active">Genetic
                                     </li>
                                 </ol>
                             </div>
@@ -24,8 +24,8 @@
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
-                    <a href="{{ url('/product/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Product<a>
+                    <a href="{{ url('/genetic/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                        Genetic<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -50,24 +50,18 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="category-table">
+                                            <table class="table zero-configuration" id="genetic-table">
                                                 <thead>
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
-                                                        <th>Description</th>
-                                                        {{-- <th>Image</th> --}}
-                                                        <th>Category</th>
-                                                        <!-- <th>Origin</th> -->
-                                                        <th>Flavour</th>
-                                                        <th>Action(s)</th>
+                                                        <th>Action</th>
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
                                                 </tbody>
-                                           
                                             </table>
                                         </div>
                                     </div>
@@ -86,7 +80,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        var t = $('#category-table').DataTable({
+        var t = $('#genetic-table').DataTable({
             "processing": true,
             "serverSide": true,
             "deferRender": true,
@@ -97,91 +91,39 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/product/allproduct') ?>'
+                url: '<?= asset('/genetic/allgenetic') ?>'
             },
             "columns": [{
-                    "data": null
+                    "data": null  
                 },
                 {
 
                     "mRender": function(data, type, row) {
-                        return '<td>' +
-                            row.product_title + '</td>';
+                        return '<td >' +
+                            row.title + '</td>';
                     }
                 },
-                {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                            row.product_description + '</td> ';
-                    }
-                },
-                // {
-
-                //     "mRender": function(data, type, row) {
-                //         return '<td>' +
-                //             `<img width="100px" height="100px" src="{{ url('/storage/app/public/category/`+row.product_image+ `') }}" alt="">`+
-                //             `</td>`
-
-                //     }
-                // },
-                {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                                row.category.category_title+
-                            
-                            `</td>`
-                          
-                    }
-                },
-                // {
-
-                //     "mRender": function(data, type, row) {
-                //         return '<td>' +
-                            
-                //                 row.origin.region_name+
-                           
-                //             `</td>` 
-                           
-
-                //     }
-                // },
-                {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                            
-                                row.flavor.flavour_title+
-                        
-                            `</td>` 
-                        
-
-                    }
-                    },
                 {
 
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
-                            `<a class="" href="/product/edit/` + ids +
+                            `<a class="" href="/genetic/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            // `<a class="" href="/product/delete/` + ids +
-                            // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>&nbsp&nbsp` +
-                            // `<a class="" href="/product/view/` + ids +
-                            // `"><i class="fa fa-eye" style="font-size:15px;color:#d1af69"></i></a>` +
-                            '</td></tr>'
+                            // `<a class="" href="/genetic/delete/` + ids +
+                            // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
+                            '</td>'
                     }
                 },
             ],
             "columnDefs": [{
                 "orderable": false,
-                "targets": [0, 1, 2]
+                "targets": [0, 1]
             }, ]
         });
 
         t.on('draw.dt', function() {
-            var BlogInfo = $('#category-table').DataTable().page.info();
+            var BlogInfo = $('#genetic-table').DataTable().page.info();
             t.column(0, {
                 page: 'current'
             }).nodes().each(function(cell, i) {
