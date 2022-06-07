@@ -737,7 +737,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     
                     return subtotal;
                 }
-                $('input[type=range]').on('input', function () {
+                $('input[type=range]').on('input', function () {});
+                function calcTotal(){
                     var step=0;
                     if ($(this).val() >= 0 && $(this).val() <= 6) {
                         step = 1;
@@ -775,7 +776,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         $('.totalScore').html(total); 
                     }     
                     $(this).trigger('change');
-                });
+                }
                 
                 $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
@@ -1555,14 +1556,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 inputvalue = 7.75;
                 $(ui.handle).parent().find('input').val(inputvalue);
                 // ui.value;
-                $('input[type=range]').first().trigger('input');
+                calcTotal();
+
+                // $('input[type=range]').first().trigger('input');
                 
             })
             .slider("float",{labels: hanzi});
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
-            $('input[type=range]').first().trigger('input');
+            calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
             
         });
