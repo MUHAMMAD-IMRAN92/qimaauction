@@ -1691,6 +1691,37 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 }
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
+            function parseReview(inputvalue){
+                if(inputvalue==1)
+                inputvalue = 0.5;
+                else if(inputvalue==2)
+                inputvalue = 1;
+                else if(inputvalue==3)
+                inputvalue = 1.5;
+                else if(inputvalue==4)
+                inputvalue = 2;
+                else if(inputvalue==4.5)
+                inputvalue = 2.5;
+                else if(inputvalue==5)
+                inputvalue = 3;
+                else if(inputvalue==5.5)
+                inputvalue = 3.5;
+                else if(inputvalue==6)
+                inputvalue = 4;
+                else if(inputvalue==6.25)
+                inputvalue = 4.5;
+                else if(inputvalue==6.5)
+                inputvalue = 5;
+                else if(inputvalue==6.75)
+                inputvalue = 5.5;
+                else if(inputvalue==7)
+                inputvalue = 6;
+                else if(inputvalue==7.25)
+                inputvalue = 6.5;
+                else if(inputvalue==7.75)
+                inputvalue = 7.5;
+                return inputvalue;
+            }
             @if($firstsample->is_hidden==1 && $sampleReview)
                 $(".roastslider")
                     .slider({
@@ -1710,7 +1741,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         })
                         $('input[name=first_number]').val({{$sampleReview->first_number}});
                         $('input[name=second_number]').val({{$sampleReview->second_number}});
-
+                        $('input[name=second_number]').trigger('keyup');
+                        $('#defect_note').val('{{$sampleReview->defects_note}}');
+                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
 
             @endif
         });

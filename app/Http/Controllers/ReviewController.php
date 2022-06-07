@@ -41,7 +41,7 @@ class ReviewController extends Controller
         $review->clean_up               = $request->clean_up;
         $review->sweetness              = $request->sweetness;
         $review->defects_note           = $request->defects_note;
-        $review->clean_sweet_note       = $request->clean_sweet_note;
+        $review->clean_sweet_note       = $request->cleanup_note;
         $review->acidity                = $request->acidity;
         $review->acidity_chk            = $request->acidity_chk;
         $review->mouth_feel             = $request->mouth_feel;
