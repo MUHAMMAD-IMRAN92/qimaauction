@@ -67,19 +67,7 @@
                                                 <tbody>
 
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Sr</th>
-                                                        <th>Title</th>
-                                                        <th>Description</th>
-                                                        {{-- <th>Image</th> --}}
-                                                        <th>Category</th>
-                                                        <!-- <th>Origin</th> -->
-                                                        <th>Flavor</th>
-                                                        <th>Action(s)</th>
-
-                                                    </tr>
-                                                </tfoot>
+                                           
                                             </table>
                                         </div>
                                     </div>

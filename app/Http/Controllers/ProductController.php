@@ -12,6 +12,7 @@ use App\Models\Origin;
 use App\Models\Product;
 use App\Models\Region;
 use App\Models\Image;
+use App\Models\Process;
 use App\Models\SentToJury;
 use App\Models\Village;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class ProductController extends Controller
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
         })->with('category', 'origin','flavor')->whereHas('category');
-
+        
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
         $data = array(
@@ -64,6 +65,7 @@ class ProductController extends Controller
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
         $region = Region::where('is_hidden', '0')->get();
+        $process = Process::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
         return view('admin.product.create', [
@@ -72,18 +74,23 @@ class ProductController extends Controller
             'governorator' => $governorator,
             'village' => $village,
             'region' => $region,
-            'origin' => $origin
+            'origin' => $origin,
+            'process' => $process,
         ]);
     }
     public function save(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required',
             'table' => 'required',
+            'sample' => 'required',
+            // 'region_id' => 'required',
+            // 'category_id' => 'required',
+            // 'pro_lot_type' => 'required',
+            // 'pro_process' => 'required',
+            // 'village_id' => 'required',
+            'governorate_id' => 'required',
             'postion' => 'required',
-            'pro_category' => 'required',
-            'pro_flavour' => 'required',
             // 'pro_origin' => 'required',
         ]);
         $product = new  Product();
@@ -95,13 +102,13 @@ class ProductController extends Controller
         $product->village_id = $request->village_id;
         $product->region_id = $request->region_id;
         $product->product_title = $request->title;
-        $product->product_description = $request->description;
+        $product->product_description = $request->description ?? '';
         $product->user_id = $this->user->id;
-        $product->category_id = $request->pro_category;
-        $product->flavour_id = $request->pro_flavour;
+        $product->category_id = $request->category_id ?? '1';
+        $product->flavour_id = isset($request->flavour_id) ? $request->flavour_id : '1';
         $product->pro_lot_type  = $request->pro_lot_type;
         $product->pro_process  = $request->pro_process;
-        // $product->origin_id = $request->pro_origin;
+        $product->origin_id =  2;
         $product->save();
 
         foreach ($request->image as $img) {
@@ -148,14 +155,14 @@ class ProductController extends Controller
     }
     public function update(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'pro_category' => 'required',
-            'pro_flavour' => 'required',
-            'pro_origin' => 'required',
-        ]);
-        $product = product::find($request->id);
+        // $validated = $request->validate([
+        //     'title' => 'required|max:255',
+        //     'description' => 'required',
+        //     'pro_category' => 'required',
+        //     'pro_flavour' => 'required',
+        //     'pro_origin' => 'required',
+        // ]);
+        $product = Product::find($request->id);
         $product->product_title = $request->title;
         $product->sample = $request->sample;
         $product->postion = $request->postion;

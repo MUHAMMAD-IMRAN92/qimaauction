@@ -34,7 +34,7 @@
                 </div>
             </div> --}}
             </div>
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -42,7 +42,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
             <div class="content-body">
 
                 <!-- // Basic multiple Column Form section start -->
@@ -110,14 +110,16 @@
                                                         <div class="form-label-group">
                                                             <label for="product-category">Select Category</label>
                                                             <div class="form-group">
-                                                                <select class="select2 form-control" name="pro_category"
+                                                                <select class="select2 form-control @error('category_id') is-invalid @enderror" name="category_id"
                                                                     id="product-category" required>
                                                                     <option selected>Please Select Category</option>
                                                                     @foreach ($category as $key => $cat)
                                                                         <option value="{{ $cat->id }}">
                                                                             {{ $cat->category_title }}</option>
                                                                     @endforeach
-
+                                                                    @error('category_id')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -126,14 +128,14 @@
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
-                                                                <select class="select2 form-control" name="pro_flavour"
+                                                                <select class="select2 form-control" name="flavour_id"
                                                                     id="product-flavour" required>
                                                                     <option selected>Please Select Flavour</option>
                                                                     @foreach ($flavour as $key => $flv)
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->flavour_title }}</option>
                                                                     @endforeach
-
+                                                                 
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -156,13 +158,14 @@
                                                             <label for="product-process">Select Process</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_process"
-                                                                    id="product-process" required>
-                                                                    <option selected>Please Select Process</option>
-                                                                    <option value="1">Natural</option>
-                                                                    <option value="2">Slow Dried</option>
-                                                                    <option value="3">Alchemy</option>
+                                                                id="product-process" required>
+                                                                <option selected>Please Select Flavour</option>
+                                                                @foreach ($process as $key => $flv)
+                                                                    <option value="{{ $flv->id }}">
+                                                                        {{ $flv->title }}</option>
+                                                                @endforeach
 
-                                                                </select>
+                                                            </select>
                                                             </div>
                                                         </div>
                                                     </div>
