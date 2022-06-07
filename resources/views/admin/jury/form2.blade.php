@@ -954,12 +954,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 
             })();
             
-            var tagInput1 = new TagsInput({
-                selector: 'tag-input1',
-                duplicate: false,
-                max: 10
-            });
-            tagInput1.addData([])
+            // var tagInput1 = new TagsInput({
+            //     selector: 'tag-input1',
+            //     duplicate: false,
+            //     max: 10
+            // });
+            // tagInput1.addData([])
             
             $('.uniformity').on('click', function() {
                 $('#uniformity').html($('.uniformity:checked').length * 2);
