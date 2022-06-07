@@ -1690,20 +1690,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 }
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
-            
+            @if($firstsample->is_hidden==1 && $sampleReview)
+                $(".roastslider")
+                    .slider({
+                        
+                        value: {{$sampleReview->roast}}
+                    })
+
+            @endif
         });
         
     </script>
 </body>
 <!-- END: Body-->
-@if($firstsample->is_hidden==1 && $sampleReview)
-    <script type="text/javascript">
-        $(".roastslider")
-            .slider({
-                
-                value: {{$sampleReview->roast}}
-            })
-    </script>    
 
-@endif
 </html>
