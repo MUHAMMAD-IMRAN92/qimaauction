@@ -752,11 +752,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     @php $extraclass="isdone"; @endphp
                                                                 @endif
                                                                 @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a class="btn btn-secondary pager {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
