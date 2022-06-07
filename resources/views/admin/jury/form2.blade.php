@@ -187,6 +187,7 @@
     }
     .defects-bg{
         background-color:#B22AF1;
+        margin-top:82px;
     }
     .cleancup-bg{
         background-color:#2AE5F1;
