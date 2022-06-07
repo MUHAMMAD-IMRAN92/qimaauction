@@ -405,29 +405,30 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h3 class="entity-text aroma-bg">AROMA</h3>
                                                     </div>
                                                     
-                                                    <div class="col-lg-12">
+                                                    <div class="col-sm-4">
                                                         <h5>DRY</h5>
+                                                        <div class="design-slider mt-5 mb-5">
+                                                            <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
+                                                            
+                                                            
+                                                            
+                                                        </div>
                                                     </div>
-                                                    <div class="design-slider mt-5 mb-5">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
-                                                        
-                                                        
-                                                        
-                                                    </div>
-                                                    <div class="col-lg-12">
+                                                    
+                                                    <div class="col-lg-4">
                                                         <h5>CRUST</h5>
+                                                        <div class="design-slider mt-5 mb-5">
+                                                            <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                        </div>
                                                     </div>
-                                                    <div class="design-slider mt-5 mb-5">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
-                                                    </div>
                                                     
                                                     
                                                     
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-4">
                                                         <h5>BREAK</h5>
-                                                    </div>
-                                                    <div class="design-slider mt-5 mb-5">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+                                                        <div class="design-slider mt-5 mb-5">
+                                                            <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+                                                        </div>
                                                     </div>
                                                     
                                                     
