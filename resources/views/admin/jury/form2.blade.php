@@ -405,75 +405,38 @@
                                                     </div>
                                                     <div class="row">
                                                     <h3 class="entity-text aroma-bg">AROMA</h3>
-
-                                                        <div class="row aroma-data">
-                                                            <div class="col-lg-12">
+                                                    </div>
+                                                            
+                                                    <div class="row">
+                                                    <div class="col-lg-12">
                                                                 <h5>DRY</h5>
                                                                 <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
 
-                                                                <!-- <div class="custom_slider ">
-                                                                    <div class="range-slider"
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0" class="aroma_dry" 
-                                                                        id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
-                                                                            step="1" value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                </div> -->
+                                                            
                                                                 
+                                                                </div>
                                                             </div>
+                                                    <div class="row">
                                                             <div class="col-lg-12">
                                                                 <h5>CRUST</h5>
                                                                 <div>
                                                                                 <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
                                                                 </div>
 
-                                                                <!-- <div class="custom_slider">
-                                                                    <div class="range-slider" 
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0"
-                                                                            name="aroma_crust" id="aroma_crust" class="aroma_crust"
-                                                                            max="3" step="1"
-                                                                            value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
+                                                               
                                                                 
+                                                                </div>
                                                             </div>
+                                                    <div class="row">
                                                             <div class="col-lg-12">
                                                                 <h5>BREAK</h5>
                                                                 <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
 
-                                                                <!-- <div class="custom_slider">
-                                                                    <div class="range-slider"
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0"
-                                                                            name="aroma_break" id="aroma_break"
-                                                                            max="3" step="1"
-                                                                            value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                                                                 
+                                                                
+                                                                </div>
                                                             </div>
-                                                            <!-- <div class="aroma_input">
-                                                                                <input type="text" name="aroma_note" id="aroma_note"
-                                                                                    placeholder="Note"
-                                                                                    class="aroma_note">
-                                                                            </div> -->
+                                                          
                                                         </div>
                                                     </div>
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
