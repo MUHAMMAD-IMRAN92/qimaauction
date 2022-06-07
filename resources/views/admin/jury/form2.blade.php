@@ -248,7 +248,8 @@
         color: #A4A3A3 !important;
         border: 1px solid #A4A3A3 !important;
         padding: 22px;
-        width: auto;
+        width: 200px;
+        height: auto;
         display: block;
         margin: auto;
         margin-top: 40px;
