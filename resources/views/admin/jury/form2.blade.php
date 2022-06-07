@@ -654,7 +654,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="#ex1" rel="modal:open" class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
+                                                    <a data-toggle="myModal" class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
                                                 </form>
                                             </div>
                                             
@@ -669,10 +669,23 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             </div>
         </div>
     </div>
-    <div id="ex1" class="modal">
-        <p>Thanks for clicking. That felt good.</p>
-        <a href="#" rel="modal:close">Close</a>
-      </div>
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Title</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a simple Bootstrap modal. Click the "Cancel button", "cross icon" or "dark gray area" to close or hide the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- END: Content-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
