@@ -353,9 +353,10 @@ class ProductController extends Controller
         //    dd($firstsample);
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
-            if ($firstsample->is_hidden == '1') {
-                return view('admin.jury.alredy_submit');
-            } else {
+            // if ($firstsample->is_hidden == '1') {
+            //     return view('admin.jury.alredy_submit');
+            // } else 
+            {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
