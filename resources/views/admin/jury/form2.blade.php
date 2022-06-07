@@ -1509,7 +1509,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
-
+            $('.customslider').draggable();
             function subtotaldata()
                 {
                     // var d=e=f=g=h=i=j=k=0;
