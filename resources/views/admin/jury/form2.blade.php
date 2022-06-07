@@ -173,7 +173,7 @@
     }
     .entity-label{
         font-family:'Montserrat';
-        font-size:25px;
+        font-size:20px;
         color:#A4A3A3;
         text-align:center;
         padding-top:10px;
@@ -223,7 +223,7 @@
         font-size:32px;
     }
     .score_first_number,.score_second_number{
-        width:80px;
+        width:50px;
     }
     .entity_note {
         width: 80%;
@@ -240,7 +240,7 @@
     }
     h2.totalScore {
         text-align: center;
-        font-size: 150px;
+        font-size: 100px;
         font-family: 'EB Garamond';
     }
     .submit-form-btn {
