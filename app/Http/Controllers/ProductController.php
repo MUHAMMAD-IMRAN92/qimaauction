@@ -349,7 +349,7 @@ class ProductController extends Controller
             
               
         }
-        $sampleReview = Review::where('sample_id',$firstsample->id)->get();
+        $sampleReview = Review::where('sample_id',$firstsample->id)->first();
         //    dd($firstsample);
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
