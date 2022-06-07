@@ -605,7 +605,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     <label class="radio_container">
                                                                         
                                                                         <input type="radio"
-                                                                        name="acidity_chk" value="H">
+                                                                        name="acidity_chk" value="H" class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>H</h5>
@@ -615,7 +615,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 <div>
                                                                     <label class="radio_container">
                                                                         <input type="radio"
-                                                                        name="acidity_chk" value="M">
+                                                                        name="acidity_chk" value="M" class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>M</h5>
@@ -626,7 +626,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     <label class="radio_container">
                                                                         <input type="radio"
                                                                         checked="checked"
-                                                                        name="acidity_chk" value="L">
+                                                                        name="acidity_chk" value="L" class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
@@ -1744,7 +1744,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         $('input[name=second_number]').trigger('keyup');
                         $('#defect_note').val('{{$sampleReview->defects_note}}');
                         $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
+                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
+                        
+                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
+                        $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
 
+                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
+                        $('#acidity_note').val('{{$sampleReview->acidity_note}}');
+                        
             @endif
         });
         
