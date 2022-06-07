@@ -400,7 +400,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="col-lg-12">
                                                         <h5>DRY</h5>
                                                     </div>
-                                                    <div class="design-slider mt-5 mb-5">
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
                                                         
                                                         
@@ -409,7 +409,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="col-lg-12">
                                                         <h5>CRUST</h5>
                                                     </div>
-                                                    <div class="design-slider mt-5 mb-5">
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
                                                     </div>
                                                     
@@ -418,7 +418,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="col-lg-12">
                                                         <h5>BREAK</h5>
                                                     </div>
-                                                    <div class="design-slider mt-5 mb-5">
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
                                                     </div>
                                                     
