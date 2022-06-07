@@ -77,7 +77,6 @@ class ReviewController extends Controller
                 }
         }
         $sampleSent2 = SentToJury::where('jury_id',  $request->jury_id)
-                                 ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
                                  ->where('is_hidden','0')
                                  ->orderBy('tables','asc')
