@@ -717,26 +717,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             });
             (function() {
                 "use strict"
-                function subtotaldata()
-                {
-                    // var d=e=f=g=h=i=j=k=0;
-                    // var a = $('#aroma_dry').val();
-                    // var b = $('#aroma_crust').val();
-                    // var d = $('#aroma_break').val();
-                    var c = $('#clean_up').val();
-                    
-                    var e = $('#sweetness').val();
-                    var f = $('#acidity').val();
-                    var g = $('#mouth_feel').val();
-                    var h = $('#flavour').val();
-                    var i = $('#balance').val();
-                    var j = $('#overall').val();
-                    var k = $('#after_taste').val();
-                    
-                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                    
-                    return subtotal;
-                }
+                
                 $('input[type=range]').on('input', function () {});
                 
                 
@@ -1528,7 +1509,26 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             .slider( "value", 4 )
             .slider("pips", "refresh");
 
-
+            function subtotaldata()
+                {
+                    // var d=e=f=g=h=i=j=k=0;
+                    // var a = $('#aroma_dry').val();
+                    // var b = $('#aroma_crust').val();
+                    // var d = $('#aroma_break').val();
+                    var c = $('#clean_up').val();
+                    
+                    var e = $('#sweetness').val();
+                    var f = $('#acidity').val();
+                    var g = $('#mouth_feel').val();
+                    var h = $('#flavour').val();
+                    var i = $('#balance').val();
+                    var j = $('#overall').val();
+                    var k = $('#after_taste').val();
+                    
+                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+                    
+                    return subtotal;
+                }
             function calcTotal(){
                     // var step=0;
                     // if ($(this).val() >= 0 && $(this).val() <= 6) {
