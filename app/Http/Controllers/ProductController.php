@@ -324,7 +324,7 @@ class ProductController extends Controller
         ->select('products.id as productId','products.product_title as productTitle',
         'sample_sent_to_jury.id as sampleId','sample_sent_to_jury.jury_id as juryId',
         'sample_sent_to_jury.samples as samples','sample_sent_to_jury.tables as sampleTable',
-        'juries.name as juryName')
+        'juries.name as juryName','sample_sent_to_jury.is_hidden')
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
         // ->where('sample_sent_to_jury.is_hidden', '0')
