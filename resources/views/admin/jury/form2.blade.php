@@ -662,7 +662,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal fade" tabindex="-1">
+    <div id="myModal" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
