@@ -80,8 +80,8 @@ class ReviewController extends Controller
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
                                  ->where('is_hidden','0')
-                                 ->orderBy('table','asc')
-                                 ->orderBy('position','asc')
+                                 ->orderBy('tables','asc')
+                                 ->orderBy('postion','asc')
 
                                  ->first();
         return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Succesully');
