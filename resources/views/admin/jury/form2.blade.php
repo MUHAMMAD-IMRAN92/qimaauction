@@ -402,8 +402,8 @@ input{
     }
 }
 .isdone{
-    background:transparent;
-    color:#000;
+    background-color:transparent !important;
+    color:#000 !important;
 }
 </style>
 
