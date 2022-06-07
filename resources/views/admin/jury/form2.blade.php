@@ -1484,7 +1484,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             .slider({
                 max: 3,
                 step: 1,
-                value: 0
+                value: 0,
+                orientation: "vertical"
             })
             .slider("pips", {
                 rest: "label",
