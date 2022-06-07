@@ -403,7 +403,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div>
                                                         <h3 class="entity-text aroma-bg">AROMA</h3>
 
                                                             <div class="row">
