@@ -387,13 +387,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <h3 class="entity-text roast-bg">ROAST</h3>
                                                         
-                                                        <div class="user_name">
-                                                            <div class="range-slider">
-                                                                <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); 
-                                                                this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                            </div>
-                                                            
-                                                        </div>
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
