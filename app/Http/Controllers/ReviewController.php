@@ -76,7 +76,7 @@ class ReviewController extends Controller
                     }
                 }
         }
-        $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
+        $sampleSent2 = SentToJury::where('jury_id',  $request->jury_id)
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
                                  ->where('is_hidden','0')
@@ -84,7 +84,7 @@ class ReviewController extends Controller
                                  ->orderBy('postion','asc')
 
                                  ->first();
-        return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Succesully');
+        return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent2->id])->with('success','Review submitted Succesully');
         // return view('admin.jury.success');
     }
     public function form()
