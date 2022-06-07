@@ -653,7 +653,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 <div>
                                                                     <label class="radio_container">
                                                                         
-                                                                        <input type="radio"
+                                                                        <input type="radio" class="mouthfeel_H"
                                                                         value="H"
                                                                         name="fm_chk">
                                                                         <div class="checkmark">
@@ -663,7 +663,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" value="M"
+                                                                        <input type="radio" value="M" class="mouthfeel_M"
                                                                         name="fm_chk">
                                                                         <div
                                                                         class="checkmark">
@@ -673,7 +673,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                             <div>
                                                                 <label class="radio_container">
-                                                                    <input type="radio" value="L" checked="checked"
+                                                                    <input type="radio" value="L" checked="checked" class="mouthfeel_L"
                                                                     name="fm_chk">
                                                                     <div
                                                                     class="checkmark">
@@ -1751,6 +1751,26 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
                         $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
                         $('#acidity_note').val('{{$sampleReview->acidity_note}}');
+                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true)
+
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})})
+                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
+                        $('.acidity_{{$sampleReview->fm_chk}}').prop('checked',true)
+
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})})
+                        $('#flavor_note').val('{{$sampleReview->flavor_note}}');
+
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
+                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
+
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
+                        $('#balance_note').val('{{$sampleReview->balance_note}}');
+
+                        $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
+                        $('#overall_note').val('{{$sampleReview->overall_note}}');
+
+            calcTotal();
+                        
                         
             @endif
         });
