@@ -333,6 +333,74 @@
     .roastslider .ui-state-focus,.roastslider .ui-state-focus {
         border:1px solid #000;
     }
+    ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background: none;
+  border: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center !important;
+}
+ul.breadcrumb li {
+  display: inline;
+}
+ul.breadcrumb li+li:before {
+  content: "/\00a0";
+  font-size: 26px;
+}
+ul.breadcrumb li a {
+  text-decoration: none;
+  color: black;
+}
+.id-text{
+    font-size: 65px;
+    color: #A4A3A3;
+    font-family: 'Garamond Premier Pro';
+}
+.sample-area{
+    text-align: center;
+}
+.sample_number{
+font-family: 'Garamond Premier Pro';
+font-style: normal;
+font-weight: 400;
+font-size: 140px;
+line-height: 168px;
+/* identical to box height */
+color: #040404;
+}
+.custom_hr{
+    border-top: 2px solid #A4A3A3;
+}
+.entity_note{
+    width: 100%;
+}
+.design-slider {
+    padding: 2rem 0.4rem;
+}
+input{
+    border: 1px solid #000000;
+}
+@media only screen and (max-width:767px){
+    .id-text{
+    font-size: 40px;
+}
+.sample_number{
+    font-size: 80px;
+}
+.breadcrumb-section{
+    display: none;
+}
+.breadcrumb-content{
+    font-size: 20px !important;
+}
+}
+@media only screen and (min-width:768px){
+    .mobile-breadcrumb-section{
+        display: none;
+    }
+}
 </style>
 
 <body
@@ -365,16 +433,53 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                 <img
                                                 src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
                                             </div>
+                                            <!--Breadcrumb Section-->
+                                            <div class="breadcrumb-section">
+                                                <ul class="breadcrumb">
+                                                    <li><a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">CUPPER</p></a></li>
+                                                    <li><a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{ $juryName }}</p></a></li>
+                                                    <a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">-</p></a>
+                                                    <li><a href="#">   <p class="pt-1 breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">COMPANY</p></a></li>
+                                                    <li><a href="#">   <p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{$juryCompany}}</p></a></li>
+                                                  </ul>
+                                            </div>
+                                            <div class="mobile-breadcrumb-section">
+                                                <ul class="breadcrumb">
+                                                    <li><a href="#"><p class="breadcrumb-content pt-1" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">CUPPER</p></a></li>
+                                                    <li><a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{ $juryName }}</p></a></li>
+                                                  </ul>
+                                                  <ul class="breadcrumb">
+                                                    <li><a href="#">   <p class="breadcrumb-content pt-1" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">COMPANY</p></a></li>
+                                                    <li><a href="#">   <p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{$juryCompany}}</p></a></li>
+                                                  </ul>
+                                            </div>
+                                            <hr class="custom_hr">
+                                            <!--Breadcrumb Section-->
+                                            {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
+                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
+                                            <!--Sample ID Section-->
+                                            <div class="sample-area">
+                                              <h2 class="id-text">SAMPLE ID</h2>
+                                              <p class="sample_number">
+                                                @foreach ($alltablesamples as $samp)
+                                               
+                                               @if($samp->sampleId == $sentSampleId)
+                                               {{$samp->samples}}
+                                               
+                                               @endif
+                                               @endforeach
+                                           </p>
+                                            <!--Breadcrumb Section-->
+                                            <div class="breadcrumb-section">
+                                                <ul class="breadcrumb">
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE 1</p></a></li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSTION 1</p></a></li>
+                                                </ul>
+                                            </div>
+                                            <!--Breadcrumb Section-->
+                                            </div>
+                                            <!--Sample ID Section-->
                                             
-                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
-                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p>
-                                            <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';font-size:25px;">SAMPLE ID: @foreach ($alltablesamples as $samp)
-                                                
-                                                @if($samp->sampleId == $sentSampleId)
-                                                {{$samp->samples}}
-                                                
-                                                @endif
-                                                @endforeach</p>
                                             </div>
                                             
                                             <div class="col-lg-12">
@@ -385,7 +490,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                     <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
                                                     <div class="row">
-                                                        <h3 class="entity-text roast-bg">ROAST</h3>
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text roast-bg">ROAST</h3>
+                                                        </div>
                                                         
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
@@ -394,7 +501,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                        </div>
                                                     </div>
                                                     
                                                     <div class="col-lg-12">
@@ -444,12 +553,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             class="multiply">=</span>
                                                             <span
                                                             class="multiply4">?</span>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="defect_note" id="defect_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
                                                         </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="defect_note" id="defect_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
+                                                        
                                                     </div>
                                                     
                                                     {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
@@ -460,12 +570,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="customslider"><input type="hidden" name="clean_up" id="clean_up"></div>
                                                             </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="cleanup_note" id="cleanup_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
                                                         </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="cleanup_note" id="cleanup_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
+                                                        
                                                     </div>
                                                     <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
                                                     <div class="row">
@@ -473,12 +584,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="customslider"><input type="hidden" name="sweetness" id="sweetness"></div>
                                                             </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="sweetness_note" id="sweetness_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
                                                         </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="sweetness_note" id="sweetness_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
+                                                       
                                                     </div>
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
@@ -1027,7 +1139,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         }
         
         .custom_slider {
-            padding: 2rem 0;
+            padding: 2rem 0.4rem;
         }
         
         .range-slider {
