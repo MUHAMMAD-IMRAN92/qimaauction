@@ -840,21 +840,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 $('input[type=range]').on('input', function () {});
                 
                 
-                $(".score_second_number,.score_first_number").keyup(function(){
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    var defect=first * second * 4;
-                    $('#defect').val(defect);
-                    $('.multiply4').html(defect);
-                    subtotal=subtotaldata(); 
-                    var raw = subtotal - defect;
-                    var total = 36 + raw;
-                    
-                    $('#total_score').val(total);
-                    $('.totalScore').html(total);
-                    
-                    //   $("input").css("background-color", "pink");
-                });
+                
                 // Plugin Constructor
                 var TagsInput = function(opts) {
                     this.options = Object.assign(TagsInput.defaults, opts);
@@ -1552,6 +1538,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- Range slider end -->
     <script>
         $(document).ready(function() {
+            $(".score_second_number,.score_first_number").keyup(function(){
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    var defect=first * second * 4;
+                    $('#defect').val(defect);
+                    $('.multiply4').html(defect);
+                    subtotal=subtotaldata(); 
+                    var raw = subtotal - defect;
+                    var total = 36 + raw;
+                    
+                    $('#total_score').val(total);
+                    $('.totalScore').html(total);
+                    
+                    //   $("input").css("background-color", "pink");
+                });
             $('.js-example-basic-multiple').select2();
             var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
             $(".roastslider")
@@ -1707,6 +1708,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         .slider({
                             value: {{$sampleReview->aroma_dry}}
                         })
+                        $('input[name=first_number]').val({{$sampleReview->first_number}});
+                        $('input[name=second_number]').val({{$sampleReview->second_number}});
+
 
             @endif
         });
