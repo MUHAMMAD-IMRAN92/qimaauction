@@ -399,7 +399,9 @@
                                                         <div class="row aroma-data">
                                                             <div class="col-lg-12">
                                                                 <h5>DRY</h5>
-                                                                <div class="custom_slider ">
+                                                                <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
+
+                                                                <!-- <div class="custom_slider ">
                                                                     <div class="range-slider"
                                                                         style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                         <input type="range" min="0" class="aroma_dry" 
@@ -412,12 +414,14 @@
                                                                         </div>
                                                                     </div>
                                                                     
-                                                                </div>
+                                                                </div> -->
                                                                 
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <h5>CRUST</h5>
-                                                                <div class="custom_slider">
+                                                                <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+
+                                                                <!-- <div class="custom_slider">
                                                                     <div class="range-slider" 
                                                                         style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                         <input type="range" min="0"
@@ -430,12 +434,14 @@
                                                                             class='range-slider__progress'>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
                                                                 
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <h5>BREAK</h5>
-                                                                <div class="custom_slider">
+                                                                <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+
+                                                                <!-- <div class="custom_slider">
                                                                     <div class="range-slider"
                                                                         style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
                                                                         <input type="range" min="0"
@@ -448,7 +454,7 @@
                                                                             class='range-slider__progress'>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
                                                                 
                                                             </div>
                                                             <!-- <div class="aroma_input">
@@ -1508,6 +1514,19 @@
                 $(ui.handle).parent().find('input').val(ui.value);
 
                 });
+                $(".aromaslider")
+            .slider({
+                max: 3,
+                step: 1,
+                value: 0
+            })
+            .slider("pips", {
+                rest: "label",
+                step: 1,
+            }).on("slidechange", function( e, ui ) {
+                $(ui.handle).parent().find('input').val(ui.value);
+
+                });;
             $(".customslider")
             .slider({
                 max: 8,
