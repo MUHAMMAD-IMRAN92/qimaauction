@@ -16,10 +16,11 @@ class ReviewController extends Controller
         $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
+                                ->where('id',$request->sent_sample_id)
                                  ->where('is_hidden','0')
                                  ->first();
                                 //  return  $sampleSent;
-        if ($sampleSent->is_hidden == '1') {
+        if (!$sampleSent || $sampleSent->is_hidden == '1') {
             return view('admin.jury.alredy_submit');
         }
         else
