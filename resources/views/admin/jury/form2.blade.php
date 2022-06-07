@@ -220,10 +220,10 @@
     }
     .multiply,.score_first_number,.score_second_number,.multiply4{
         font-family:'Montserrat';
-        font-size:32px;
+        font-size:24px;
     }
     .score_first_number,.score_second_number{
-        width:50px;
+        width:40px;
     }
     .entity_note {
         width: 80%;
