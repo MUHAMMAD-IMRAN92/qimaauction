@@ -427,6 +427,7 @@
                                                                 </div> -->
                                                                 
                                                             </div>
+                                                            <div class="row">
                                                             <div class="col-lg-12">
                                                                 <h5>CRUST</h5>
                                                                 <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
@@ -447,6 +448,8 @@
                                                                 </div> -->
                                                                 
                                                             </div>
+                                                            </div>
+                                                            <div class="row">
                                                             <div class="col-lg-12">
                                                                 <h5>BREAK</h5>
                                                                 <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
@@ -466,6 +469,7 @@
                                                                     </div>
                                                                 </div> -->
                                                                 
+                                                            </div>
                                                             </div>
                                                             <!-- <div class="aroma_input">
                                                                                 <input type="text" name="aroma_note" id="aroma_note"
