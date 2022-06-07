@@ -1439,7 +1439,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             .slider({
                 max: 100,
                 value: 50
-            }).slider("pips", {
+            }).slider("float", {
                 rest: "label"}).on("slidechange", function( e, ui ) {
                 $(ui.handle).parent().find('input').val(ui.value);
                 
