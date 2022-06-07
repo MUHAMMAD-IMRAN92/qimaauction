@@ -134,7 +134,7 @@
                         return '<td>' +
                             `<img width="100px" height="100px" src="{{ url('/storage/app/public/category/`+row.category_image+ `')}}" alt="">`+
                             `</td>`
-                                    
+
                     }
                 },
                 {

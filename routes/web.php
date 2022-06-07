@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::view('/test', 'test');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
@@ -24,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     //Dashboard Route
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-    //Category CRUD Routes 
+    //Category CRUD Routes
     Route::get('/categories/index', [App\Http\Controllers\CategoryController::class, 'index']);
     Route::get('/categories/allcategories', [App\Http\Controllers\CategoryController::class, 'allCategory']);
     Route::get('/categories/create', [App\Http\Controllers\CategoryController::class, 'create']);
@@ -68,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/region/edit/{id}', [App\Http\Controllers\RegionController::class, 'edit']);
     Route::post('/region/edit', [App\Http\Controllers\RegionController::class, 'update']);
     Route::get('/region/delete/{id}', [App\Http\Controllers\RegionController::class, 'delete']);
-    
+
 
     //Origin CRUD Routes
     Route::get('/origin/index', [App\Http\Controllers\OriginController::class, 'index']);
@@ -79,7 +80,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/origin/edit', [App\Http\Controllers\OriginController::class, 'update']);
     Route::get('/origin/delete/{id}', [App\Http\Controllers\OriginController::class, 'delete']);
 
-    //Product CRUD 
+    //Product CRUD
     Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index']);
     Route::get('/product/allproduct', [App\Http\Controllers\ProductController::class, 'allProduct']);
     Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create']);
@@ -91,8 +92,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
     //Product & Jury
     Route::post('/product/sent_to_jury',  [App\Http\Controllers\ProductController::class, 'sentToJury']);
-    
-    //jury CRUD 
+
+    //jury CRUD
     Route::get('/jury/index', [App\Http\Controllers\JuryController::class, 'index']);
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
     Route::get('/jury/create', [App\Http\Controllers\JuryController::class, 'create']);
