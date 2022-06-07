@@ -429,7 +429,15 @@
                                 <span
                                     class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
-                        </li>
+                        </li>  
+                        <li @if (request()->is('process/*')) class='active' @endif><a
+                            href="{{ url('/process/index') }}">
+                            {{-- <i class="feather icon-circle"></i> --}}
+                            <span
+                                class="menu-item @if (request()->is('process/*')) 'active' @endif"
+                                data-i18n="eCommerce">Process</span></a>
+                       </li>
+
                         <li @if (request()->is('auction/*')) class='active' @endif><a
                             href="{{ url('/auction/index') }}">
                             <span
@@ -451,7 +459,7 @@
                                         class="menu-item"
                                         data-i18n="eCommerce">Manage Feedback</span></a>
                                 </li>
-                                <li @if (request()->is('review/summary')) class= 'active' @endif><a
+                                <li @if (request()->is('review/summary')) class='active' @endif><a
                                     href="{{ url('review/summary') }}">
                                     <span
                                         class="menu-item @if (request()->is('review/summary')) 'active' @endif"
