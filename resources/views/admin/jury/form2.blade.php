@@ -648,6 +648,23 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         </div>
                                                     </div>
                                                     <a class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
+                                                    <div id="myModal" class="modal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Modal Title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>This is a simple Bootstrap modal. Click the "Cancel button", "cross icon" or "dark gray area" to close or hide the modal.</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
                                             
@@ -662,23 +679,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal Title</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>This is a simple Bootstrap modal. Click the "Cancel button", "cross icon" or "dark gray area" to close or hide the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- END: Content-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
@@ -696,7 +697,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- END: Page JS-->
     <script>
         function showmodal(){
-
+            $('#myModal').modal('show');
         }
         var subtotal=0;
         //  var a=0,b=0,c=0,d=0;
