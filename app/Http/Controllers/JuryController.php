@@ -163,11 +163,11 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     { 
-        // $request->validate([
-        //     'juries' => 'required|array',
-        //     'products' => 'required|array',
-        //     'auction_id' => 'required'
-        // ]);
+        $request->validate([
+            'juries' => 'required|array',
+            'products' => 'required|array',
+            'auction_id' => 'required'
+        ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {

@@ -16,10 +16,7 @@ class CreateProcessesTable extends Migration
         Schema::create('processes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
-            $table->string('link');
-            $table->string('process_image')->nullable();
-            $table->enum('is_hidden',  [0,1])->default(0);
+            $table->enum('is_hidden', [0,1])->default(0);
             $table->timestamps();
         });
     }
