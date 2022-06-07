@@ -96,7 +96,7 @@
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
 
-                                        <div class="table-responsive">
+                                        <div class="table-responsive col-lg-12">
                                             {{-- {{ url('/jury/send_to_jury') }} --}}
                                             <form action="{{ url('/jury/send_to_jury') }}" method="POST" autocomplete="off">
                                                 @csrf

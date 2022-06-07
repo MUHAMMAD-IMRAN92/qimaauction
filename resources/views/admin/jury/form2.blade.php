@@ -462,11 +462,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                               <h2 class="id-text">SAMPLE ID</h2>
                                               <p class="sample_number">
                                                 @foreach ($alltablesamples as $samp)
-                                               
                                                @if($samp->sampleId == $sentSampleId)
-                                               {{$samp->samples}}
-                                               
-                                               @endif
+                                                    {{$samp->samples}}
+                                                @endif
                                                @endforeach
                                            </p>
                                             <!--Breadcrumb Section-->
