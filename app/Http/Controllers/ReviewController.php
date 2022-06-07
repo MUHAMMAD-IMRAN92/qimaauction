@@ -21,7 +21,9 @@ class ReviewController extends Controller
                                  ->first();
                                 //  return  $sampleSent;
         if (!$sampleSent || $sampleSent->is_hidden == '1') {
-            return view('admin.jury.alredy_submit');
+        dd($request);
+            
+            //return view('admin.jury.alredy_submit');
         }
         else
         {
