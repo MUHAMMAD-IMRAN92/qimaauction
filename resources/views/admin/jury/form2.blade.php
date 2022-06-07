@@ -652,11 +652,19 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title">Modal Title</h5>
+                                                                    <h5 class="modal-title">Submit Cupping</h5>
                                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>This is a simple Bootstrap modal. Click the "Cancel button", "cross icon" or "dark gray area" to close or hide the modal.</p>
+                                                                    <p>You are about to submit results for @foreach ($alltablesamples as $samp)
+                                                
+                                                                        @if($samp->sampleId == $sentSampleId)
+                                                                        {{$samp->samples}}
+                                                                        
+                                                                        @endif
+                                                                        @endforeach.</p>
+                                                                        <br><br>
+                                                                        <p>Are you sure you want to do this? You cannot edit fields once submitted.</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -667,8 +675,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                 </form>
                                             </div>
-                                            
-                                            
                                         </div>
                                     </div>
                                 </div>
