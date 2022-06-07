@@ -53,7 +53,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('public/app-assets/css/pips.css') }}">
     <script src="{{ asset('public/app-assets/js/pips.js') }}" defer></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     
 </head>
 <!-- END: Head-->
@@ -656,7 +657,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <input class="submit-form-btn" type="submit" value="SUBMIT TABLE">
+                                                    <a href="#ex1" rel="modal:open" class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
                                                 </form>
                                             </div>
                                             
@@ -671,6 +672,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             </div>
         </div>
     </div>
+    <div id="ex1" class="modal">
+        <p>Thanks for clicking. That felt good.</p>
+        <a href="#" rel="modal:close">Close</a>
+      </div>
     <!-- END: Content-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
@@ -687,6 +692,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- END: Page JS-->
     <script>
+        function showmodal(){
+
+        }
         var subtotal=0;
         //  var a=0,b=0,c=0,d=0;
         
