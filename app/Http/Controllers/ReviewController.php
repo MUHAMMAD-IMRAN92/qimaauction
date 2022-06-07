@@ -17,10 +17,10 @@ class ReviewController extends Controller
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
                                 ->where('id',$request->sent_sample_id)
-                                 ->where('is_hidden','0')
+                                //  ->where('is_hidden','0')
                                  ->first();
                                 //  return  $sampleSent;
-        if (!$sampleSent || $sampleSent->is_hidden == '1') {
+        if ($sampleSent->is_hidden == '1') {
             $sampleReview = Review::where('sample_id',$sampleSent->id)->first();
             
             //return view('admin.jury.alredy_submit');
