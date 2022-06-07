@@ -53,8 +53,6 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('public/app-assets/css/pips.css') }}">
     <script src="{{ asset('public/app-assets/js/pips.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     
 </head>
 <!-- END: Head-->
@@ -66,7 +64,6 @@
         font-family:'Montserrat';
     }
     .bootstrap-touchspin .bootstrap-touchspin-injected {
-        margin: -8px !important;
     }
     
     .tags-input-wrapper {
