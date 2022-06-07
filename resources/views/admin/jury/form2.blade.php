@@ -1693,9 +1693,20 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             @if($firstsample->is_hidden==1 && $sampleReview)
                 $(".roastslider")
                     .slider({
-                        
                         value: {{$sampleReview->roast}}
-                    })
+                    });
+                    $(".aromacrust")
+                        .slider({
+                            value: {{$sampleReview->aroma_crust}}
+                        });
+                    $(".aromadry")
+                        .slider({
+                            value: {{$sampleReview->aroma_break}}
+                        });
+                    $(".aromabreak")
+                        .slider({
+                            value: {{$sampleReview->aroma_dry}}
+                        })
 
             @endif
         });
