@@ -142,6 +142,22 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
+                                                            <label for="product-flavour">Select Genetics</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="genetic_id"
+                                                                    id="product-flavour" required>
+                                                                    <option selected>Please Select Genetics</option>
+                                                                    @foreach ($genetics as $key => $flv)
+                                                                        <option value="{{ $flv->id }}">
+                                                                            {{ $flv->title }}</option>
+                                                                    @endforeach
+                                                                 
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_lot_type"
@@ -158,14 +174,13 @@
                                                             <label for="product-process">Select Process</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_process"
-                                                                id="product-process" required>
-                                                                <option selected>Please Select Flavour</option>
-                                                                @foreach ($process as $key => $flv)
-                                                                    <option value="{{ $flv->id }}">
-                                                                        {{ $flv->title }}</option>
-                                                                @endforeach
-
-                                                            </select>
+                                                                    id="product-process" required>
+                                                                    <option selected>Please Select Process</option>
+                                                                    <option value="1">Natural</option>
+                                                                    <option value="2">Slow Dried</option>
+                                                                    <option value="3">Alchemy</option>
+                                                    
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
