@@ -310,6 +310,16 @@
 .customslider.ui-slider-pips .ui-slider-pip{
     top:14px;
 }
+.aromaslider.ui-slider-horizontal{
+    height:1px;
+}
+.aromaslider.ui-slider-horizontal .ui-slider-handle {
+    top: -9px;
+    margin-left: -8px;
+}
+.aromaslider.ui-slider-pips .ui-slider-pip{
+    top:14px;
+}
 .roastslider.ui-slider-horizontal {
     height: 50px;
     border-radius: 0;
@@ -1578,7 +1588,8 @@
             .slider( "value", 4 )
             .slider("pips", "refresh");
             $('input[type=range]').first().trigger('input');
-            
+            $('.scrollable').css('width',window.innerWidth-100);
+
         });
         
     </script>
