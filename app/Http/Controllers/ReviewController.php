@@ -28,6 +28,7 @@ class ReviewController extends Controller
             $sampleSent->is_hidden = '1';
             $sampleSent->save();
         }
+        dd($request);
         $review = new Review();
         $review->aroma_dry              = $request->aroma_dry;
         $review->aroma_crust            = $request->aroma_crust;
