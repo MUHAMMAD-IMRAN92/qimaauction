@@ -21,7 +21,7 @@ class ReviewController extends Controller
                                  ->first();
                                 //  return  $sampleSent;
         if ($sampleSent->is_hidden == '1') {
-            $sampleReview = Review::where('sample_id',$sampleSent->id)->first();
+            $review = Review::where('sample_id',$sampleSent->id)->first();
             
             //return view('admin.jury.alredy_submit');
         }
