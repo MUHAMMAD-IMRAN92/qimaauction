@@ -321,6 +321,9 @@
     background-color: gray;
     border-color: grey;
 }
+.roastslider .ui-state-focus,.roastslider .ui-state-focus {
+    border:1px solid #000;
+}
 </style>
 
 <body
