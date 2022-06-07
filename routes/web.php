@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::view('/test', 'test');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 Route::middleware(['auth'])->group(function () {
