@@ -437,6 +437,13 @@
                                 class="menu-item @if (request()->is('process/*')) 'active' @endif"
                                 data-i18n="eCommerce">Process</span></a>
                        </li>
+                       <li @if (request()->is('genetic/*')) class='active' @endif><a
+                        href="{{ url('/genetic/index') }}">
+                        {{-- <i class="feather icon-circle"></i> --}}
+                        <span
+                            class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
+                            data-i18n="eCommerce">Genetic</span></a>
+                       </li>
 
                         <li @if (request()->is('auction/*')) class='active' @endif><a
                             href="{{ url('/auction/index') }}">

@@ -8,6 +8,9 @@
 .font-fam span{
     font-family: "Garamond-Pro";
 }
+.modal-footer button{
+    background: #212529;
+}
 .container-all {
     position: relative;
     min-height: 100vh;
