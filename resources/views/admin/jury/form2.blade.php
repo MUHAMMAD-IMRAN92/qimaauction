@@ -654,7 +654,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a data-toggle="myModal" class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
+                                                    <a class="submit-form-btn" type="buttin" value="SUBMIT SAMPLE" onclick="showmodal()"></a>
                                                 </form>
                                             </div>
                                             
