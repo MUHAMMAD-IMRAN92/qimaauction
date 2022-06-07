@@ -1530,13 +1530,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
 
             function calcTotal(){
-                    var step=0;
-                    if ($(this).val() >= 0 && $(this).val() <= 6) {
-                        step = 1;
-                    }else {
-                        step = 0.5;
-                    }
-                    $(this).attr('step', step);
+                    // var step=0;
+                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
+                    //     step = 1;
+                    // }else {
+                    //     step = 0.5;
+                    // }
+                    // $(this).attr('step', step);
                     subtotal=subtotaldata(); 
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
