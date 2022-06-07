@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -326,7 +327,7 @@ class ProductController extends Controller
         'juries.name as juryName')
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
-        ->where('sample_sent_to_jury.is_hidden', '0')
+        // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
         if(isset($request->sampleId))
         {
@@ -345,8 +346,10 @@ class ProductController extends Controller
                
                 return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
             }
+            
               
         }
+        $sampleReview = Review::where('sample_id',$firstsample->id)->get();
         //    dd($firstsample);
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
@@ -360,13 +363,15 @@ class ProductController extends Controller
                     'juryName' => $name,
                     'juryCompany' => $company,
                     'table' => $request->table ?? $firstsample->sampleTable,
+                    'firstsample' => $firstsample,
                     'tags' => $tags,
                     'productdata'=>$productdata,
                     'alltablesamples'=> $alltablesamples,
                     'link' => $firstsample->temporary_link,
                     'sampleName' => $firstsample->samples,
                     'sentSampleId' => $firstsample->id,  
-                    'samples' => $samplesArr
+                    'samples' => $samplesArr,
+                    'sampleReview'=>$sampleReview
                 ]);
             }
         }

@@ -1689,5 +1689,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     </script>
 </body>
 <!-- END: Body-->
-
+@if($firstsample->is_hidden==1 && $sampleReview)
+    {{print_r($sampleReview)}}
+@endif
 </html>
