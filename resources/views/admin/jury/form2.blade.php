@@ -738,45 +738,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     return subtotal;
                 }
                 $('input[type=range]').on('input', function () {});
-                function calcTotal(){
-                    var step=0;
-                    if ($(this).val() >= 0 && $(this).val() <= 6) {
-                        step = 1;
-                    }else {
-                        step = 0.5;
-                    }
-                    $(this).attr('step', step);
-                    subtotal=subtotaldata(); 
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    if(second && first)
-                    {
-                        var defect =first * second * 4;
-                        var raw = subtotal - defect;
-                        var total = 36 + raw;
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total);
-                    }
-                    else
-                    {
-                        $('.score_first_number').val(0);
-                        $('.score_second_number').val(0);
-                        $('.multiply4').html(0);
-                        var defect = 0;
-                        var raw = subtotal - defect;
-                        if(raw == 0)
-                        {
-                            var total = 0;
-                        }
-                        else
-                        {
-                            var total = 36 + raw;
-                        }
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total); 
-                    }     
-                    $(this).trigger('change');
-                }
+                
                 
                 $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
@@ -1565,6 +1527,47 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
+
+
+            function calcTotal(){
+                    var step=0;
+                    if ($(this).val() >= 0 && $(this).val() <= 6) {
+                        step = 1;
+                    }else {
+                        step = 0.5;
+                    }
+                    $(this).attr('step', step);
+                    subtotal=subtotaldata(); 
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    if(second && first)
+                    {
+                        var defect =first * second * 4;
+                        var raw = subtotal - defect;
+                        var total = 36 + raw;
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total);
+                    }
+                    else
+                    {
+                        $('.score_first_number').val(0);
+                        $('.score_second_number').val(0);
+                        $('.multiply4').html(0);
+                        var defect = 0;
+                        var raw = subtotal - defect;
+                        if(raw == 0)
+                        {
+                            var total = 0;
+                        }
+                        else
+                        {
+                            var total = 36 + raw;
+                        }
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total); 
+                    }     
+                    $(this).trigger('change');
+                }
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
             
