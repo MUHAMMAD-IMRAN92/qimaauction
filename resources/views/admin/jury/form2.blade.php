@@ -429,7 +429,9 @@
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <h5>CRUST</h5>
-                                                                <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                                <div>
+                                                                                <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                                </div>
 
                                                                 <!-- <div class="custom_slider">
                                                                     <div class="range-slider" 
