@@ -99,14 +99,14 @@ class ProductController extends Controller
         $product->sample = $request->sample;
         $product->postion = $request->postion;
         $product->table = $request->table;
-        $product->governorate_id = $request->governorate_id;
+        $product->governorate_id = isset($request->governorate_id) ? $request->governorate_id : '1';;
         $product->village_id = $request->village_id;
         $product->region_id = $request->region_id;
         $product->genetic_id = $request->genetic_id;
         $product->product_title = $request->title;
         $product->product_description = $request->description ?? '';
         $product->user_id = $this->user->id;
-        $product->category_id = $request->category_id ?? '1';
+        $product->category_id = isset($request->category_id) ? $request->category_id : '1';
         $product->flavour_id = isset($request->flavour_id) ? $request->flavour_id : '1';
         $product->pro_lot_type  = $request->pro_lot_type;
         $product->pro_process  = $request->pro_process;
