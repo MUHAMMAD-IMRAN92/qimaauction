@@ -174,7 +174,7 @@
     }
     .entity-label{
         font-family:'Montserrat';
-        font-size:32px;
+        font-size:25px;
         color:#A4A3A3;
         text-align:center;
         padding-top:10px;
