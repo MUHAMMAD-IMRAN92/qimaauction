@@ -462,18 +462,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                               <h2 class="id-text">SAMPLE ID</h2>
                                               <p class="sample_number">
                                                 @foreach ($alltablesamples as $samp)
-                                               
                                                @if($samp->sampleId == $sentSampleId)
-                                               {{$samp->samples}}
-                                               
-                                               @endif
+                                                    {{$samp->samples}}
+                                                @endif
                                                @endforeach
                                            </p>
                                             <!--Breadcrumb Section-->
                                             <div class="breadcrumb-section">
                                                 <ul class="breadcrumb">
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE 1</p></a></li>
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSTION 1</p></a></li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
                                                 </ul>
                                             </div>
                                             <!--Breadcrumb Section-->

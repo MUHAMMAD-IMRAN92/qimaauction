@@ -79,6 +79,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/origin/edit', [App\Http\Controllers\OriginController::class, 'update']);
     Route::get('/origin/delete/{id}', [App\Http\Controllers\OriginController::class, 'delete']);
 
+     //Origin CRUD Routes
+     Route::get('/process/index', [App\Http\Controllers\ProcessController::class, 'index']);
+     Route::get('/process/allprocess', [App\Http\Controllers\ProcessController::class, 'allprocess']);
+     Route::get('/process/create', [App\Http\Controllers\ProcessController::class, 'create']);
+     Route::post('/process/create', [App\Http\Controllers\ProcessController::class, 'save']);
+     Route::get('/process/edit/{id}', [App\Http\Controllers\ProcessController::class, 'edit']);
+     Route::post('/process/edit', [App\Http\Controllers\ProcessController::class, 'update']);
+     Route::get('/process/delete/{id}', [App\Http\Controllers\ProcessController::class, 'delete']);
+
+       //Origin CRUD Routes
+       Route::get('/genetic/index', [App\Http\Controllers\GeneticController::class, 'index']);
+       Route::get('/genetic/allgenetic', [App\Http\Controllers\GeneticController::class, 'allgenetic']);
+       Route::get('/genetic/create', [App\Http\Controllers\GeneticController::class, 'create']);
+       Route::post('/genetic/create', [App\Http\Controllers\GeneticController::class, 'save']);
+       Route::get('/genetic/edit/{id}', [App\Http\Controllers\GeneticController::class, 'edit']);
+       Route::post('/genetic/edit', [App\Http\Controllers\GeneticController::class, 'update']);
+       Route::get('/genetic/delete/{id}', [App\Http\Controllers\GeneticController::class, 'delete']);
+
     //Product CRUD 
     Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index']);
     Route::get('/product/allproduct', [App\Http\Controllers\ProductController::class, 'allProduct']);
