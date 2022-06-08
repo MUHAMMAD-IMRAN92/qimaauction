@@ -405,6 +405,13 @@ input{
     background-color:transparent !important;
     color:#000 !important;
 }
+.isdone:hover{
+    background-color:#000 !important;
+    color:#fff !important;
+}
+.isdone.btn_success{
+    color:#FFF !important;
+}
 </style>
 
 <body
