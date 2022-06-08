@@ -42,7 +42,7 @@ class ReviewController extends Controller
         $review->defect                 = (isset($request->defect)) ? $request->defect : 0;
         $review->clean_up               = $request->clean_up;
         $review->sweetness              = $request->sweetness;
-        $review->defects_note           = $request->defects_note;
+        $review->defects_note           = $request->defect_note;
         $review->clean_sweet_note       = $request->cleanup_note;
         $review->acidity                = $request->acidity;
         $review->acidity_chk            = $request->acidity_chk;
