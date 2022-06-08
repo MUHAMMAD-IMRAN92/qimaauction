@@ -204,7 +204,7 @@ class JuryController extends Controller
                }  
             }
             $jury =    Jury::find($sampleSent->jury_id);
-            Mail::to($jury->email)->subject('Best of Yemen 2022 International Jury Cupping')->send(new JuryMail($jury));
+            Mail::to($jury->email)->send(new JuryMail($jury));
         }
         return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
     }
