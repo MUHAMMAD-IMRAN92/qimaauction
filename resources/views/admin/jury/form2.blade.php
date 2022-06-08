@@ -1722,7 +1722,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
-            $('.customslider').draggable();
+            $('.customslider .ui-slider-handle').draggable();
             
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
