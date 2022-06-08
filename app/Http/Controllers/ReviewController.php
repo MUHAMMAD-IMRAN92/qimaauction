@@ -158,7 +158,7 @@ class ReviewController extends Controller
                         $review->jury_id                = $request->jury_id;
                         $review->sample_id              = $request->sent_sample_id;
                         $review->product_id             = $request->product_id;
-                        $review->maunal             = $request->manual_override;
+                        $review->manual             = $request->manual_override;
                         $review->save();
                         if(isset($request->discriptor))
                         {
