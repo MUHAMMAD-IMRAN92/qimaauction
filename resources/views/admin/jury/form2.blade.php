@@ -1807,14 +1807,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         $('#overall_note').val('{{$sampleReview->overall_note ?? ''}}');
 
                        calcTotal();
-                    
-                    }
-             
-           
-                        if(chkmanual){
+                       if(chkmanual){
                             toggleDivs();
                             $('input[name=total_score]').val({{$reviewdata->total_score}});
                         }
+                    }
+             
+           
+                        
         
         });
         function setSampleToGo(valz){
