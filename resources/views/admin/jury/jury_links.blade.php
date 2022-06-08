@@ -164,17 +164,17 @@
                     <!-- maintenance -->
                     <section class="row flexbox-container" >
                         <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
-                            <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
+                            <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
                                 <div class="card-content">
                                     <div class="card-header">
-                                    </div class="newlogo">
-                                        <img src="{{asset('public/app_assets/logo/newlogo.png')}}" style="max-width: 100%;">
+                                    <div class="newlogo">
+                                        <img src="{{asset('public/app-assets/images/logo/newlogo.png')}}" style="max-width: 100%;">
                                         <p class="heder_text">
                                             Welcome to the Best of Yemen 2022 International jury Cupping. 
 
-Below you can find the links to the cupping forms for each sample. They have been arranged across 5 tables. 
+                                            Below you can find the links to the cupping forms for each sample. They have been arranged across 5 tables. 
 
-Once you have cupped all the samples on a given table please click on the submit button to confirm submission. 
+                                            Once you have cupped all the samples on a given table please click on the submit button to confirm submission. 
                                         </p>
                                     </div>
                                         @if (session('success'))
