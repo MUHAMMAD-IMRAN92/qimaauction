@@ -105,6 +105,9 @@ class ReviewController extends Controller
                         if ($sampleSent->is_hidden == '1') {
                             $review = Review::where('sample_id',$sampleSent->id)->first();            
                             //return view('admin.jury.alredy_submit');
+                            if(!$review){
+                                $review = new Review();
+                            }
                         }
                         else
                         {
@@ -112,8 +115,7 @@ class ReviewController extends Controller
                             {
                                 $review = Review::where('id',$request->review_id)->first();
                                 if(!$review){
-                                $review = new Review();
-
+                                    $review = new Review();
                                 }
                             }
                             else
