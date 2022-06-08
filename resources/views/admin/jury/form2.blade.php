@@ -442,7 +442,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                         <div class="col-lg-12">
                                             <div class="site-logo">
                                                 <img
-                                                src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
+                                                src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:100%;">
                                             </div>
                                             <!--Breadcrumb Section-->
                                             <div class="breadcrumb-section">
