@@ -149,6 +149,8 @@
         .heder_text{
             text-transform: uppercase;
             text-align: center;
+            font-family: 'Montserrat';
+            font-size: 15px;
         }
     </style>
     <body
