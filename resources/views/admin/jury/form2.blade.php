@@ -1729,22 +1729,22 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 inputvalue = 7.5;
                 return inputvalue;
             }
-            @if($firstsample->is_hidden==1 && $sampleReview)
+            @if($firstsample->is_hidden==1 && $sampleReview->roast)
                 $(".roastslider")
                     .slider({
-                        value: {{$sampleReview->roast}}
+                        value: {{$sampleReview->roast?$sampleReview->roast:50}}
                     });
                     $(".aromacrust")
                         .slider({
-                            value: {{$sampleReview->aroma_crust}}
+                            value: {{$sampleReview->aroma_crust?$sampleReview->aroma_crust:2}}
                         });
                     $(".aromadry")
                         .slider({
-                            value: {{$sampleReview->aroma_break}}
+                            value: {{$sampleReview->aroma_break?$sampleReview->aroma_dry:2}}
                         });
                     $(".aromabreak")
                         .slider({
-                            value: {{$sampleReview->aroma_dry}}
+                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_break:2}}
                         })
                         $('input[name=first_number]').val({{$sampleReview->first_number}});
                         $('input[name=second_number]').val({{$sampleReview->second_number}});
