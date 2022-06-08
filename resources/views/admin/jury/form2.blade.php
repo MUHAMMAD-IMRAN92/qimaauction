@@ -1812,6 +1812,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
            
                         if(chkmanual){
                             toggleDivs();
+                            $('input[name=total_score]').val({{$reviewdata->total_score}});
                         }
         
         });
