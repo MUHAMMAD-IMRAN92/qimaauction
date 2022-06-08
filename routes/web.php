@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::view('/test', 'test');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 Route::middleware(['auth'])->group(function () {
@@ -98,7 +96,7 @@ Route::middleware(['auth'])->group(function () {
        Route::post('/genetic/edit', [App\Http\Controllers\GeneticController::class, 'update']);
        Route::get('/genetic/delete/{id}', [App\Http\Controllers\GeneticController::class, 'delete']);
 
-    //Product CRUD 
+    //Product CRUD
     Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index']);
     Route::get('/product/allproduct', [App\Http\Controllers\ProductController::class, 'allProduct']);
     Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create']);

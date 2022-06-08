@@ -500,6 +500,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <input type="hidden" name="link" value="{{$link}}">
                                                     <input type="hidden" name="product_id" value="{{$productId}}">
                                                     <input type="hidden" name="jury_id" value="{{$juryId}}">
+                                                    <input type="hidden" name="review_id" value="{{$sampleReview->id ?? null}}">
                                                     <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
                                                     <div class="row">
                                                         <div class="col-12">
@@ -774,7 +775,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT SAMPLE</a>
+                                                 <div class="row">
+                                                    <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT TABLE</a>
+                                
+                                                    <button type="submit" value="1" name="sample_submit" class="submit-form-btn">NEXT</button>
+                                                 </div>
                                                     <div id="myModal" class="modal" tabindex="-1">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -785,9 +790,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 <div class="modal-body">
                                                                     <p>You are about to submit results for @foreach ($alltablesamples as $samp)
                                                 
-                                                                        @if($samp->sampleId == $sentSampleId)
-                                                                        {{$samp->samples}}
-                                                                        
+                                                                        @if($samp->sampleTable == $table)
+                                                                           &nbsp<b>{{$samp->samples}}</b>,
                                                                         @endif
                                                                         @endforeach.</p>
                                                                         <br><br>
@@ -795,7 +799,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                    <button type="submit" value="{{$table}}" name="table_submit" class="btn btn-primary">Save</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1548,6 +1552,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- Range slider end -->
     <script>
         $(document).ready(function() {
+            var chkhidden = {{($firstsample->is_hidden==1) ? '1' : '0'}};
             $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
@@ -1732,57 +1737,62 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 inputvalue = 7.5;
                 return inputvalue;
             }
-            @if($firstsample->is_hidden==1 && $sampleReview->roast)
+            if(chkhidden != 0)          
+            {
+             
                 $(".roastslider")
                     .slider({
-                        value: {{$sampleReview->roast?$sampleReview->roast:50}}
+                        value: {{isset($sampleReview->roast) ? $sampleReview->roast:50}}
                     });
                     $(".aromacrust")
                         .slider({
-                            value: {{$sampleReview->aroma_crust?$sampleReview->aroma_crust:2}}
+                            value: {{isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust:2}}
                         });
                     $(".aromadry")
                         .slider({
-                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                            value: {{isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry:2}}
                         });
                     $(".aromabreak")
                         .slider({
-                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                            value: {{isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry:2}}
                         })
-                        $('input[name=first_number]').val({{$sampleReview->first_number}});
-                        $('input[name=second_number]').val({{$sampleReview->second_number}});
+                        $('input[name=first_number]').val({{isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }});
+                        $('input[name=second_number]').val({{isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }});
                         $('input[name=second_number]').trigger('keyup');
-                        $('#defect_note').val('{{$sampleReview->defects_note}}');
-                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
-                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
+                        $('#defect_note').val('{{$sampleReview->defects_note ?? ''}}');
+                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up ?? '4'}})})
+                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note ?? ''}}');
                         
-                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
-                        $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
+                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness ?? '4'}})})
+                        $('#sweetness_note').val('{{$sampleReview->sweetness_note ?? ''}}');
 
-                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
-                        $('#acidity_note').val('{{$sampleReview->acidity_note}}');
-                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
+                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity ?? '4'}})})
+                        $('#acidity_note').val('{{$sampleReview->acidity_note ?? ''}}');
+                        $('.acidity_{{$sampleReview->acidity_chk ?? "L"}}').prop('checked',true);
 
-                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
-                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
-                        $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel ?? '4'}})});
+                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note ?? ''}}');
+                        $('.mouthfeel_{{$sampleReview->fm_chk ?? "L"}}').prop('checked',true);
 
-                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
-                        $('#flavor_note').val('{{$sampleReview->flavor_note}}');
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour ?? '4'}})});
+                        $('#flavor_note').val('{{$sampleReview->flavor_note ?? ''}}');
 
-                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
-                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste ?? ''}})})
+                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note ?? ''}}');
 
-                        $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
-                        $('#balance_note').val('{{$sampleReview->balance_note}}');
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance ?? ''}})})
+                        $('#balance_note').val('{{$sampleReview->balance_note ?? ''}}');
 
-                        $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
-                        $('#overall_note').val('{{$sampleReview->overall_note}}');
+                        $(".overall").slider({value: parseReview({{$sampleReview->overall ?? '4'}})})
+                        $('#overall_note').val('{{$sampleReview->overall_note ?? ''}}');
 
-            calcTotal();
+                       calcTotal();
+                                
+                    }
+             
+            
                         
-                        
-            @endif
+        
         });
         
     </script>
