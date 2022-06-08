@@ -15,15 +15,14 @@
                                                 {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
                                                 @foreach ($samples as $sample)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td data-title="Sr No">{{ $loop->iteration }}</td>
                                                         <!-- <td>{{ $sample->product_title }}</td> -->
-                                                        <td>{{ $sample->samples }}</td>
-                                                        <td>{{$sample->postion}}</td>
-                                                        <td> 
+                                                        <td data-title="Sample ID">{{ $sample->samples }}</td>
+                                                        <td data-title="Position">{{$sample->postion}}</td>
+                                                        <td data-title="Action">
                                                             @if($sample->is_hidden==0)
                                                             <a class="btn btn-success"
-                                                                href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">Give
-                                                                Review
+                                                                href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">CUP SAMPLE
                                                              </a>
                                                              @else
                                                              <a class="btn btn-disabled"
@@ -32,9 +31,8 @@
                                                              @endif
                                                         </td>
                                                     </tr>
-                                                @endforeach 
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         {{-- </div> --}}
-                            
-                             
+
