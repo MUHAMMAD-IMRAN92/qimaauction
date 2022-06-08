@@ -1758,13 +1758,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
                         $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
                         $('#acidity_note').val('{{$sampleReview->acidity_note}}');
-                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true)
+                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
 
-                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})})
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
                         $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
-                        $('.acidity_{{$sampleReview->fm_chk}}').prop('checked',true)
+                        $('.mouthfeel{{$sampleReview->fm_chk}}').prop('checked',true);
 
-                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})})
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
                         $('#flavor_note').val('{{$sampleReview->flavor_note}}');
 
                         $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
