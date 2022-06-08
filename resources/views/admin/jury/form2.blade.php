@@ -1740,11 +1740,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         });
                     $(".aromadry")
                         .slider({
-                            value: {{$sampleReview->aroma_break?$sampleReview->aroma_dry:2}}
+                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
                         });
                     $(".aromabreak")
                         .slider({
-                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_break:2}}
+                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
                         })
                         $('input[name=first_number]').val({{$sampleReview->first_number}});
                         $('input[name=second_number]').val({{$sampleReview->second_number}});
