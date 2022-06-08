@@ -334,84 +334,84 @@
         border:1px solid #000;
     }
     ul.breadcrumb {
-        padding: 10px 16px;
-        list-style: none;
-        background: none;
-        border: none;
-        text-align: center;
-        justify-content: center;
-        align-items: center !important;
-    }
-    ul.breadcrumb li {
-        display: inline;
-    }
-    ul.breadcrumb li+li:before {
-        content: "/\00a0";
-        font-size: 26px;
-    }
-    ul.breadcrumb li a {
-        text-decoration: none;
-        color: black;
-    }
+  padding: 10px 16px;
+  list-style: none;
+  background: none;
+  border: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center !important;
+}
+ul.breadcrumb li {
+  display: inline;
+}
+ul.breadcrumb li+li:before {
+  content: "/\00a0";
+  font-size: 26px;
+}
+ul.breadcrumb li a {
+  text-decoration: none;
+  color: black;
+}
+.id-text{
+    font-size: 65px;
+    color: #A4A3A3;
+    font-family: 'Garamond Premier Pro';
+}
+.sample-area{
+    text-align: center;
+}
+.sample_number{
+font-family: 'Garamond Premier Pro';
+font-style: normal;
+font-weight: 400;
+font-size: 140px;
+line-height: 168px;
+/* identical to box height */
+color: #040404;
+}
+.custom_hr{
+    border-top: 2px solid #A4A3A3;
+}
+.entity_note{
+    width: 100%;
+}
+.design-slider {
+    padding: 2rem 0.4rem;
+}
+input{
+    border: 1px solid #000000;
+}
+@media only screen and (max-width:767px){
     .id-text{
-        font-size: 65px;
-        color: #A4A3A3;
-        font-family: 'Garamond Premier Pro';
+    font-size: 40px;
+}
+.sample_number{
+    font-size: 80px;
+}
+.breadcrumb-section{
+    display: none;
+}
+.breadcrumb-content{
+    font-size: 20px !important;
+}
+}
+@media only screen and (min-width:768px){
+    .mobile-breadcrumb-section{
+        display: none;
     }
-    .sample-area{
-        text-align: center;
-    }
-    .sample_number{
-        font-family: 'Garamond Premier Pro';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 140px;
-        line-height: 168px;
-        /* identical to box height */
-        color: #040404;
-    }
-    .custom_hr{
-        border-top: 2px solid #A4A3A3;
-    }
-    .entity_note{
-        width: 100%;
-    }
-    .design-slider {
-        padding: 2rem 0.4rem;
-    }
-    input{
-        border: 1px solid #000000;
-    }
-    @media only screen and (max-width:767px){
-        .id-text{
-            font-size: 40px;
-        }
-        .sample_number{
-            font-size: 80px;
-        }
-        .breadcrumb-section{
-            display: none;
-        }
-        .breadcrumb-content{
-            font-size: 20px !important;
-        }
-    }
-    @media only screen and (min-width:768px){
-        .mobile-breadcrumb-section{
-            display: none;
-        }
-    }
-    .isdone{
-        background-color:transparent !important;
-        color:#000 !important;
-    }
-    .isdone:hover{
-        background-color:#000 !important;
-        color:#fff !important;
-    }
-    .isdone.btn-success{
-        color:#FFF !important;
-    }
+}
+.isdone{
+    background-color:transparent !important;
+    color:#000 !important;
+}
+.isdone:hover{
+    background-color:#000 !important;
+    color:#fff !important;
+}
+.isdone.btn-success{
+    color:#FFF !important;
+}
 </style>
 
 <body
@@ -452,17 +452,17 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">-</p></a>
                                                     <li><a href="#">   <p class="pt-1 breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">COMPANY</p></a></li>
                                                     <li><a href="#">   <p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{$juryCompany}}</p></a></li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                             <div class="mobile-breadcrumb-section">
                                                 <ul class="breadcrumb">
                                                     <li><a href="#"><p class="breadcrumb-content pt-1" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">CUPPER</p></a></li>
                                                     <li><a href="#"><p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{ $juryName }}</p></a></li>
-                                                </ul>
-                                                <ul class="breadcrumb">
+                                                  </ul>
+                                                  <ul class="breadcrumb">
                                                     <li><a href="#">   <p class="breadcrumb-content pt-1" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">COMPANY</p></a></li>
                                                     <li><a href="#">   <p class="breadcrumb-content" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">{{$juryCompany}}</p></a></li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                             <hr class="custom_hr">
                                             <!--Breadcrumb Section-->
@@ -470,329 +470,329 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
                                             <!--Sample ID Section-->
                                             <div class="sample-area">
-                                                <h2 class="id-text">SAMPLE ID</h2>
-                                                <p class="sample_number">
-                                                    @foreach ($alltablesamples as $samp)
-                                                    @if($samp->sampleId == $sentSampleId)
+                                              <h2 class="id-text">SAMPLE ID</h2>
+                                              <p class="sample_number">
+                                                @foreach ($alltablesamples as $samp)
+                                               @if($samp->sampleId == $sentSampleId)
                                                     {{$samp->samples}}
-                                                    @endif
-                                                    @endforeach
-                                                </p>
-                                                <!--Breadcrumb Section-->
-                                                <div class="breadcrumb-section">
-                                                    <ul class="breadcrumb">
-                                                        <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
-                                                        <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!--Breadcrumb Section-->
+                                                @endif
+                                               @endforeach
+                                           </p>
+                                            <!--Breadcrumb Section-->
+                                            <div class="breadcrumb-section">
+                                                <ul class="breadcrumb">
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
+                                                </ul>
+                                            </div>
+                                            <!--Breadcrumb Section-->
                                             </div>
                                             <!--Sample ID Section-->
                                             
-                                        </div>
-                                        
-                                        <div class="col-lg-12">
-                                            <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="link" value="{{$link}}">
-                                                <input type="hidden" name="product_id" value="{{$productId}}">
-                                                <input type="hidden" name="jury_id" value="{{$juryId}}">
-                                                <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h3 class="entity-text roast-bg">ROAST</h3>
-                                                    </div>
-                                                    
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
+                                            </div>
+                                            
+                                            <div class="col-lg-12">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="link" value="{{$link}}">
+                                                    <input type="hidden" name="product_id" value="{{$productId}}">
+                                                    <input type="hidden" name="jury_id" value="{{$juryId}}">
+                                                    <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text roast-bg">ROAST</h3>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h3 class="entity-text aroma-bg">AROMA</h3>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-lg-12">
-                                                    <h5>DRY</h5>
-                                                </div>
-                                                <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                    <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
-                                                    
-                                                    
-                                                    
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <h5>CRUST</h5>
-                                                </div>
-                                                <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                    <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
-                                                </div>
-                                                
-                                                
-                                                
-                                                <div class="col-lg-12">
-                                                    <h5>BREAK</h5>
-                                                </div>
-                                                <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                    <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break"></div>
-                                                </div>
-                                                
-                                                
-                                                
-                                                <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;"
-                                                        type="number" id="quantity"  value="first_number"
-                                                        name="first_number">
-                                                        <span
-                                                        class="multiply">X</span>
-                                                        <input class="score_second_number" oninput="if (this.value > 3) this.value = 0"
-                                                        type="number" id="quantity" maxlength="3" value="second_number"
-                                                        name="second_number">
-                                                        <span
-                                                        class="multiply">X</span>
-                                                        <span
-                                                        class="multiply">4</span>
-                                                        <span
-                                                        class="multiply">=</span>
-                                                        <span
-                                                        class="multiply4">?</span>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="defect_note" id="defect_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                
-                                                {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
-                                                
-                                                <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="cleanup_note" id="cleanup_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="sweetness_note" id="sweetness_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <h3 class="entity-text acidity-bg">ACIDITY</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity"></div>
-                                                        </div>
-                                                        <div class="radio_button">
-                                                            <div>
-                                                                <label class="radio_container">
-                                                                    
-                                                                    <input type="radio"
-                                                                    name="acidity_chk" value="H" class="acidity_H">
-                                                                    <div class="checkmark">
-                                                                    </div>
-                                                                    <h5>H</h5>
-                                                                    
-                                                                </label>
+                                                        
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
                                                             </div>
-                                                            <div>
-                                                                <label class="radio_container">
-                                                                    <input type="radio"
-                                                                    name="acidity_chk" value="M" class="acidity_M">
-                                                                    <div class="checkmark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <h5>DRY</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <h5>CRUST</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <h5>BREAK</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;"
+                                                            type="number" id="quantity"  value="first_number"
+                                                            name="first_number">
+                                                            <span
+                                                            class="multiply">X</span>
+                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0"
+                                                            type="number" id="quantity" maxlength="3" value="second_number"
+                                                            name="second_number">
+                                                            <span
+                                                            class="multiply">X</span>
+                                                            <span
+                                                            class="multiply">4</span>
+                                                            <span
+                                                            class="multiply">=</span>
+                                                            <span
+                                                            class="multiply4">?</span>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="defect_note" id="defect_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
+                                                    
+                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="cleanup_note" id="cleanup_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="sweetness_note" id="sweetness_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity"></div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        
+                                                                        <input type="radio"
+                                                                        name="acidity_chk" value="H" class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+                                                                        
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio"
+                                                                        name="acidity_chk" value="M" class="acidity_M">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>M</h5>
+                                                                        
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio"
+                                                                        checked="checked"
+                                                                        name="acidity_chk" value="L" class="acidity_L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>L</h5>
+                                                                        
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="acidity_note" id="acidity_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="custom_slider">
+                                                                <div class="design-slider mt-5 mb-5">
+                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        
+                                                                        <input type="radio" class="mouthfeel_H"
+                                                                        value="H"
+                                                                        name="fm_chk">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" value="M" class="mouthfeel_M"
+                                                                        name="fm_chk">
+                                                                        <div
+                                                                        class="checkmark">
                                                                     </div>
                                                                     <h5>M</h5>
-                                                                    
                                                                 </label>
                                                             </div>
                                                             <div>
                                                                 <label class="radio_container">
-                                                                    <input type="radio"
-                                                                    checked="checked"
-                                                                    name="acidity_chk" value="L" class="acidity_L">
-                                                                    <div class="checkmark">
-                                                                    </div>
-                                                                    <h5>L</h5>
-                                                                    
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="acidity_note" id="acidity_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="custom_slider">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="radio_button">
-                                                            <div>
-                                                                <label class="radio_container">
-                                                                    
-                                                                    <input type="radio" class="mouthfeel_H"
-                                                                    value="H"
-                                                                    name="fm_chk">
-                                                                    <div class="checkmark">
-                                                                    </div>
-                                                                    <h5>H</h5>
-                                                                </label>
-                                                            </div>
-                                                            <div>
-                                                                <label class="radio_container">
-                                                                    <input type="radio" value="M" class="mouthfeel_M"
+                                                                    <input type="radio" value="L" checked="checked" class="mouthfeel_L"
                                                                     name="fm_chk">
                                                                     <div
                                                                     class="checkmark">
                                                                 </div>
-                                                                <h5>M</h5>
+                                                                <h5>L</h5>
                                                             </label>
                                                         </div>
-                                                        <div>
-                                                            <label class="radio_container">
-                                                                <input type="radio" value="L" checked="checked" class="mouthfeel_L"
-                                                                name="fm_chk">
-                                                                <div
-                                                                class="checkmark">
+                                                    </div>
+                                                    <div class="entity_input">
+                                                        <input type="text" name="mouthfeel_note" id="mouthfeel_note"
+                                                        placeholder="NOTES"
+                                                        class="entity_note">
+                                                    </div>
+                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour"></div>
                                                             </div>
-                                                            <h5>L</h5>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="entity_input">
-                                                    <input type="text" name="mouthfeel_note" id="mouthfeel_note"
-                                                    placeholder="NOTES"
-                                                    class="entity_note">
-                                                </div>
-                                                <h3 class="entity-text flavor-bg">FLAVOR</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="flavor_note" id="flavor_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="aftertaste_note" id="aftertaste_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3 class="entity-text balance-bg">BALANCE</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider balance"><input type="hidden" name="balance" id="balance"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="balance_note" id="balance_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3 class="entity-text overall-bg">OVERALL</h3>
-                                                <div class="row">
-                                                    <div class="col-lg-12" style="text-align:center">
-                                                        <div class="design-slider mt-5 mb-5">
-                                                            <div class="customslider overall"><input type="hidden" name="overall" id="overall"></div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="overall_note" id="overall_note"
-                                                            placeholder="NOTES"
-                                                            class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3 class="entity-text total-bg">TOTAL</h3>
-                                                <p class="entity-label">(+36)</p>
-                                                <input type="hidden" name="total_score" id="total_score" value="">
-                                                <h2 class="totalScore">0</h2>
-                                                <div class="row">
-                                                    <div class="scrollable" style="overflow:auto;">
-                                                        <div class="button-group" style="white-space:nowrap">
-                                                            @foreach ($alltablesamples as $samp)
-                                                            @php $extraclass = ""; @endphp
-                                                            @if($samp->is_hidden==1)
-                                                            @php $extraclass="isdone"; @endphp
-                                                            @endif
-                                                            @if($samp->sampleId == $sentSampleId)
-                                                            <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                {{$samp->samples}}
-                                                            </a>
-                                                            @else
-                                                            <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                {{$samp->samples}}
-                                                            </a>
-                                                            @endif
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">NEXT</a>
-                                                <div id="myModal" class="modal" tabindex="-1">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">Submit Cupping</h5>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="flavor_note" id="flavor_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <p>You are about to submit results for @foreach ($alltablesamples as $samp)
-                                                                    
-                                                                    @if($samp->sampleId == $sentSampleId)
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="aftertaste_note" id="aftertaste_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text balance-bg">BALANCE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="balance_note" id="balance_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="overall_note" id="overall_note"
+                                                                placeholder="NOTES"
+                                                                class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="entity-text total-bg">TOTAL</h3>
+                                                    <p class="entity-label">(+36)</p>
+                                                    <input type="hidden" name="total_score" id="total_score" value="">
+                                                    <h2 class="totalScore">0</h2>
+                                                    <div class="row">
+                                                        <div class="scrollable" style="overflow:auto;">
+                                                            <div class="button-group" style="white-space:nowrap">
+                                                                @foreach ($alltablesamples as $samp)
+                                                                @php $extraclass = ""; @endphp
+                                                                @if($samp->is_hidden==1)
+                                                                    @php $extraclass="isdone"; @endphp
+                                                                @endif
+                                                                @if($samp->sampleId == $sentSampleId)
+                                                                <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                     {{$samp->samples}}
-                                                                    
-                                                                    @endif
-                                                                    @endforeach.</p>
-                                                                    <br><br>
-                                                                    <p>Are you sure you want to do this? You cannot edit fields once submitted.</p>
+                                                                </a>
+                                                                @else
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                    {{$samp->samples}}
+                                                                </a>
+                                                                @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT SAMPLE</a>
+                                                    <div id="myModal" class="modal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Submit Cupping</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>You are about to submit results for @foreach ($alltablesamples as $samp)
+                                                
+                                                                        @if($samp->sampleId == $sentSampleId)
+                                                                        {{$samp->samples}}
+                                                                        
+                                                                        @endif
+                                                                        @endforeach.</p>
+                                                                        <br><br>
+                                                                        <p>Are you sure you want to do this? You cannot edit fields once submitted.</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">Next</button>
+                                                                    <button type="submit" class="btn btn-primary">Save</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -825,7 +825,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <script src="{{ asset('public/app-assets/js/scripts/forms/number-input.js') }}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="{{asset('public/js/jquery.ui.touch-punch.min.js')}}"></script>
-    
+
     <!-- END: Page JS-->
     <script>
         function showmodal(){
@@ -1011,541 +1011,541 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             })();
             
             // var tagInput1 = new TagsInput({
-                //     selector: 'tag-input1',
-                //     duplicate: false,
-                //     max: 10
-                // });
-                // tagInput1.addData([])
-                
-                $('.uniformity').on('click', function() {
-                    $('#uniformity').html($('.uniformity:checked').length * 2);
-                    $('#uniformityvalue').val($('.uniformity:checked').length * 2);
-                    total().trigger();
-                });
-                $('.cleancup').on('click', function() {
-                    
-                    $('#cleancup').html($('.cleancup:checked').length * 2);
-                    $('#cleancupvalue').val($('.cleancup:checked').length * 2);
-                    total().trigger();
-                });
-                $('.sweetness').on('click', function() {
-                    
-                    $('#sweetness').html($('.sweetness:checked').length * 2);
-                    $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
-                    total().trigger();
-                });
-                $('#defect1').on('change', function() {
-                    
-                    var defect1 = $(this).val();
-                    var defect2 = $('#defect2').val();
-                    $('#defect').html(defect1 * defect2);
-                    $('#defectvalue').val(defect1 * defect2);
-                    total().trigger();
-                });
-                $('#defect2').on('change', function() {
-                    var defect2 = $(this).val();
-                    var defect1 = $('#defect1').val();
-                    $('#defect').html(defect1 * defect2);
-                    $('#defectvalue').val(defect1 * defect2);
-                    total().trigger();
-                });
-                
-                function total() {
-                    $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
-                    '#sweetness').html()) -
-                    parseInt($('#defect').html()));
-                    // console.log(total);
-                    $('#totalvalue').val(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) +
-                    parseInt($('#sweetness').html()) -
-                    parseInt($('#defect').html()));
-                }
-                $('#vol').on('click', function() {
-                    $('#volspan').html($(this).val() + '%');
-                    $('#roastvalue').val($(this).val());
-                })
+            //     selector: 'tag-input1',
+            //     duplicate: false,
+            //     max: 10
+            // });
+            // tagInput1.addData([])
+            
+            $('.uniformity').on('click', function() {
+                $('#uniformity').html($('.uniformity:checked').length * 2);
+                $('#uniformityvalue').val($('.uniformity:checked').length * 2);
+                total().trigger();
             });
-        </script>
-        
-        <!-- Range slider Start -->
-        <style class="INLINE_PEN_STYLESHEET_ID">
-            .range-slider {
-                width: clamp(250px, 80vw, 1250px) !important;
-                min-width: 250px;
-            }
-            
-            
-            .range-slider.grad {
-                --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
-                --progress-flll-shadow: var(--progress-shadow);
-                --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
-                --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
-                -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
-                -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
-                0 0 0 99px var(--primary-color) inset;
-            }
-            
-            .range-slider.grad input:hover {
-                --thumb-transform: scale(1.2);
-            }
-            
-            .range-slider.grad input:active {
-                --thumb-shadow: inherit;
-                --thumb-transform: scale(1);
-            }
-            
-            .range-slider.flat {
-                --thumb-size: 25px;
-                --track-height: calc(var(--thumb-size) / 3);
-                --progress-shadow: none;
-                --progress-flll-shadow: none;
-                --thumb-shadow: 0 0 0 7px var(--primary-color) inset, 0 0 0 99px white inset;
-                --thumb-shadow-hover: 0 0 0 9px var(--primary-color) inset,
-                0 0 0 99px white inset;
-                --thumb-shadow-active: 0 0 0 13px var(--primary-color) inset;
-            }
-            
-            .range-slider.overlay {
-                --primary-color: #d6e9ff;
-                --track-height: 50px;
-                --thumb-size: var(--track-height);
-                --thumb-color: var(--primary-color);
-                --thumb-shadow: none;
-                --progress-flll-shadow: none;
-                --progress-shadow: none;
-                --progress-background: none;
-                --progress-radius: 0px;
-                --ticks-color: var(--primary-color);
-                --ticks-height: 0;
-                --ticks-thickness: 0;
-                --ticks-gap: 0px;
-                --min-max-font: 700 18px Arial;
-                --min-max-opacity: 1;
-                --show-min-max: none;
-                color: #d1af69;
-            }
-            
-            .range-slider.overlay input:hover {
-                --thumb-shadow: calc(25px - (50px * var(--is-left-most))) 0 0 -15px #d1af69 inset;
-            }
-            
-            .range-slider.overlay input:active {
-                --thumb-color: inherit;
-            }
-            
-            .range-slider.overlay .range-slider__values {
-                width: calc(100% - 50% / (var(--max) - var(--min)));
-            }
-            
-            .custom_slider {
-                padding: 2rem 0.4rem;
-            }
-            
-            .range-slider {
-                --primary-color: #5D5D5D;
-                --value-offset-y: var(--ticks-gap);
-                --value-active-color: white;
-                --value-background: transparent;
-                --value-background-hover: var(--primary-color);
-                --value-font: 700 12px/1 Arial;
-                --fill-color: transparent;
-                --progress-background: #e4e4e4;
-                --progress-radius: 20px;
-                --track-height: calc(var(--thumb-size) / 2);
-                --min-max-font: 12px Arial;
-                --min-max-opacity: 0.5;
-                --min-max-x-offset: 10%;
-                --thumb-size: 15px;
-                --thumb-color: #5D5D5D;
-                --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
-                0 0 0 99px var(--thumb-color) inset;
-                --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
-                0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
-                --thumb-shadow-hover: var(--thumb-shadow);
-                --ticks-thickness: 2px;
-                --ticks-height: 15px;
-                --ticks-gap: var(--ticks-height,
-                0);
-                --ticks-color: silver;
-                --step: 1;
-                --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
-                --maxTicksAllowed: 30;
-                --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
-                --x-step: Max(var(--step),
-                var(--too-many-ticks) * (var(--max) - var(--min)));
-                --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
-                --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
-                --value-a: Clamp(var(--min),
-                var(--value, 0),
-                var(--max));
-                --value-b: var(--value, 0);
-                --text-value-a: var(--text-value, "");
-                --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
-                --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
-                --ca: Min(var(--completed-a), var(--completed-b));
-                --cb: Max(var(--completed-a), var(--completed-b));
-                --thumbs-too-close: Clamp(-1,
-                1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
-                1);
-                --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
-                --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
-                display: inline-block;
-                height: max(var(--track-height), var(--thumb-size));
-                background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
-                background-size: var(--tickIntervalPerc) var(--ticks-height);
-                background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
-                background-position-y: var(--flip-y, bottom);
-                padding-bottom: var(--flip-y, var(--ticks-gap));
-                padding-top: calc(var(--flip-y) * var(--ticks-gap));
-                position: relative;
-                z-index: 1;
-            }
-            
-            .user_name{
-                padding: 20px 0;
-                width: 100%;
-            }
-            .user_name .range-slider{
-                / background-image: linear-gradient(to right,#fff , #88592D) !important; /
-                --primary-color: #5D5D5D;
-                --value-offset-y: var(--ticks-gap);
-                --value-active-color: white;
-                --value-background: transparent;
-                --value-background-hover: var(--primary-color);
-                --value-font: 700 12px/1 Arial;
-                --fill-color: var(--primary-color);
-                --progress-background: #fff  !important;
-                --progress-radius: 20px;
-                --track-height: calc(var(--thumb-size) / 2);
-                --min-max-font: 12px Arial;
-                --min-max-opacity: 0.5;
-                --min-max-x-offset: 10%;
-                --thumb-size: 10px;
-                --thumb-color: #5D5D5D;
-                --thumb-radius: 0 !important;
-                --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
-                0 0 0 99px var(--thumb-color) inset;
-                --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
-                0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
-                --thumb-shadow-hover: var(--thumb-shadow);
-                --step: 1;
-                --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
-                --maxTicksAllowed: 30;
-                --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
-                --x-step: Max(var(--step),
-                var(--too-many-ticks) * (var(--max) - var(--min)));
-                --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
-                --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
-                --value-a: Clamp(var(--min),
-                var(--value, 0),
-                var(--max));
-                --value-b: var(--value, 0);
-                --text-value-a: var(--text-value, "");
-                --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
-                --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
-                --ca: Min(var(--completed-a), var(--completed-b));
-                --cb: Max(var(--completed-a), var(--completed-b));
-                --thumbs-too-close: Clamp(-1,
-                1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
-                1);
-                --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
-                --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
-                display: inline-block;
-                height: max(var(--track-height), var(--thumb-size));
-                background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
-                background-size: var(--tickIntervalPerc) var(--ticks-height);
-                background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
-                background-position-y: var(--flip-y, bottom);
-                padding-bottom: var(--flip-y, var(--ticks-gap));
-                padding-top: calc(var(--flip-y) * var(--ticks-gap));
-                position: relative;
-                z-index: 1;
-                width: 100% !important;
-            }
-            .user_name .range-slider input{
-                background-image: linear-gradient(to right,#fff , #88592D) !important;
-                height: 50px;
-                border: 1px solid #5D5D5D;
-            }
-            
-            .range-slider[data-ticks-position=top] {
-                --flip-y: 1;
-            }
-            
-            .range-slider::before,
-            .range-slider::after {
-                --offset: calc(var(--thumb-size) / 2);
-                content: counter(x);
-                display: var(--show-min-max, block);
-                font: var(--min-max-font);
-                position: absolute;
-                bottom: var(--flip-y, -2.5ch);
-                top: calc(-2.5ch * var(--flip-y));
-                opacity: clamp(0, var(--at-edge), var(--min-max-opacity));
-                transform: translateX(calc(var(--min-max-x-offset) * var(--before, -1) * -1)) scale(var(--at-edge));
-                pointer-events: none;
-            }
-            
-            .range-slider::before {
-                --before: 1;
-                --at-edge: var(--thumb-close-to-min);
-                counter-reset: x var(--min);
-                left: var(--offset);
-            }
-            
-            .range-slider::after {
-                --at-edge: var(--thumb-close-to-max);
-                counter-reset: x var(--max);
-                right: var(--offset);
-            }
-            
-            .range-slider__values {
-                position: relative;
-                top: 50%;
-                line-height: 0;
-                text-align: justify;
-                width: 100%;
-                pointer-events: none;
-                margin: 0 auto;
-                z-index: 5;
-            }
-            
-            .range-slider__values::after {
-                content: "";
-                width: 100%;
-                display: inline-block;
-                height: 0;
-                background: red;
-            }
-            
-            .range-slider__progress {
-                --start-end: calc(var(--thumb-size) / 2);
-                --clip-end: calc(100% - (var(--cb)) * 1%);
-                --clip-start: calc(var(--ca) * 1%);
-                --clip: inset(-20px var(--clip-end) -20px var(--clip-start));
-                position: absolute;
-                left: var(--start-end);
-                right: var(--start-end);
-                top: calc(var(--ticks-gap) * var(--flip-y, 0) + var(--thumb-size) / 2 - var(--track-height) / 2);
-                height: calc(var(--track-height));
-                background: var(--progress-background, #eee);
-                pointer-events: none;
-                z-index: -1;
-                border-radius: var(--progress-radius);
-            }
-            
-            .range-slider__progress::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                -webkit-clip-path: var(--clip);
-                clip-path: var(--clip);
-                top: 0;
-                bottom: 0;
-                background: var(--fill-color, black);
-                box-shadow: var(--progress-flll-shadow);
-                z-index: 1;
-                border-radius: inherit;
-            }
-            
-            .range-slider__progress::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                box-shadow: var(--progress-shadow);
-                pointer-events: none;
-                border-radius: inherit;
-            }
-            
-            .range-slider>input {
-                -webkit-appearance: none;
-                width: 100%;
-                height: var(--thumb-size);
-                margin: 0;
-                position: absolute;
-                left: 0;
-                top: calc(50% - Max(var(--track-height), var(--thumb-size)) / 2 + calc(var(--ticks-gap) / 2 * var(--flip-y, -1)));
-                cursor: -webkit-grab;
-                cursor: grab;
-                outline: none;
-                background: none;
-                height: 21px;
+            $('.cleancup').on('click', function() {
                 
-            }
+                $('#cleancup').html($('.cleancup:checked').length * 2);
+                $('#cleancupvalue').val($('.cleancup:checked').length * 2);
+                total().trigger();
+            });
+            $('.sweetness').on('click', function() {
+                
+                $('#sweetness').html($('.sweetness:checked').length * 2);
+                $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
+                total().trigger();
+            });
+            $('#defect1').on('change', function() {
+                
+                var defect1 = $(this).val();
+                var defect2 = $('#defect2').val();
+                $('#defect').html(defect1 * defect2);
+                $('#defectvalue').val(defect1 * defect2);
+                total().trigger();
+            });
+            $('#defect2').on('change', function() {
+                var defect2 = $(this).val();
+                var defect1 = $('#defect1').val();
+                $('#defect').html(defect1 * defect2);
+                $('#defectvalue').val(defect1 * defect2);
+                total().trigger();
+            });
             
-            .range-slider>input:not(:only-of-type) {
-                pointer-events: none;
+            function total() {
+                $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
+                '#sweetness').html()) -
+                parseInt($('#defect').html()));
+                // console.log(total);
+                $('#totalvalue').val(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) +
+                parseInt($('#sweetness').html()) -
+                parseInt($('#defect').html()));
             }
+            $('#vol').on('click', function() {
+                $('#volspan').html($(this).val() + '%');
+                $('#roastvalue').val($(this).val());
+            })
+        });
+    </script>
+    
+    <!-- Range slider Start -->
+    <style class="INLINE_PEN_STYLESHEET_ID">
+        .range-slider {
+            width: clamp(250px, 80vw, 1250px) !important;
+            min-width: 250px;
+        }
+        
+        
+        .range-slider.grad {
+            --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
+            --progress-flll-shadow: var(--progress-shadow);
+            --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
+            --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
+            -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
+            -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
+            0 0 0 99px var(--primary-color) inset;
+        }
+        
+        .range-slider.grad input:hover {
+            --thumb-transform: scale(1.2);
+        }
+        
+        .range-slider.grad input:active {
+            --thumb-shadow: inherit;
+            --thumb-transform: scale(1);
+        }
+        
+        .range-slider.flat {
+            --thumb-size: 25px;
+            --track-height: calc(var(--thumb-size) / 3);
+            --progress-shadow: none;
+            --progress-flll-shadow: none;
+            --thumb-shadow: 0 0 0 7px var(--primary-color) inset, 0 0 0 99px white inset;
+            --thumb-shadow-hover: 0 0 0 9px var(--primary-color) inset,
+            0 0 0 99px white inset;
+            --thumb-shadow-active: 0 0 0 13px var(--primary-color) inset;
+        }
+        
+        .range-slider.overlay {
+            --primary-color: #d6e9ff;
+            --track-height: 50px;
+            --thumb-size: var(--track-height);
+            --thumb-color: var(--primary-color);
+            --thumb-shadow: none;
+            --progress-flll-shadow: none;
+            --progress-shadow: none;
+            --progress-background: none;
+            --progress-radius: 0px;
+            --ticks-color: var(--primary-color);
+            --ticks-height: 0;
+            --ticks-thickness: 0;
+            --ticks-gap: 0px;
+            --min-max-font: 700 18px Arial;
+            --min-max-opacity: 1;
+            --show-min-max: none;
+            color: #d1af69;
+        }
+        
+        .range-slider.overlay input:hover {
+            --thumb-shadow: calc(25px - (50px * var(--is-left-most))) 0 0 -15px #d1af69 inset;
+        }
+        
+        .range-slider.overlay input:active {
+            --thumb-color: inherit;
+        }
+        
+        .range-slider.overlay .range-slider__values {
+            width: calc(100% - 50% / (var(--max) - var(--min)));
+        }
+        
+        .custom_slider {
+            padding: 2rem 0.4rem;
+        }
+        
+        .range-slider {
+            --primary-color: #5D5D5D;
+            --value-offset-y: var(--ticks-gap);
+            --value-active-color: white;
+            --value-background: transparent;
+            --value-background-hover: var(--primary-color);
+            --value-font: 700 12px/1 Arial;
+            --fill-color: transparent;
+            --progress-background: #e4e4e4;
+            --progress-radius: 20px;
+            --track-height: calc(var(--thumb-size) / 2);
+            --min-max-font: 12px Arial;
+            --min-max-opacity: 0.5;
+            --min-max-x-offset: 10%;
+            --thumb-size: 15px;
+            --thumb-color: #5D5D5D;
+            --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
+            0 0 0 99px var(--thumb-color) inset;
+            --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+            0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+            --thumb-shadow-hover: var(--thumb-shadow);
+            --ticks-thickness: 2px;
+            --ticks-height: 15px;
+            --ticks-gap: var(--ticks-height,
+            0);
+            --ticks-color: silver;
+            --step: 1;
+            --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
+            --maxTicksAllowed: 30;
+            --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
+            --x-step: Max(var(--step),
+            var(--too-many-ticks) * (var(--max) - var(--min)));
+            --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
+            --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+            --value-a: Clamp(var(--min),
+            var(--value, 0),
+            var(--max));
+            --value-b: var(--value, 0);
+            --text-value-a: var(--text-value, "");
+            --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --ca: Min(var(--completed-a), var(--completed-b));
+            --cb: Max(var(--completed-a), var(--completed-b));
+            --thumbs-too-close: Clamp(-1,
+            1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+            1);
+            --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
+            --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
+            display: inline-block;
+            height: max(var(--track-height), var(--thumb-size));
+            background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
+            background-size: var(--tickIntervalPerc) var(--ticks-height);
+            background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+            background-position-y: var(--flip-y, bottom);
+            padding-bottom: var(--flip-y, var(--ticks-gap));
+            padding-top: calc(var(--flip-y) * var(--ticks-gap));
+            position: relative;
+            z-index: 1;
+        }
+        
+        .user_name{
+            padding: 20px 0;
+            width: 100%;
+        }
+        .user_name .range-slider{
+            / background-image: linear-gradient(to right,#fff , #88592D) !important; /
+            --primary-color: #5D5D5D;
+            --value-offset-y: var(--ticks-gap);
+            --value-active-color: white;
+            --value-background: transparent;
+            --value-background-hover: var(--primary-color);
+            --value-font: 700 12px/1 Arial;
+            --fill-color: var(--primary-color);
+            --progress-background: #fff  !important;
+            --progress-radius: 20px;
+            --track-height: calc(var(--thumb-size) / 2);
+            --min-max-font: 12px Arial;
+            --min-max-opacity: 0.5;
+            --min-max-x-offset: 10%;
+            --thumb-size: 10px;
+            --thumb-color: #5D5D5D;
+            --thumb-radius: 0 !important;
+            --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
+            0 0 0 99px var(--thumb-color) inset;
+            --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+            0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+            --thumb-shadow-hover: var(--thumb-shadow);
+            --step: 1;
+            --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
+            --maxTicksAllowed: 30;
+            --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
+            --x-step: Max(var(--step),
+            var(--too-many-ticks) * (var(--max) - var(--min)));
+            --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
+            --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+            --value-a: Clamp(var(--min),
+            var(--value, 0),
+            var(--max));
+            --value-b: var(--value, 0);
+            --text-value-a: var(--text-value, "");
+            --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --ca: Min(var(--completed-a), var(--completed-b));
+            --cb: Max(var(--completed-a), var(--completed-b));
+            --thumbs-too-close: Clamp(-1,
+            1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+            1);
+            --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
+            --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
+            display: inline-block;
+            height: max(var(--track-height), var(--thumb-size));
+            background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
+            background-size: var(--tickIntervalPerc) var(--ticks-height);
+            background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+            background-position-y: var(--flip-y, bottom);
+            padding-bottom: var(--flip-y, var(--ticks-gap));
+            padding-top: calc(var(--flip-y) * var(--ticks-gap));
+            position: relative;
+            z-index: 1;
+            width: 100% !important;
+        }
+        .user_name .range-slider input{
+            background-image: linear-gradient(to right,#fff , #88592D) !important;
+            height: 50px;
+            border: 1px solid #5D5D5D;
+        }
+        
+        .range-slider[data-ticks-position=top] {
+            --flip-y: 1;
+        }
+        
+        .range-slider::before,
+        .range-slider::after {
+            --offset: calc(var(--thumb-size) / 2);
+            content: counter(x);
+            display: var(--show-min-max, block);
+            font: var(--min-max-font);
+            position: absolute;
+            bottom: var(--flip-y, -2.5ch);
+            top: calc(-2.5ch * var(--flip-y));
+            opacity: clamp(0, var(--at-edge), var(--min-max-opacity));
+            transform: translateX(calc(var(--min-max-x-offset) * var(--before, -1) * -1)) scale(var(--at-edge));
+            pointer-events: none;
+        }
+        
+        .range-slider::before {
+            --before: 1;
+            --at-edge: var(--thumb-close-to-min);
+            counter-reset: x var(--min);
+            left: var(--offset);
+        }
+        
+        .range-slider::after {
+            --at-edge: var(--thumb-close-to-max);
+            counter-reset: x var(--max);
+            right: var(--offset);
+        }
+        
+        .range-slider__values {
+            position: relative;
+            top: 50%;
+            line-height: 0;
+            text-align: justify;
+            width: 100%;
+            pointer-events: none;
+            margin: 0 auto;
+            z-index: 5;
+        }
+        
+        .range-slider__values::after {
+            content: "";
+            width: 100%;
+            display: inline-block;
+            height: 0;
+            background: red;
+        }
+        
+        .range-slider__progress {
+            --start-end: calc(var(--thumb-size) / 2);
+            --clip-end: calc(100% - (var(--cb)) * 1%);
+            --clip-start: calc(var(--ca) * 1%);
+            --clip: inset(-20px var(--clip-end) -20px var(--clip-start));
+            position: absolute;
+            left: var(--start-end);
+            right: var(--start-end);
+            top: calc(var(--ticks-gap) * var(--flip-y, 0) + var(--thumb-size) / 2 - var(--track-height) / 2);
+            height: calc(var(--track-height));
+            background: var(--progress-background, #eee);
+            pointer-events: none;
+            z-index: -1;
+            border-radius: var(--progress-radius);
+        }
+        
+        .range-slider__progress::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            -webkit-clip-path: var(--clip);
+            clip-path: var(--clip);
+            top: 0;
+            bottom: 0;
+            background: var(--fill-color, black);
+            box-shadow: var(--progress-flll-shadow);
+            z-index: 1;
+            border-radius: inherit;
+        }
+        
+        .range-slider__progress::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-shadow: var(--progress-shadow);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+        
+        .range-slider>input {
+            -webkit-appearance: none;
+            width: 100%;
+            height: var(--thumb-size);
+            margin: 0;
+            position: absolute;
+            left: 0;
+            top: calc(50% - Max(var(--track-height), var(--thumb-size)) / 2 + calc(var(--ticks-gap) / 2 * var(--flip-y, -1)));
+            cursor: -webkit-grab;
+            cursor: grab;
+            outline: none;
+            background: none;
+            height: 21px;
             
-            .range-slider>input::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                height: var(--thumb-size);
-                width: var(--thumb-size);
-                transform: var(--thumb-transform);
-                border-radius: var(--thumb-radius, 50%);
-                background: var(--thumb-color);
-                box-shadow: var(--thumb-shadow);
-                border: none;
-                pointer-events: auto;
-                -webkit-transition: 0.1s;
-                transition: 0.1s;
-            }
-            
-            .range-slider>input::-moz-range-thumb {
-                -moz-appearance: none;
-                appearance: none;
-                height: var(--thumb-size);
-                width: var(--thumb-size);
-                transform: var(--thumb-transform);
-                border-radius: var(--thumb-radius, 50%);
-                background: var(--thumb-color);
-                box-shadow: var(--thumb-shadow);
-                border: none;
-                pointer-events: auto;
-                -moz-transition: 0.1s;
-                transition: 0.1s;
-            }
-            
-            .range-slider>input::-ms-thumb {
-                appearance: none;
-                height: var(--thumb-size);
-                width: var(--thumb-size);
-                transform: var(--thumb-transform);
-                border-radius: var(--thumb-radius, 50%);
-                background: var(--thumb-color);
-                box-shadow: var(--thumb-shadow);
-                border: none;
-                pointer-events: auto;
-                -ms-transition: 0.1s;
-                transition: 0.1s;
-            }
-            
-            .range-slider>input:hover {
-                --thumb-shadow: var(--thumb-shadow-hover);
-            }
-            
-            .range-slider>input:hover+output {
-                --value-background: var(--value-background-hover);
-                --y-offset: -5px;
-                color: var(--value-active-color);
-                box-shadow: 0 0 0 3px var(--value-background);
-            }
-            
-            .range-slider>input:active {
-                --thumb-shadow: var(--thumb-shadow-active);
-                cursor: -webkit-grabbing;
-                cursor: grabbing;
-                z-index: 2;
-            }
-            
-            .range-slider>input:active+output {
-                transition: 0s;
-            }
-            
-            .range-slider>input:nth-of-type(1) {
-                --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
-            }
-            
-            .range-slider>input:nth-of-type(1)+output {
-                --value: var(--value-a);
-                --x-offset: calc(var(--completed-a) * -1%);
-            }
-            
-            .range-slider>input:nth-of-type(1)+output:not(:only-of-type) {
-                --flip: calc(var(--thumbs-too-close) * -1);
-            }
-            
-            .range-slider>input:nth-of-type(1)+output::after {
-                content: var(--prefix, "") var(--text-value-a) var(--suffix, "");
-            }
-            
-            .range-slider>input:nth-of-type(2) {
-                --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
-            }
-            
-            .range-slider>input:nth-of-type(2)+output {
-                --value: var(--value-b);
-            }
-            
-            .range-slider>input:only-of-type~.range-slider__progress {
-                --clip-start: 0;
-            }
-            
-            .range-slider>input+output {
-                --flip: -1;
-                --x-offset: calc(var(--completed-b) * -1%);
-                --pos: calc(((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%);
-                pointer-events: none;
-                position: absolute;
-                z-index: 5;
-                background: var(--value-background);
-                border-radius: 10px;
-                padding: 2px 4px;
-                left: var(--pos);
-                transform: translate(var(--x-offset), calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
-                transition: all 0.12s ease-out, left 0s;
-            }
-            
-            .range-slider>input+output::after {
-                content: var(--prefix, "") var(--text-value-b) var(--suffix, "");
-                font: var(--value-font);
-            }
-            
-            .select2.select2-container.select2-container--default {
-                width: 100% !important;
-            }
-            
+        }
+        
+        .range-slider>input:not(:only-of-type) {
+            pointer-events: none;
+        }
+        
+        .range-slider>input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -webkit-transition: 0.1s;
+            transition: 0.1s;
+        }
+        
+        .range-slider>input::-moz-range-thumb {
+            -moz-appearance: none;
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -moz-transition: 0.1s;
+            transition: 0.1s;
+        }
+        
+        .range-slider>input::-ms-thumb {
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -ms-transition: 0.1s;
+            transition: 0.1s;
+        }
+        
+        .range-slider>input:hover {
+            --thumb-shadow: var(--thumb-shadow-hover);
+        }
+        
+        .range-slider>input:hover+output {
+            --value-background: var(--value-background-hover);
+            --y-offset: -5px;
+            color: var(--value-active-color);
+            box-shadow: 0 0 0 3px var(--value-background);
+        }
+        
+        .range-slider>input:active {
+            --thumb-shadow: var(--thumb-shadow-active);
+            cursor: -webkit-grabbing;
+            cursor: grabbing;
+            z-index: 2;
+        }
+        
+        .range-slider>input:active+output {
+            transition: 0s;
+        }
+        
+        .range-slider>input:nth-of-type(1) {
+            --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
+        }
+        
+        .range-slider>input:nth-of-type(1)+output {
+            --value: var(--value-a);
+            --x-offset: calc(var(--completed-a) * -1%);
+        }
+        
+        .range-slider>input:nth-of-type(1)+output:not(:only-of-type) {
+            --flip: calc(var(--thumbs-too-close) * -1);
+        }
+        
+        .range-slider>input:nth-of-type(1)+output::after {
+            content: var(--prefix, "") var(--text-value-a) var(--suffix, "");
+        }
+        
+        .range-slider>input:nth-of-type(2) {
+            --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
+        }
+        
+        .range-slider>input:nth-of-type(2)+output {
+            --value: var(--value-b);
+        }
+        
+        .range-slider>input:only-of-type~.range-slider__progress {
+            --clip-start: 0;
+        }
+        
+        .range-slider>input+output {
+            --flip: -1;
+            --x-offset: calc(var(--completed-b) * -1%);
+            --pos: calc(((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%);
+            pointer-events: none;
+            position: absolute;
+            z-index: 5;
+            background: var(--value-background);
+            border-radius: 10px;
+            padding: 2px 4px;
+            left: var(--pos);
+            transform: translate(var(--x-offset), calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
+            transition: all 0.12s ease-out, left 0s;
+        }
+        
+        .range-slider>input+output::after {
+            content: var(--prefix, "") var(--text-value-b) var(--suffix, "");
+            font: var(--value-font);
+        }
+        
+        .select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+        
+        body {
+            height: 100vh;
+            display: grid;
+            place-content: space-evenly;
+            place-items: center;
+            gap: 10%;
+            padding: 0;
+        }
+        
+        @media screen and (max-width: 500px) {
             body {
-                height: 100vh;
-                display: grid;
-                place-content: space-evenly;
-                place-items: center;
-                gap: 10%;
-                padding: 0;
+                padding-top: 2em;
+                gap: 8%;
             }
-            
-            @media screen and (max-width: 500px) {
-                body {
-                    padding-top: 2em;
-                    gap: 8%;
-                }
-            }
-            
+        }
+        
+        a {
+            /* position: fixed;
+            top: 1em;
+            left: 1em; */
+            display: inline-block;
+            height: 2em;
+        }
+        
+        @media screen and (max-width: 500px) {
             a {
-                /* position: fixed;
-                top: 1em;
-                left: 1em; */
-                display: inline-block;
-                height: 2em;
+                position: static;
+                order: -1;
             }
-            
-            @media screen and (max-width: 500px) {
-                a {
-                    position: static;
-                    order: -1;
-                }
-            }
-            
-            a>img {
-                display: inherit;
-                height: 100%;
-            }
-            
-            body>.range-slider,
-            label[dir=rtl] .range-slider {
-                width: clamp(300px, 50vw, 800px);
-                min-width: 200px;
-            }
-            
-        </style>
-        <!-- Range slider end -->
-        <script>
-            $(document).ready(function() {
-                $(".score_second_number,.score_first_number").keyup(function(){
+        }
+        
+        a>img {
+            display: inherit;
+            height: 100%;
+        }
+        
+        body>.range-slider,
+        label[dir=rtl] .range-slider {
+            width: clamp(300px, 50vw, 800px);
+            min-width: 200px;
+        }
+        
+    </style>
+    <!-- Range slider end -->
+    <script>
+        $(document).ready(function() {
+            $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
                     var defect=first * second * 4;
@@ -1560,231 +1560,230 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     
                     //   $("input").css("background-color", "pink");
                 });
-                $('.js-example-basic-multiple').select2();
-                var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
-                $(".roastslider")
-                .slider({
-                    max: 100,
-                    value: 50
-                }).slider("float", {
-                    rest: "label"}).on("slidechange", function( e, ui ) {
-                        $(ui.handle).parent().find('input').val(ui.value);
-                        
-                    });
-                    $(".aromaslider")
-                    .slider({
-                        max: 3,
-                        step: 1,
-                        value: 0
-                    })
-                    .slider("pips", {
-                        rest: "label",
-                        step: 1,
-                    }).on("slidechange", function( e, ui ) {
-                        $(ui.handle).parent().find('input').val(ui.value);
-                        
-                    });;
-                    $(".customslider")
-                    .slider({
-                        max: 8,
-                        step: 0.5,
-                        value: 4
-                    })
-                    .slider("pips", {
-                        rest: "label",
-                        step: 2,
-                        labels: hanzi
-                    })
-                    .on("slidechange", function( e, ui ) {
-                        inputvalue = ui.value;
-                        if(inputvalue==0.5)
-                        inputvalue = 1;
-                        else if(inputvalue==1)
-                        inputvalue = 2;
-                        else if(inputvalue==1.5)
-                        inputvalue = 3;
-                        else if(inputvalue==2)
-                        inputvalue = 4;
-                        else if(inputvalue==2.5)
-                        inputvalue = 4.5;
-                        else if(inputvalue==3)
-                        inputvalue = 5;
-                        else if(inputvalue==3.5)
-                        inputvalue = 5.5;
-                        else if(inputvalue==4)
-                        inputvalue = 6;
-                        else if(inputvalue==4.5)
-                        inputvalue = 6.25;
-                        else if(inputvalue==5)
-                        inputvalue = 6.5;
-                        else if(inputvalue==5.5)
-                        inputvalue = 6.75;
-                        else if(inputvalue==6)
-                        inputvalue = 7;
-                        else if(inputvalue==6.5)
-                        inputvalue = 7.25;
-                        else if(inputvalue==7.5)
-                        inputvalue = 7.75;
-                        $(ui.handle).parent().find('input').val(inputvalue);
-                        // ui.value;
-                        calcTotal();
-                        
-                        // $('input[type=range]').first().trigger('input');
-                        
-                    })
-                    .slider("float",{labels: hanzi});
-                    $(".customslider")
-                    .slider( "value", 4 )
-                    .slider("pips", "refresh");
-                    $('.customslider').draggable();
-                    function subtotaldata()
+            $('.js-example-basic-multiple').select2();
+            var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
+            $(".roastslider")
+            .slider({
+                max: 100,
+                value: 50
+            }).slider("float", {
+                rest: "label"}).on("slidechange", function( e, ui ) {
+                $(ui.handle).parent().find('input').val(ui.value);
+                
+            });
+            $(".aromaslider")
+            .slider({
+                max: 3,
+                step: 1,
+                value: 0
+            })
+            .slider("pips", {
+                rest: "label",
+                step: 1,
+            }).on("slidechange", function( e, ui ) {
+                $(ui.handle).parent().find('input').val(ui.value);
+                
+            });;
+            $(".customslider")
+            .slider({
+                max: 8,
+                step: 0.5,
+                value: 4
+            })
+            .slider("pips", {
+                rest: "label",
+                step: 2,
+                labels: hanzi
+            })
+            .on("slidechange", function( e, ui ) {
+                inputvalue = ui.value;
+                if(inputvalue==0.5)
+                inputvalue = 1;
+                else if(inputvalue==1)
+                inputvalue = 2;
+                else if(inputvalue==1.5)
+                inputvalue = 3;
+                else if(inputvalue==2)
+                inputvalue = 4;
+                else if(inputvalue==2.5)
+                inputvalue = 4.5;
+                else if(inputvalue==3)
+                inputvalue = 5;
+                else if(inputvalue==3.5)
+                inputvalue = 5.5;
+                else if(inputvalue==4)
+                inputvalue = 6;
+                else if(inputvalue==4.5)
+                inputvalue = 6.25;
+                else if(inputvalue==5)
+                inputvalue = 6.5;
+                else if(inputvalue==5.5)
+                inputvalue = 6.75;
+                else if(inputvalue==6)
+                inputvalue = 7;
+                else if(inputvalue==6.5)
+                inputvalue = 7.25;
+                else if(inputvalue==7.5)
+                inputvalue = 7.75;
+                $(ui.handle).parent().find('input').val(inputvalue);
+                // ui.value;
+                calcTotal();
+
+                // $('input[type=range]').first().trigger('input');
+                
+            })
+            .slider("float",{labels: hanzi});
+            $(".customslider")
+            .slider( "value", 4 )
+            .slider("pips", "refresh");
+            $('.customslider').draggable();
+            function subtotaldata()
+                {
+                    // var d=e=f=g=h=i=j=k=0;
+                    // var a = $('#aroma_dry').val();
+                    // var b = $('#aroma_crust').val();
+                    // var d = $('#aroma_break').val();
+                    var c = $('#clean_up').val();
+                    
+                    var e = $('#sweetness').val();
+                    var f = $('#acidity').val();
+                    var g = $('#mouth_feel').val();
+                    var h = $('#flavour').val();
+                    var i = $('#balance').val();
+                    var j = $('#overall').val();
+                    var k = $('#after_taste').val();
+                    
+                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+                    
+                    return subtotal;
+                }
+            function calcTotal(){
+                    // var step=0;
+                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
+                    //     step = 1;
+                    // }else {
+                    //     step = 0.5;
+                    // }
+                    // $(this).attr('step', step);
+                    subtotal=subtotaldata(); 
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    if(second && first)
                     {
-                        // var d=e=f=g=h=i=j=k=0;
-                        // var a = $('#aroma_dry').val();
-                        // var b = $('#aroma_crust').val();
-                        // var d = $('#aroma_break').val();
-                        var c = $('#clean_up').val();
-                        
-                        var e = $('#sweetness').val();
-                        var f = $('#acidity').val();
-                        var g = $('#mouth_feel').val();
-                        var h = $('#flavour').val();
-                        var i = $('#balance').val();
-                        var j = $('#overall').val();
-                        var k = $('#after_taste').val();
-                        
-                        subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                        
-                        return subtotal;
+                        var defect =first * second * 4;
+                        var raw = subtotal - defect;
+                        var total = 36 + raw;
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total);
                     }
-                    function calcTotal(){
-                        // var step=0;
-                        // if ($(this).val() >= 0 && $(this).val() <= 6) {
-                            //     step = 1;
-                            // }else {
-                                //     step = 0.5;
-                                // }
-                                // $(this).attr('step', step);
-                                subtotal=subtotaldata(); 
-                                var first = $('.score_first_number').val();
-                                var second = $('.score_second_number').val();
-                                if(second && first)
-                                {
-                                    var defect =first * second * 4;
-                                    var raw = subtotal - defect;
-                                    var total = 36 + raw;
-                                    $('#total_score').val(total);
-                                    $('.totalScore').html(total);
-                                }
-                                else
-                                {
-                                    $('.score_first_number').val(0);
-                                    $('.score_second_number').val(0);
-                                    $('.multiply4').html(0);
-                                    var defect = 0;
-                                    var raw = subtotal - defect;
-                                    if(raw == 0)
-                                    {
-                                        var total = 0;
-                                    }
-                                    else
-                                    {
-                                        var total = 36 + raw;
-                                    }
-                                    $('#total_score').val(total);
-                                    $('.totalScore').html(total); 
-                                }     
-                                $(this).trigger('change');
-                            }
-                            calcTotal();
-                            $('.scrollable').css('width',window.innerWidth-100);
-                            function parseReview(inputvalue){
-                                if(inputvalue==1)
-                                inputvalue = 0.5;
-                                else if(inputvalue==2)
-                                inputvalue = 1;
-                                else if(inputvalue==3)
-                                inputvalue = 1.5;
-                                else if(inputvalue==4)
-                                inputvalue = 2;
-                                else if(inputvalue==4.5)
-                                inputvalue = 2.5;
-                                else if(inputvalue==5)
-                                inputvalue = 3;
-                                else if(inputvalue==5.5)
-                                inputvalue = 3.5;
-                                else if(inputvalue==6)
-                                inputvalue = 4;
-                                else if(inputvalue==6.25)
-                                inputvalue = 4.5;
-                                else if(inputvalue==6.5)
-                                inputvalue = 5;
-                                else if(inputvalue==6.75)
-                                inputvalue = 5.5;
-                                else if(inputvalue==7)
-                                inputvalue = 6;
-                                else if(inputvalue==7.25)
-                                inputvalue = 6.5;
-                                else if(inputvalue==7.75)
-                                inputvalue = 7.5;
-                                return inputvalue;
-                            }
-                            @if($firstsample->is_hidden==1 && $sampleReview)
-                            $(".roastslider")
-                            .slider({
-                                value: {{$sampleReview->roast}}
-                            });
-                            $(".aromacrust")
-                            .slider({
-                                value: {{$sampleReview->aroma_crust}}
-                            });
-                            $(".aromadry")
-                            .slider({
-                                value: {{$sampleReview->aroma_break}}
-                            });
-                            $(".aromabreak")
-                            .slider({
-                                value: {{$sampleReview->aroma_dry}}
-                            })
-                            $('input[name=first_number]').val({{$sampleReview->first_number}});
-                            $('input[name=second_number]').val({{$sampleReview->second_number}});
-                            $('input[name=second_number]').trigger('keyup');
-                            $('#defect_note').val('{{$sampleReview->defects_note}}');
-                            $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
-                            $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
-                            
-                            $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
-                            $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
-                            
-                            $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
-                            $('#acidity_note').val('{{$sampleReview->acidity_note}}');
-                            $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
-                            
-                            $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
-                            $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
-                            $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
-                            
-                            $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
-                            $('#flavor_note').val('{{$sampleReview->flavor_note}}');
-                            
-                            $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
-                            $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
-                            
-                            $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
-                            $('#balance_note').val('{{$sampleReview->balance_note}}');
-                            
-                            $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
-                            $('#overall_note').val('{{$sampleReview->overall_note}}');
-                            
-                            calcTotal();
-                            
-                            
-                            @endif
+                    else
+                    {
+                        $('.score_first_number').val(0);
+                        $('.score_second_number').val(0);
+                        $('.multiply4').html(0);
+                        var defect = 0;
+                        var raw = subtotal - defect;
+                        if(raw == 0)
+                        {
+                            var total = 0;
+                        }
+                        else
+                        {
+                            var total = 36 + raw;
+                        }
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total); 
+                    }     
+                    $(this).trigger('change');
+                }
+            calcTotal();
+            $('.scrollable').css('width',window.innerWidth-100);
+            function parseReview(inputvalue){
+                if(inputvalue==1)
+                inputvalue = 0.5;
+                else if(inputvalue==2)
+                inputvalue = 1;
+                else if(inputvalue==3)
+                inputvalue = 1.5;
+                else if(inputvalue==4)
+                inputvalue = 2;
+                else if(inputvalue==4.5)
+                inputvalue = 2.5;
+                else if(inputvalue==5)
+                inputvalue = 3;
+                else if(inputvalue==5.5)
+                inputvalue = 3.5;
+                else if(inputvalue==6)
+                inputvalue = 4;
+                else if(inputvalue==6.25)
+                inputvalue = 4.5;
+                else if(inputvalue==6.5)
+                inputvalue = 5;
+                else if(inputvalue==6.75)
+                inputvalue = 5.5;
+                else if(inputvalue==7)
+                inputvalue = 6;
+                else if(inputvalue==7.25)
+                inputvalue = 6.5;
+                else if(inputvalue==7.75)
+                inputvalue = 7.5;
+                return inputvalue;
+            }
+            @if($firstsample->is_hidden==1 && $sampleReview)
+                $(".roastslider")
+                    .slider({
+                        value: {{$sampleReview->roast}}
+                    });
+                    $(".aromacrust")
+                        .slider({
+                            value: {{$sampleReview->aroma_crust}}
                         });
+                    $(".aromadry")
+                        .slider({
+                            value: {{$sampleReview->aroma_break}}
+                        });
+                    $(".aromabreak")
+                        .slider({
+                            value: {{$sampleReview->aroma_dry}}
+                        })
+                        $('input[name=first_number]').val({{$sampleReview->first_number}});
+                        $('input[name=second_number]').val({{$sampleReview->second_number}});
+                        $('input[name=second_number]').trigger('keyup');
+                        $('#defect_note').val('{{$sampleReview->defects_note}}');
+                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
+                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
                         
-                    </script>
-                </body>
-                <!-- END: Body-->
-                
-                </html>
-                
+                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
+                        $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
+
+                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
+                        $('#acidity_note').val('{{$sampleReview->acidity_note}}');
+                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
+
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
+                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
+                        $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
+
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
+                        $('#flavor_note').val('{{$sampleReview->flavor_note}}');
+
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
+                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
+
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
+                        $('#balance_note').val('{{$sampleReview->balance_note}}');
+
+                        $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
+                        $('#overall_note').val('{{$sampleReview->overall_note}}');
+
+            calcTotal();
+                        
+                        
+            @endif
+        });
+        
+    </script>
+</body>
+<!-- END: Body-->
+
+</html>
