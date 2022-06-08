@@ -758,9 +758,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <p id="input_total_score" style="display: none"><input type="input" class="totalScore" name="total_score" id="total_score" value="84"></p>
                                                     <h2 class="totalScore" id="div_total_score">0</h2>
                                                     <a onclick="toggleDivs()">Manually Override Score</a>
+                                                    <input type="hidden" value="0" name="manual_override">
                                                     <script>function toggleDivs(){
                                                         $('#div_total_score').hide();
                                                         $('#input_total_score').show();
+                                                        $('input[name=manual_override]').val(1);
                                                     }
                                                     </script>
                                                     <div class="row">
