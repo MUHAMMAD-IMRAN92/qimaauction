@@ -401,6 +401,17 @@ input{
         display: none;
     }
 }
+.isdone{
+    background-color:transparent !important;
+    color:#000 !important;
+}
+.isdone:hover{
+    background-color:#000 !important;
+    color:#fff !important;
+}
+.isdone.btn-success{
+    color:#FFF !important;
+}
 </style>
 
 <body
@@ -494,7 +505,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
+                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast" value="50"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -508,7 +519,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>DRY</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
+                                                        <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry" value="0"></div>
                                                         
                                                         
                                                         
@@ -517,7 +528,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                        <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
                                                     
                                                     
@@ -526,7 +537,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+                                                        <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
                                                     
                                                     
@@ -566,7 +577,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="clean_up" id="clean_up"></div>
+                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="cleanup_note" id="cleanup_note"
@@ -580,11 +591,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="sweetness_note" id="sweetness_note"
-                                                                placeholder="NOTES"
+                                                                placeholder="NOTES" value="6"
                                                                 class="entity_note">
                                                             </div>
                                                         </div>
@@ -594,14 +605,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="acidity" id="acidity"></div>
+                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity" value="6"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
                                                                         
                                                                         <input type="radio"
-                                                                        name="acidity_chk" value="H">
+                                                                        name="acidity_chk" value="H" class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>H</h5>
@@ -611,7 +622,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 <div>
                                                                     <label class="radio_container">
                                                                         <input type="radio"
-                                                                        name="acidity_chk" value="M">
+                                                                        name="acidity_chk" value="M" class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>M</h5>
@@ -622,7 +633,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     <label class="radio_container">
                                                                         <input type="radio"
                                                                         checked="checked"
-                                                                        name="acidity_chk" value="L">
+                                                                        name="acidity_chk" value="L" class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
@@ -642,14 +653,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="custom_slider">
                                                                 <div class="design-slider mt-5 mb-5">
-                                                                    <div class="customslider"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
                                                                         
-                                                                        <input type="radio"
+                                                                        <input type="radio" class="mouthfeel_H"
                                                                         value="H"
                                                                         name="fm_chk">
                                                                         <div class="checkmark">
@@ -659,7 +670,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" value="M"
+                                                                        <input type="radio" value="M" class="mouthfeel_M"
                                                                         name="fm_chk">
                                                                         <div
                                                                         class="checkmark">
@@ -669,7 +680,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                             <div>
                                                                 <label class="radio_container">
-                                                                    <input type="radio" value="L" checked="checked"
+                                                                    <input type="radio" value="L" checked="checked" class="mouthfeel_L"
                                                                     name="fm_chk">
                                                                     <div
                                                                     class="checkmark">
@@ -687,7 +698,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="flavour" id="flavour"></div>
+                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="flavor_note" id="flavor_note"
@@ -700,7 +711,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="after_taste" id="after_taste"></div>
+                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="aftertaste_note" id="aftertaste_note"
@@ -713,7 +724,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="balance" id="balance"></div>
+                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="balance_note" id="balance_note"
@@ -726,7 +737,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider"><input type="hidden" name="overall" id="overall"></div>
+                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="overall_note" id="overall_note"
@@ -737,19 +748,22 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                     <h3 class="entity-text total-bg">TOTAL</h3>
                                                     <p class="entity-label">(+36)</p>
-                                                    <input type="hidden" name="total_score" id="total_score" value="">
+                                                    <input type="hidden" name="total_score" id="total_score" value="84">
                                                     <h2 class="totalScore">0</h2>
                                                     <div class="row">
                                                         <div class="scrollable" style="overflow:auto;">
                                                             <div class="button-group" style="white-space:nowrap">
                                                                 @foreach ($alltablesamples as $samp)
-                                                                
+                                                                @php $extraclass = ""; @endphp
+                                                                @if($samp->is_hidden==1)
+                                                                    @php $extraclass="isdone"; @endphp
+                                                                @endif
                                                                 @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a class="btn btn-secondary pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
@@ -833,21 +847,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 $('input[type=range]').on('input', function () {});
                 
                 
-                $(".score_second_number,.score_first_number").keyup(function(){
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    var defect=first * second * 4;
-                    $('#defect').val(defect);
-                    $('.multiply4').html(defect);
-                    subtotal=subtotaldata(); 
-                    var raw = subtotal - defect;
-                    var total = 36 + raw;
-                    
-                    $('#total_score').val(total);
-                    $('.totalScore').html(total);
-                    
-                    //   $("input").css("background-color", "pink");
-                });
+                
                 // Plugin Constructor
                 var TagsInput = function(opts) {
                     this.options = Object.assign(TagsInput.defaults, opts);
@@ -1545,6 +1545,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- Range slider end -->
     <script>
         $(document).ready(function() {
+            $(".score_second_number,.score_first_number").keyup(function(){
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    var defect=first * second * 4;
+                    $('#defect').val(defect);
+                    $('.multiply4').html(defect);
+                    subtotal=subtotaldata(); 
+                    var raw = subtotal - defect;
+                    var total = 36 + raw;
+                    
+                    $('#total_score').val(total);
+                    $('.totalScore').html(total);
+                    
+                    //   $("input").css("background-color", "pink");
+                });
             $('.js-example-basic-multiple').select2();
             var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25","6.5","6.75","7","7.25","7.5","7.75","8"];
             $(".roastslider")
@@ -1683,7 +1698,88 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 }
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
-            
+            function parseReview(inputvalue){
+                if(inputvalue==1)
+                inputvalue = 0.5;
+                else if(inputvalue==2)
+                inputvalue = 1;
+                else if(inputvalue==3)
+                inputvalue = 1.5;
+                else if(inputvalue==4)
+                inputvalue = 2;
+                else if(inputvalue==4.5)
+                inputvalue = 2.5;
+                else if(inputvalue==5)
+                inputvalue = 3;
+                else if(inputvalue==5.5)
+                inputvalue = 3.5;
+                else if(inputvalue==6)
+                inputvalue = 4;
+                else if(inputvalue==6.25)
+                inputvalue = 4.5;
+                else if(inputvalue==6.5)
+                inputvalue = 5;
+                else if(inputvalue==6.75)
+                inputvalue = 5.5;
+                else if(inputvalue==7)
+                inputvalue = 6;
+                else if(inputvalue==7.25)
+                inputvalue = 6.5;
+                else if(inputvalue==7.75)
+                inputvalue = 7.5;
+                return inputvalue;
+            }
+            @if($firstsample->is_hidden==1 && $sampleReview->roast)
+                $(".roastslider")
+                    .slider({
+                        value: {{$sampleReview->roast?$sampleReview->roast:50}}
+                    });
+                    $(".aromacrust")
+                        .slider({
+                            value: {{$sampleReview->aroma_crust?$sampleReview->aroma_crust:2}}
+                        });
+                    $(".aromadry")
+                        .slider({
+                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                        });
+                    $(".aromabreak")
+                        .slider({
+                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                        })
+                        $('input[name=first_number]').val({{$sampleReview->first_number}});
+                        $('input[name=second_number]').val({{$sampleReview->second_number}});
+                        $('input[name=second_number]').trigger('keyup');
+                        $('#defect_note').val('{{$sampleReview->defects_note}}');
+                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
+                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
+                        
+                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
+                        $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
+
+                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
+                        $('#acidity_note').val('{{$sampleReview->acidity_note}}');
+                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
+
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
+                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
+                        $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
+
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
+                        $('#flavor_note').val('{{$sampleReview->flavor_note}}');
+
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
+                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
+
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
+                        $('#balance_note').val('{{$sampleReview->balance_note}}');
+
+                        $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
+                        $('#overall_note').val('{{$sampleReview->overall_note}}');
+
+            calcTotal();
+                        
+                        
+            @endif
         });
         
     </script>

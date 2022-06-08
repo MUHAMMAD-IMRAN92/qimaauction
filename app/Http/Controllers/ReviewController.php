@@ -17,18 +17,20 @@ class ReviewController extends Controller
                                  ->where('product_id', $request->product_id)
                                 //  ->where('temporary_link',$request->link)
                                 ->where('id',$request->sent_sample_id)
-                                 ->where('is_hidden','0')
+                                //  ->where('is_hidden','0')
                                  ->first();
                                 //  return  $sampleSent;
-        if (!$sampleSent || $sampleSent->is_hidden == '1') {
-            return view('admin.jury.alredy_submit');
+        if ($sampleSent->is_hidden == '1') {
+            $review = Review::where('sample_id',$sampleSent->id)->first();
+            
+            //return view('admin.jury.alredy_submit');
         }
         else
         {
+            $review = new Review();
             $sampleSent->is_hidden = '1';
             $sampleSent->save();
         }
-        $review = new Review();
         $review->aroma_dry              = $request->aroma_dry;
         $review->aroma_crust            = $request->aroma_crust;
         $review->roast                  = $request->roast;
@@ -40,8 +42,8 @@ class ReviewController extends Controller
         $review->defect                 = (isset($request->defect)) ? $request->defect : 0;
         $review->clean_up               = $request->clean_up;
         $review->sweetness              = $request->sweetness;
-        $review->defects_note           = $request->defects_note;
-        $review->clean_sweet_note       = $request->clean_sweet_note;
+        $review->defects_note           = $request->defect_note;
+        $review->clean_sweet_note       = $request->cleanup_note;
         $review->acidity                = $request->acidity;
         $review->acidity_chk            = $request->acidity_chk;
         $review->mouth_feel             = $request->mouth_feel;
