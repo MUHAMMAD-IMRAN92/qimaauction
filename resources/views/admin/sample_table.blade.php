@@ -1,5 +1,6 @@
 
                                         {{-- <div id="{{$tables}}" class="tabcontent"> --}}
+
                                             <table class="table table-striped"
                                             style="background-color: rgb(255, 255, 255)">
                                             <thead style="color: #d8940d; border:#d8940d" class="table-bordered">
