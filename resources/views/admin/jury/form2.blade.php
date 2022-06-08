@@ -484,8 +484,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
                                                     <input type="hidden" name="current_position" value="{{$productdata->postion}}">
-                                                    <input type="hidden" name="next_position" value="{{$productdata->postion+1}}">
-                                                    <input type="hidden" name="previous_position" value="{{$productdata->postion-1}}">
+                                                    <input type="hidden" name="next_position" value="@php $next_position = $productdata->postion+1; echo $next_position;@endphp">
+                                                    <input type="hidden" name="previous_position" value="@php $previous_position = $productdata->postion-1; echo $previous_position;@endphp">
                                                 </ul>
                                             </div>
                                             <!--Breadcrumb Section-->
