@@ -505,7 +505,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast"></div>
+                                                                <div class="roastslider"><input type="hidden" name="roast" id="roast" value="50"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -519,7 +519,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>DRY</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry"></div>
+                                                        <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry" value="0"></div>
                                                         
                                                         
                                                         
@@ -528,7 +528,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust"></div>
+                                                        <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
                                                     
                                                     
@@ -537,7 +537,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <h5>BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break"></div>
+                                                        <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
                                                     
                                                     
@@ -577,7 +577,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up"></div>
+                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="cleanup_note" id="cleanup_note"
@@ -595,7 +595,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="sweetness_note" id="sweetness_note"
-                                                                placeholder="NOTES"
+                                                                placeholder="NOTES" value="6"
                                                                 class="entity_note">
                                                             </div>
                                                         </div>
@@ -605,7 +605,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity"></div>
+                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity" value="6"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
@@ -698,7 +698,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour"></div>
+                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="flavor_note" id="flavor_note"
@@ -711,7 +711,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste"></div>
+                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="aftertaste_note" id="aftertaste_note"
@@ -724,7 +724,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance"></div>
+                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="balance_note" id="balance_note"
@@ -737,7 +737,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall"></div>
+                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="overall_note" id="overall_note"
@@ -748,7 +748,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                     <h3 class="entity-text total-bg">TOTAL</h3>
                                                     <p class="entity-label">(+36)</p>
-                                                    <input type="hidden" name="total_score" id="total_score" value="">
+                                                    <input type="hidden" name="total_score" id="total_score" value="84">
                                                     <h2 class="totalScore">0</h2>
                                                     <div class="row">
                                                         <div class="scrollable" style="overflow:auto;">
