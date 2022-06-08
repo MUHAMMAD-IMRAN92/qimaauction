@@ -106,6 +106,10 @@ class ReviewController extends Controller
                             $review = Review::where('sample_id',$sampleSent->id)->first();            
                             //return view('admin.jury.alredy_submit');
                         }
+                        else{
+                            $review = new Review();
+
+                        }
                         else
                         {
                             if(isset($request->review_id))
