@@ -146,6 +146,10 @@
         .app-content{
             background-color: #FFF;
         }
+        .heder_text{
+            text-transform: uppercase;
+            text-align: center;
+        }
     </style>
     <body
     class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
@@ -171,9 +175,11 @@
                                         <img src="{{asset('public/app-assets/images/logo/newlogo.png')}}" style="max-width: 100%;">
                                         <p class="heder_text">
                                             Welcome to the Best of Yemen 2022 International jury Cupping. 
-
+                                        </p>
+                                        <p class="heder_text">
                                             Below you can find the links to the cupping forms for each sample. They have been arranged across 5 tables. 
-
+                                        </p>
+                                        <p class="heder_text">
                                             Once you have cupped all the samples on a given table please click on the submit button to confirm submission. 
                                         </p>
                                     </div>
