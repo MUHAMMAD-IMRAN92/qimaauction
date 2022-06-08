@@ -1571,7 +1571,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <script>
         $(document).ready(function() {
             var chkhidden = {{($firstsample->is_hidden==1) ? '1' : '0'}};
-            var chkmanual = {{($firstsample->manual==1) ? '1' : '0'}};
+            var chkmanual = {{($reviewdata->manual==1) ? '1' : '0'}};
             $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
