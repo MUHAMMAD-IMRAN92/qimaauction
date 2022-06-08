@@ -195,7 +195,7 @@ class ReviewController extends Controller
                         ->where('sample_sent_to_jury.tables', $request->table_submit)
                         ->where('postion',$request->current_position-1)
                         ->first();
-                        dd($sample2Sent->toSQL());
+                        dd($sample2Sent->toSql());
                         if($sample2Sent){
                             $sampleSent = $sample2Sent;
                         }
