@@ -188,6 +188,7 @@ class ReviewController extends Controller
                         ->where('sample_sent_to_jury.tables', $request->table_value)
                         ->where('sample_sent_to_jury.is_hidden', '0')
                         ->update(array("is_hidden" => "1"));
+            return redirect()->route('juryLinks',['id'=>encrypt($request->jury_id)]);
         }
         if(isset($request->sample_submit_prev)){
             $sample2Sent = SentToJury::
