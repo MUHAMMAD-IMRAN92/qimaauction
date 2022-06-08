@@ -68,7 +68,7 @@ class JuryController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:juries,email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
+            'phone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
         ]);
         $jury = new  Jury();
         $jury->name = $request->name;
