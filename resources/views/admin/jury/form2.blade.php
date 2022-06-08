@@ -1569,6 +1569,65 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     </style>
     <!-- Range slider end -->
     <script>
+        function subtotaldata()
+                {
+                    // var d=e=f=g=h=i=j=k=0;
+                    // var a = $('#aroma_dry').val();
+                    // var b = $('#aroma_crust').val();
+                    // var d = $('#aroma_break').val();
+                    var c = $('#clean_up').val();
+                    
+                    var e = $('#sweetness').val();
+                    var f = $('#acidity').val();
+                    var g = $('#mouth_feel').val();
+                    var h = $('#flavour').val();
+                    var i = $('#balance').val();
+                    var j = $('#overall').val();
+                    var k = $('#after_taste').val();
+                    
+                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+                    
+                    return subtotal;
+                }
+            function calcTotal(){
+                    // var step=0;
+                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
+                    //     step = 1;
+                    // }else {
+                    //     step = 0.5;
+                    // }
+                    // $(this).attr('step', step);
+                    subtotal=subtotaldata(); 
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    if(second && first)
+                    {
+                        var defect =first * second * 4;
+                        var raw = subtotal - defect;
+                        var total = 36 + raw;
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total);
+                    }
+                    else
+                    {
+                        $('.score_first_number').val(0);
+                        $('.score_second_number').val(0);
+                        $('.multiply4').html(0);
+                        var defect = 0;
+                        var raw = subtotal - defect;
+                        if(raw == 0)
+                        {
+                            var total = 0;
+                        }
+                        else
+                        {
+                            var total = 36 + raw;
+                        }
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total); 
+                    }     
+                    $(this).trigger('change');
+                }
         $(document).ready(function() {
             var chkhidden = {{($firstsample->is_hidden==1) ? '1' : '0'}};
             var chkmanual = {{($reviewdata->manual==1) ? '1' : '0'}};
@@ -1664,65 +1723,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             .slider( "value", 4 )
             .slider("pips", "refresh");
             $('.customslider').draggable();
-            function subtotaldata()
-                {
-                    // var d=e=f=g=h=i=j=k=0;
-                    // var a = $('#aroma_dry').val();
-                    // var b = $('#aroma_crust').val();
-                    // var d = $('#aroma_break').val();
-                    var c = $('#clean_up').val();
-                    
-                    var e = $('#sweetness').val();
-                    var f = $('#acidity').val();
-                    var g = $('#mouth_feel').val();
-                    var h = $('#flavour').val();
-                    var i = $('#balance').val();
-                    var j = $('#overall').val();
-                    var k = $('#after_taste').val();
-                    
-                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                    
-                    return subtotal;
-                }
-            function calcTotal(){
-                    // var step=0;
-                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
-                    //     step = 1;
-                    // }else {
-                    //     step = 0.5;
-                    // }
-                    // $(this).attr('step', step);
-                    subtotal=subtotaldata(); 
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    if(second && first)
-                    {
-                        var defect =first * second * 4;
-                        var raw = subtotal - defect;
-                        var total = 36 + raw;
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total);
-                    }
-                    else
-                    {
-                        $('.score_first_number').val(0);
-                        $('.score_second_number').val(0);
-                        $('.multiply4').html(0);
-                        var defect = 0;
-                        var raw = subtotal - defect;
-                        if(raw == 0)
-                        {
-                            var total = 0;
-                        }
-                        else
-                        {
-                            var total = 36 + raw;
-                        }
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total); 
-                    }     
-                    $(this).trigger('change');
-                }
+            
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
             function parseReview(inputvalue){
