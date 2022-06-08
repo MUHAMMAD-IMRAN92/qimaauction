@@ -143,7 +143,7 @@
             */
             #no-more-tables td:before { content: attr(data-title); }
         }
-        .content-wrapper{
+        .app-content{
             background-color: #FFF;
         }
     </style>
