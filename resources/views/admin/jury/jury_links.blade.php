@@ -188,12 +188,6 @@
                                             {{ session('success') }}
                                         </div>
                                         @endif
-                                        
-                                        @if(count($samples) > 0)
-                                        <h5 class="card-title">Dear <b>{{$juryName}}</b>, you have the following pending review forms. Please give your reviews</h5>
-                                        @else
-                                        <h1 class="card-title" style="margin-top: -25%">Dear <b>{{$juryName}}</b>, you have no pending review</h1>
-                                        @endif
                                     </div>
                                     @if(count($samples) > 0)
                                     <div class="card-body mt-5">
