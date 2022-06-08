@@ -470,25 +470,25 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
                                             <!--Sample ID Section-->
                                             <div class="sample-area">
-                                              <h2 class="id-text">SAMPLE ID</h2>
-                                              <p class="sample_number">
-                                                @foreach ($alltablesamples as $samp)
-                                               @if($samp->sampleId == $sentSampleId)
-                                                    {{$samp->samples}}
-                                                @endif
-                                               @endforeach
-                                           </p>
-                                            <!--Breadcrumb Section-->
-                                            <div class="breadcrumb-section">
-                                                <ul class="breadcrumb">
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table ?? 0}}</p></a></li>
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion ?? 0}}</p></a></li>
-                                                </ul>
-                                            </div>
-                                            <!--Breadcrumb Section-->
-                                            </div>
-                                            <!--Sample ID Section-->
-                                            
+                                                <h2 class="id-text">SAMPLE ID</h2>
+                                                <p class="sample_number">
+                                                    @foreach ($alltablesamples as $samp)
+                                                @if($samp->sampleId == $sentSampleId)
+                                                        {{$samp->samples}}
+                                                    @endif
+                                                @endforeach
+                                            </p>
+                                                <!--Breadcrumb Section-->
+                                                <div class="breadcrumb-section">
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table ?? 0}}</p></a></li>
+                                                        <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion ?? 0}}</p></a></li>
+                                                    </ul>
+                                                </div>
+                                                <!--Breadcrumb Section-->
+                                                </div>
+                                                <!--Sample ID Section-->
+                                                
                                             </div>
                                             
                                             <div class="col-lg-12">
@@ -499,6 +499,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                     <input type="hidden" name="review_id" value="{{$sampleReview->id ?? null}}">
                                                     <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                                      @foreach ($alltablesamples as $samp)
+                                                            @if($samp->sampleId == $sentSampleId)
+                                                            <input type="hidden" name="sampleId" value="{{$samp->samples}}">
+                                                                    {{$samp->samples}}
+                                                                @endif
+                                                            @endforeach
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <h3 class="entity-text roast-bg">ROAST</h3>
@@ -773,9 +779,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         </div>
                                                     </div>
                                                  <div class="row">
+                                                    <button type="submit" value="{{$table}}" name="sample_back" class="submit-form-btn">BACK</button>
                                                     <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT TABLE</a>
                                 
-                                                    <button type="submit" value="1" name="sample_submit" class="submit-form-btn">NEXT</button>
+                                                    <button type="submit" value="{{$table}}" name="sample_next" class="submit-form-btn">NEXT</button>
                                                  </div>
                                                     <div id="myModal" class="modal" tabindex="-1">
                                                         <div class="modal-dialog">
@@ -1774,10 +1781,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         $(".flavor").slider({value: parseReview({{$sampleReview->flavour ?? '4'}})});
                         $('#flavor_note').val('{{$sampleReview->flavor_note ?? ''}}');
 
-                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste ?? ''}})})
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste ?? '4'}})})
                         $('#aftertaste_note').val('{{$sampleReview->aftertaste_note ?? ''}}');
 
-                        $(".balance").slider({value: parseReview({{$sampleReview->balance ?? ''}})})
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance ?? '4'}})})
                         $('#balance_note').val('{{$sampleReview->balance_note ?? ''}}');
 
                         $(".overall").slider({value: parseReview({{$sampleReview->overall ?? '4'}})})

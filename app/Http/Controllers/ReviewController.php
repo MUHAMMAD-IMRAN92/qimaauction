@@ -15,7 +15,6 @@ class ReviewController extends Controller
     {
          if(isset($request->table_submit))
          {
-            //  dd($request->all());
                     $alltablesamples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
                     ->join('juries','juries.id','sample_sent_to_jury.jury_id')
                     ->select('products.id as productId','products.product_title as productTitle',
@@ -26,7 +25,6 @@ class ReviewController extends Controller
                     ->where('sample_sent_to_jury.tables', $request->table_submit)
                     ->where('sample_sent_to_jury.is_hidden', '0')
                     ->get();
-                    // dd($alltablesamples);
                     foreach ($alltablesamples as $key => $value) {
                             $sampleSent = SentToJury::where('jury_id',  $value->juryId)
                             ->where('product_id', $value->productId)
@@ -93,80 +91,88 @@ class ReviewController extends Controller
                     }
            return redirect()->route('juryLinks',['id'=>encrypt($request->jury_id)]);
          }
-         if(isset($request->sample_submit))
+         if(isset($request->sample_back))
          {
-                        $sampleSent = SentToJury::where('jury_id',  $request->jury_id)
-                                                ->where('product_id', $request->product_id)
-                                                //  ->where('temporary_link',$request->link)
-                                                ->where('id',$request->sent_sample_id)
-                                                //  ->where('is_hidden','0')
-                                                ->first();
-                                                //  return  $sampleSent;
-                        if ($sampleSent->is_hidden == '1') {
-                            $review = Review::where('sample_id',$sampleSent->id)->first();            
-                            //return view('admin.jury.alredy_submit');
-                        }
-                        else
-                        {
-                            if(isset($request->review_id))
+            
+                        $sampleSentid = SentToJury::where('id','<',$request->sent_sample_id)
+                                                 ->where('jury_id',  $request->jury_id)
+                                                ->where('tables',$request->sample_back)
+                                                ->max('id');
+                                                $id = ($sampleSentid == null) ? $request->sent_sample_id : $sampleSentid;
+                        $sampleSent= SentToJury::where('id',$id)->first();
+                        return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id]);
+         }
+         if(isset($request->sample_next))
+         {
+                        $sampleSentid = SentToJury::where('id','>',$request->sent_sample_id)
+                                                 ->where('jury_id',  $request->jury_id)
+                                                ->where('tables',$request->sample_next)
+                                                ->min('id');
+                                                // dd($sampleSentid);
+                                               $id = ($sampleSentid == null) ? $request->sent_sample_id : $sampleSentid;
+                                    
+                        $sampleSent= SentToJury::where('id',$id)->first();
+                        $sampleSentid= SentToJury::where('id',$request->sent_sample_id)->first();           
+                        if ($sampleSentid->is_hidden == '1') {
+                            $review1 = Review::where('sample_id',$sampleSentid->id)->first(); 
+                            if($review1 == null)
                             {
-                                $review = Review::where('id',$request->review_id)->first();
+                                $review1 = new Review();
                             }
                             else
                             {
-                                $review = new Review();
+                                 $review = $review1;
                             }
-                           
-                            $sampleSent->is_hidden = '1';
-                            $sampleSent->save();
-                        }
-                        $review->aroma_dry              = $request->aroma_dry;
-                        $review->aroma_crust            = $request->aroma_crust;
-                        $review->roast                  = $request->roast;
-                        $review->first_number            = $request->first_number;
-                        $review->second_number          = $request->second_number;
-                        $review->aroma_break            = $request->aroma_break;
-                        $review->aroma_note             = $request->aroma_note;
-                        $review->color_dev              = $request->color_dev;
-                        $review->defect                 = (isset($request->defect)) ? $request->defect : 0;
-                        $review->clean_up               = $request->clean_up;
-                        $review->sweetness              = $request->sweetness;
-                        $review->defects_note           = $request->defect_note;
-                        $review->clean_sweet_note       = $request->cleanup_note;
-                        $review->acidity                = $request->acidity;
-                        $review->acidity_chk            = $request->acidity_chk;
-                        $review->mouth_feel             = $request->mouth_feel;
-                        $review->fm_chk                 = $request->fm_chk;
-                        $review->flavour                = $request->flavour;
-                        $review->flavor_note            = $request->flavor_note;
-                        $review->after_taste            = $request->after_taste;
-                        $review->balance                = $request->balance;
-                        $review->sweetness_note          = $request->sweetness_note;  
-                        $review->acidity_note            = $request->acidity_note;  
-                        $review->mouthfeel_note          = $request->mouthfeel_note;   
-                        $review->aftertaste_note         = $request->aftertaste_note;  
-                        $review->balance_note            = $request->balance_note;  
-                        $review->overall_note            = $request->overall_note;  
-                        $review->overall                = $request->overall;
-                        $review->total_score            = (isset($request->total_score)) ? $request->total_score : 0;
-                        $review->jury_id                = $request->jury_id;
-                        $review->sample_id              = $request->sent_sample_id;
-                        $review->product_id             = $request->product_id;
-                        $review->save();
-                        if(isset($request->discriptor))
-                        {
-                                foreach ($request->discriptor as $tag) {
-                                    $data = Tag::where('tag',$tag)->first();
-                                    if(!isset($data))
-                                    {
-                                        $descriptor = new Tag();
-                                        $descriptor->tag = $tag;
-                                        $descriptor->review_id = $review->id;
-                                        $descriptor->jury_id = $review->jury_id;
-                                        $descriptor->save();
-                                    }
+                                $review->aroma_dry              = $request->aroma_dry;
+                                $review->aroma_crust            = $request->aroma_crust;
+                                $review->roast                  = $request->roast;
+                                $review->first_number            = $request->first_number;
+                                $review->second_number          = $request->second_number;
+                                $review->aroma_break            = $request->aroma_break;
+                                $review->aroma_note             = $request->aroma_note;
+                                $review->color_dev              = $request->color_dev;
+                                $review->defect                 = (isset($request->defect)) ? $request->defect : 0;
+                                $review->clean_up               = $request->clean_up;
+                                $review->sweetness              = $request->sweetness;
+                                $review->defects_note           = $request->defect_note;
+                                $review->clean_sweet_note       = $request->cleanup_note;
+                                $review->acidity                = $request->acidity;
+                                $review->acidity_chk            = $request->acidity_chk;
+                                $review->mouth_feel             = $request->mouth_feel;
+                                $review->fm_chk                 = $request->fm_chk;
+                                $review->flavour                = $request->flavour;
+                                $review->flavor_note            = $request->flavor_note;
+                                $review->after_taste            = $request->after_taste ?? '1';
+                                $review->balance                = $request->balance;
+                                $review->sweetness_note          = $request->sweetness_note;  
+                                $review->acidity_note            = $request->acidity_note;  
+                                $review->mouthfeel_note          = $request->mouthfeel_note;   
+                                $review->aftertaste_note         = $request->aftertaste_note;  
+                                $review->balance_note            = $request->balance_note;  
+                                $review->overall_note            = $request->overall_note;  
+                                $review->overall                = $request->overall;
+                                $review->total_score            = (isset($request->total_score)) ? $request->total_score : 0;
+                                $review->jury_id                = $request->jury_id;
+                                $review->sample_id              = $request->sent_sample_id;
+                                $review->product_id             = $request->product_id;
+                                $review->save();
+                                if(isset($request->discriptor))
+                                {
+                                        foreach ($request->discriptor as $tag) {
+                                            $data = Tag::where('tag',$tag)->first();
+                                            if(!isset($data))
+                                            {
+                                                $descriptor = new Tag();
+                                                $descriptor->tag = $tag;
+                                                $descriptor->review_id = $review->id;
+                                                $descriptor->jury_id = $review->jury_id;
+                                                $descriptor->save();
+                                            }
+                                        }
                                 }
+                            }        
                         }
+                     
                         $sampleSent2 = SentToJury::where('jury_id',  $request->jury_id)
                                                 //  ->where('temporary_link',$request->link)
                                                 ->where('is_hidden','0')
