@@ -481,8 +481,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             <!--Breadcrumb Section-->
                                             <div class="breadcrumb-section">
                                                 <ul class="breadcrumb">
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
-                                                    <input type="hidden" name="table_value" value="{{$productdata->table}}">
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a>
+                                                        <input type="hidden" name="table_value" value="{{$productdata->table}}">
+                                                    </li>
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
                                                     <input type="hidden" name="current_position" value="{{$productdata->postion}}">
                                                     <input type="hidden" name="next_position" value="@php $next_position = $productdata->postion+1; echo $next_position;@endphp">
