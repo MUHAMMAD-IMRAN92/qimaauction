@@ -1762,7 +1762,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
                         $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
                         $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
-                        $('.mouthfeel{{$sampleReview->fm_chk}}').prop('checked',true);
+                        $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
 
                         $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
                         $('#flavor_note').val('{{$sampleReview->flavor_note}}');
