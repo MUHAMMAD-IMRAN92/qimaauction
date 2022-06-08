@@ -14,13 +14,13 @@ use App\Models\Product;
 use App\Models\Region;
 use App\Models\Image;
 use App\Models\Process;
+use App\Models\Review;
 use App\Models\SentToJury;
 use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -100,14 +100,14 @@ class ProductController extends Controller
         $product->sample = $request->sample;
         $product->postion = $request->postion;
         $product->table = $request->table;
-        $product->governorate_id = $request->governorate_id;
+        $product->governorate_id = isset($request->governorate_id) ? $request->governorate_id : '1';;
         $product->village_id = $request->village_id;
         $product->region_id = $request->region_id;
         $product->genetic_id = $request->genetic_id;
         $product->product_title = $request->title;
         $product->product_description = $request->description ?? '';
         $product->user_id = $this->user->id;
-        $product->category_id = $request->category_id ?? '1';
+        $product->category_id = isset($request->category_id) ? $request->category_id : '1';
         $product->flavour_id = isset($request->flavour_id) ? $request->flavour_id : '1';
         $product->pro_lot_type  = $request->pro_lot_type;
         $product->pro_process  = $request->pro_process;
@@ -203,7 +203,6 @@ class ProductController extends Controller
     public function deleteImage($id)
     {
         Image::where('id', $id)->delete();
-
         return back()->with('msg', 'Image Has Deleted');
     }
     public function view($id)
@@ -269,7 +268,7 @@ class ProductController extends Controller
         'juries.name as juryName')
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
-        ->where('sample_sent_to_jury.is_hidden', '0')
+        // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
         if(isset($request->sampleId))
         {
@@ -290,7 +289,7 @@ class ProductController extends Controller
             }
               
         }
-          
+     
         if ($firstsample) {
             if ($firstsample->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
@@ -329,14 +328,18 @@ class ProductController extends Controller
         ->where('sample_sent_to_jury.tables', $request->table)
         // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
+
+    
         if(isset($request->sampleId))
         {
             $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
             ->first();
+            $review=Review::where('sample_id', $request->sampleId)
+            ->first();
         }
         else
         {
-           
+            $review = null;
             $firstsample=$alltablesamples->first();
   
             if(!isset($firstsample))
@@ -349,14 +352,22 @@ class ProductController extends Controller
             
               
         }
-        $sampleReview = Review::where('sample_id',$firstsample->id)->first();
-        //    dd($firstsample);
+        $sampleReview1 = Review::where('sample_id',$firstsample->id)->first();
+       
+        if(isset($sampleReview1))
+        {
+            $sampleReview = $sampleReview1;
+        }
+        else
+        {
+            $sampleReview = null;
+        }
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
             // } else 
-            {
+            // {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -366,6 +377,7 @@ class ProductController extends Controller
                     'table' => $request->table ?? $firstsample->sampleTable,
                     'firstsample' => $firstsample,
                     'tags' => $tags,
+                    'reviewdata' => $review,
                     'productdata'=>$productdata,
                     'alltablesamples'=> $alltablesamples,
                     'link' => $firstsample->temporary_link,
@@ -374,7 +386,7 @@ class ProductController extends Controller
                     'samples' => $samplesArr,
                     'sampleReview'=>$sampleReview
                 ]);
-            }
+            // }
         }
     }
 }
