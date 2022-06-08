@@ -771,7 +771,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT SAMPLE</a>
+                                                <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">NEXT</a>
                                                 <div id="myModal" class="modal" tabindex="-1">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -792,7 +792,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                    <button type="submit" class="btn btn-primary">Next</button>
                                                                 </div>
                                                             </div>
                                                         </div>
