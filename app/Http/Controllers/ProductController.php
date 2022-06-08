@@ -21,7 +21,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -204,7 +203,6 @@ class ProductController extends Controller
     public function deleteImage($id)
     {
         Image::where('id', $id)->delete();
-
         return back()->with('msg', 'Image Has Deleted');
     }
     public function view($id)
@@ -270,7 +268,7 @@ class ProductController extends Controller
         'juries.name as juryName')
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
-        ->where('sample_sent_to_jury.is_hidden', '0')
+        // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
         if(isset($request->sampleId))
         {
@@ -291,7 +289,7 @@ class ProductController extends Controller
             }
               
         }
-          
+     
         if ($firstsample) {
             if ($firstsample->is_hidden == '1') {
                 return view('admin.jury.alredy_submit');
@@ -331,7 +329,7 @@ class ProductController extends Controller
         // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
 
-      
+    
         if(isset($request->sampleId))
         {
             $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
@@ -354,14 +352,22 @@ class ProductController extends Controller
             
               
         }
-        $sampleReview = Review::where('sample_id',$firstsample->id)->first();
-        //    dd($firstsample);
+        $sampleReview1 = Review::where('sample_id',$firstsample->id)->first();
+       
+        if(isset($sampleReview1))
+        {
+            $sampleReview = $sampleReview1;
+        }
+        else
+        {
+            $sampleReview = null;
+        }
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
             // } else 
-            {
+            // {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,

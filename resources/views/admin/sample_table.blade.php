@@ -25,7 +25,7 @@
                                                                 href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">CUP SAMPLE
                                                              </a>
                                                              @else
-                                                             <a class="btn btn-disabled"
+                                                             <a class="btn btn-disabled"   href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}"
                                                                 >Completed
                                                              </a>
                                                              @endif
