@@ -755,8 +755,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                     <h3 class="entity-text total-bg">TOTAL</h3>
                                                     <p class="entity-label">(+36)</p>
-                                                    <input type="hidden" name="total_score" id="total_score" value="84">
-                                                    <h2 class="totalScore">0</h2>
+                                                    <p id="input_total_score" style="display: none"><input type="input" class="totalScore" name="total_score" id="total_score" value="84"></p>
+                                                    <h2 class="totalScore" id="div_total_score">0</h2>
+                                                    <a onclick="toggleDivs()">Manually Override Score</a>
+                                                    <script>function toggleDivs(){
+                                                        $('#div_total_score').hide();
+                                                        $('#input_total_score').show();
+                                                    }
+                                                    </script>
                                                     <div class="row">
                                                         <div class="scrollable" style="overflow:auto;">
                                                             <div class="button-group" style="white-space:nowrap">
