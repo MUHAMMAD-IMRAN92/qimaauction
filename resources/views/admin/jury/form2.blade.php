@@ -409,7 +409,7 @@ input{
     background-color:#000 !important;
     color:#fff !important;
 }
-.isdone.btn_success{
+.isdone.btn-success{
     color:#FFF !important;
 }
 </style>
