@@ -174,9 +174,13 @@ class ReviewController extends Controller
                                                 ->orderBy('postion','asc')
 
                                                 ->first();
-                                               
-        return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Succesully');
-                    }
+        if($request->to_go_sample){
+            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$request->to_go_sample])->with('success','Review submitted Succesully');
+
+        }else{                 
+            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Succesully');
+        }
+        }
     }
     public function form()
     {

@@ -495,7 +495,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             </div>
                                             
                                             <div class="col-lg-12">
-                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <input type="hidden" name="link" value="{{$link}}">
                                                     <input type="hidden" name="product_id" value="{{$productId}}">
@@ -763,11 +763,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     @php $extraclass="isdone"; @endphp
                                                                 @endif
                                                                 @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}">  --}}
+                                                                    <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="#"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="#"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
@@ -776,7 +777,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         </div>
                                                     </div>
                                                  <div class="row">
-                                                    <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT TABLE</a>
+                                                     <input type="hidden" id="to_go_sample" name="to_go_sample" value="">
+                                                    <button type="submit" value="1" name="sample_submit" class="submit-form-btn">PREVIOUS</button>
+
+                                                    <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT TABLE</a>
                                 
                                                     <button type="submit" value="1" name="sample_submit" class="submit-form-btn">NEXT</button>
                                                  </div>
@@ -1790,7 +1794,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                 
                     }
              
-            
+            function setSampleToGo(valz){
+                $('#to_go_sample').val(valz);
+                $('#myForm').submit();
+            }
                         
         
         });
