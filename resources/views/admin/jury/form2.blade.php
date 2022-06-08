@@ -1794,14 +1794,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                 
                     }
              
-            function setSampleToGo(valz){
-                $('#to_go_sample').val(valz);
-                $('#myForm').submit();
-            }
+           
                         
         
         });
-        
+        function setSampleToGo(valz){
+                $('#to_go_sample').val(valz);
+                $('#myForm').submit();
+            }
     </script>
 </body>
 <!-- END: Body-->
