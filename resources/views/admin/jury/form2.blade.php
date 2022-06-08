@@ -1809,7 +1809,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                        calcTotal();
                        if(chkmanual){
                             toggleDivs();
-                            $('input[name=total_score]').val({{$reviewdata->total_score}});
+                            @if($reviewdata)
+                                $('input[name=total_score]').val({{$reviewdata->total_score}});
+                            @endif
                         }
                     }
              
