@@ -778,7 +778,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                  <div class="row">
                                                      <input type="hidden" id="to_go_sample" name="to_go_sample" value="">
-                                                    <button type="submit" value="1" name="sample_submit" class="submit-form-btn">PREVIOUS</button>
+                                                     @if($previous_position!=0)
+                                                    <button type="submit" value="1" name="sample_submit_prev" class="submit-form-btn">PREVIOUS</button>
+                                                    @endif
 
                                                     <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT TABLE</a>
                                 
