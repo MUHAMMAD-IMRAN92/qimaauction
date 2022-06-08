@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\Region;
 use App\Models\Image;
 use App\Models\Process;
+use App\Models\Review;
 use App\Models\SentToJury;
 use App\Models\Village;
 use Illuminate\Http\Request;
@@ -326,16 +327,20 @@ class ProductController extends Controller
         'juries.name as juryName')
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
-        ->where('sample_sent_to_jury.is_hidden', '0')
+        // ->where('sample_sent_to_jury.is_hidden', '0')
         ->get();
+
+      
         if(isset($request->sampleId))
         {
             $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
             ->first();
+            $review=Review::where('sample_id', $request->sampleId)
+            ->first();
         }
         else
         {
-           
+            $review = null;
             $firstsample=$alltablesamples->first();
   
             if(!isset($firstsample))
@@ -350,9 +355,9 @@ class ProductController extends Controller
         //    dd($firstsample);
         if ($firstsample) {
             $productdata=Product::where('id',$firstsample->product_id)->first();
-            if ($firstsample->is_hidden == '1') {
-                return view('admin.jury.alredy_submit');
-            } else {
+            // if ($firstsample->is_hidden == '1') {
+            //     return view('admin.jury.alredy_submit');
+            // } else {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form2', [
                     'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -361,6 +366,7 @@ class ProductController extends Controller
                     'juryCompany' => $company,
                     'table' => $request->table ?? $firstsample->sampleTable,
                     'tags' => $tags,
+                    'reviewdata' => $review,
                     'productdata'=>$productdata,
                     'alltablesamples'=> $alltablesamples,
                     'link' => $firstsample->temporary_link,
@@ -368,7 +374,7 @@ class ProductController extends Controller
                     'sentSampleId' => $firstsample->id,  
                     'samples' => $samplesArr
                 ]);
-            }
+            // }
         }
     }
 }
