@@ -764,11 +764,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 @endif
                                                                 @if($samp->sampleId == $sentSampleId)
                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}">  --}}
-                                                                    <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="#"> 
+                                                                    <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="#"> 
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
