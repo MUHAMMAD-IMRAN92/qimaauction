@@ -755,7 +755,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                     <h3 class="entity-text total-bg">TOTAL</h3>
                                                     <p class="entity-label">(+36)</p>
-                                                    <p id="input_total_score" style="max-width:100%;width: 267px;margin: auto;display: none"><input max="100" style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;" type="number" class="totalScore" name="total_score" id="total_score" value="84"></p>
+                                                    <p id="input_total_score" style="max-width:100%;width: 267px;margin: auto;display: none"><input onkeyup="this.value>100?return false:this.value" style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;" type="number" class="totalScore" name="total_score" id="total_score" value="84"></p>
                                                     <h2 class="totalScore" id="div_total_score">0</h2>
                                                     <a onclick="toggleDivs()">Manually Override Score</a>
                                                     <input type="hidden" value="0" name="manual_override">
