@@ -40,8 +40,11 @@ class JuryController extends Controller
         $juries = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-
+        
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
+        foreach($juries as $jury){
+            $jury->linkurl = encrypt($jury->id);
+        }
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $jury_count,
