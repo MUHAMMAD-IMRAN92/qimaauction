@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::get('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('news');
+Route::get('/newsletterSave', [App\Http\Controllers\HomeController::class, 'newsletterpost'])->name('newsletter');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 Route::middleware(['auth'])->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,5 +31,17 @@ class HomeController extends Controller
         return view('admin.dashboard.index', [
             'user' =>  $user,
         ]);
+    }
+    public function newsletter()
+    {
+        return view('home'); 
+    }
+    public function newsletterpost(Request $request)
+    {
+        Newsletter::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        return redirect()->route('news')->with('success','News Letter Subscribed Successfuly'); 
     }
 }
