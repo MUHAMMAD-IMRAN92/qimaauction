@@ -67,8 +67,8 @@ class JuryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:juries,email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
+            'email' => 'required|email|unique:juries,email'
+            // 'phone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
         ]);
         $jury = new  Jury();
         $jury->name = $request->name;
@@ -257,7 +257,7 @@ class JuryController extends Controller
         if ($jury) {
             $samples= SentToJury::groupBy('tables')
             ->select('tables', DB::raw('count(*) as total'))
-            ->where('sample_sent_to_jury.is_hidden','=','0')
+            // ->where('sample_sent_to_jury.is_hidden','=','0')
             ->where('sample_sent_to_jury.jury_id',$juryId)
             ->where('sample_sent_to_jury.tables','!=',null)
             // ->orderBy('created_at','desc')

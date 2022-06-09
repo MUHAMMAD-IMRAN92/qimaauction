@@ -442,7 +442,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                         <div class="col-lg-12">
                                             <div class="site-logo">
                                                 <img
-                                                src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
+                                                src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:100%;">
                                             </div>
                                             <!--Breadcrumb Section-->
                                             <div class="breadcrumb-section">
@@ -481,8 +481,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             <!--Breadcrumb Section-->
                                             <div class="breadcrumb-section">
                                                 <ul class="breadcrumb">
-                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a></li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a>
+                                                    </li>
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
+                                                    
                                                 </ul>
                                             </div>
                                             <!--Breadcrumb Section-->
@@ -492,11 +494,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                             </div>
                                             
                                             <div class="col-lg-12">
-                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
+                                                    <input type="hidden" name="table_value" value="{{$productdata->table}}">
+                                                    <input type="hidden" name="current_position" value="{{$productdata->postion}}">
+                                                    <input type="hidden" name="next_position" value="@php $next_position = $productdata->postion+1; echo $next_position;@endphp">
+                                                    <input type="hidden" name="previous_position" value="@php $previous_position = $productdata->postion-1; echo $previous_position;@endphp">
                                                     <input type="hidden" name="link" value="{{$link}}">
                                                     <input type="hidden" name="product_id" value="{{$productId}}">
                                                     <input type="hidden" name="jury_id" value="{{$juryId}}">
+                                                    <input type="hidden" name="review_id" value="{{$sampleReview->id ?? null}}">
                                                     <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
                                                     <div class="row">
                                                         <div class="col-12">
@@ -748,8 +755,17 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     </div>
                                                     <h3 class="entity-text total-bg">TOTAL</h3>
                                                     <p class="entity-label">(+36)</p>
-                                                    <input type="hidden" name="total_score" id="total_score" value="84">
-                                                    <h2 class="totalScore">0</h2>
+                                                    <p id="input_total_score" style="max-width:100%;width: 267px;margin: auto;display: none"><input onkeyup="if (this.value > 100){ calcTotal()};" style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;" type="number" class="totalScore" name="total_score" id="total_score" value="84"></p>
+                                                    <h2 class="totalScore" id="div_total_score">0</h2>
+                                                    <a onclick="toggleDivs()">Manually Override Score</a>
+                                                    <input type="hidden" value="0" name="manual_override">
+                                                    <script>
+                                                    function toggleDivs(){
+                                                        $('#div_total_score').hide();
+                                                        $('#input_total_score').show();
+                                                        $('input[name=manual_override]').val(1);
+                                                    }
+                                                    </script>
                                                     <div class="row">
                                                         <div class="scrollable" style="overflow:auto;">
                                                             <div class="button-group" style="white-space:nowrap">
@@ -759,11 +775,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                     @php $extraclass="isdone"; @endphp
                                                                 @endif
                                                                 @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}">  --}}
+                                                                    <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
@@ -771,7 +788,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a class="submit-form-btn" type="buttin" value="" onclick="showmodal()">SUBMIT SAMPLE</a>
+                                                 <div class="row">
+                                                     <input type="hidden" id="to_go_sample" name="to_go_sample" value="">
+                                                     @if($previous_position!=0)
+                                                    <button type="submit" value="1" name="sample_submit_prev" class="submit-form-btn">PREVIOUS</button>
+                                                    @endif
+
+                                                    <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT TABLE</a>
+                                
+                                                    <button type="submit" value="1" name="sample_submit" class="submit-form-btn">NEXT</button>
+                                                 </div>
                                                     <div id="myModal" class="modal" tabindex="-1">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -782,9 +808,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 <div class="modal-body">
                                                                     <p>You are about to submit results for @foreach ($alltablesamples as $samp)
                                                 
-                                                                        @if($samp->sampleId == $sentSampleId)
-                                                                        {{$samp->samples}}
-                                                                        
+                                                                        @if($samp->sampleTable == $table)
+                                                                           &nbsp<b>{{$samp->samples}}</b>,
                                                                         @endif
                                                                         @endforeach.</p>
                                                                         <br><br>
@@ -792,7 +817,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                    <button type="submit" value="{{$table}}" name="table_submit" class="btn btn-primary">Save</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1544,7 +1569,68 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     </style>
     <!-- Range slider end -->
     <script>
+        function subtotaldata()
+                {
+                    // var d=e=f=g=h=i=j=k=0;
+                    // var a = $('#aroma_dry').val();
+                    // var b = $('#aroma_crust').val();
+                    // var d = $('#aroma_break').val();
+                    var c = $('#clean_up').val();
+                    
+                    var e = $('#sweetness').val();
+                    var f = $('#acidity').val();
+                    var g = $('#mouth_feel').val();
+                    var h = $('#flavour').val();
+                    var i = $('#balance').val();
+                    var j = $('#overall').val();
+                    var k = $('#after_taste').val();
+                    
+                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+                    
+                    return subtotal;
+                }
+            function calcTotal(){
+                    // var step=0;
+                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
+                    //     step = 1;
+                    // }else {
+                    //     step = 0.5;
+                    // }
+                    // $(this).attr('step', step);
+                    subtotal=subtotaldata(); 
+                    var first = $('.score_first_number').val();
+                    var second = $('.score_second_number').val();
+                    if(second && first)
+                    {
+                        var defect =first * second * 4;
+                        var raw = subtotal - defect;
+                        var total = 36 + raw;
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total);
+                    }
+                    else
+                    {
+                        $('.score_first_number').val(0);
+                        $('.score_second_number').val(0);
+                        $('.multiply4').html(0);
+                        var defect = 0;
+                        var raw = subtotal - defect;
+                        if(raw == 0)
+                        {
+                            var total = 0;
+                        }
+                        else
+                        {
+                            var total = 36 + raw;
+                        }
+                        $('#total_score').val(total);
+                        $('.totalScore').html(total); 
+                    }     
+                    $(this).trigger('change');
+                }
         $(document).ready(function() {
+            var chkhidden = {{($firstsample->is_hidden==1) ? '1' : '0'}};
+            var chkmanual = {{$reviewdata?(($reviewdata->manual==1) ? '1' : '0'):'0'}};
             $(".score_second_number,.score_first_number").keyup(function(){
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
@@ -1636,66 +1722,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
-            $('.customslider').draggable();
-            function subtotaldata()
-                {
-                    // var d=e=f=g=h=i=j=k=0;
-                    // var a = $('#aroma_dry').val();
-                    // var b = $('#aroma_crust').val();
-                    // var d = $('#aroma_break').val();
-                    var c = $('#clean_up').val();
-                    
-                    var e = $('#sweetness').val();
-                    var f = $('#acidity').val();
-                    var g = $('#mouth_feel').val();
-                    var h = $('#flavour').val();
-                    var i = $('#balance').val();
-                    var j = $('#overall').val();
-                    var k = $('#after_taste').val();
-                    
-                    subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                    
-                    return subtotal;
-                }
-            function calcTotal(){
-                    // var step=0;
-                    // if ($(this).val() >= 0 && $(this).val() <= 6) {
-                    //     step = 1;
-                    // }else {
-                    //     step = 0.5;
-                    // }
-                    // $(this).attr('step', step);
-                    subtotal=subtotaldata(); 
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    if(second && first)
-                    {
-                        var defect =first * second * 4;
-                        var raw = subtotal - defect;
-                        var total = 36 + raw;
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total);
-                    }
-                    else
-                    {
-                        $('.score_first_number').val(0);
-                        $('.score_second_number').val(0);
-                        $('.multiply4').html(0);
-                        var defect = 0;
-                        var raw = subtotal - defect;
-                        if(raw == 0)
-                        {
-                            var total = 0;
-                        }
-                        else
-                        {
-                            var total = 36 + raw;
-                        }
-                        $('#total_score').val(total);
-                        $('.totalScore').html(total); 
-                    }     
-                    $(this).trigger('change');
-                }
+            // $('.customslider .ui-slider-handle').draggable();
+            
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
             function parseReview(inputvalue){
@@ -1729,59 +1757,72 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 inputvalue = 7.5;
                 return inputvalue;
             }
-            @if($firstsample->is_hidden==1 && $sampleReview->roast)
+            if(chkhidden != 0)          
+            {
+             
                 $(".roastslider")
                     .slider({
-                        value: {{$sampleReview->roast?$sampleReview->roast:50}}
+                        value: {{isset($sampleReview->roast) ? $sampleReview->roast:50}}
                     });
                     $(".aromacrust")
                         .slider({
-                            value: {{$sampleReview->aroma_crust?$sampleReview->aroma_crust:2}}
+                            value: {{isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust:2}}
                         });
                     $(".aromadry")
                         .slider({
-                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                            value: {{isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry:2}}
                         });
                     $(".aromabreak")
                         .slider({
-                            value: {{$sampleReview->aroma_dry?$sampleReview->aroma_dry:2}}
+                            value: {{isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry:2}}
                         })
-                        $('input[name=first_number]').val({{$sampleReview->first_number}});
-                        $('input[name=second_number]').val({{$sampleReview->second_number}});
+                        $('input[name=first_number]').val({{isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }});
+                        $('input[name=second_number]').val({{isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }});
                         $('input[name=second_number]').trigger('keyup');
-                        $('#defect_note').val('{{$sampleReview->defects_note}}');
-                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up}})})
-                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note}}');
+                        $('#defect_note').val('{{$sampleReview->defects_note ?? ''}}');
+                        $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up ?? '4'}})})
+                        $('#cleanup_note').val('{{$sampleReview->clean_sweet_note ?? ''}}');
                         
-                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness}})})
-                        $('#sweetness_note').val('{{$sampleReview->sweetness_note}}');
+                        $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness ?? '4'}})})
+                        $('#sweetness_note').val('{{$sampleReview->sweetness_note ?? ''}}');
 
-                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity}})})
-                        $('#acidity_note').val('{{$sampleReview->acidity_note}}');
-                        $('.acidity_{{$sampleReview->acidity_chk}}').prop('checked',true);
+                        $(".acidity").slider({value: parseReview({{$sampleReview->acidity ?? '4'}})})
+                        $('#acidity_note').val('{{$sampleReview->acidity_note ?? ''}}');
+                        $('.acidity_{{$sampleReview->acidity_chk ?? "L"}}').prop('checked',true);
 
-                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel}})});
-                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note}}');
-                        $('.mouthfeel_{{$sampleReview->fm_chk}}').prop('checked',true);
+                        $(".mouthfeel").slider({value: parseReview({{$sampleReview->mouth_feel ?? '4'}})});
+                        $('#mouthfeel_note').val('{{$sampleReview->mouthfeel_note ?? ''}}');
+                        $('.mouthfeel_{{$sampleReview->fm_chk ?? "L"}}').prop('checked',true);
 
-                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour}})});
-                        $('#flavor_note').val('{{$sampleReview->flavor_note}}');
+                        $(".flavor").slider({value: parseReview({{$sampleReview->flavour ?? '4'}})});
+                        $('#flavor_note').val('{{$sampleReview->flavor_note ?? ''}}');
 
-                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste}})})
-                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note}}');
+                        $(".aftertaste").slider({value: parseReview({{$sampleReview->after_taste ?? ''}})})
+                        $('#aftertaste_note').val('{{$sampleReview->aftertaste_note ?? ''}}');
 
-                        $(".balance").slider({value: parseReview({{$sampleReview->balance}})})
-                        $('#balance_note').val('{{$sampleReview->balance_note}}');
+                        $(".balance").slider({value: parseReview({{$sampleReview->balance ?? ''}})})
+                        $('#balance_note').val('{{$sampleReview->balance_note ?? ''}}');
 
-                        $(".overall").slider({value: parseReview({{$sampleReview->overall}})})
-                        $('#overall_note').val('{{$sampleReview->overall_note}}');
+                        $(".overall").slider({value: parseReview({{$sampleReview->overall ?? '4'}})})
+                        $('#overall_note').val('{{$sampleReview->overall_note ?? ''}}');
 
-            calcTotal();
+                       calcTotal();
+                       if(chkmanual){
+                            toggleDivs();
+                            @if($reviewdata)
+                                $('input[name=total_score]').val({{$reviewdata->total_score}});
+                            @endif
+                        }
+                    }
+             
+           
                         
-                        
-            @endif
-        });
         
+        });
+        function setSampleToGo(valz){
+                $('#to_go_sample').val(valz);
+                $('#myForm').submit();
+            }
     </script>
 </body>
 <!-- END: Body-->

@@ -112,7 +112,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control @error('category_id') is-invalid @enderror" name="category_id"
                                                                     id="product-category" required>
-                                                                    <option selected>Please Select Category</option>
+                                                                    <option value="" selected>Please Select Category</option>
                                                                     @foreach ($category as $key => $cat)
                                                                         <option value="{{ $cat->id }}">
                                                                             {{ $cat->category_title }}</option>
@@ -130,7 +130,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="flavour_id"
                                                                     id="product-flavour" required>
-                                                                    <option selected>Please Select Flavour</option>
+                                                                    <option value="" selected>Please Select Flavour</option>
                                                                     @foreach ($flavour as $key => $flv)
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->flavour_title }}</option>
@@ -146,7 +146,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="genetic_id"
                                                                     id="product-flavour" required>
-                                                                    <option selected>Please Select Genetics</option>
+                                                                    <option value="" selected>Please Select Genetics</option>
                                                                     @foreach ($genetics as $key => $flv)
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->title }}</option>
@@ -162,7 +162,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_lot_type"
                                                                     id="product-lot-type" required>
-                                                                    <option selected>Please Select Lot Type</option>
+                                                                    <option value="" selected>Please Select Lot Type</option>
                                                                     <option value="1">Farmer Lot</option>
                                                                     <option value="2">Community Lot</option>
                                                                 </select>
@@ -175,7 +175,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="pro_process"
                                                                     id="product-process" required>
-                                                                    <option selected>Please Select Process</option>
+                                                                    <option value="" selected>Please Select Process</option>
                                                                     <option value="1">Natural</option>
                                                                     <option value="2">Slow Dried</option>
                                                                     <option value="3">Alchemy</option>
@@ -206,7 +206,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="region_id"
                                                                     id="product-origin" required>
-                                                                    <option selected>Please Select Region</option>
+                                                                    <option value="" selected>Please Select Region</option>
                                                                     @foreach ($region as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
@@ -222,7 +222,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="village_id"
                                                                     id="village_id" required>
-                                                                    <option selected>Please Select Village</option>
+                                                                    <option value="" selected>Please Select Village</option>
                                                                     @foreach ($village as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
@@ -238,7 +238,7 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="governorate_id"
                                                                     id="governorate_id" required>
-                                                                    <option selected>Please Select Governorate</option>
+                                                                    <option value="" selected>Please Select Governorate</option>
                                                                     @foreach ($governorator as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
