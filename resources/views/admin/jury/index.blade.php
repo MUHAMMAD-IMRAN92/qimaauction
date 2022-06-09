@@ -143,7 +143,7 @@
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
                             `">Edit</a><br>` +
-                            `<a class="" target="_blank" href="/jury/links/`+ ids +`">
+                            `<a class="" target="_blank" href="/jury/links/`+ row.linkurl +`">
                                 View link</a>`
                             +
                             // `<a class="" href="/jury/delete/` + ids +

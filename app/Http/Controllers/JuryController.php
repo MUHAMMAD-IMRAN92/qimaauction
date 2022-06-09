@@ -40,7 +40,9 @@ class JuryController extends Controller
         $juries = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-
+        foreach($juries as $jury){
+            $jury->linkurl = encrypt($jury->id);
+        }
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
         $data = array(
             'draw' => $draw,
@@ -252,8 +254,7 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
-        // $juryId = decrypt($id);
-        $juryId = base64_decode($id);
+        $juryId = decrypt($id);
         $jury = Jury::find($juryId);
         if ($jury) {
             $samples= SentToJury::groupBy('tables')
