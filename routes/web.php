@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+Route::get('/upcoming-auction', [App\Http\Controllers\HomeController::class, 'upcomingAuction'])->name('upcoming-auction');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
@@ -114,7 +114,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
     Route::get('/jury/create', [App\Http\Controllers\JuryController::class, 'create']);
     Route::post('/jury/create', [App\Http\Controllers\JuryController::class, 'save']);
-    Route::get('/jury/edit/{id}', [App\Http\Controllers\JuryController::class, 'edit']);
+    Route::get('/jury/edit/{id}', [App\Http\Controllers\JuryController::class, 'editjury']);
     Route::post('/jury/edit', [App\Http\Controllers\JuryController::class, 'update']);
     Route::get('/jury/delete/{id}', [App\Http\Controllers\JuryController::class, 'delete']);
     Route::get('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJury']);

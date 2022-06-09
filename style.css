@@ -4,7 +4,7 @@
 }
 .font-fam{
     font-family: "Garamond-Pro";
-} 
+}
 .font-fam span{
     font-family: "Garamond-Pro";
 }
@@ -122,7 +122,7 @@ a.btn.btn-outline-light.banner:hover{
 }
 a.btn-outline-dark{
     font-family: 'Montserrat';
-    font-size: 17px; 
+    font-size: 17px;
     font-weight: 400;
     border: 3px solid #232B38;
     border-radius: 10px;
@@ -140,7 +140,7 @@ a.btn-outline-light:hover{
 }
 .footerz a.btn-outline-light{
     font-family: 'Montserrat';
-    font-size: 17px; 
+    font-size: 17px;
     font-weight: 400;
     border: 3px solid #A4A3A3;
     border-radius: 10px;

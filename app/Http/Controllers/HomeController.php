@@ -31,4 +31,8 @@ class HomeController extends Controller
             'user' =>  $user,
         ]);
     }
+    public function upcomingAuction()
+    {
+        return view('upcomingauction');
+    }
 }
