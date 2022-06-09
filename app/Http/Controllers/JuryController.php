@@ -252,7 +252,8 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
-        $juryId = decrypt($id);
+        // $juryId = decrypt($id);
+        $juryId = base64_decode($id);
         $jury = Jury::find($juryId);
         if ($jury) {
             $samples= SentToJury::groupBy('tables')
