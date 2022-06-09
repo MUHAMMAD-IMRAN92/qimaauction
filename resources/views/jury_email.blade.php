@@ -13,8 +13,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>*|MC:SUBJECT|*</title>
-
+        <title>Best of Yemen 2022 International Jury Cupping</title>
+        
     <style type="text/css">
 		p{
 			margin:10px 0;
@@ -100,7 +100,11 @@
 		.mcnDividerBlock{
 			table-layout:fixed !important;
 		}
-
+	/*
+	@tab Page
+	@section Heading 1
+	@style heading 1
+	*/
 		h1{
 			/*@editable*/color:#222222;
 			/*@editable*/font-family:Helvetica;
@@ -111,7 +115,11 @@
 			/*@editable*/letter-spacing:normal;
 			/*@editable*/text-align:center;
 		}
-
+	/*
+	@tab Page
+	@section Heading 2
+	@style heading 2
+	*/
 		h2{
 			/*@editable*/color:#222222;
 			/*@editable*/font-family:Helvetica;
@@ -122,7 +130,11 @@
 			/*@editable*/letter-spacing:normal;
 			/*@editable*/text-align:left;
 		}
-
+	/*
+	@tab Page
+	@section Heading 3
+	@style heading 3
+	*/
 		h3{
 			/*@editable*/color:#444444;
 			/*@editable*/font-family:Helvetica;
@@ -133,7 +145,11 @@
 			/*@editable*/letter-spacing:normal;
 			/*@editable*/text-align:left;
 		}
-
+	/*
+	@tab Page
+	@section Heading 4
+	@style heading 4
+	*/
 		h4{
 			/*@editable*/color:#949494;
 			/*@editable*/font-family:Georgia;
@@ -144,7 +160,10 @@
 			/*@editable*/letter-spacing:normal;
 			/*@editable*/text-align:center;
 		}
-
+	/*
+	@tab Header
+	@section Header Container Style
+	*/
 		#templateHeader{
 			/*@editable*/background-color:#222222;
 			/*@editable*/background-image:url("https://mcusercontent.com/a170449c48fad40af8005caec/_compresseds/7ad43ae6-5c1d-92f3-4479-1e38edc29b8f.jpg");
@@ -156,7 +175,10 @@
 			/*@editable*/padding-top:117px;
 			/*@editable*/padding-bottom:117px;
 		}
-
+	/*
+	@tab Header
+	@section Header Interior Style
+	*/
 		.headerContainer{
 			/*@editable*/background-color:#transparent;
 			/*@editable*/background-image:none;
@@ -168,6 +190,10 @@
 			/*@editable*/padding-top:0;
 			/*@editable*/padding-bottom:0;
 		}
+	/*
+	@tab Header
+	@section Header Text
+	*/
 		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
 			/*@editable*/color:#757575;
 			/*@editable*/font-family:Helvetica;
@@ -175,13 +201,19 @@
 			/*@editable*/line-height:150%;
 			/*@editable*/text-align:left;
 		}
-
+	/*
+	@tab Header
+	@section Header Link
+	*/
 		.headerContainer .mcnTextContent a,.headerContainer .mcnTextContent p a{
 			/*@editable*/color:#007C89;
 			/*@editable*/font-weight:normal;
 			/*@editable*/text-decoration:underline;
 		}
-
+	/*
+	@tab Body
+	@section Body Container Style
+	*/
 		#templateBody{
 			/*@editable*/background-color:#FFFFFF;
 			/*@editable*/background-image:none;
@@ -193,7 +225,10 @@
 			/*@editable*/padding-top:66px;
 			/*@editable*/padding-bottom:66px;
 		}
-
+	/*
+	@tab Body
+	@section Body Interior Style
+	*/
 		.bodyContainer{
 			/*@editable*/background-color:transparent;
 			/*@editable*/background-image:none;
@@ -205,7 +240,10 @@
 			/*@editable*/padding-top:0;
 			/*@editable*/padding-bottom:0;
 		}
-
+	/*
+	@tab Body
+	@section Body Text
+	*/
 		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
 			/*@editable*/color:#757575;
 			/*@editable*/font-family:Helvetica;
@@ -213,14 +251,65 @@
 			/*@editable*/line-height:150%;
 			/*@editable*/text-align:left;
 		}
-
+	/*
+	@tab Body
+	@section Body Link
+	*/
 		.bodyContainer .mcnTextContent a,.bodyContainer .mcnTextContent p a{
 			/*@editable*/color:#007C89;
 			/*@editable*/font-weight:normal;
 			/*@editable*/text-decoration:underline;
 		}
-
-
+	/*
+	@tab Footer
+	@section Footer Style
+	*/
+		#templateFooter{
+			/*@editable*/background-color:#ddb279;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:45px;
+			/*@editable*/padding-bottom:63px;
+		}
+	/*
+	@tab Footer
+	@section Footer Interior Style
+	*/
+		.footerContainer{
+			/*@editable*/background-color:transparent;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:0;
+			/*@editable*/padding-bottom:0;
+		}
+	/*
+	@tab Footer
+	@section Footer Text
+	*/
+		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
+			/*@editable*/color:#FFFFFF;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:center;
+		}
+	/*
+	@tab Footer
+	@section Footer Link
+	*/
+		.footerContainer .mcnTextContent a,.footerContainer .mcnTextContent p a{
+			/*@editable*/color:#FFFFFF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
 	@media only screen and (min-width:768px){
 		.templateContainer{
 			width:600px !important;
@@ -310,55 +399,88 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Heading 1
+	@tip Make the first-level headings larger in size for better readability on small screens.
+	*/
 		h1{
 			/*@editable*/font-size:24px !important;
 			/*@editable*/line-height:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Heading 2
+	@tip Make the second-level headings larger in size for better readability on small screens.
+	*/
 		h2{
 			/*@editable*/font-size:60px !important;
 			/*@editable*/line-height:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Heading 3
+	@tip Make the third-level headings larger in size for better readability on small screens.
+	*/
 		h3{
 			/*@editable*/font-size:60px !important;
 			/*@editable*/line-height:150% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 4
+	@tip Make the fourth-level headings larger in size for better readability on small screens.
+	*/
 		h4{
 			/*@editable*/font-size:60px !important;
 			/*@editable*/line-height:150% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Boxed Text
+	@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+	*/
 		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
 			/*@editable*/font-size:14px !important;
 			/*@editable*/line-height:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Header Text
+	@tip Make the header text larger in size for better readability on small screens.
+	*/
 		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
 			/*@editable*/font-size:36px !important;
 			/*@editable*/line-height:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Body Text
+	@tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+	*/
 		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
 			/*@editable*/font-size:12px !important;
 			/*@editable*/line-height:150% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	/*
+	@tab Mobile Styles
+	@section Footer Text
+	@tip Make the footer content text larger in size for better readability on small screens.
+	*/
 		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
 			/*@editable*/font-size:9px !important;
 			/*@editable*/line-height:150% !important;
@@ -376,6 +498,57 @@
                         <!-- BEGIN TEMPLATE // -->
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
+                                <td align="center" valign="top" id="templateHeader" data-template-container>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                    <tr>
+                                    <td align="center" valign="top" width="600" style="width:600px;">
+                                    <![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+                                        <tr>
+                                            <td valign="top" class="headerContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #FFF3CD;font-family: &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif;font-size: 60px;font-style: italic;font-weight: normal;line-height: 100%;">
+                        
+                            
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                            <tr>
                                 <td align="center" valign="top" id="templateBody" data-template-container>
                                     <!--[if (gte mso 9)|(IE)]>
                                     <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
@@ -391,11 +564,11 @@
                     <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-
-
-                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/196c875e-57e2-4930-6126-e7266f3318d3.png" width="564" style="max-width:1920px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="">
-
-
+                                
+                                    
+                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/196c875e-57e2-4930-6126-e7266f3318d3.png" width="564" style="max-width:1920px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                    
+                                
                             </td>
                         </tr>
                     </tbody></table>
@@ -410,15 +583,15 @@
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-
+			    
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-
+                        
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #DDB279;font-size: 16px;font-style: normal;font-weight: bold;line-height: 100%;">
-
+                        
                             <div style="text-align: center;">WELCOME TO THE INTERNATIONAL JURY CUPPING</div>
 
                         </td>
@@ -427,7 +600,7 @@
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-
+                
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -443,15 +616,15 @@
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-
+			    
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-
+                        
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-serif; font-size: 14px;">
-
+                        
                             <p style="text-align: center; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-serif; font-size: 14px;">Dear Best of Yemen jury member,<br>
 <br>
 Below you can find a link to your unique digital cupping form. Please use this form to capture your cupping results for the samples you have received. The form can be used on both desktop and mobile devices. Kindly&nbsp;note this form is unique to you as a cupper so please <u>do not share it</u> with other members of your&nbsp;cupping team.<br>
@@ -468,7 +641,7 @@ Should you have any questions about the process, or the cupping forms please do 
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-
+                
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -487,7 +660,7 @@ Should you have any questions about the process, or the cupping forms please do 
                         </td>
                     </tr>
                 </tbody></table>
-<!--
+<!--            
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 -->
@@ -502,15 +675,15 @@ Should you have any questions about the process, or the cupping forms please do 
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-
+			    
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-
+                        
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #DDB279;font-size: 16px;font-style: normal;font-weight: bold;line-height: 100%;">
-
+                        
                             <div style="text-align: center;"><br>
 BEST OF YEMEN 2022&nbsp;DIGITAL CUPPING FORM<br>
 &nbsp;</div>
@@ -521,7 +694,7 @@ BEST OF YEMEN 2022&nbsp;DIGITAL CUPPING FORM<br>
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-
+                
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -545,7 +718,411 @@ BEST OF YEMEN 2022&nbsp;DIGITAL CUPPING FORM<br>
             </td>
         </tr>
     </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-serif; font-size: 14px;">
+                        
+                            <p style="text-align: center; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, Verdana, sans-serif; font-size: 14px;">Watch a short instruction video <a href="https://vimeo.com/718809104" target="_blank">here</a></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
 </table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" id="templateFooter" data-template-container>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                    <tr>
+                                    <td align="center" valign="top" width="600" style="width:600px;">
+                                    <![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+                                        <tr>
+                                            <td valign="top" class="footerContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
+    <tbody class="mcnFollowBlockOuter">
+        <tr>
+            <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
+    <tbody><tr>
+        <td align="center" style="padding-left:9px;padding-right:9px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnFollowContent">
+                <tbody><tr>
+                    <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td align="center" valign="top">
+                                    <!--[if mso]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                    <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="http://www.facebook.com/qimacoffee/" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-facebook-48.png" alt="Facebook" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="http://www.instagram.com/qimacoffee" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-instagram-48.png" alt="Link" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="https://www.qimacoffee.com" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-link-48.png" alt="Website" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="http://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-youtube-48.png" alt="YouTube" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                    <!--[if mso]>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
+    <tbody class="mcnDividerBlockOuter">
+        <tr>
+            <td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
+                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 1px solid #E0E0E0;">
+                    <tbody><tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--            
+                <td class="mcnDividerBlockInner" style="padding: 18px;">
+                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <em>Copyright © 2019 Qima Coffee, All rights reserved.</em><br>
+<br>
+<strong>Our mailing address is:</strong><br>
+15 Argall Avenue London<br>
+<br>
+Want to change how you receive these emails?<br>
+You can <a href="https://www.qimacoffee.com/">update your preferences</a> or <a href="https://www.qimacoffee.com/">unsubscribe from this list</a>.
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
+    <tbody class="mcnFollowBlockOuter">
+        <tr>
+            <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
+    <tbody><tr>
+        <td align="center" style="padding-left:9px;padding-right:9px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnFollowContent">
+                <tbody><tr>
+                    <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td align="center" valign="top">
+                                    <!--[if mso]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                    <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="https://twitter.com/TheQimaCoffee" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" alt="Twitter" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="http://www.facebook.com/qimacoffee/" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" alt="Facebook" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                        <!--[if mso]>
+                                        <td align="center" valign="top">
+                                        <![endif]-->
+                                        
+                                        
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                            <tbody><tr>
+                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                        <tbody><tr>
+                                                                            
+                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                    <a href="http://mailchimp.com" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-link-48.png" alt="Website" style="display:block;" height="24" width="24" class=""></a>
+                                                                                </td>
+                                                                            
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                    
+                                    <!--[if mso]>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</td>
                                         </tr>
                                     </table>
                                     <!--[if (gte mso 9)|(IE)]>
@@ -561,5 +1138,5 @@ BEST OF YEMEN 2022&nbsp;DIGITAL CUPPING FORM<br>
                 </tr>
             </table>
         </center>
-    <script type="text/javascript"  src="/cGGM_KRbwRlvdrk04A4p/E1kEJzNc/WChw/GVYD/HQsFQj4"></script></body>
+    <script type="text/javascript"  src="/20mjyemFl/otM/qdmORw/QucONcktibw5/E0B3bzkhJAE/HSBT/I3RbFDk"></script></body>
 </html>
