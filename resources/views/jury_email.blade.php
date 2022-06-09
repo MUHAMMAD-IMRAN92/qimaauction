@@ -971,7 +971,7 @@ BEST OF YEMEN 2022&nbsp;DIGITAL CUPPING FORM<br>
                             <em>Copyright © 2019 Qima Coffee, All rights reserved.</em><br>
 <br>
 <strong>Our mailing address is:</strong><br>
-15 Argall Avenue London<br>
+21 Warren Street, London, W1T5LT<br>
 <br>
 Want to change how you receive these emails?<br>
 You can <a href="https://www.qimacoffee.com/">update your preferences</a> or <a href="https://www.qimacoffee.com/">unsubscribe from this list</a>.
