@@ -252,6 +252,7 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
+        //chnages
         $juryId = base64_decode($id);
         $jury = Jury::find($juryId);
         if(!isset($jury))
