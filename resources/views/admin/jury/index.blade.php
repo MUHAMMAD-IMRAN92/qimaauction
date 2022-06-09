@@ -116,7 +116,6 @@
                 },
 
                 {
-
                     "mRender": function(data, type, row) {
                         return '<td>' +
                             row.email + '</td>';
@@ -143,8 +142,7 @@
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            // `<a class="" href="/jury/delete/` + ids +
-                            // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
+                            `<a class="" href="/jury/links/`+ ids +`"><i class="fa fa-eye" aria-hidden="true"></i></a>` +
                             '</td>'
                     }
                 },
