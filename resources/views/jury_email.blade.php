@@ -393,7 +393,7 @@
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
 
 
-                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/196c875e-57e2-4930-6126-e7266f3318d3.png" width="564" style="max-width:1920px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="">
+                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/196c875e-57e2-4930-6126-e7266f3318d3.png" width="564" style="max-width:1920px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
 
 
                             </td>
