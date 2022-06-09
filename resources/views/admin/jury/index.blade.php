@@ -142,7 +142,7 @@
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
-                            `">Edit</a><br>` +
+                            `">Resend Link</a><br>` +
                             `<a class="" target="_blank" href="/jury/links/`+ row.linkurl +`">
                                 View link</a>`
                             +
