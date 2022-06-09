@@ -179,6 +179,10 @@
                                                                     <label class="check-label" for="male"> <b>T4</b> </label>
                                                                     <input type="radio"  name="{{$key}}" value="4" class="chk4 pt-5" {{ $product->tables == 4 ? 'checked' : '' }}>
                                                                  </div>
+                                                                 <div class="chk">
+                                                                    <label class="check-label" for="male"> <b>T5</b> </label>
+                                                                    <input type="radio"  name="{{$key}}" value="5" class="chk4 pt-5" {{ $product->tables == 5 ? 'checked' : '' }}>
+                                                                 </div>
                                                                </div>
                                                                  @endforeach
                                                                  @else
