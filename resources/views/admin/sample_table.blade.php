@@ -22,7 +22,7 @@
                                                         <td data-title="Position">{{$sample->postion}}</td>
                                                         <td data-title="Action">
                                                             @if($sample->is_hidden==0)
-                                                            <a class="btn btn-success"
+                                                            <a class="btn btn-success" target="_blank"
                                                                 href="{{route('give_review',['juryId'=>$sample->jury_id,'table'=>$sample->tables,'sampleId'=>$sample->id  ])}}">CUP SAMPLE
                                                              </a>
                                                              @else

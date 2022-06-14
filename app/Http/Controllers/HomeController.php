@@ -14,11 +14,11 @@ class HomeController extends Controller
      * @return void
      */
     private $user;
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $user = Auth::user();
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $user = Auth::user();
+    // }
 
     /**
      * Show the application dashboard.
@@ -27,10 +27,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = $this->user;
-        return view('admin.dashboard.index', [
-            'user' =>  $user,
-        ]);
+        $user =Auth::user()->is_admin;
+        if($user == 0) {
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('customer/user');
+        }
+
+        // $user = $this->user;
+        // return view('admin.dashboard.index', [
+        //     'user' =>  $user,
+        // ]);
+    }
+    public function upcomingAuction()
+    {
+        return view('upcomingauction');
     }
     public function newsletter()
     {
