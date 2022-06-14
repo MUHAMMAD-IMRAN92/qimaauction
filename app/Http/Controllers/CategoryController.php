@@ -19,7 +19,7 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.categories.index');
     }
     public function allCategory(Request $request)
