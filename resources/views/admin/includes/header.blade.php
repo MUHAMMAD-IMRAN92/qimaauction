@@ -444,15 +444,20 @@
                             class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
                             data-i18n="eCommerce">Genetic</span></a>
                        </li>
-
-                        <li @if (request()->is('auction/*')) class='active' @endif><a
-                            href="{{ url('/auction/index') }}">
-                            <span
-                                class="menu-item @if (request()->is('auction/*')) 'active' @endif"
-                                data-i18n="eCommerce">Auction</span></a>
-                        </li>
-
-                        <li class="nav-item"><a href="#"><span class="menu-title" data-i18n="Ecommerce">Jury Management</span></a>
+                       <li class="nav-item">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Auction Management</span></a>
+                            <ul class="menu-content">
+                                <li @if (request()->is('auction/*')) class='active' @endif><a
+                                    href="{{ url('/auction/index') }}">
+                                    <span
+                                        class="menu-item @if (request()->is('auction/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Auction</span></a>
+                                </li>
+                           </ul>
+                       </li>
+                      
+                        <li class="nav-item mb-5">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce">Jury Management</span></a>
                             <ul class="menu-content">
                                 <li @if (request()->is('jury/*')) class='active' @endif><a
                                     href="{{ url('/jury/index') }}">

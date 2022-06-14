@@ -115,8 +115,8 @@
                         return `<td>` +
                             `<a class="" href="/auction/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            // `<a class="" href="/auction/delete/` + ids +
-                            // `"><i class="fa fa-eye-slash" style="font-size:20px;color:red"></i></a>` +
+                            `<a class="" href="/auction/products/` + ids +
+                            `">Auction Product</a>` +
                             '</td>'
                     }
                 },
