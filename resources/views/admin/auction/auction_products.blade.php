@@ -322,7 +322,10 @@
                         if (value.id == productId) {
                             $('#region').html(value.region.title);
                             $('#governorate').html(value.governorate.title);
+                            if(value.reviews.total_score)
                             $('#jury_score').html(value.reviews.total_score);
+                            else
+                            $('#jury_score').html(0);
                             $('#jury_score').val(value.reviews.total_score);
                             $('#village').html(value.village.title);
                             return;
