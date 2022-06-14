@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +15,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
+
+    Route::get('user', function(){
+        return view('customer.dashboard.upcomingauction');
+    });
+
+});
 
 
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function(){
+
+    Route::get('dashboard', function(){
+    return view('admin.dashboard.index');
+    });
+
+});
+
+
+
+Route::get('/upcoming-auction', [App\Http\Controllers\HomeController::class, 'upcomingAuction'])->name('upcoming-auction');
 Auth::routes();
 Route::get('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('news');
 Route::get('/newsletterSave', [App\Http\Controllers\HomeController::class, 'newsletterpost'])->name('newsletter');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::middleware(['auth'])->group(function () {
     //Dashboard Route
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-
     //Category CRUD Routes
     Route::get('/categories/index', [App\Http\Controllers\CategoryController::class, 'index']);
     Route::get('/categories/allcategories', [App\Http\Controllers\CategoryController::class, 'allCategory']);
@@ -116,7 +136,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
     Route::get('/jury/create', [App\Http\Controllers\JuryController::class, 'create']);
     Route::post('/jury/create', [App\Http\Controllers\JuryController::class, 'save']);
-    Route::get('/jury/edit/{id}', [App\Http\Controllers\JuryController::class, 'edit']);
+    Route::get('/jury/edit/{id}', [App\Http\Controllers\JuryController::class, 'editjury']);
     Route::post('/jury/edit', [App\Http\Controllers\JuryController::class, 'update']);
     Route::get('/jury/delete/{id}', [App\Http\Controllers\JuryController::class, 'delete']);
     Route::get('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJury']);
@@ -137,6 +157,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/auction/create', [App\Http\Controllers\AuctionController::class, 'save']);
     Route::get('/auction/delete/{id}', [App\Http\Controllers\AuctionController::class, 'delete']);
     Route::get('/auction/delete_product_image/{id}', [App\Http\Controllers\AuctionController::class, 'deleteImage']);
+    //Customer CRUD
+    Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
+    Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);
+    Route::post('/customer/save', [App\Http\Controllers\CustomerController::class, 'save']);
+    Route::get('/customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit']);
+    Route::get('/customer/allcustomers', [App\Http\Controllers\CustomerController::class, 'allCustomer']);
+    Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'update']);
+
 
 });
 
@@ -150,3 +178,7 @@ Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::c
 Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
 Route::post('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
 Route::get('/review/review_detail/{sample?}/{productId?}/{juryId?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
+//Customer Reset Passwords Routes
+Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin']);
