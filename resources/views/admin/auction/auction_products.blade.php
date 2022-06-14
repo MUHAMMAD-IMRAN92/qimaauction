@@ -187,14 +187,13 @@
                                                             <td>
                                                                 {{ $auction->jury_score }}
                                                             </td>
-                                                            <td id="edit" data-auctionId="{{ $auction->id }}"
-                                                                style="width: 0.06%">
-                                                                <i class="fas fa-edit"></i>
-                                                            </td>
-                                                            <td id="delete" data-auctionId="{{ $auction->id }}"
-                                                                style="width: 0.06%">
-                                                                <i class="fa fa-trash-o"></i>
-                                                            </td>
+                                                            <div>
+                                                                <td >
+                                                                    <i id="edit" data-auctionId="{{ $auction->id }}" class="fas fa-edit"></i>
+                                                                    <i id="delete" data-auctionId="{{ $auction->id }}" class="fa fa-trash-o"></i>
+                                                                </td>
+                                                               
+                                                            </div>
                                                         </tr>
                                                     @endforeach
                                                 @endforeach
@@ -320,9 +319,9 @@
                                     }
 
                                     var markup = "<tr id="+ data.id +"><td>" + title + "</td><td>" + data.weight + "</td><td>" + data.size + "</td><td>" + data.rank + "</td><td>" + data.jury_score +
-                                        "</td><td id='edit' data-auctionId=" + data.id +
-                                        "><i class='fas fa-edit'></i></td><td id='delete' data-auctionId=" +
-                                        data.id + "><i class='fas fa-trash-o'></i></td></tr>";
+                                        "</td><td><i id='edit' data-auctionId=" + data.id + " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data.id + " class='fas fa-trash-o'></i></td></tr>";
+                                        
+                                        
                                     $("table tbody").append(markup);
                                 }
                             });
