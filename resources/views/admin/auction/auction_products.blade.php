@@ -157,8 +157,11 @@
                                                 {{-- <th>Id</th> --}}
                                                 <th>Title</th>
                                                 <th>Weight</th>
+                                                <th>Size</th>
+                                                <th>Rank</th>
                                                 <th>Jury Score</th>
                                                 <th>Action(s)</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -176,6 +179,12 @@
                                                                 {{ $auction->weight }}
                                                             </td>
                                                             <td>
+                                                                {{ $auction->size }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->rank }}
+                                                            </td>
+                                                            <td>
                                                                 {{ $auction->jury_score }}
                                                             </td>
                                                             <td id="edit" data-auctionId="{{ $auction->id }}"
@@ -190,10 +199,10 @@
                                                     @endforeach
                                                 @endforeach
                                             @else
-                                                <tr id="nodata">
+                                                {{-- <tr id="nodata">
                                                     <td></td>
                                                     <td >No Auction Product yet</td>
-                                                </tr>
+                                                </tr> --}}
                                             @endif
 
                                         </tbody>
@@ -260,8 +269,7 @@
                             _token: "{{ csrf_token() }}",
                         },
                         success: function(data) {
-                            $('#product_id')
-                                .val(data.product_id)
+                            $('#product_id').val(data.product_id)
                                 .trigger('change');
                             $('input[name="weight"]').val(data.weight);
                             $('input[name="size"]').val(data.size);
@@ -305,15 +313,13 @@
                                 },
                                 success: function(data) {
                                     $('#auction_model').modal("hide");
-                                    $('#nodata').modal('hide');
+                                    // $('#nodata').modal('hide');
                                     var title = data.products[0].product_title;
                                     if (rownumber) {
                                         $('#' + rownumber).remove();
                                     }
 
-                                    var markup = "<tr id="+ rownumber +"><td>" + title + "</td><td>" + data.weight +
-                                        "</td><td>" +
-                                        data.jury_score +
+                                    var markup = "<tr id="+ data.id +"><td>" + title + "</td><td>" + data.weight + "</td><td>" + data.size + "</td><td>" + data.rank + "</td><td>" + data.jury_score +
                                         "</td><td id='edit' data-auctionId=" + data.id +
                                         "><i class='fas fa-edit'></i></td><td id='delete' data-auctionId=" +
                                         data.id + "><i class='fas fa-trash-o'></i></td></tr>";
