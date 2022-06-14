@@ -30,6 +30,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::get('dashboard', function(){
     return view('admin.dashboard.index');
     });
+
+});
+
+
+
+Route::get('/upcoming-auction', [App\Http\Controllers\HomeController::class, 'upcomingAuction'])->name('upcoming-auction');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    //Dashboard Route
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     //Category CRUD Routes
     Route::get('/categories/index', [App\Http\Controllers\CategoryController::class, 'index']);
     Route::get('/categories/allcategories', [App\Http\Controllers\CategoryController::class, 'allCategory']);
@@ -147,18 +160,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'update']);
 
 
-});
-
-
-
-Route::get('/upcoming-auction', [App\Http\Controllers\HomeController::class, 'upcomingAuction'])->name('upcoming-auction');
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::middleware(['auth'])->group(function () {
-    //Dashboard Route
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 });
 
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
