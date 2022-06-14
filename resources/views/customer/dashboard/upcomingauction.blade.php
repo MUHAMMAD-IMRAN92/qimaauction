@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best of Yemen Auction 2022</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('public/css/style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <link rel="icon" type="image/jpeg" href="favicon.jpeg">
+        <link rel="icon" type="image/jpeg" href="{{asset('public/images/favicon.jpeg')}}">
 
     <!-- Fonts Start  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,8 +42,95 @@
 {
   content: '+';
 }
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #FFFFFF; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  /* background-color: #111; */
+  /* color: white; */
+  padding: 10px 15px;
+  border: none;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
     </style>
 <body>
+    <div class="row">
+        <div class="col-2 ">
+        <ul class="nav navbar-nav float-right">
+            <li class="dropdown dropdown-user nav-item">
+                <a
+                    class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                    @php
+                        $user = Auth::user();
+                    @endphp
+                    <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
+                            {{ Str::upper($user->name) }}</span></div><span><img class="round"
+                            src="../../../public/app-assets/images/portrait/small/avatar-s-11.jpg"
+                            alt="avatar" height="40" width="40"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-divider"></div><a class="dropdown-item"
+                        href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="feather icon-power"></i>
+                        Logout</a>
+                </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                    class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+    </div>
+    </div>
     <div class="container my-4">
         <nav>
             <div class="col-4">
@@ -73,7 +160,6 @@
                       </tr>
                     </thead>
                     <tbody>
-
                        <tr class="text-center">
                         <td>1</td>
                         <td>90.1</td>
@@ -86,7 +172,9 @@
                         <td>$4750.00</td>
                         <td>SAN-HEY-03-125</td>
                         <td>6560</td>
-                        <td>Open:</td>
+                        <td>Open
+                            <button class="openbtn" onclick="openNav()"> ⋮</button>
+                          </td>
                        </tr>
                        <tr class="hide-table-padding">
                         <td></td>
@@ -246,7 +334,32 @@
  </div>
 
        </div>
-
+       <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="container">
+            <h3 style="color:#D1AF69">Black Coffee</h3>
+        </div>
+        <table class="table">
+            <tbody>
+              <tr>
+                <th scope="col">Weight</th>
+                <td scope="col">163/lbs</td>
+              </tr>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <td scope="col">1a</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Lot ID</th>
+                    <td scope="col">01102</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Score</th>
+                    <td scope="col">90.1</td>
+                  </tr>
+            </tbody>
+          </table>
+      </div>
 
     {{-- <div class="container-fluid container-all p-0 mt-4" >
         <h1 class="text-center"> UPCOMING AUCTION</h1>
@@ -400,6 +513,19 @@
         $("#signup-for-newsletter").on("click", function () {
             $("#newsltterModel").modal("show");
         });
+
+        /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
         </script>
 
 </html>

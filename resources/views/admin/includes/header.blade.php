@@ -472,8 +472,13 @@
                                         class="menu-item @if (request()->is('review/summary')) 'active' @endif"
                                         data-i18n="eCommerce">Feedback Summary</span></a>
                                 </li>
-
                             </ul>
+                        </li>
+                        <li @if (request()->is('/customer/index')) class='active' @endif><a
+                            href="{{ url('/customer/index') }}">
+                            <span
+                                class="menu-item @if (request()->is('/customer/index')) 'active' @endif"
+                                data-i18n="eCommerce">Manage Customer</span></a>
                         </li>
                     </ul>
                 </li>
