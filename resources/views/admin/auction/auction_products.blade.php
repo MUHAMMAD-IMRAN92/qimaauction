@@ -305,7 +305,6 @@
                 
 
                 $("#product").on("click", function() {
-                    // $("#auctionproduct").reset();
                          $('input[name="weight"]').val('');
                             $('input[name="size"]').val('');
                             $('input[name="rank"]').val('');
