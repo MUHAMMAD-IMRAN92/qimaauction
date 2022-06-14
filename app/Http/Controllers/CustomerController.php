@@ -63,7 +63,7 @@ class CustomerController extends Controller
           Mail::send('emails.passwordreset', ['token' => $token], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
-            //   $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
+              $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
           });
         return redirect('/customer/index');
     }
