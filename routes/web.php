@@ -175,4 +175,4 @@ Route::get('/review/review_detail/{sample?}/{productId?}/{juryId?}', [App\Http\C
 //Customer Reset Passwords Routes
 Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin']);
+Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin'])->name('customer.login');

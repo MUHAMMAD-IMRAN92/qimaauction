@@ -70,7 +70,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="phone" class="form-control"  name="phone_no" required>
+                                                        <input type="number" id="phone" class="form-control"   name="phone_no" required>
                                                         <label for="phone">Phone No</label>
                                                         @error('phone_no') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
@@ -78,7 +78,7 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="bid_limit" class="form-control"  name="bid_limit" required>
-                                                        <label for="bid_limit">Bid Limit</label>
+                                                        <label for="bid_limit">Bid Limit/lb</label>
                                                         @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
@@ -101,3 +101,12 @@
     </div>
 </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        $("#phone").keypress(function(event) {
+  return /\d/.test(String.fromCharCode(event.keyCode));
+});
+});
+
+    </script>

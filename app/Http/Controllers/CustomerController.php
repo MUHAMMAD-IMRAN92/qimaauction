@@ -54,10 +54,11 @@ class CustomerController extends Controller
             'bid_limit' => 'required',
         ]);
         $customer = new  User();
+        $password               =   $request->password;
         $customer->name         =   $request->name;
         $customer->email        =   $request->email;
         $customer->phone_no     =   $request->phone_no;
-        $customer->password     =   $request->password;
+        $customer->password     =   Hash::make($request->password);
         $customer->bid_limit    =   $request->bid_limit;
         $customer->save();
         $token = Str::random(64);
@@ -67,7 +68,7 @@ class CustomerController extends Controller
               'token'       => $token,
               'created_at'  => Carbon::now()
             ]);
-          Mail::send('emails.passwordreset', ['token' => $token], function($message) use($request){
+          Mail::send('emails.passwordreset', ['token' => $token,'customer' => $customer,'password'=>$password], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
               $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
