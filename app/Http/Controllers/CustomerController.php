@@ -56,14 +56,14 @@ class CustomerController extends Controller
         $token = Str::random(64);
 
           DB::table('password_resets')->insert([
-              'email' => $request->email,
-              'token' => $token,
-              'created_at' => Carbon::now()
+              'email'       => $request->email,
+              'token'       => $token,
+              'created_at'  => Carbon::now()
             ]);
           Mail::send('emails.passwordreset', ['token' => $token], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
-              $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
+            //   $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
           });
         return redirect('/customer/index');
     }
