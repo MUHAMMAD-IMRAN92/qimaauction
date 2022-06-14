@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\AuctionProduct;
 use App\Models\Genetic;
 use App\Models\Product;
 use App\Models\Process;
@@ -20,7 +21,68 @@ class AuctionController extends Controller
     {
         return view('admin.auction.index');
     }
+    
+    public function auctionProducts($id)
+    {
+        $auctionId = base64_decode($id);
+       $auction_products = AuctionProduct::where('auction_id',$auctionId)
+                       ->with('products')
+                       ->get();
+        $products = Product::with('region','village','governorate','reviews')->get();
+      return view('admin.auction.auction_products',compact('auction_products','products','auctionId'));
+    }
 
+    public function saveAuctionProduct(Request $request)
+    {
+        if(isset($request->auction_product_id))
+        {
+            $auctionproduct = AuctionProduct::where('id',$request->auction_product_id)->update(
+                [
+                    'product_id' => $request->productId,
+                    'auction_id' => $request->auctionId,
+                    'weight' => $request->weight,
+                    'size' => $request->size,
+                    'rank' => $request->rank,
+                    'jury_score' => $request->jury_score,
+                ]
+             );    
+             $auction_products = AuctionProduct::where('id',$request->auction_product_id)
+             ->with('products')
+             ->first();
+        }
+        else
+        {
+            $auctionproduct = AuctionProduct::create(
+                [
+                    'product_id' => $request->productId,
+                    'auction_id' => $request->auctionId,
+                    'weight' => $request->weight,
+                    'size' => $request->size,
+                    'rank' => $request->rank,
+                    'jury_score' => $request->jury_score,
+                ]
+             );   
+             $auction_products = AuctionProduct::where('id',$auctionproduct->id)
+             ->with('products')
+             ->first(); 
+        }
+                          
+      
+         return response()->json($auction_products);
+    }
+    public function getAuctionProduct(Request $request)
+    {
+        $auction_products = AuctionProduct::where('id',$request->auctioProductId)
+                        ->with('products')
+                        ->first();
+         return response()->json($auction_products);
+    }
+    public function deleteAuctionProduct(Request $request)
+    {
+        $auction_products = AuctionProduct::where('id',$request->auctioProductId)->delete();
+        //  $data = $auction_products->delete();
+return response()->json($auction_products);    
+    }
     /**
      * Show the form for creating a new resource.
      *

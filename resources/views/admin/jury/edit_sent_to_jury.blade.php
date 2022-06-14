@@ -2,16 +2,6 @@
 @section('title', 'All Transection')
 @section('content')
  <style>
-     input[type=checkbox]
-        {
-        /* Double-sized Checkboxes */
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
-        transform: scale(2);
-        padding: 10px;
-        }
         label {
                 display: table-row;
             }
@@ -41,14 +31,6 @@
             top: -6px;
             left: -1px;
          }
-
-        table.jury-table.table-bordered th, .table-bordered td {
-                border: 1px solid #eacf99;
-                text-align: center;
-                }
-                table.jury-table.tbody{
-                    overflow-x: hidden;
-                }
         .checkbox-pad{
             margin-bottom: 10px;
         }        
@@ -130,38 +112,20 @@
                                                     <div class="text-bold-600 font-medium-2 pb-1">
                                                         Please Select Product and Sample
                                                     </div>
-                                                    {{-- <p> <strong>Note:</strong> You can select Product.</p> --}}
+                                                    @if(count($senttojury) > 0)
+                                                    @foreach ($senttojury as $key => $product)
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            @if(count($senttojury) > 0)
-                                                                @foreach ($senttojury as $key => $product)
                                                                 <input type="hidden" name="products[]" value="{{ $product->product_id }}">
                                                                     <input type="text" class="form-control"  id="products" value="{{ $product->product_title }}">
-                                                                @endforeach
-                                                            @else
-                                                                <p>No Jury sample Sent yet</p>
-                                                            @endif
-                                                        </div>
-                                                    
-                                                        <div class="col-md-2">
-                                                            @if(count($senttojury) > 0)
-                                                            @foreach ($senttojury as $key => $product)
-                                                            <input type="text" class="form-control"  name="samples[]" id="samples"  value="{{ $product->samples }}" placeholder="Enter Sample Id">
-                                                            @endforeach
-                                                            @else
-                                                            {{-- <p>No Jury sample Sent yet</p> --}}
-                                                          @endif                       
                                                         </div>
                                                         <div class="col-md-2">
-                                                            @if(count($senttojury) > 0)
-                                                            @foreach ($products as $key => $product)
+                                                            <input type="text" class="form-control"  name="samples[]" id="samples"  value="{{ $product->samples }}" placeholder="Enter Sample Id">              
+                                                        </div>
+                                                        <div class="col-md-2">
                                                             <input type="number" class="form-control" name="postion[]" id="postion" value="{{$product->postion}}" placeholder="Postion">
-                                                            @endforeach
-                                                            @endif
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @if(count($senttojury) > 0)
-                                                            @foreach ($senttojury as $key => $product)
                                                                <div class="row checkbox-pad">
                                                                 <div class="chk">
                                                                     <label class="check-label" for="male"> <b>T1</b> </label>
@@ -180,67 +144,18 @@
                                                                     <input type="radio"  name="{{$key}}" value="4" class="chk4 pt-5" {{ $product->tables == 4 ? 'checked' : '' }}>
                                                                  </div>
                                                                </div>
-                                                                 @endforeach
-                                                                 @else
-                                                                 {{-- <p>No Jury sample Sent yet</p> --}}
-                                                               @endif
                                                          </div>
-                                                        {{-- <div class="pt-2">
-                                                            <button type="button" class="btn btn-primary btn-sm ml-1" id="save">Save</button>
-                                                        </div> --}}
                                                     </div>
-                                                    @error('products')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- Striped rows start -->
-                                                    <div class="row" id="table-striped">
-                                                        <div class="col-12">
-                                                            <div class="card">
-                                                                {{-- <div class="card-header">
-                                                                    <h4 class="card-title">Select Products:</h4>
-                                                                </div> --}}
-                                                                {{-- <div class="card-content">
-                                                                    <div class="card-body">
-
-                                                                    </div>
-                                                                    <div class="row-md-8">
-                                                                        <table class="table jury-table table-striped table-bordered mb-0">
-                                                                            <thead>
-                                                                                <th colspan="2">Table1:<b> Natural</b></th>
-                                                                                <th colspan="2">Table2:<b> Natural</b></th>
-                                                                                <th colspan="2">Table3:<b> Processed</b></th>
-                                                                                <th colspan="2">Table4:<b> Processed</b></th>
-                                                                            </thead>
-                                                                            <tbody id="product_table_body">
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        Product
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Sample ID
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        Table
-                                                                                    </td>
-                                                                                </tr>
-                                                                                
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div> --}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Striped rows end -->
+                                                    @endforeach
+                                                    @else
+                                                        <p>No Jury sample Sent yet</p>
+                                                    @endif
                                                 </div>
                                                 @if(count($senttojury) > 0)
                                                 <div style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
                                                 @else
-
                                                 @endif
                                             </form>
                                         </div>
@@ -257,5 +172,4 @@
     </div>
     <!-- END: Content-->
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
