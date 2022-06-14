@@ -40,7 +40,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Create Jury Product</h5>
+                                            <h5 class="modal-title">Create Auction Product</h5>
                                             {{-- <button class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -88,21 +88,21 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Jury Score</label>
-                                                            <input type="number" class="form-control" name="jury_score"
+                                                            <input type="number" step="any" class="form-control" name="jury_score"
                                                                 id="jury_score" value="" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Weight</label>
-                                                            <input type="number" class="form-control" name="weight"
+                                                            <input type="number" step="any"  class="form-control" name="weight"
                                                                 id="weight" value="" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Size</label>
-                                                            <input type="number" class="form-control" name="size"
+                                                            <input type="number" step="any" class="form-control" name="size"
                                                                 id="size" value="" required>
                                                         </div>
                                                     </div>
@@ -110,6 +110,20 @@
                                                         <div class="form-group">
                                                             <label for="">Rank</label>
                                                             <input type="text" class="form-control" name="rank" id="rank"
+                                                                value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="">Start Price</label>
+                                                            <input type="number" step="any" class="form-control" name="start_price" id="start_price"
+                                                                value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="">Reserve Price</label>
+                                                            <input type="number" step="any" class="form-control" name="reserve_price" id="reserve_price"
                                                                 value="" required>
                                                         </div>
                                                     </div>
@@ -252,6 +266,8 @@
                             $('input[name="weight"]').val(data.weight);
                             $('input[name="size"]').val(data.size);
                             $('input[name="rank"]').val(data.rank);
+                            $('input[name="start_price"]').val(data.start_price);
+                            $('input[name="reserve_price"]').val(data.reserve_price);
                             $('input[name="auction_product_id"]').val(data.id);
                             $('.save').html('Update');
                             $('#auction_model').modal("show");
@@ -268,6 +284,8 @@
                             var weight = $('#weight').val();
                             var rank = $('#rank').val();
                             var size = $('#size').val();
+                            var start_price = $('#start_price').val();
+                            var reserve_price = $('#reserve_price').val();
                             var rownumber = $('#rownumber').val();
                             var jury_score = $('#jury_score').val();
                             $.ajax({
@@ -281,6 +299,8 @@
                                     jury_score: jury_score,
                                     rank: rank,
                                     size: size,
+                                    start_price:start_price,
+                                    reserve_price:reserve_price,
                                     _token: "{{ csrf_token() }}",
                                 },
                                 success: function(data) {
@@ -305,10 +325,19 @@
                 
 
                 $("#product").on("click", function() {
-                         $('input[name="weight"]').val('');
+                    $('#product_id') .val('')
+                                .trigger('change');
+                            $('input[name="weight"]').val('');
                             $('input[name="size"]').val('');
                             $('input[name="rank"]').val('');
-                            $('#product_id').val('');
+                            $('input[name="start_price"]').val('');
+                            $('input[name="reserve_price"]').val('');
+                            $('#governorate').html('');
+                            $('#village').html('');
+                            $('#region').html('');
+                            $('#jury_score').html('');
+                            $('input[name="auction_product_id"]').val('');
+                            $('.save').html('Create');
                            $("#auction_model").modal("show");
                 });
                 $("#product_id").on("change", function() {
@@ -320,14 +349,22 @@
                     var data = JSON.parse(products.replace(/&quot;/g, '"'));
                     $(data).each(function(prod, value) {
                         if (value.id == productId) {
+                            if(value.region != null)
                             $('#region').html(value.region.title);
-                            $('#governorate').html(value.governorate.title);
-                            if(value.reviews.total_score)
-                            $('#jury_score').html(value.reviews.total_score);
                             else
-                            $('#jury_score').html(0);
+                            $('#region').html('----');
+                            if(value.governorate != null)
+                            $('#governorate').html(value.governorate.title);
+                            else
+                            $('#governorate').html('--');
+                            if(value.reviews != null)
                             $('#jury_score').val(value.reviews.total_score);
+                            else
+                            $('#jury_score').val(0);
+                            if(value.village != null)
                             $('#village').html(value.village.title);
+                            else
+                            $('#village').html('--');
                             return;
                         }
                     });
