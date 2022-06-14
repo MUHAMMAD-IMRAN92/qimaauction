@@ -43,6 +43,8 @@ class AuctionController extends Controller
                     'weight' => $request->weight,
                     'size' => $request->size,
                     'rank' => $request->rank,
+                    'start_price' => $request->start_price,
+                    'reserve_price' => $request->reserve_price,
                     'jury_score' => $request->jury_score,
                 ]
              );    
@@ -59,6 +61,8 @@ class AuctionController extends Controller
                     'weight' => $request->weight,
                     'size' => $request->size,
                     'rank' => $request->rank,
+                    'start_price' => $request->start_price,
+                    'reserve_price' => $request->reserve_price,
                     'jury_score' => $request->jury_score,
                 ]
              );   
