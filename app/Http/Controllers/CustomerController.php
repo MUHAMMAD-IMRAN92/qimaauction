@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $customers      =   User::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-        $customers      =   $customers->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $customers      =   $customers->where('is_hidden', '0')->where('is_admin','1')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal'      => $customer_count,
@@ -46,6 +46,13 @@ class CustomerController extends Controller
 
     public function save(Request $request)
     {
+        $validator  =   $request->validate([
+            'email'     => 'required|email|unique:users',
+            'name'      => 'required',
+            'phone_no'  => 'required',
+            'password'  => 'required',
+            'bid_limit' => 'required',
+        ]);
         $customer = new  User();
         $customer->name         =   $request->name;
         $customer->email        =   $request->email;

@@ -51,30 +51,35 @@
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control"  name="name" required>
                                                         <label for="name">Name</label>
+                                                        @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="email" id="email" class="form-control"  name="email" required>
                                                         <label for="email">Email</label>
+                                                        @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="password" id="password" class="form-control"  name="password" required>
                                                         <label for="password">Password</label>
+                                                        @error('password') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="phone" class="form-control"  name="phone_no" required>
                                                         <label for="phone">Phone No</label>
+                                                        @error('phone_no') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="bid_limit" class="form-control"  name="bid_limit" required>
                                                         <label for="bid_limit">Bid Limit</label>
+                                                        @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="margin-left: 39%">
