@@ -18,8 +18,9 @@ class AdminSeeder extends Seeder
         DB::table('users')->insert([
             'name'      => 'Qima',
             'email'     => 'qima@gmail.com',
-            'phone_no'     => '042789732',
+            'phone_no'  => '042789732',
             'bid_limit' => '5',
+            'is_admin'  => '0',
             'password'  => Hash::make('password'),
         ]);
     }
