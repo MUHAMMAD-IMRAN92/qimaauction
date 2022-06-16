@@ -116,7 +116,6 @@
                 },
 
                 {
-
                     "mRender": function(data, type, row) {
                         return '<td>' +
                             row.email + '</td>';
@@ -137,7 +136,7 @@
                     }
                 },
                 {
-
+            //   changes
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
