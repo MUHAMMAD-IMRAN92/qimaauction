@@ -64,6 +64,7 @@
                                                         <th>Email</th>
                                                         <th>Phone No</th>
                                                         <th>Bid Limit</th>
+                                                        <th>Paddle Number</th>
                                                         <th>Status</th>
                                                         <th>Action(s)</th>
                                                     </tr>
@@ -78,6 +79,7 @@
                                                         <th>Email</th>
                                                         <th>Phone No</th>
                                                         <th>Bid Limit</th>
+                                                        <th>Paddle Number</th>
                                                         <th>Status</th>
                                                         <th>Action(s)</th>
                                                     </tr>
@@ -140,6 +142,12 @@
                     "mRender": function(data, type, row) {
                         return '<td>' +
                             row.bid_limit + '</td>';
+                    }
+                },
+                {
+                    "mRender": function(data, type, row) {
+                        return '<td>' +
+                            row.paddle_number + '</td>';
                     }
                 },
                 {
