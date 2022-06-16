@@ -45,7 +45,7 @@ class AuctionController extends Controller
                     'rank' => $request->rank,
                     'start_price' => $request->start_price,
                     'reserve_price' => $request->reserve_price,
-                    'jury_score' => $request->jury_score,
+                    'packing_cost' => $request->packing_cost,
                 ]
              );    
              $auction_products = AuctionProduct::where('id',$request->auction_product_id)
@@ -63,7 +63,7 @@ class AuctionController extends Controller
                     'rank' => $request->rank,
                     'start_price' => $request->start_price,
                     'reserve_price' => $request->reserve_price,
-                    'jury_score' => $request->jury_score,
+                    'packing_cost' => $request->packing_cost,
                 ]
              );   
              $auction_products = AuctionProduct::where('id',$auctionproduct->id)
