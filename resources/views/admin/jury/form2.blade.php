@@ -505,6 +505,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <input type="hidden" name="jury_id" value="{{$juryId}}">
                                                     <input type="hidden" name="review_id" value="{{$sampleReview->id ?? null}}">
                                                     <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                                      @foreach ($alltablesamples as $samp)
+                                                            @if($samp->sampleId == $sentSampleId)
+                                                            <input type="hidden" name="sampleId" value="{{$samp->samples}}">
+                                                                    {{$samp->samples}}
+                                                                @endif
+                                                            @endforeach
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <h3 class="entity-text roast-bg">ROAST</h3>
