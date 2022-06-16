@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
+                                                        <input type="text" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
                                                         <label for="bid_limit">Bid Limit/lb</label>
                                                         @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
 
@@ -89,9 +89,16 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
+                                                        <input type="text" id="paddle_number" class="form-control"  name="paddle_number" value="{{$customer->paddle_number}}">
+                                                        <label for="paddle_number">Paddle Number</label>
+                                                        @error('paddle_number') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
                                                         <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
                                                             <option value="">Select Status</option>
-                                                            <option value="Verified"{{ $customer->status == 'Verified' ? 'selected' : '' }}>Verified</option>
+                                                            <option value="Verified"{{ $customer->status == 'Verified' ? 'selected' : ''}}>Verified</option>
                                                             <option value="Pending" {{ $customer->status == 'Pending' ? 'selected' : '' }}>Pending</option>
                                                             <option value="Blocked" {{ $customer->status == 'Blocked' ? 'selected' : '' }}>Blocked</option>
                                                           </select>
