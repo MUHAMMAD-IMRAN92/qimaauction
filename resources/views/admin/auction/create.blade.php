@@ -284,7 +284,11 @@
 //   $(document).ready(function(){
 //         CKEDITOR.replace('product_detail');
 //         });
-        $(document).ready(function (e) {
+
+
+
+//         });
+    $(document).ready(function (e) {
 
 
         $('#image').change(function(){

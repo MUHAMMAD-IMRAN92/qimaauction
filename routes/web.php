@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
 
 Route::get('/upcoming-auction', [App\Http\Controllers\HomeController::class, 'upcomingAuction'])->name('upcoming-auction');
 Auth::routes();
+Route::get('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('news');
+Route::get('/newsletterSave', [App\Http\Controllers\HomeController::class, 'newsletterpost'])->name('newsletter');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -148,6 +150,10 @@ Route::middleware(['auth'])->group(function () {
     //option CRUD
     Route::get('/auction/index', [App\Http\Controllers\AuctionController::class, 'index']);
     Route::get('/auction/allauction', [App\Http\Controllers\AuctionController::class, 'allauction']);
+    Route::get('/auction/products/{id}', [App\Http\Controllers\AuctionController::class, 'auctionProducts']);
+    Route::post('/auction/saveAuctionProduct', [App\Http\Controllers\AuctionController::class, 'saveAuctionProduct'])->name('saveAuctionProduct');
+    Route::post('/auction/getAuctionProduct', [App\Http\Controllers\AuctionController::class, 'getAuctionProduct'])->name('getAuctionProduct');
+    Route::delete('/auction/deleteAuctionProduct', [App\Http\Controllers\AuctionController::class, 'deleteAuctionProduct'])->name('deleteAuctionProduct');
     Route::get('/auction/create', [App\Http\Controllers\AuctionController::class, 'create']);
     Route::get('/auction/edit/{id}', [App\Http\Controllers\AuctionController::class, 'edit']);
     Route::post('/auction/update/', [App\Http\Controllers\AuctionController::class, 'update']);

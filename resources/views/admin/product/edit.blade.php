@@ -95,7 +95,7 @@
                                                             <label for="product-description">Product Description</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-category">Select Category</label>
                                                             <div class="form-group">
@@ -111,8 +111,8 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
@@ -128,7 +128,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
