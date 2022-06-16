@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
+                                                        <input type="text" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
                                                         <label for="bid_limit">Bid Limit/lb</label>
                                                         @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
 

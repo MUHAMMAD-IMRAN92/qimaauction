@@ -84,6 +84,13 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
+                                                        <input type="text" id="paddle_number" class="form-control"  name="paddle_number">
+                                                        <label for="paddle_number">Paddle Number</label>
+                                                        @error('paddle_number') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
                                                         <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
                                                             <option value="" selected>Select Status</option>
                                                             <option value="Verified">Verified</option>

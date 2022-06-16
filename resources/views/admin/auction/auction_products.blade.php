@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-3 custom_btn_align">
-                    <a class="btn btn-primary waves-effect waves-light" id="product">Create Auction Product<a>
+                    <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction Product<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
