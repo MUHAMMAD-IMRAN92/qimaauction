@@ -49,9 +49,10 @@ class CustomerController extends Controller
         $validator  =   $request->validate([
             'email'     => 'required|email|unique:users',
             'name'      => 'required',
-            'phone_no'  => 'required',
+            'phone_no'  => 'required|max:12',
             'password'  => 'required',
-            'bid_limit' => 'required',
+            'status'    =>  'required',
+            // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
         ]);
         $customer = new  User();
         $password               =   $request->password;
@@ -60,6 +61,7 @@ class CustomerController extends Controller
         $customer->phone_no     =   $request->phone_no;
         $customer->password     =   Hash::make($request->password);
         $customer->bid_limit    =   $request->bid_limit;
+        $customer->status       =   $request->status;
         $customer->save();
         $token = Str::random(64);
 
@@ -121,12 +123,21 @@ class CustomerController extends Controller
 
     public function update(Request $request)
     {
+        $validator  =   $request->validate([
+            'email'     => 'required|email',
+            'name'      => 'required',
+            'phone_no'  => 'required|max:12',
+            'password'  => 'required',
+            'status'    =>  'required',
+            // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
+        ]);
         $customer               =   User::find($request->id);
         $customer->name         =   $request->name;
         $customer->email        =   $request->email;
         $customer->phone_no     =   $request->phone_no;
         $customer->password     =   $request->password;
         $customer->bid_limit    =   $request->bid_limit;
+        $customer->status       =   $request->status;
         $customer->save();
         return redirect('/customer/index');
     }
