@@ -77,9 +77,20 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="bid_limit" class="form-control"  name="bid_limit" required>
+                                                        <input type="text" id="bid_limit" class="form-control"  name="bid_limit">
                                                         <label for="bid_limit">Bid Limit/lb</label>
-                                                        @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                        {{-- @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
+                                                            <option value="" selected>Select Status</option>
+                                                            <option value="Verified">Verified</option>
+                                                            <option value="Pending">Pending</option>
+                                                            <option value="Blocked">Blocked</option>
+                                                          </select>
+                                                        @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="margin-left: 39%">
@@ -107,6 +118,14 @@
         $("#phone").keypress(function(event) {
   return /\d/.test(String.fromCharCode(event.keyCode));
 });
+$("#bid_limit").on("input", function(evt) {
+   var self = $(this);
+   self.val(self.val().replace(/[^0-9\.]/g, ''));
+   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+   {
+     evt.preventDefault();
+   }
+ });
 });
 
     </script>

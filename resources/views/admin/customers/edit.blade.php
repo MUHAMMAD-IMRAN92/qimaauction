@@ -87,6 +87,17 @@
 
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
+                                                            <option value="">Select Status</option>
+                                                            <option value="Verified"{{ $customer->status == 'Verified' ? 'selected' : '' }}>Verified</option>
+                                                            <option value="Pending" {{ $customer->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                                            <option value="Blocked" {{ $customer->status == 'Blocked' ? 'selected' : '' }}>Blocked</option>
+                                                          </select>
+                                                        @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                     <button type="submit" class="btn btn-outline-warning mr-1 mb-1">Cancel</button>
@@ -111,7 +122,17 @@
         $("#phone").keypress(function(event) {
   return /\d/.test(String.fromCharCode(event.keyCode));
 });
+$("#bid_limit").on("input", function(evt) {
+   var self = $(this);
+   self.val(self.val().replace(/[^0-9\.]/g, ''));
+   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+   {
+     evt.preventDefault();
+   }
+ });
 });
+
+    </script>
 
     </script>
 @endsection

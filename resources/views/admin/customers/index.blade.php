@@ -64,6 +64,7 @@
                                                         <th>Email</th>
                                                         <th>Phone No</th>
                                                         <th>Bid Limit</th>
+                                                        <th>Status</th>
                                                         <th>Action(s)</th>
                                                     </tr>
                                                 </thead>
@@ -77,6 +78,7 @@
                                                         <th>Email</th>
                                                         <th>Phone No</th>
                                                         <th>Bid Limit</th>
+                                                        <th>Status</th>
                                                         <th>Action(s)</th>
                                                     </tr>
                                                 </tfoot>
@@ -138,6 +140,12 @@
                     "mRender": function(data, type, row) {
                         return '<td>' +
                             row.bid_limit + '</td>';
+                    }
+                },
+                {
+                    "mRender": function(data, type, row) {
+                        return '<td>' +
+                            row.status + '</td>';
                     }
                 },
 

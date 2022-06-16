@@ -142,6 +142,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jury/ajax_send_to_jury',  [App\Http\Controllers\JuryController::class, 'ajaxSendToJuryPost'])->name('ajax_send_to_jury');
     Route::post('/jury/send_to_jury',  [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
     Route::post('/jury/update_send_to_jury',  [App\Http\Controllers\JuryController::class, 'updateSentToJury'])->name('updateSentToJury');
+
+
+
     //option CRUD
     Route::get('/auction/index', [App\Http\Controllers\AuctionController::class, 'index']);
     Route::get('/auction/allauction', [App\Http\Controllers\AuctionController::class, 'allauction']);
@@ -171,7 +174,11 @@ Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'f
 Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::class, 'reviewedSamples']);
 Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
 Route::post('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
-Route::get('/review/review_detail/{sample?}/{productId?}/{juryId?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
+Route::get('/review/review_detail/{sample?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
+//CSV Routes
+Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewController::class, 'reviewDetailCsv'])->name('reviewdetail_csv');
+Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
+
 //Customer Reset Passwords Routes
 Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
