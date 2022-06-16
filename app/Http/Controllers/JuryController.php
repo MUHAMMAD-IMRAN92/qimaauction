@@ -25,7 +25,7 @@ class JuryController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.jury.index');
     }
     public function alljury(Request $request)
@@ -40,8 +40,11 @@ class JuryController extends Controller
         $juries = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-
+        
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
+        foreach($juries as $jury){
+            $jury->linkurl = encrypt($jury->id);
+        }
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $jury_count,
@@ -86,14 +89,14 @@ class JuryController extends Controller
         $jury->save();
         return redirect('/jury/index')->with('msg', 'jury Deleted Successfully');
     }
-    // public function edit(Request $request, $id)
-    // {
-    //     $jury = Jury::find(base64_decode($id));
-    //      $data=SentToJury::where('jury_id',base64_decode($id))->get();
-    //     return view('admin.jury.edit', [
-    //         'jury' =>  $jury,
-    //     ]);
-    // }
+    public function editjury(Request $request, $id)
+    {
+        $jury = Jury::find(base64_decode($id));
+         $data=SentToJury::where('jury_id',base64_decode($id))->get();
+        return view('admin.jury.edit', [
+            'jury' =>  $jury,
+        ]);
+    }
     public function edit(Request $request, $id)
     {
         $selectedjury = Jury::find(base64_decode($id));
@@ -104,7 +107,7 @@ class JuryController extends Controller
                                ->select('products.*','sample_sent_to_jury.*')
                               ->where('jury_id',base64_decode($id))
                               ->get();
-                             
+
          return view('admin.jury.edit_sent_to_jury', [
             'senttojury' =>  $senttojury,
             'juries' =>  $juries,
@@ -113,7 +116,7 @@ class JuryController extends Controller
             'auctions' => $auctions
         ]);
     }
-   
+
     public function update(Request $request)
     {
         $jury = Jury::find($request->id);
@@ -136,7 +139,7 @@ class JuryController extends Controller
             'products' => $products,
             'auctions' => $auctions
         ]);
-       
+
     }
     public function ajaxSendToJuryPost(Request $request)
     {
@@ -162,7 +165,7 @@ class JuryController extends Controller
             return response()->json(array("exists" => true));
     }
     public function sendToJuryPost(Request $request)
-    { 
+    {
         $request->validate([
             'juries' => 'required|array',
             'products' => 'required|array',
@@ -171,7 +174,7 @@ class JuryController extends Controller
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
-                  
+
                 $sampleSent=SentToJury::where('product_id',$product)->where('jury_id',$jury1)->where('samples',$request->samples[$key])->first();
                    Product::where('id',$product)->update([
                        'postion' =>  $request->postion[$key],
@@ -188,7 +191,7 @@ class JuryController extends Controller
                    $sampleSent->auction_id = $request->auction_id;
                    $sampleSent->temporary_link = $tempLink;
                    $sampleSent->samples = $request->samples[$key];
-                   $sampleSent->save();  
+                   $sampleSent->save();
                 }
                else
                {
@@ -200,8 +203,8 @@ class JuryController extends Controller
                    $sampleSent->auction_id = $request->auction_id;
                    $sampleSent->temporary_link = $tempLink;
                    $sampleSent->samples = $request->samples[$key];
-                   $sampleSent->save();  
-               }  
+                   $sampleSent->save();
+               }
             }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
@@ -223,7 +226,7 @@ class JuryController extends Controller
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
                     'sample'  => $request->samples[$key],
-                ]);      
+                ]);
                  if(isset($sampleSent))
                  {
                     $sampleSent->jury_id = $jury1;
@@ -232,7 +235,7 @@ class JuryController extends Controller
                     $sampleSent->auction_id = $request->auction_id;
                     $sampleSent->temporary_link = $tempLink;
                     $sampleSent->samples = $request->samples[$key];
-                    $sampleSent->save();  
+                    $sampleSent->save();
                  }
                 else
                 {
@@ -243,7 +246,7 @@ class JuryController extends Controller
                     $sampleSent->auction_id = $request->auction_id;
                     $sampleSent->temporary_link = $tempLink;
                     $sampleSent->samples = $request->samples[$key];
-                    $sampleSent->save();  
+                    $sampleSent->save();
                 }
             }
         }
@@ -277,8 +280,8 @@ class JuryController extends Controller
                    'juryName' => $juryName->name,
                    'juryId' => $juryId,
                ]);
-            
-          
+
+
         } else {
             return view('admin.404');
         }

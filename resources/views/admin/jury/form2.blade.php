@@ -12,7 +12,7 @@
     content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Review</title>
-    
+
     <link rel="apple-touch-icon" href="{{ asset('public/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -24,7 +24,7 @@
     <!-- END: Vendor CSS-->
     {{-- <link rel="stylesheet" href={{ asset('public/app-assets/vendors/css/bootstrap-tagsinput.css') }}> --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
+
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"> --}}
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/bootstrap.css') }}">
@@ -47,24 +47,24 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
-    
+
     <!-- plus a jQuery UI theme, here I use "flick" -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('public/app-assets/css/pips.css') }}">
     <script src="{{ asset('public/app-assets/js/pips.js') }}" defer></script>
-    
+
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
 <style type="text/css">
     body{
-        overflow-x: hidden; 
+        overflow-x: hidden;
         font-family:'Montserrat';
     }
     .bootstrap-touchspin .bootstrap-touchspin-injected {
     }
-    
+
     .tags-input-wrapper {
         background: transparent;
         padding: 10px;
@@ -72,7 +72,7 @@
         max-width: 300px;
         border: 1px solid #ccc
     }
-    
+
     .tags-input-wrapper input {
         border: none;
         background: transparent;
@@ -80,7 +80,7 @@
         width: 270px;
         margin-left: 8px;
     }
-    
+
     .tags-input-wrapper .tag {
         display: inline-block;
         background-color: #0e9ffa;
@@ -91,7 +91,7 @@
         margin-bottom: 5px;
         box-shadow: 0 5px 15px -2px rgba(250, 14, 126, .7)
     }
-    
+
     .tags-input-wrapper .tag a {
         margin: 0 7px 3px;
         display: inline-block;
@@ -100,15 +100,15 @@
     @media (max-width: @screen-xs) {
         body{font-size: 10px;}
     }
-    
+
     @media (max-width: @screen-sm) {
         body{font-size: 14px;}
     }
-    
-    
+
+
     h5{
         font-size: 1.4rem;
-    }  
+    }
     .w-70{
         width: 70% !important;
         height: 45px;
@@ -153,7 +153,7 @@
         position: absolute;
         width: 615px;
         height: 0px;
-        margin-left:22%; 
+        margin-left:22%;
         border: 1px solid #A4A3A3;
     }
     .dry-verticle{
@@ -163,7 +163,7 @@
         transform: rotate(-90deg);
         transform-origin: left 0;
     }
-    
+
     .dry{
         position: relative;
     }
@@ -423,9 +423,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
-            
+
         </div>
-        
+
         <div class="content-body">
             <section class="row flexbox-container">
                 <div class="col-lg-12 d-flex justify-content-center">
@@ -484,15 +484,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a>
                                                     </li>
                                                     <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                             <!--Breadcrumb Section-->
                                             </div>
                                             <!--Sample ID Section-->
-                                            
+
                                             </div>
-                                            
+
                                             <div class="col-lg-12">
                                                 <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
@@ -515,7 +515,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                         <div class="col-12">
                                                             <h3 class="entity-text roast-bg">ROAST</h3>
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="roastslider"><input type="hidden" name="roast" id="roast" value="50"></div>
@@ -527,15 +527,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             <h3 class="entity-text aroma-bg">AROMA</h3>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="col-lg-12">
                                                         <h5>DRY</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry" value="0"></div>
-                                                        
-                                                        
-                                                        
+
+
+
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <h5>CRUST</h5>
@@ -543,18 +543,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
-                                                    
-                                                    
-                                                    
+
+
+
                                                     <div class="col-lg-12">
                                                         <h5>BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
-                                                    
-                                                    
-                                                    
+
+
+
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
                                                     <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
                                                     <div class="row">
@@ -581,11 +581,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 class="entity_note">
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
-                                                    
+
                                                     {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
-                                                    
+
                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
@@ -598,7 +598,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 class="entity_note">
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
                                                     <div class="row">
@@ -612,7 +612,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 class="entity_note">
                                                             </div>
                                                         </div>
-                                                       
+
                                                     </div>
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
@@ -623,13 +623,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        
+
                                                                         <input type="radio"
                                                                         name="acidity_chk" value="H" class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>H</h5>
-                                                                        
+
                                                                     </label>
                                                                 </div>
                                                                 <div>
@@ -639,7 +639,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>M</h5>
-                                                                        
+
                                                                     </label>
                                                                 </div>
                                                                 <div>
@@ -650,7 +650,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
-                                                                        
+
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -672,7 +672,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        
+
                                                                         <input type="radio" class="mouthfeel_H"
                                                                         value="H"
                                                                         name="fm_chk">
@@ -782,11 +782,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 @endif
                                                                 @if($samp->sampleId == $sentSampleId)
                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}">  --}}
-                                                                    <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
+                                                                    <a class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})">
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @else
-                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})"> 
+                                                                <a class="btn btn-secondary pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="javascript:setSampleToGo({{$samp->sampleId}})">
                                                                     {{$samp->samples}}
                                                                 </a>
                                                                 @endif
@@ -801,7 +801,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                     @endif
 
                                                     <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT TABLE</a>
-                                
+
                                                     <button type="submit" value="1" name="sample_submit" class="submit-form-btn">NEXT</button>
                                                  </div>
                                                     <div id="myModal" class="modal" tabindex="-1">
@@ -813,7 +813,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <p>You are about to submit results for @foreach ($alltablesamples as $samp)
-                                                
+
                                                                         @if($samp->sampleTable == $table)
                                                                            &nbsp<b>{{$samp->samples}}</b>,
                                                                         @endif
@@ -840,7 +840,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             </div>
         </div>
     </div>
-    
+
     <!-- END: Content-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
@@ -864,9 +864,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         }
         var subtotal=0;
         //  var a=0,b=0,c=0,d=0;
-        
+
         $('document').ready(function() {
-            
+
             $("#select").select2(
             {
                 tags:true,
@@ -874,74 +874,74 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             });
             (function() {
                 "use strict"
-                
+
                 $('input[type=range]').on('input', function () {});
-                
-                
-                
+
+
+
                 // Plugin Constructor
                 var TagsInput = function(opts) {
                     this.options = Object.assign(TagsInput.defaults, opts);
                     this.init();
                 }
-                
+
                 // Initialize the plugin
                 TagsInput.prototype.init = function(opts) {
                     this.options = opts ? Object.assign(this.options, opts) : this.options;
-                    
+
                     if (this.initialized)
                     this.destroy();
-                    
+
                     if (!(this.orignal_input = document.getElementById(this.options.selector))) {
                         console.error("tags-input couldn't find an element with the specified ID");
                         return this;
                     }
-                    
+
                     this.arr = [];
                     this.wrapper = document.createElement('div');
                     this.input = document.createElement('input');
                     init(this);
                     initEvents(this);
-                    
+
                     this.initialized = true;
                     return this;
                 }
-                
+
                 // Add Tags
                 TagsInput.prototype.addTag = function(string) {
-                    
+
                     if (this.anyErrors(string))
                     return;
-                    
+
                     this.arr.push(string);
                     var tagInput = this;
-                    
+
                     var tag = document.createElement('span');
                     tag.className = this.options.tagClass;
                     tag.innerText = string;
-                    
+
                     var closeIcon = document.createElement('a');
                     closeIcon.innerHTML = '&times;';
-                    
+
                     // delete the tag when icon is clicked
                     closeIcon.addEventListener('click', function(e) {
                         e.preventDefault();
                         var tag = this.parentNode;
-                        
+
                         for (var i = 0; i < tagInput.wrapper.childNodes.length; i++) {
                             if (tagInput.wrapper.childNodes[i] == tag)
                             tagInput.deleteTag(tag, i);
                         }
                     })
-                    
-                    
+
+
                     tag.appendChild(closeIcon);
                     this.wrapper.insertBefore(tag, this.input);
                     this.orignal_input.value = this.arr.join(',');
-                    
+
                     return this;
                 }
-                
+
                 // Delete Tags
                 TagsInput.prototype.deleteTag = function(tag, i) {
                     tag.remove();
@@ -949,56 +949,56 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     this.orignal_input.value = this.arr.join(',');
                     return this;
                 }
-                
+
                 // Make sure input string have no error with the plugin
                 TagsInput.prototype.anyErrors = function(string) {
                     if (this.options.max != null && this.arr.length >= this.options.max) {
                         console.log('max tags limit reached');
                         return true;
                     }
-                    
+
                     if (!this.options.duplicate && this.arr.indexOf(string) != -1) {
                         console.log('duplicate found " ' + string + ' " ')
                         return true;
                     }
-                    
+
                     return false;
                 }
-                
-                // Add tags programmatically 
+
+                // Add tags programmatically
                 TagsInput.prototype.addData = function(array) {
                     var plugin = this;
-                    
+
                     array.forEach(function(string) {
                         plugin.addTag(string);
                     })
                     return this;
                 }
-                
+
                 // Get the Input String
                 TagsInput.prototype.getInputString = function() {
                     return this.arr.join(',');
                 }
-                
-                
+
+
                 // destroy the plugin
                 TagsInput.prototype.destroy = function() {
                     this.orignal_input.removeAttribute('hidden');
-                    
+
                     delete this.orignal_input;
                     var self = this;
-                    
+
                     Object.keys(this).forEach(function(key) {
                         if (self[key] instanceof HTMLElement)
                         self[key].remove();
-                        
+
                         if (key != 'options')
                         delete self[key];
                     });
-                    
+
                     this.initialized = false;
                 }
-                
+
                 // Private function to initialize the tag input plugin
                 function init(tags) {
                     tags.wrapper.append(tags.input);
@@ -1006,28 +1006,28 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     tags.orignal_input.setAttribute('hidden', 'true');
                     tags.orignal_input.parentNode.insertBefore(tags.wrapper, tags.orignal_input);
                 }
-                
+
                 //---------- initialize the Events--------
                 function initEvents(tags) {
                     tags.wrapper.addEventListener('click', function() {
                         tags.input.focus();
                     });
-                    
-                    
+
+
                     tags.input.addEventListener('keydown', function(e) {
                         var str = tags.input.value.trim();
-                        
+
                         if (!!(~[9, 13, 188].indexOf(e.keyCode))) {
                             e.preventDefault();
                             tags.input.value = "";
                             if (str != "")
                             tags.addTag(str);
                         }
-                        
+
                     });
                 }
-                
-                
+
+
                 // ------Set All the Default Values------------
                 TagsInput.defaults = {
                     selector: '',
@@ -1036,37 +1036,37 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     max: null,
                     duplicate: false
                 }
-                
+
                 window.TagsInput = TagsInput;
-                
+
             })();
-            
+
             // var tagInput1 = new TagsInput({
             //     selector: 'tag-input1',
             //     duplicate: false,
             //     max: 10
             // });
             // tagInput1.addData([])
-            
+
             $('.uniformity').on('click', function() {
                 $('#uniformity').html($('.uniformity:checked').length * 2);
                 $('#uniformityvalue').val($('.uniformity:checked').length * 2);
                 total().trigger();
             });
             $('.cleancup').on('click', function() {
-                
+
                 $('#cleancup').html($('.cleancup:checked').length * 2);
                 $('#cleancupvalue').val($('.cleancup:checked').length * 2);
                 total().trigger();
             });
             $('.sweetness').on('click', function() {
-                
+
                 $('#sweetness').html($('.sweetness:checked').length * 2);
                 $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
                 total().trigger();
             });
             $('#defect1').on('change', function() {
-                
+
                 var defect1 = $(this).val();
                 var defect2 = $('#defect2').val();
                 $('#defect').html(defect1 * defect2);
@@ -1080,7 +1080,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 $('#defectvalue').val(defect1 * defect2);
                 total().trigger();
             });
-            
+
             function total() {
                 $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
                 '#sweetness').html()) -
@@ -1096,15 +1096,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             })
         });
     </script>
-    
+
     <!-- Range slider Start -->
     <style class="INLINE_PEN_STYLESHEET_ID">
         .range-slider {
             width: clamp(250px, 80vw, 1250px) !important;
             min-width: 250px;
         }
-        
-        
+
+
         .range-slider.grad {
             --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
             --progress-flll-shadow: var(--progress-shadow);
@@ -1114,16 +1114,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
             0 0 0 99px var(--primary-color) inset;
         }
-        
+
         .range-slider.grad input:hover {
             --thumb-transform: scale(1.2);
         }
-        
+
         .range-slider.grad input:active {
             --thumb-shadow: inherit;
             --thumb-transform: scale(1);
         }
-        
+
         .range-slider.flat {
             --thumb-size: 25px;
             --track-height: calc(var(--thumb-size) / 3);
@@ -1134,7 +1134,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             0 0 0 99px white inset;
             --thumb-shadow-active: 0 0 0 13px var(--primary-color) inset;
         }
-        
+
         .range-slider.overlay {
             --primary-color: #d6e9ff;
             --track-height: 50px;
@@ -1154,23 +1154,23 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             --show-min-max: none;
             color: #d1af69;
         }
-        
+
         .range-slider.overlay input:hover {
             --thumb-shadow: calc(25px - (50px * var(--is-left-most))) 0 0 -15px #d1af69 inset;
         }
-        
+
         .range-slider.overlay input:active {
             --thumb-color: inherit;
         }
-        
+
         .range-slider.overlay .range-slider__values {
             width: calc(100% - 50% / (var(--max) - var(--min)));
         }
-        
+
         .custom_slider {
             padding: 2rem 0.4rem;
         }
-        
+
         .range-slider {
             --primary-color: #5D5D5D;
             --value-offset-y: var(--ticks-gap);
@@ -1230,7 +1230,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             position: relative;
             z-index: 1;
         }
-        
+
         .user_name{
             padding: 20px 0;
             width: 100%;
@@ -1297,11 +1297,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             height: 50px;
             border: 1px solid #5D5D5D;
         }
-        
+
         .range-slider[data-ticks-position=top] {
             --flip-y: 1;
         }
-        
+
         .range-slider::before,
         .range-slider::after {
             --offset: calc(var(--thumb-size) / 2);
@@ -1315,20 +1315,20 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             transform: translateX(calc(var(--min-max-x-offset) * var(--before, -1) * -1)) scale(var(--at-edge));
             pointer-events: none;
         }
-        
+
         .range-slider::before {
             --before: 1;
             --at-edge: var(--thumb-close-to-min);
             counter-reset: x var(--min);
             left: var(--offset);
         }
-        
+
         .range-slider::after {
             --at-edge: var(--thumb-close-to-max);
             counter-reset: x var(--max);
             right: var(--offset);
         }
-        
+
         .range-slider__values {
             position: relative;
             top: 50%;
@@ -1339,7 +1339,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             margin: 0 auto;
             z-index: 5;
         }
-        
+
         .range-slider__values::after {
             content: "";
             width: 100%;
@@ -1347,7 +1347,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             height: 0;
             background: red;
         }
-        
+
         .range-slider__progress {
             --start-end: calc(var(--thumb-size) / 2);
             --clip-end: calc(100% - (var(--cb)) * 1%);
@@ -1363,7 +1363,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             z-index: -1;
             border-radius: var(--progress-radius);
         }
-        
+
         .range-slider__progress::before {
             content: "";
             position: absolute;
@@ -1378,7 +1378,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             z-index: 1;
             border-radius: inherit;
         }
-        
+
         .range-slider__progress::after {
             content: "";
             position: absolute;
@@ -1390,7 +1390,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             pointer-events: none;
             border-radius: inherit;
         }
-        
+
         .range-slider>input {
             -webkit-appearance: none;
             width: 100%;
@@ -1404,13 +1404,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             outline: none;
             background: none;
             height: 21px;
-            
+
         }
-        
+
         .range-slider>input:not(:only-of-type) {
             pointer-events: none;
         }
-        
+
         .range-slider>input::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -1425,7 +1425,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             -webkit-transition: 0.1s;
             transition: 0.1s;
         }
-        
+
         .range-slider>input::-moz-range-thumb {
             -moz-appearance: none;
             appearance: none;
@@ -1440,7 +1440,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             -moz-transition: 0.1s;
             transition: 0.1s;
         }
-        
+
         .range-slider>input::-ms-thumb {
             appearance: none;
             height: var(--thumb-size);
@@ -1454,58 +1454,58 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             -ms-transition: 0.1s;
             transition: 0.1s;
         }
-        
+
         .range-slider>input:hover {
             --thumb-shadow: var(--thumb-shadow-hover);
         }
-        
+
         .range-slider>input:hover+output {
             --value-background: var(--value-background-hover);
             --y-offset: -5px;
             color: var(--value-active-color);
             box-shadow: 0 0 0 3px var(--value-background);
         }
-        
+
         .range-slider>input:active {
             --thumb-shadow: var(--thumb-shadow-active);
             cursor: -webkit-grabbing;
             cursor: grabbing;
             z-index: 2;
         }
-        
+
         .range-slider>input:active+output {
             transition: 0s;
         }
-        
+
         .range-slider>input:nth-of-type(1) {
             --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
         }
-        
+
         .range-slider>input:nth-of-type(1)+output {
             --value: var(--value-a);
             --x-offset: calc(var(--completed-a) * -1%);
         }
-        
+
         .range-slider>input:nth-of-type(1)+output:not(:only-of-type) {
             --flip: calc(var(--thumbs-too-close) * -1);
         }
-        
+
         .range-slider>input:nth-of-type(1)+output::after {
             content: var(--prefix, "") var(--text-value-a) var(--suffix, "");
         }
-        
+
         .range-slider>input:nth-of-type(2) {
             --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
         }
-        
+
         .range-slider>input:nth-of-type(2)+output {
             --value: var(--value-b);
         }
-        
+
         .range-slider>input:only-of-type~.range-slider__progress {
             --clip-start: 0;
         }
-        
+
         .range-slider>input+output {
             --flip: -1;
             --x-offset: calc(var(--completed-b) * -1%);
@@ -1520,16 +1520,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             transform: translate(var(--x-offset), calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
             transition: all 0.12s ease-out, left 0s;
         }
-        
+
         .range-slider>input+output::after {
             content: var(--prefix, "") var(--text-value-b) var(--suffix, "");
             font: var(--value-font);
         }
-        
+
         .select2.select2-container.select2-container--default {
             width: 100% !important;
         }
-        
+
         body {
             height: 100vh;
             display: grid;
@@ -1538,14 +1538,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             gap: 10%;
             padding: 0;
         }
-        
+
         @media screen and (max-width: 500px) {
             body {
                 padding-top: 2em;
                 gap: 8%;
             }
         }
-        
+
         a {
             /* position: fixed;
             top: 1em;
@@ -1553,25 +1553,25 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             display: inline-block;
             height: 2em;
         }
-        
+
         @media screen and (max-width: 500px) {
             a {
                 position: static;
                 order: -1;
             }
         }
-        
+
         a>img {
             display: inherit;
             height: 100%;
         }
-        
+
         body>.range-slider,
         label[dir=rtl] .range-slider {
             width: clamp(300px, 50vw, 800px);
             min-width: 200px;
         }
-        
+
     </style>
     <!-- Range slider end -->
     <script>
@@ -1582,7 +1582,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     // var b = $('#aroma_crust').val();
                     // var d = $('#aroma_break').val();
                     var c = $('#clean_up').val();
-                    
+
                     var e = $('#sweetness').val();
                     var f = $('#acidity').val();
                     var g = $('#mouth_feel').val();
@@ -1590,9 +1590,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     var i = $('#balance').val();
                     var j = $('#overall').val();
                     var k = $('#after_taste').val();
-                    
+
                     subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                    
+
                     return subtotal;
                 }
             function calcTotal(){
@@ -1603,7 +1603,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     //     step = 0.5;
                     // }
                     // $(this).attr('step', step);
-                    subtotal=subtotaldata(); 
+                    subtotal=subtotaldata();
                     var first = $('.score_first_number').val();
                     var second = $('.score_second_number').val();
                     if(second && first)
@@ -1630,8 +1630,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             var total = 36 + raw;
                         }
                         $('#total_score').val(total);
-                        $('.totalScore').html(total); 
-                    }     
+                        $('.totalScore').html(total);
+                    }
                     $(this).trigger('change');
                 }
         $(document).ready(function() {
@@ -1643,13 +1643,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     var defect=first * second * 4;
                     $('#defect').val(defect);
                     $('.multiply4').html(defect);
-                    subtotal=subtotaldata(); 
+                    subtotal=subtotaldata();
                     var raw = subtotal - defect;
                     var total = 36 + raw;
-                    
+
                     $('#total_score').val(total);
                     $('.totalScore').html(total);
-                    
+
                     //   $("input").css("background-color", "pink");
                 });
             $('.js-example-basic-multiple').select2();
@@ -1661,7 +1661,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
             }).slider("float", {
                 rest: "label"}).on("slidechange", function( e, ui ) {
                 $(ui.handle).parent().find('input').val(ui.value);
-                
+
             });
             $(".aromaslider")
             .slider({
@@ -1674,7 +1674,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 step: 1,
             }).on("slidechange", function( e, ui ) {
                 $(ui.handle).parent().find('input').val(ui.value);
-                
+
             });;
             $(".customslider")
             .slider({
@@ -1722,14 +1722,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 calcTotal();
 
                 // $('input[type=range]').first().trigger('input');
-                
+
             })
             .slider("float",{labels: hanzi});
             $(".customslider")
             .slider( "value", 4 )
             .slider("pips", "refresh");
             // $('.customslider .ui-slider-handle').draggable();
-            
+
             calcTotal();
             $('.scrollable').css('width',window.innerWidth-100);
             function parseReview(inputvalue){
@@ -1763,9 +1763,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                 inputvalue = 7.5;
                 return inputvalue;
             }
-            if(chkhidden != 0)          
+            if(chkhidden != 0)
             {
-             
+
                 $(".roastslider")
                     .slider({
                         value: {{isset($sampleReview->roast) ? $sampleReview->roast:50}}
@@ -1788,7 +1788,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         $('#defect_note').val('{{$sampleReview->defects_note ?? ''}}');
                         $(".cleancup").slider({value: parseReview({{$sampleReview->clean_up ?? '4'}})})
                         $('#cleanup_note').val('{{$sampleReview->clean_sweet_note ?? ''}}');
-                        
+
                         $(".sweetness").slider({value: parseReview({{$sampleReview->sweetness ?? '4'}})})
                         $('#sweetness_note').val('{{$sampleReview->sweetness_note ?? ''}}');
 
@@ -1820,10 +1820,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             @endif
                         }
                     }
-             
-           
-                        
-        
+
+
+
+
         });
         function setSampleToGo(valz){
                 $('#to_go_sample').val(valz);

@@ -95,7 +95,7 @@
                                                             <label for="product-description">Product Description</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-category">Select Category</label>
                                                             <div class="form-group">
@@ -111,8 +111,8 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
@@ -128,7 +128,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
@@ -231,13 +231,13 @@
                                                                 name="image[]" multiple>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <span>Select Image:</span> <br>
                                                             <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                             alt="" style="max-height: 100px;max-width: 100px;">
-                                                            
+
                                                             @foreach ($product->images as $img)
                                                                 <img width="100px" height="100px"
                                                                     src="{{ url('storage/app/public/product/' . $img->image_name) }}"
@@ -246,7 +246,7 @@
                                                                     href="{{ url('/product/delete_product_image/' . $img->id) }}">
                                                                     <i class="fa fa-times cross" aria-hidden="true"></i></a>
                                                             @endforeach
-                                                          
+
                                                         </div>
                                                     </div>
 
@@ -271,18 +271,18 @@
         </div>
     </div>
     <script>
-        $(document).ready(function (e) {        
+        $(document).ready(function (e) {
                   $('#image').change(function(){
-                          
+
                   let reader = new FileReader();
 
-                  reader.onload = (e) => { 
+                  reader.onload = (e) => {
 
-                      $('#preview-image-before-upload').attr('src', e.target.result); 
+                      $('#preview-image-before-upload').attr('src', e.target.result);
                   }
 
-                  reader.readAsDataURL(this.files[0]); 
-                  
+                  reader.readAsDataURL(this.files[0]);
+
                   });
       });
   </script>

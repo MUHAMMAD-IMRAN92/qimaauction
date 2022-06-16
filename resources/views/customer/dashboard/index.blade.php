@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best of Yemen Auction 2022</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('public/css/style.css')}}">
+
+    {{-- <link rel="stylesheet" href="style.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <link rel="icon" type="image/jpeg" href="favicon.jpeg">
+        <link rel="icon" type="image/jpeg" href="{{asset('public/images/favicon.jpeg')}}">
 
     <!-- Fonts Start  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +26,10 @@
 
 <body>
     <div class="container-fluid container-all p-0" >
-        @if (session('success'))
-        <div class="col-md-12 alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
         <div style="position: relative;">
             <div class="overlays"></div>
-            <video autoplay loop muted playsinline src="./videos/boy - teaser5 - clean.mp4.mp4"
+
+            <video autoplay loop muted playsinline src="{{ asset('public/videos/boy - teaser5 - clean.mp4.mp4') }}"
             style="width: 100%; height: 100vh; object-fit: cover;">
         </video>
             <div class="land-overlay" style="position: absolute;
@@ -42,35 +40,35 @@
                 <div style="position: relative; text-align: center;display: table;width: 100%;height: 100vh;">
                     <div style="display: table-cell;vertical-align: middle;">
                         <div class="main-img-logo my-3">
-                            <img style="width: 270px;" src="./images/LOGO_0002_Vector-Smart-Object 1.png" alt="">
+                            <img style="width: 270px;" src="{{ asset('public/images/LOGO_0002_Vector-Smart-Object 1.png') }}" alt="">
                         </div>
                         <div class="video-text-1 my-3">
                             <span class="real-timer"></span>
                         </div>
                         <div class="font-fam video-text-2" style="color: white;">
                             <p style="">AUGUST 9<sup>th</sup></p>
-                            
+
                         </div>
                         <div class="my-3 banner-btn">
-                            <button type="button" style="border-color:#fff !important;background-color: unset;" class="btn btn-primary banner-btns mb-1" href="https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/">Purchase Sample Set</button>
-                            <button type="button" style="border-color:#fff !important;background-color: unset;" class="btn btn-primary banner-btns mb-1" href="https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/">Register for Auction</button>
+                            <button type="button" style="border-color:#fff !important;background-color: unset;" class="btn btn-primary banner-btns mb-1"  OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">Purchase Sample Set</button>
+                            <button type="button" style="border-color:#fff !important;background-color: unset;" class="btn btn-primary banner-btns mb-1" OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">Register for Auction</button>
                         </div>
                     </div>
                 </div>
-            </div>  
-        </div>      
-        
+            </div>
+        </div>
+
         <!-- <div class="overlay land-overlay">
 
-            
+
             <div class="video-text-1">
                 <span class="real-timer"></span>
             </div>
             <div class="video-text-2">
                 <p>AUGUST 9<sup>th</sup><br>
-                    
+
                 </p>
-                
+
             </div>
         </div> -->
     </div>
@@ -81,7 +79,7 @@
                     <a href="https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/" type="button" class="btn btn-outline-light">BUY SAMPLE SET</a>
                 </div> -->
                 <div class="col-lg-12 section-2 text-center pt-3 pb-3">
-                    <img src="./images/LOGO_0001_Vector-Smart-Object 1.png" alt="">
+                    <img src="{{ asset('public/images/LOGO_0001_Vector-Smart-Object 1.png')}}" alt="">
                 </div>
                 <div class="col-lg-8 section-2-text pt-3 pb-3" style="margin:auto">
                     <p class="text-center section-2-custom-text">
@@ -93,13 +91,13 @@
                 <div class="col-lg-12 text-center pt-2 section-2-logos">
                     <!-- <div class="row"> -->
                     <!-- <div class="col-lg-12 text-center"> -->
-                    <img class="mr-2" src="./images/LOGO_0000_Vector-Smart-Object 1.png" alt="">
-                    <img class="ml-2" src="./images/LOGO_0005_Vector-Smart-Object 1.png" alt="">
+                    <img class="mr-2" src="{{ asset('public/images/LOGO_0000_Vector-Smart-Object 1.png')}}" alt="">
+                    <img class="ml-2" src="{{ asset('public/images/LOGO_0005_Vector-Smart-Object 1.png')}}" alt="">
                     <!-- </div> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-12 text-center pt-3 section-2-logos">
-                    <img src="./images/LOGO_0004_Vector-Smart-Object 1.png" alt="">
+                    <img src="{{asset('public/images/LOGO_0004_Vector-Smart-Object 1.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -132,7 +130,7 @@
                     </p>
                 </div>
                 <div class="col-lg-12 section-3-img text-center">
-                    <img src="./images/foundation 1.png" alt="">
+                    <img src="{{asset('public/images/foundation 1.png')}}" alt="">
                 </div>
                 <div class="col-lg-12 pb-4 text-center">
                     <a type="button" class="btn btn-outline-dark" href="https://qimafoundation.org/">FIND OUT MORE</a>
@@ -152,7 +150,7 @@
             <div class="row" style="margin: 0 auto;">
                 <div class="col-lg-6 col-md-6 card-display">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="./images/image 19.png" alt="Card image cap">
+                        <img class="card-img-top" src="{{asset('public/images/image 19.png')}}" alt="Card image cap">
                         <div class="card-body p-2">
                             <div>
                                 <p>21/05/2022</p>
@@ -169,7 +167,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 card-display-2">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="./images/image 20.png" alt="Card image cap">
+                        <img class="card-img-top" src="{{asset('public/images/image 20.png')}}" alt="Card image cap">
                         <div class="card-body p-2">
                             <div>
                                 <p>21/05/2022</p>
@@ -193,7 +191,7 @@
             <!-- <div class=""> -->
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                    <img src="{{asset('public/images/LOGO_0003_Vector-Smart-Object 1.png')}}" alt="">
                 </div>
                 <div class="col-lg-12 text-center section-4-text-1">
                     <p class="time real-timer m-0"></p>
@@ -249,27 +247,23 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('newsletter') }}" id="newsletter" method="get">
-                        @csrf
-                        <div class="row">
-                           
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" placeholder="Enter Your Name" class="form-control">
+                                <input type="text" placeholder="Enter Your Name" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="text" name="email" placeholder="Enter Your Email" class="form-control">
+                                <input type="text" placeholder="Enter Your Email" class="form-control">
                             </div>
                         </div>
                     </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" onclick="form_submit()"  name="table_submit"  class="btn btn-dark">Submit</button>
+                  <button type="button" class="btn btn-dark">Submit</button>
                   <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                 </div>
               </div>
@@ -295,22 +289,19 @@
 
 
     <script>
-          function form_submit() {
-                    document.getElementById("newsletter").submit();
-                }  
         // Set the date we're counting down to
         var countDownDate = new Date("Aug 9, 2022 00:00:00").getTime();
-        
+
         // Update the count down every 1 second
         var x = setInterval(function() {
             // debugger
-        
+
           // Get today's date and time
           var now = new Date().getTime();
-            
+
           // Find the distance between now and the count down date
           var distance = countDownDate - now;
-            
+
           // Time calculations for days, hours, minutes and seconds
           var days = Math.floor(distance / (1000 * 60 * 60 * 24));
           var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -333,8 +324,8 @@
           + minutes + ":" + seconds);
         //   document.getElementsByClassName("real-timer").innerHTML = days + ":" + hours + ":"
         //   + minutes + ":" + seconds + ":";
-            
-          // If the count down is over, write some text 
+
+          // If the count down is over, write some text
         //   if (distance < 0) {
         //     clearInterval(x);
         //     document.getElementById("demo").innerHTML = "EXPIRED";

@@ -16,6 +16,22 @@ class Product extends Model
    {
        return $this->hasOne(Origin::class ,'id' , 'origin_id');
    }
+   public function village()
+   {
+       return $this->hasOne(Village::class ,'id' , 'village_id');
+   }
+   public function reviews()
+   {
+       return $this->hasOne(Review::class,'product_id','id');
+   }
+   public function region()
+   {
+       return $this->hasOne(Region::class ,'id' , 'region_id');
+   }
+   public function governorate()
+   {
+       return $this->hasOne(Governorate::class ,'id' , 'governorate_id');
+   }
    public function flavor()
    {
        return $this->hasOne(Flavour::class ,'id' , 'flavour_id');
@@ -23,5 +39,9 @@ class Product extends Model
    public function images()
    {
        return $this->hasMany(Image::class, 'product_id' ,'id' );
+   }
+   public function auctionProducts()
+   {
+       return $this->belongsTo(AuctionProduct::class);
    }
 }

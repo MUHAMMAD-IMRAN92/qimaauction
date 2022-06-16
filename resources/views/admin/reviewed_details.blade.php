@@ -34,15 +34,10 @@
     table.review-table.table-bordered th, .table-bordered td {
      border: 1px solid #eacf99;
     }
-    
-    table.review-table tbody tr td,table.review-table tbody tr th {
-      
-    /* display: inline-flex;
-    flex-direction: column;
-    flex-wrap: wrap; */
-   
-    /* width: 7%; */
-   }
+    .waves-light{
+        border-radius: 0 !important;
+    }
+
    table.review-table tr td:nth-child(odd), table.review-table tr th:nth-child(odd) {
     background: rgba(34, 41, 47, 0.05);
 }
@@ -51,17 +46,34 @@
     /* padding: 15.5px !important; */
 }
 
-tbody tr th{
-    padding: 15.5px !important;
+.table-bordered td,.table-bordered th{
+    font-size: 14px;
+    padding: 13.3px;
+    min-height: 46px;
 }
+.review-button
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* tbody tr th{
+    padding: 15.5px !important;
+} */
 </style>
+{{-- @dd($sampleID); --}}
 <div class="app-content content">
-  
+
     <div class="content-wrapper">
-      
         <div class="content-body" style="margin-top: -10%,margin-left:-7%">
             <!-- maintenance -->
-            <h1>Review Detail</h1>
+            <div class="review-button">
+                <h1>Review Detail</h1>
+                <a href="{{route('reviewdetail_csv',$sampleID)}}" target="_blank" id="export" class="btn btn-success float-right m-2" onclick="exportTasks(event.target);">Export</a>
+            </div>
+
+
             {{-- <td>
                 <div class="row" style="border: 1px solid red;">
                <div class="col-lg-6"><b>Aroma</b></div>
@@ -75,17 +87,17 @@ tbody tr th{
                             <div class="card-body text-center">
                                 <div class="" style="overflow-x:auto;">
                                     <table class="table table-responsive table-bordered mb-0 review-table"
-                                        style="background-color: rgb(255, 255, 255)">                                   
+                                        style="background-color: rgb(255, 255, 255) ">
                                         <tbody>
                                         <tr>
                                             {{-- <td style="margin-top: 6px;"><b></b></td> --}}
                                             <th>Jury</th>
                                             <th>Total</th>
-                                            <th>Product Title</th>       
+                                            <th>Product Title</th>
                                             <th>Sample</th>
                                             <th>Aroma Dry</th>
                                             <th>Aroma Crust</th>
-                                            <th>Aroma Break</th> 
+                                            <th>Aroma Break</th>
                                             {{-- <th>Aroma Note</th> --}}
                                             <th>CleanUp</th>
                                             <th>Clean Sweet Note</th>
@@ -101,16 +113,16 @@ tbody tr th{
                                             <th>Balance Note</th>
                                             <th>Overall</th>
                                             <th>Overall Note</th>
-                                            <th>Roast</th>                 
+                                            <th>Roast</th>
                                             <th>Defect</th>
-                                            <th>Defect Note</th>  
+                                            <th>Defect Note</th>
                                         </tr>
                                             @foreach ($data as $samp)
                                             <tr>
                                                 @foreach ($samp as $value => $sample)
                                                 @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note")
                                                  <td class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
-                                                    <i class="fas fa-info-circle fa-3x" style="font-size: 20px;"></i>
+                                                    <i class="fas fa-info-circle fa-3x" style="font-size: 14px;"></i>
                                                 </td>
                                                  @else
                                                 <td>{{ $sample }}</td>
@@ -132,3 +144,10 @@ tbody tr th{
     </div>
 </div>
 @endsection
+<script>
+    function exportTasks(_this) {
+       let _url =`{{ route('reviewdetail_csv',$sampleID)}}`;
+       window.location.href = _url;
+    //    alert(_url);
+    }
+ </script>

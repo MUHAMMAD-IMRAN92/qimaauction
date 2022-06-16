@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         <div class="content-body">
-         
+
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -66,8 +66,8 @@
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                     </div>
-                                                </div> 
-                                                {{-- 
+                                                </div>
+                                                {{--
                                                     <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Product</label>
@@ -81,7 +81,7 @@
                                                                 @endforeach
 
                                                             </select>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -98,7 +98,7 @@
                                                                 @endforeach
 
                                                             </select>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,7 +115,7 @@
                                                                 @endforeach
 
                                                             </select>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +137,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="farm" class="form-control @error('farm') is-invalid @enderror"  name="farm">
@@ -148,22 +148,20 @@
                                                     </div>
                                                 </div>
                                             --}}
-                                               
+
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                        <div class="row">
-                                                        <div class="col-lg-10">
+                                                        <div class="col-md-6 col-6">
                                                             <input type="text" class="form-control pickadate" name="startDate" placeholder="select Start Date"/>
                                                         </div>
-                                                        <div class="col-lg-2" style="margin-left: -30px">
+                                                        <div class="col-md-6 col-6">
                                                             <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time" />
                                                         </div>
                                                        </div>
-                                                       <input type="hidden" name="">
-                                                       <label for="date">Start Date & Time</label> 
                                                     </div>
                                                 </div>
-                                                
+
                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <div class="row">
@@ -175,9 +173,9 @@
                                                         </div>
                                                         </div>
                                                         <input type="hidden" name="">
-                                                        <label for="date">End Date & Time</label>    
+                                                        <label for="date">End Date & Time</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="start_bid_price" class="form-control @error('start_bid_price') is-invalid @enderror"
@@ -188,7 +186,7 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="increment_bid_price" class="form-control @error('increment_bid_price') is-invalid @enderror"
@@ -210,7 +208,7 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
                                                     </div>
-                                                </div>   
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight">
@@ -261,8 +259,8 @@
                                                         <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                             alt="" style="max-height: 100px;max-width: 100px;">
                                                     </div>
-                                                </div> 
-                                                   
+                                                </div>
+
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                     {{-- <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button> --}}
@@ -281,33 +279,37 @@
         </div>
     </div>
 </div>
-   
-<script> 
+
+<script>
 //   $(document).ready(function(){
 //         CKEDITOR.replace('product_detail');
-//         }); 
-        $(document).ready(function (e) {
-        
-        
+//         });
+
+
+
+//         });
+    $(document).ready(function (e) {
+
+
         $('#image').change(function(){
-                
+
         let reader = new FileReader();
 
-        reader.onload = (e) => { 
+        reader.onload = (e) => {
 
-            $('#preview-image-before-upload').attr('src', e.target.result); 
+            $('#preview-image-before-upload').attr('src', e.target.result);
         }
 
-        reader.readAsDataURL(this.files[0]); 
-        
+        reader.readAsDataURL(this.files[0]);
+
         });
-        
+
         });
   $(document).load(function(){
         $('.datepicker').pickadate({
         editable: true
         })
    });
-    
+
  </script>
 @endsection

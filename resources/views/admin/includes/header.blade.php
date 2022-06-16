@@ -63,7 +63,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ asset('public/app-assets/js/select2.js') }}" type="text/javascript"></script>
-    
+
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
@@ -79,7 +79,7 @@
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
             <div class="navbar-container content">
-            
+
                 <div class="navbar-collapse" id="navbar-mobile">
                     <h3> Best Of Yemen Coffee 2022</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
@@ -221,7 +221,7 @@
                             </ul>
                         </li> --}}
                         <li class="dropdown dropdown-user nav-item">
-                            
+
                             <a
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 @php
@@ -370,7 +370,7 @@
                             {{-- <img src="{{ asset('public/app-assets/images/ico/logo_admin.png.png') }}"> --}}
                         </div>
                         {{-- <h4 class="brand-text">QIMA Auction</h4> --}}
-                       
+
                     </a></li>
                 {{-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
@@ -429,7 +429,7 @@
                                 <span
                                     class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
-                        </li>  
+                        </li>
                         <li @if (request()->is('process/*')) class='active' @endif><a
                             href="{{ url('/process/index') }}">
                             {{-- <i class="feather icon-circle"></i> --}}
@@ -444,21 +444,32 @@
                             class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
                             data-i18n="eCommerce">Genetic</span></a>
                        </li>
+                       <li @if (request()->is('/customer/index')) class='active' @endif><a
+                        href="{{ url('/customer/index') }}">
+                        <span
+                            class="menu-item @if (request()->is('/customer/index')) 'active' @endif"
+                            data-i18n="eCommerce">Manage Customer</span></a>
+                    </li>
+                       <li class="nav-item">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction</span></a>
+                            <ul class="menu-content">
+                                <li @if (request()->is('auction/*')) class='active' @endif><a
+                                    href="{{ url('/auction/index') }}">
+                                    <span
+                                        class="menu-item @if (request()->is('auction/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Auction</span></a>
+                                </li>
+                           </ul>
+                       </li>
 
-                        <li @if (request()->is('auction/*')) class='active' @endif><a
-                            href="{{ url('/auction/index') }}">
-                            <span
-                                class="menu-item @if (request()->is('auction/*')) 'active' @endif"
-                                data-i18n="eCommerce">Auction</span></a>
-                        </li>
-                      
-                        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Ecommerce">Jury Management</span></a>
+                        <li class="nav-item mb-5">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce">Manage Jury</span></a>
                             <ul class="menu-content">
                                 <li @if (request()->is('jury/*')) class='active' @endif><a
                                     href="{{ url('/jury/index') }}">
                                     <span
                                         class="menu-item @if (request()->is('jury/*')) 'active' @endif"
-                                        data-i18n="eCommerce">Manage Jury</span></a>
+                                        data-i18n="eCommerce">Jury</span></a>
                               </li>
                                 <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
                                     href="{{ url('review/reviewed_samples') }}">
@@ -472,9 +483,9 @@
                                         class="menu-item @if (request()->is('review/summary')) 'active' @endif"
                                         data-i18n="eCommerce">Feedback Summary</span></a>
                                 </li>
-                    
                             </ul>
                         </li>
+
                     </ul>
                 </li>
                 {{-- <li class=" navigation-header"><span>Apps</span>
