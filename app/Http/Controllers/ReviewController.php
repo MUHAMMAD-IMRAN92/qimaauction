@@ -102,6 +102,7 @@ class ReviewController extends Controller
                                                 //  ->where('is_hidden','0')
                                                 ->first();
                                                 //  return  $sampleSent;
+                                                // dd(  $sampleSent);
                         if ($sampleSent->is_hidden == '1') {
                             $review = Review::where('sample_id',$sampleSent->id)->first();            
                             //return view('admin.jury.alredy_submit');
@@ -239,6 +240,7 @@ class ReviewController extends Controller
          return response()->json(array('success' => true, 'html'=>$data));
 
     }
+  
     public function reviewedSamples()
     {
         $samples= SentToJury::groupBy('samples')

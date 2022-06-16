@@ -85,13 +85,13 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-12">
+                                                    {{-- <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Jury Score</label>
                                                             <input type="number" step="any" class="form-control" name="jury_score"
                                                                 id="jury_score" value="" required>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Weight</label>
@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="">Start Price</label>
+                                                            <label for="">Start Bid</label>
                                                             <input type="number" step="any" class="form-control" name="start_price" id="start_price"
                                                                 value="" required>
                                                         </div>
@@ -127,14 +127,22 @@
                                                                 value="" required>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="">Packing Price</label>
+                                                            <input type="number" step="any" class="form-control" name="packing_cost" id="packing_cost"
+                                                                value="" required>
+                                                        </div>
+                                                    </div>
 
-                                                    <div class="modal-footer">
+                                                    <div class="modal-footer float-right">
                                                         <button type="submit" name="button"
                                                             style="background-color: #d1af69; color:white"
                                                             class="btn save">Submit</button>
-                                                        <button type="button" data-dismiss="modal" class="btn  cancel"
+                                                        <button type="button" data-dismiss="modal" class="btn btn-outline-warning cancel"
                                                             aria-label="Close"
-                                                            style="background-color: #d1af69;color:white">Cancel</button>
+                                                            style="color:black">Cancel</button>
+                                                            
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +167,7 @@
                                                 <th>Weight</th>
                                                 <th>Size</th>
                                                 <th>Rank</th>
-                                                <th>Jury Score</th>
+                                                {{-- <th>Jury Score</th> --}}
                                                 <th>Action(s)</th>
                                                 <th></th>
                                             </tr>
@@ -184,9 +192,9 @@
                                                             <td>
                                                                 {{ $auction->rank }}
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 {{ $auction->jury_score }}
-                                                            </td>
+                                                            </td> --}}
                                                             <div>
                                                                 <td >
                                                                     <i id="edit" data-auctionId="{{ $auction->id }}" class="fas fa-edit"></i>
@@ -275,6 +283,7 @@
                             $('input[name="rank"]').val(data.rank);
                             $('input[name="start_price"]').val(data.start_price);
                             $('input[name="reserve_price"]').val(data.reserve_price);
+                            $('input[name="packing_cost"]').val(data.packing_cost);
                             $('input[name="auction_product_id"]').val(data.id);
                             $('.save').html('Update');
                             $('#auction_model').modal("show");
@@ -293,8 +302,9 @@
                             var size = $('#size').val();
                             var start_price = $('#start_price').val();
                             var reserve_price = $('#reserve_price').val();
+                            var packing_cost = $('#packing_cost').val();
                             var rownumber = $('#rownumber').val();
-                            var jury_score = $('#jury_score').val();
+                            // var jury_score = $('#jury_score').val();
                             $.ajax({
                                 type: 'POST',
                                 url: `{{ route('saveAuctionProduct') }}`,
@@ -303,11 +313,12 @@
                                     auctionId: {{ $auctionId }},
                                     auction_product_id: auction_product_id,
                                     weight: weight,
-                                    jury_score: jury_score,
+                                    // jury_score: jury_score,
                                     rank: rank,
                                     size: size,
                                     start_price:start_price,
                                     reserve_price:reserve_price,
+                                    packing_cost:packing_cost,
                                     _token: "{{ csrf_token() }}",
                                 },
                                 success: function(data) {
@@ -318,8 +329,7 @@
                                         $('#' + rownumber).remove();
                                     }
 
-                                    var markup = "<tr id="+ data.id +"><td>" + title + "</td><td>" + data.weight + "</td><td>" + data.size + "</td><td>" + data.rank + "</td><td>" + data.jury_score +
-                                        "</td><td><i id='edit' data-auctionId=" + data.id + " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data.id + " class='fas fa-trash-o'></i></td></tr>";
+                                    var markup = "<tr id="+ data.id +"><td>" + title + "</td><td>" + data.weight + "</td><td>" + data.size + "</td><td>" + data.rank + "</td><td><i id='edit' data-auctionId=" + data.id + " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data.id + " class='fas fa-trash-o'></i></td></tr>";
                                         
                                         
                                     $("table tbody").append(markup);
@@ -337,10 +347,11 @@
                             $('input[name="rank"]').val('');
                             $('input[name="start_price"]').val('');
                             $('input[name="reserve_price"]').val('');
+                            $('input[name="packing_cost"]').val('');
                             $('#governorate').html('');
                             $('#village').html('');
                             $('#region').html('');
-                            $('#jury_score').html('');
+                            // $('#jury_score').html('');
                             $('input[name="auction_product_id"]').val('');
                             $('.save').html('Create');
                            $("#auction_model").modal("show");
@@ -362,10 +373,10 @@
                             $('#governorate').html(value.governorate.title);
                             else
                             $('#governorate').html('--');
-                            if(value.reviews != null)
-                            $('#jury_score').val(value.reviews.total_score);
-                            else
-                            $('#jury_score').val(0);
+                            // if(value.reviews != null)
+                            // $('#jury_score').val(value.reviews.total_score);
+                            // else
+                            // $('#jury_score').val(0);
                             if(value.village != null)
                             $('#village').html(value.village.title);
                             else

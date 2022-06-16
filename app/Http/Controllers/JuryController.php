@@ -141,6 +141,7 @@ class JuryController extends Controller
         ]);
 
     }
+   
     public function ajaxSendToJuryPost(Request $request)
     {
         $request->validate([
