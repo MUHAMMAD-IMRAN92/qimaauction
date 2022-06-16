@@ -131,7 +131,7 @@ class CustomerController extends Controller
             'phone_no'      => 'required|max:12',
             'password'      => 'required',
             'status'        => 'required',
-            'paddle_number' => 'required|min:4|unique:users'
+            'paddle_number' => 'required|min:4|'
             // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
         ]);
         $customer                   =   User::find($request->id);
