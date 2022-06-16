@@ -271,9 +271,7 @@ class ProductController extends Controller
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
         // ->where('sample_sent_to_jury.is_hidden', '0')
-        ->get();
-
-    
+        ->get(); 
         if(isset($request->sampleId))
         {
             $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)

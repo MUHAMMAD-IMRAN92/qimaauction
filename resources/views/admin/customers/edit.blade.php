@@ -53,30 +53,56 @@
                                                         <input type="hidden" class="form-control"  name="id" value={{ $customer->id }}>
                                                         <input type="text" id="name" class="form-control"  name="name" value="{{$customer->name}}" required>
                                                         <label for="name">Name</label>
+                                                        @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="email" id="email" class="form-control"  name="email" value="{{$customer->email}}" required>
                                                         <label for="email">Email</label>
+                                                        @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="password" id="password" class="form-control"  name="password" value="{{$customer->password}}" required>
                                                         <label for="password">Password</label>
+                                                        @error('password') <span class="text-danger error">{{ $message }}</span>@enderror
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="phone" class="form-control"  name="phone_no" value="{{$customer->phone_no}}" required>
                                                         <label for="phone">Phone No</label>
+                                                        @error('phone_no') <span class="text-danger error">{{ $message }}</span>@enderror
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="number" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
-                                                        <label for="bid_limit">Bid Limit</label>
+                                                        <input type="text" id="bid_limit" class="form-control"  name="bid_limit" value="{{$customer->bid_limit}}" required>
+                                                        <label for="bid_limit">Bid Limit/lb</label>
+                                                        @error('bid_limit') <span class="text-danger error">{{ $message }}</span>@enderror
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="paddle_number" class="form-control"  name="paddle_number" value="{{$customer->paddle_number}}">
+                                                        <label for="paddle_number">Paddle Number</label>
+                                                        @error('paddle_number') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
+                                                            <option value="">Select Status</option>
+                                                            <option value="Verified"{{ $customer->status == 'Verified' ? 'selected' : ''}}>Verified</option>
+                                                            <option value="Pending" {{ $customer->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                                            <option value="Blocked" {{ $customer->status == 'Blocked' ? 'selected' : '' }}>Blocked</option>
+                                                          </select>
+                                                        @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="margin-left: 39%">
@@ -97,23 +123,23 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function (e) {
+    $( document ).ready(function() {
+        $("#phone").keypress(function(event) {
+  return /\d/.test(String.fromCharCode(event.keyCode));
+});
+$("#bid_limit").on("input", function(evt) {
+   var self = $(this);
+   self.val(self.val().replace(/[^0-9\.]/g, ''));
+   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+   {
+     evt.preventDefault();
+   }
+ });
+});
 
+    </script>
 
-     $('#image').change(function(){
-
-     let reader = new FileReader();
-
-     reader.onload = (e) => {
-
-         $('#preview-image-before-upload').attr('src', e.target.result);
-     }
-
-     reader.readAsDataURL(this.files[0]);
-
-     });
-
-     });
-</script>
+    </script>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNewColumnsToUsersTable extends Migration
+class AddNewColumnStatusToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class AddNewColumnsToUsersTable extends Migration
      */
     public function up()
     {
-            Schema::table('users', function (Blueprint $table) {
-                $table->boolean('is_admin')->default(1)->after('email');
-                $table->string('phone_no')->after('is_admin');
-                $table->string('bid_limit')->after('phone_no');
-                $table->enum('is_hidden',  [0,1])->default(0)->after('bid_limit');
-            });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('status')->after('is_hidden');
+        });
     }
 
     /**
