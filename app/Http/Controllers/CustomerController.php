@@ -126,20 +126,23 @@ class CustomerController extends Controller
     public function update(Request $request)
     {
         $validator  =   $request->validate([
-            'email'     => 'required|email',
-            'name'      => 'required',
-            'phone_no'  => 'required|max:12',
-            'password'  => 'required',
-            'status'    =>  'required',
+            'email'         => 'required|email',
+            'name'          => 'required',
+            'phone_no'      => 'required|max:12',
+            'password'      => 'required',
+            'status'        => 'required',
+            'paddle_number' => 'required|min:4|unique:users'
             // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
         ]);
-        $customer               =   User::find($request->id);
-        $customer->name         =   $request->name;
-        $customer->email        =   $request->email;
-        $customer->phone_no     =   $request->phone_no;
-        $customer->password     =   $request->password;
-        $customer->bid_limit    =   $request->bid_limit;
-        $customer->status       =   $request->status;
+        $customer                   =   User::find($request->id);
+        $customer->name             =   $request->name;
+        $customer->email            =   $request->email;
+        $customer->phone_no         =   $request->phone_no;
+        $customer->password         =   Hash::make($request->password);;
+        $customer->bid_limit        =   $request->bid_limit;
+        $customer->status           =   $request->status;
+        $customer->paddle_number    =   $request->paddle_number;
+
         $customer->save();
         return redirect('/customer/index');
     }
