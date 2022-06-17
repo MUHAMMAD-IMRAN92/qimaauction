@@ -666,14 +666,14 @@
                                                                 name="aroma_dry" id="aroma_dry" value="0"></div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <h5>CRUST</h5>
+                                                        <h5 style="margin-top:-34px">CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <h5>BREAK</h5>
+                                                        <h5 style="margin-top:-34px">BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromabreak"><input type="hidden"
@@ -798,7 +798,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Uniformity:</span>
+                                                                        <span class="entity-text">Uniformity</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -895,7 +895,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">CleanCup:</span>
+                                                                        <span class="entity-text">CleanCup</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -991,7 +991,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Sweetness:</span>
+                                                                        <span class="entity-text">Sweetness</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
