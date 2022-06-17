@@ -489,7 +489,7 @@
                         </li>
 
                         <li class="nav-item mb-5">
-                            <a href="#"><span class="menu-title" data-i18n="Ecommerce">Jury Management</span></a>
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce">Manage Jury</span></a>
                             <ul class="menu-content">
                                 <li @if (request()->is('jury/*')) class='active' @endif><a
                                         href="{{ url('/jury/index') }}">

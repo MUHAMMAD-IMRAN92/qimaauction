@@ -23,6 +23,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-3 custom_btn_align">
+                    <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction Product<a>
+                </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown">
@@ -32,10 +35,9 @@
                 </div>
             </div> --}}
             </div>
+
             <div class="content-body">
                 <div class="col-lg-12">
-                    <a class="btn btn-primary waves-effect waves-light" id="product" style="margin-left:75%;">Create
-                        Auction Product<a>
                             <div class="modal" tabindex="-1" role="dialog" id="auction_model">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -200,7 +202,7 @@
                                                                     <i id="edit" data-auctionId="{{ $auction->id }}" class="fas fa-edit"></i>
                                                                     <i id="delete" data-auctionId="{{ $auction->id }}" class="fa fa-trash-o"></i>
                                                                 </td>
-                                                               
+
                                                             </div>
                                                         </tr>
                                                     @endforeach
@@ -227,7 +229,7 @@
         <script>
             $(document).ready(function() {
                 ////// save AuctionProduct /////
-                
+
                 $(".cancel").on("click", function() {
                     $("#auction_model").modal("hide");
                 });
@@ -294,7 +296,7 @@
                 //////////////////////////// End Edit Functionality  ////////////////////////////
                 $('#auctionproduct').on('submit', function(e) {
                     e.preventDefault();
-                    
+
                             var productId = $('#product_id').val();
                             var auction_product_id = $('#auction_product_id').val();
                             var weight = $('#weight').val();
@@ -336,8 +338,8 @@
                                 }
                             });
                 });
-               
-                
+
+
 
                 $("#product").on("click", function() {
                     $('#product_id') .val('')

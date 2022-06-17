@@ -26,7 +26,7 @@
                                 </ol>
                             </div>
                         </div>
-                     
+
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
@@ -116,7 +116,6 @@
                 },
 
                 {
-
                     "mRender": function(data, type, row) {
                         return '<td>' +
                             row.email + '</td>';
@@ -137,12 +136,12 @@
                     }
                 },
                 {
-
+            //   changes
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
-                            `">Resend Link</a><br>` +
+                            `">Edit</a><br>` +
                             `<a class="" target="_blank" href="/jury/links/`+ row.linkurl +`">
                                 View link</a>`
                             +
