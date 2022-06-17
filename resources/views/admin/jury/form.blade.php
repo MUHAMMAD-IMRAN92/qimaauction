@@ -261,7 +261,7 @@
 
     .score_first_number,
     .score_second_number {
-        width: 240px;
+        width: 130px;
     }
 
     .entity_note {
@@ -1097,7 +1097,7 @@
                                                     </div>
                                                       <input type="hidden" name="defect" id="defect" value="">
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                    <p class="entity-label">#CUPS X INTENSITY = SCORE</p>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <input class="score_first_number"
@@ -2108,9 +2108,9 @@
                 //   $("input").css("background-color", "pink");
             });
             $('.js-example-basic-multiple').select2();
-            var hanzi = ["6", "6.25", "6.50", "6.75", "7", "7.25", "7.50", "7.75", "8", "8.25", "8.50", "8.75", "9",
+            var hanzi = ["6", "6.25", "6.5", "6.75", "7", "7.25", "7.5", "7.75", "8", "8.25", "8.5", "8.75", "9",
                 "9.25",
-                "9.50",
+                "9.5",
                 "9.75", "10"
             ];
             $(".roastslider")
