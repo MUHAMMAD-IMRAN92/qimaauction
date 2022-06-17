@@ -1257,7 +1257,6 @@
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
-            $('.div_total_score').html({{$sampleReview->total_score}});
                 var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
                 var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
                 var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
