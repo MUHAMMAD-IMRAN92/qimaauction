@@ -798,7 +798,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Uniformity:</span>
+                                                                        <span class="entity-text">Uniformity</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -895,7 +895,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">CleanCup:</span>
+                                                                        <span class="entity-text">CleanCup</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -991,7 +991,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Sweetness:</span>
+                                                                        <span class="entity-text">Sweetness</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
