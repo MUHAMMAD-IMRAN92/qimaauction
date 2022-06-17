@@ -260,9 +260,9 @@ class OpenCuppingController extends Controller
             }
         }
         if ($request->to_go_sample) {
-            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted Successully');
+            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted successfully');
         } else {
-            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted Successully');
+            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted successfully');
         }
     }
     public function openCuppingFeedback()
