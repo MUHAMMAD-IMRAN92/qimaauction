@@ -383,7 +383,8 @@ class OpenCuppingController extends Controller
         $sampleSentToJuries = OpenCupping::where(['samples' => $sample])->where('user_id','!=','0')->get();
         foreach ($sampleSentToJuries as $key => $value) {
             $product = Product::where('id', $value["product_id"])->first();
-            $review = OpenCuppingReview::where('sample_id', $value->id)->where('user_id','!=','0')->first();
+            $review = OpenCuppingReview::where('sample_id', $value->id)->first();
+            if(isset($review))
             $user = OpenCuppingUser::where('id', $review->user_id)->first();
             $data[$key]['name'] = $user->name ?? '--';
             $data[$key]['total'] =      $review->total_score ?? '0';
