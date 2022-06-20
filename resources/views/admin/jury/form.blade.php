@@ -535,7 +535,7 @@
                                                 <!--Breadcrumb Section-->
                                                 <div class="breadcrumb-section">
                                                     <ul class="breadcrumb">
-                                                        <li><a href="#">
+                                                        {{-- <li><a href="#">
                                                                 <p class="breadcrumb-content"
                                                                     style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
                                                                     CUPPER</p>
@@ -549,7 +549,7 @@
                                                             <p class="breadcrumb-content"
                                                                 style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">
                                                                 -</p>
-                                                        </a>
+                                                        </a> --}}
                                                         {{-- <li><a href="#">
                                                                 <p class="pt-1 breadcrumb-content"
                                                                     style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
@@ -562,7 +562,7 @@
                                                             </a></li> --}}
                                                     </ul>
                                                 </div>
-                                                <div class="mobile-breadcrumb-section">
+                                                {{-- <div class="mobile-breadcrumb-section">
                                                     <ul class="breadcrumb">
                                                         <li><a href="#">
                                                                 <p class="breadcrumb-content pt-1"
@@ -588,7 +588,7 @@
                                                             </a></li>
                                                     </ul>
                                                 </div>
-                                                <hr class="custom_hr">
+                                                <hr class="custom_hr"> --}}
                                                 <!--Breadcrumb Section-->
                                                 {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany ?? ''}}</p> --}}
@@ -665,12 +665,19 @@
                                                         <div class="aromaslider aromadry"><input type="hidden"
                                                                 name="aroma_dry" id="aroma_dry" value="0"></div>
                                                     </div>
-                                                    <div class="col-lg-12">
+                                                    {{-- <div class="col-lg-12">
                                                         <h5 style="margin-top:-6px">CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                    </div> --}}
+                                                    <div class="col-lg-12">
+                                                        <h5 style="margin-top:-6px">Qualities</h5>
+                                                    </div>
+                                                    <div class="entity_input mb-5 mt-5">
+                                                        <input type="text" name="quality_notes" id="quality_notes" value="{{$sampleReview->quality_notes ?? ''}}"
+                                                            placeholder="Quality Note" class="entity_note">
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <h5 style="margin-top:-6px">BREAK</h5>
@@ -705,58 +712,58 @@
                                                                 <div class="customslider acidity"><input type="hidden"
                                                                         name="acidity" id="acidity" value="8"></div>
                                                             </div>
-                                                            <div class="radio_button">
+                                                            <div class="radio_button p-5">
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
 
                                                                         <input type="radio" name="acidity_chk" value="VH"
                                                                             class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>VH</h5>
+                                                                        <h5>Very <br> High</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
 
                                                                         <input type="radio" name="acidity_chk" value="H"
                                                                             class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>H</h5>
+                                                                        <h5>High</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
                                                                         <input type="radio" name="acidity_chk" value="M"
                                                                             class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>M</h5>
+                                                                        <h5>Medium</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
                                                                         <input type="radio" checked="checked"
                                                                             name="acidity_chk" value="L"
                                                                             class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>L</h5>
+                                                                        <h5>Low</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
                                                                         <input type="radio" checked="checked"
                                                                             name="acidity_chk" value="VL"
                                                                             class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>VL</h5>
+                                                                        <h5>Very <br> Low</h5>
 
                                                                     </label>
                                                                 </div>
@@ -770,58 +777,58 @@
                                                                 <div class="customslider body"><input type="hidden"
                                                                         name="body" id="body" value="8"></div>
                                                             </div>
-                                                            <div class="radio_button">
+                                                            <div class="radio_button p-5">
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5" style="text-align: justify">
 
                                                                         <input type="radio" name="body_chk" value="VH"
                                                                             class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>VH</h5>
+                                                                        <h5>Very <br> Heavy</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container pl-5">
 
                                                                         <input type="radio" name="body_chk" value="H"
                                                                             class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>H</h5>
+                                                                        <h5>Heavy</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container  pl-5">
                                                                         <input type="radio" name="body_chk" value="M"
                                                                             class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>M</h5>
+                                                                        <h5>Medium</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container  pl-5">
                                                                         <input type="radio" checked="checked"
-                                                                            name="body_chk" value="L"
+                                                                            name="body_chk" value="T"
                                                                             class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>L</h5>
+                                                                        <h5>Thin</h5>
 
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container">
+                                                                    <label class="radio_container  pl-5">
                                                                         <input type="radio" checked="checked"
-                                                                            name="body_chk" value="VL"
+                                                                            name="body_chk" value="VT"
                                                                             class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>VL</h5>
+                                                                        <h5>Very <br> Thin</h5>
 
                                                                     </label>
                                                                 </div>
@@ -1308,11 +1315,12 @@
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
+          
                 var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
                 var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
                 var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
 
-
+               
 
 
            if(uvalue)
@@ -2349,7 +2357,7 @@
              $('.totalScore').html({{$reviewdata->total_score}});
              @endif
 
-
+             $('.score_second_number').val(2);
         });
 
         function setSampleToGo(valz) {
