@@ -234,7 +234,7 @@ class OpenCuppingController extends Controller
            ->where('open_cuppings.id', $request->sent_sample_id)
             // ->where('is_hidden', '0')
             ->first();
-      
+            
           
         if (isset($sampleSent)) {
             if ($sampleSent->is_hidden == '1') {
@@ -251,11 +251,10 @@ class OpenCuppingController extends Controller
               
             } else {
                 $review = new OpenCuppingReview();
-                $sampleSent->is_hidden = '1';
-                $sampleSent->save();
             }
             $review->aroma_dry              = $request->aroma_dry;
             $review->aroma_crust            = $request->aroma_crust;
+            $review->quality_notes            = $request->quality_notes;
             $review->roast                  = $request->roast;
             $review->first_number           = $request->first_number;
             $review->second_number          = $request->second_number;
@@ -278,6 +277,8 @@ class OpenCuppingController extends Controller
             $review->product_id             = $request->product_id;
             $review->manual             = $request->manual_override;
             $review->save();
+            $sampleSent->is_hidden = '1';
+            $sampleSent->save();
         }
 
         $sampleSent2 = OpenCupping::where('is_hidden', '0')->orderBy('postion', 'asc')->first();
@@ -354,7 +355,7 @@ class OpenCuppingController extends Controller
     {
         $samples = OpenCupping::groupBy('samples')
             ->select('samples', DB::raw('count(*) as total'))
-            // ->where('open_cuppings.is_hidden','=','0')
+            ->where('user_id','!=','0')
             ->get();
 
         if (count($samples) > 0) {
@@ -368,7 +369,9 @@ class OpenCuppingController extends Controller
 
         $dateArr = array();
         foreach ($samples as $key => $value) {
-            $sampleDate = OpenCupping::where('samples', $value->samples)->first();
+            $sampleDate = OpenCupping::where('samples', $value->samples)
+            ->where('user_id','!=','0')
+            ->first();
             array_push($dateArr, $sampleDate->created_at);
         }
         $opencupping = true;
@@ -377,19 +380,20 @@ class OpenCuppingController extends Controller
     public function openCuppingReviewDetail($sample)
     {
         $data = array();
-        $sampleSentToJuries = OpenCupping::where(['samples' => $sample])->get();
+        $sampleSentToJuries = OpenCupping::where(['samples' => $sample])->where('user_id','!=','0')->get();
         foreach ($sampleSentToJuries as $key => $value) {
             $product = Product::where('id', $value["product_id"])->first();
             $review = OpenCuppingReview::where('sample_id', $value->id)->first();
+            if(isset($review))
             $user = OpenCuppingUser::where('id', $review->user_id)->first();
             $data[$key]['name'] = $user->name ?? '--';
             $data[$key]['total'] =      $review->total_score ?? '0';
             $data[$key]['productName'] = $product->product_title;
             $data[$key]['sample'] = $value['samples'];
             $data[$key]['aroma_dry'] =   $review->aroma_dry ?? '0.0';
-            $data[$key]['aroma_crust'] =  $review->aroma_crust ?? '0.0';
+            $data[$key]['quality_notes'] =  $review->quality_notes ?? 'quality notes';
             $data[$key]['aroma_break'] =    $review->aroma_break ?? '0.0';
-            // $data[$key]['aroma_note'] =    $review->aroma_note ?? '---';
+          
             $data[$key]['uniformityvalue'] =   $review->uniformityvalue ?? '0.0';
             $data[$key]['cleanupvalue'] =   $review->cleancupvalue ?? '0.0';
             $data[$key]['sweetnessvalue'] =  $review->sweetnesvalue ?? '0.0';
@@ -414,6 +418,7 @@ class OpenCuppingController extends Controller
         ->select('open_cuppings.samples as sampleId','open_cupping_users.name as name'
                  ,'products.product_title as product','open_cupping_reviews.total_score as total')
          ->where('open_cuppings.is_hidden','1')
+         ->where('open_cuppings.user_id','!=','0')
         ->get();
 
   return view('admin.reviewed_summary',compact('reviews'));
