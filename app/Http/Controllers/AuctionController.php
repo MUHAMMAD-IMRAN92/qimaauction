@@ -21,7 +21,7 @@ class AuctionController extends Controller
     {
         return view('admin.auction.index');
     }
-    
+
     public function auctionProducts($id)
     {
         $auctionId = base64_decode($id);
@@ -47,7 +47,7 @@ class AuctionController extends Controller
                     'reserve_price' => $request->reserve_price,
                     'packing_cost' => $request->packing_cost,
                 ]
-             );    
+             );
              $auction_products = AuctionProduct::where('id',$request->auction_product_id)
              ->with('products')
              ->first();
@@ -65,13 +65,13 @@ class AuctionController extends Controller
                     'reserve_price' => $request->reserve_price,
                     'packing_cost' => $request->packing_cost,
                 ]
-             );   
+             );
              $auction_products = AuctionProduct::where('id',$auctionproduct->id)
              ->with('products')
-             ->first(); 
+             ->first();
         }
-                          
-      
+
+
          return response()->json($auction_products);
     }
     public function getAuctionProduct(Request $request)
@@ -85,7 +85,7 @@ class AuctionController extends Controller
     {
         $auction_products = AuctionProduct::where('id',$request->auctioProductId)->delete();
         //  $data = $auction_products->delete();
-return response()->json($auction_products);    
+return response()->json($auction_products);
     }
     /**
      * Show the form for creating a new resource.
@@ -103,7 +103,7 @@ return response()->json($auction_products);
     {
         $request->validate([
             'title' => 'required||max:255',
-            'startDate' => 'required',
+            'startDatetime' => 'required',
         ]);
         $auction = new Auction();
         $auction->title = $request->title;
@@ -113,8 +113,8 @@ return response()->json($auction_products);
         // $auction->product_id = $request->product_id;
         // $auction->process_id = $request->process_id;
         // $auction->genetic_id = $request->genetic_id;
-        $auction->startDate = $request->startDate;
-        $auction->startTime = $request->startTime;
+        $auction->startDate = $request->startDatetime;
+        // $auction->startTime = $request->startTime;
         // $auction->endDate = $request->endDate;
         // $auction->endTime = $request->endTime;
         // $auction->weight = $request->weight;
@@ -187,19 +187,20 @@ return response()->json($auction_products);
     public function update(Request $request)
     {
         $request->validate([
-            'title' => 'required||max:255',
-            'startDate' => 'required',
-            'endDate' => 'required',
+            'title'      => 'required',
+            'startDatetime'  => 'required',
+            // 'startTime'  => 'required',
         ]);
+
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
-        $auction->lottitle = $request->lottitle;
+        // $auction->lottitle = $request->lottitle;
         // $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
         // $auction->product_id = $request->product_id;
         // $auction->process_id = $request->process_id;
         // $auction->genetic_id = $request->genetic_id;
-        // $auction->startDate = $request->startDate;
+        $auction->startDate = $request->startDatetime;
         // $auction->startTime = $request->startTime;
         // $auction->endDate = $request->endDate;
         // $auction->endTime = $request->endTime;
@@ -234,5 +235,11 @@ return response()->json($auction_products);
         $jury = Auction::find(base64_decode($id));
         $jury->delete();
         return redirect('/auction/index')->with('msg', 'Auction Deleted Successfully');
+    }
+    public function auctionFrontend()
+    {
+        $auction            =   Auction::first();
+        $auctionProducts    =   AuctionProduct::with('products')->get();
+        return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction'));
     }
 }

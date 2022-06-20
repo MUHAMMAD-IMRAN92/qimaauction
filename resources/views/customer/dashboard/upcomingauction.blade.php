@@ -20,6 +20,7 @@
         rel="stylesheet">
 
     <!-- Fonts End      -->
+
 </head>
 <style>
     tr.hide-table-padding td {
@@ -131,6 +132,18 @@
         </ul>
     </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 pb-2 text-center section-4-img">
+            <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+        </div>
+        <div class="col-lg-12 text-center section-4-text-1">
+            <p class="time real-timer m-0"></p>
+            @php
+                 $date = date('j F Y', strtotime($auction->startDate));
+            @endphp
+            <p class="date">{{$date}}</p>
+        </div>
+    </div>
     <div class="container my-4">
         <nav>
             <div class="col-4">
@@ -160,31 +173,48 @@
                       </tr>
                     </thead>
                     <tbody>
-                       <tr class="text-center">
-                        <td>1</td>
-                        <td>90.1</td>
-                        <td>80.1</td>
-                        <td>4</td>
-                        <td>163lbs</td>
-                        <td>Pulp</td>
-                        <td>Garnica</td>
-                        <td>$25.00/lb<a class=" btn btn-primary accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">BID</a></td>
-                        <td>$4750.00</td>
-                        <td>SAN-HEY-03-125</td>
-                        <td>6560</td>
-                        <td>Open
-                            <button class="openbtn" onclick="openNav()"> ⋮</button>
-                          </td>
-                       </tr>
+                        @foreach ($auctionProducts as $auctionProduct)
+                        <tr class="text-center">
+                            <td>Rank{{$auctionProduct->rank}}</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>{{$auctionProduct->size}}</td>
+                            <td>{{$auctionProduct->weight}}/lb</td>
+                            @foreach($auctionProduct->products as $products)
+                                @if ($products->pro_process == '1')
+                                 <td>Natural</td>
+                                @elseif ($products->pro_process == '2')
+                                    <td>Slow Dried</td>
+                                @else
+                                    <td>Alchemy</td>
+                                @endif
+                            @endforeach
+                            @foreach($auctionProduct->products as $products)
+                                <td>--</td>
+                            @endforeach
+
+                            <td>---  @if ($user)<a class=" btn btn-primary accordion-toggle collapsed" data-id="" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{$auctionProduct->id}}">BID</a>@endif</td>
+                            @foreach($auctionProduct->products as $products)
+                                @if ($products->pro_lot_type == '1')
+                                    <td>Farmer Lot</td>
+                                @else
+                                    <td>Community Lot</td>
+                                @endif
+                            @endforeach
+                            <td>5</td>
+                            <td>--</td>
+                            <td>Waiting Bid
+                                <button class="openbtn" onclick="openNav()"> ⋮</button>
+                              </td>
+                            </tr>
                        <tr class="hide-table-padding">
                         <td></td>
                         <td colspan="10">
-                        <div id="collapseOne" class="collapse in p-3">
+                        <div id="collapseOne{{$auctionProduct->id}}" class="collapse in p-3">
                           <div class="row ">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <p class="mr-1">$26.50</p>
-                                    <input type="text" class="form-control">
+                                    <p class="mr-1">${{$auctionProduct->start_price}}</p>
                                     <div class="input-group-append">
                                       <button class="btn btn-success" type="button">BID NOW</button>
                                     </div>
@@ -195,15 +225,15 @@
                                 <table class="table mt-2">
                                       <tr>
                                         <th scope="col">Bid</th>
-                                        <td scope="col">$26.50/lb</td>
+                                        <td scope="col">${{$auctionProduct->start_price}}/lb</td>
                                       </tr>
                                       <tr>
                                         <th scope="col">Packing Cost</th>
-                                        <td scope="col">$0.20/lb</td>
+                                        <td scope="col">${{$auctionProduct->packing_cost}}/lb</td>
                                       </tr>
                                       <tr>
                                         <th scope="col">Weight</th>
-                                        <td scope="col">$163lbs</td>
+                                        <td scope="col">{{$auctionProduct->weight}}lbs</td>
                                       </tr>
                                       <tr>
                                         <th scope="col">Total Liability</th>
@@ -215,51 +245,7 @@
                           </div>
                         </div></td>
                         </tr>
-                       <tr class="text-center">
-                        <td>1</td>
-                        <td>90.1</td>
-                        <td>80.1</td>
-                        <td>4</td>
-                        <td>163lbs</td>
-                        <td>Pulp</td>
-                        <td>Garnica</td>
-                        <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                        <td>$4750.00</td>
-                        <td>SAN-HEY-03-125</td>
-                        <td>6560</td>
-                        <td>Open:</td>
-
-                       </tr>
-                       <tr class="text-center">
-                        <td>1</td>
-                        <td>90.1</td>
-                        <td>80.1</td>
-                        <td>4</td>
-                        <td>163lbs</td>
-                        <td>Pulp</td>
-                        <td>Garnica</td>
-                        <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                        <td>$4750.00</td>
-                        <td>SAN-HEY-03-125</td>
-                        <td>6560</td>
-                        <td>Open:</td>
-
-                       </tr>
-                       <tr class="text-center">
-                        <td>1</td>
-                        <td>90.1</td>
-                        <td>80.1</td>
-                        <td>4</td>
-                        <td>163lbs</td>
-                        <td>Pulp</td>
-                        <td>Garnica</td>
-                        <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                        <td>$4750.00</td>
-                        <td>SAN-HEY-03-125</td>
-                        <td>6560</td>
-                        <td>Open:</td>
-
-                       </tr>
+                        @endforeach
                     </tbody>
                   </table>
             </div>
@@ -360,6 +346,7 @@
             </tbody>
           </table>
       </div>
+
 
     {{-- <div class="container-fluid container-all p-0 mt-4" >
         <h1 class="text-center"> UPCOMING AUCTION</h1>
@@ -466,10 +453,11 @@
     crossorigin="anonymous"></script>
 
 
-
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("Aug 9, 2022 00:00:00").getTime();
+        var date = `{{date('m-d-Y H:i:s', strtotime($auction->startDate))}}`;
+        var countDownDate = new Date (date);
+        // {new Date("Aug 9, 2022 00:00:00").getTime();}
 
         // Update the count down every 1 second
         var x = setInterval(function() {

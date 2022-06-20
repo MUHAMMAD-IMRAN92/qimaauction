@@ -29,9 +29,9 @@ class HomeController extends Controller
     {
         $user =Auth::user()->is_admin;
         if($user == 0) {
-            return redirect('admin/dashboard');
+            return redirect('dashboard');
         } else {
-            return redirect('customer/user');
+            return redirect('customer/AuctionProducts');
         }
 
         // $user = $this->user;
@@ -45,7 +45,7 @@ class HomeController extends Controller
     }
     public function newsletter()
     {
-        return view('home'); 
+        return view('home');
     }
     public function newsletterpost(Request $request)
     {
@@ -53,6 +53,6 @@ class HomeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-        return redirect()->route('news')->with('success','News Letter Subscribed Successfuly'); 
+        return redirect()->route('news')->with('success','News Letter Subscribed Successfuly');
     }
 }

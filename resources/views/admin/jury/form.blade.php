@@ -1260,15 +1260,15 @@
                 var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
                 var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
                 var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
-              
-               
-              
+
+
+
 
            if(uvalue)
            {
                 $('#uniformity').html(uvalue);
                 var t = 1;
-                    for (let i = uvalue; i > 0 ; i--) {         
+                    for (let i = uvalue; i > 0 ; i--) {
                         $('#uniformity'+t).prop('checked', true);
                         t++;
                         i--;
@@ -1285,7 +1285,7 @@
            {
             $('#cleancup').html(svalue);
             var t = 1;
-                for (let i = svalue; i > 0 ; i--) {         
+                for (let i = svalue; i > 0 ; i--) {
                     $('#cleancup'+t).prop('checked', true);
                     t++;
                     i--;
@@ -1298,12 +1298,12 @@
                 $('#cleancup'+i).prop('checked', true);
             }
            }
-         
+
            if(cvalue)
            {
             $('#sweetness').html(cvalue);
             var t = 1;
-                for (let i = cvalue; i > 0 ; i--) {         
+                for (let i = cvalue; i > 0 ; i--) {
                     $('#sweetness'+t).prop('checked', true);
                     t++;
                     i--;
@@ -1316,7 +1316,7 @@
                 $('#sweetness'+i).prop('checked', true);
             }
            }
-           
+
             $("#select").select2({
                 tags: true,
                 maximumInputLength: 16,
@@ -1499,7 +1499,7 @@
                 $('#uniformityvalue').val($('.uniformity:checked').length * 2);
                 calcTotal();
                 total().trigger();
-               
+
             });
             $('.cleancup').on('click', function() {
 
@@ -1507,7 +1507,7 @@
                 $('#cleancupvalue').val($('.cleancup:checked').length * 2);
                 calcTotal();
                 total().trigger();
-                
+
             });
             $('.sweetness').on('click', function() {
 
@@ -1515,7 +1515,7 @@
                 $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
                 calcTotal();
                 total().trigger();
-                
+
             });
             $('#defect1').on('change', function() {
 
@@ -2033,8 +2033,8 @@
             // var b = $('#aroma_crust').val();
             // var d = $('#aroma_break').val();
             // var c = $('#clean_up').val();
-           
-         
+
+
             // $('#cleancup').html(10);
             // $('#sweetness').html(10);
             var e = $('#body').val();
@@ -2085,7 +2085,7 @@
                 }
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
-                
+
             }
             $(this).trigger('change');
         }
@@ -2107,7 +2107,7 @@
 
                 //   $("input").css("background-color", "pink");
             });
-          
+
             $('.score_second_number').on('change', function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
@@ -2164,7 +2164,7 @@
                     labels: hanzi
                 })
                 .on("slidechange", function(e, ui) {
-            
+
                     inputvalue = ui.value;
                     // $(ui.handle).parent().find('input').val(inputvalue);
                     $(ui.handle).parent().find('input').val(inputvalue);
@@ -2250,7 +2250,7 @@
                 $(".acidity").slider({
                     value: parseReview({{ $sampleReview->acidity ?? '8' }})
                 })
-                
+
                 // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
                 $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
 
