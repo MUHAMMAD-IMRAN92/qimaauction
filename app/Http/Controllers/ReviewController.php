@@ -219,7 +219,7 @@ class ReviewController extends Controller
         if($request->to_go_sample){
             return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$request->to_go_sample])->with('success','Review submitted Successuflly');
 
-        }else{                 
+        }else{
             return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Successfully');
         }
     }
@@ -242,7 +242,7 @@ class ReviewController extends Controller
          return response()->json(array('success' => true, 'html'=>$data));
 
     }
-  
+
     public function reviewedSamples()
     {
         $samples= SentToJury::groupBy('samples')
@@ -264,7 +264,7 @@ class ReviewController extends Controller
             $sampleDate = SentToJury::where('samples',$value->samples)->first();
             array_push($dateArr,$sampleDate->created_at);
         }
-        $opencupping = true;
+        $opencupping = false;
         return view('admin.reviewed_samples',compact('samples','reviewed','dateArr','opencupping'));
     }
     public function reviewSummary()
