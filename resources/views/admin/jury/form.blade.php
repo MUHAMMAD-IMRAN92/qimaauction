@@ -550,7 +550,7 @@
                                                                 style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">
                                                                 -</p>
                                                         </a>
-                                                        <li><a href="#">
+                                                        {{-- <li><a href="#">
                                                                 <p class="pt-1 breadcrumb-content"
                                                                     style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
                                                                     COMPANY</p>
@@ -559,7 +559,7 @@
                                                                 <p class="breadcrumb-content"
                                                                     style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
                                                                     {{ $juryCompany ?? ('' ?? '') }}</p>
-                                                            </a></li>
+                                                            </a></li> --}}
                                                     </ul>
                                                 </div>
                                                 <div class="mobile-breadcrumb-section">
@@ -623,6 +623,8 @@
                                                     @csrf
                                                     <input type="hidden" name="table_value"
                                                         value="{{ $productdata->table }}">
+                                                    <input type="hidden" name="userId"
+                                                        value="{{ $productdata->user_id }}">
                                                     <input type="hidden" name="current_position"
                                                         value="{{ $productdata->postion }}">
                                                     <input type="hidden" name="next_position" value="@php
@@ -639,8 +641,6 @@
                                                         value="{{ $sampleReview->id ?? null }}">
                                                     <input type="hidden" name="sent_sample_id"
                                                         value="{{ $sentSampleId }}">
-                                                        <input type="hidden" name="userId"
-                                                        value="{{ $userId }}">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <h3 class="entity-text roast-bg">ROAST</h3>
@@ -689,6 +689,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <h3 class="entity-text aftertaste-bg">AFTER TASTE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider "><input type="hidden"
+                                                                        name="after_taste" id="after_taste" value="8"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
@@ -697,6 +706,17 @@
                                                                         name="acidity" id="acidity" value="8"></div>
                                                             </div>
                                                             <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="acidity_chk" value="VH"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>VH</h5>
+
+                                                                    </label>
+                                                                </div>
                                                                 <div>
                                                                     <label class="radio_container">
 
@@ -729,6 +749,17 @@
 
                                                                     </label>
                                                                 </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="acidity_chk" value="VL"
+                                                                            class="acidity_L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>VL</h5>
+
+                                                                    </label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -740,6 +771,17 @@
                                                                         name="body" id="body" value="8"></div>
                                                             </div>
                                                             <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="body_chk" value="VH"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>VH</h5>
+
+                                                                    </label>
+                                                                </div>
                                                                 <div>
                                                                     <label class="radio_container">
 
@@ -769,6 +811,17 @@
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="body_chk" value="VL"
+                                                                            class="acidity_L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>VL</h5>
 
                                                                     </label>
                                                                 </div>
@@ -1109,12 +1162,10 @@
                                                                 oninput="if (this.value > 3) this.value = 0"
                                                                 type="number" id="quantity" maxlength="3"
                                                                 value="second_number" name="second_number"> --}}
-                                                                <select  value="second_number" name="second_number" class="score_second_number">
-                                                                    <option value="2">Taint : 2</option>
+                                                                <select  id="second_number" name="second_number" class="score_second_number">
+                                                                    <option value="2" selected>Taint : 2</option>
                                                                     <option value="4">Fault : 4</option>
                                                                 </select>
-                                                            <span class="multiply">X</span>
-                                                            <span class="multiply">4</span>
                                                             <span class="multiply">=</span>
                                                             <span class="multiply4">?</span>
                                                             <div class="entity_input">
@@ -1178,10 +1229,10 @@
                                                                         name="sample_submit_prev"
                                                                         class="submit-form-btn">PREVIOUS</button>
                                                                 @endif
-
+                     
                                                                 <a class="submit-form-btn" type="button" value=""
                                                                     onclick="showmodal()">SUBMIT TABLE</a>
-
+                                                        
                                                                 <button type="submit" value="1" name="sample_submit"
                                                                     class="submit-form-btn">NEXT</button>
                                                             </div>
@@ -2067,7 +2118,7 @@
             var first = $('.score_first_number').val();
             var second = $('.score_second_number').val();
             if (second && first) {
-                var defect = first * second * 4;
+                var defect = first * second;
                 var raw = subtotal - defect;
                 var total = 36 + raw;
                 $('#total_score').val(total);
@@ -2095,7 +2146,7 @@
             $(".score_first_number").keyup(function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
-                var defect = first * second * 4;
+                var defect = first * second;
                 $('#defect').val(defect);
                 $('.multiply4').html(defect);
                 subtotal = subtotaldata();
@@ -2111,7 +2162,7 @@
             $('.score_second_number').on('change', function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
-                var defect = first * second * 4;
+                var defect = first * second;
                 $('#defect').val(defect);
                 $('.multiply4').html(defect);
                 subtotal = subtotaldata();
@@ -2284,15 +2335,19 @@
                 // $('#overall_note').val('{{ $sampleReview->overall_note ?? '' }}');
 
                 calcTotal();
+              
                 if (chkmanual) {
                     toggleDivs();
-                    @if ($reviewdata)
+                    @if($reviewdata)
                         $('input[name=total_score]').val({{ $reviewdata->total_score }});
                     @endif
                 }
             }
 
-
+            @if($reviewdata)
+            $('#total_score').val({{$reviewdata->total_score}});
+             $('.totalScore').html({{$reviewdata->total_score}});
+             @endif
 
 
         });
