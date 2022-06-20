@@ -100,23 +100,23 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/origin/edit', [App\Http\Controllers\OriginController::class, 'update']);
     Route::get('/origin/delete/{id}', [App\Http\Controllers\OriginController::class, 'delete']);
 
-     //Origin CRUD Routes
-     Route::get('/process/index', [App\Http\Controllers\ProcessController::class, 'index']);
-     Route::get('/process/allprocess', [App\Http\Controllers\ProcessController::class, 'allprocess']);
-     Route::get('/process/create', [App\Http\Controllers\ProcessController::class, 'create']);
-     Route::post('/process/create', [App\Http\Controllers\ProcessController::class, 'save']);
-     Route::get('/process/edit/{id}', [App\Http\Controllers\ProcessController::class, 'edit']);
-     Route::post('/process/edit', [App\Http\Controllers\ProcessController::class, 'update']);
-     Route::get('/process/delete/{id}', [App\Http\Controllers\ProcessController::class, 'delete']);
+    //Origin CRUD Routes
+    Route::get('/process/index', [App\Http\Controllers\ProcessController::class, 'index']);
+    Route::get('/process/allprocess', [App\Http\Controllers\ProcessController::class, 'allprocess']);
+    Route::get('/process/create', [App\Http\Controllers\ProcessController::class, 'create']);
+    Route::post('/process/create', [App\Http\Controllers\ProcessController::class, 'save']);
+    Route::get('/process/edit/{id}', [App\Http\Controllers\ProcessController::class, 'edit']);
+    Route::post('/process/edit', [App\Http\Controllers\ProcessController::class, 'update']);
+    Route::get('/process/delete/{id}', [App\Http\Controllers\ProcessController::class, 'delete']);
 
-       //Origin CRUD Routes
-       Route::get('/genetic/index', [App\Http\Controllers\GeneticController::class, 'index']);
-       Route::get('/genetic/allgenetic', [App\Http\Controllers\GeneticController::class, 'allgenetic']);
-       Route::get('/genetic/create', [App\Http\Controllers\GeneticController::class, 'create']);
-       Route::post('/genetic/create', [App\Http\Controllers\GeneticController::class, 'save']);
-       Route::get('/genetic/edit/{id}', [App\Http\Controllers\GeneticController::class, 'edit']);
-       Route::post('/genetic/edit', [App\Http\Controllers\GeneticController::class, 'update']);
-       Route::get('/genetic/delete/{id}', [App\Http\Controllers\GeneticController::class, 'delete']);
+    //Origin CRUD Routes
+    Route::get('/genetic/index', [App\Http\Controllers\GeneticController::class, 'index']);
+    Route::get('/genetic/allgenetic', [App\Http\Controllers\GeneticController::class, 'allgenetic']);
+    Route::get('/genetic/create', [App\Http\Controllers\GeneticController::class, 'create']);
+    Route::post('/genetic/create', [App\Http\Controllers\GeneticController::class, 'save']);
+    Route::get('/genetic/edit/{id}', [App\Http\Controllers\GeneticController::class, 'edit']);
+    Route::post('/genetic/edit', [App\Http\Controllers\GeneticController::class, 'update']);
+    Route::get('/genetic/delete/{id}', [App\Http\Controllers\GeneticController::class, 'delete']);
 
     //Product CRUD
     Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index']);
@@ -130,7 +130,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
     //Product & Jury
     Route::post('/product/sent_to_jury',  [App\Http\Controllers\ProductController::class, 'sentToJury']);
-
     //jury CRUD
     Route::get('/jury/index', [App\Http\Controllers\JuryController::class, 'index']);
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
@@ -167,13 +166,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit']);
     Route::get('/customer/allcustomers', [App\Http\Controllers\CustomerController::class, 'allCustomer']);
     Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'update']);
-
-
 });
-
+    //Open Cupping
+    Route::get('/cupping/index', [App\Http\Controllers\OpenCuppingController::class, 'index']);
+    Route::post('/cupping/openCuppingUser', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingUser'])->name('openCuppingUser');
+    Route::get('/cupping/create', [App\Http\Controllers\OpenCuppingController::class, 'create']);
+    Route::post('/cupping/save', [App\Http\Controllers\OpenCuppingController::class, 'store'])->name('open_cupping');
+    Route::get('/cupping/show/{userId?}', [App\Http\Controllers\OpenCuppingController::class, 'show'])->name('show_cupping');
+    Route::get('/jury/link/give_cupping_review/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
+    Route::post('/jury/link/saveCuppingReview', [App\Http\Controllers\OpenCuppingController::class, 'saveCuppingReview']);
+    Route::get('/cupping/openCuppingFeedback', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingFeedback'])->name('openCuppingFeedback');
+    Route::get('/cupping/openCuppingSummary', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingSummary'])->name('openCuppingSummary');
+    Route::get('/cupping/openCuppingReviewDetail/{sample?}', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingReviewDetail'])->name('openCuppingReviewDetail');
+    //End Cupping
 Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
-Route::get('/jury/link/give_review/{table}/{juryId}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
-Route::get('/jury/link/give_review2/{table}/{juryId}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review2'])->name('give_review2');
+Route::get('/jury/link/give_review/{table?}/{juryId?}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
 Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
 
 Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);

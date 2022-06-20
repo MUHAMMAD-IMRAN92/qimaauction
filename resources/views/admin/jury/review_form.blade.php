@@ -233,7 +233,6 @@
                                                         </div>
                                                         <br>
                                                         <div class="row">
-
                                                             <div class="col-md-2 col-2 input-group">
                                                                 <span>Defects:</span>
                                                             </div>

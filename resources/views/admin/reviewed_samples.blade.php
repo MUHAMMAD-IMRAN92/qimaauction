@@ -26,7 +26,11 @@
                                                 <th>Sr</th>
                                                 <th>Samples</th>
                                                 <th>Date</th>
+                                                @if($opencupping)
+                                                 <th>Users</th>
+                                                @else
                                                 <th>Jury Members</th>
+                                                @endif
                                                 <th>Action(s)</th>
                                             </tr>
                                         </thead>
@@ -38,7 +42,12 @@
                                                 <td>{{date('m-d-Y',strtotime($dateArr[$value]))}}</td>
                                                 <td>{{$reviewed[$value] .'/'.$sample->total}}</td> 
                                                 {{-- ,'productId'=>$sample->product_id,'juryId'=>$sample->jury_id --}}
+                                                @if($opencupping)
+                                                <td> <a href="{{route('openCuppingReviewDetail',['sample'=>$sample->samples])}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                @else
                                                 <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                @endif
+                                               
                                             </tr>
                                             @empty
                                                 <tr><td></td><td></td><td>No Sample for review</td></tr>

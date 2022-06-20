@@ -42,25 +42,28 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/authentication.css') }}">
     <!-- END: Page CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
+    <!-- plus a jQuery UI theme, here I use "flick" -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('public/app-assets/css/pips.css') }}">
+    <script src="{{ asset('public/app-assets/js/pips.js') }}" defer></script>
 
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
 <style type="text/css">
-    body{
-        overflow-x: hidden; 
-        font-family:'Montserrat';
+    body {
+        overflow-x: hidden;
+        font-family: 'Montserrat';
     }
-    .bootstrap-touchspin .bootstrap-touchspin-injected {
-        margin: -8px !important;
-    }
+
+    .bootstrap-touchspin .bootstrap-touchspin-injected {}
 
     .tags-input-wrapper {
         background: transparent;
@@ -68,6 +71,10 @@
         border-radius: 4px;
         max-width: 300px;
         border: 1px solid #ccc
+    }
+
+    .pad-x15 {
+        padding: 0 15px;
     }
 
     .tags-input-wrapper input {
@@ -94,43 +101,55 @@
         display: inline-block;
         cursor: pointer;
     }
+
     @media (max-width: @screen-xs) {
-    body{font-size: 10px;}
+        body {
+            font-size: 10px;
+        }
     }
 
     @media (max-width: @screen-sm) {
-        body{font-size: 14px;}
+        body {
+            font-size: 14px;
+        }
     }
 
 
-    h5{
+    h5 {
         font-size: 1.4rem;
-    }  
-    .w-70{
+    }
+
+    .w-70 {
         width: 70% !important;
         height: 45px;
         border-radius: 0.4rem;
     }
-    @media only screen and (max-width:450px){
-        .mbl-mar{
+
+    @media only screen and (max-width:450px) {
+        .mbl-mar {
             margin-left: 3rem;
         }
+
         body {
-        padding-top: 0 !important;
-        gap: 8%;
+            padding-top: 0 !important;
+            gap: 8%;
+        }
     }
+
+    .btn-lg {
+        line-height: 1 !important;
     }
-    .btn-lg{
-    line-height: 1 !important;
-    }
-    .discriptor{
+
+    .discriptor {
         font-size: 16px;
     }
-    .alert-success{
+
+    .alert-success {
         color: white !important;
-        background-color:rgb(209, 175, 105) !important;
+        background-color: rgb(209, 175, 105) !important;
     }
-    .main-title{
+
+    .main-title {
         /* position: absolute; */
         width: 51px;
         height: 6px;
@@ -144,83 +163,107 @@
         align-items: center;
         text-align: center;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
     }
-    .line{
+
+    .line {
         position: absolute;
         width: 615px;
         height: 0px;
-        margin-left:22%; 
+        margin-left: 22%;
         border: 1px solid #A4A3A3;
     }
-    .dry-verticle{
-    position: absolute;
-    bottom: -150%;
-    left: 25%;
-    transform: rotate(-90deg);
-    transform-origin: left 0;
+
+    .dry-verticle {
+        position: absolute;
+        bottom: -150%;
+        left: 25%;
+        transform: rotate(-90deg);
+        transform-origin: left 0;
     }
 
-    .dry{
-    position: relative;
+    .dry {
+        position: relative;
     }
-    h3.entity-text{
-        width:100%;
-        text-align:center;
+
+    h3.entity-text {
+        width: 100%;
+        text-align: center;
     }
-    .entity-label{
-        font-family:'Montserrat';
-        font-size:32px;
-        color:#A4A3A3;
-        text-align:center;
-        padding-top:10px;
-        padding-bottom:20px;
+
+    .entity-label {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        color: #A4A3A3;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
-    .aroma-bg{
-        background-color:#6A2AF1;
+
+    .aroma-bg {
+        background-color: #6A2AF1;
     }
-    .defects-bg{
-        background-color:#B22AF1;
+
+    .defects-bg {
+        background-color: #B22AF1;
+        margin-top: 82px;
     }
-    .cleancup-bg{
-        background-color:#2AE5F1;
+
+    .cleancup-bg {
+        background-color: #2AE5F1;
     }
-    .total-bg{
-        background-color:#000;
+
+    .total-bg {
+        background-color: #000;
     }
-    .roast-bg{
-        background-color:transparent;
-        border:1px solid #000;
-        color:#000;
+
+    .roast-bg {
+        background-color: transparent;
+        border: 1px solid #000;
+        color: #000;
     }
-    .overall-bg{
-        background-color:#95E2AF;
+
+    .overall-bg {
+        background-color: #95E2AF;
     }
-    .balance-bg{
-        background-color:#29672C;
+
+    .balance-bg {
+        background-color: #29672C;
     }
-    .flavor-bg{
-        background-color:#F32C38;
+
+    .flavor-bg {
+        background-color: #F32C38;
     }
-    .aftertaste-bg{
-        background-color:#E7936E;
+
+    .aftertaste-bg {
+        background-color: #E7936E;
     }
-    .sweetness-bg{
-        background-color:#E2959A;
+
+    .sweetness-bg {
+        background-color: #E2959A;
     }
-    .acidity-bg{
-        background-color:#FDBF86;
+
+    .acidity-bg {
+        background-color: #FDBF86;
     }
-    .mouthfeel-bg{
-        background-color:#38DFB7;
+
+    .mouthfeel-bg {
+        background-color: #38DFB7;
     }
-    .multiply,.score_first_number,.score_second_number,.multiply4{
-        font-family:'Montserrat';
-        font-size:32px;
+
+    .multiply,
+    .score_first_number,
+    .score_second_number,
+    .multiply4 {
+        font-family: 'Montserrat';
+        font-size: 24px;
     }
-    .score_first_number,.score_second_number{
-        width:80px;
+
+    .score_first_number,
+    .score_second_number {
+        width: 130px;
     }
+
     .entity_note {
         width: 80%;
         margin: auto;
@@ -228,74 +271,235 @@
         font-size: 18px;
         font-family: 'Montserrat';
     }
+
     .entity_input {
         width: 100%;
         text-align: center;
         padding-top: 29px;
-        padding-bottom:20px;
+        padding-bottom: 20px;
     }
+
     h2.totalScore {
         text-align: center;
-        font-size: 300px;
+        font-size: 100px;
         font-family: 'EB Garamond';
     }
-    .submit-form-btn {
-    background: transparent;
-    color: #A4A3A3 !important;
-    border: 1px solid #A4A3A3 !important;
-    padding: 22px;
-    width: auto;
-    display: block;
-    margin: auto;
-    margin-top: 40px;
-}
-.scrollable{
-    width: 77vh;
-    overflow: auto;
-}
-.pager{
-    width: 216px;
-    font-size:24px;
-    background-color:#C4C4C4;
-}
-.pager.btn-success{
-    background-color:#000 !important;
-    color:#FFF;
-}
-.main-title{
-    /* position: absolute; */
-    width: 51px;
-    height: 6px;
-    color: #A4A3A3;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    font-feature-settings: 'kern' off;
-}
-.line{
-    position: absolute;
-    width: 615px;
-    height: 0px;
-    margin-left:22%; 
-    border: 1px solid #A4A3A3;
-}
-.dry-verticle{
-  position: absolute;
-  bottom: -150%;
-  left: 25%;
-  transform: rotate(-90deg);
-  transform-origin: left 0;
-}
 
-.dry{
-  position: relative;
-}
+    .submit-form-btn {
+        background: transparent;
+        color: #A4A3A3 !important;
+        border: 1px solid #A4A3A3 !important;
+        padding: 22px;
+        width: 200px;
+        height: auto;
+        display: block;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+    .scrollable {
+        width: calc(100vh - 42%);
+        overflow: auto;
+        margin: auto;
+    }
+
+    .pager {
+        width: 121px;
+        font-size: 24px;
+        background-color: #C4C4C4;
+    }
+
+    .pager.btn-success {
+        background-color: #000 !important;
+        color: #FFF;
+    }
+
+    .ui-slider-pips .ui-slider-line {
+        background: #999;
+        width: 2px;
+        height: 50px !important;
+        position: absolute;
+        left: 50%;
+        top: -38px !important;
+    }
+
+    .ui-slider-pips .ui-slider-label {
+        top: 30px;
+    }
+
+    .ui-state-focus {
+        color: #000 !important;
+        border-color: black !important;
+    }
+
+    .ui-state-default {
+        color: #000 !important;
+    }
+
+    .ui-slider-pips [class*=ui-slider-pip-selected] {
+        font-weight: bold;
+        color: black;
+    }
+
+    .ui-corner-all {
+        border-radius: 50%;
+    }
+
+    .ui-state-default,
+    .ui-widget-content .ui-state-default,
+    .ui-widget-header .ui-state-default {
+        border: 1px solid black;
+        background: black url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
+        font-weight: bold;
+        color: black;
+    }
+
+    .customslider.ui-slider-horizontal {
+        height: 1px;
+    }
+
+    .customslider.ui-slider-horizontal .ui-slider-handle {
+        top: -9px;
+        margin-left: -8px;
+    }
+
+    .customslider.ui-slider-pips .ui-slider-pip {
+        top: 14px;
+    }
+
+    .aromaslider.ui-slider-horizontal {
+        height: 1px;
+    }
+
+    .aromaslider.ui-slider-horizontal .ui-slider-handle {
+        top: -9px;
+        margin-left: -8px;
+    }
+
+    .aromaslider.ui-slider-pips .ui-slider-pip {
+        top: 14px;
+    }
+
+    .roastslider.ui-slider-horizontal {
+        height: 50px;
+        border-radius: 0;
+        background-image: linear-gradient(to right, #fff, #88592D) !important;
+    }
+
+    .roastslider .ui-slider-handle {
+        height: 62px;
+        border-radius: 5px;
+        background-color: gray;
+        border-color: grey;
+    }
+
+    .roastslider .ui-state-focus,
+    .roastslider .ui-state-focus {
+        border: 1px solid #000;
+    }
+
+    ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+        background: none;
+        border: none;
+        text-align: center;
+        justify-content: center;
+        align-items: center !important;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+    }
+
+    ul.breadcrumb li+li:before {
+        content: "/\00a0";
+        font-size: 26px;
+    }
+
+    ul.breadcrumb li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .id-text {
+        font-size: 65px;
+        color: #A4A3A3;
+        font-family: 'Garamond Premier Pro';
+    }
+
+    .sample-area {
+        text-align: center;
+    }
+
+    .sample_number {
+        font-family: 'Garamond Premier Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 140px;
+        line-height: 168px;
+        /* identical to box height */
+        color: #040404;
+    }
+
+    .custom_hr {
+        border-top: 2px solid #A4A3A3;
+    }
+
+    .entity_note {
+        width: 100%;
+    }
+
+    .design-slider {
+        padding: 2rem 0.4rem;
+    }
+
+    .flex-evenly {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    input {
+        border: 1px solid #000000;
+    }
+
+    @media only screen and (max-width:767px) {
+        .id-text {
+            font-size: 40px;
+        }
+
+        .sample_number {
+            font-size: 80px;
+        }
+
+        .breadcrumb-section {
+            display: none;
+        }
+
+        .breadcrumb-content {
+            font-size: 20px !important;
+        }
+    }
+
+    @media only screen and (min-width:768px) {
+        .mobile-breadcrumb-section {
+            display: none;
+        }
+    }
+
+    .isdone {
+        background-color: transparent !important;
+        color: #000 !important;
+    }
+
+    .isdone:hover {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .isdone.btn-success {
+        color: #FFF !important;
+    }
 </style>
 
 <body
@@ -307,7 +511,7 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                
+
             </div>
 
             <div class="content-body">
@@ -319,197 +523,185 @@
                                     <div class="card rounded-0 mb-0 p-2">
                                         <div class="card-header pt-50 pb-1">
                                             @if (session('success'))
-                                            <div class="col-md-12 alert alert-success">
-                                                {{ session('success') }}
+                                                <div class="col-md-12 alert alert-success">
+                                                    {{ session('success') }}
                                                 </div>
                                             @endif
                                             <div class="col-lg-12">
                                                 <div class="site-logo">
-                                                    <img
-                                                        src="{{  asset('/public/app-assets/images/logo/newlogo.png') }}" style="width: 100%;max-width:1000px;">
+                                                    <img src="{{ asset('/public/app-assets/images/logo/newlogo.png') }}"
+                                                        style="width: 100%;max-width:100%;">
                                                 </div>
-                                                <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
-                                                <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p>
-                                                <p class="px-2 pt-2" style="font-family: 'Garamond Premier Pro';font-size:25px;">SAMPLE ID: @foreach ($alltablesamples as $samp)
-                                                                                    
-                                                                                    @if($samp->sampleId == $sentSampleId)
-                                                                    {{$samp->samples}}
+                                                <!--Breadcrumb Section-->
+                                                <div class="breadcrumb-section">
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
+                                                                    CUPPER</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryName ?? '' }}</p>
+                                                            </a></li>
+                                                        <a href="#">
+                                                            <p class="breadcrumb-content"
+                                                                style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">
+                                                                -</p>
+                                                        </a>
+                                                        <li><a href="#">
+                                                                <p class="pt-1 breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    COMPANY</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryCompany ?? ('' ?? '') }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mobile-breadcrumb-section">
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content pt-1"
+                                                                    style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
+                                                                    CUPPER</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryName ?? '' }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content pt-1"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    COMPANY</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryCompany ?? '' }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                </div>
+                                                <hr class="custom_hr">
+                                                <!--Breadcrumb Section-->
+                                                {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
+                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany ?? ''}}</p> --}}
+                                                <!--Sample ID Section-->
+                                                <div class="sample-area">
+                                                    <h1 class="id-text">SAMPLE ID</h1>
+                                                    <p class="sample_number">
+                                                        @foreach ($alltablesamples as $samp)
+                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                 <h1>{{ $samp->samples }}</h1>
+                                                            @endif
+                                                        @endforeach
+                                                    </p>
+                                                    <!--Breadcrumb Section-->
+                                                    {{-- <div class="breadcrumb-section">
+                                                <ul class="breadcrumb">
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">TABLE-{{$productdata->table}}</p></a>
+                                                    </li>
+                                                    <li><a href="#"><p class="" style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">POSITION-{{$productdata->postion}}</p></a></li>
 
-                                                                                    @endif
-                                                            @endforeach</p>
+                                                </ul>
+                                            </div> --}}
+                                                    <!--Breadcrumb Section-->
+                                                </div>
+                                                <!--Sample ID Section-->
+
                                             </div>
 
                                             <div class="col-lg-12">
-                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="link" value="{{$link}}">
-                                                                <input type="hidden" name="product_id" value="{{$productId}}">
-                                                                <input type="hidden" name="jury_id" value="{{$juryId}}">
-                                                                <input type="hidden" name="sent_sample_id" value="{{$sentSampleId}}">
+                                                <form action="{{ url('/jury/link/saveCuppingReview') }}"
+                                                    method="POST" enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <input type="hidden" name="table_value"
+                                                        value="{{ $productdata->table }}">
+                                                    <input type="hidden" name="current_position"
+                                                        value="{{ $productdata->postion }}">
+                                                    <input type="hidden" name="next_position" value="@php
+                                                        $next_position = $productdata->postion + 1;
+                                                        echo $next_position;
+                                                    @endphp">
+                                                    <input type="hidden" name="previous_position"
+                                                        value="@php
+                                                            $previous_position = $productdata->postion - 1;
+                                                            echo $previous_position;
+                                                        @endphp">
+                                                    <input type="hidden" name="product_id" value="{{ $productId }}">
+                                                    <input type="hidden" name="review_id"
+                                                        value="{{ $sampleReview->id ?? null }}">
+                                                    <input type="hidden" name="sent_sample_id"
+                                                        value="{{ $sentSampleId }}">
+                                                        <input type="hidden" name="userId"
+                                                        value="{{ $userId }}">
                                                     <div class="row">
-                                                    <h3 class="entity-text roast-bg">ROAST</h3>
-
-                                                        <div class="user_name">
-                                                            <div class="range-slider">
-                                                            <input type="range" name="roast" oninput="this.parentNode.style.setProperty('--value',this.value); 
-                                                                    this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text roast-bg">ROAST</h3>
+                                                        </div>
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="roastslider"><input type="hidden"
+                                                                        name="roast" id="roast" value="50"></div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                    <h3 class="entity-text aroma-bg">AROMA</h3>
-
-                                                        <div class="row aroma-data">
-                                                            <div class="col-lg-12">
-                                                                <h5>DRY</h5>
-                                                                <div class="custom_slider ">
-                                                                    <div class="range-slider"
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0" class="aroma_dry" 
-                                                                        id="aroma_dry" name="aroma_dry" max="3"  id="aroma_dry"
-                                                                            step="1" value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <h5>CRUST</h5>
-                                                                <div class="custom_slider">
-                                                                    <div class="range-slider" 
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0"
-                                                                            name="aroma_crust" id="aroma_crust" class="aroma_crust"
-                                                                            max="3" step="1"
-                                                                            value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <h5>BREAK</h5>
-                                                                <div class="custom_slider">
-                                                                    <div class="range-slider"
-                                                                        style='--min:0; --max:3; --step:1; --value:0; --text-value:"0"; width: 200px;'>
-                                                                        <input type="range" min="0"
-                                                                            name="aroma_break" id="aroma_break"
-                                                                            max="3" step="1"
-                                                                            value="0"
-                                                                            oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                        <output></output>
-                                                                        <div
-                                                                            class='range-slider__progress'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- <div class="aroma_input">
-                                                                                <input type="text" name="aroma_note" id="aroma_note"
-                                                                                    placeholder="Note"
-                                                                                    class="aroma_note">
-                                                                            </div> -->
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text aroma-bg">AROMA</h3>
                                                         </div>
                                                     </div>
-                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+
+                                                    <div class="col-lg-12">
+                                                        <h5 style="margin-top:34px">DRY</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromadry"><input type="hidden"
+                                                                name="aroma_dry" id="aroma_dry" value="0"></div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <h5 style="margin-top:-6px">CRUST</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromacrust"><input type="hidden"
+                                                                name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <h5 style="margin-top:-6px">BREAK</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
+                                                        <div class="aromaslider aromabreak"><input type="hidden"
+                                                                name="aroma_break" id="aroma_break" value="0"></div>
+                                                    </div>
+
+                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <input class="score_first_number" oninput="if (this.value > 3) this.value = 0;"
-                                                                type="number" id="quantity"  value="first_number"
-                                                                name="first_number">
-                                                            <span
-                                                                class="multiply">X</span>
-                                                            <input class="score_second_number" oninput="if (this.value > 5) this.value = 0"
-                                                                type="number" id="quantity" maxlength="5" value="second_number"
-                                                                name="second_number">
-                                                            <span
-                                                                class="multiply">X</span>
-                                                            <span
-                                                                class="multiply">4</span>
-                                                            <span
-                                                                class="multiply">=</span>
-                                                            <span
-                                                                class="multiply4">?</span>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="defect_note" id="defect_note"
-                                                                placeholder="NOTES"
-                                                                class="entity_note">
-                                                        </div>
-                                                    </div>
-
-                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
-
-                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 100%;'>
-                                                                    <input type="range" min="0" max="8" name="clean_up" id="clean_up"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider flavor"><input type="hidden"
+                                                                        name="flavour" id="flavour" value="8"></div>
                                                             </div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="cleanup_note" id="cleanup_note"
-                                                                placeholder="NOTES"
-                                                                class="entity_note">
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="sweetness" id="sweetness"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="entity_input">
-                                                            <input type="text" name="sweetness_note" id="sweetness_note"
-                                                                placeholder="NOTES"
-                                                                class="entity_note">
                                                         </div>
                                                     </div>
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8"
-                                                                        step="1" value="6" name="acidity" id="acidity"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider acidity"><input type="hidden"
+                                                                        name="acidity" id="acidity" value="8"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
 
-                                                                        <input type="radio"
-                                                                            name="acidity_chk" value="H">
+                                                                        <input type="radio" name="acidity_chk" value="H"
+                                                                            class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>H</h5>
@@ -518,196 +710,517 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio"
-                                                                            name="acidity_chk" value="M">
+                                                                        <input type="radio" name="acidity_chk" value="M"
+                                                                            class="acidity_M">
                                                                         <div class="checkmark">
-                                                                        </div>
-                                                                    <h5>M</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-                                                                        <input type="radio"
-                                                                            checked="checked"
-                                                                            name="acidity_chk" value="L">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                    <h5>L</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="acidity_note" id="acidity_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="mouth_feel" id="mouth_feel"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="radio_button">
-                                                                <div>
-                                                                    <label class="radio_container">
-
-                                                                        <input type="radio"
-                                                                             value="H"
-                                                                            name="fm_chk">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>H</h5>
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-                                                                        <input type="radio" value="M"
-                                                                            name="fm_chk">
-                                                                        <div
-                                                                            class="checkmark">
                                                                         </div>
                                                                         <h5>M</h5>
+
                                                                     </label>
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" value="L" checked="checked"
-                                                                            name="fm_chk">
-                                                                        <div
-                                                                            class="checkmark">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="acidity_chk" value="L"
+                                                                            class="acidity_L">
+                                                                        <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
+
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                    <h3 class="entity-text sweetness-bg">BODY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="flavour" id="flavour"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider body"><input type="hidden"
+                                                                        name="body" id="body" value="8"></div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="body_chk" value="H"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" name="body_chk" value="M"
+                                                                            class="acidity_M">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>M</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="body_chk" value="L"
+                                                                            class="acidity_L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>L</h5>
+
+                                                                    </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="flavor_note" id="flavor_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
                                                         </div>
+
                                                     </div>
-                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="after_taste" id="after_taste"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="aftertaste_note" id="aftertaste_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="balance" id="balance"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="design-slider mt-5 mb-5">
+                                                                    <div class="customslider balance"><input type="hidden"
+                                                                            name="balance" id="balance" value="8"></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-5">
+
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="row pad-x15 p-3">
+
+                                                                    <div class="col-md-3 col-3 input-group">
+                                                                        <span class="entity-text">Uniformity</span>
+                                                                    </div>
+
+                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
+                                                                        <span>=</span>
+                                                                    </div>
+                                                                    <div class=" ml-2 col-md-2 col-2 input-group">
+                                                                        <span id="uniformity">0</span>
+                                                                    </div><br>
+                                                                    <div
+                                                                        class="col-md-6 col-6 input-group flex-evenly mt-5">
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="uniformity[]"  id="uniformity1"
+                                                                                    class="uniformity" >
+                                                                                <input type="hidden"
+                                                                                    id="uniformityvalue"
+                                                                                    name="uniformityvalue"
+                                                                                    class="uniformity" value="" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="uniformity[]"  id="uniformity2"
+                                                                                    class="uniformity" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="uniformity[]"  id="uniformity3"
+                                                                                    class="uniformity" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="uniformity[]"  id="uniformity4"
+                                                                                    class="uniformity" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="uniformity[]"  id="uniformity5"
+                                                                                    class="uniformity" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="balance_note" id="balance_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
+                                                            <div class="col-md-4">
+                                                                <div class="row pad-x15 p-3">
+
+                                                                    <div class="col-md-3 col-3 input-group">
+                                                                        <span class="entity-text">CleanCup</span>
+                                                                    </div>
+
+                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
+                                                                        <span>=</span>
+                                                                    </div>
+                                                                    <div class="ml-2 col-md-2 col-2 input-group">
+                                                                        <span id="cleancup">0</span>
+                                                                    </div><br>
+                                                                    <div
+                                                                        class="col-md-6 col-6 input-group flex-evenly mt-5">
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup1"
+                                                                                    value="false"
+                                                                                    class="cleancup" >
+                                                                                <input type="hidden" id="cleancupvalue"
+                                                                                    name="cleancupvalue"
+                                                                                    value="">
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup2"
+                                                                                    value="false"
+                                                                                    class="cleancup" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup3"
+                                                                                    value="false"
+                                                                                    class="cleancup" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup4"
+                                                                                    value="false"
+                                                                                    class="cleancup" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup5"
+                                                                                    value="false"
+                                                                                    class="cleancup" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="row pad-x15 p-3">
+
+                                                                    <div class="col-md-3 col-3 input-group">
+                                                                        <span class="entity-text">Sweetness</span>
+                                                                    </div>
+
+                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
+                                                                        <span>=</span>
+                                                                    </div>
+                                                                    <div class=" ml-2 col-md-2 col-2 input-group">
+                                                                        <span id="sweetness">0</span>
+                                                                    </div><br>
+                                                                    <div
+                                                                        class="col-md-6 col-6 input-group flex-evenly mt-5">
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="sweetness[]" id="sweetness1"
+                                                                                    class="sweetness" >
+                                                                                <input type="hidden" id="sweetnesvalue"
+                                                                                    name="sweetnesvalue"
+                                                                                    value="">
+                                                                                <span class="vs-checkbox">
+                                                                                        <i class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="sweetness[]" id="sweetness2"
+                                                                                    class="sweetness" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="sweetness[]" id="sweetness3"
+                                                                                    class="sweetness" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="sweetness[]" id="sweetness4"
+                                                                                    class="sweetness" >
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <div
+                                                                                class="vs-checkbox-con vs-checkbox-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="sweetness[]" id="sweetness5"
+                                                                                    class="sweetness">
+                                                                                <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                    </span>
+                                                                                </span>
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+
+
                                                     </div>
+
                                                     <h3 class="entity-text overall-bg">OVERALL</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
-                                                            <div class="custom_slider">
-                                                                <div class="range-slider"
-                                                                    style='--min:0; --max:8; --step:1; --value:6; --text-value:"6"; width: 200px;'>
-                                                                    <input type="range" min="0" max="8" name="overall" id="overall"
-                                                                        step="1" value="6"
-                                                                        oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-                                                                    <output></output>
-                                                                    <div class='range-slider__progress'>
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider overall"><input type="hidden"
+                                                                        name="overall" id="overall" value="8"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                      <input type="hidden" name="defect" id="defect" value="">
+                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                    <p class="entity-label">#CUPS X INTENSITY = SCORE</p>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <input class="score_first_number"
+                                                                oninput="if (this.value > 5) this.value = 0;"
+                                                                type="number" id="quantity" value="first_number"
+                                                                name="first_number">
+                                                            <span class="multiply">X</span>
+                                                            {{-- <input class="score_second_number"
+                                                                oninput="if (this.value > 3) this.value = 0"
+                                                                type="number" id="quantity" maxlength="3"
+                                                                value="second_number" name="second_number"> --}}
+                                                                <select  value="second_number" name="second_number" class="score_second_number">
+                                                                    <option value="2">Taint : 2</option>
+                                                                    <option value="4">Fault : 4</option>
+                                                                </select>
+                                                            <span class="multiply">X</span>
+                                                            <span class="multiply">4</span>
+                                                            <span class="multiply">=</span>
+                                                            <span class="multiply4">?</span>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="notes" id="notes"
+                                                                    placeholder="NOTES" class="entity_note">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <h3 class="entity-text total-bg">TOTAL</h3>
+                                                            <p class="entity-label">(+36)</p>
+                                                            <p id="input_total_score"
+                                                                style="max-width:100%;width: 267px;margin: auto;display: none">
+                                                                <input onkeyup="if (this.value > 100){ calcTotal()};"
+                                                                    style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
+                                                                    type="number" class="totalScore"
+                                                                    name="total_score" id="total_score" value="84">
+                                                            </p>
+                                                            <h2 class="totalScore" id="div_total_score">0</h2>
+                                                            <a onclick="toggleDivs()">Manually Override Score</a>
+                                                            <input type="hidden" value="0" name="manual_override">
+                                                            <script>
+                                                                function toggleDivs() {
+                                                                    $('#div_total_score').hide();
+                                                                    $('#input_total_score').show();
+                                                                    $('input[name=manual_override]').val(1);
+                                                                }
+                                                            </script>
+                                                            <div class="row">
+                                                                <div class="scrollable" style="overflow:auto;">
+                                                                    <div class="button-group"
+                                                                        style="white-space:nowrap">
+                                                                        @foreach ($alltablesamples as $samp)
+                                                                            @php $extraclass = ""; @endphp
+                                                                            @if ($samp->is_hidden == 1)
+                                                                                @php $extraclass="isdone"; @endphp
+                                                                            @endif
+                                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                                {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
+                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    {{ $samp->samples }}
+                                                                                </a>
+                                                                            @else
+                                                                                <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    {{ $samp->samples }}
+                                                                                </a>
+                                                                            @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="overall_note" id="overall_note"
-                                                                    placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="entity-text total-bg">TOTAL</h3>
-                                                    <p class="entity-label">(+36)</p>
-                                                    <input type="hidden" name="total_score" id="total_score" value="">
-                                                    <h2 class="totalScore">0</h2>
-                                                    <div class="scrollable" style="overflow:auto;">
-                                                        <div class="button-group" style="width:{{count($alltablesamples)>0?(count($alltablesamples)*220).'px':'100%'}}">
-                                                            @foreach ($alltablesamples as $samp)
-                                                                                    
-                                                                @if($samp->sampleId == $sentSampleId)
-                                                                <a class="btn btn-success pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                    {{$samp->samples}}
-                                                                </a>
-                                                                @else
-                                                                <a class="btn btn-secondary pager" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> 
-                                                                    {{$samp->samples}}
-                                                                </a>
+                                                            <div class="row">
+                                                                <input type="hidden" id="to_go_sample"
+                                                                    name="to_go_sample" value="">
+                                                                @if ($previous_position != 0)
+                                                                    <button type="submit" value="1"
+                                                                        name="sample_submit_prev"
+                                                                        class="submit-form-btn">PREVIOUS</button>
                                                                 @endif
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                    <input class="submit-form-btn" type="submit" value="SUBMIT TABLE">
+
+                                                                <a class="submit-form-btn" type="button" value=""
+                                                                    onclick="showmodal()">SUBMIT TABLE</a>
+
+                                                                <button type="submit" value="1" name="sample_submit"
+                                                                    class="submit-form-btn">NEXT</button>
+                                                            </div>
+                                                            <div id="myModal" class="modal" tabindex="-1">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Submit Cupping
+                                                                            </h5>
+                                                                            <button type="button"
+                                                                                class="close"
+                                                                                data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>You are about to submit results for
+                                                                                @foreach ($alltablesamples as $samp)
+                                                                                    @if ($samp->sampleTable == $table)
+                                                                                        &nbsp<b>{{ $samp->samples }}</b>,
+                                                                                    @endif
+                                                                                @endforeach.
+                                                                            </p>
+                                                                            <br><br>
+                                                                            <p>Are you sure you want to do this? You
+                                                                                cannot edit fields once submitted.</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Cancel</button>
+                                                                            <button type="submit"
+                                                                                value="{{ $table }}"
+                                                                                name="table_submit"
+                                                                                class="btn btn-primary">Save</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                 </form>
                                             </div>
-
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -718,6 +1231,7 @@
             </div>
         </div>
     </div>
+
     <!-- END: Content-->
     <script src="{{ asset('public/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
@@ -732,95 +1246,85 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('public/app-assets/js/scripts/forms/number-input.js') }}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ asset('public/js/jquery.ui.touch-punch.min.js') }}"></script>
+
     <!-- END: Page JS-->
     <script>
-         var subtotal=0;
+        function showmodal() {
+            $('#myModal').modal('show');
+        }
+        var subtotal = 0;
         //  var a=0,b=0,c=0,d=0;
-    
+
         $('document').ready(function() {
-  
-            $("#select").select2(
-                {
-                    tags:true,
-                    maximumInputLength: 16,
-                });
+                var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
+                var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
+                var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
+              
+               
+              
+
+           if(uvalue)
+           {
+                $('#uniformity').html(uvalue);
+                var t = 1;
+                    for (let i = uvalue; i > 0 ; i--) {         
+                        $('#uniformity'+t).prop('checked', true);
+                        t++;
+                        i--;
+                    }
+           }
+           else
+           {
+                $('#uniformity').html(10);
+                for (let i = 1; i <= 5; i++) {
+                    $('#uniformity'+i).prop('checked', true);
+                }
+           }
+           if(svalue)
+           {
+            $('#cleancup').html(svalue);
+            var t = 1;
+                for (let i = svalue; i > 0 ; i--) {         
+                    $('#cleancup'+t).prop('checked', true);
+                    t++;
+                    i--;
+                }
+           }
+           else
+           {
+            $('#cleancup').html(10);
+            for (let i = 1; i <=5; i++) {
+                $('#cleancup'+i).prop('checked', true);
+            }
+           }
+         
+           if(cvalue)
+           {
+            $('#sweetness').html(cvalue);
+            var t = 1;
+                for (let i = cvalue; i > 0 ; i--) {         
+                    $('#sweetness'+t).prop('checked', true);
+                    t++;
+                    i--;
+                }
+           }
+           else
+           {
+            $('#sweetness').html(10);
+            for (let i = 1; i <=5; i++) {
+                $('#sweetness'+i).prop('checked', true);
+            }
+           }
+           
+            $("#select").select2({
+                tags: true,
+                maximumInputLength: 16,
+            });
             (function() {
                 "use strict"
-                function subtotaldata()
-                {
-                    // var d=e=f=g=h=i=j=k=0;
-                    // var a = $('#aroma_dry').val();
-                    // var b = $('#aroma_crust').val();
-                    // var d = $('#aroma_break').val();
-                    var c = $('#clean_up').val();
-                    
-                    var e = $('#sweetness').val();
-                    var f = $('#acidity').val();
-                    var g = $('#mouth_feel').val();
-                    var h = $('#flavour').val();
-                    var i = $('#balance').val();
-                    var j = $('#overall').val();
-                    var k = $('#after_taste').val();
-             
-                     subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
-                    
-                    return subtotal;
-                }
-                $('input[type=range]').on('input', function () {
-                    var step=0;
-                    if ($(this).val() >= 0 && $(this).val() <= 6) {
-                            step = 1;
-                        }else {
-                            step = 0.5;
-                        }
-                        $(this).attr('step', step);
-                    subtotal=subtotaldata(); 
-                      var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    if(second && first)
-                    {
-                        var defect =first * second * 4;
-                        var raw = subtotal - defect;
-                           var total = 36 + raw;
-                           $('#total_score').val(total);
-                           $('.totalScore').html(total);
-                    }
-                    else
-                    {
-                        $('.score_first_number').val(0);
-                        $('.score_second_number').val(0);
-                        $('.multiply4').html(0);
-                        var defect = 0;
-                        var raw = subtotal - defect;
-                         if(raw == 0)
-                            {
-                                var total = 0;
-                            }
-                            else
-                            {
-                                var total = 36 + raw;
-                            }
-                            $('#total_score').val(total);
-                           $('.totalScore').html(total); 
-                    }     
-                    $(this).trigger('change');
-                });
 
-                $(".score_second_number,.score_first_number").keyup(function(){
-                    var first = $('.score_first_number').val();
-                    var second = $('.score_second_number').val();
-                    var defect=first * second * 4;
-                    $('#defect').val(defect);
-                    $('.multiply4').html(defect);
-                    subtotal=subtotaldata(); 
-                    var raw = subtotal - defect;
-                           var total = 36 + raw;
-
-                           $('#total_score').val(total);
-                           $('.totalScore').html(total);
-
-                //   $("input").css("background-color", "pink");
-                });
+                $('input[type=range]').on('input', function() {});
                 // Plugin Constructor
                 var TagsInput = function(opts) {
                     this.options = Object.assign(TagsInput.defaults, opts);
@@ -907,7 +1411,7 @@
                     return false;
                 }
 
-                // Add tags programmatically 
+                // Add tags programmatically
                 TagsInput.prototype.addData = function(array) {
                     var plugin = this;
 
@@ -983,29 +1487,35 @@
 
             })();
 
-            var tagInput1 = new TagsInput({
-                selector: 'tag-input1',
-                duplicate: false,
-                max: 10
-            });
-            tagInput1.addData([])
+            // var tagInput1 = new TagsInput({
+            //     selector: 'tag-input1',
+            //     duplicate: false,
+            //     max: 10
+            // });
+            // tagInput1.addData([])
 
             $('.uniformity').on('click', function() {
                 $('#uniformity').html($('.uniformity:checked').length * 2);
                 $('#uniformityvalue').val($('.uniformity:checked').length * 2);
+                calcTotal();
                 total().trigger();
+               
             });
             $('.cleancup').on('click', function() {
 
                 $('#cleancup').html($('.cleancup:checked').length * 2);
                 $('#cleancupvalue').val($('.cleancup:checked').length * 2);
+                calcTotal();
                 total().trigger();
+                
             });
             $('.sweetness').on('click', function() {
 
                 $('#sweetness').html($('.sweetness:checked').length * 2);
                 $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
+                calcTotal();
                 total().trigger();
+                
             });
             $('#defect1').on('change', function() {
 
@@ -1036,7 +1546,6 @@
                 $('#volspan').html($(this).val() + '%');
                 $('#roastvalue').val($(this).val());
             })
-            $('input[type=range]').first().trigger('input');
         });
     </script>
 
@@ -1111,7 +1620,7 @@
         }
 
         .custom_slider {
-            padding: 2rem 0;
+            padding: 2rem 0.4rem;
         }
 
         .range-slider {
@@ -1173,21 +1682,21 @@
             position: relative;
             z-index: 1;
         }
-        
-.user_name{
-    padding: 20px 0;
-    width: 100%;
-}
-        .user_name .range-slider{
-            / background-image: linear-gradient(to right,#fff , #88592D) !important; /
-            --primary-color: #5D5D5D;
+
+        .user_name {
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .user_name .range-slider {
+            / background-image: linear-gradient(to right, #fff, #88592D) !important;/ --primary-color: #5D5D5D;
             --value-offset-y: var(--ticks-gap);
             --value-active-color: white;
             --value-background: transparent;
             --value-background-hover: var(--primary-color);
             --value-font: 700 12px/1 Arial;
             --fill-color: var(--primary-color);
-            --progress-background: #fff  !important;
+            --progress-background: #fff !important;
             --progress-radius: 20px;
             --track-height: calc(var(--thumb-size) / 2);
             --min-max-font: 12px Arial;
@@ -1235,8 +1744,9 @@
             z-index: 1;
             width: 100% !important;
         }
-        .user_name .range-slider input{
-            background-image: linear-gradient(to right,#fff , #88592D) !important;
+
+        .user_name .range-slider input {
+            background-image: linear-gradient(to right, #fff, #88592D) !important;
             height: 50px;
             border: 1px solid #5D5D5D;
         }
@@ -1514,13 +2024,283 @@
             width: clamp(300px, 50vw, 800px);
             min-width: 200px;
         }
-
     </style>
     <!-- Range slider end -->
     <script>
+        function subtotaldata() {
+            // var d=e=f=g=h=i=j=k=0;
+            // var a = $('#aroma_dry').val();
+            // var b = $('#aroma_crust').val();
+            // var d = $('#aroma_break').val();
+            // var c = $('#clean_up').val();
+           
+         
+            // $('#cleancup').html(10);
+            // $('#sweetness').html(10);
+            var e = $('#body').val();
+            var f = $('#acidity').val();
+            var g = $('#flavour').val();
+            var h = $('#balance').val();
+            var i = $('#overall').val();
+            var j = $('#uniformity').html();
+            var k = $('#cleancup').html();
+            var l = $('#sweetness').html();
+            $('#uniformityvalue').val(j);
+            $('#cleancupvalue').val(k);
+            $('#sweetnesvalue').val(l);
+
+
+            subtotal = +e + +f + +g + +h + +i + +j + +k + +l;
+
+            return subtotal;
+        }
+
+        function calcTotal() {
+            // var step=0;
+            // if ($(this).val() >= 0 && $(this).val() <= 6) {
+            //     step = 1;
+            // }else {
+            //     step = 0.5;
+            // }
+            // $(this).attr('step', step);
+            subtotal = subtotaldata();
+            var first = $('.score_first_number').val();
+            var second = $('.score_second_number').val();
+            if (second && first) {
+                var defect = first * second * 4;
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            } else {
+                $('.score_first_number').val(0);
+                $('.score_second_number').val(0);
+                $('.multiply4').html(0);
+                var defect = 0;
+                var raw = subtotal - defect;
+                if (raw == 0) {
+                    var total = 0;
+                } else {
+                    var total = 36 + raw;
+                }
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+                
+            }
+            $(this).trigger('change');
+        }
         $(document).ready(function() {
+            var chkhidden = {{ $firstsample->is_hidden == 1 ? '1' : '0' }};
+            var chkmanual = {{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }};
+            $(".score_first_number").keyup(function() {
+                var first = $('.score_first_number').val();
+                var second = $('.score_second_number').val();
+                var defect = first * second * 4;
+                $('#defect').val(defect);
+                $('.multiply4').html(defect);
+                subtotal = subtotaldata();
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+
+                //   $("input").css("background-color", "pink");
+            });
+          
+            $('.score_second_number').on('change', function() {
+                var first = $('.score_first_number').val();
+                var second = $('.score_second_number').val();
+                var defect = first * second * 4;
+                $('#defect').val(defect);
+                $('.multiply4').html(defect);
+                subtotal = subtotaldata();
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            });
+
             $('.js-example-basic-multiple').select2();
+            var hanzi = ["6", "6.25", "6.5", "6.75", "7", "7.25", "7.5", "7.75", "8", "8.25", "8.5", "8.75", "9",
+                "9.25",
+                "9.5",
+                "9.75", "10"
+            ];
+            $(".roastslider")
+                .slider({
+                    max: 100,
+                    value: 50
+                }).slider("float", {
+                    rest: "label"
+                }).on("slidechange", function(e, ui) {
+                    $(ui.handle).parent().find('input').val(ui.value);
+
+                });
+            $(".aromaslider")
+                .slider({
+                    max: 3,
+                    step: 1,
+                    value: 0
+                })
+                .slider("pips", {
+                    rest: "label",
+                    step: 1,
+                }).on("slidechange", function(e, ui) {
+                    $(ui.handle).parent().find('input').val(ui.value);
+
+                });;
+            $(".customslider")
+                .slider({
+                    min: 6,
+                    max: 10,
+                    step: 0.25,
+                    value: 8
+                })
+                .slider("pips", {
+                    rest: "label",
+                    step: 2,
+                    labels: hanzi
+                })
+                .on("slidechange", function(e, ui) {
+            
+                    inputvalue = ui.value;
+                    // $(ui.handle).parent().find('input').val(inputvalue);
+                    $(ui.handle).parent().find('input').val(inputvalue);
+                    calcTotal();
+                    // $('input[type=range]').first().trigger('input');
+                })
+                .slider("float", {
+                    labels: hanzi
+                });
+            $(".customslider")
+                .slider("value", 4)
+                .slider("pips", "refresh");
+            // $('.customslider .ui-slider-handle').draggable();
+
+            calcTotal();
+            $('.scrollable').css('width', window.innerWidth - 100);
+
+            function parseReview(inputvalue) {
+                if (inputvalue == 1)
+                    inputvalue = 0.5;
+                else if (inputvalue == 2)
+                    inputvalue = 1;
+                else if (inputvalue == 3)
+                    inputvalue = 1.5;
+                else if (inputvalue == 4)
+                    inputvalue = 2;
+                else if (inputvalue == 4.5)
+                    inputvalue = 2.5;
+                else if (inputvalue == 5)
+                    inputvalue = 3;
+                else if (inputvalue == 5.5)
+                    inputvalue = 3.5;
+                else if (inputvalue == 6)
+                    inputvalue = 4;
+                else if (inputvalue == 6.25)
+                    inputvalue = 4.5;
+                else if (inputvalue == 6.5)
+                    inputvalue = 5;
+                else if (inputvalue == 6.75)
+                    inputvalue = 5.5;
+                else if (inputvalue == 7)
+                    inputvalue = 6;
+                else if (inputvalue == 7.25)
+                    inputvalue = 6.5;
+                else if (inputvalue == 7.75)
+                    inputvalue = 7.5;
+                return inputvalue;
+            }
+            if (chkhidden != 0) {
+
+                $(".roastslider")
+                    .slider({
+                        value: {{ isset($sampleReview->roast) ? $sampleReview->roast : 50 }}
+                    });
+                $(".aromacrust")
+                    .slider({
+                        value: {{ isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust : 2 }}
+                    });
+                $(".aromadry")
+                    .slider({
+                        value: {{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}
+                    });
+                $(".aromabreak")
+                    .slider({
+                        value: {{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}
+                    })
+                $('input[name=first_number]').val(
+                    {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }});
+                $('input[name=second_number]').val(
+                    {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }});
+                $('input[name=second_number]').trigger('keyup');
+                $('#defect_note').val('{{ $sampleReview->defects_note ?? '' }}');
+                $(".cleancup").slider({
+                    value: parseReview({{ $sampleReview->clean_up ?? '8' }})
+                })
+                // $('#cleanup_note').val('{{ $sampleReview->clean_sweet_note ?? '' }}');
+
+                // $(".sweetness").slider({
+                //     value: parseReview({{ $sampleReview->sweetness ?? '8' }})
+                // })
+                // $('#sweetness_note').val('{{ $sampleReview->sweetness_note ?? '' }}');
+
+                $(".acidity").slider({
+                    value: parseReview({{ $sampleReview->acidity ?? '8' }})
+                })
+                
+                // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
+                $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
+
+                // $(".mouthfeel").slider({
+                //     value: parseReview({{ $sampleReview->mouth_feel ?? '8' }})
+                // });
+                // $('#mouthfeel_note').val('{{ $sampleReview->mouthfeel_note ?? '' }}');
+                $('.mouthfeel_{{ $sampleReview->body_chk ?? 'L' }}').prop('checked', true);
+
+                $(".flavor").slider({
+                    value: parseReview({{ $sampleReview->flavour ?? '8' }})
+                });
+                $('#flavor_note').val('{{ $sampleReview->flavor_note ?? '' }}');
+
+                // $(".aftertaste").slider({
+                //     value: parseReview({{ $sampleReview->after_taste ?? '' }})
+                // })
+                $('#notes').val('{{ $sampleReview->note ?? '' }}');
+
+                $(".balance").slider({
+                    value: parseReview({{ $sampleReview->balance ?? '8' }})
+                })
+                $(".body").slider({
+                    value: parseReview({{ $sampleReview->body ?? '8' }})
+                })
+                // $('#balance_note').val('{{ $sampleReview->balance_note ?? '' }}');
+
+                $(".overall").slider({
+                    value: parseReview({{ $sampleReview->overall ?? '8' }})
+                })
+                // $('#overall_note').val('{{ $sampleReview->overall_note ?? '' }}');
+
+                calcTotal();
+                if (chkmanual) {
+                    toggleDivs();
+                    @if ($reviewdata)
+                        $('input[name=total_score]').val({{ $reviewdata->total_score }});
+                    @endif
+                }
+            }
+
+
+
+
         });
+
+        function setSampleToGo(valz) {
+            $('#to_go_sample').val(valz);
+            $('#myForm').submit();
+        }
     </script>
 </body>
 <!-- END: Body-->
