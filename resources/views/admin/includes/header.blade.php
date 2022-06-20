@@ -477,8 +477,8 @@
                         </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Auction
-                                    Management</span></a>
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
+                                    </span></a>
                             <ul class="menu-content">
                                 <li @if (request()->is('auction/*')) class='active' @endif><a
                                         href="{{ url('/auction/index') }}">
@@ -494,7 +494,7 @@
                                 <li @if (request()->is('jury/*')) class='active' @endif><a
                                         href="{{ url('/jury/index') }}">
                                         <span class="menu-item @if (request()->is('jury/*')) 'active' @endif"
-                                            data-i18n="eCommerce">Manage Jury</span></a>
+                                            data-i18n="eCommerce">Jury</span></a>
                                 </li>
                                 <li @if (request()->is('review/reviewed_samples')) class= 'active' @endif><a
                                         href="{{ url('review/reviewed_samples') }}">
