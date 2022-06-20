@@ -13,6 +13,7 @@ use App\Models\Origin;
 use App\Models\Product;
 use App\Models\Region;
 use App\Models\Image;
+use App\Models\OpenCupping;
 use App\Models\Process;
 use App\Models\Review;
 use App\Models\SentToJury;
@@ -253,64 +254,7 @@ class ProductController extends Controller
     //         'samples' => $samplesArr
     //     ]);
     // }
-    public function review2(Request $request)
-    {
-        $tags = Tag::where('jury_id',$request->juryId)->get();
-           $juery = Jury::where('ID',$request->juryId)->first();
-           $name = $juery->name;
-           $company = $juery->company;
-
-        $alltablesamples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
-        ->join('juries','juries.id','sample_sent_to_jury.jury_id')
-        ->select('products.id as productId','products.product_title as productTitle',
-        'sample_sent_to_jury.id as sampleId','sample_sent_to_jury.jury_id as juryId',
-        'sample_sent_to_jury.samples as samples','sample_sent_to_jury.tables as sampleTable',
-        'juries.name as juryName')
-        ->where('sample_sent_to_jury.jury_id', $request->juryId)
-        ->where('sample_sent_to_jury.tables', $request->table)
-        // ->where('sample_sent_to_jury.is_hidden', '0')
-        ->get();
-        if(isset($request->sampleId))
-        {
-            $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
-            ->first();
-        }
-        else
-        {
-           
-            $firstsample=$alltablesamples->first();
-  
-            if(!isset($firstsample))
-            {
-                $firstsample=SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
-                ->first(); 
-               
-                return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
-            }
-              
-        }
-     
-        if ($firstsample) {
-            if ($firstsample->is_hidden == '1') {
-                return view('admin.jury.alredy_submit');
-            } else {
-                $samplesArr = explode(',', $firstsample->samples);
-                return view('admin.jury.form2', [
-                    'productId' => $firstsample->product_id ?? $firstsample->productId,
-                    'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
-                    'juryName' => $name,
-                    'juryCompany' => $company,
-                    'table' => $request->table ?? $firstsample->sampleTable,
-                    'tags' => $tags,
-                    'alltablesamples'=> $alltablesamples,
-                    'link' => $firstsample->temporary_link,
-                    'sampleName' => $firstsample->samples,
-                    'sentSampleId' => $firstsample->id,  
-                    'samples' => $samplesArr
-                ]);
-            }
-        }
-    }
+ 
     public function review(Request $request)
     {
         $tags = Tag::where('jury_id',$request->juryId)->get();
@@ -346,9 +290,7 @@ class ProductController extends Controller
                 ->first(); 
                
                 return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
-            }
-            
-              
+            }       
         }
         $sampleReview1 = Review::where('sample_id',$firstsample->id)->first();
        
