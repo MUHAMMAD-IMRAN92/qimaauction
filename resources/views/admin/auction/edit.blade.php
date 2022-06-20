@@ -9,7 +9,7 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Create Auction</h2>
+                        <h2 class="content-header-title float-left mb-0">Edit Auction</h2>
                         {{-- <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/') }}">Home</a>
@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         <div class="content-body">
-         
+
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -54,6 +54,7 @@
                                                         <label for="name">Title</label>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" name="id" value="{{$auction->id}}">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <textarea id="product-detail" class="form-control" name="product_detail" rows="2" cols="5">
@@ -61,7 +62,7 @@
                                                          </textarea>
                                                         <label for="product-detail">Auction Detail</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Product</label>
@@ -78,7 +79,7 @@
                                                         </div>
                                                     </div>
                                                 </div> --}}
-                                               
+
                                                 {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <label for="product-category">Select Genetics</label>
@@ -92,7 +93,7 @@
                                                                 @endforeach
 
                                                             </select>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div> --}}
@@ -108,7 +109,7 @@
                                                                         {{ $prod->title }}</option>
                                                                 @endforeach
                                                             </select>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,10 +152,10 @@
                                                         </div>
                                                        </div>
                                                        <input type="hidden" name="">
-                                                       <label for="date">Start Date & Time</label> 
+                                                       <label for="date">Start Date & Time</label>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <div class="row">
@@ -166,10 +167,10 @@
                                                         </div>
                                                         </div>
                                                         <input type="hidden" name="">
-                                                        <label for="date">End Date & Time</label>    
+                                                        <label for="date">End Date & Time</label>
                                                     </div>
-                                                </div> 
-                                            
+                                                </div>
+
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="start_bid_price" class="form-control @error('start_bid_price') is-invalid @enderror"
@@ -181,7 +182,7 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="text" id="increment_bid_price" class="form-control @error('increment_bid_price') is-invalid @enderror"
@@ -203,7 +204,7 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
                                                     </div>
-                                                </div>  
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="number" id="weight" class="form-control @error('weight') is-invalid @enderror" value="{{$auction->weight}}" placeholder="weight" name="weight">
@@ -240,7 +241,18 @@
                                                                 @enderror
                                                     </div>
                                                 </div> --}}
-                                             
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                       <div class="row">
+                                                        <div class="col-md-6 col-6">
+                                                            <input type="datetime-local" class="form-control" name="startDatetime" value="{{$auction->startDate}}" placeholder="select Start Date /UK"/>
+                                                        </div>
+                                                        {{-- <div class="col-md-6 col-6">
+                                                            <input type='text' class="form-control pickatime" name="startTime" value="{{$auction->startTime}}" placeholder="select Start Time /UK" />
+                                                        </div> --}}
+                                                       </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="file" id="image" class="form-control @error('image') is-invalid @enderror""
@@ -250,7 +262,7 @@
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                          @enderror
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-md-12 mb-2">
                                                     <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                         alt="" style="max-height: 100px;max-width: 100px;">
@@ -267,8 +279,8 @@
                                                                 <i class="fa fa-times cross" aria-hidden="true"></i></a>
                                                         @endforeach
                                                     </div>
-                                                </div>  
-                                                   
+                                                </div>
+
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                     {{-- <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button> --}}
@@ -287,19 +299,19 @@
         </div>
     </div>
 </div>
-<script>  
+<script>
     $(document).ready(function(){
         $('#image').change(function(){
-                
+
                 let reader = new FileReader();
-        
-                reader.onload = (e) => { 
-        
-                    $('#preview-image-before-upload').attr('src', e.target.result); 
+
+                reader.onload = (e) => {
+
+                    $('#preview-image-before-upload').attr('src', e.target.result);
                 }
-        
-                reader.readAsDataURL(this.files[0]); 
-                
+
+                reader.readAsDataURL(this.files[0]);
+
                 });
       // jQuery.datetimepicker.setLocale('de');
     //   CKEDITOR.replace( 'product_detail' );

@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $customers      =   User::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-        $customers      =   $customers->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
+        $customers      =   $customers->where('is_hidden', '0')->where('is_admin','1')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal'      => $customer_count,
@@ -46,12 +46,24 @@ class CustomerController extends Controller
 
     public function save(Request $request)
     {
+            $validator      =   $request->validate([
+            'email'         => 'required|email|unique:users',
+            'name'          => 'required',
+            'phone_no'      => 'required|max:12',
+            'password'      => 'required',
+            'status'        => 'required',
+            'paddle_number' => 'required|min:4|unique:users'
+            // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
+        ]);
         $customer = new  User();
-        $customer->name         =   $request->name;
-        $customer->email        =   $request->email;
-        $customer->phone_no     =   $request->phone_no;
-        $customer->password     =   $request->password;
-        $customer->bid_limit    =   $request->bid_limit;
+        $password                   =   $request->password;
+        $customer->name             =   $request->name;
+        $customer->email            =   $request->email;
+        $customer->phone_no         =   $request->phone_no;
+        $customer->password         =   Hash::make($request->password);
+        $customer->bid_limit        =   $request->bid_limit;
+        $customer->paddle_number    =   $request->paddle_number;
+        $customer->status           =   $request->status;
         $customer->save();
         $token = Str::random(64);
 
@@ -60,10 +72,10 @@ class CustomerController extends Controller
               'token'       => $token,
               'created_at'  => Carbon::now()
             ]);
-          Mail::send('emails.passwordreset', ['token' => $token], function($message) use($request){
+          Mail::send('emails.passwordreset', ['token' => $token,'customer' => $customer,'password'=>$password], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
-            //   $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
+              $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
           });
         return redirect('/customer/index');
     }
@@ -113,12 +125,24 @@ class CustomerController extends Controller
 
     public function update(Request $request)
     {
-        $customer               =   User::find($request->id);
-        $customer->name         =   $request->name;
-        $customer->email        =   $request->email;
-        $customer->phone_no     =   $request->phone_no;
-        $customer->password     =   $request->password;
-        $customer->bid_limit    =   $request->bid_limit;
+        $validator  =   $request->validate([
+            'email'         => 'required|email',
+            'name'          => 'required',
+            'phone_no'      => 'required|max:12',
+            'password'      => 'required',
+            'status'        => 'required',
+            'paddle_number' => 'required|min:4|'
+            // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
+        ]);
+        $customer                   =   User::find($request->id);
+        $customer->name             =   $request->name;
+        $customer->email            =   $request->email;
+        $customer->phone_no         =   $request->phone_no;
+        $customer->password         =   Hash::make($request->password);;
+        $customer->bid_limit        =   $request->bid_limit;
+        $customer->status           =   $request->status;
+        $customer->paddle_number    =   $request->paddle_number;
+
         $customer->save();
         return redirect('/customer/index');
     }

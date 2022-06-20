@@ -40,7 +40,7 @@ class JuryController extends Controller
         $juries = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-        
+
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
         foreach($juries as $jury){
             $jury->linkurl = encrypt($jury->id);
@@ -141,6 +141,7 @@ class JuryController extends Controller
         ]);
 
     }
+   
     public function ajaxSendToJuryPost(Request $request)
     {
         $request->validate([
@@ -209,7 +210,7 @@ class JuryController extends Controller
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
-        return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
+        return redirect('/jury/index')->with('success','Samples Email Successfully sent to Jury Members.');
     }
     public function updateSentToJury(Request $request){
         // dd($request->all());
@@ -255,8 +256,14 @@ class JuryController extends Controller
 
     public function juryLinks(Request $request, $id)
     {
-        $juryId = decrypt($id);
+        //chnages
+        $juryId = base64_decode($id);
         $jury = Jury::find($juryId);
+        if(!isset($jury))
+        {
+            $juryId = decrypt($id);
+            $jury = Jury::find($juryId);
+        }
         if ($jury) {
             $samples= SentToJury::groupBy('tables')
             ->select('tables', DB::raw('count(*) as total'))
