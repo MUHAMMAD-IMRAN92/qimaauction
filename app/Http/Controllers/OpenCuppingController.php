@@ -162,9 +162,9 @@ class OpenCuppingController extends Controller
                 ->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
-            // } else 
+            // } else
             // {
-            
+
             $samplesArr = explode(',', $firstsample->samples);
             return view('admin.jury.form', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
