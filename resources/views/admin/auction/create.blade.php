@@ -153,11 +153,11 @@
                                                     <div class="form-label-group">
                                                        <div class="row">
                                                         <div class="col-md-6 col-6">
-                                                            <input type="text" class="form-control pickadate" name="startDate" placeholder="select Start Date"/>
+                                                            <input type="datetime-local" class="form-control" name="startDatetime" placeholder="select Start Date /UK"/>
                                                         </div>
-                                                        <div class="col-md-6 col-6">
-                                                            <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time" />
-                                                        </div>
+                                                        {{-- <div class="col-md-6 col-6">
+                                                            <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time /UK" />
+                                                        </div> --}}
                                                        </div>
                                                     </div>
                                                 </div>

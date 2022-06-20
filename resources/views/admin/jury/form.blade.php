@@ -261,7 +261,7 @@
 
     .score_first_number,
     .score_second_number {
-        width: 40px;
+        width: 130px;
     }
 
     .entity_note {
@@ -594,11 +594,11 @@
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany ?? ''}}</p> --}}
                                                 <!--Sample ID Section-->
                                                 <div class="sample-area">
-                                                    <h2 class="id-text">SAMPLE ID</h2>
+                                                    <h1 class="id-text">SAMPLE ID</h1>
                                                     <p class="sample_number">
                                                         @foreach ($alltablesamples as $samp)
                                                             @if ($samp->sampleId == $sentSampleId)
-                                                                {{ $samp->samples }}
+                                                                 <h1>{{ $samp->samples }}</h1>
                                                             @endif
                                                         @endforeach
                                                     </p>
@@ -659,24 +659,21 @@
                                                     </div>
 
                                                     <div class="col-lg-12">
-                                                        <h5>DRY</h5>
+                                                        <h5 style="margin-top:34px">DRY</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromadry"><input type="hidden"
                                                                 name="aroma_dry" id="aroma_dry" value="0"></div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <h5>CRUST</h5>
+                                                        <h5 style="margin-top:-6px">CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
-
-
-
                                                     <div class="col-lg-12">
-                                                        <h5>BREAK</h5>
+                                                        <h5 style="margin-top:-6px">BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromabreak"><input type="hidden"
@@ -801,7 +798,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Uniformity:</span>
+                                                                        <span class="entity-text">Uniformity</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -816,8 +813,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="uniformity[]" value="false"
-                                                                                    class="uniformity" checked>
+                                                                                    name="uniformity[]"  id="uniformity1"
+                                                                                    class="uniformity" >
                                                                                 <input type="hidden"
                                                                                     id="uniformityvalue"
                                                                                     name="uniformityvalue"
@@ -835,8 +832,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="uniformity[]" value="false"
-                                                                                    class="uniformity" checked>
+                                                                                    name="uniformity[]"  id="uniformity2"
+                                                                                    class="uniformity" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -850,8 +847,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="uniformity[]" value="false"
-                                                                                    class="uniformity" checked>
+                                                                                    name="uniformity[]"  id="uniformity3"
+                                                                                    class="uniformity" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -865,8 +862,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="uniformity[]" value="false"
-                                                                                    class="uniformity" checked>
+                                                                                    name="uniformity[]"  id="uniformity4"
+                                                                                    class="uniformity" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -880,8 +877,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="uniformity[]" value="false"
-                                                                                    class="uniformity" checked>
+                                                                                    name="uniformity[]"  id="uniformity5"
+                                                                                    class="uniformity" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -898,7 +895,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">CleanCup:</span>
+                                                                        <span class="entity-text">CleanCup</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -912,9 +909,9 @@
                                                                         <fieldset>
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
-                                                                                <input type="checkbox" name="cleancup[]"
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup1"
                                                                                     value="false"
-                                                                                    class="cleancup" checked>
+                                                                                    class="cleancup" >
                                                                                 <input type="hidden" id="cleancupvalue"
                                                                                     name="cleancupvalue"
                                                                                     value="">
@@ -930,9 +927,9 @@
                                                                         <fieldset>
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
-                                                                                <input type="checkbox" name="cleancup[]"
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup2"
                                                                                     value="false"
-                                                                                    class="cleancup" checked>
+                                                                                    class="cleancup" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -945,9 +942,9 @@
                                                                         <fieldset>
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
-                                                                                <input type="checkbox" name="cleancup[]"
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup3"
                                                                                     value="false"
-                                                                                    class="cleancup" checked>
+                                                                                    class="cleancup" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -960,9 +957,9 @@
                                                                         <fieldset>
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
-                                                                                <input type="checkbox" name="cleancup[]"
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup4"
                                                                                     value="false"
-                                                                                    class="cleancup" checked>
+                                                                                    class="cleancup" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -975,9 +972,9 @@
                                                                         <fieldset>
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
-                                                                                <input type="checkbox" name="cleancup[]"
+                                                                                <input type="checkbox" name="cleancup[]" id="cleancup5"
                                                                                     value="false"
-                                                                                    class="cleancup" checked>
+                                                                                    class="cleancup" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -994,7 +991,7 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Sweetness:</span>
+                                                                        <span class="entity-text">Sweetness</span>
                                                                     </div>
 
                                                                     <div class=" ml-2 col-md-1 col-1 input-group">
@@ -1009,15 +1006,13 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="sweetness[]" value="false"
-                                                                                    class="sweetness" checked>
+                                                                                    name="sweetness[]" id="sweetness1"
+                                                                                    class="sweetness" >
                                                                                 <input type="hidden" id="sweetnesvalue"
                                                                                     name="sweetnesvalue"
                                                                                     value="">
                                                                                 <span class="vs-checkbox">
-                                                                                    <span class="vs-checkbox--check">
-                                                                                        <i
-                                                                                            class="vs-icon feather icon-check"></i>
+                                                                                        <i class="vs-icon feather icon-check"></i>
                                                                                     </span>
                                                                                 </span>
 
@@ -1027,8 +1022,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="sweetness[]" value="false"
-                                                                                    class="sweetness" checked>
+                                                                                    name="sweetness[]" id="sweetness2"
+                                                                                    class="sweetness" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -1042,8 +1037,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="sweetness[]" value="false"
-                                                                                    class="sweetness" checked>
+                                                                                    name="sweetness[]" id="sweetness3"
+                                                                                    class="sweetness" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -1057,8 +1052,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="sweetness[]" value="false"
-                                                                                    class="sweetness" checked>
+                                                                                    name="sweetness[]" id="sweetness4"
+                                                                                    class="sweetness" >
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -1072,8 +1067,8 @@
                                                                             <div
                                                                                 class="vs-checkbox-con vs-checkbox-primary">
                                                                                 <input type="checkbox"
-                                                                                    name="sweetness[]" value="false"
-                                                                                    class="sweetness" checked>
+                                                                                    name="sweetness[]" id="sweetness5"
+                                                                                    class="sweetness">
                                                                                 <span class="vs-checkbox">
                                                                                     <span class="vs-checkbox--check">
                                                                                         <i
@@ -1102,7 +1097,7 @@
                                                     </div>
                                                       <input type="hidden" name="defect" id="defect" value="">
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                    <p class="entity-label">#CUPS X INTENSITY = SCORE</p>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <input class="score_first_number"
@@ -1110,10 +1105,14 @@
                                                                 type="number" id="quantity" value="first_number"
                                                                 name="first_number">
                                                             <span class="multiply">X</span>
-                                                            <input class="score_second_number"
+                                                            {{-- <input class="score_second_number"
                                                                 oninput="if (this.value > 3) this.value = 0"
                                                                 type="number" id="quantity" maxlength="3"
-                                                                value="second_number" name="second_number">
+                                                                value="second_number" name="second_number"> --}}
+                                                                <select  value="second_number" name="second_number" class="score_second_number">
+                                                                    <option value="2">Taint : 2</option>
+                                                                    <option value="4">Fault : 4</option>
+                                                                </select>
                                                             <span class="multiply">X</span>
                                                             <span class="multiply">4</span>
                                                             <span class="multiply">=</span>
@@ -1258,23 +1257,66 @@
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
-        
                 var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
                 var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
                 var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
-    
+
+
+
+
            if(uvalue)
-           $('#uniformity').html(uvalue);
+           {
+                $('#uniformity').html(uvalue);
+                var t = 1;
+                    for (let i = uvalue; i > 0 ; i--) {
+                        $('#uniformity'+t).prop('checked', true);
+                        t++;
+                        i--;
+                    }
+           }
            else
-           $('#uniformity').html(10);
+           {
+                $('#uniformity').html(10);
+                for (let i = 1; i <= 5; i++) {
+                    $('#uniformity'+i).prop('checked', true);
+                }
+           }
            if(svalue)
-           $('#cleancup').html(svalue);
+           {
+            $('#cleancup').html(svalue);
+            var t = 1;
+                for (let i = svalue; i > 0 ; i--) {
+                    $('#cleancup'+t).prop('checked', true);
+                    t++;
+                    i--;
+                }
+           }
            else
-           $('#cleancup').html(10);
+           {
+            $('#cleancup').html(10);
+            for (let i = 1; i <=5; i++) {
+                $('#cleancup'+i).prop('checked', true);
+            }
+           }
+
            if(cvalue)
-           $('#sweetness').html(cvalue);
+           {
+            $('#sweetness').html(cvalue);
+            var t = 1;
+                for (let i = cvalue; i > 0 ; i--) {
+                    $('#sweetness'+t).prop('checked', true);
+                    t++;
+                    i--;
+                }
+           }
            else
+           {
             $('#sweetness').html(10);
+            for (let i = 1; i <=5; i++) {
+                $('#sweetness'+i).prop('checked', true);
+            }
+           }
+
             $("#select").select2({
                 tags: true,
                 maximumInputLength: 16,
@@ -1457,7 +1499,7 @@
                 $('#uniformityvalue').val($('.uniformity:checked').length * 2);
                 calcTotal();
                 total().trigger();
-               
+
             });
             $('.cleancup').on('click', function() {
 
@@ -1465,7 +1507,7 @@
                 $('#cleancupvalue').val($('.cleancup:checked').length * 2);
                 calcTotal();
                 total().trigger();
-                
+
             });
             $('.sweetness').on('click', function() {
 
@@ -1473,7 +1515,7 @@
                 $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
                 calcTotal();
                 total().trigger();
-                
+
             });
             $('#defect1').on('change', function() {
 
@@ -1991,8 +2033,8 @@
             // var b = $('#aroma_crust').val();
             // var d = $('#aroma_break').val();
             // var c = $('#clean_up').val();
-           
-         
+
+
             // $('#cleancup').html(10);
             // $('#sweetness').html(10);
             var e = $('#body').val();
@@ -2043,14 +2085,14 @@
                 }
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
-                
+
             }
             $(this).trigger('change');
         }
         $(document).ready(function() {
             var chkhidden = {{ $firstsample->is_hidden == 1 ? '1' : '0' }};
             var chkmanual = {{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }};
-            $(".score_second_number,.score_first_number").keyup(function() {
+            $(".score_first_number").keyup(function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
                 var defect = first * second * 4;
@@ -2065,10 +2107,25 @@
 
                 //   $("input").css("background-color", "pink");
             });
+
+            $('.score_second_number').on('change', function() {
+                var first = $('.score_first_number').val();
+                var second = $('.score_second_number').val();
+                var defect = first * second * 4;
+                $('#defect').val(defect);
+                $('.multiply4').html(defect);
+                subtotal = subtotaldata();
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            });
+
             $('.js-example-basic-multiple').select2();
-            var hanzi = ["6", "6.25", "6.50", "6.75", "7", "7.25", "7.50", "7.75", "8", "8.25", "8.50", "8.75", "9",
+            var hanzi = ["6", "6.25", "6.5", "6.75", "7", "7.25", "7.5", "7.75", "8", "8.25", "8.5", "8.75", "9",
                 "9.25",
-                "9.50",
+                "9.5",
                 "9.75", "10"
             ];
             $(".roastslider")
@@ -2107,7 +2164,7 @@
                     labels: hanzi
                 })
                 .on("slidechange", function(e, ui) {
-            
+
                     inputvalue = ui.value;
                     // $(ui.handle).parent().find('input').val(inputvalue);
                     $(ui.handle).parent().find('input').val(inputvalue);
@@ -2193,7 +2250,7 @@
                 $(".acidity").slider({
                     value: parseReview({{ $sampleReview->acidity ?? '8' }})
                 })
-                
+
                 // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
                 $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
 

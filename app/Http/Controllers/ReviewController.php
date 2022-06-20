@@ -217,10 +217,10 @@ class ReviewController extends Controller
                         }
         }
         if($request->to_go_sample){
-            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$request->to_go_sample])->with('success','Review submitted Succesully');
+            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$request->to_go_sample])->with('success','Review submitted Successuflly');
 
-        }else{
-            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Succesully');
+        }else{                 
+            return redirect()->route('give_review',['juryId'=>$sampleSent->jury_id,'table'=>$sampleSent->tables,'sampleId'=>$sampleSent->id])->with('success','Review submitted Successfully');
         }
     }
     public function form()
@@ -264,7 +264,8 @@ class ReviewController extends Controller
             $sampleDate = SentToJury::where('samples',$value->samples)->first();
             array_push($dateArr,$sampleDate->created_at);
         }
-        return view('admin.reviewed_samples',compact('samples','reviewed','dateArr'));
+        $opencupping = true;
+        return view('admin.reviewed_samples',compact('samples','reviewed','dateArr','opencupping'));
     }
     public function reviewSummary()
     {

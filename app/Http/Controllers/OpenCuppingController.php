@@ -162,8 +162,9 @@ class OpenCuppingController extends Controller
                 ->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
-            // } else 
+            // } else
             // {
+
             $samplesArr = explode(',', $firstsample->samples);
             return view('admin.jury.form', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -259,9 +260,9 @@ class OpenCuppingController extends Controller
             }
         }
         if ($request->to_go_sample) {
-            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted Succesully');
+            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted successfully');
         } else {
-            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted Succesully');
+            return redirect()->route('give_cupping_review', ['table' => 1, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted successfully');
         }
     }
     public function openCuppingFeedback()
