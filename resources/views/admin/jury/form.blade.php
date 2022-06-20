@@ -594,11 +594,11 @@
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany ?? ''}}</p> --}}
                                                 <!--Sample ID Section-->
                                                 <div class="sample-area">
-                                                    <h2 class="id-text">SAMPLE ID</h2>
+                                                    <h1 class="id-text">SAMPLE ID</h1>
                                                     <p class="sample_number">
                                                         @foreach ($alltablesamples as $samp)
                                                             @if ($samp->sampleId == $sentSampleId)
-                                                                {{ $samp->samples }}
+                                                                 <h1>{{ $samp->samples }}</h1>
                                                             @endif
                                                         @endforeach
                                                     </p>
@@ -659,21 +659,21 @@
                                                     </div>
 
                                                     <div class="col-lg-12">
-                                                        <h5>DRY</h5>
+                                                        <h5 style="margin-top:34px">DRY</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromadry"><input type="hidden"
                                                                 name="aroma_dry" id="aroma_dry" value="0"></div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <h5 style="margin-top:-34px">CRUST</h5>
+                                                        <h5 style="margin-top:-6px">CRUST</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <h5 style="margin-top:-34px">BREAK</h5>
+                                                        <h5 style="margin-top:-6px">BREAK</h5>
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromabreak"><input type="hidden"
@@ -2092,7 +2092,7 @@
         $(document).ready(function() {
             var chkhidden = {{ $firstsample->is_hidden == 1 ? '1' : '0' }};
             var chkmanual = {{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }};
-            $(".score_second_number,.score_first_number").keyup(function() {
+            $(".score_first_number").keyup(function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
                 var defect = first * second * 4;
@@ -2107,6 +2107,21 @@
 
                 //   $("input").css("background-color", "pink");
             });
+          
+            $('.score_second_number').on('change', function() {
+                var first = $('.score_first_number').val();
+                var second = $('.score_second_number').val();
+                var defect = first * second * 4;
+                $('#defect').val(defect);
+                $('.multiply4').html(defect);
+                subtotal = subtotaldata();
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            });
+
             $('.js-example-basic-multiple').select2();
             var hanzi = ["6", "6.25", "6.5", "6.75", "7", "7.25", "7.5", "7.75", "8", "8.25", "8.5", "8.75", "9",
                 "9.25",
