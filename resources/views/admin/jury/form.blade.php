@@ -968,13 +968,8 @@
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
 
-                                                                    <div class="col-md-3 col-3 input-group">
                                                                         <h3 class="entity-text">CleanCup</h3>
-                                                                    </div>
 
-                                                                    <div class=" mt-2 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
                                                                     <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
                                                                         <h3 id="cleancup">0</h3>
                                                                     </div><br>
@@ -1064,13 +1059,8 @@
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
 
-                                                                    <div class="col-md-3 col-3 input-group">
-                                                                        <h3 class="entity-text">Sweetness</h3>
-                                                                    </div>
+                                                                    <h3 class="entity-text">Sweetness</h3>
 
-                                                                    <div class="mt-1 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
                                                                     <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
                                                                         <h3 id="sweetness">0</h3>
                                                                     </div><br>
