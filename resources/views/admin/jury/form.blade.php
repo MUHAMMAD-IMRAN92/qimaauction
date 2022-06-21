@@ -313,6 +313,9 @@
         background-color: #000 !important;
         color: #FFF;
     }
+    .checkmark{
+        margin: auto;
+    }
 
     .ui-slider-pips .ui-slider-line {
         background: #999;
@@ -560,6 +563,12 @@
                                                                     style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
                                                                     {{ $juryCompany ?? ('' ?? '') }}</p>
                                                             </a></li> --}}
+
+                                                            <h5 class="entity-text bg-white black">
+                                                                WELCOME TO THE BEST OF YEMEN <br> 2022 PEOPLE'S CHOICE <br><br>
+                                                                BELOW YOU CAN FIND THE LINKS <br> TO THE CUPPING FORMS FOR EACH SAMPLE OF THE 43 SAMPLES <br> SENT TO INTERNATIONAL JURY. <br><br>
+                                                                ONCE YOU HAVE CUPPED ALL THE SAMPLES PLEASE <br> CLICK ON THE SUBMIT BUTTON TO CONFIRM SUBMISSION.
+                                                            </h5>
                                                     </ul>
                                                 </div>
                                                 {{-- <div class="mobile-breadcrumb-section">
@@ -655,6 +664,14 @@
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                            <div class="row">
+                                                                <div class="col-lg-12" style="text-align:center">
+                                                                    <div class="design-slider mt-5 mb-5">
+                                                                        <div class="customslider aroma"><input type="hidden"
+                                                                                name="aroma" id="aroma" value="8"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -672,13 +689,7 @@
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div> --}}
-                                                    <div class="col-lg-12">
-                                                        <h5 style="margin-top:-6px">Qualities</h5>
-                                                    </div>
-                                                    <div class="entity_input mb-5 mt-5">
-                                                        <input type="text" name="quality_notes" id="quality_notes" value="{{$sampleReview->quality_notes ?? ''}}"
-                                                            placeholder="Quality Note" class="entity_note">
-                                                    </div>
+                                                   
                                                     <div class="col-lg-12">
                                                         <h5 style="margin-top:-6px">BREAK</h5>
                                                     </div>
@@ -686,25 +697,15 @@
                                                         <div class="aromaslider aromabreak"><input type="hidden"
                                                                 name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
+                                                    <div class="col-lg-12">
+                                                        <h5 style="margin-top:-6px">Descriptors</h5>
+                                                    </div>
+                                                    <div class="entity_input mb-5 mt-5">
+                                                        <input type="text" name="quality_notes" id="quality_notes" value="{{$sampleReview->quality_notes ?? ''}}"
+                                                            placeholder="Descriptors note" class="entity_note">
+                                                    </div>
 
-                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider flavor"><input type="hidden"
-                                                                        name="flavour" id="flavour" value="8"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="entity-text aftertaste-bg">AFTER TASTE</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider "><input type="hidden"
-                                                                        name="after_taste" id="after_taste" value="8"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
@@ -714,7 +715,7 @@
                                                             </div>
                                                             <div class="radio_button p-5">
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container">
 
                                                                         <input type="radio" name="acidity_chk" value="VH"
                                                                             class="acidity_H">
@@ -725,7 +726,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container">
 
                                                                         <input type="radio" name="acidity_chk" value="H"
                                                                             class="acidity_H">
@@ -736,7 +737,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container">
                                                                         <input type="radio" name="acidity_chk" value="M"
                                                                             class="acidity_M">
                                                                         <div class="checkmark">
@@ -746,7 +747,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container">
                                                                         <input type="radio" checked="checked"
                                                                             name="acidity_chk" value="L"
                                                                             class="acidity_L">
@@ -757,7 +758,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container">
                                                                         <input type="radio" checked="checked"
                                                                             name="acidity_chk" value="VL"
                                                                             class="acidity_L">
@@ -770,6 +771,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider flavor"><input type="hidden"
+                                                                        name="flavour" id="flavour" value="8"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <h3 class="entity-text sweetness-bg">BODY</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
@@ -779,7 +790,7 @@
                                                             </div>
                                                             <div class="radio_button p-5">
                                                                 <div>
-                                                                    <label class="radio_container pl-5" style="text-align: justify">
+                                                                    <label class="radio_container " style="text-align: justify">
 
                                                                         <input type="radio" name="body_chk" value="VH"
                                                                             class="acidity_H">
@@ -790,7 +801,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container pl-5">
+                                                                    <label class="radio_container ">
 
                                                                         <input type="radio" name="body_chk" value="H"
                                                                             class="acidity_H">
@@ -801,7 +812,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container  pl-5">
+                                                                    <label class="radio_container  ">
                                                                         <input type="radio" name="body_chk" value="M"
                                                                             class="acidity_M">
                                                                         <div class="checkmark">
@@ -811,7 +822,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container  pl-5">
+                                                                    <label class="radio_container  ">
                                                                         <input type="radio" checked="checked"
                                                                             name="body_chk" value="T"
                                                                             class="acidity_L">
@@ -822,7 +833,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <label class="radio_container  pl-5">
+                                                                    <label class="radio_container  ">
                                                                         <input type="radio" checked="checked"
                                                                             name="body_chk" value="VT"
                                                                             class="acidity_L">
@@ -835,6 +846,15 @@
                                                             </div>
                                                         </div>
 
+                                                    </div>
+                                                    <h3 class="entity-text aftertaste-bg">AFTER TASTE</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider "><input type="hidden"
+                                                                        name="after_taste" id="after_taste" value="8"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
@@ -850,22 +870,20 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="p-5">
-
-
+                                            
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Uniformity</span>
+                                                                        <h3 class="entity-text">Uniformity</h3>
                                                                     </div>
 
-                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
-                                                                        <span>=</span>
+                                                                    <div class="mt-2 ml-2 col-md-1 col-1 input-group">
+                                                                        <h3>=</h3>
                                                                     </div>
-                                                                    <div class=" ml-2 col-md-2 col-2 input-group">
-                                                                        <span id="uniformity">0</span>
+                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
+                                                                        <h3 id="uniformity">0</h3>
                                                                     </div><br>
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
@@ -955,14 +973,14 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">CleanCup</span>
+                                                                        <h3 class="entity-text">CleanCup</h3>
                                                                     </div>
 
-                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
-                                                                        <span>=</span>
+                                                                    <div class=" mt-2 ml-2 col-md-1 col-1 input-group">
+                                                                        <h3>=</h3>
                                                                     </div>
-                                                                    <div class="ml-2 col-md-2 col-2 input-group">
-                                                                        <span id="cleancup">0</span>
+                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
+                                                                        <h3 id="cleancup">0</h3>
                                                                     </div><br>
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
@@ -1051,14 +1069,14 @@
                                                                 <div class="row pad-x15 p-3">
 
                                                                     <div class="col-md-3 col-3 input-group">
-                                                                        <span class="entity-text">Sweetness</span>
+                                                                        <h3 class="entity-text">Sweetness</h3>
                                                                     </div>
 
-                                                                    <div class=" ml-2 col-md-1 col-1 input-group">
-                                                                        <span>=</span>
+                                                                    <div class="mt-1 ml-2 col-md-1 col-1 input-group">
+                                                                        <h3>=</h3>
                                                                     </div>
-                                                                    <div class=" ml-2 col-md-2 col-2 input-group">
-                                                                        <span id="sweetness">0</span>
+                                                                    <div class="mt-1 ml-2 col-md-2 col-2 input-group">
+                                                                        <h3 id="sweetness">0</h3>
                                                                     </div><br>
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
@@ -1143,19 +1161,7 @@
                                                             </div>
                                                         </div>
 
-
-                                                    </div>
-
-                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider overall"><input type="hidden"
-                                                                        name="overall" id="overall" value="8"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                      <input type="hidden" name="defect" id="defect" value="">
+                                                    <input type="hidden" name="defect" id="defect" value="">
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
                                                     <p class="entity-label">#CUPS X INTENSITY = SCORE</p>
                                                     <div class="row">
@@ -1182,6 +1188,16 @@
                                                         </div>
 
                                                     </div>
+                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider overall"><input type="hidden"
+                                                                        name="overall" id="overall" value="8"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
@@ -2096,6 +2112,8 @@
 
             // $('#cleancup').html(10);
             // $('#sweetness').html(10);
+            var c = $('#after_taste').val();
+            var d = $('#aroma').val();
             var e = $('#body').val();
             var f = $('#acidity').val();
             var g = $('#flavour').val();
@@ -2109,8 +2127,7 @@
             $('#sweetnesvalue').val(l);
 
 
-            subtotal = +e + +f + +g + +h + +i + +j + +k + +l;
-
+            subtotal = +c + +d + +e + +f + +g + +h + +i + +j + +k + +l;
             return subtotal;
         }
 
@@ -2201,7 +2218,8 @@
                 .slider({
                     max: 3,
                     step: 1,
-                    value: 0
+                    value: 0,
+                    min : -3,
                 })
                 .slider("pips", {
                     rest: "label",
@@ -2308,6 +2326,9 @@
 
                 $(".acidity").slider({
                     value: parseReview({{ $sampleReview->acidity ?? '8' }})
+                })
+                $(".aroma").slider({
+                    value: parseReview({{ $sampleReview->aroma ?? '8' }})
                 })
 
                 // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
