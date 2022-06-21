@@ -16,7 +16,7 @@ class OriginController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.origin.index');
     }
     public function allorigin(Request $request)
@@ -60,6 +60,7 @@ class OriginController extends Controller
             $origin->region_image = $fileName;
         }
         $origin->save();
+        parent::successMessage('Origin saved successfully.');
         return redirect('/origin/index');
     }
     public function delete(Request $request, $id)
@@ -67,7 +68,8 @@ class OriginController extends Controller
         $origin = Origin::find(base64_decode($id));
         $origin->is_hidden = '1';
         $origin->save();
-        return redirect('/origin/index')->with('msg', 'origin Deleted Successfully');
+        parent::successMessage('Origin deleted successfully.');
+        return redirect('/origin/index');
     }
     public function edit(Request $request, $id)
     {
@@ -92,6 +94,7 @@ class OriginController extends Controller
             $origin->region_image = $fileName;
         }
         $origin->save();
+        parent::successMessage('Origin updated successfully.');
         return redirect('/origin/index');
     }
 }

@@ -19,6 +19,7 @@ Route::view('/', 'customer.dashboard.index');
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
 
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
+    Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
 
 });
 
@@ -150,6 +151,17 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit']);
     Route::get('/customer/allcustomers', [App\Http\Controllers\CustomerController::class, 'allCustomer']);
     Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'update']);
+
+    //Bid Limit Crud
+    Route::get('/bidlimit/index', [App\Http\Controllers\BidlimitController::class, 'index']);
+    Route::get('/bidlimit/create', [App\Http\Controllers\BidlimitController::class, 'create']);
+    Route::post('/bidlimit/save', [App\Http\Controllers\BidlimitController::class, 'save']);
+    Route::get('/bidlimit/allBidlimit', [App\Http\Controllers\BidlimitController::class, 'allBidlimit']);
+    Route::get('/bidlimit/edit/{id}', [App\Http\Controllers\BidlimitController::class, 'edit']);
+    Route::post('/bidlimit/update', [App\Http\Controllers\BidlimitController::class, 'update']);
+
+
+
 });
 
 Auth::routes();

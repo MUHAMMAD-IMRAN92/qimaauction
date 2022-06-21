@@ -15,7 +15,7 @@ class ProcessController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.process.index');
     }
     public function allprocess(Request $request)
@@ -51,18 +51,19 @@ class ProcessController extends Controller
         $process = new Process();
         $process->title = $request->title;
         $process->save();
+        parent::successMessage('Process saved successfully.');
         return redirect('/process/index');
     }
     public function delete(Request $request, $id)
     {
         $process = Process::find(base64_decode($id));
-    
+
         if ($process) {
             $process->is_hidden = '1';
             $process->save();
         }
-        // return $process;
-        return redirect('/process/index')->with('msg', 'process Deleted Successfully');
+        parent::successMessage('Process deleted successfully.');
+        return redirect('/process/index');
     }
     public function edit(Request $request, $id)
     {
@@ -77,6 +78,7 @@ class ProcessController extends Controller
         $process = Process::find($request->id);
         $process->title = $request->title;
         $process->save();
+        parent::successMessage('Origin updated successfully.');
         return redirect('/process/index');
     }
 }

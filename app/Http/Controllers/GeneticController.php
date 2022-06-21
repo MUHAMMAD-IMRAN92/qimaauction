@@ -15,7 +15,7 @@ class GeneticController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.genetic.index');
     }
     public function allgenetic(Request $request)
@@ -51,18 +51,19 @@ class GeneticController extends Controller
         $genetic = new Genetic();
         $genetic->title = $request->title;
         $genetic->save();
+        parent::successMessage('Genetic saved successfully.');
         return redirect('/genetic/index');
     }
     public function delete(Request $request, $id)
     {
         $genetic = Genetic::find(base64_decode($id));
-    
+
         if ($genetic) {
             $genetic->is_hidden = '1';
             $genetic->save();
         }
-        // return $genetic;
-        return redirect('/genetic/index')->with('msg', 'genetic Deleted Successfully');
+        parent::successMessage('Genetic deleted successfully.');
+        return redirect('/genetic/index');
     }
     public function edit(Request $request, $id)
     {
@@ -77,6 +78,7 @@ class GeneticController extends Controller
         $genetic = Genetic::find($request->id);
         $genetic->title = $request->title;
         $genetic->save();
+        parent::successMessage('Genetic updated successfully.');
         return redirect('/genetic/index');
     }
 }

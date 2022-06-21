@@ -48,7 +48,7 @@
                                         @csrf
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-md-12 col-12">
+                                                <div class="col-md-6 col-6">
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" class="form-control @error('title') is-invalid @enderror" name="title" required>
                                                         <label for="name">Title</label>
@@ -56,6 +56,12 @@
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 col-6">
+                                                    <div class="form-label-group">
+                                                            <input type="datetime-local" class="form-control" name="startDatetime" placeholder="select Start Date /UK"/>
+                                                            <label for="name">Date Time</label>
+                                                        </div>
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
@@ -148,20 +154,6 @@
                                                     </div>
                                                 </div>
                                             --}}
-
-                                                <div class="col-md-12 col-12">
-                                                    <div class="form-label-group">
-                                                       <div class="row">
-                                                        <div class="col-md-6 col-6">
-                                                            <input type="datetime-local" class="form-control" name="startDatetime" placeholder="select Start Date /UK"/>
-                                                        </div>
-                                                        {{-- <div class="col-md-6 col-6">
-                                                            <input type='text' class="form-control pickatime" name="startTime" placeholder="select Start Time /UK" />
-                                                        </div> --}}
-                                                       </div>
-                                                    </div>
-                                                </div>
-
                                                {{-- <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <div class="row">

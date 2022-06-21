@@ -140,15 +140,14 @@ return response()->json($auction_products);
             $productImage->save();
         }
     }
-
-
+        parent::successMessage('Auction saved successfully.');
         return redirect('/auction/index');
     }
 
     public function allauction(Request $request)
     {
-        $draw = $request->get('draw');
-        $start = $request->get('start');
+        $draw   = $request->get('draw');
+        $start  = $request->get('start');
         $length = $request->get('length');
         $search = $request->search['value'];
         $jury_count = Auction::when($search, function ($q) use ($search) {
@@ -159,11 +158,11 @@ return response()->json($auction_products);
         });
 
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('id','desc')->get();
-        $data = array(
-            'draw' => $draw,
-            'recordsTotal' => $jury_count,
-            'recordsFiltered' => $jury_count,
-            'data' => $juries,
+        $data   = array(
+            'draw'              => $draw,
+            'recordsTotal'      => $jury_count,
+            'recordsFiltered'   => $jury_count,
+            'data'              => $juries,
         );
         return response()->json($data);
     }
@@ -187,7 +186,7 @@ return response()->json($auction_products);
     public function update(Request $request)
     {
         $request->validate([
-            'title'      => 'required',
+            'title'          => 'required',
             'startDatetime'  => 'required',
             // 'startTime'  => 'required',
         ]);
@@ -227,19 +226,26 @@ return response()->json($auction_products);
                 $productImage->save();
             }
         }
-
+        parent::successMessage('Auction updated successfully.');
         return redirect('/auction/index');
     }
     public function delete(Request $request, $id)
     {
         $jury = Auction::find(base64_decode($id));
         $jury->delete();
-        return redirect('/auction/index')->with('msg', 'Auction Deleted Successfully');
+        parent::successMessage('Auction deleted successfully.');
+        return redirect('/auction/index');
     }
     public function auctionFrontend()
     {
         $auction            =   Auction::first();
         $auctionProducts    =   AuctionProduct::with('products')->get();
         return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction'));
+    }
+    public function singleBidData(Request $request)
+    {
+        echo "hello";
+        // $userVideo = VideosOnDemand::find($request->id);
+        // return $userVideo;
     }
 }

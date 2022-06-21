@@ -29,8 +29,10 @@ class HomeController extends Controller
     {
         $user =Auth::user()->is_admin;
         if($user == 0) {
+            parent::successMessage('Admin login successfully.');
             return redirect('dashboard');
         } else {
+            parent::successMessage('User login successfully.');
             return redirect('customer/AuctionProducts');
         }
 

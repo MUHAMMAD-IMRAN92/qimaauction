@@ -17,7 +17,7 @@ class FlavourController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.flavour.index');
     }
     public function allflavour(Request $request)
@@ -48,24 +48,24 @@ class FlavourController extends Controller
     }
     public function save(Request $request)
     {
-        
+
         $flavour = new  Flavour();
         $flavour->flavour_title = $request->title;
         $flavour->flavour_description = $request->description;
-
         $flavour->save();
+        parent::successMessage('Flavour saved successfully.');
         return redirect('/flavour/index');
     }
     public function delete(Request $request, $id)
     {
         $flavour = Flavour::find(base64_decode($id));
-    
+
         if ($flavour) {
             $flavour->is_hidden = '1';
             $flavour->save();
         }
-        // return $flavour;
-        return redirect('/flavour/index')->with('msg', 'flavour Deleted Successfully');
+        parent::successMessage('Flavour deleted successfully.');
+        return redirect('/flavour/index');
     }
     public function edit(Request $request, $id)
     {
@@ -82,6 +82,7 @@ class FlavourController extends Controller
         $flavour->flavour_description = $request->description;
 
         $flavour->save();
+        parent::successMessage('Flavour updated successfully.');
         return redirect('/flavour/index');
     }
 }

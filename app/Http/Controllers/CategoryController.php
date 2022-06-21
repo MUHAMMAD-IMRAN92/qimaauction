@@ -19,13 +19,12 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        // return $this->user;
         return view('admin.categories.index');
     }
     public function allCategory(Request $request)
     {
-        $draw = $request->get('draw');
-        $start = $request->get('start');
+        $draw   = $request->get('draw');
+        $start  = $request->get('start');
         $length = $request->get('length');
         $search = $request->search['value'];
         $categories_count = Category::when($search, function ($q) use ($search) {
@@ -34,13 +33,12 @@ class CategoryController extends Controller
         $categories = Category::when($search, function ($q) use ($search) {
             $q->where('category_title', 'LIKE', "%$search%");
         });
-
         $categories = $categories->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
         $data = array(
-            'draw' => $draw,
-            'recordsTotal' => $categories_count,
-            'recordsFiltered' => $categories_count,
-            'data' => $categories,
+            'draw'              => $draw,
+            'recordsTotal'      => $categories_count,
+            'recordsFiltered'   => $categories_count,
+            'data'              => $categories,
         );
         return response()->json($data);
     }
@@ -63,6 +61,7 @@ class CategoryController extends Controller
             $category->category_image = $fileName;
         }
         $category->save();
+        parent::successMessage('Category saved successfully.');
         return redirect('/categories/index');
     }
     public function delete(Request $request, $id)
@@ -70,7 +69,8 @@ class CategoryController extends Controller
         $category = Category::where('id',base64_decode($id))->first();
         $category->is_hidden = '1';
         $category->save();
-        return redirect('/categories/index')->with('msg', 'Category Deleted Successfully');
+        parent::successMessage('Category deleted successfully.');
+        return redirect('/categories/index');
     }
     public function edit(Request $request, $id)
     {
@@ -95,6 +95,7 @@ class CategoryController extends Controller
             $category->category_image = $fileName;
         }
         $category->save();
+        parent::successMessage('Category updated successfully.');
         return redirect('/categories/index');
     }
 }

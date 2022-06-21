@@ -15,7 +15,7 @@ class GovernorateController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.governorate.index');
     }
     public function allgovernorator(Request $request)
@@ -48,22 +48,23 @@ class GovernorateController extends Controller
     }
     public function save(Request $request)
     {
-        
+
         $governorate = new  Governorate();
         $governorate->title = $request->title;
         $governorate->save();
+        parent::successMessage('Governorate saved successfully.');
         return redirect('/governorate/index');
     }
     public function delete(Request $request, $id)
     {
         $governorate = Governorate::find(base64_decode($id));
-    
+
         if ($governorate) {
             $governorate->is_hidden = '1';
             $governorate->save();
         }
-        // return $governorate;
-        return redirect('/governorate/index')->with('msg', 'governorate Deleted Successfully');
+        parent::successMessage('Governorate deleted successfully.');
+        return redirect('/governorate/index');
     }
     public function edit(Request $request, $id)
     {
@@ -78,6 +79,7 @@ class GovernorateController extends Controller
         $governorate = Governorate::find($request->id);
         $governorate->title = $request->title;
         $governorate->save();
+        parent::successMessage('Governorate updated successfully.');
         return redirect('/governorate/index');
     }
 }

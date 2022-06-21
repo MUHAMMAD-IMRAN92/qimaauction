@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
         })->with('category', 'origin','flavor')->whereHas('category');
-        
+
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
         $data = array(
@@ -127,7 +127,7 @@ class ProductController extends Controller
             $productImage->image_name = $fileName;
             $productImage->save();
         }
-
+        parent::successMessage('Product saved successfully.');
         return redirect('/product/index');
     }
     public function delete(Request $request, $id)
@@ -135,7 +135,8 @@ class ProductController extends Controller
         $product = Product::find(base64_decode($id));
         $product->is_hidden = '1';
         $product->save();
-        return redirect('/product/index')->with('msg', 'product Deleted Successfully');
+        parent::successMessage('Product deleted successfully.');
+        return redirect('/product/index');
     }
     public function edit(Request $request, $id)
     {
@@ -197,8 +198,7 @@ class ProductController extends Controller
                 $productImage->save();
             }
         }
-
-
+        parent::successMessage('Product updated successfully.');
         return redirect('/product/index');
     }
     public function deleteImage($id)
@@ -250,11 +250,11 @@ class ProductController extends Controller
     //         'alltablesamples'=> $alltablesamples,
     //         'link' => '$link',
     //         'sampleName' => $sampleSent->samples,
-    //         'sentSampleId' => $sampleSent->id,  
+    //         'sentSampleId' => $sampleSent->id,
     //         'samples' => $samplesArr
     //     ]);
     // }
- 
+
     public function review(Request $request)
     {
         $tags = Tag::where('jury_id',$request->juryId)->get();
@@ -271,7 +271,7 @@ class ProductController extends Controller
         ->where('sample_sent_to_jury.jury_id', $request->juryId)
         ->where('sample_sent_to_jury.tables', $request->table)
         // ->where('sample_sent_to_jury.is_hidden', '0')
-        ->get(); 
+        ->get();
         if(isset($request->sampleId))
         {
             $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
@@ -283,17 +283,17 @@ class ProductController extends Controller
         {
             $review = null;
             $firstsample=$alltablesamples->first();
-  
+
             if(!isset($firstsample))
             {
                 $firstsample=SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
-                ->first(); 
-               
+                ->first();
+
                 return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
-            }       
+            }
         }
         $sampleReview1 = Review::where('sample_id',$firstsample->id)->first();
-       
+
         if(isset($sampleReview1))
         {
             $sampleReview = $sampleReview1;
@@ -306,7 +306,7 @@ class ProductController extends Controller
             $productdata=Product::where('id',$firstsample->product_id)->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
-            // } else 
+            // } else
             // {
                 $samplesArr = explode(',', $firstsample->samples);
                 return view('admin.jury.form2', [
@@ -322,7 +322,7 @@ class ProductController extends Controller
                     'alltablesamples'=> $alltablesamples,
                     'link' => $firstsample->temporary_link,
                     'sampleName' => $firstsample->samples,
-                    'sentSampleId' => $firstsample->id,  
+                    'sentSampleId' => $firstsample->id,
                     'samples' => $samplesArr,
                     'sampleReview'=>$sampleReview
                 ]);
