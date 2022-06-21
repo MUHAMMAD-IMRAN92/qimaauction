@@ -1089,8 +1089,10 @@
                                                                                 <input type="hidden" id="sweetnesvalue"
                                                                                     name="sweetnesvalue"
                                                                                     value="">
-                                                                                <span class="vs-checkbox">
-                                                                                        <i class="vs-icon feather icon-check"></i>
+                                                                                   <span class="vs-checkbox">
+                                                                                    <span class="vs-checkbox--check">
+                                                                                        <i
+                                                                                            class="vs-icon feather icon-check"></i>
                                                                                     </span>
                                                                                 </span>
 
@@ -1201,7 +1203,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
-                                                            <p class="entity-label">(+36)</p>
+                                                            {{-- <p class="entity-label">(+36)</p> --}}
                                                             <p id="input_total_score"
                                                                 style="max-width:100%;width: 267px;margin: auto;display: none">
                                                                 <input onkeyup="if (this.value > 100){ calcTotal()};"
@@ -2145,7 +2147,7 @@
             if (second && first) {
                 var defect = first * second;
                 var raw = subtotal - defect;
-                var total = 36 + raw;
+                var total = raw;
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
             } else {
@@ -2157,7 +2159,7 @@
                 if (raw == 0) {
                     var total = 0;
                 } else {
-                    var total = 36 + raw;
+                    var total = raw;
                 }
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
@@ -2176,7 +2178,7 @@
                 $('.multiply4').html(defect);
                 subtotal = subtotaldata();
                 var raw = subtotal - defect;
-                var total = 36 + raw;
+                var total = raw;
 
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
@@ -2192,7 +2194,7 @@
                 $('.multiply4').html(defect);
                 subtotal = subtotaldata();
                 var raw = subtotal - defect;
-                var total = 36 + raw;
+                var total = raw;
 
                 $('#total_score').val(total);
                 $('.totalScore').html(total);
@@ -2233,7 +2235,7 @@
                     min: 6,
                     max: 10,
                     step: 0.25,
-                    value: 8
+                    value: "8",
                 })
                 .slider("pips", {
                     rest: "label",
@@ -2252,7 +2254,7 @@
                     labels: hanzi
                 });
             $(".customslider")
-                .slider("value", 4)
+                .slider("value", 8)
                 .slider("pips", "refresh");
             // $('.customslider .ui-slider-handle').draggable();
 

@@ -177,13 +177,13 @@
                                         <img src="{{asset('public/app-assets/images/logo/newlogo.png')}}" style="max-width: 100%;">
                                     </div>
                                     </div>
-                                    <div class="card-content">
+                                    <div class="card-content container">
                                       <form action="{{route('openCuppingUser')}}" method="POST">
                                         @csrf
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name">
+                                        <input type="text" class="form-control" placeholder="Enter Name Optional" name="name" id="name">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" class="form-control" ><br>
+                                        <input type="text" name="email" id="email" placeholder="Enter Email Optional" class="form-control" ><br>
                                         <input type="submit" class="btn btn-primary btn-lg" value="Continue">
                                       </form> 
                                     </div>
