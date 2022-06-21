@@ -876,17 +876,8 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
-
-                                                                    <div class="col-md-3 col-3 input-group">
-                                                                        <h3 class="entity-text">Uniformity</h3>
-                                                                    </div>
-
-                                                                    <div class="mt-2 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
-                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
-                                                                        <h3 id="uniformity">0</h3>
-                                                                    </div><br>
+                                                                    <h3 class="entity-text">Uniformity</h3>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -968,6 +959,9 @@
 
                                                                             </div>
                                                                         </fieldset>
+                                                                    </div>
+                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
+                                                                        <h3 id="uniformity">0</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
