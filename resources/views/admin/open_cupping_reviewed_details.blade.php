@@ -84,13 +84,14 @@ tbody tr th{
                                             <th>Product Title</th>       
                                             <th>Sample</th>
                                             <th>Aroma Dry</th>
-                                            <th>Aroma Crust</th>
+                                            <th>Quaility Notes</th>
                                             <th>Aroma Break</th> 
                                             <th>Uniformity</th>
                                             <th>CleanUp</th>
                                             <th>Sweetness</th>
                                             <th>Acidity</th>
                                             <th>Flavour</th>
+                                            <th>After Taste</th>
                                             <th>Balance</th>
                                             <th>Body</th>
                                             <th>Overall</th>
@@ -101,7 +102,7 @@ tbody tr th{
                                             @foreach ($data as $samp)
                                             <tr>
                                                 @foreach ($samp as $value => $sample)
-                                                @if($value == "note")
+                                                @if($value == "note" || $value == 'quality_notes')
                                                  <td class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
                                                     <i class="fas fa-info-circle fa-3x" style="font-size: 20px;"></i>
                                                 </td>

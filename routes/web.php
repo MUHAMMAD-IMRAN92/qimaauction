@@ -180,7 +180,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cupping/create', [App\Http\Controllers\OpenCuppingController::class, 'create']);
     Route::post('/cupping/save', [App\Http\Controllers\OpenCuppingController::class, 'store'])->name('open_cupping');
     Route::get('/cupping/show/{userId?}', [App\Http\Controllers\OpenCuppingController::class, 'show'])->name('show_cupping');
-    Route::get('/jury/link/give_cupping_review/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
+    Route::get('/jury/link/give_cupping_review/{userId}/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
     Route::post('/jury/link/saveCuppingReview', [App\Http\Controllers\OpenCuppingController::class, 'saveCuppingReview']);
     Route::get('/cupping/openCuppingFeedback', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingFeedback'])->name('openCuppingFeedback');
     Route::get('/cupping/openCuppingSummary', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingSummary'])->name('openCuppingSummary');
