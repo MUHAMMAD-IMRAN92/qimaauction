@@ -960,7 +960,7 @@
                                                                             </div>
                                                                         </fieldset>
                                                                     </div>
-                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
+                                                                    <div class="mt-2 ml-2 pr-2 col-md-6 col-6 input-group">
                                                                         <h3 id="uniformity">0</h3>
                                                                     </div>
                                                                 </div>
