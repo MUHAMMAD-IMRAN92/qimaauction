@@ -970,9 +970,7 @@
 
                                                                         <h3 class="entity-text">CleanCup</h3>
 
-                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
-                                                                        <h3 id="cleancup">0</h3>
-                                                                    </div><br>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1054,6 +1052,9 @@
                                                                             </div>
                                                                         </fieldset>
                                                                     </div>
+                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
+                                                                        <h3 id="cleancup">0</h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -1061,9 +1062,7 @@
 
                                                                     <h3 class="entity-text">Sweetness</h3>
 
-                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
-                                                                        <h3 id="sweetness">0</h3>
-                                                                    </div><br>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1144,6 +1143,9 @@
 
                                                                             </div>
                                                                         </fieldset>
+                                                                    </div>
+                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
+                                                                        <h3 id="sweetness">0</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
