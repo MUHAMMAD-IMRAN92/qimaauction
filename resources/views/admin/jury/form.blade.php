@@ -716,33 +716,12 @@
                                                             <div class="radio_button p-5">
                                                                 <div>
                                                                     <label class="radio_container">
-
-                                                                        <input type="radio" name="acidity_chk" value="VH"
-                                                                            class="acidity_H">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="acidity_chk" value="VL"
+                                                                            class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>Very <br> High</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-
-                                                                        <input type="radio" name="acidity_chk" value="H"
-                                                                            class="acidity_H">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>High</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-                                                                        <input type="radio" name="acidity_chk" value="M"
-                                                                            class="acidity_M">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>Medium</h5>
+                                                                        <h5>Very <br> Low</h5>
 
                                                                     </label>
                                                                 </div>
@@ -759,12 +738,34 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" checked="checked"
-                                                                            name="acidity_chk" value="VL"
-                                                                            class="acidity_L">
+                                                                        <input type="radio" name="acidity_chk" value="M"
+                                                                            class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>Very <br> Low</h5>
+                                                                        <h5>Medium</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="acidity_chk" value="H"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>High</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="acidity_chk" value="VH"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>Very <br> High</h5>
 
                                                                     </label>
                                                                 </div>
@@ -790,34 +791,13 @@
                                                             </div>
                                                             <div class="radio_button p-5">
                                                                 <div>
-                                                                    <label class="radio_container " style="text-align: justify">
-
-                                                                        <input type="radio" name="body_chk" value="VH"
-                                                                            class="acidity_H">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>Very <br> Heavy</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container ">
-
-                                                                        <input type="radio" name="body_chk" value="H"
-                                                                            class="acidity_H">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>Heavy</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
                                                                     <label class="radio_container  ">
-                                                                        <input type="radio" name="body_chk" value="M"
-                                                                            class="acidity_M">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="body_chk" value="VT"
+                                                                            class="acidity_L">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>Medium</h5>
+                                                                        <h5>Very <br> Thin</h5>
 
                                                                     </label>
                                                                 </div>
@@ -834,12 +814,34 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container  ">
-                                                                        <input type="radio" checked="checked"
-                                                                            name="body_chk" value="VT"
-                                                                            class="acidity_L">
+                                                                        <input type="radio" name="body_chk" value="M"
+                                                                            class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
-                                                                        <h5>Very <br> Thin</h5>
+                                                                        <h5>Medium</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <label class="radio_container ">
+
+                                                                        <input type="radio" name="body_chk" value="H"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>Heavy</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container " style="text-align: justify">
+
+                                                                        <input type="radio" name="body_chk" value="VH"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>Very <br> Heavy</h5>
 
                                                                     </label>
                                                                 </div>
@@ -874,17 +876,8 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
-
-                                                                    <div class="col-md-3 col-3 input-group">
-                                                                        <h3 class="entity-text">Uniformity</h3>
-                                                                    </div>
-
-                                                                    <div class="mt-2 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
-                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
-                                                                        <h3 id="uniformity">0</h3>
-                                                                    </div><br>
+                                                                    <h3 class="entity-text">Uniformity</h3>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -967,21 +960,17 @@
                                                                             </div>
                                                                         </fieldset>
                                                                     </div>
+                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
+                                                                        <h3 id="uniformity">0</h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
 
-                                                                    <div class="col-md-3 col-3 input-group">
                                                                         <h3 class="entity-text">CleanCup</h3>
-                                                                    </div>
 
-                                                                    <div class=" mt-2 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
-                                                                    <div class="mt-2 ml-2 col-md-2 col-2 input-group">
-                                                                        <h3 id="cleancup">0</h3>
-                                                                    </div><br>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1063,21 +1052,17 @@
                                                                             </div>
                                                                         </fieldset>
                                                                     </div>
+                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
+                                                                        <h3 id="cleancup">0</h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
 
-                                                                    <div class="col-md-3 col-3 input-group">
-                                                                        <h3 class="entity-text">Sweetness</h3>
-                                                                    </div>
+                                                                    <h3 class="entity-text">Sweetness</h3>
 
-                                                                    <div class="mt-1 ml-2 col-md-1 col-1 input-group">
-                                                                        <h3>=</h3>
-                                                                    </div>
-                                                                    <div class="mt-1 ml-2 col-md-2 col-2 input-group">
-                                                                        <h3 id="sweetness">0</h3>
-                                                                    </div><br>
+                                                                    
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1158,6 +1143,9 @@
 
                                                                             </div>
                                                                         </fieldset>
+                                                                    </div>
+                                                                    <div class="mt-2 pr-2 col-md-6 col-6 text-right input-group">
+                                                                        <h3 id="sweetness">0</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
