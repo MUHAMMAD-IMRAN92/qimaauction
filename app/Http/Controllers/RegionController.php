@@ -15,7 +15,7 @@ class RegionController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.region.index');
     }
     public function allRegion(Request $request)
@@ -48,7 +48,7 @@ class RegionController extends Controller
     }
     public function save(Request $request)
     {
-        
+
         $region = new  Region();
         $region->title = $request->title;
         $region->save();
@@ -57,7 +57,7 @@ class RegionController extends Controller
     public function delete(Request $request, $id)
     {
         $region = Region::find(base64_decode($id));
-    
+
         if ($region) {
             $region->is_hidden = '1';
             $region->save();

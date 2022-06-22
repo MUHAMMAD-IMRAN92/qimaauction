@@ -16,7 +16,7 @@ class OriginController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.origin.index');
     }
     public function allorigin(Request $request)

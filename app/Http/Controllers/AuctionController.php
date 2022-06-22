@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\Bidlimit;
 use App\Models\Genetic;
 use App\Models\Product;
 use App\Models\Process;
@@ -241,5 +242,14 @@ return response()->json($auction_products);
         $auction            =   Auction::first();
         $auctionProducts    =   AuctionProduct::with('products')->get();
         return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction'));
+    }
+    public function singleBidData(Request $request)
+    {
+        dd($request->id);
+        // echo "hello";
+        $bidLimit   =   Bidlimit::first();
+        // dd($bidLimit);
+        // $userVideo = VideosOnDemand::find($request->id);
+        // return $userVideo;
     }
 }
