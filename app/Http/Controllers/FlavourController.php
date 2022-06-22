@@ -17,7 +17,7 @@ class FlavourController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.flavour.index');
     }
     public function allflavour(Request $request)
@@ -48,7 +48,7 @@ class FlavourController extends Controller
     }
     public function save(Request $request)
     {
-        
+
         $flavour = new  Flavour();
         $flavour->flavour_title = $request->title;
         $flavour->flavour_description = $request->description;
@@ -59,7 +59,7 @@ class FlavourController extends Controller
     public function delete(Request $request, $id)
     {
         $flavour = Flavour::find(base64_decode($id));
-    
+
         if ($flavour) {
             $flavour->is_hidden = '1';
             $flavour->save();

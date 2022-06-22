@@ -15,7 +15,7 @@ class VillageController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.village.index');
     }
     public function allVillage(Request $request)
@@ -48,7 +48,7 @@ class VillageController extends Controller
     }
     public function save(Request $request)
     {
-        
+
         $village = new  Village();
         $village->title = $request->title;
         $village->save();
@@ -57,7 +57,7 @@ class VillageController extends Controller
     public function delete(Request $request, $id)
     {
         $village = Village::find(base64_decode($id));
-    
+
         if ($village) {
             $village->is_hidden = '1';
             $village->save();
