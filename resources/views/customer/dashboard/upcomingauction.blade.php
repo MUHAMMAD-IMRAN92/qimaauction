@@ -20,8 +20,6 @@
         rel="stylesheet">
 
     <!-- Fonts End      -->
-
-</head>
 <style>
     tr.hide-table-padding td {
   padding: 0;
@@ -192,8 +190,7 @@
                             @foreach($auctionProduct->products as $products)
                                 <td>--</td>
                             @endforeach
-
-                            <td>---  @if ($user)<a class=" btn btn-primary accordion-toggle collapsed" data-id="" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{$auctionProduct->id}}">BID</a>@endif</td>
+                            <td>---  @if ($user)<a class=" btn btn-primary accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{$auctionProduct->id}}">BID</a>@endif</td>
                             @foreach($auctionProduct->products as $products)
                                 @if ($products->pro_lot_type == '1')
                                     <td>Farmer Lot</td>
@@ -216,7 +213,7 @@
                                 <div class="input-group mb-3">
                                     <p class="mr-1">${{$auctionProduct->start_price}}</p>
                                     <div class="input-group-append">
-                                      <button class="btn btn-success" type="button">BID NOW</button>
+                                      <button class="btn btn-success" id="singlebid{{$auctionProduct->id}}" href="javascript:void(0)" data-id="{{$auctionProduct->id}}">BID NOW</button>
                                     </div>
                                   </div>
                             </div>
@@ -442,9 +439,8 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
@@ -514,6 +510,28 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
 
-        </script>
+</script>
+<script type="text/javascript">
+    $(document).ready(function(e){
+        $("#singlebid{{$auctionProduct->id}}").on("click",function(e){
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            $.ajax({
+               url:"{{route('singlebiddata')}}",
+               method:'POST',
+               data:{
+                      id:id,
+                      _token: "{{ csrf_token() }}",
+                    },
+               success:function(response){
 
+               },
+               error:function(error){
+                  console.log(error)
+               }
+            });
+
+        })
+    })
+    </script>
 </html>

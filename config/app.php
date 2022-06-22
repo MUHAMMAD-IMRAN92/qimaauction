@@ -174,6 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //Qimaauction Third Party packages
+         Yoeunes\Toastr\ToastrServiceProvider::class,
+
     ],
 
     /*

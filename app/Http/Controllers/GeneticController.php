@@ -15,7 +15,7 @@ class GeneticController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.genetic.index');
     }
     public function allgenetic(Request $request)
@@ -56,7 +56,7 @@ class GeneticController extends Controller
     public function delete(Request $request, $id)
     {
         $genetic = Genetic::find(base64_decode($id));
-    
+
         if ($genetic) {
             $genetic->is_hidden = '1';
             $genetic->save();
