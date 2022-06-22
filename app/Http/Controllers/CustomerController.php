@@ -29,12 +29,12 @@ class CustomerController extends Controller
         $customers      =   User::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-        $customers  =   $customers->where('is_hidden', '0')->where('is_admin','1')->skip((int)$start)->take((int)$length)->get();
-        $data       = array(
-            'draw'              => $draw,
+        $customers      =   $customers->where('is_hidden', '0')->where('is_admin','1')->skip((int)$start)->take((int)$length)->get();
+        $data = array(
+            'draw' => $draw,
             'recordsTotal'      => $customer_count,
             'recordsFiltered'   => $customer_count,
-            'data'              => $customers,
+            'data' => $customers,
         );
         return response()->json($data);
     }
@@ -77,7 +77,6 @@ class CustomerController extends Controller
               $message->subject('Reset Password');
               $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
           });
-        parent::successMessage('Customer saved successfully ! Mail sent to customer.');
         return redirect('/customer/index');
     }
 
@@ -107,8 +106,8 @@ class CustomerController extends Controller
                      ->update(['password' => Hash::make($request->password)]);
 
          DB::table('password_resets')->where(['email'=> $request->email])->delete();
-         parent::successMessage('Your password has been changed !');
-         return redirect('/customer-login');
+
+         return redirect('/customer-login')->with('message', 'Your password has been changed!');
      }
 
      public function customerLogin()
@@ -118,6 +117,7 @@ class CustomerController extends Controller
     public function edit(Request $request, $id)
     {
         $customer = User::find(base64_decode($id));
+
         return view('admin.customers.edit', [
             'customer' =>  $customer,
         ]);
@@ -144,7 +144,6 @@ class CustomerController extends Controller
         $customer->paddle_number    =   $request->paddle_number;
 
         $customer->save();
-        parent::successMessage('Customer updated successfully.');
         return redirect('/customer/index');
     }
     public function passwordReset($token)

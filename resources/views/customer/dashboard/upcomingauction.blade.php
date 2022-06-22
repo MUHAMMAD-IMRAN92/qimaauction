@@ -213,7 +213,7 @@
                                 <div class="input-group mb-3">
                                     <p class="mr-1">${{$auctionProduct->start_price}}</p>
                                     <div class="input-group-append">
-                                      <button class="btn btn-success" id="singlebid" href="javascript:void(0)" data-id="{{$auctionProduct->id}}">BID NOW</button>
+                                      <button class="btn btn-success" id="singlebid{{$auctionProduct->id}}" href="javascript:void(0)" data-id="{{$auctionProduct->id}}">BID NOW</button>
                                     </div>
                                   </div>
                             </div>
@@ -513,7 +513,7 @@ function closeNav() {
 </script>
 <script type="text/javascript">
     $(document).ready(function(e){
-        $("#singlebid").on("click",function(e){
+        $("#singlebid{{$auctionProduct->id}}").on("click",function(e){
             e.preventDefault();
             var id = $(this).attr('data-id');
             $.ajax({
@@ -524,7 +524,7 @@ function closeNav() {
                       _token: "{{ csrf_token() }}",
                     },
                success:function(response){
-                console.log(response)
+
                },
                error:function(error){
                   console.log(error)

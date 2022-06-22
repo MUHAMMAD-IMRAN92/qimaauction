@@ -15,7 +15,6 @@
             </div>
         </div>
         <div class="content-body">
-
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -26,7 +25,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{ url('/auction/update') }}" method="POST" enctype="multipart/form-data" >
+                                    <form class="form" action="{{ url('/bidlimit/update') }}" method="POST" >
                                         @csrf
                                         <div class="form-body">
                                             <div class="row">
@@ -38,13 +37,31 @@
                                                             <th>Max</th>
                                                             <th>Action</th>
                                                         </tr>
+                                                        @php
+                                                            $minVal     =   json_decode($bidLimits->min);
+                                                            $increments =   json_decode($bidLimits->increment);
+                                                            $maxVal     =   json_decode($bidLimits->max);
+                                                        @endphp
                                                         <tr>
-                                                            {{-- @dd($bidLimits); --}}
-                                                            <td><input type="number" name="addmore[0][min]" value="" class="form-control" /></td>
-                                                            <td><input type="text" name="addmore[0][increment]" id="increment" class="form-control" /></td>
-                                                            <td><input type="number" name="addmore[0][max]"  class="form-control" /></td>
+                                                            <td>
+                                                            @foreach ($minVal as $minimum )
+                                                            <input type="hidden" name="bidlimit" value="{{$bidLimits->id}}">
+                                                                <input type="text" name="min[]" value="{{$minimum}}" id="min" class="form-control min-value" /><br>
+                                                            @endforeach
+                                                            </td>
+                                                            <td>
+                                                            @foreach ($increments as $increment )
+                                                                <input type="text" name="increment[]" id="increment" value="{{$increment}}"  class="form-control" /><br>
+                                                            @endforeach
+                                                            </td>
+                                                            <td>
+                                                            @foreach ($maxVal as $maximum )
+                                                            <input type="text" name="max[]" id="max" value="{{$maximum}}" class="form-control max-value" /><br>
+                                                            @endforeach
+                                                            </td>
                                                             <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                                                         </tr>
+
                                                     </table>
                                                 </div>
                                                 <div class="col-12" style="margin-left: 39%">
@@ -65,42 +82,34 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-        $('#image').change(function(){
+    $( document ).ready(function() {
+    $("#increment").on("input", function(evt) {
+   var self = $(this);
+   self.val(self.val().replace(/[^0-9\.]/g, ''));
+   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+   {
+     evt.preventDefault();
+   }
+ });
+ $("#min").on("input", function(evt) {
+   var self = $(this);
+   self.val(self.val().replace(/[^0-9\.]/g, ''));
+   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+   {
+     evt.preventDefault();
+   }
+ });
+});
+    var i = 0;
+    $("#add").click(function(){
+        ++i;
+        var last_max_value = $(".max-value:last").val();
+        last_max_value     = parseFloat(last_max_value)+0.1;
+        $("#dynamicTable").append('<tr><td><input type="text" name="min['+i+']"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="increment['+i+']" class="form-control" /></td><td><input type="text" name="max['+i+']" class="form-control max-value" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+    });
+    $(document).on('click', '.remove-tr', function(){
+         $(this).parents('tr').remove();
+    });
 
-                let reader = new FileReader();
-
-                reader.onload = (e) => {
-
-                    $('#preview-image-before-upload').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(this.files[0]);
-
-                });
-      // jQuery.datetimepicker.setLocale('de');
-    //   CKEDITOR.replace( 'product_detail' );
-      $.datetimepicker.setDateFormatter({
-          parseDate: function (date, format) {
-              var d = moment(date, format);
-              return d.isValid() ? d.toDate() : false;
-          },
-          formatDate: function (date, format) {
-              return moment(date).format(format);
-          },
-      });
-      jQuery('#datetimepicker').datetimepicker({
-          format:'DD-MM-YYYY h:mm',
-          formatTime:'h:mm',
-          formatDate:'DD.MM.YYYY',
-          minDate: new Date(),
-          });
-      jQuery('#datetimepicker1').datetimepicker({
-      format:'DD-MM-YYYY h:mm',
-      formatTime:'h:mm',
-      formatDate:'DD.MM.YYYY',
-      minDate: new Date(),
-      });
-  });
 </script>
 @endsection

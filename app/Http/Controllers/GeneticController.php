@@ -51,7 +51,6 @@ class GeneticController extends Controller
         $genetic = new Genetic();
         $genetic->title = $request->title;
         $genetic->save();
-        parent::successMessage('Genetic saved successfully.');
         return redirect('/genetic/index');
     }
     public function delete(Request $request, $id)
@@ -62,8 +61,8 @@ class GeneticController extends Controller
             $genetic->is_hidden = '1';
             $genetic->save();
         }
-        parent::successMessage('Genetic deleted successfully.');
-        return redirect('/genetic/index');
+        // return $genetic;
+        return redirect('/genetic/index')->with('msg', 'genetic Deleted Successfully');
     }
     public function edit(Request $request, $id)
     {
@@ -78,7 +77,6 @@ class GeneticController extends Controller
         $genetic = Genetic::find($request->id);
         $genetic->title = $request->title;
         $genetic->save();
-        parent::successMessage('Genetic updated successfully.');
         return redirect('/genetic/index');
     }
 }

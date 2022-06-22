@@ -52,8 +52,8 @@ class FlavourController extends Controller
         $flavour = new  Flavour();
         $flavour->flavour_title = $request->title;
         $flavour->flavour_description = $request->description;
+
         $flavour->save();
-        parent::successMessage('Flavour saved successfully.');
         return redirect('/flavour/index');
     }
     public function delete(Request $request, $id)
@@ -64,8 +64,8 @@ class FlavourController extends Controller
             $flavour->is_hidden = '1';
             $flavour->save();
         }
-        parent::successMessage('Flavour deleted successfully.');
-        return redirect('/flavour/index');
+        // return $flavour;
+        return redirect('/flavour/index')->with('msg', 'flavour Deleted Successfully');
     }
     public function edit(Request $request, $id)
     {
@@ -82,7 +82,6 @@ class FlavourController extends Controller
         $flavour->flavour_description = $request->description;
 
         $flavour->save();
-        parent::successMessage('Flavour updated successfully.');
         return redirect('/flavour/index');
     }
 }

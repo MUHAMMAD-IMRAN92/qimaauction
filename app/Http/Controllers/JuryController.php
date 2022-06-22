@@ -25,12 +25,13 @@ class JuryController extends Controller
     }
     public function index()
     {
+        // return $this->user;
         return view('admin.jury.index');
     }
     public function alljury(Request $request)
     {
-        $draw   = $request->get('draw');
-        $start  = $request->get('start');
+        $draw = $request->get('draw');
+        $start = $request->get('start');
         $length = $request->get('length');
         $search = $request->search['value'];
         $jury_count = Jury::when($search, function ($q) use ($search) {
@@ -68,18 +69,17 @@ class JuryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'name'  => 'required',
+            'name' => 'required',
             'email' => 'required|email|unique:juries,email'
             // 'phone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:12'
         ]);
-        $jury           =   new  Jury();
-        $jury->name     =   $request->name;
-        $jury->email    =   $request->email;
-        $jury->phone    =   $request->phone;
-        $jury->company  =   $request->company;
-        $jury->address  =   $request->address;
+        $jury = new  Jury();
+        $jury->name = $request->name;
+        $jury->email = $request->email;
+        $jury->phone = $request->phone;
+        $jury->company = $request->company;
+        $jury->address = $request->address;
         $jury->save();
-        parent::successMessage('jury saved successfully.');
         return redirect('/jury/index');
     }
     public function delete(Request $request, $id)
@@ -87,8 +87,7 @@ class JuryController extends Controller
         $jury = Jury::find(base64_decode($id));
         $jury->is_hidden = '1';
         $jury->save();
-        parent::successMessage('jury deleted successfully.');
-        return redirect('/jury/index');
+        return redirect('/jury/index')->with('msg', 'jury Deleted Successfully');
     }
     public function editjury(Request $request, $id)
     {
@@ -127,7 +126,6 @@ class JuryController extends Controller
         $jury->company = $request->company;
         $jury->address = $request->address;
         $jury->save();
-        parent::successMessage('jury updated successfully.');
         return redirect('/jury/index');
     }
 
@@ -212,8 +210,7 @@ class JuryController extends Controller
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
-        parent::successMessage('Samples Email Successfully sent to Jury Members.');
-        return redirect('/jury/index');
+        return redirect('/jury/index')->with('success','Samples Email Successfully sent to Jury Members.');
     }
     public function updateSentToJury(Request $request){
         // dd($request->all());
@@ -254,8 +251,7 @@ class JuryController extends Controller
                 }
             }
         }
-        parent::successMessage('Samples Email Successfully sent to Jury Members.');
-        return redirect('/jury/index');
+        return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
  }
 
     public function juryLinks(Request $request, $id)

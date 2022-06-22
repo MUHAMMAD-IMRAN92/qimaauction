@@ -9,7 +9,8 @@ class BidlimitController extends Controller
 {
     public function index()
     {
-        return view('admin.bidlimit.index');
+        $bidLimits      =    Bidlimit::all();
+        return view('admin.bidlimit.index',compact('bidLimits'));
     }
 
     public function allBidlimit(Request $request)
@@ -42,24 +43,34 @@ class BidlimitController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            'addmore.*.min'         => 'required',
-            'addmore.*.increment'   => 'required',
-            'addmore.*.max'         => 'required',
-        ]);
-        foreach ($request->addmore as $key => $value) {
-            Bidlimit::create($value);
-        }
-        parent::successMessage('Bidlimit saved successfully.');
-        return redirect('/bidlimit/index');
+        // $request->validate([
+        //     'addmore.*.min'         => 'required',
+        //     'addmore.*.increment'   => 'required',
+        //     'addmore.*.max'         => 'required',
+        // ]);
+        $bidLimit               =   new  Bidlimit();
+        $bidLimit->min          =   json_encode($request->min);
+        $bidLimit->increment    =   json_encode($request->increment);
+        $bidLimit->max          =   json_encode($request->max);
+        $bidLimit->save();
+        return redirect('/bidlimit/index')->with('success','Bidlimit saved successfully.');
     }
 
     public function edit(Request $request, $id)
     {
-        $bidLimits = Bidlimit::find(base64_decode($id));
-
+        $bidLimits = Bidlimit::find($id);
         return view('admin.bidlimit.edit', [
             'bidLimits' =>  $bidLimits,
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $bidLimit               =   Bidlimit::find($request->bidlimit);
+        $bidLimit->min          =   json_encode($request->min);
+        $bidLimit->increment    =   json_encode($request->increment);
+        $bidLimit->max          =   json_encode($request->max);
+        $bidLimit->save();
+        return redirect('/bidlimit/index')->with('success','Bidlimit updated successfully.');
     }
 }

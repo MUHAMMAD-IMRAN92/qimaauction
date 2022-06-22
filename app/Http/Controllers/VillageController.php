@@ -52,7 +52,6 @@ class VillageController extends Controller
         $village = new  Village();
         $village->title = $request->title;
         $village->save();
-        parent::successMessage('Village saved successfully.');
         return redirect('/village/index');
     }
     public function delete(Request $request, $id)
@@ -63,8 +62,8 @@ class VillageController extends Controller
             $village->is_hidden = '1';
             $village->save();
         }
-        parent::successMessage('Village deleted successfully.');
-        return redirect('/village/index');
+        // return $village;
+        return redirect('/village/index')->with('msg', 'village Deleted Successfully');
     }
     public function edit(Request $request, $id)
     {
@@ -79,7 +78,6 @@ class VillageController extends Controller
         $village = Village::find($request->id);
         $village->title = $request->title;
         $village->save();
-        parent::successMessage('Village updated successfully.');
         return redirect('/village/index');
     }
 }

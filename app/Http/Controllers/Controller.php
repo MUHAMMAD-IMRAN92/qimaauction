@@ -10,19 +10,4 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public function successMessage($msg)
-    {
-        return toastr()->success( $msg);
-    }
-
-    public function dangerMessage($msg)
-    {
-        return toastr()->error($msg);
-    }
-
-    public function warningMessage($msg)
-    {
-        return toastr()->warning($msg .'⚡️');
-    }
 }

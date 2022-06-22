@@ -153,7 +153,7 @@ class OpenCuppingController extends Controller
             ->orderBy('samplePostion', 'asc')
             // ->where('open_cuppings.is_hidden', '0')
             ->get();
-         
+
         // dd($alltablesamples);
 
 
@@ -162,7 +162,7 @@ class OpenCuppingController extends Controller
                 ->first();
             $review = OpenCuppingReview::where('sample_id', $request->sampleId)
                 ->first();
-              
+
         } else {
             $review = null;
             $firstsample = $alltablesamples->first();
@@ -183,7 +183,7 @@ class OpenCuppingController extends Controller
         //     $sampleReview = null;
         // }
         if ($firstsample) {
-         
+
             // $productdata = Product::where('id', $firstsample->product_id)->first();
             $productdata = OpenCupping::join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0 , function($q) use ($userId){
@@ -221,7 +221,7 @@ class OpenCuppingController extends Controller
 
     public function saveCuppingReview(Request $request)
     {
-     
+
           $userId = $request->userId;
         $sampleSent = OpenCupping::when($userId != 0 , function($q) use ($userId){
             $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
@@ -234,8 +234,8 @@ class OpenCuppingController extends Controller
            ->where('open_cuppings.id', $request->sent_sample_id)
             // ->where('is_hidden', '0')
             ->first();
-            
-          
+
+
         if (isset($sampleSent)) {
             if ($sampleSent->is_hidden == '1') {
                 $review = OpenCuppingReview::when($userId != 0 , function($q) use ($userId){
@@ -248,7 +248,7 @@ class OpenCuppingController extends Controller
                   ->where('open_cupping_reviews.product_id', $request->product_id)
                   ->where('open_cupping_reviews.sample_id', $sampleSent->id)
                   ->first();
-              
+
             } else {
                 $review = new OpenCuppingReview();
             }
@@ -283,7 +283,7 @@ class OpenCuppingController extends Controller
 
         $sampleSent2 = OpenCupping::where('is_hidden', '0')->orderBy('postion', 'asc')->first();
 
-       
+
         if (isset($request->table_submit)) {
             $alltablesamples = OpenCupping::when($userId != 0 , function($q) use ($userId){
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
@@ -315,8 +315,8 @@ class OpenCuppingController extends Controller
         }
 
         if (isset($request->sample_submit)) {
-          
-           
+
+
             $sample2Sent = OpenCupping::when($userId != 0 , function($q) use ($userId){
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
                 ->where('open_cuppings.user_id',$userId)
@@ -327,7 +327,7 @@ class OpenCuppingController extends Controller
               })
               ->where('postion', $request->current_position + 1)
               ->first();
-            
+
             if (isset($sample2Sent)) {
                 $sampleSent = $sample2Sent;
             }
@@ -343,7 +343,7 @@ class OpenCuppingController extends Controller
                   })
                   ->where('postion', $request->current_position)
                   ->first();
-            } 
+            }
         }
         if ($request->to_go_sample) {
             return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted successfully');
@@ -393,7 +393,7 @@ class OpenCuppingController extends Controller
             $data[$key]['aroma_dry'] =   $review->aroma_dry ?? '0.0';
             $data[$key]['quality_notes'] =  $review->quality_notes ?? 'quality notes';
             $data[$key]['aroma_break'] =    $review->aroma_break ?? '0.0';
-          
+
             $data[$key]['uniformityvalue'] =   $review->uniformityvalue ?? '0.0';
             $data[$key]['cleanupvalue'] =   $review->cleancupvalue ?? '0.0';
             $data[$key]['sweetnessvalue'] =  $review->sweetnesvalue ?? '0.0';

@@ -10,6 +10,10 @@
                 <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
+                            @if (session('success'))
+                                <div class="col-md-12 alert alert-success">
+                            {{ session('success') }}
+                            @endif
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -43,7 +47,6 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
@@ -56,12 +59,41 @@
                                                         <th>Min</th>
                                                         <th>Increment</th>
                                                         <th>Max</th>
-                                                        {{-- <th>Action(s)</th> --}}
+                                                        <th>Action(s)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $i  =  1;
+                                                    @endphp
+                                                    @foreach ($bidLimits as $bid)
+                                                    @php
+                                                        $minVal     =   json_decode($bid->min);
+                                                        $increments =   json_decode($bid->increment);
+                                                        $maxVal     =   json_decode($bid->max);
+                                                    @endphp
+                                                    <tr>
+                                                        <td>{{$i++}}</td>
+                                                        <td>
+                                                            @foreach ($minVal as $minimum )
+                                                                {{$minimum}} <br>
+                                                            @endforeach
+                                                    </td>
+                                                        <td>
+                                                            @foreach ($increments as $increment )
+                                                                {{$increment}} <br>
+                                                            @endforeach
+                                                    </td>
+                                                        <td>
+                                                            @foreach ($maxVal as $maximum )
+                                                                {{$maximum}} <br>
+                                                            @endforeach
+                                                        </td>
+                                                        <td> <a href="{{ url('bidlimit/edit',$bid->id) }}"><i class="fas fa-edit text-primary"></i></a>
+                                                            </td>
+                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
-
                                             </table>
                                         </div>
                                     </div>
@@ -76,9 +108,9 @@
     <!-- END: Content-->
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
+{{-- <script>
     $(document).ready(function() {
-        var t = $('#bidlimit-table').DataTable({
+           var t = $('#bidlimit-table').DataTable({
             "processing": true,
             "serverSide": true,
             "deferRender": true,
@@ -113,17 +145,17 @@
                         row.max + '</td>';
                 }
                 },
-                // {
-                //     "mRender": function(data, type, row) {
-                //         var ids = btoa(row.id);
-                //         return `<td>` +
-                //             `<a class="" href="/bidlimit/edit/` + ids +
-                //             `">Edit</a>&nbsp&nbsp` +
-                //             `<a class="" href="/bidlimit/delete/` + ids +
-                //             `">Delete</a>` +
-                //             '</td>'
-                //     }
-                // },
+                {
+                    "mRender": function(data, type, row) {
+                        var ids = btoa(row.id);
+                        return `<td>` +
+                            `<a class="" href="/bidlimit/edit/` + ids +
+                            `">Edit</a>&nbsp&nbsp` +
+                            // `<a class="" href="/bidlimit/delete/` + ids +
+                            // `">Delete</a>` +
+                            '</td>'
+                    }
+                },
             ],
             "columnDefs": [{
                 "orderable": false,
@@ -141,4 +173,4 @@
 
         }).draw();
     });
-</script>
+</script> --}}

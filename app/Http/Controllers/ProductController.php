@@ -127,7 +127,7 @@ class ProductController extends Controller
             $productImage->image_name = $fileName;
             $productImage->save();
         }
-        parent::successMessage('Product saved successfully.');
+
         return redirect('/product/index');
     }
     public function delete(Request $request, $id)
@@ -135,8 +135,7 @@ class ProductController extends Controller
         $product = Product::find(base64_decode($id));
         $product->is_hidden = '1';
         $product->save();
-        parent::successMessage('Product deleted successfully.');
-        return redirect('/product/index');
+        return redirect('/product/index')->with('msg', 'product Deleted Successfully');
     }
     public function edit(Request $request, $id)
     {
@@ -198,7 +197,8 @@ class ProductController extends Controller
                 $productImage->save();
             }
         }
-        parent::successMessage('Product updated successfully.');
+
+
         return redirect('/product/index');
     }
     public function deleteImage($id)
