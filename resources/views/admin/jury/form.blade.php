@@ -697,10 +697,10 @@
                                                         <div class="aromaslider aromabreak"><input type="hidden"
                                                                 name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-12 mt-5">
                                                         <h5 style="margin-top:-6px">Descriptors</h5>
                                                     </div>
-                                                    <div class="entity_input mb-5 mt-5">
+                                                    <div class="entity_input mb-5">
                                                         <input type="text" name="quality_notes" id="quality_notes" value="{{$sampleReview->quality_notes ?? ''}}"
                                                             placeholder="Descriptors note" class="entity_note">
                                                     </div>

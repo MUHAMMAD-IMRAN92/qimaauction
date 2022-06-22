@@ -413,6 +413,12 @@
                                         <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
                                             data-i18n="eCommerce">Genetic</span></a>
                                 </li>
+                                <li @if (request()->is('agreement/*')) class='active' @endif><a
+                                    href="{{ url('/agreement/index') }}">
+                                    {{-- <i class="feather icon-circle"></i> --}}
+                                    <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Agreement</span></a>
+                                 </li>
                             </ul>
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>

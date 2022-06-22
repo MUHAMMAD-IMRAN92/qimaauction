@@ -13,6 +13,20 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReviewController extends Controller
 {
+    public function agreement(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:pdf,xlx,csv|max:2048',
+        ]);
+  
+        $fileName = time().'.'.$request->file->extension();  
+   
+        $request->file->move(public_path('agreements'), $fileName);
+   
+        return back()
+            ->with('success','You have successfully upload file.')
+            ->with('file',$fileName);
+    }
     public function saveReview(Request $request)
     {
         //  if(isset($request->table_submit))
