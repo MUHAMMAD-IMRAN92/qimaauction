@@ -17,17 +17,18 @@ class AgreementSeeder extends Seeder
             [
                 'title'      => 'Privacy Policy',
                 'slug'     => 'Privacy-Policy',
-                'filename' => 'privacy',
-            ],
+            ]  
+        );
+        DB::table('agreements')->insert(
             [
-                'title'      => 'Privacy Policy',
-                'slug'     => 'Privacy-Policy',
-                'filename' => 'privacy',
-            ],
+                'title'      => 'Terms & condition',
+                'slug'     => 'Terms-Condition',
+            ]   
+        );
+        DB::table('agreements')->insert(
             [
-                'title'      => 'Privacy Policy',
-                'slug'     => 'Privacy-Policy',
-                'filename' => 'privacy',
+                'title'      => 'Bidding Contract',
+                'slug'     => 'Bidding-Contract',
             ]     
         );
     }

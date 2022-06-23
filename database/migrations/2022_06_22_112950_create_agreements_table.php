@@ -17,7 +17,6 @@ class CreateAgreementsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('filename');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
