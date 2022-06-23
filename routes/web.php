@@ -198,6 +198,8 @@ Route::middleware(['auth'])->group(function () {
     //CSV Routes
     Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewController::class, 'reviewDetailCsv'])->name('reviewdetail_csv');
     Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
+    Route::get('/agreement', [App\Http\Controllers\ReviewController::class, 'agreement']);
+    Route::post('/agreement', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
 
     //Customer Reset Passwords Routes
     Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
