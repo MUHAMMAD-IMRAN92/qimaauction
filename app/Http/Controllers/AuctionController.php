@@ -143,7 +143,7 @@ return response()->json($auction_products);
     }
 
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction saved successfully.');
     }
 
     public function allauction(Request $request)
@@ -229,7 +229,7 @@ return response()->json($auction_products);
             }
         }
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction updated successfully.');
     }
     public function delete(Request $request, $id)
     {
@@ -245,11 +245,13 @@ return response()->json($auction_products);
     }
     public function singleBidData(Request $request)
     {
-        dd($request->id);
-        // echo "hello";
-        $bidLimit   =   Bidlimit::first();
-        // dd($bidLimit);
-        // $userVideo = VideosOnDemand::find($request->id);
-        // return $userVideo;
+        $bidStartPrice              =   AuctionProduct::where('id',$request->id)->first()->start_price;
+        $bidLimit                   =   Bidlimit::where('min','<',$bidStartPrice)->orderBy('min','desc')->limit(1)->get();
+        $bidIncrement               =   $bidLimit[0]->increment;
+        $auctionPID                 =   AuctionProduct::find($request->id);
+        $newbidPrice                =   $bidIncrement + $bidStartPrice;
+        $auctionPID->start_price    =   $newbidPrice;
+        $auctionPID->save();
+        return response()->json($auctionPID);
     }
 }

@@ -67,6 +67,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ asset('public/app-assets/js/select2.js') }}" type="text/javascript"></script>
 
+    {{-- websockets --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+    <script type="text/javascript">
+        var socket = io('<?= env('SOCKETS') ?>');
+    </script>
+
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
@@ -77,7 +83,10 @@
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
-
+    @if (session('success'))
+    <div class="col-md-12 alert alert-success">
+{{ session('success') }}
+@endif
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">

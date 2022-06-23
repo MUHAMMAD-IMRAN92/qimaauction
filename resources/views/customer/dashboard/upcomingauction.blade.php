@@ -18,8 +18,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,300&display=swap"
         rel="stylesheet">
+    {{-- web sockets --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+        <script type="text/javascript">
+            var socket = io('<?= env('SOCKETS') ?>');
+        </script>
 
-    <!-- Fonts End      -->
 <style>
     tr.hide-table-padding td {
   padding: 0;
@@ -190,7 +194,7 @@
                             @foreach($auctionProduct->products as $products)
                                 <td>--</td>
                             @endforeach
-                            <td>---  @if ($user)<a class=" btn btn-primary accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{$auctionProduct->id}}">BID</a>@endif</td>
+                            <td><span class="bidData1{{$auctionProduct->id}}">---</span>  @if ($user)<a class=" btn btn-primary accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{$auctionProduct->id}}">BID</a>@endif</td>
                             @foreach($auctionProduct->products as $products)
                                 @if ($products->pro_lot_type == '1')
                                     <td>Farmer Lot</td>
@@ -211,9 +215,9 @@
                           <div class="row ">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <p class="mr-1">${{$auctionProduct->start_price}}</p>
+                                    <p class="mr-1 bidData2{{$auctionProduct->id}}" >${{$auctionProduct->start_price}}</p>
                                     <div class="input-group-append">
-                                      <button class="btn btn-success" id="singlebid{{$auctionProduct->id}}" href="javascript:void(0)" data-id="{{$auctionProduct->id}}">BID NOW</button>
+                                      <button class="btn btn-success singlebid" id="{{$auctionProduct->id}}" href="javascript:void(0)" data-id="{{$auctionProduct->id}}">BID NOW</button>
                                     </div>
                                   </div>
                             </div>
@@ -222,7 +226,7 @@
                                 <table class="table mt-2">
                                       <tr>
                                         <th scope="col">Bid</th>
-                                        <td scope="col">${{$auctionProduct->start_price}}/lb</td>
+                                        <td scope="col"class="bidData3{{$auctionProduct->id}}">${{$auctionProduct->start_price}}/lb</td>
                                       </tr>
                                       <tr>
                                         <th scope="col">Packing Cost</th>
@@ -513,7 +517,7 @@ function closeNav() {
 </script>
 <script type="text/javascript">
     $(document).ready(function(e){
-        $("#singlebid{{$auctionProduct->id}}").on("click",function(e){
+        $(".singlebid").on("click",function(e){
             e.preventDefault();
             var id = $(this).attr('data-id');
             $.ajax({
@@ -524,7 +528,14 @@ function closeNav() {
                       _token: "{{ csrf_token() }}",
                     },
                success:function(response){
+                var bidPrice    =   response.start_price;
+                var bidID       =   response.id;
+                socket.emit('add_bid_updates', {
+                            "singleBidammounttesting":bidPrice,
+                            "bidID":bidID,
+                            });
 
+                //
                },
                error:function(error){
                   console.log(error)
@@ -533,5 +544,15 @@ function closeNav() {
 
         })
     })
+    </script>
+    <script>
+        socket.on('add_bid_updates', function (data) {
+        //   var productid = atob(data.singleBidammounttesting);
+        // alert(data.bidID);
+            $(".bidData1"+data.bidID).html('$'+data.singleBidammounttesting);
+            $(".bidData2"+data.bidID).html('$'+data.singleBidammounttesting);
+            $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
+        // alert(data.singleBidammounttesting);
+        })
     </script>
 </html>

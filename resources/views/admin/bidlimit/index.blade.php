@@ -9,11 +9,7 @@
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
                     <div class="row breadcrumbs-top">
-                        <div class="col-11">
-                            @if (session('success'))
-                                <div class="col-md-12 alert alert-success">
-                            {{ session('success') }}
-                            @endif
+                        <div class="col-4">
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
@@ -26,10 +22,13 @@
 
                     </div>
                 </div>
-                <div class="col-3 custom_btn_align">
-                            <a href="{{ url('/bidlimit/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                                Bid Limit<a>
+                <div class="custom_btn_align" style="display: inline-block; ">
+                    <a href="{{ url('/bidlimit/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                        Bid Limit<a>
+                    <a href="{{ url('/bidlimit/edit') }}" class="btn btn-primary waves-effect waves-light">Edit<a>
+
                 </div>
+
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown">
@@ -59,11 +58,22 @@
                                                         <th>Min</th>
                                                         <th>Increment</th>
                                                         <th>Max</th>
-                                                        <th>Action(s)</th>
+                                                        {{-- <th>Action(s)</th> --}}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @php
+                                                        $i=1;
+                                                    @endphp
+                                                    @foreach ($bidLimits as $bidLimit)
+                                                        <tr>
+                                                            <td>{{$i++}}</td>
+                                                            <td>{{$bidLimit->min}}</td>
+                                                            <td>{{$bidLimit->increment}}</td>
+                                                            <td>{{$bidLimit->max}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    {{-- @php
                                                         $i  =  1;
                                                     @endphp
                                                     @foreach ($bidLimits as $bid)
@@ -92,7 +102,7 @@
                                                         <td> <a href="{{ url('bidlimit/edit',$bid->id) }}"><i class="fas fa-edit text-primary"></i></a>
                                                             </td>
                                                     </tr>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -145,17 +155,17 @@
                         row.max + '</td>';
                 }
                 },
-                {
-                    "mRender": function(data, type, row) {
-                        var ids = btoa(row.id);
-                        return `<td>` +
-                            `<a class="" href="/bidlimit/edit/` + ids +
-                            `">Edit</a>&nbsp&nbsp` +
-                            // `<a class="" href="/bidlimit/delete/` + ids +
-                            // `">Delete</a>` +
-                            '</td>'
-                    }
-                },
+                // {
+                //     "mRender": function(data, type, row) {
+                //         var ids = btoa(row.id);
+                //         return `<td>` +
+                //             `<a class="" href="/bidlimit/edit/` + ids +
+                //             `">Edit</a>&nbsp&nbsp` +
+                //             `<a class="" href="/bidlimit/delete/` + ids +
+                //             `">Delete</a>` +
+                //             '</td>'
+                //     }
+                // },
             ],
             "columnDefs": [{
                 "orderable": false,
