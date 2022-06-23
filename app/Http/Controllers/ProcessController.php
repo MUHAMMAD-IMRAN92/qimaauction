@@ -15,7 +15,7 @@ class ProcessController extends Controller
     }
     public function index()
     {
-        // return $this->user;   
+        // return $this->user;
         return view('admin.process.index');
     }
     public function allprocess(Request $request)
@@ -56,7 +56,7 @@ class ProcessController extends Controller
     public function delete(Request $request, $id)
     {
         $process = Process::find(base64_decode($id));
-    
+
         if ($process) {
             $process->is_hidden = '1';
             $process->save();
