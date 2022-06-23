@@ -156,8 +156,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/bidlimit/index', [App\Http\Controllers\BidlimitController::class, 'index']);
     Route::get('/bidlimit/create', [App\Http\Controllers\BidlimitController::class, 'create']);
     Route::post('/bidlimit/save', [App\Http\Controllers\BidlimitController::class, 'save']);
-    Route::get('/bidlimit/allBidlimit', [App\Http\Controllers\BidlimitController::class, 'allBidlimit']);
-    Route::get('/bidlimit/edit/{id}', [App\Http\Controllers\BidlimitController::class, 'edit']);
+    // Route::get('/bidlimit/allBidlimit', [App\Http\Controllers\BidlimitController::class, 'allBidlimit']);
+    Route::get('/bidlimit/edit', [App\Http\Controllers\BidlimitController::class, 'edit']);
     Route::post('/bidlimit/update', [App\Http\Controllers\BidlimitController::class, 'update']);
 
 
