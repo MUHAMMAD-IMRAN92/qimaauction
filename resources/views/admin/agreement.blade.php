@@ -10,7 +10,10 @@
        } */
     </style>
     <div class="app-content content">
-
+        @if (session('success'))
+        <div class="col-md-12 alert alert-success">
+            {{ session('success') }}
+            @endif
         <div class="content-wrapper container">
           <form action="{{route('agreement')}}" method="POST" enctype="multipart/form-data">
             @csrf

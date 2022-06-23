@@ -63,7 +63,7 @@ class CategoryController extends Controller
             $category->category_image = $fileName;
         }
         $category->save();
-        return redirect('/categories/index');
+        return redirect('/categories/index')->with('success', 'Category Deleted Successfully');
     }
     public function delete(Request $request, $id)
     {
