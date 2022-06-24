@@ -30,9 +30,9 @@
                         value="{{ $arg->slug }}">
                 </div>
                 <div class="form-group">
-                    <label for="" class="form-label"><b>Detail:</b></label>
+                    <label for="" class="form-label"><b>Description:</b></label>
                     <textarea type="file" name="detail[{{$key}}]" id="detail" class="form-control col-lg-5"
-                        value="{{ $arg->detail }}"> {{ Storage::disk('public')->get('agreement'.$key); }}</textarea>
+                        value="{{ $arg->detail }}"> {{ Storage::disk('public')->get('agreement'.$key);  }}</textarea>
                 </div>
             </div>
         @endforeach

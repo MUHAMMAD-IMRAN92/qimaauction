@@ -16,8 +16,8 @@
         margin: 20px; */
         /* display: flex; */
         /* flex-direction: row; */
-        width: 100%;
-        max-width: 100%;
+        /* width: 100%;
+        max-width: 100%; */
         overflow-x: scroll;
         /* gap: 20px; */
     }
@@ -38,9 +38,9 @@
         border-radius: 0 !important;
     }
 
-   table.review-table tr td:nth-child(odd), table.review-table tr th:nth-child(odd) {
+   /* table.review-table tr td:nth-child(odd), table.review-table tr th:nth-child(odd) {
     background: rgba(34, 41, 47, 0.05);
-}
+} */
 .body-tags td{
     /* min-height: 54px !important; */
     /* padding: 15.5px !important; */
@@ -123,7 +123,7 @@
                                                 @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note")
                                                 @if(isset($sample))
                                                 <td data-toggle="tooltip" data-placement="top" title="{{$sample}}">
-                                                    <i class="fas fa-info-circle fa-3x" style="font-size: 14px;"></i>
+                                                    <i class="fas fa-info-circle"></i>
                                                 </td>
                                                 @else
                                                 <td>--</td>

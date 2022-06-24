@@ -19,16 +19,16 @@ socket.on('add_bid_updates', function (data) {
     });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
-mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {
-console.log('disconected: ' + sockets[socket.id].request_id);
-io.emit('request-released', {
-'request_id': sockets[socket.id].request_id
-});
-delete sockets[socket.id];
-});
-}
-});
-});
+    mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {
+    console.log('disconected: ' + sockets[socket.id].request_id);
+    io.emit('request-released', {
+    'request_id': sockets[socket.id].request_id
+    });
+    delete sockets[socket.id];
+    });
+    }
+    });
+    });
 
 http.listen(5002, function () {
 console.log('listening on *:5002');
