@@ -141,6 +141,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::post('/auction/update/', [App\Http\Controllers\AuctionController::class, 'update']);
     Route::post('/auction/create', [App\Http\Controllers\AuctionController::class, 'save']);
     Route::get('/auction/delete/{id}', [App\Http\Controllers\AuctionController::class, 'delete']);
+    Route::get('/auction/prductBiddingDetail/{id}', [App\Http\Controllers\AuctionController::class, 'prductBiddingDetail'])->name('prductBiddingDetail');
     Route::get('/auction/delete_product_image/{id}', [App\Http\Controllers\AuctionController::class, 'deleteImage']);
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
 
@@ -156,8 +157,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/bidlimit/index', [App\Http\Controllers\BidlimitController::class, 'index']);
     Route::get('/bidlimit/create', [App\Http\Controllers\BidlimitController::class, 'create']);
     Route::post('/bidlimit/save', [App\Http\Controllers\BidlimitController::class, 'save']);
-    Route::get('/bidlimit/allBidlimit', [App\Http\Controllers\BidlimitController::class, 'allBidlimit']);
-    Route::get('/bidlimit/edit/{id}', [App\Http\Controllers\BidlimitController::class, 'edit']);
+    // Route::get('/bidlimit/allBidlimit', [App\Http\Controllers\BidlimitController::class, 'allBidlimit']);
+    Route::get('/bidlimit/edit', [App\Http\Controllers\BidlimitController::class, 'edit']);
     Route::post('/bidlimit/update', [App\Http\Controllers\BidlimitController::class, 'update']);
 
 
@@ -198,6 +199,8 @@ Route::middleware(['auth'])->group(function () {
     //CSV Routes
     Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewController::class, 'reviewDetailCsv'])->name('reviewdetail_csv');
     Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
+    Route::get('/agreement', [App\Http\Controllers\ReviewController::class, 'agreement']);
+    Route::post('/agreement', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
 
     //Customer Reset Passwords Routes
     Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');

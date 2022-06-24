@@ -22,9 +22,20 @@ class AuctionController extends Controller
     {
         return view('admin.auction.index');
     }
-
+    
+    // public function prductBiddingDetail($id)
+    // {
+    //       $auctionId = $id;
+    //       $auction_products = AuctionProduct::where('auction_id',$auctionId)
+    //                       ->with('products')
+    //                       ->get();
+    //        $products = Product::with('region','village','governorate','reviews')->get();
+        
+    //      return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
+    // }
     public function auctionProducts($id)
     {
+    
         $auctionId = base64_decode($id);
        $auction_products = AuctionProduct::where('auction_id',$auctionId)
                        ->with('products')
@@ -143,7 +154,7 @@ return response()->json($auction_products);
     }
 
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction saved successfully.');
     }
 
     public function allauction(Request $request)
@@ -229,7 +240,7 @@ return response()->json($auction_products);
             }
         }
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction updated successfully.');
     }
     public function delete(Request $request, $id)
     {
@@ -245,11 +256,13 @@ return response()->json($auction_products);
     }
     public function singleBidData(Request $request)
     {
-        dd($request->id);
-        // echo "hello";
-        $bidLimit   =   Bidlimit::first();
-        // dd($bidLimit);
-        // $userVideo = VideosOnDemand::find($request->id);
-        // return $userVideo;
+        $bidStartPrice              =   AuctionProduct::where('id',$request->id)->first()->start_price;
+        $bidLimit                   =   Bidlimit::where('min','<',$bidStartPrice)->orderBy('min','desc')->limit(1)->first();
+        $bidIncrement               =   $bidLimit->increment;
+        $auctionPID                 =   AuctionProduct::find($request->id);
+        $newbidPrice                =   $bidIncrement + $bidStartPrice;
+        $auctionPID->start_price    =   $newbidPrice;
+        $auctionPID->save();
+        return response()->json($auctionPID);
     }
 }

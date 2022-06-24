@@ -389,7 +389,7 @@ class OpenCuppingController extends Controller
             $product = Product::where('id', $value["product_id"])->first();
             $review = OpenCuppingReview::where('sample_id', $value->id)->first();
             if (isset($review))
-                $user = OpenCuppingUser::where('id', $review->user_id)->first();
+                $user = OpenCuppingUser::where('id', $value->user_id)->first();
             $data[$key]['name'] = $user->name ?? '--';
             $data[$key]['total'] =      $review->total_score ?? '0';
             $data[$key]['productName'] = $product->product_title;
@@ -397,7 +397,6 @@ class OpenCuppingController extends Controller
             $data[$key]['aroma_dry'] =   $review->aroma_dry ?? '0.0';
             $data[$key]['quality_notes'] =  $review->quality_notes ?? 'quality notes';
             $data[$key]['aroma_break'] =    $review->aroma_break ?? '0.0';
-
             $data[$key]['uniformityvalue'] =   $review->uniformityvalue ?? '0.0';
             $data[$key]['cleanupvalue'] =   $review->cleancupvalue ?? '0.0';
             $data[$key]['sweetnessvalue'] =  $review->sweetnesvalue ?? '0.0';
@@ -409,7 +408,7 @@ class OpenCuppingController extends Controller
             $data[$key]['overall'] =    $review->overall ?? '0.0';
             // $data[$key]['mouthfeel_note'] =   $review->mouthfeel_note ?? '----';
             $data[$key]['roast'] =    isset($review->roast) ? $review->roast . '%' : "0%";
-            $data[$key]['defect'] =    isset($review->defect) ? '(' . $review->first_number . '*' . $review->second_number . '*4)=' . $review->defect : "(0*0*4)=0";
+            $data[$key]['defect'] =    isset($review->defect) ? '(' . $review->first_number . '*' . $review->second_number . ')=' . $review->defect : "(0*0)=0";
             $data[$key]['note'] =    $review->note ?? '---';
         }
         //  dd($data);

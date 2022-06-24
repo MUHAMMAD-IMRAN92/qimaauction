@@ -48,10 +48,10 @@
                                                             <th>Action</th>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" name="min[]" value="0" id="min" class="form-control min-value" /></td>
-                                                            <td><input type="text" name="increment[]" id="increment"  class="form-control" /></td>
-                                                            <td><input type="text" name="max[]" id="max" class="form-control max-value" /></td>
-                                                            <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                                                            <td><input type="text" name="addmore[0][min]" value="0" id="min" class="form-control min-value" /></td>
+                                                            <td><input type="text" name="addmore[0][increment]" id="increment"  class="form-control" />  <span class="asteric" id ="error1" style="color: red;"></span></td>
+                                                            <td><input type="text" name="addmore[0][max]" id="max" class="form-control max-value" /><span class="asteric" id ="error2" style="color: red;"></span></td>
+                                                            <td><a type="button" name="add" id="add"><i class="fa-solid fa-circle-plus"></i></a></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -73,14 +73,24 @@
 
    <script>
     $( document ).ready(function() {
+        $('#increment').on('keyup', function () {
+        if ($(this).val().length > 0) {
+            $(this).closest('div').find('#error1').css("visibility", "hidden");
+        }
+    });
+        $('#max').on('keyup', function () {
+        if ($(this).val().length > 0) {
+            $(this).closest('div').find('#error2').css("visibility", "hidden");
+        }
+    });
     $("#increment").on("input", function(evt) {
    var self = $(this);
-   self.val(self.val().replace(/[^0-9\.]/g, ''));
-   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
-   {
-     evt.preventDefault();
-   }
- });
+        self.val(self.val().replace(/[^0-9\.]/g, ''));
+        if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+        {
+            evt.preventDefault();
+        }
+    });
  $("#min").on("input", function(evt) {
    var self = $(this);
    self.val(self.val().replace(/[^0-9\.]/g, ''));
@@ -92,14 +102,27 @@
 });
     var i = 0;
     $("#add").click(function(){
-        ++i;
+        if($.trim($('#increment').val()) == '')
+        {
+            $("#error1").text("Increment field cannot be left blank!");
+             return;
+        }
+        else if( $.trim($('#max').val()) == '')
+        {
+            $("#error2").text("Max field cannot be left blank!");
+             return;
+        }
+        {
+            ++i;
         var last_max_value = $(".max-value:last").val();
         last_max_value     = parseFloat(last_max_value)+0.1;
-        $("#dynamicTable").append('<tr><td><input type="text" name="min['+i+']"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="increment['+i+']" class="form-control" /></td><td><input type="text" name="max['+i+']" class="form-control max-value" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+        $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][min]"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="addmore['+i+'][increment]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][max]" class="form-control max-value" /></td><td><a type="button" class="remove-tr"><i class="fa-solid fa-circle-minus"></i></a></td></tr>');
+        }
     });
     $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();
     });
+
 
 </script>
 @endsection
