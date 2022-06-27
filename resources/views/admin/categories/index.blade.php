@@ -15,6 +15,10 @@
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
+                        @if (session('success'))
+                        <div class="col-md-12 alert alert-success">
+                            {{ session('success') }}
+                            @endif
                         <div class="col-11">
                             {{-- <h2 class="content-header-title float-left mb-0">Categories</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
