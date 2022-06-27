@@ -295,4 +295,13 @@ return response()->json($auction_products);
             $autoBidData->save();
             return response()->json($autoBidData);
     }
+    public function singleBidData(Request $request)
+    {
+        dd($request->id);
+        // echo "hello";
+        $bidLimit   =   Bidlimit::first();
+        // dd($bidLimit);
+        // $userVideo = VideosOnDemand::find($request->id);
+        // return $userVideo;
+    }
 }
