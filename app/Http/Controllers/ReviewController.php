@@ -28,7 +28,7 @@ class ReviewController extends Controller
                     ]
                    );
         }
- 
+
         if(isset($slug))
         {
             $agreement = Agreement::where('slug',$slug)->first();
@@ -39,7 +39,7 @@ class ReviewController extends Controller
             $agreement = Agreement::all();
             return view('admin.agreement',compact('agreement'))->with('success','Updated Successfully');
         }
-     
+
     }
     public function saveReview(Request $request)
     {

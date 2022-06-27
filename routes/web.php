@@ -208,6 +208,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
     Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
 
+
     //Customer Reset Passwords Routes
     Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
     Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
