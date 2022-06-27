@@ -280,7 +280,6 @@ return response()->json($auction_products);
             $userPaddleNum                      =   Auth::user()->paddle_number;
             $singleBidData->user_paddleNo       =   $userPaddleNum;
 
-
             return response()->json($singleBidData);
         }
 
