@@ -741,5 +741,4 @@
         $(".paddleno" + data.bidID).html(data.paddleNo);
     })
 </script>
-
 </html>

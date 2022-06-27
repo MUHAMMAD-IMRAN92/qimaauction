@@ -294,4 +294,5 @@ return response()->json($auction_products);
             $autoBidData->save();
             return response()->json($autoBidData);
     }
+
 }

@@ -35,6 +35,7 @@
                                                             <th>Min</th>
                                                             <th>Increment</th>
                                                             <th>Max</th>
+<<<<<<< HEAD
                                                             <th colspan="2">Action</th>
                                                         </tr>
                                                         {{-- @dd($bidLimits); --}}
@@ -49,6 +50,11 @@
                                                         </tr>
                                                         @endforeach
                                                         {{-- @php
+=======
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        @php
+>>>>>>> c8021f5fdab675ef76643857e3e78230032caddb
                                                             $minVal     =   json_decode($bidLimits->min);
                                                             $increments =   json_decode($bidLimits->increment);
                                                             $maxVal     =   json_decode($bidLimits->max);
@@ -71,7 +77,11 @@
                                                             @endforeach
                                                             </td>
                                                             <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+<<<<<<< HEAD
                                                         </tr> --}}
+=======
+                                                        </tr>
+>>>>>>> c8021f5fdab675ef76643857e3e78230032caddb
 
                                                     </table>
                                                 </div>
@@ -116,7 +126,11 @@
         ++i;
         var last_max_value = $(".max-value:last").val();
         last_max_value     = parseFloat(last_max_value)+0.1;
+<<<<<<< HEAD
         $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][min]"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="addmore['+i+'][increment]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][max]" class="form-control max-value" /></td><td><a type="button" class="remove-tr"><i class="fa-solid fa-circle-minus"></i></a></td></tr>');
+=======
+        $("#dynamicTable").append('<tr><td><input type="text" name="min['+i+']"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="increment['+i+']" class="form-control" /></td><td><input type="text" name="max['+i+']" class="form-control max-value" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+>>>>>>> c8021f5fdab675ef76643857e3e78230032caddb
     });
     $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();

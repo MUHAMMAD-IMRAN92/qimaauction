@@ -123,6 +123,5 @@
          $(this).parents('tr').remove();
     });
 
-
 </script>
 @endsection
