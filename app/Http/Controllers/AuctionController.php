@@ -25,16 +25,42 @@ class AuctionController extends Controller
     public function index()
     {
         return view('admin.auction.index');
+
     }
 
+    public function prductBiddingDetail($id)
+    {
+        $auctionId = base64_decode($id);
+          $auction_products = AuctionProduct::where('auction_id',$auctionId)
+                          ->with('products')
+                          ->get();
+           $products = Product::with('region','village','governorate','reviews')->get();
+
+         return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
+    }
     public function auctionProducts($id)
     {
+
         $auctionId = base64_decode($id);
        $auction_products = AuctionProduct::where('auction_id',$auctionId)
                        ->with('products')
                        ->get();
         $products = Product::with('region','village','governorate','reviews')->get();
       return view('admin.auction.auction_products',compact('auction_products','products','auctionId'));
+    }
+    public function bidHistory($id)
+    {
+        //   $auction_products = AuctionProduct::where('id',$id)
+        //                   ->with('products')
+        //                   ->get();
+             $bidhistory = SingleBid::join('users','users.id','single_bids.user_id')
+                         ->where('auction_product_id',$id)
+                         ->select('users.paddle_number','users.name as name','single_bids.bid_amount')
+                         ->orderBy('single_bids.bid_amount','desc')
+                         ->get();
+        //    $products = Product::with('region','village','governorate','reviews')->get();
+        //  $auctionId =$id;
+         return view('admin.auction.bidHistory',compact('bidhistory'));
     }
 
     public function saveAuctionProduct(Request $request)
