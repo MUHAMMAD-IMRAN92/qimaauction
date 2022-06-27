@@ -23,16 +23,16 @@ class AuctionController extends Controller
         return view('admin.auction.index');
     }
     
-    // public function prductBiddingDetail($id)
-    // {
-    //       $auctionId = $id;
-    //       $auction_products = AuctionProduct::where('auction_id',$auctionId)
-    //                       ->with('products')
-    //                       ->get();
-    //        $products = Product::with('region','village','governorate','reviews')->get();
+    public function prductBiddingDetail($id)
+    {
+        $auctionId = base64_decode($id);
+          $auction_products = AuctionProduct::where('auction_id',$auctionId)
+                          ->with('products')
+                          ->get();
+           $products = Product::with('region','village','governorate','reviews')->get();
         
-    //      return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
-    // }
+         return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
+    }
     public function auctionProducts($id)
     {
     
@@ -42,6 +42,15 @@ class AuctionController extends Controller
                        ->get();
         $products = Product::with('region','village','governorate','reviews')->get();
       return view('admin.auction.auction_products',compact('auction_products','products','auctionId'));
+    }
+    public function bidHistory($id)
+    {
+          $auction_products = AuctionProduct::where('id',$id)
+                          ->with('products')
+                          ->get();
+           $products = Product::with('region','village','governorate','reviews')->get();
+         $auctionId =$id;
+         return view('admin.auction.bidHistory',compact('auction_products','products','auctionId')); 
     }
 
     public function saveAuctionProduct(Request $request)

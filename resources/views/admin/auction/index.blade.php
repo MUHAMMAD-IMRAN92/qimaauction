@@ -117,6 +117,8 @@
                             `">Edit</a>&nbsp&nbsp` +
                             `<a class="" href="/auction/products/` + ids +
                             `">Auction Product</a>` +
+                            `<a class="" href="/auction/dashboard/` + ids +
+                            `">Dashboard</a>` +
                             '</td>'
                     }
                 },

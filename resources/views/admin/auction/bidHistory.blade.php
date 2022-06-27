@@ -66,7 +66,7 @@
                                                     4
                                                 </td>
                                                 <td>       
-                                                    <a href="{{url('/auction/bidHistory/'.$auction->id)}}">
+                                                    <a href="{{route('bidHistory',['id'=>$auction->id])}}">
                                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                     </a>
                                                 </td>

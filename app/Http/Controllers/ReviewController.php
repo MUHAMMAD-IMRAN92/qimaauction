@@ -15,36 +15,31 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReviewController extends Controller
 {
-    public function agreement(Request $request)
+    public function agreement(Request $request,$slug=null)
     {
-       
+
         if($request->submit)
         {
-            $data = $request->except('_method', '_token','submit');
-            // dd($data);
-            $a =0;
-            $c=1;
-            $arr = [];
-            foreach ($data as $key => $value) {
-                Storage::disk('public')->put('agreement'.$a, $data['detail'][$a]);
-                   Agreement::where('id',$c)->update(
+                Storage::disk('public')->put($request->slug, $request->detail);
+                   Agreement::where('id',$request->id)->update(
                     [
-                       'title' => $data['title'][$a],
-                       'slug' => $data['slug'][$a],
+                       'title' => $request->title,
+                    //    'slug' => $request->slug,
                     ]
                    );
-                ++$c;
-                ++$a;
-            }
         }
  
-  
+        if(isset($slug))
+        {
+            $agreement = Agreement::where('slug',$slug)->first();
+            return view('admin.agreementDetail',compact('agreement'));
+        }
+        else
+        {
+            $agreement = Agreement::all();
+            return view('admin.agreement',compact('agreement'))->with('success','Updated Successfully');
+        }
      
-        $agreement = Agreement::all();
-        return view('admin.agreement',compact('agreement'))->with('success','Updated Successfully');
-        // return back()
-        //     ->with('success','You have successfully upload file.')
-        //     ->with('file',$fileName);
     }
     public function saveReview(Request $request)
     {
