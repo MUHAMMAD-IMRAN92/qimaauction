@@ -35,7 +35,6 @@
                                                             <th>Min</th>
                                                             <th>Increment</th>
                                                             <th>Max</th>
-<<<<<<< HEAD
                                                             <th colspan="2">Action</th>
                                                         </tr>
                                                         {{-- @dd($bidLimits); --}}
@@ -50,11 +49,6 @@
                                                         </tr>
                                                         @endforeach
                                                         {{-- @php
-=======
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        @php
->>>>>>> c8021f5fdab675ef76643857e3e78230032caddb
                                                             $minVal     =   json_decode($bidLimits->min);
                                                             $increments =   json_decode($bidLimits->increment);
                                                             $maxVal     =   json_decode($bidLimits->max);
@@ -77,11 +71,7 @@
                                                             @endforeach
                                                             </td>
                                                             <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-<<<<<<< HEAD
                                                         </tr> --}}
-=======
-                                                        </tr>
->>>>>>> c8021f5fdab675ef76643857e3e78230032caddb
 
                                                     </table>
                                                 </div>
