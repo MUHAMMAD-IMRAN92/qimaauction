@@ -20,6 +20,7 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], f
 
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
+    Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
 
 });
 
@@ -162,6 +163,10 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/bidlimit/edit', [App\Http\Controllers\BidlimitController::class, 'edit']);
     Route::post('/bidlimit/update', [App\Http\Controllers\BidlimitController::class, 'update']);
 
+    //Agreement Controller
+    Route::get('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement']);
+    Route::post('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement'])->name('agreement');
+
 
 
 });
@@ -207,3 +212,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
     Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
     Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin'])->name('customer.login');
+    //
+    Route::view('/terms_conditions','customer/pages/terms_conditions');
+    Route::view('/privacy_policy','customer/pages/privacy_policy');
+    Route::view('/bid_agreement','customer/pages/bid_agreement');
+    Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
