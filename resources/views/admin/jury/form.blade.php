@@ -689,7 +689,7 @@
                                                         <div class="aromaslider aromacrust"><input type="hidden"
                                                                 name="aroma_crust" id="aroma_crust" value="0"></div>
                                                     </div> --}}
-                                                   
+
                                                     <div class="col-lg-12">
                                                         <h5 style="margin-top:-6px">BREAK</h5>
                                                     </div>
@@ -697,10 +697,10 @@
                                                         <div class="aromaslider aromabreak"><input type="hidden"
                                                                 name="aroma_break" id="aroma_break" value="0"></div>
                                                     </div>
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-12 mt-5">
                                                         <h5 style="margin-top:-6px">Descriptors</h5>
                                                     </div>
-                                                    <div class="entity_input mb-5 mt-5">
+                                                    <div class="entity_input mb-5">
                                                         <input type="text" name="quality_notes" id="quality_notes" value="{{$sampleReview->quality_notes ?? ''}}"
                                                             placeholder="Descriptors note" class="entity_note">
                                                     </div>
@@ -746,7 +746,7 @@
 
                                                                     </label>
                                                                 </div>
-                                                                
+
                                                                 <div>
                                                                     <label class="radio_container">
 
@@ -822,7 +822,7 @@
 
                                                                     </label>
                                                                 </div>
-                                                                
+
                                                                 <div>
                                                                     <label class="radio_container ">
 
@@ -872,12 +872,12 @@
                                                         </div>
                                                     </div>
 
-                                            
+
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="row pad-x15 p-3">
                                                                     <h3 class="entity-text">Uniformity</h3>
-                                                                    
+
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -970,7 +970,7 @@
 
                                                                         <h3 class="entity-text">CleanCup</h3>
 
-                                                                    
+
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1062,7 +1062,7 @@
 
                                                                     <h3 class="entity-text">Sweetness</h3>
 
-                                                                    
+
                                                                     <div
                                                                         class="col-md-6 col-6 input-group flex-evenly mt-5">
                                                                         <fieldset>
@@ -1187,7 +1187,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
@@ -1242,10 +1242,10 @@
                                                                         name="sample_submit_prev"
                                                                         class="submit-form-btn">PREVIOUS</button>
                                                                 @endif
-                     
+
                                                                 <a class="submit-form-btn" type="button" value=""
                                                                     onclick="showmodal()">SUBMIT TABLE</a>
-                                                        
+
                                                                 <button type="submit" value="1" name="sample_submit"
                                                                     class="submit-form-btn">NEXT</button>
                                                             </div>
@@ -1321,12 +1321,12 @@
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
-          
+
                 var uvalue = `{{ isset($sampleReview->uniformityvalue) ? $sampleReview->uniformityvalue  : null }}`;
                 var svalue = `{{ isset($sampleReview->sweetnesvalue) ? $sampleReview->sweetnesvalue : null }}`;
                 var cvalue = `{{ isset($sampleReview->cleancupvalue) ? $sampleReview->cleancupvalue : null }}`;
 
-               
+
 
 
            if(uvalue)
@@ -2354,7 +2354,7 @@
                 // $('#overall_note').val('{{ $sampleReview->overall_note ?? '' }}');
 
                 calcTotal();
-              
+
                 if (chkmanual) {
                     toggleDivs();
                     @if($reviewdata)

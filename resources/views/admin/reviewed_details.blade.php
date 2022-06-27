@@ -14,16 +14,16 @@
         flex-wrap: no-wrap;
         overflow-x: auto;
         margin: 20px; */
-        display: flex;
-        flex-direction: row;
+        /* display: flex; */
+        /* flex-direction: row; */
         width: 100%;
         max-width: 100%;
         overflow-x: scroll;
         /* gap: 20px; */
     }
     table.review-table tbody tr{
-        display: flex;
-        flex-direction: column;
+        /* display: flex; */
+        /* flex-direction: column; */
         /* height: 100%; */
     }
     /* table.review-table tbody tr td,table.review-table tbody tr th{
@@ -89,7 +89,7 @@
                                     <table class="table table-responsive table-bordered mb-0 review-table"
                                         style="background-color: rgb(255, 255, 255) ">
                                         <tbody>
-                                        <tr>
+                                        <tr class="text-center">
                                             {{-- <td style="margin-top: 6px;"><b></b></td> --}}
                                             <th>Jury</th>
                                             <th>Total</th>
@@ -118,12 +118,16 @@
                                             <th>Defect Note</th>
                                         </tr>
                                             @foreach ($data as $samp)
-                                            <tr>
+                                            <tr class="text-center">
                                                 @foreach ($samp as $value => $sample)
                                                 @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note")
-                                                 <td class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
+                                                @if(isset($sample))
+                                                <td data-toggle="tooltip" data-placement="top" title="{{$sample}}">
                                                     <i class="fas fa-info-circle fa-3x" style="font-size: 14px;"></i>
                                                 </td>
+                                                @else
+                                                <td>--</td>
+                                                @endif
                                                  @else
                                                 <td>{{ $sample }}</td>
                                                  @endif

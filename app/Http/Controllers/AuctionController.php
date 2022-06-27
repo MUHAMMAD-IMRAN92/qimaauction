@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcceptAgreement;
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\AutoBid;
 use App\Models\Bidlimit;
 use App\Models\Genetic;
 use App\Models\Product;
 use App\Models\Process;
 use App\Models\Image;
+use App\Models\SingleBid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuctionController extends Controller
 {
@@ -143,7 +147,7 @@ return response()->json($auction_products);
     }
 
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction saved successfully.');
     }
 
     public function allauction(Request $request)
@@ -229,7 +233,7 @@ return response()->json($auction_products);
             }
         }
 
-        return redirect('/auction/index');
+        return redirect('/auction/index')->with('success','Auction updated successfully.');
     }
     public function delete(Request $request, $id)
     {
@@ -239,9 +243,57 @@ return response()->json($auction_products);
     }
     public function auctionFrontend()
     {
+        $user               =   Auth::user()->id;
         $auction            =   Auction::first();
         $auctionProducts    =   AuctionProduct::with('products')->get();
-        return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction'));
+        $agreement          =   AcceptAgreement::where('user_id',$user)->first();
+        return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction','agreement'));
+    }
+    public function singleBidData(Request $request)
+    {
+        $checkSingleBid                     =   SingleBid::where('auction_product_id',$request->id)->first();
+        if(!isset($checkSingleBid,$checkSingleBid->bid_amount))
+        {
+            $auctionPStartPrice             =   AuctionProduct::where('id',$request->id)->first();
+            $singleBid                      =   new SingleBid();
+            $singleBid->bid_amount          =   $auctionPStartPrice->start_price;
+            $singleBid->auction_id          =   $auctionPStartPrice->auction_id;
+            $singleBid->user_id             =   Auth::user()->id;
+            $singleBid->auction_product_id  =   $request->id;
+            $singleBid->save();
+        }
+        else
+        {
+            $auctionPStartPrice                 =   AuctionProduct::where('id',$request->id)->first();
+            $singleBidStartPrice                =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $bidLimit                           =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrement                       =   $bidLimit[0]->increment;
+            $singleBidData                      =   new SingleBid();
+            $singleBidData->bid_amount          =   $auctionPStartPrice->start_price;
+            $singleBidData->auction_id          =   $auctionPStartPrice->auction_id;
+            $singleBidData->user_id             =   Auth::user()->id;
+            $singleBidData->auction_product_id  =   $request->id;
+            $newbidPrice                        =   $bidIncrement + $singleBidStartPrice;
+            $singleBidData->bid_amount          =   $newbidPrice;
+            $singleBidData->save();
+            $singleBidData->bidIncrement        =   $bidIncrement;
+            $userPaddleNum                      =   Auth::user()->paddle_number;
+            $singleBidData->user_paddleNo       =   $userPaddleNum;
+
+
+            return response()->json($singleBidData);
+        }
+
+    }
+    public function autoBidData(Request $request)
+    {
+            $autoBidData                      =   new AutoBid();
+            $autoBidData->auction_id          =   $request->auctionid;
+            $autoBidData->user_id             =   Auth::user()->id;
+            $autoBidData->auction_product_id  =   $request->id;
+            $autoBidData->bid_amount          =   $request->autobidamount;
+            $autoBidData->save();
+            return response()->json($autoBidData);
     }
     public function singleBidData(Request $request)
     {

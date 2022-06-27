@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agreement;
 use App\Models\Jury;
 use App\Models\Review;
 use App\Models\SentToJury;
@@ -9,10 +10,12 @@ use App\Models\Tag;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReviewController extends Controller
 {
+
     public function saveReview(Request $request)
     {
         //  if(isset($request->table_submit))
@@ -331,23 +334,23 @@ class ReviewController extends Controller
             $data[$key]['aroma_break']      =   $review->aroma_break ?? '0.0';
             // $data[$key]['aroma_note']    =   $review->aroma_note ?? '---';
             $data[$key]['clean_up']         =   $review->clean_up ?? '0.0';
-            $data[$key]['clean_sweet_note'] =   $review->clean_sweet_note ?? '----';
+            $data[$key]['clean_sweet_note'] =   $review->clean_sweet_note;
             $data[$key]['sweetness']        =   $review->sweetness ?? '0.0';
-            $data[$key]['sweetness_note']   =   $review->sweetness_note ?? '----';
+            $data[$key]['sweetness_note']   =   $review->sweetness_note;
             $data[$key]['acidity']          =   isset($review->acidity) ? $review->acidity : '0.0'.'-'.(isset($review->acidity_chk) ? $review->acidity_chk : 'L') ?? '0.0-L';
-            $data[$key]['acidity_note']     =   $review->acidity_note ?? '----';
+            $data[$key]['acidity_note']     =   $review->acidity_note;
             $data[$key]['flavour']          =   $review->flavour ?? '0.0';
-            $data[$key]['flavour_note']     =   $review->flavour_note ?? '---';
+            $data[$key]['flavour_note']     =   $review->flavour_note ;
             $data[$key]['after_taste']      =   isset($review->after_taste) ? $review->after_taste : '0.0'.'-'.(isset($review->fm_chk) ? $review->fm_chk : 'L') ?? '0.0-L';
-            $data[$key]['aftertaste_note']  =   $review->aftertaste_note ?? '----';
+            $data[$key]['aftertaste_note']  =   $review->aftertaste_note;
             $data[$key]['balance']          =   $review->balance ?? '0.0';
-            $data[$key]['balance_note']     =   $review->balance_note ?? '----';
+            $data[$key]['balance_note']     =   $review->balance_note;
             $data[$key]['overall']          =   $review->overall ?? '0.0';
-            $data[$key]['overall_note']     =   $review->overall_note ?? '----';
+            $data[$key]['overall_note']     =   $review->overall_note;
             // $data[$key]['mouthfeel_note']=   $review->mouthfeel_note ?? '----';
             $data[$key]['roast']            =   isset($review->roast) ? $review->roast.'%' : "0%";
             $data[$key]['defect']           =   isset($review->defect) ? '('.$review->first_number.'*'.$review->second_number.'*4)='.$review->defect : "(0*0*4)=0";
-            $data[$key]['defect_note']      =   $review->defect_note ?? '---';
+            $data[$key]['defect_note']      =   $review->defect_note;
         }
        return view('admin.reviewed_details',compact('data','sampleID'));
     }
@@ -429,6 +432,7 @@ class ReviewController extends Controller
             }
                 fclose($file);
             };
+
                 return (new StreamedResponse($callback, 200, $headers))->sendContent();
         }
 }

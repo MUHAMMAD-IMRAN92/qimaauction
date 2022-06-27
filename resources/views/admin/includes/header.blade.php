@@ -67,6 +67,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ asset('public/app-assets/js/select2.js') }}" type="text/javascript"></script>
 
+    {{-- websockets --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+    <script type="text/javascript">
+        var socket = io('<?= env('SOCKETS') ?>');
+    </script>
+
 </head>
 <!-- END: Head-->
 <!DOCTYPE html>
@@ -77,7 +83,10 @@
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
-
+    @if (session('success'))
+    <div class="col-md-12 alert alert-success">
+{{ session('success') }}
+@endif
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
@@ -226,11 +235,9 @@
                         <li class="dropdown dropdown-user nav-item">
 
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                @php
-                                    $user = Auth::user();
-                                @endphp
+                             
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                        {{ Str::upper($user->name) }}</span></div><span><img class="round"
+                                      </span></div><span><img class="round"
                                         src="../../../public/app-assets/images/portrait/small/avatar-s-11.jpg"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
@@ -413,6 +420,12 @@
                                         <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
                                             data-i18n="eCommerce">Genetic</span></a>
                                 </li>
+                                <li @if (request()->is('/agreement')) class='active' @endif><a
+                                    href="{{ url('/agreement') }}">
+                                    {{-- <i class="feather icon-circle"></i> --}}
+                                    <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Agreement</span></a>
+                                 </li>
                                 <li @if (request()->is('bidlimit/*')) class='active' @endif><a
                                     href="{{ url('/bidlimit/index') }}">
                                     {{-- <i class="feather icon-circle"></i> --}}
