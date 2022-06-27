@@ -35,50 +35,29 @@
                         <table class="table zero-configuration" id="auction-table">
                             <thead>
                                 <tr>
-                                    {{-- <th>Id</th> --}}
-                                    <th>Title</th>
-                                    <th>Start Price</th>
-                                    <th>Reserved Price</th>
+                                    <th>User Name</th>
+                                    <th>Bid Price</th>
                                     <th>Paddle No.</th>
-                                    <th>Bid History</th>
-                                    {{-- <th>Action(s)</th> --}}
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 0;
-                                @endphp
-                                @if (isset($auction_products))
-                                    @foreach ($auction_products as $auction)
-                                        @foreach ($auction->products as $key => $pro)
-                                            <tr id="{{ ++$i }}">
+                                    @forelse ($bidhistory as $auction)
+                                            <tr>
                                                 <td>
-                                                    {{ $pro->product_title }}
+                                                    {{ $auction->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $auction->start_price }}
+                                                    {{ $auction->bid_amount }}
                                                 </td>
                                                 <td>
-                                                    {{ $auction->reserve_price }}
-                                                </td>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>       
-                                                    <a href="{{route('bidHistory',['id'=>$auction->id])}}">
-                                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                                    </a>
+                                                    {{ $auction->paddle_number }}
                                                 </td>
                                             </tr>
-                                        @endforeach
-                                    @endforeach
-                                @else
-                                    {{-- <tr id="nodata">
-                                                    <td></td>
-                                                    <td >No Auction Product yet</td>
-                                                </tr> --}}
-                                @endif
+                                    @empty
+                                      <tr>
+                                        <td>
+                                        No bit history</td></tr>
+                                    @endforelse
 
                             </tbody>
 

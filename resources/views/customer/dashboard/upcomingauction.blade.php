@@ -626,9 +626,6 @@
         $(".increment" + data.bidID).html('$' + data.increment);
         $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting);
         $(".paddleno" + data.bidID).html(data.paddleNo);
-
-
-
     })
 </script>
 
