@@ -15,7 +15,7 @@ io.on('connection', function (socket) {
 // });
 
 socket.on('add_bid_updates', function (data) {
-    io.emit('add_bid_updates', { "singleBidammounttesting":data.singleBidammounttesting,"bidID":data.bidID});
+    io.emit('add_bid_updates', { "singleBidammounttesting":data.singleBidammounttesting,"bidID":data.bidID,"paddleNo":data.paddleNo,"increment":data.increment});
     });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {

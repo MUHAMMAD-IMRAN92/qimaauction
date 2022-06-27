@@ -15,37 +15,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReviewController extends Controller
 {
-    public function agreement(Request $request)
-    {
-       
-        if($request->submit)
-        {
-            $data = $request->except('_method', '_token','submit');
-            // dd($data);
-            $a =0;
-            $c=1;
-            $arr = [];
-            foreach ($data as $key => $value) {
-                Storage::disk('public')->put('agreement'.$a, $data['detail'][$a]);
-                   Agreement::where('id',$c)->update(
-                    [
-                       'title' => $data['title'][$a],
-                       'slug' => $data['slug'][$a],
-                    ]
-                   );
-                ++$c;
-                ++$a;
-            }
-        }
- 
-  
-     
-        $agreement = Agreement::all();
-        return view('admin.agreement',compact('agreement'))->with('success','Updated Successfully');
-        // return back()
-        //     ->with('success','You have successfully upload file.')
-        //     ->with('file',$fileName);
-    }
+
     public function saveReview(Request $request)
     {
         //  if(isset($request->table_submit))
