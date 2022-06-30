@@ -119,6 +119,17 @@
                 font-size: 18px;
             }
         }
+        .nav-tabs .nav-link {
+        border: 1px solid #9C9C9C !important;
+        border-top-left-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+        }
+        .nav-tabs .nav-link.active {
+            color: white !important;
+        }
+        .nav-tabs .nav-item.nav-link{
+            color: #9C9C9C;
+        }
             .auctiontable thead
             {
                 box-sizing: border-box;
@@ -133,8 +144,8 @@
                 font-family: 'Playfair Display';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 22px;
-                line-height: 29px;
+                font-size: 18px;
+                line-height: 16px;
                 text-align: center;
 
                 color: #000000;
@@ -148,23 +159,23 @@
                 line-height: 25px;
                 /* identical to box height */
 
-                text-align: center;
+                /* text-align: center; */
 
-                color: #FFFFFF;
+                /* color: #FFFFFF; */
             }
             .auctiontable tbody tr td
             {
                 font-family: 'Playfair Display';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 22px;
+                font-size: 18px;
                 line-height: 29px;
-                text-align: center;
+                /* text-align: center; */
                 color: #000000;
             }
-            .auctiontabs a
+            .auctiontabs a.active
             {
-                background: #D1AF69;
+                background: #D1AF69 !important;
                 border-width: 1px 1px 0px 1px;
                 border-style: solid;
                 border-color: #9C9C9C;
@@ -187,7 +198,62 @@
                 /* identical to box height */
                 color: #FFFFFF;
             }
+            .alertmsg
+            {
+                background: #DBFFDA;
+                margin-top: 120px;
+            }
+            .errormsgautobid
+            {
+                background: #DBFFDA;
+                margin-top: 12px;
+            }
+            .liabilitytable thead
+            {
+                box-sizing: border-box;
+                background: #E5E5E5;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+
+            }
+            .liabilitytable thead th
+            {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 16px;
+                text-align: center;
+
+                color: #000000;
+            }
+            .liabilitytable tbody tr td a
+            {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 25px;
+                /* identical to box height */
+
+                text-align: center;
+
+                color: #FFFFFF;
+            }
+            .liabilitytable tbody tr td
+            {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 29px;
+                text-align: center;
+                color: #000000;
+            }
+
     </style>
+
 <body>
     <div class="row">
         <div class="col-2 ">
@@ -228,20 +294,20 @@
             <p class="date">{{ $date }}</p>
         </div>
     </div>
-    <div class="container my-4">
+    <div class="container">
         <nav>
-            <div class="col-4">
+            <div class="col-4" style="padding-left: 0; !important">
                 <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active mr-2" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                         role="tab" aria-controls="nav-home" aria-selected="true">Auction</a>
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                        role="tab" aria-controls="nav-profile" aria-selected="false">Liability</a>
+                        role="tab" aria-controls="nav-profile" aria-selected="false">Your Liability</a>
                 </div>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <table class="table table-bordered table-responsive auctiontable">
+                <table class="table table-responsive auctiontable">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Rank</th>
@@ -259,6 +325,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- @dd($auctionProducts); --}}
                         @foreach ($auctionProducts as $auctionProduct)
                             <tr class="text-center bidcollapse{{ $auctionProduct->id }}">
                                 <td>Rank{{ $auctionProduct->rank }}</td>
@@ -279,12 +346,14 @@
                                     <td>--</td>
                                 @endforeach
                                 <td>
-                                    <span class="bidData1{{ $auctionProduct->id }}">---</span>
+                                    <div style="display: flex;">
+                                        <span class="bidData1{{ $auctionProduct->id }}">${{number_format($auctionProduct->start_price)}}/lb</span>
                                     @if ($user)
                                         <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{$auctionProduct->id}}"  data-id="{{ $auctionProduct->id }}" id="accordion1"
                                             data-toggle="collapse" data-parent="#accordion1"
-                                            href="#collapseOne{{ $auctionProduct->id }}">BID</a>
+                                            href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
                                     @endif
+                                    </div>
                                 </td>
                                 @foreach ($auctionProduct->products as $products)
                                     @if ($products->pro_lot_type == '1')
@@ -295,14 +364,17 @@
                                 @endforeach
                                 <td>5</td>
                                 <td class="paddleno{{ $auctionProduct->id }}">--</td>
-                                <td>Waiting Bid
-                                    <button class="openbtn" onclick="openNav()"> ⋮</button>
+                                <td>
+                                    <div style="display: flex;">
+                                        <span class="waiting{{$auctionProduct->id}}">Waiting Bid</span>
+                                        <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
+                                    </div>
                                 </td>
                             </tr>
                             @if (!isset($agreement) || $agreement->privacy_policy_id != '1' || $agreement->terms_conditions_id != '2' || $agreement->bid_agrement_id != '3')
                                 <tr class="hide-table-padding">
                                     <td colspan="12">
-                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
+                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
                                             <div class="card">
                                                 <h5 class="card-header">Bidding Agreement</h5>
                                                 <div class="card-body">
@@ -315,7 +387,7 @@
                                                                 value="1" required>
                                                             <label for="privacy">I've read and agree to the <a
                                                                     href="{{ url('/privacy_policy') }}"
-                                                                    target="_blank">privacy policy.</a></label>
+                                                                    target="_blank">Privacy Policy.</a></label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
@@ -323,7 +395,7 @@
                                                                 value="2" required>
                                                             <label for="terms">I've read and agree to the <a
                                                                     href="{{ url('/terms_conditions') }}"
-                                                                    target="_blank">terms and conditions.</a></label>
+                                                                    target="_blank">Terms And Conditions.</a></label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
@@ -331,7 +403,7 @@
                                                                 required>
                                                             <label for="agreement">I've read and agree to the <a
                                                                     href="{{ url('/bid_agreement') }}"
-                                                                    target="_blank">bid agreement.</a></label>
+                                                                    target="_blank">Bid Agreement.</a></label>
                                                         </div>
                                                         <div>
                                                             <button class="btn btn-primary" type="submit">Proceed For
@@ -352,24 +424,33 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         <p class="mr-1 increment{{ $auctionProduct->id }}">
-                                                           --</p>
+                                                            @php
+                                                                $incPrice           =   $auctionProduct->start_price;
+                                                                $bidLimit           =   App\Models\Bidlimit::where('min','<',$incPrice)->orderBy('min','desc')->limit(1)->get();
+                                                                $bidIncrement       =   $bidLimit[0]->increment ?? '';
+                                                                $finalInc           =   $incPrice + $bidIncrement;
+                                                            @endphp
+                                                            ${{number_format($finalInc,1)}}
+                                                        </p>
                                                         <div class="input-group-append">
-                                                            <button class="btn btn-success singlebid"
+                                                            <button class="btn btn-success singlebid singlebidClass{{$auctionProduct->id}}"
                                                                 id="{{ $auctionProduct->id }}"
                                                                 href="javascript:void(0)"
                                                                 data-id="{{ $auctionProduct->id }}">Bid Now</button>
                                                         </div>
                                                     </div>
+                                                    <div id="alertMessage" class="alertmsg alertMessage{{$auctionProduct->id}}"></div>
                                                 </div>
                                                 <div class="col-6">
                                                     <form class="form-inline" action="" method="POST" >
                                                         @csrf
                                                         <div class="form-group mx-sm-3 mb-2">
                                                             <input type="hidden" class="form-control auctionid{{$auctionProduct->id }}" value="{{$auctionProduct->auction_id}}" id="autobidamount" >
-                                                          <input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" >
+                                                          $ &nbsp;<input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" >
                                                         </div>
-                                                        <button class="btn btn-success autobid"
+                                                        <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
                                                         type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
+                                                        <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div>
                                                     </form>
                                                     <table class="table mt-2">
                                                         <tr>
@@ -404,7 +485,7 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <table class="table table-bordered">
+                <table class="table table-bordered liabilitytable">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Rank</th>
@@ -597,6 +678,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
 
 <script>
@@ -665,17 +747,18 @@
         $(".startBid").click(function(){
     var id = $(this).attr('data-id');
     $(".bidcollapse"+id).addClass("changecolor");
-    if($(".changetext"+id).text()=="BID"){
+    if($(".changetext"+id).text()=="Bid"){
                         $(".changetext"+id).text("Close");
                         $(".changetext"+id).addClass("changebuttontext");
                     }
                     else {
-                        $(".changetext"+id).text("BID");
+                        $(".changetext"+id).text("Bid");
                     }
   });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
+            $(".waiting"+id).html('Open');
             $.ajax({
                 url: "{{ route('singlebiddata') }}",
                 method: 'POST',
@@ -690,6 +773,8 @@
                     var increment       =   response.bidIncrement;
                     var paddleNo        =   response.user_paddleNo;
                     var nextIncrement   =   bidPrice + +increment;
+                    $('.alertMessage'+bidID).html('<p>Your $'+ bidPrice +' bid is confirmed</p>');
+                    // $('.alertMessage'+bidID).delay(5000).fadeOut('slow');
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
@@ -709,36 +794,64 @@
         //Autobid
         $(".autobid").on("click", function(e) {
             e.preventDefault();
+            $('.errorMsgAutoBid'+id).html('');
             var id               = $(this).attr('data-id');
+            var currentBidPrice  = $('.bidData1'+id).html().replace(/[^0-9]/gi, '');;
             var autobidamount    = $('.autobidamount'+id).val();
-            var auctionid        = $('.auctionid'+id).val();
-            $.ajax({
-                url: "{{ route('autobiddata') }}",
-                method: 'POST',
-                data: {
-                    id: id,
-                    autobidamount:autobidamount,
-                    auctionid:auctionid,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    console.log(response);
-                    // var bidPrice    =   response.bid_amount;
-                    //
-                },
-                error: function(error) {
-                    console.log(error)
+            if(autobidamount <= currentBidPrice)
+            {
+                $('.errorMsgAutoBid'+id).html('<p>Please enter the amount greater than current bid amount.</p>');
+                $('.autobidamount'+id).val('');
+            }
+            else
+            {
+                swal({
+            title: `Confirm AutoBid $` + autobidamount + `?`,
+            text: "You will remain highest bidder until your limit reached.",
+            type: "error",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if(result)
+            {
+                var auctionid   = $('.auctionid'+id).val();
+                $.ajax({
+                    url: "{{ route('autobiddata') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        autobidamount:autobidamount,
+                        auctionid:auctionid,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('.errorMsgAutoBid'+id).html('<p>Your $'+ autobidamount +' Bid is confirmed.</p>');
+                        $('.autobidamount'+id).val('');
+                        $(".singlebidClass"+id ).prop( "disabled", true );
+                        $(".autobidClass"+id ).prop( "disabled", true );
+                        // var bidPrice    =   response.bid_amount;
+                        //
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+            else {
+                    swal("Your cancelled your autobid.");
                 }
-            });
 
+            });
+            }
         })
     })
 </script>
 <script>
     socket.on('add_bid_updates', function(data) {
-        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting);
-        $(".increment" + data.bidID).html('$' + data.nextIncrement);
-        $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting);
+        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
+        $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
+        $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".paddleno" + data.bidID).html(data.paddleNo);
     })
 </script>

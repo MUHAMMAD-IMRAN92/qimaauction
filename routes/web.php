@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'customer.dashboard.index');
+Route::view('/auction-home', 'customer.auction_pages.auction_home');
+Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
+Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
 
@@ -209,6 +212,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
     Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
     Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
+
 
     //Customer Reset Passwords Routes
     Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');

@@ -165,7 +165,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                         Enim itaque nulla facilis beatae nemo. Ipsa eaque eveniet cupiditate sint ducimus ab voluptate 
+                                         Enim itaque nulla facilis beatae nemo. Ipsa eaque eveniet cupiditate sint ducimus ab voluptate
                                          laborum et ex. Quos ipsa ratione perspiciatis praesentium!</h1>
                                 </div>
                             </div>
@@ -252,7 +252,18 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
         <script>
-            $(document).ready(function() {     
+            $(document).ready(function() {
+                // var socket = io('http://localhost:5002');
+                var socket = io('<?= env('SOCKETS') ?>');
+                ////// save AuctionProduct /////
+        socket.on('add_bid_updates', function (data) {
+
+            // $("#price").html('$'+data.singleBidammounttesting);
+            $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
+            // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
+        // alert(data.singleBidammounttesting);
+        })
+
 
                 $(".cancel").on("click", function() {
                     $("#auction_model").modal("hide");
