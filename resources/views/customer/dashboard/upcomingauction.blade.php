@@ -744,6 +744,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+        //start bid
         $(".startBid").click(function(){
     var id = $(this).attr('data-id');
     $(".bidcollapse"+id).addClass("changecolor");
@@ -772,7 +773,7 @@
                     var bidID           =   response.auction_product_id;
                     var increment       =   response.bidIncrement;
                     var paddleNo        =   response.user_paddleNo;
-                    var nextIncrement   =   bidPrice + +increment;
+                    var nextIncrement   =   increment;
                     $('.alertMessage'+bidID).html('<p>Your $'+ bidPrice +' bid is confirmed</p>');
                     // $('.alertMessage'+bidID).delay(5000).fadeOut('slow');
                     socket.emit('add_bid_updates', {
@@ -805,8 +806,8 @@
             }
             else
             {
-                swal({
-            title: `Confirm AutoBid $` + autobidamount + `?`,
+            swal({
+            title: `Confirm Auto Bid $` + autobidamount + `?`,
             text: "You will remain highest bidder until your limit reached.",
             type: "error",
             buttons: true,
@@ -826,10 +827,10 @@
                     },
                     success: function(response) {
                         console.log(response);
-                        $('.errorMsgAutoBid'+id).html('<p>Your $'+ autobidamount +' Bid is confirmed.</p>');
+                        $('.errorMsgAutoBid'+id).html('<p>Current autobid is $'+ autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+id+'>Remove</a>}</p>');
                         $('.autobidamount'+id).val('');
-                        $(".singlebidClass"+id ).prop( "disabled", true );
-                        $(".autobidClass"+id ).prop( "disabled", true );
+                        $(".singlebidClass"+id ).css("display", "none");
+                        $(".autobidClass"+id ).css("display", "none");
                         // var bidPrice    =   response.bid_amount;
                         //
                     },
@@ -839,13 +840,53 @@
                 });
             }
             else {
-                    swal("Your cancelled your autobid.");
+
                 }
 
             });
             }
+        });
+            //remove autobid
+            $(document).on("click",'.removeAutoBID', function(e) {
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            swal({
+            title: `Remove Auto Bid ?`,
+            // text: "You will remain highest bidder until your limit reached.",
+            type: "error",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if(result)
+            {
+                $.ajax({
+                    url: "{{ route('removeautobid') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if(response == 1)
+                        {
+                            $('.errorMsgAutoBid'+id).html('');
+                            $(".singlebidClass"+id ).css("display", "block");
+                            $(".autobidClass"+id ).css("display", "block");
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+            else
+            {
+                swal('Your bid is safe');
+            }
         })
-    })
+            });
+        })
 </script>
 <script>
     socket.on('add_bid_updates', function(data) {

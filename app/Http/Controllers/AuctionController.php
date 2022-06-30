@@ -33,11 +33,11 @@ class AuctionController extends Controller
     {
         $auctionId = base64_decode($id);
           $auction_products = AuctionProduct::Leftjoin('auto_bids','auto_bids.auction_product_id','auction_products.id')
-                                              ->select('auto_bids.bid_amount as autoBidAmount','auction_products.*')     
+                                              ->select('auto_bids.bid_amount as autoBidAmount','auction_products.*')
                                               ->with('products')->get();
                                             //   dd($auction_products);
-                      
-    
+
+
            $products = Product::with('region','village','governorate','reviews')->get();
 
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
@@ -360,6 +360,15 @@ return response()->json($auction_products);
             $autoBidData->bid_amount          =   $request->autobidamount;
             $autoBidData->save();
             return response()->json($autoBidData);
+    }
+
+    public function removeAutoBid(Request $request)
+    {
+        $userID                     =   Auth::user()->id;
+        $currentAutoBid             =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$userID)->update([
+            'is_active'=>'0'
+        ]);
+        return response()->json($currentAutoBid);
     }
     public function autoBids()
     {

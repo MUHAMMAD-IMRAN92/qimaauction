@@ -338,7 +338,8 @@ class ReviewController extends Controller
         }
             fclose($file);
         };
-        return (new StreamedResponse($callback, 200, $headers))->sendContent();
+        return response()->streamDownload($callback, $fileName, $headers);
+        // return (new StreamedResponse($callback, 200, $headers))->sendContent();
     }
 
     public function reviewDetail($sample)
@@ -457,7 +458,6 @@ class ReviewController extends Controller
             }
                 fclose($file);
             };
-
-                return (new StreamedResponse($callback, 200, $headers))->sendContent();
+                return response()->streamDownload($callback, $fileName, $headers);
         }
 }
