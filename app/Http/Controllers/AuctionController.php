@@ -25,8 +25,9 @@ class AuctionController extends Controller
     public function index()
     {
         return view('admin.auction.index');
+
     }
-    
+
     public function prductBiddingDetail($id)
     {
         $auctionId = base64_decode($id);
@@ -34,12 +35,12 @@ class AuctionController extends Controller
                           ->with('products')
                           ->get();
            $products = Product::with('region','village','governorate','reviews')->get();
-        
+
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
     }
     public function auctionProducts($id)
     {
-    
+
         $auctionId = base64_decode($id);
        $auction_products = AuctionProduct::where('auction_id',$auctionId)
                        ->with('products')
@@ -59,7 +60,7 @@ class AuctionController extends Controller
                          ->get();
         //    $products = Product::with('region','village','governorate','reviews')->get();
         //  $auctionId =$id;
-         return view('admin.auction.bidHistory',compact('bidhistory')); 
+         return view('admin.auction.bidHistory',compact('bidhistory'));
     }
 
     public function saveAuctionProduct(Request $request)
@@ -305,7 +306,6 @@ return response()->json($auction_products);
             $userPaddleNum                      =   Auth::user()->paddle_number;
             $singleBidData->user_paddleNo       =   $userPaddleNum;
 
-
             return response()->json($singleBidData);
         }
 
@@ -320,4 +320,5 @@ return response()->json($auction_products);
             $autoBidData->save();
             return response()->json($autoBidData);
     }
+
 }

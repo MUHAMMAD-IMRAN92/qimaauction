@@ -118,8 +118,75 @@
                 font-size: 18px;
             }
         }
-    </style>
+            .auctiontable thead
+            {
+                box-sizing: border-box;
+                background: #E5E5E5;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
 
+            }
+            .auctiontable thead th
+            {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 22px;
+                line-height: 29px;
+                text-align: center;
+
+                color: #000000;
+            }
+            .auctiontable tbody tr td a
+            {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 25px;
+                /* identical to box height */
+
+                text-align: center;
+
+                color: #FFFFFF;
+            }
+            .auctiontable tbody tr td
+            {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 29px;
+                text-align: center;
+                color: #000000;
+            }
+            .auctiontabs a
+            {
+                background: #D1AF69;
+                border-width: 1px 1px 0px 1px;
+                border-style: solid;
+                border-color: #9C9C9C;
+                border-radius: 10px 10px 0px 0px;
+            }
+            .changecolor
+            {
+                background: #FFFEA2;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
+            .changebuttontext
+            {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 25px;
+                /* identical to box height */
+                color: #FFFFFF;
+            }
+    </style>
 <body>
     <div class="row">
         <div class="col-2 ">
@@ -163,8 +230,8 @@
     <div class="container my-4">
         <nav>
             <div class="col-4">
-                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active mr-2" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                         role="tab" aria-controls="nav-home" aria-selected="true">Auction</a>
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                         role="tab" aria-controls="nav-profile" aria-selected="false">Liability</a>
@@ -173,7 +240,7 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <table class="table table-bordered table-responsive">
+                <table class="table table-bordered table-responsive auctiontable">
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Rank</th>
@@ -192,7 +259,7 @@
                     </thead>
                     <tbody>
                         @foreach ($auctionProducts as $auctionProduct)
-                            <tr class="text-center">
+                            <tr class="text-center bidcollapse{{ $auctionProduct->id }}">
                                 <td>Rank{{ $auctionProduct->rank }}</td>
                                 <td>--</td>
                                 <td>--</td>
@@ -213,7 +280,7 @@
                                 <td>
                                     <span class="bidData1{{ $auctionProduct->id }}">---</span>
                                     @if ($user)
-                                        <a class=" btn btn-primary accordion-toggle collapsed startBid" id="accordion1"
+                                        <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{$auctionProduct->id}}"  data-id="{{ $auctionProduct->id }}" id="accordion1"
                                             data-toggle="collapse" data-parent="#accordion1"
                                             href="#collapseOne{{ $auctionProduct->id }}">BID</a>
                                     @endif
@@ -276,7 +343,7 @@
                                     </td>
                                 </tr>
                             @else
-                                <tr class="hide-table-padding">
+                                <tr class="hide-table-padding " >
                                     <td></td>
                                     <td colspan="10">
                                         <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
@@ -594,27 +661,73 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+        $(".startBid").click(function(){
+    var id = $(this).attr('data-id');
+    $(".bidcollapse"+id).addClass("changecolor");
+    if($(".changetext"+id).text()=="BID"){
+                        $(".changetext"+id).text("Close");
+                        $(".changetext"+id).addClass("changebuttontext");
+                    }
+                    else {
+                        $(".changetext"+id).text("BID");
+                    }
+  });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
             $.ajax({
-               url:"{{route('singlebiddata')}}",
-               method:'POST',
-               data:{
-                      id:id,
-                      _token: "{{ csrf_token() }}",
-                    },
-               success:function(response){
-                var bidPrice    =   response.start_price;
-                var bidID       =   response.id;
-                socket.emit('add_bid_updates', {
-                            "singleBidammounttesting":bidPrice,
-                            "bidID":bidID,
-                            });
-               },
-               error:function(error){
-                  console.log(error)
-               }
+                url: "{{ route('singlebiddata') }}",
+                method: 'POST',
+                data: {
+                    id: id,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    console.log(response);
+                    var bidPrice        =   response.bid_amount;
+                    var bidID           =   response.auction_product_id;
+                    var increment       =   response.bidIncrement;
+                    var paddleNo        =   response.user_paddleNo;
+                    var nextIncrement   =   bidPrice + +increment;
+                    socket.emit('add_bid_updates', {
+                        "singleBidammounttesting": bidPrice,
+                        "bidID": bidID,
+                        "increment":increment,
+                        "paddleNo":paddleNo,
+                        "nextIncrement":nextIncrement,
+                    });
+
+                    //
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+
+        });
+        //Autobid
+        $(".autobid").on("click", function(e) {
+            e.preventDefault();
+            var id               = $(this).attr('data-id');
+            var autobidamount    = $('.autobidamount'+id).val();
+            var auctionid        = $('.auctionid'+id).val();
+            $.ajax({
+                url: "{{ route('autobiddata') }}",
+                method: 'POST',
+                data: {
+                    id: id,
+                    autobidamount:autobidamount,
+                    auctionid:auctionid,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    console.log(response);
+                    // var bidPrice    =   response.bid_amount;
+                    //
+                },
+                error: function(error) {
+                    console.log(error)
+                }
             });
 
         })
@@ -623,10 +736,9 @@
 <script>
     socket.on('add_bid_updates', function(data) {
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting);
-        $(".increment" + data.bidID).html('$' + data.increment);
+        $(".increment" + data.bidID).html('$' + data.nextIncrement);
         $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting);
         $(".paddleno" + data.bidID).html(data.paddleNo);
     })
 </script>
-
 </html>
