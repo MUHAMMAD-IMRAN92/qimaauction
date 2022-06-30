@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'customer.dashboard.index');
+Route::view('/auction-home', 'customer.auction_pages.auction_home');
+Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
+Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
 
