@@ -222,7 +222,7 @@
                                                                     <td data-title="Action">
                                                                         @if ($sample->is_hidden == 0)
                                                                             <a class="btn btn-success" target="_blank"
-                                                                                href="{{ route('give_cupping_review', ['table' => $sample->table, 'sampleId' => $sample->id]) }}">CUP
+                                                                                href="{{ route('give_cupping_review', ['userId' => $userId,'table' => $sample->table, 'sampleId' => $sample->id]) }}">CUP
                                                                                 SAMPLE
                                                                             </a>
                                                                         @else

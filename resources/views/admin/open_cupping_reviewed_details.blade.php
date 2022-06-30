@@ -4,26 +4,26 @@
 <style>
     table.review-table{
         widows: 100%;
-        display: flex;
+        /* display: flex;
         justify-content: center;
         align-items: center;
-        overflow:hidden;
+        overflow:hidden; */
     }
     table.review-table tbody{
         /* margin-left: -5%;
         flex-wrap: no-wrap;
         overflow-x: auto;
         margin: 20px; */
-        display: flex;
+        /* display: flex;
         flex-direction: row;
         width: 100%;
-        max-width: 100%;
-        overflow-x: scroll;
+        max-width: 100%;*/
+        overflow-x: scroll; 
         /* gap: 20px; */
     }
     table.review-table tbody tr{
-        display: flex;
-        flex-direction: column;
+        /* display: flex;
+        flex-direction: column; */
         /* height: 100%; */
     }
     /* table.review-table tbody tr td,table.review-table tbody tr th{
@@ -44,16 +44,16 @@
     /* width: 7%; */
    }
    table.review-table tr td:nth-child(odd), table.review-table tr th:nth-child(odd) {
-    background: rgba(34, 41, 47, 0.05);
+    /* background: rgba(34, 41, 47, 0.05); */
 }
 .body-tags td{
     /* min-height: 54px !important; */
     /* padding: 15.5px !important; */
 }
 
-tbody tr th{
+/* tbody tr th{
     padding: 15.5px !important;
-}
+} */
 </style>
 <div class="app-content content">
   
@@ -74,7 +74,7 @@ tbody tr th{
                         <div class="card-content">
                             <div class="card-body text-center">
                                 <div class="" style="overflow-x:auto;">
-                                    <table class="table table-responsive table-bordered mb-0 review-table"
+                                    <table class="table table-responsive table-bordered mb-0 review-table striped bordered"
                                         style="background-color: rgb(255, 255, 255)">                                   
                                         <tbody>
                                         <tr>
@@ -84,13 +84,14 @@ tbody tr th{
                                             <th>Product Title</th>       
                                             <th>Sample</th>
                                             <th>Aroma Dry</th>
-                                            <th>Aroma Crust</th>
+                                            <th>Quaility Notes</th>
                                             <th>Aroma Break</th> 
                                             <th>Uniformity</th>
                                             <th>CleanUp</th>
                                             <th>Sweetness</th>
                                             <th>Acidity</th>
                                             <th>Flavour</th>
+                                            <th>After Taste</th>
                                             <th>Balance</th>
                                             <th>Body</th>
                                             <th>Overall</th>
@@ -101,9 +102,9 @@ tbody tr th{
                                             @foreach ($data as $samp)
                                             <tr>
                                                 @foreach ($samp as $value => $sample)
-                                                @if($value == "note")
-                                                 <td class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="{{$sample}}">
-                                                    <i class="fas fa-info-circle fa-3x" style="font-size: 20px;"></i>
+                                                @if($value == "note" || $value == 'quality_notes')
+                                                 <td  data-toggle="tooltip" data-placement="top" title="{{$sample}}">
+                                                    <i class="fas fa-info-circle"></i>
                                                 </td>
                                                  @else
                                                 <td>{{ $sample }}</td>
