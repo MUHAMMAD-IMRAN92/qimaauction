@@ -30,9 +30,12 @@ class AuctionController extends Controller
     public function prductBiddingDetail($id)
     {
         $auctionId = base64_decode($id);
-          $auction_products = AuctionProduct::where('auction_id',$auctionId)
-                          ->with('products')
-                          ->get();
+          $auction_products = AuctionProduct::Leftjoin('auto_bids','auto_bids.auction_product_id','auction_products.id')
+                                              ->select('auto_bids.bid_amount as autoBidAmount','auction_products.*')     
+                                              ->with('products')->get();
+                                            //   dd($auction_products);
+                      
+    
            $products = Product::with('region','village','governorate','reviews')->get();
         
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
@@ -319,5 +322,22 @@ return response()->json($auction_products);
             $autoBidData->bid_amount          =   $request->autobidamount;
             $autoBidData->save();
             return response()->json($autoBidData);
+    }
+    public function autoBids()
+    {
+               $autobids = AutoBid::all();
+               return view('admin.auction.autobids',compact('autobids'));
+    }
+    public function updateAutoBids($id)
+    {
+        $autobids = AutoBid::where('id',$id)->first();
+        return view('admin.auction.updateAutoBid',compact('autobids'));
+    }
+    public function updateSaveAutoBids(Request $request)
+    {
+        AutoBid::where('id',$request->id)->update([
+            'bid_amount' => $request->bid_amount,
+        ]);
+     return redirect()->route('autobids');
     }
 }

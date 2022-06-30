@@ -9,4 +9,8 @@ class AutoBid extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function latestuser()
+    {
+        return $this->hasOne(User::class,'id','user_id')->latestOfMany();
+    }
 }

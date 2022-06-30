@@ -420,7 +420,7 @@
                                         <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
                                             data-i18n="eCommerce">Genetic</span></a>
                                 </li>
-                                <li @if (request()->is('/agreement')) class='active' @endif><a
+                                <li @if (request()->is('agreement')) class='active' @endif><a
                                     href="{{ url('/agreement') }}">
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
@@ -468,21 +468,37 @@
                         </li>
 
 
-                        <li @if (request()->is('/customer/index')) class='active' @endif><a
+                        <li @if (request()->is('customer/index')) class='active nav-item' @endif><a
                                 href="{{ url('/customer/index') }}">
                                 <span class="menu-item @if (request()->is('/customer/index')) 'active' @endif"
                                     data-i18n="eCommerce">Manage Customer</span></a>
                         </li>
                         <li class="nav-item">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
+                                    </span></a>
+                            <ul class="menu-content">
+                                <li @if (request()->is('auction/index')) class='active' @endif><a
+                                        href="{{ url('/auction/index') }}">
+                                        <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
+                                            data-i18n="eCommerce">Auctions</span></a>
+                                </li>
+                                <li @if (request()->is('auction/autobids')) class='active' @endif><a
+                                    href="{{ url('/auction/autobids') }}">
+                                    <span class="menu-item @if (request()->is('/auction/autobids')) 'active' @endif"
+                                        data-i18n="eCommerce">Auto Bids</span></a>
+                            </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Open Cupping</span></a>
                         <ul>
-                            <li @if (request()->is('/cupping/create')) class='active' @endif><a
+                            <li @if (request()->is('cupping/create')) class='active' @endif><a
                                     href="{{ url('/cupping/create') }}">
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('openCupping/*')) 'active' @endif"
                                         data-i18n="eCommerce">Create Cupping</span></a>
                             </li>
-                            <li @if (request()->is('/cupping/openCuppingFeedback')) class='active' @endif><a
+                            <li @if (request()->is('cupping/openCuppingFeedback')) class='active' @endif><a
                                     href="{{ url('/cupping/openCuppingFeedback') }}">
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('/cupping/openCuppingFeedback')) 'active' @endif"
@@ -495,17 +511,7 @@
                             </li>
                         </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
-                                    </span></a>
-                            <ul class="menu-content">
-                                <li @if (request()->is('auction/*')) class='active' @endif><a
-                                        href="{{ url('/auction/index') }}">
-                                        <span class="menu-item @if (request()->is('auction/*')) 'active' @endif"
-                                            data-i18n="eCommerce">Auction</span></a>
-                                </li>
-                            </ul>
-                        </li>
+                       
 
                         <li class="nav-item mb-5">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce">Manage Jury</span></a>

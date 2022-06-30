@@ -204,7 +204,7 @@
                                                             <td>
                                                                 {{ $pro->product_title }}
                                                             </td>
-                                                            <td id="price{{$auction->id}}">
+                                                            <td>
                                                                 {{ $auction->start_price }}
                                                             </td>
                                                             <td>
@@ -253,17 +253,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
         <script>
             $(document).ready(function() {     
-                // var socket = io('http://localhost:5002');
-                var socket = io('<?= env('SOCKETS') ?>');
-                ////// save AuctionProduct /////
-        socket.on('add_bid_updates', function (data) {
-              
-            // $("#price").html('$'+data.singleBidammounttesting);
-            $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
-            // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
-        // alert(data.singleBidammounttesting);
-        })
- 
 
                 $(".cancel").on("click", function() {
                     $("#auction_model").modal("hide");
@@ -366,17 +355,17 @@
                             // $('#nodata').modal('hide');
                             var title = data.products[0].product_title;
                             if (rownumber) {
-                                $('#' + rownumber).remove();
-                            }
-
+                                        $('#' + rownumber).remove();
+                                    }
                             var markup = "<tr id=" + data.id + "><td>" + title + "</td><td>" + data
                                 .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
                                 "</td><td><i id='edit' data-auctionId=" + data.id +
                                 " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
                                 .id + " class='fas fa-trash-o'></i></td></tr>";
-
-
-                            $("table tbody").append(markup);
+                                // if (rownumber) {
+                                //   $('#' + rownumber).replaceWith(markup);
+                                // }
+                              $("table tbody").append(markup);
                         }
                     });
                 });

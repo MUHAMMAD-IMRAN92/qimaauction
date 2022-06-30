@@ -21,7 +21,8 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-        var socket = io('<?= env('SOCKETS') ?>');
+     var socket = io('http://localhost:5002');
+        // var socket = io('<?= env('SOCKETS') ?>');
     </script>
 
     <style>
@@ -605,11 +606,15 @@
                       _token: "{{ csrf_token() }}",
                     },
                success:function(response){
-                var bidPrice    =   response.start_price;
-                var bidID       =   response.id;
+                console.log(response);
+                var bidPrice    =   response.bid_amount;
+                var bidID       =   response.auction_product_id;
+                var paddleNo       =   response.user_paddleNo;
+                console.log(bidPrice);
                 socket.emit('add_bid_updates', {
                             "singleBidammounttesting":bidPrice,
                             "bidID":bidID,
+                            "paddleNo":paddleNo,
                             });
                },
                error:function(error){
