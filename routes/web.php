@@ -24,6 +24,7 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], f
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
+    Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
 
 });
 
