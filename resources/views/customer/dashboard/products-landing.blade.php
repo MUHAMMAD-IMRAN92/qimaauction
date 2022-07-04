@@ -28,9 +28,6 @@
   align-items: center;
   justify-content: space-between;
   font: 20px;
-
-
-
 }
 
 .navbar-list {
@@ -41,8 +38,6 @@
   display: inline-block;
   padding: 10px 10px;
   font-weight: 400;
-
-
 }
 #width a img{
   margin-left: 108px;
@@ -54,7 +49,6 @@
   color: black;
   margin-left: 5px;
   margin-right: 5px;
-
 }
 
 .menu {
@@ -64,14 +58,10 @@
 .menu-item {
   width: 20px;
   height: 5px;
-
   background-color: black;
   padding: 2px;
   margin-top: 3px;
 }
-
-
-
 
 @media all and (max-width : 999px) {
   #width a img{
@@ -105,23 +95,11 @@
       display: none;
   }
 
-
-
   .active {
       display: block;
   }
 
-
-
-
-
-
-
 }
-
-
-
-
 .bio_graphy h1{
   font-family: 'Montserrat';
   font-style: normal;
@@ -239,6 +217,7 @@
     }
 </style>
 <body>
+
   <nav class="navbar navbar-fix">
     <div id="width"><a href="#"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
         </a>
@@ -294,16 +273,16 @@
 
         <div class="region_flex">
           <div class="region_text">
-              <h6>REGION:</h6>
+              <h6>REGION :&nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>Bait Alal <</h6>
+                <h6>Bait Alal <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Hayma Kharijiya <</h6>
+            <h6>Hayma Kharijiya <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Sanaa <</h6>
+            <h6>Sanaa <&nbsp; </h6>
           </div>
           <div class="regional_name">
             <h6>Yemen</h6>
@@ -314,7 +293,7 @@
         </div>
         <div class="region_flex">
           <div class="region_text">
-              <h6>ALTITUDE :</h6>
+              <h6>ALTITUDE : &nbsp; </h6>
           </div>
           <div class="regional_name">
                 <h6>2,300 MASL</h6>
@@ -336,7 +315,7 @@
            </div>
            <div class="region_flex">
             <div class="region_text">
-                <h6>LOT SIZE :</h6>
+                <h6>LOT SIZE :&nbsp; </h6>
             </div>
             <div class="regional_name">
                   <h6>163LBS</h6>
@@ -344,7 +323,7 @@
           </div>
           <div class="region_flex">
             <div class="region_text">
-                <h6>PROCESS : </h6>
+                <h6>PROCESS :&nbsp;  </h6>
             </div>
             <div class="regional_name">
                   <h6>SLOW DRIED</h6>
@@ -356,7 +335,7 @@
           </div>
           <div class="region_flex">
             <div class="region_text">
-                <h6>GENETICS :</h6>
+                <h6>GENETICS :&nbsp; </h6>
             </div>
             <div class="regional_name">
                   <h6>YEMENIA</h6>
