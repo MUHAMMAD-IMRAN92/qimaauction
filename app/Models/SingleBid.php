@@ -9,9 +9,9 @@ class SingleBid extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
-    public function auctionProduct()
+    protected $with = ['user'];
+    public function user()
     {
-        return $this->belongsTo(AuctionProduct::class);
+        return $this->hasMany(User::class,'id','user_id');
     }
 }

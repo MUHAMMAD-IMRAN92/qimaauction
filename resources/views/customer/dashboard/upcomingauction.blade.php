@@ -21,7 +21,7 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-     var socket = io('http://localhost:5002');
+        var socket = io('http://localhost:5002');
         // var socket = io('<?= env('SOCKETS') ?>');
     </script>
 
@@ -119,139 +119,141 @@
                 font-size: 18px;
             }
         }
+
         .nav-tabs .nav-link {
-        border: 1px solid #9C9C9C !important;
-        border-top-left-radius: 10px !important;
-        border-top-right-radius: 10px !important;
+            border: 1px solid #9C9C9C !important;
+            border-top-left-radius: 10px !important;
+            border-top-right-radius: 10px !important;
         }
+
         .nav-tabs .nav-link.active {
             color: white !important;
         }
-        .nav-tabs .nav-item.nav-link{
+
+        .nav-tabs .nav-item.nav-link {
             color: #9C9C9C;
         }
-            .auctiontable thead
-            {
-                box-sizing: border-box;
-                background: #E5E5E5;
-                border-width: 1px 0px;
-                border-style: solid;
-                border-color: #9C9C9C;
 
-            }
-            .auctiontable thead th
-            {
-                font-family: 'Playfair Display';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 18px;
-                line-height: 16px;
-                text-align: center;
+        .auctiontable thead {
+            box-sizing: border-box;
+            background: #E5E5E5;
+            border-width: 1px 0px;
+            border-style: solid;
+            border-color: #9C9C9C;
 
-                color: #000000;
-            }
-            .auctiontable tbody tr td a
-            {
-                font-family: 'Open Sans';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 25px;
-                /* identical to box height */
+        }
 
-                /* text-align: center; */
+        .auctiontable thead th {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 16px;
+            text-align: center;
 
-                /* color: #FFFFFF; */
-            }
-            .auctiontable tbody tr td
-            {
-                font-family: 'Playfair Display';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 29px;
-                /* text-align: center; */
-                color: #000000;
-            }
-            .auctiontabs a.active
-            {
-                background: #D1AF69 !important;
-                border-width: 1px 1px 0px 1px;
-                border-style: solid;
-                border-color: #9C9C9C;
-                border-radius: 10px 10px 0px 0px;
-            }
-            .changecolor
-            {
-                background: #FFFEA2;
-                border-width: 1px 0px;
-                border-style: solid;
-                border-color: #9C9C9C;
-            }
-            .changebuttontext
-            {
-                font-family: 'Open Sans';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 25px;
-                /* identical to box height */
-                color: #FFFFFF;
-            }
-            .alertmsg
-            {
-                background: #DBFFDA;
-                margin-top: 120px;
-            }
-            .errormsgautobid
-            {
-                background: #DBFFDA;
-                margin-top: 12px;
-            }
-            .liabilitytable thead
-            {
-                box-sizing: border-box;
-                background: #E5E5E5;
-                border-width: 1px 0px;
-                border-style: solid;
-                border-color: #9C9C9C;
+            color: #000000;
+        }
 
-            }
-            .liabilitytable thead th
-            {
-                font-family: 'Playfair Display';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 18px;
-                line-height: 16px;
-                text-align: center;
+        .auctiontable tbody tr td a {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+            /* identical to box height */
 
-                color: #000000;
-            }
-            .liabilitytable tbody tr td a
-            {
-                font-family: 'Open Sans';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 25px;
-                /* identical to box height */
+            /* text-align: center; */
 
-                text-align: center;
+            /* color: #FFFFFF; */
+        }
 
-                color: #FFFFFF;
-            }
-            .liabilitytable tbody tr td
-            {
-                font-family: 'Playfair Display';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 22px;
-                line-height: 29px;
-                text-align: center;
-                color: #000000;
-            }
+        .auctiontable tbody tr td {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 29px;
+            /* text-align: center; */
+            color: #000000;
+        }
 
+        .auctiontabs a.active {
+            background: #D1AF69 !important;
+            border-width: 1px 1px 0px 1px;
+            border-style: solid;
+            border-color: #9C9C9C;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        .changecolor {
+            background: #FFFEA2;
+            border-width: 1px 0px;
+            border-style: solid;
+            border-color: #9C9C9C;
+        }
+
+        .changebuttontext {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+            /* identical to box height */
+            color: #FFFFFF;
+        }
+
+        .alertmsg {
+            background: #DBFFDA;
+            margin-top: 120px;
+        }
+
+        .errormsgautobid {
+            background: #DBFFDA;
+            margin-top: 12px;
+        }
+
+        .liabilitytable thead {
+            box-sizing: border-box;
+            background: #E5E5E5;
+            border-width: 1px 0px;
+            border-style: solid;
+            border-color: #9C9C9C;
+
+        }
+
+        .liabilitytable thead th {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 16px;
+            text-align: center;
+
+            color: #000000;
+        }
+
+        .liabilitytable tbody tr td a {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+            /* identical to box height */
+
+            text-align: center;
+
+            color: #FFFFFF;
+        }
+
+        .liabilitytable tbody tr td {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 29px;
+            text-align: center;
+            color: #000000;
+        }
     </style>
 
 <body>
@@ -365,7 +367,7 @@
                                 <td class="paddleno{{ $auctionProduct->id }}">--</td>
                                 <td>
                                     <div style="display: flex;">
-                                        <span class="waiting{{$auctionProduct->id}}">Waiting Bid</span>
+                                        <span class="waiting{{ $auctionProduct->id }}">Waiting Bid</span>
                                         <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
                                     </div>
                                 </td>
@@ -415,7 +417,7 @@
                                     </td>
                                 </tr>
                             @else
-                                <tr class="hide-table-padding " >
+                                <tr class="hide-table-padding ">
                                     <td></td>
                                     <td colspan="10">
                                         <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
@@ -439,7 +441,8 @@
                                                                 data-id="{{ $auctionProduct->id }}" style="border-radius: 5px;">Bid Now</button>
                                                         </div>
                                                     </div>
-                                                    <div id="alertMessage" class="alertmsg alertMessage{{$auctionProduct->id}}"></div>
+                                                    <div id="alertMessage"
+                                                        class="alertmsg alertMessage{{ $auctionProduct->id }}"></div>
                                                 </div>
                                                 <div class="col-4">
                                                     <form class="form-inline" action="" method="POST" >
@@ -847,7 +850,7 @@
 
                 }
 
-            });
+                });
             }
         });
             //remove autobid
@@ -904,8 +907,9 @@
         }
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
-        $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
+        $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
         $(".paddleno" + data.bidID).html(data.paddleNo);
     })
 </script>
+
 </html>
