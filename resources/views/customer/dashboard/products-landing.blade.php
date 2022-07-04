@@ -8,7 +8,7 @@
   <link rel="icon" type="image/jpeg" href="{{ asset('public/images/favicon.jpeg') }}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="{{ asset('public/frontend/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
