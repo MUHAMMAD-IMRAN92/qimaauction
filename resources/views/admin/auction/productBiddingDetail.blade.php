@@ -138,6 +138,7 @@
                                                     @endphp
                                                     {{ $auction->weight * $bidprice }}
                                                 </td>
+                                                {{-- data all --}}
                                                 @if (isset($auction->latestAutoBidPrice))
                                                     <td>
                                                         <input type="hidden" id="autobidId{{ $auction->id }}"
