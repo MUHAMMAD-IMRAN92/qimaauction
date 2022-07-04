@@ -510,7 +510,7 @@
                             </li>
                         </ul>
                         </li>
-                       
+
 
                         <li class="nav-item mb-5">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce">Manage Jury</span></a>
