@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'customer.dashboard.index');
-Route::view('/auction-home', 'customer.auction_pages.auction_home');
-Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
+Route::view('/index-new', 'customer.dashboard.index-new');
+Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
+Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
+Route::view('/product/7189', 'customer.dashboard.products-landing');
+
+// Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
@@ -180,7 +184,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
 Auth::routes();
 Route::get('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('news');
 Route::get('/newsletterSave', [App\Http\Controllers\HomeController::class, 'newsletterpost'])->name('newsletter');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::middleware(['auth'])->group(function () {

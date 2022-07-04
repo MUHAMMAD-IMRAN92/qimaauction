@@ -7,36 +7,25 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-9 col-sm-9 col-9 mb-2">
+                <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
-                        <div class="col-4">
+                        <div class="col-11">
                             <div class="breadcrumb-wrapper col-12">
-                                <ol class="breadcrumb">
+                            <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active">Bid Limit
                                     </li>
                                 </ol>
                             </div>
-                        </div>
-
                     </div>
                 </div>
-                <div class="custom_btn_align" style="display: inline-block; ">
+                </div>
+                <div class=" col-6 custom_btn_align">
                     <a href="{{ url('/bidlimit/create') }}" class="btn btn-primary waves-effect waves-light">Create
                         Bid Limit<a>
                     <a href="{{ url('/bidlimit/edit') }}" class="btn btn-primary waves-effect waves-light">Edit<a>
-
                 </div>
-
-                {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                <div class="form-group breadcrum-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
-                    </div>
-                </div>
-            </div> --}}
             </div>
             <div class="content-body">
 

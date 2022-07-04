@@ -9,4 +9,9 @@ class SingleBid extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function auctionProduct()
+    {
+        return $this->belongsTo(AuctionProduct::class);
+    }
 }
