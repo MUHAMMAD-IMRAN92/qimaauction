@@ -418,7 +418,7 @@
         <div class="container">
             <div class="row justify">
                 <div class="col-12">
-                    <h2 id="winc">WINNING COFFES</h2>
+                    <h2 id="winc">WINNING COFFEES</h2>
                 </div>
 
 
