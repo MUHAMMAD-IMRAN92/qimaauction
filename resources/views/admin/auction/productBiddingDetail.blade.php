@@ -213,10 +213,10 @@
                                         @endforeach
                                     @endforeach
                                 @else
-                                    {{-- <tr id="nodata">
+                                    <tr>
                                             <td></td>
-                                            <td >No Auction Product yet</td>
-                                        </tr> --}}
+                                            <td >No record yet</td>
+                                        </tr>
                                 @endif
 
                             </tbody>
