@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best of Yemen Auction 2022</title>
-    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -327,7 +327,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @dd($auctionProducts); --}}
                         @foreach ($auctionProducts as $auctionProduct)
                             <tr class="text-center bidcollapse{{ $auctionProduct->id }}">
                                 <td>Rank{{ $auctionProduct->rank }}</td>
@@ -349,14 +348,12 @@
                                 @endforeach
                                 <td>
                                     <div style="display: flex;">
-                                        <span
-                                            class="bidData1{{ $auctionProduct->id }}">${{ number_format($auctionProduct->start_price) }}/lb</span>
+                                        <span class="bidData1{{ $auctionProduct->id }}">${{$auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price}}/lb</span>
                                         @if ($user)
-                                            <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                data-id="{{ $auctionProduct->id }}" id="accordion1"
-                                                data-toggle="collapse" data-parent="#accordion1"
-                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                        @endif
+                                        <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{$auctionProduct->id}}"  data-id="{{ $auctionProduct->id }}" id="accordion1"
+                                            data-toggle="collapse" data-parent="#accordion1"
+                                            href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                    @endif
                                     </div>
                                 </td>
                                 @foreach ($auctionProduct->products as $products)
@@ -425,75 +422,62 @@
                                     <td colspan="10">
                                         <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
                                             <div class="row ">
-                                                <div class="col-6">
-                                                    <div class="input-group mb-3">
+                                                <div class="col-4">
+                                                    <div class="input-group mb-3" style="justify-content: flex-end;">
                                                         <p class="mr-1 increment{{ $auctionProduct->id }}">
                                                             @php
-                                                                $incPrice = $auctionProduct->start_price;
-                                                                $bidLimit = App\Models\Bidlimit::where('min', '<', $incPrice)
-                                                                    ->orderBy('min', 'desc')
-                                                                    ->limit(1)
-                                                                    ->get();
-                                                                $bidIncrement = $bidLimit[0]->increment ?? '';
-                                                                $finalInc = $incPrice + $bidIncrement;
+                                                                //increment in singlebid price
+                                                                $incPriceSinglebid               =  $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price;
+                                                                $bidLimitSinglebid               =   App\Models\Bidlimit::where('min','<',$incPriceSinglebid)->orderBy('min','desc')->limit(1)->get();
+                                                                $bidIncrementSinglebid           =   $bidLimitSinglebid[0]->increment ?? '';
+                                                                $finalIncSinglebid               =   $incPriceSinglebid + $bidIncrementSinglebid;
                                                             @endphp
-                                                            ${{ number_format($finalInc, 1) }}
+                                                            ${{number_format($finalIncSinglebid,1)}}
                                                         </p>
-                                                        <div class="input-group-append">
-                                                            <button
-                                                                class="btn btn-success singlebid singlebidClass{{ $auctionProduct->id }}"
+                                                        <div>
+                                                            <button class="btn btn-success singlebid singlebidClass{{$auctionProduct->id}}"
                                                                 id="{{ $auctionProduct->id }}"
                                                                 href="javascript:void(0)"
-                                                                data-id="{{ $auctionProduct->id }}">Bid Now</button>
+                                                                data-id="{{ $auctionProduct->id }}" style="border-radius: 5px;">Bid Now</button>
                                                         </div>
                                                     </div>
                                                     <div id="alertMessage"
                                                         class="alertmsg alertMessage{{ $auctionProduct->id }}"></div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <form class="form-inline" action="" method="POST">
+                                                <div class="col-4">
+                                                    <form class="form-inline" action="" method="POST" >
                                                         @csrf
-                                                        <div class="form-group mx-sm-3 mb-2">
-                                                            <input type="hidden"
-                                                                class="form-control auctionid{{ $auctionProduct->id }}"
-                                                                value="{{ $auctionProduct->auction_id }}"
-                                                                id="autobidamount">
-                                                            $ &nbsp;<input type="number" name="autobidamount"
-                                                                class="form-control autobidamount{{ $auctionProduct->id }}"
-                                                                id="autobidamount">
-                                                        </div>
-                                                        <button
-                                                            class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
-                                                            type="submit" href="javascript:void(0)"
-                                                            data-id="{{ $auctionProduct->id }}">Auto Bid</button>
-                                                        <div
-                                                            class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                        </div>
+                                                            <input type="hidden" class="form-control auctionid{{$auctionProduct->id }}" value="{{$auctionProduct->auction_id}}" id="autobidamount" >
+                                                          $ &nbsp;<input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" style="width: 50%;" >
+                                                          &nbsp;<button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
+                                                        type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
+                                                        <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div>
                                                     </form>
-                                                    <table class="table mt-2">
-                                                        <tr>
-                                                            <th scope="col">Bid</th>
-                                                            <td
-                                                                scope="col"class="bidData3{{ $auctionProduct->id }}">
-                                                                ${{ $auctionProduct->start_price }}/lb</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Packing Cost</th>
-                                                            <td scope="col">
-                                                                ${{ $auctionProduct->packing_cost }}/lb
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Weight</th>
-                                                            <td scope="col">{{ $auctionProduct->weight }}lbs</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Total Liability</th>
-                                                            <td scope="col">$4134.50/lb</td>
-                                                        </tr>
-                                                    </table>
                                                 </div>
-                                                {{-- <div class="col-6">value 1</div> --}}
+                                                    <div class="col-4">
+                                                        <table class="table mt-2">
+                                                            <tr>
+                                                                <th scope="col">Bid</th>
+                                                                <td
+                                                                    scope="col"class="bidData3{{ $auctionProduct->id }}">
+                                                                    ${{ $auctionProduct->start_price }}/lb</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Packing Cost</th>
+                                                                <td scope="col">${{ $auctionProduct->packing_cost }}/lb
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Weight</th>
+                                                                <td scope="col">{{ $auctionProduct->weight }}lbs</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Total Liability</th>
+                                                                <td scope="col">$4134.50/lb</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
@@ -763,20 +747,23 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
-        $(".startBid").click(function() {
-            var id = $(this).attr('data-id');
-            $(".bidcollapse" + id).addClass("changecolor");
-            if ($(".changetext" + id).text() == "Bid") {
-                $(".changetext" + id).text("Close");
-                $(".changetext" + id).addClass("changebuttontext");
-            } else {
-                $(".changetext" + id).text("Bid");
-            }
-        });
+        //start bid
+        $(".startBid").click(function(){
+    var id = $(this).attr('data-id');
+    // $(".bidcollapse"+id).addClass("changecolor");
+    if($(".changetext"+id).text()=="Bid"){
+                        $(".changetext"+id).text("Close");
+                        $(".changetext"+id).addClass("changebuttontext");
+                    }
+                    else {
+                        $(".changetext"+id).text("Bid");
+                    }
+  });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
-            $(".waiting" + id).html('Open');
+            $(".waiting"+id).html('Open');
+            $(".bidcollapse"+id).addClass("changecolor");
             $.ajax({
                 url: "{{ route('singlebiddata') }}",
                 method: 'POST',
@@ -786,20 +773,22 @@
                 },
                 success: function(response) {
                     console.log(response);
-                    var bidPrice = response.bid_amount;
-                    var bidID = response.auction_product_id;
-                    var increment = response.bidIncrement;
-                    var paddleNo = response.user_paddleNo;
-                    var nextIncrement = bidPrice + +increment;
-                    $('.alertMessage' + bidID).html('<p>Your $' + bidPrice +
-                        ' bid is confirmed</p>');
-                    // $('.alertMessage'+bidID).delay(5000).fadeOut('slow');
+                    var bidPrice        =   response.bid_amount;
+                    var bidID           =   response.auction_product_id;
+                    var increment       =   response.bidIncrement;
+                    var paddleNo        =   response.user_paddleNo;
+                    var nextIncrement   =   +increment + +bidPrice;
+                    var outbid          =   response.outAutobid;
+                    var userID          =   response.autoBidUserID;
+                    $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is confirmned.</p>');
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
-                        "increment": increment,
-                        "paddleNo": paddleNo,
-                        "nextIncrement": nextIncrement,
+                        "increment":increment,
+                        "paddleNo":paddleNo,
+                        "nextIncrement":nextIncrement,
+                        "outbidresponse":outbid,
+                        "userID":userID,
                     });
 
                     //
@@ -813,59 +802,110 @@
         //Autobid
         $(".autobid").on("click", function(e) {
             e.preventDefault();
-            $('.errorMsgAutoBid' + id).html('');
-            var id = $(this).attr('data-id');
-            var currentBidPrice = $('.bidData1' + id).html().replace(/[^0-9]/gi, '');;
-            var autobidamount = $('.autobidamount' + id).val();
-            if (autobidamount <= currentBidPrice) {
-                $('.errorMsgAutoBid' + id).html(
-                    '<p>Please enter the amount greater than current bid amount.</p>');
-                $('.autobidamount' + id).val('');
-            } else {
-                swal({
-                    title: `Confirm AutoBid $` + autobidamount + `?`,
-                    text: "You will remain highest bidder until your limit reached.",
-                    type: "error",
-                    buttons: true,
-                    dangerMode: true,
-                }).then((result) => {
-                    if (result) {
-                        var auctionid = $('.auctionid' + id).val();
-                        $.ajax({
-                            url: "{{ route('autobiddata') }}",
-                            method: 'POST',
-                            data: {
-                                id: id,
-                                autobidamount: autobidamount,
-                                auctionid: auctionid,
-                                _token: "{{ csrf_token() }}",
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                $('.errorMsgAutoBid' + id).html('<p>Your $' +
-                                    autobidamount + ' Bid is confirmed.</p>');
-                                $('.autobidamount' + id).val('');
-                                $(".singlebidClass" + id).prop("disabled", true);
-                                $(".autobidClass" + id).prop("disabled", true);
-                                // var bidPrice    =   response.bid_amount;
-                                //
-                            },
-                            error: function(error) {
-                                console.log(error)
-                            }
-                        });
-                    } else {
-                        swal("Your cancelled your autobid.");
+            $('.errorMsgAutoBid'+id).html('');
+            var id               = $(this).attr('data-id');
+            var currentBidPrice  = $('.bidData1'+id).html().replace(/[^0-9]/gi, '');
+            var autobidamount    = $('.autobidamount'+id).val();
+            if(autobidamount <= currentBidPrice)
+            {
+                $('.errorMsgAutoBid'+id).html('<p>Please enter the amount greater than current bid amount.</p>');
+                $('.autobidamount'+id).val('');
+            }
+            else
+            {
+            swal({
+            title: `Confirm Auto Bid $` + autobidamount + `?`,
+            text: "You will remain highest bidder until your limit reached.",
+            type: "error",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if(result)
+            {
+                var auctionid   = $('.auctionid'+id).val();
+                $.ajax({
+                    url: "{{ route('autobiddata') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        autobidamount:autobidamount,
+                        auctionid:auctionid,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('.errorMsgAutoBid'+id).html('<p>Current autobid is $'+ autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+id+'>Remove</a>}</p>');
+                        $('.autobidamount'+id).val('');
+                        $(".singlebidClass"+id ).css("display", "none");
+                        $(".autobidClass"+id ).css("display", "none");
+                        // var bidPrice    =   response.bid_amount;
+                        //
+                    },
+                    error: function(error) {
+                        console.log(error)
                     }
+                });
+            }
+            else {
+
+                }
 
                 });
             }
+        });
+            //remove autobid
+            $(document).on("click",'.removeAutoBID', function(e) {
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            swal({
+            title: `Remove Auto Bid ?`,
+            // text: "You will remain highest bidder until your limit reached.",
+            type: "error",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if(result)
+            {
+                $.ajax({
+                    url: "{{ route('removeautobid') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        var outbid  =   response.outAutobid;
+                        if(outbid == 0)
+                        {
+                            $('.errorMsgAutoBid'+id).html('');
+                            $(".singlebidClass"+id ).css("display", "block");
+                            $(".autobidClass"+id ).css("display", "block");
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+            else
+            {
+                swal('Your bid is safe');
+            }
         })
-    })
+            });
+        })
 </script>
 <script>
     socket.on('add_bid_updates', function(data) {
-        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
+        if(data.outbidresponse == 0 && data.userID == {{Auth::user()->id}})
+        {
+            $('.errorMsgAutoBid'+data.bidID).html('');
+            $(".singlebidClass"+data.bidID ).css("display", "block");
+            $(".autobidClass"+data.bidID ).css("display", "block");
+            $('.errorMsgAutoBid'+data.bidID).html('Your lost your Bid is Outed.');
+        }
+        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
         $(".paddleno" + data.bidID).html(data.paddleNo);
