@@ -354,7 +354,7 @@
             font-size: 8px;
         }
         .banner-btn button{
-            font-size:13px;
+            font-size:11px;
         }
     }
     @media only screen and (max-width: 1440px) and (min-width: 1024px)
@@ -367,9 +367,14 @@
 
     @media all and (max-width : 500px) {
         .button button {
-            font-size: 4px;
+            border: 1px solid black;
+            font-size: 8px;
             padding: 5px;
             line-height: 10px;
+        }
+        .button button a
+        {
+            font-weight: 600;
         }
 
         .button {
