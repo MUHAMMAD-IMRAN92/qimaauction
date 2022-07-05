@@ -150,7 +150,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::post('/auction/update/', [App\Http\Controllers\AuctionController::class, 'update']);
     Route::post('/auction/create', [App\Http\Controllers\AuctionController::class, 'save']);
     Route::get('/auction/delete/{id}', [App\Http\Controllers\AuctionController::class, 'delete']);
-    Route::get('/auction/bidHistory/{id}', [App\Http\Controllers\AuctionController::class, 'bidHistory'])->name('bidHistory');
     Route::get('/auction/dashboard/{id}', [App\Http\Controllers\AuctionController::class, 'prductBiddingDetail'])->name('prductBiddingDetail');
     Route::get('/auction/delete_product_image/{id}', [App\Http\Controllers\AuctionController::class, 'deleteImage']);
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');

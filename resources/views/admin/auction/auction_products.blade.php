@@ -366,16 +366,21 @@
                             // $('#nodata').modal('hide');
                             var title = data.products[0].product_title;
                             if (rownumber) {
-                                        $('#' + rownumber).remove();
+                                        var id = rownumber;
                                     }
-                            var markup = "<tr id=" + data.id + "><td>" + title + "</td><td>" + data
-                                .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
+                             else
+                             {
+                                     var id = data.id;
+                             }
+                            var markup = "<tr id=" + id + "><td>" + title + "</td><td>" + data
+                                .start_price + "</td><td>" + data.size + "</td><td>" + data.rank +
                                 "</td><td><i id='edit' data-auctionId=" + data.id +
                                 " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
                                 .id + " class='fas fa-trash-o'></i></td></tr>";
-                                // if (rownumber) {
-                                //   $('#' + rownumber).replaceWith(markup);
-                                // }
+                                if (rownumber) {               
+                                  $('#' + id).replaceWith(markup);
+                                }
+                                else
                               $("table tbody").append(markup);
                         }
                     });
