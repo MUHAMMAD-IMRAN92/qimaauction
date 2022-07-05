@@ -168,7 +168,7 @@
     }
     .image_with_text_image img{
       width: 100%;
-      height: 225px;
+      height: 240px;
     }
     .image_with_text_text p{
   font-family: 'Montserrat';
@@ -221,6 +221,28 @@
             height: auto;
         }
     }
+
+
+   @media only screen and (min-width:768px){
+    .img-with-text-mar .col-md-6{
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+    .img-with-img-mar .col-md-6{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .img-with-img-mar-second .col-md-6{
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+    .cup-profile{
+        margin-right: 11px;
+    }
+    .farmer_cutting{
+        margin-left: -5px;
+    }
+   }
 </style>
 <body>
 
@@ -272,9 +294,9 @@
      <div class="row">
       <div class="col-md-12">
         <div class="bio_graphy">
-             <h1>#1</h1>
-             <h1>ALI SUBAIH</h1>
-             <h3>7189</h3>
+             <h1>#{{$winningCoffeesData->rank}}</h1>
+             <h1>{{$winningCoffeesData->name}}</h1>
+             <h3>{{$winningCoffeesData->code}}</h3>
         </div>
 
         <div class="region_flex">
@@ -282,16 +304,13 @@
               <h6>REGION :&nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>Bait Alal <&nbsp; </h6>
+                <h6>{{$winningCoffeesData->village}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Hayma Kharijiya <&nbsp; </h6>
+            <h6>{{$winningCoffeesData->region}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Sanaa <&nbsp; </h6>
-          </div>
-          <div class="regional_name">
-            <h6>Yemen</h6>
+            <h6>{{$winningCoffeesData->governorate}} &nbsp; </h6>
           </div>
           <div>
 
@@ -302,7 +321,7 @@
               <h6>ALTITUDE : &nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>2,300 MASL</h6>
+                <h6>{{$winningCoffeesData->altitude}}</h6>
           </div>
           <div>
 
@@ -310,21 +329,21 @@
         </div>
       </div>
      </div>
-     <div class="row">
+     <div class="row img-with-text-mar">
         <div class="col-md-6">
-            <img class="farmer-display" src={{ asset('public/images/farmer.png') }} alt="">
+            <img class="farmer-display" src="{{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_1)}}"alt="">
         </div>
         <div class="col-md-6">
            <div class="genetics-area">
              <p style="margin-bottom: 0;"> JURY SCORE</p>
-             <h6>90.1</h6>
+             <h6>{{$winningCoffeesData->score}}</h6>
            </div>
            <div class="region_flex">
             <div class="region_text">
                 <h6>LOT SIZE :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>163LBS</h6>
+                  <h6>{{$winningCoffeesData->quantity}}LBS</h6>
             </div>
           </div>
           <div class="region_flex">
@@ -332,7 +351,7 @@
                 <h6>PROCESS :&nbsp;  </h6>
             </div>
             <div class="regional_name">
-                  <h6>SLOW DRIED</h6>
+                  <h6>{{$winningCoffeesData->process}}</h6>
             </div>
           </div>
           <div class="genetic_content">
@@ -344,14 +363,14 @@
                 <h6>GENETICS :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>YEMENIA</h6>
+                  <h6>{{$winningCoffeesData->genetics}}</h6>
             </div>
           </div>
           <div class="row">
                 <div class="col-md-6">
                     <div class="image_with_text_image">
 
-                      <img src={{ asset('public/images/geneticsfarmer.png') }} alt="">
+                      <img src={{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_2)}} alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -363,14 +382,14 @@
           </div>
         </div>
      </div>
-     <div class="row mt-3 mb-3">
+     <div class="row mt-1 img-with-img-mar mb-3">
         <div class="col-md-6">
          <div class="row">
            <div class="col-md-6">
            </div>
            <div class="col-md-6">
             <div class="cup-profile">
-              <img style="width:100%;" src={{ asset('public/images/cup-profile.png') }}  alt="">
+              <img style="width:100%;" src={{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_3)}}  alt="">
               <div class="cup_profile_datails">
                 <p style="margin-bottom: 0;">Cup profile:</p>
                 <h6>JASMINE / PEACH / HONEY / BERGAMOT / APRICOT / VANILLA / APPLE PIE</h6>
@@ -382,7 +401,7 @@
         </div>
         <div class="col-md-6">
         <div class="farmer_cutting">
-          <img style="width: 100%;" src={{ asset('public/images/farmer_cutting.png') }} alt="">
+          <img style="width: 100%;" src={{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_4)}} alt="">
         <h3>the human behind the coffee</h3>
         <p style="margin-bottom: 0;">Ali is 65 years old. He has 6 children. He started growing coffee when he was 20 years old beside his father with love. He joined the army for 35 years and then retired, even when he was away from the farm he always thought of it.
           After his father passed away, he took full responsibility of taking care of the farm with the help of his brother.
@@ -394,14 +413,14 @@
         </div>
         </div>
      </div>
-     <div class="row mt-3 mb-3">
+     <div class="row img-with-img-mar-second mt-2 mb-3">
       <div class="col-md-6">
        <div class="row">
          <div class="col-md-6">
          </div>
          <div class="col-md-6">
-          <div class="cup-profile">
-            <img style="width:100%;" src={{ asset('public/images/farming.png') }} alt="">
+          <div class="cup-profile2">
+            <img style="width:100%;" src={{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_5)}} alt="">
             </div>
          </div>
        </div>
@@ -409,8 +428,8 @@
       <div class="col-md-6">
      <div class="row">
        <div class="col-md-6">
-        <div class="farmer_cutting">
-          <img style="width: 100%;" src={{ asset('public/images/preview.png') }}  alt="">
+        <div class="farmer_cutting2">
+          <img style="width: 100%;" src={{ asset('/public/images/Product_images/'.$winningCoffeesData->images[0]->image_6)}}  alt="">
         </div>
        </div>
        <div class="col-md-6">

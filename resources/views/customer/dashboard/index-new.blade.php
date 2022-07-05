@@ -529,43 +529,44 @@
                                     <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
                                     <th></th>
                                 </tr>
+                                @foreach ($winningCoffees as $winningCoffee)
                                 <tr>
                                     <td class="rank">
-                                        <div class="vl">#1</div>
+                                        <div class="vl">#{{$winningCoffee->rank}}</div>
                                     </td>
 
                                     <td class="style-td-1 ">
-                                        <div class="border-vl d-flex align-items-center ">ALI SUBAIH <br> 7189</div>
+                                        <div class="border-vl d-flex align-items-center ">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
                                     </td>
 
                                     <td class="style-td-2">
-                                        <div class="vl">90.1</div>
+                                        <div class="vl">{{$winningCoffee->score}}</div>
                                     </td>
 
                                     <td class="style-td-3">
                                         <div class="border-vl">
-                                            <p style="margin-bottom: 0;">BAIT ALAL</p>
-                                          <p style="margin-bottom: 0;">  HAYMA KHARIJIYA</p>
-                                            <p style="margin-bottom: 0;">SANA</p>
-                                            <p style="margin-bottom: 0;" >2300MASL</p>
+                                            <p style="margin-bottom: 0;">{{$winningCoffee->village}}</p>
+                                          <p style="margin-bottom: 0; display: inline-block; ">  {{$winningCoffee->region}}</p>
+                                            <p style="margin-bottom: 0;">{{$winningCoffee->governorate}}</p>
+                                            <p style="margin-bottom: 0;" >{{$winningCoffee->altitude}}</p>
                                         </div>
                                     </td>
 
                                     <td class="style-td-4">
-                                        <div class="vl">163lbs</div>
+                                        <div class="vl">{{$winningCoffee->quantity}}</div>
                                     </td>
 
                                     <td class="style-td-5">
-                                        <div class="vl" style="">SLOW DRIED</div>
+                                        <div class="vl" style="">{{$winningCoffee->process}}</div>
                                     </td>
 
-                                    <td class="style-td-6">
-                                        YEMENIA
-                                    </td>
+                                    <td class="style-td-6">{{$winningCoffee->genetics}}</td>
 
-                                    <td class="button"><button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
+                                    <td class="button"><button><a href="{{url ('/product',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
                                 </tr>
-                                <tr>
+                                @endforeach
+
+                                {{-- <tr>
                                     <td class="rank">
                                         <div class="vl">#2</div>
                                     </td>
@@ -649,7 +650,7 @@
                                     <td class="style-td-6">YEMENIA
                                     </td>
                                     <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-                                </tr>
+                                </tr> --}}
 
                             </table>
                         </div>
