@@ -28,20 +28,7 @@ class AuctionController extends Controller
         return view('admin.auction.index');
 
     }
-
-    public function prductBiddingDetail($id)
-    {
-        $auctionId = base64_decode($id);
-          $auction_products = AuctionProduct::Leftjoin('auto_bids','auto_bids.auction_product_id','auction_products.id')
-                                              ->select('auto_bids.bid_amount as autoBidAmount','auction_products.*')
-                                              ->with('products')->get();
-                                            //   dd($auction_products);
-
-
-           $products = Product::with('region','village','governorate','reviews')->get();
-
-         return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
-    }
+ 
     public function auctionProducts($id)
     {
 
@@ -52,20 +39,7 @@ class AuctionController extends Controller
         $products = Product::with('region','village','governorate','reviews')->get();
       return view('admin.auction.auction_products',compact('auction_products','products','auctionId'));
     }
-    public function bidHistory($id)
-    {
-        //   $auction_products = AuctionProduct::where('id',$id)
-        //                   ->with('products')
-        //                   ->get();
-             $bidhistory = SingleBid::join('users','users.id','single_bids.user_id')
-                         ->where('auction_product_id',$id)
-                         ->select('users.paddle_number','users.name as name','single_bids.bid_amount')
-                         ->orderBy('single_bids.bid_amount','desc')
-                         ->get();
-        //    $products = Product::with('region','village','governorate','reviews')->get();
-        //  $auctionId =$id;
-         return view('admin.auction.bidHistory',compact('bidhistory'));
-    }
+
 
     public function saveAuctionProduct(Request $request)
     {
@@ -229,24 +203,8 @@ return response()->json($auction_products);
 
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
-        // $auction->lottitle = $request->lottitle;
-        // $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
-        // $auction->product_id = $request->product_id;
-        // $auction->process_id = $request->process_id;
-        // $auction->genetic_id = $request->genetic_id;
         $auction->startDate = $request->startDatetime;
-        // $auction->startTime = $request->startTime;
-        // $auction->endDate = $request->endDate;
-        // $auction->endTime = $request->endTime;
-        // $auction->weight = $request->weight;
-        // $auction->size = $request->size;
-        // $auction->farm = $request->farm;
-        // $auction->start_bid_price = $request->start_bid_price;
-        // $auction->reserved_bid_price = $request->reserved_bid_price;
-        // $auction->increment_bid_price = $request->increment_bid_price;
-        // $auction->score = $request->score;
-        // $auction->rank = $request->rank;
         $auction->save();
         if ($request->image) {
             foreach ($request->image as $img) {
@@ -361,10 +319,6 @@ return response()->json($auction_products);
             // $singleBidData->user_paddleNo       =   $userPaddleNum;
             return response()->json($singleBidData);
         }
-
-
-
-
     }
     public function autoBidData(Request $request)
     {
@@ -398,12 +352,19 @@ return response()->json($auction_products);
         $autobids = AutoBid::where('id',$id)->first();
         return view('admin.auction.updateAutoBid',compact('autobids'));
     }
+    public function prductBiddingDetail($id)
+    {
+        $auctionId = base64_decode($id);
+          $auction_products = AuctionProduct::with('products')->get();                          
+           $products = Product::with('region','village','governorate','reviews')->get();
+         return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
+    }
     public function updateSaveAutoBids(Request $request)
     {
-        AutoBid::where('id',$request->id)->update([
-            'bid_amount' => $request->bid_amount,
+        AutoBid::where('id',$request->autobidId)->update([
+            'bid_amount' => $request->autobidamount,
         ]);
-     return redirect()->route('autobids');
+     return response()->json();
     }
 
     public function auctionHome()
