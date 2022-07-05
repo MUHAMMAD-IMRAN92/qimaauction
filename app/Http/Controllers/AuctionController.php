@@ -13,6 +13,7 @@ use App\Models\Process;
 use App\Models\Image;
 use App\Models\SingleBid;
 use App\Models\User;
+use App\Models\WinningCofees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,7 @@ class AuctionController extends Controller
         return view('admin.auction.index');
 
     }
- 
+
     public function auctionProducts($id)
     {
 
@@ -355,7 +356,7 @@ return response()->json($auction_products);
     public function prductBiddingDetail($id)
     {
         $auctionId = base64_decode($id);
-          $auction_products = AuctionProduct::with('products')->get();                          
+          $auction_products = AuctionProduct::with('products')->get();
            $products = Product::with('region','village','governorate','reviews')->get();
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
     }
@@ -385,5 +386,16 @@ return response()->json($auction_products);
         // $agreement              =   AcceptAgreement::where('user_id',$user)->first();
         return view('customer.auction_pages.auction_home2',compact('auctionProducts','auction'));
     }
-
+    public function winningCoffee()
+    {
+        $winningCoffees =   WinningCofees::with('images')->limit('10')->get();
+        // dd($winningCoffees);
+        return view('customer.dashboard.index-new',compact('winningCoffees'));
+    }
+    public function winningCoffeeProducts($id)
+    {
+        $winningCoffeesData =   WinningCofees::where('code',$id)->with('images')->first();
+        // dd($winningCoffeeImages);
+        return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
+    }
 }
