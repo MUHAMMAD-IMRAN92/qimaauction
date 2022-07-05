@@ -12,6 +12,7 @@
         }
         .table tr td {
             vertical-align: -webkit-baseline-middle !important;
+            margin: 5px;
         }
 
         .table2 tr td {
@@ -27,7 +28,7 @@
         }
 
         .headerSortDown:after {
-            top: 10px;
+            top: 3px;
             border-top-color: silver;
         }
 
@@ -113,8 +114,8 @@
 
                                                 <td class="headerSortUp headerSortDown move">
                                                 </td>
-                                                <td id="product{{ $auction->id }}" type="button"
-                                                    style="width:100px;color:white;height:46px" class="btn btn-primary mt-1 product"
+                                                <td id="product{{ $auction->id }}" type="button" 
+                                                    style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px" class="btn btn-primary mt-1 product"
                                                     data-auctionProductId="{{ $auction->id }}" data-toggle="modal"
                                                     data-target="#auction_model">
                                                     <b>
@@ -188,7 +189,7 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @if (isset($auction_products))
+                                @if (count($auction_products) > 0)
                                     @foreach ($auction_products as $auction)
                                         @foreach ($auction->products as $key => $pro)
                                             @if ($auction->latestBidPrice)
