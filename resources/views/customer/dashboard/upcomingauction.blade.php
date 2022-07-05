@@ -21,8 +21,8 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-        var socket = io('http://localhost:5002');
-        // var socket = io('<?= env('SOCKETS') ?>');
+        // var socket = io('http://localhost:5002');
+        var socket = io('<?= env('SOCKETS') ?>');
     </script>
 
     <style>
