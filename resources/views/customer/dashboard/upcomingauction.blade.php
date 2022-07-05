@@ -188,6 +188,13 @@
                 border-style: solid;
                 border-color: #9C9C9C;
             }
+            .changecolorred
+            {
+                background:red;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
             .changebuttontext
             {
                 font-family: 'Open Sans';
@@ -800,6 +807,7 @@
         $(".autobid").on("click", function(e) {
             e.preventDefault();
             $('.errorMsgAutoBid'+id).html('');
+            $(".waiting"+id).html('Open');
             var id               = $(this).attr('data-id');
             var currentBidPrice  = $('.bidData1'+id).html().replace(/[^0-9]/gi, '');
             var autobidamount    = $('.autobidamount'+id).val();
@@ -900,7 +908,8 @@
             $('.errorMsgAutoBid'+data.bidID).html('');
             $(".singlebidClass"+data.bidID ).css("display", "block");
             $(".autobidClass"+data.bidID ).css("display", "block");
-            $('.errorMsgAutoBid'+data.bidID).html('Your lost your Bid is Outed.');
+            $(".bidcollapse"+data.bidID).addClass("changecolorred");
+            $('.errorMsgAutoBid'+data.bidID).html('You lost your Bid is Outed.');
         }
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));

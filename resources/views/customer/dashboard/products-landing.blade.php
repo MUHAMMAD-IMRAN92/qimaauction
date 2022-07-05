@@ -215,16 +215,22 @@
   align-items: center;
   color: #000000;
     }
+
+    @media only screen and (max-width:768px){
+        .image_with_text_image img{
+            height: auto;
+        }
+    }
 </style>
 <body>
 
   <nav class="navbar navbar-fix">
-    <div id="width"><a href="#"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
+    <div id="width"><a href="{{url ('/index-new')}}"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
         </a>
     </div>
     <div>
-        <ul class="navbar-list" style="margin-right: 15px ;margin-top: 9px; " id="nav-list">
-            <li class="list-items"> <a style="
+        <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+            {{-- <li class="list-items"> <a style="
               font-weight: 500;
           " >SIGN IN </a>
             </li>
@@ -236,7 +242,7 @@
             <li class="list-items"> <a style="
               font-weight: 500;
           " > WINNING COFFEES </a>
-            </li>
+            </li> --}}
             <a href="#"><i class="fa fa-instagram" ></i> </a>
             <a  href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
