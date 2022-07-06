@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'customer.dashboard.index');
+// Route::view('/', 'customer.dashboard.index');
+Route::view('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
