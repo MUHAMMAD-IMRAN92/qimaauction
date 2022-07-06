@@ -331,7 +331,7 @@
      </div>
      <div class="row img-with-text-mar">
         <div class="col-md-6">
-            <img class="farmer-display" src="{{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_1)}}"alt="">
+            <img class="farmer-display" src="{{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_1)}}"alt="">
         </div>
         <div class="col-md-6">
            <div class="genetics-area">
@@ -370,7 +370,7 @@
                 <div class="col-md-6">
                     <div class="image_with_text_image">
 
-                      <img src={{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_2)}} alt="">
+                      <img src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_2)}} alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -389,7 +389,7 @@
            </div>
            <div class="col-md-6">
             <div class="cup-profile">
-              <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_3)}}  alt="">
+              <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_3)}}  alt="">
               <div class="cup_profile_datails">
                 <p style="margin-bottom: 0;">Cup profile:</p>
                 <h6>JASMINE / PEACH / HONEY / BERGAMOT / APRICOT / VANILLA / APPLE PIE</h6>
@@ -401,7 +401,7 @@
         </div>
         <div class="col-md-6">
         <div class="farmer_cutting">
-          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_4)}} alt="">
+          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
         <h3>the human behind the coffee</h3>
         <p style="margin-bottom: 0;">Ali is 65 years old. He has 6 children. He started growing coffee when he was 20 years old beside his father with love. He joined the army for 35 years and then retired, even when he was away from the farm he always thought of it.
           After his father passed away, he took full responsibility of taking care of the farm with the help of his brother.
@@ -420,7 +420,7 @@
          </div>
          <div class="col-md-6">
           <div class="cup-profile2">
-            <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_5)}} alt="">
+            <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_5)}} alt="">
             </div>
          </div>
        </div>
@@ -429,7 +429,7 @@
      <div class="row">
        <div class="col-md-6">
         <div class="farmer_cutting2">
-          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images[0]->image_6)}}  alt="">
+          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_6)}}  alt="">
         </div>
        </div>
        <div class="col-md-6">
