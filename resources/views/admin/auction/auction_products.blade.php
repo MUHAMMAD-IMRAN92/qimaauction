@@ -256,8 +256,7 @@
                 // var socket = io('http://localhost:5002');
                 var socket = io('<?= env('SOCKETS') ?>');
                 ////// save AuctionProduct /////
-        socket.on('add_bid_updates', function (data) {
-
+                 socket.on('add_bid_updates', function (data) {
             // $("#price").html('$'+data.singleBidammounttesting);
             $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
             // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);

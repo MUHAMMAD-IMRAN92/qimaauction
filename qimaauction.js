@@ -14,8 +14,15 @@ io.on('connection', function (socket) {
 // io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
 // });
 
+    socket.on('auto_bid_updates', function (data) {
+       io.emit('auto_bid_updates', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id  });
+    });
 socket.on('add_bid_updates', function (data) {
-    io.emit('add_bid_updates', { "singleBidammounttesting":data.singleBidammounttesting,"bidID":data.bidID,"paddleNo":data.paddleNo,"increment":data.increment,"nextIncrement":data.nextIncrement,"outbidresponse":data.outbidresponse,"userID":data.userID,});
+    io.emit('add_bid_updates', { 
+        "singleBidammounttesting":data.singleBidammounttesting,
+        "bidID":data.bidID,"paddleNo":data.paddleNo,
+        "increment":data.increment,"nextIncrement":data.nextIncrement,
+        "outbidresponse":data.outbidresponse,"userID":data.userID,});
     });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {

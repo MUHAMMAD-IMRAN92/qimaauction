@@ -234,7 +234,13 @@ return response()->json($auction_products);
         $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
         $auctionProducts        =   AuctionProduct::with('products')->get();
-        // dd($auctionProducts);
+        // foreach ($auctionProducts   as $key => $value) {
+        //    if(isset($value->latestAutoBidPrice))
+        //    {
+        //     dump( $value->latestAutoBidPrice->bid_amount);
+        //    }
+        // }
+        // dd("dhhd");
         $agreement              =   AcceptAgreement::where('user_id',$user)->first();
         return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction','agreement'));
     }

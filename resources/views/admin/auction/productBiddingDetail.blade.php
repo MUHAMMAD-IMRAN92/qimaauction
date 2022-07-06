@@ -88,13 +88,14 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <table class="table  table-responsive table-hover" id="auction-table">
-                            <thead>
+                            <thead class="table-heading">
                                 <tr>
                                     {{-- <th>Id</th> --}}
                                     <td></td>
                                     <th>Product</th>
+                                    <th>User</th>
                                     <th>Winning Bid</th>
-                                    <th>Winning Paddle</th>
+                                    <th>Paddle No</th>
                                     <th>Reserved Price</th>
                                     <th>Liability</th>
                                     <th>Auto Bid</th>
@@ -115,14 +116,16 @@
                                                 <td class="headerSortUp headerSortDown move">
                                                 </td>
                                                 <td id="product{{ $auction->id }}" type="button" 
-                                                    style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px" class="btn btn-primary mt-1 product"
+                                                    style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px" class="btn btn-primary product"
                                                     data-auctionProductId="{{ $auction->id }}" data-toggle="modal"
                                                     data-target="#auction_model">
                                                     <b>
                                                         <h6>{{ $pro->product_title }}</h6>
                                                     </b>
                                                 </td>
-
+                                                <td id="paddleNo{{ $auction->id }}">
+                                                    {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
+                                                </td> 
                                                 <td id="price{{ $auction->id }}">
                                                     {{ isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price }}
                                                 </td>
@@ -132,7 +135,6 @@
                                                 <td>
                                                     {{ $auction->reserve_price }}
                                                 </td>
-
                                                 <td>
                                                     @php
                                                         $bidprice = isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price;
@@ -150,8 +152,9 @@
                                                         <input type="number" value="{{ $latestAutoBidPrice ?? '0' }}"
                                                             name="autoBidAmount" id="autoBidAmount{{ $auction->id }}"
                                                             style="width: 105px; border-radius : 3px;padding:6px">
+                                                            <input type="hidden" id="userId{{ $auction->id }}" value="{{ isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->user_id : '--' }}">
                                                         <button data-id="{{ $auction->id }}"
-                                                            class="autobid btn btn-success">Edit</button>
+                                                            class="autobid btn btn-success"><i class="fa fa-edit"></i></button>
                                                         <div class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
                                                         </div>
                                                     </td>
@@ -231,8 +234,13 @@
 
     <script>
         $(document).ready(function() {
-            // var socket = io('http://localhost:5002');
-              var socket = io('<?= env('SOCKETS') ?>');
+            var socket = io('http://localhost:5002');
+            //   var socket = io('<?= env('SOCKETS') ?>');
+
+            socket.on('auto_bid_updates',function(data) {
+                                        $("#autoBidAmount" + data.id).val(data.autobidamount);
+                                    });
+
             socket.on('add_bid_updates', function(data) {
                 $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
                 $("#paddleNo" + data.bidID).html(data.paddleNo);
@@ -265,7 +273,7 @@
                         $("#weight").html(data.weight);
                         $("#size").html(data.size);
                         $("#rank").html(data.rank);
-                        // $("#auction_model").modal("show");
+                        // $("#auction_model").modal("show");     
                     }
                 });
             });
@@ -278,6 +286,7 @@
                 $('.errorMsgAutoBid' + id).hide();
                 var id = $(this).attr('data-id');
                 var autobidId = $("#autobidId" + id).val();
+                var userId = $("#userId" + id).val();
                 var autobidamount = $('#autoBidAmount' + id).val();
                 var currentBidPrice = ($('#price' + id).html()).replace(/\s/g, '');
                 console.log(currentBidPrice, autobidamount)
@@ -302,8 +311,13 @@
                                 success: function(response) {
                                     $('.errorMsgAutoBid' + id).html('<p>Your $' +
                                         autobidamount + ' Bid is confirmed.</p>');
-                                    $('#product' + id).addClass("mt-3");
+                                    // $('#product' + id).addClass("mt-3");
                                     $('#autobidamount' + id).val('');
+                                    socket.emit('auto_bid_updates', {
+                                        "autobidamount": autobidamount,
+                                        'id' : id,
+                                        'user_id' : userId,
+                                    });
                                 },
                                 error: function(error) {
                                     console.log(error)
