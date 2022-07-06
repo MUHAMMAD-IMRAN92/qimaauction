@@ -463,8 +463,7 @@
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
                                 SAMPLE SET</button>
                             <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='https://qimaauction.skylinxtech.com/index-new/' ">VIEW
-                                WINNING COFFEES</button>
+                                OnClick=" location.href='https://qimaauction.skylinxtech.com/index-new/' ">REGISTER</button>
                         </div>
                     </div>
                 </div>

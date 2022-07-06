@@ -408,8 +408,8 @@
         <div class="col-md-6">
         <div class="farmer_cutting">
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
-        <h3>the human behind the coffee</h3>
-        <p style="margin-bottom: 0;">{{$winningCoffeesData->farmer_story}}
+        <h3>the story behind the coffee</h3>
+        <p style="margin-bottom: 0;">{!!$winningCoffeesData->farmer_story!!}
           </p>
         </div>
         </div>
