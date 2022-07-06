@@ -151,7 +151,7 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 70px;
+  font-size: 50px;
   text-transform: uppercase;
   color: #000000;
     }
@@ -159,7 +159,7 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 17px;
   text-transform: uppercase;
   color: #232B38;
     }
@@ -168,7 +168,14 @@
     }
     .image_with_text_image img{
       width: 100%;
-      height: 240px;
+      /* height: 240px; */
+      height: auto;
+    }
+    .farmer-display{
+        margin-top: 2.4rem;
+    }
+    .genetics-area{
+        margin-top: 2rem;
     }
     .image_with_text_text p{
   font-family: 'Montserrat';
@@ -375,8 +382,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="image_with_text_text">
-                    <p><i>“Coffee supports me in my illness and happiness.
-                     I will not stop growing coffee until the last day of my life”.</i></p>
+                    <p><i>{{$winningCoffeesData->quotes ?? ''}}</i></p>
                  </div>
                 </div>
           </div>
@@ -392,7 +398,7 @@
               <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_3)}}  alt="">
               <div class="cup_profile_datails">
                 <p style="margin-bottom: 0;">Cup profile:</p>
-                <h6>JASMINE / PEACH / HONEY / BERGAMOT / APRICOT / VANILLA / APPLE PIE</h6>
+                <h6>{{$winningCoffeesData->cup_profile}}</h6>
                 <p></p>
               </div>
               </div>
@@ -403,12 +409,7 @@
         <div class="farmer_cutting">
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
         <h3>the human behind the coffee</h3>
-        <p style="margin-bottom: 0;">Ali is 65 years old. He has 6 children. He started growing coffee when he was 20 years old beside his father with love. He joined the army for 35 years and then retired, even when he was away from the farm he always thought of it.
-          After his father passed away, he took full responsibility of taking care of the farm with the help of his brother.
-          When their sons grew up, they stood by side him to help him on the farm until he until became one of the best farmers in the village
-          He advises all Yemeni farmers to pay attention to agriculture in general, and in particular to coffee cultivation. He also advises them to use natural manure and take care of watering.
-          ​​His farm is about 250 Libna San'ani (One Libna= 44 square meters). He grows Odeni, Doaeri and Tofahi coffee on his farm. Alongside coffee, he grows a small amount of grain.
-          Coffee is the wealth of all Yemenis.
+        <p style="margin-bottom: 0;">{{$winningCoffeesData->farmer_story}}
           </p>
         </div>
         </div>
@@ -437,11 +438,8 @@
        </div>
      </div>
      <div class="farmer_cutting">
-      <h3>the region of bait alal</h3>
-        <p style="margin-bottom: 0;">Bait Alal is located in the region of Hayma Kharijiya in Sana’a. It is home to 300 farming families and the Bait Alal is perched on a mountain top at an altitude of 2300 metres above sea level. The farmers in Bait Alal see the coffee tree as a symbol of pride and they believe that coffee originated from this area.
-          The land has been passed down through the generations, some of the farmers have ownership documents that show that the lands and the coffee trees date back a few hundred years. The farmers face difficulties due to the harsh climate which is one of the reasons for low yields being produced. However, no matter how small the harvest is or how harsh the conditions, the farmers never abandon their coffee trees.
-          Bait Alal is also home to Al Ruwad is Yemen’s largest and most established specialty coffee cooperative, serving 285 families – the equivalent of around 2000 people.
-
+      <h3>the region of {{$winningCoffeesData->region}}</h3>
+        <p style="margin-bottom: 0;">{{$winningCoffeesData->region_story}}
           </p>
      </div>
       </div>

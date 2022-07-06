@@ -274,6 +274,12 @@
 
 
    }
+   .table-row
+   {
+    font-family: 'Montserrat';
+    font-size: 13px;
+
+   }
 
     @media all and (max-width : 1050px) {
         .table-row {
@@ -457,7 +463,7 @@
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
                                 SAMPLE SET</button>
                             <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">VIEW
+                                OnClick=" location.href='https://qimaauction.skylinxtech.com/index-new/' ">VIEW
                                 WINNING COFFEES</button>
                         </div>
                     </div>
