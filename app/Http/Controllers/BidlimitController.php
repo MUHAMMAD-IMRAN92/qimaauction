@@ -43,22 +43,25 @@ class BidlimitController extends Controller
 
     public function save(Request $request)
     {
-        // $request->validate([
-        //     'addmore.*.min'         => 'required',
-        //     'addmore.*.increment'   => 'required',
-        //     'addmore.*.max'         => 'required',
-        // ]);
-        $bidLimit               =   new  Bidlimit();
-        $bidLimit->min          =   json_encode($request->min);
-        $bidLimit->increment    =   json_encode($request->increment);
-        $bidLimit->max          =   json_encode($request->max);
-        $bidLimit->save();
+        $request->validate([
+            'addmore.*.min'         => 'required',
+            'addmore.*.increment'   => 'required',
+            'addmore.*.max'         => 'required',
+        ]);
+        // $bidLimit               =   new  Bidlimit();
+        // $bidLimit->min          =   json_encode($request->min);
+        // $bidLimit->increment    =   json_encode($request->increment);
+        // $bidLimit->max          =   json_encode($request->max);
+        // $bidLimit->save();
+        foreach ($request->addmore as $key => $value) {
+            Bidlimit::create($value);
+        }
         return redirect('/bidlimit/index')->with('success','Bidlimit saved successfully.');
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
-        $bidLimits = Bidlimit::find($id);
+        $bidLimits = Bidlimit::all();
         return view('admin.bidlimit.edit', [
             'bidLimits' =>  $bidLimits,
         ]);
@@ -66,11 +69,19 @@ class BidlimitController extends Controller
 
     public function update(Request $request)
     {
-        $bidLimit               =   Bidlimit::find($request->bidlimit);
-        $bidLimit->min          =   json_encode($request->min);
-        $bidLimit->increment    =   json_encode($request->increment);
-        $bidLimit->max          =   json_encode($request->max);
-        $bidLimit->save();
+        // $bidLimit               =   Bidlimit::find($request->bidlimit);
+        // $bidLimit->min          =   ($request->min);
+        // $bidLimit->increment    =   json_encode($request->increment);
+        // $bidLimit->max          =   json_encode($request->max);
+        // $bidLimit->save();
+        // Bidlimit::whereNotNull('id')->delete();
+        $roles = Bidlimit::all();
+        foreach($roles as $role){
+        $role->delete();
+    }
+        foreach ($request->addmore as $key => $value) {
+            Bidlimit::create($value);
+        }
         return redirect('/bidlimit/index')->with('success','Bidlimit updated successfully.');
     }
 }

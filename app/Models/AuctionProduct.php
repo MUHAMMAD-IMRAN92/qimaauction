@@ -12,6 +12,14 @@ class AuctionProduct extends Model
     {
         return $this->hasMany(Product::class,'id','product_id');
     }
+    public function latestBidPrice()
+    {
+        return $this->hasOne(SingleBid::class,'auction_product_id','id')->latestOfMany();
+    }
+    public function latestAutoBidPrice()
+    {
+        return $this->hasOne(AutoBid::class,'auction_product_id','id')->latestOfMany();
+    }
 
     protected $guarded = [''];
 

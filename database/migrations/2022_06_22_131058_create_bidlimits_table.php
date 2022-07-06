@@ -15,9 +15,9 @@ class CreateBidlimitsTable extends Migration
     {
         Schema::create('bidlimits', function (Blueprint $table) {
             $table->id();
-            $table->string('min');
-            $table->string('increment');
-            $table->string('max');
+            $table->decimal('min');
+            $table->decimal('increment');
+            $table->decimal('max');
             $table->enum('is_hidden', [0,1])->default(0);
             $table->timestamps();
         });

@@ -26,7 +26,6 @@
                                 </ol>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
