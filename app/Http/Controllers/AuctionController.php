@@ -388,14 +388,12 @@ return response()->json($auction_products);
     }
     public function winningCoffee()
     {
-        $winningCoffees =   WinningCofees::with('images')->limit('10')->get();
-        // dd($winningCoffees);
+        $winningCoffees =   WinningCofees::all();
         return view('customer.dashboard.index-new',compact('winningCoffees'));
     }
     public function winningCoffeeProducts($id)
     {
         $winningCoffeesData =   WinningCofees::where('code',$id)->with('images')->first();
-        // dd($winningCoffeeImages);
         return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
     }
 }

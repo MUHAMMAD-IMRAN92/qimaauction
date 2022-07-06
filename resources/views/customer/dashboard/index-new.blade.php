@@ -262,6 +262,9 @@
     .border-vl{
         border-right: 1px solid black;
         height: 100px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
 
 
 
@@ -416,6 +419,10 @@
     padding: 16px;
     margin-top: 10px;
 }
+.fourth_col{
+    border-right: 1px solid black;
+    height: 100px;
+}
 </style>
 
 <body>
@@ -513,17 +520,15 @@
                     <h2 id="winc">WINNING COFFEES</h2>
                 </div>
             </div>
-
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="custom_table_reponsive">
                             <table class="" style="width:100%">
                                 <tr class="table-row">
                                     <th style="border-bottom:1px solid black;">RANK</th>
                                     <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
                                     <th style="border-bottom:1px solid black;">JURY SCORE</th>
-                                    <th style="border-bottom:1px solid black;">REGION & ALTITUDE</th>
+                                    <th style="border-bottom:1px solid black ;">REGION & ALTITUDE</th>
                                     <th style="border-bottom:1px solid black;">LOT SIZE</th>
                                     <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
                                     <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
@@ -536,7 +541,7 @@
                                     </td>
 
                                     <td class="style-td-1 ">
-                                        <div class="border-vl d-flex align-items-center ">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
+                                        <div class="border-vl align-items-center ">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
                                     </td>
 
                                     <td class="style-td-2">
@@ -544,11 +549,11 @@
                                     </td>
 
                                     <td class="style-td-3">
-                                        <div class="border-vl">
-                                            <p style="margin-bottom: 0;">{{$winningCoffee->village}}</p>
-                                          <p style="margin-bottom: 0; display: inline-block; ">  {{$winningCoffee->region}}</p>
-                                            <p style="margin-bottom: 0;">{{$winningCoffee->governorate}}</p>
-                                            <p style="margin-bottom: 0;" >{{$winningCoffee->altitude}}</p>
+                                        <div class="fourth_col align-items-center">
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->village}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;"> {{$winningCoffee->region}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->governorate}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->altitude}}</p>
                                         </div>
                                     </td>
 
@@ -565,99 +570,10 @@
                                     <td class="button"><button><a href="{{url ('/product',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
                                 </tr>
                                 @endforeach
-
-                                {{-- <tr>
-                                    <td class="rank">
-                                        <div class="vl">#2</div>
-                                    </td>
-                                    <td class=style-td-1>
-                                        <div class="vl">AKRAM DARWAISH 7406</div>
-                                    </td>
-                                    <td class="style-td-2">
-                                        <div class="vl">90</div>
-                                    </td>
-                                    <td class="style-td-3">
-                                        <div class="border-vl"><p  style="margin-bottom: 0;" > QABAL</p> <p  style="margin-bottom: 0;">ALQAFR</p>
-                                         <p  style="margin-bottom: 0;"> IBB </p> <p  style="margin-bottom: 0;">1800-2000MASL</p> </div>
-                                    </td>
-                                    <td class="style-td-4">
-                                        <div class="vl">74lbs</div>
-                                    </td>
-                                    <td class="style-td-5">
-                                        <div class="vl">NATURAL</div>
-                                    </td>
-                                    <td class="style-td-6">SL-34</td>
-                                    <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="rank">
-                                        <div class="vl">#3</div>
-                                    </td>
-                                    <td class="style-td-1">
-                                        <div class="vl"> BAIT ALAL XII <br>
-                                            8595</div>
-                                    </td>
-                                    <td class="style-td-2
-         ";>
-                                        <div class="vl " style="
-        color: #232B38;
-    ">89.6</div>
-                                    </td>
-                                    <td class="style-td-3">
-                                    <div class="border-vl">
-                                            <p style="margin-bottom: 0;">BAIT ALAL</p>
-                                          <p style="margin-bottom: 0;">  HAYMA KHARIJIYA</p>
-                                            <p style="margin-bottom: 0;">SANA</p>
-                                            <p style="margin-bottom: 0;" >2300MASL</p>
-                                        </div>
-                                    </td>
-                                    <td class="style-td-4">
-                                        <div class="vl">200lbs</div>
-                                    </td>
-                                    <td style="
-        COLOR: #E78460;
-    " class="style-td-5">
-                                        <div class="vl" s>ALCHEMY</div>
-                                    </td>
-                                    <td class="style-td-6">YEMENIA
-
-                                    </td>
-                                    <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-                                </tr>
-                                <tr>
-                                    <td class="rank">
-                                        <div class="vl">#4</div>
-                                    </td>
-                                    <td class="style-td-1">
-                                    <div class="border-vl d-flex align-items-center"> ALI SUBAIH <br> 7189</div>
-                                    </td>
-                                    <td class="style-td-2">
-                                        <div class="vl" style="
-        color: #232B38;
-    ">89.2</div>
-                                    </td>
-                                    <td class="style-td-3">
-                                        <div class="vl"> BAIT ALAL HAYMA KHARIJIYASANA
-                                            2300MASL</div>
-                                    </td>
-                                    <td class="style-td-4">
-                                        <div class="vl">163lbs</div>
-                                    </td>
-                                    <td class="style-td-5">
-                                        <div class="vl">SLOW DRIED</div>
-                                    </td>
-                                    <td class="style-td-6">YEMENIA
-                                    </td>
-                                    <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-                                </tr> --}}
-
                             </table>
                         </div>
-
                 </div>
-
-
+        </div>
         </div>
     </section>
 

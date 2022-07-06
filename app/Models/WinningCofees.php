@@ -10,6 +10,6 @@ class WinningCofees extends Model
     use HasFactory;
     public function images()
     {
-        return $this->hasMany(WinningCofeeImages::class,'user_id','id');
+        return $this->hasOne(WinningCofeeImages::class,'user_id','id');
     }
 }
