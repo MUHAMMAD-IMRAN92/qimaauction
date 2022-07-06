@@ -17,10 +17,12 @@ class AdminSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name'      => 'Qima',
-            'email'     => 'qima@gmail.com',
+            'email'     => 'qima1@gmail.com',
             'phone_no'  => '042789732',
             'bid_limit' => '5',
             'is_admin'  => '0',
+             'status'   => '1',
+             'paddle_number' => '1',
             'password'  => Hash::make('password'),
         ]);
     }

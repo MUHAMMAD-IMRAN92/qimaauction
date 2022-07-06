@@ -9,4 +9,8 @@ class Bidlimit extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function user()
+    {
+        return $this->hasMany(User::class,'id','user_id');
+    }
 }

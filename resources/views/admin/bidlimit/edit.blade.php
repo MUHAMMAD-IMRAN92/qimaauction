@@ -10,6 +10,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h2 class="content-header-title float-left mb-0">Edit Bidlimit</h2>
+
                     </div>
                 </div>
             </div>
@@ -35,9 +36,20 @@
                                                             <th>Min</th>
                                                             <th>Increment</th>
                                                             <th>Max</th>
-                                                            <th>Action</th>
+                                                            <th colspan="2">Action</th>
                                                         </tr>
-                                                        @php
+                                                        {{-- @dd($bidLimits); --}}
+                                                        @foreach ($bidLimits as $key => $bidLimit)
+                                                        <tr>
+                                                            <input type="hidden" name="bidlimit" value="{{$bidLimit->id}}">
+                                                            <td><input type="text" name="addmore[{{$key}}][min]" value="{{$bidLimit->min}}"  class="form-control min-value" /></td>
+                                                            <td><input type="text" name="addmore[{{$key}}][increment]" value="{{$bidLimit->increment}}"  class="form-control" /></td>
+                                                            <td><input type="text" name="addmore[{{$key}}][max]" value="{{$bidLimit->max}}"  class="form-control max-value" /></td>
+                                                            <td><a type="button" name="add" id="add"><i class="fa-solid fa-circle-plus"></i></a></td>
+                                                            <td><a type="button" class="remove-tr"><i class="fa-solid fa-circle-minus"></i></a></td>
+                                                        </tr>
+                                                        @endforeach
+                                                        {{-- @php
                                                             $minVal     =   json_decode($bidLimits->min);
                                                             $increments =   json_decode($bidLimits->increment);
                                                             $maxVal     =   json_decode($bidLimits->max);
@@ -60,7 +72,7 @@
                                                             @endforeach
                                                             </td>
                                                             <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-                                                        </tr>
+                                                        </tr> --}}
 
                                                     </table>
                                                 </div>
@@ -105,7 +117,7 @@
         ++i;
         var last_max_value = $(".max-value:last").val();
         last_max_value     = parseFloat(last_max_value)+0.1;
-        $("#dynamicTable").append('<tr><td><input type="text" name="min['+i+']"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="increment['+i+']" class="form-control" /></td><td><input type="text" name="max['+i+']" class="form-control max-value" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+        $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][min]"  class="form-control min-value" value="'+last_max_value+'" /></td><td><input type="text" name="addmore['+i+'][increment]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][max]" class="form-control max-value" /></td><td><a type="button" class="remove-tr"><i class="fa-solid fa-circle-minus"></i></a></td></tr>');
     });
     $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();
