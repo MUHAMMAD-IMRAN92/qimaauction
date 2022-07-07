@@ -494,37 +494,47 @@
     </div>
 </section>
 <section>
-    <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Name</label>
-                                <input type="text" placeholder="Enter Your Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" placeholder="Enter Your Email" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark">Submit</button>
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+      <form action="{{url('/signup')}}" method="post">
+          <input type="hideen" name="_token" value="{{csrf_token()}}" >
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Name</label>
+                              <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Email</label>
+                              <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-dark">Submit</button>
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              </div>
+          </div>
+      </div>
+      </form>
+  </div>
 </section>
+<script type="text/javascript">
+  $(function(){
+    $("#signup-for-newsletter").on("click", function() {
+        $("#newsltterModel").modal("show");
+    });
+  })
+  </script>
 </html>
