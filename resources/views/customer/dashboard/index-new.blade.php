@@ -460,8 +460,7 @@
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
                                 SAMPLE SET</button>
                             <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='https://qimaauction.skylinxtech.com/index-new/' ">VIEW
-                                WINNING COFFEES</button>
+                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">REGISTER FOR AUCTION</button>
                         </div>
                     </div>
                 </div>
@@ -624,24 +623,21 @@
                     <img src="{{ asset('public/images/bestofyemen.png') }}">
                     <h2>INTERNATIONAL JURY</h2>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-right:0;margin-left:0">
                     <div class="col-2  img-size">
                         <img src="{{ asset('public/images/1.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/2.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/2.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/3.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/4.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/5.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/6.png') }}" alt=""></div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/7.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/8.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/8.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/9.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/10.png') }}" alt="">
                     </div>
@@ -650,13 +646,11 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/13.png') }}" alt="">
                     </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/14.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/16.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/17.png') }}" alt="">
@@ -666,13 +660,11 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/19.png') }}" alt="">
                     </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/20.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/22.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/23.png') }}" alt="">
@@ -682,13 +674,11 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/25.png') }}" alt="">
                     </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/26.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/28.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/29.png') }}" alt="">
@@ -814,6 +804,8 @@
     </section>
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+            <form action="{{url('/signup')}}" method="post">
+                <input type="hideen" name="_token" value="{{csrf_token()}}" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -827,23 +819,24 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" class="form-control">
+                                    <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Email</label>
-                                    <input type="text" placeholder="Enter Your Email" class="form-control">
+                                    <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark">Submit</button>
+                        <button type="submit" class="btn btn-dark">Submit</button>
                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </section>
 </body>

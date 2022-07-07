@@ -231,8 +231,8 @@
 
     <script>
         $(document).ready(function() {
-            var socket = io('http://localhost:5002');
-            //   var socket = io('<?= env('SOCKETS') ?>');
+            // var socket = io('http://localhost:5002');
+              var socket = io('<?= env('SOCKETS') ?>');
             socket.on('add_bid_updates', function(data) {
                 $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
                 $("#paddleNo" + data.bidID).html(data.paddleNo);

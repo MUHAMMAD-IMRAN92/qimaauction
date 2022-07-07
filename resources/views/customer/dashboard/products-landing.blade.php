@@ -254,7 +254,7 @@
 <body>
 
   <nav class="navbar navbar-fix">
-    <div id="width"><a href="{{url ('/index-new')}}"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
+    <div id="width"><a href="{{url ('/')}}"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
         </a>
     </div>
     <div>
@@ -408,8 +408,8 @@
         <div class="col-md-6">
         <div class="farmer_cutting">
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
-        <h3>the human behind the coffee</h3>
-        <p style="margin-bottom: 0;">{{$winningCoffeesData->farmer_story}}
+        <h3>the story behind the coffee</h3>
+        <p style="margin-bottom: 0;">{!!$winningCoffeesData->farmer_story!!}
           </p>
         </div>
         </div>
@@ -494,37 +494,56 @@
     </div>
 </section>
 <section>
-    <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Name</label>
-                                <input type="text" placeholder="Enter Your Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" placeholder="Enter Your Email" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark">Submit</button>
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+      <form action="{{url('/signup')}}" method="post">
+          <input type="hideen" name="_token" value="{{csrf_token()}}" >
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Name</label>
+                              <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Email</label>
+                              <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-dark">Submit</button>
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              </div>
+          </div>
+      </div>
+      </form>
+  </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+  $(function(){
+    $("#signup-for-newsletter").on("click", function() {
+        $("#newsltterModel").modal("show");
+    });
+  })
+  </script>
 </html>
