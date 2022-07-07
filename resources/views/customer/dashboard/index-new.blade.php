@@ -265,9 +265,6 @@
         display:flex;
         flex-direction: column;
         justify-content: center;
-
-
-
     }
 
    .border-vl .para{
