@@ -626,12 +626,11 @@
                     <img src="{{ asset('public/images/bestofyemen.png') }}">
                     <h2>INTERNATIONAL JURY</h2>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-right:0;margin-left:0">
                     <div class="col-2  img-size">
                         <img src="{{ asset('public/images/1.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/2.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/2.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/3.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/4.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/5.png') }}" alt=""></div>
@@ -641,8 +640,7 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/7.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/8.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/8.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/9.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/10.png') }}" alt="">
                     </div>
@@ -655,8 +653,7 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/14.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/16.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/17.png') }}" alt="">
@@ -670,8 +667,7 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/20.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/22.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/23.png') }}" alt="">
@@ -685,8 +681,7 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/26.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""
-                            width:60></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/28.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/29.png') }}" alt="">
