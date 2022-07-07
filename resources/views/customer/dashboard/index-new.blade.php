@@ -808,6 +808,7 @@
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
             <form action="{{url('/signup')}}" method="post">
+                {{csrf_token()}}
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
