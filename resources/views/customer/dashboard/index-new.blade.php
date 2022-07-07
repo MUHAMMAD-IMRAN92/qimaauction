@@ -807,6 +807,7 @@
     </section>
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+            <form action="{{url('/signup')}}" method="post">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -832,11 +833,12 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark">Submit</button>
+                        <button type="submit" class="btn btn-dark">Submit</button>
                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </section>
 </body>
