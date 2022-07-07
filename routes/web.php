@@ -22,9 +22,7 @@ Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winnin
 Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
-// Route::view('/product/7189', 'customer.dashboard.products-landing');
 
-// Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
