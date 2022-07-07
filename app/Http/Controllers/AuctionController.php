@@ -14,6 +14,7 @@ use App\Models\Image;
 use App\Models\SingleBid;
 use App\Models\User;
 use App\Models\WinningCofees;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -395,5 +396,13 @@ return response()->json($auction_products);
     {
         $winningCoffeesData =   WinningCofees::where('code',$id)->with('images')->first();
         return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
+    }
+
+    public function newslettersignup(Request $request){
+        $news = new Newsletter();
+        $news->name = $request->name;
+        $news->email = $request->email;
+        $news->save();
+        return redirect('/');
     }
 }

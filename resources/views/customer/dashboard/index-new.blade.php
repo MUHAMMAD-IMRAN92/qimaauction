@@ -821,13 +821,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" class="form-control">
+                                    <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Email</label>
-                                    <input type="text" placeholder="Enter Your Email" class="form-control">
+                                    <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
                                 </div>
                             </div>
                         </div>
