@@ -304,7 +304,6 @@ tr.hide-table-padding td {
             .alertmsg
             {
                 background: #DBFFDA;
-                margin-top: 120px;
             }
             .errormsgautobid
             {
@@ -365,11 +364,6 @@ tr.hide-table-padding td {
             line-height: 25px;
             /* identical to box height */
             color: #FFFFFF;
-        }
-
-        .alertmsg {
-            background: #DBFFDA;
-            margin-top: 120px;
         }
 
         .errormsgautobid {
@@ -903,8 +897,16 @@ tr.hide-table-padding td {
                     var bidderLiablity  =   response.liablity;
                     var bidderID        =   response.user_id;
                     var bidderMaxBid    =   response.bidderMaxAmount;
+                    var autoBidmax      =   response.autoBidmaxData;
                     $('.errorMsgAutoBid'+id).html('');
-                    $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is confirmned.</p>');
+                    if(bidPrice < autoBidmax)
+                    {
+                        $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is outed.</p>');
+                    }
+                    else
+                    {
+                        $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is confirmed.</p>');
+                    }
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
@@ -959,6 +961,31 @@ tr.hide-table-padding td {
                     },
                     success: function(response) {
                         console.log(response);
+                        console.log(response);
+                        var bidPrice        =   response.bid_amountNew;
+                        var bidID           =   response.auction_product_id;
+                        var increment       =   response.bidIncrement;
+                        var paddleNo        =   response.userPaddleNo;
+                        var nextIncrement   =   +increment + +bidPrice;
+                        var outbid          =   response.outAutobid;
+                        var autobidUserID   =   response.autoBidUser
+                        var bidderLiablity  =   response.liablity;
+                        var bidderID        =   response.user_id;
+                        var bidderMaxBid    =   response.bidderMaxAmount;
+                        $('.errorMsgAutoBid'+id).html('');
+                    socket.emit('add_bid_updates', {
+                        "singleBidammounttesting": bidPrice,
+                        "bidID": bidID,
+                        "increment":increment,
+                        "paddleNo":paddleNo,
+                        "nextIncrement":nextIncrement,
+                        "outbidresponse":outbid,
+                        "autobidUserID":autobidUserID,
+                        "bidderLiablity":bidderLiablity,
+                        "bidderID":bidderID,
+                        // "bidderMaxBid":bidderMaxBid,
+                    });
+                    $('.errorMsgAutoBid'+id).html('');
                         $('.errorMsgAutoBid'+id).html('<p>Current autobid is $'+ autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+id+'>Remove</a>}</p>');
                         $('.autobidamount'+id).val('');
                         $('.alertMessage'+id).html('');
