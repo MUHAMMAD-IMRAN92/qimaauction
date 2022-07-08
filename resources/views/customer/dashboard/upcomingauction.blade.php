@@ -212,7 +212,7 @@
                 border-width: 1px 0px;
                 border-style: solid;
                 border-color: #9C9C9C;
-
+            }
         .auctiontable tbody tr td a {
             font-family: 'Open Sans';
             font-style: normal;

@@ -72,8 +72,12 @@ let clients = 0
 var sockets = {};
 var arr = [];
 io.on('connection', function (socket) {
-    socket.on('add_bid_updates', function (data) {
-        io.emit('add_bid_updates', {"singleBidammounttesting": data.singleBidammounttesting, "bidID": data.bidID, "paddleNo": data.paddleNo, "increment": data.increment, "nextIncrement": data.nextIncrement, "outbidresponse": data.outbidresponse, "userID": data.userID, });
+// socket.on('message_get', function (data) {
+// io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
+// });
+
+socket.on('add_bid_updates', function (data) {
+    io.emit('add_bid_updates', { "singleBidammounttesting":data.singleBidammounttesting,"bidID":data.bidID,"paddleNo":data.paddleNo,"increment":data.increment,"nextIncrement":data.nextIncrement,"outbidresponse":data.outbidresponse,"userID": data.userID,"autobidUserID":data.autobidUserID,"bidderLiablity":data.bidderLiablity,"bidderID":data.bidderID,"bidderMaxBid":data.bidderMaxBid,});
     });
     socket.on('disconnect', function () {
         if (sockets[socket.id] != undefined) {
