@@ -848,7 +848,7 @@
                         "nextIncrement":nextIncrement,
                         "outbidresponse":outbid,
                         "userID":userID,
-                        "new":ok
+                        "new":"ok"
                     });
 
                     //
