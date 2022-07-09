@@ -72,6 +72,7 @@ let clients = 0
 var sockets = {};
 var arr = [];
 io.on('connection', function (socket) {
+    console.log("got from qimaauction.js");
     socket.on('add_bid_updates', function (data) {
         io.emit('add_bid_updates', {"singleBidammounttesting": data.singleBidammounttesting, "bidID": data.bidID, "paddleNo": data.paddleNo, "increment": data.increment, "nextIncrement": data.nextIncrement, "outbidresponse": data.outbidresponse, "userID": data.userID, });
     });
