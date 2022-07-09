@@ -919,6 +919,7 @@ tr.hide-table-padding td {
                         "autobidUserID":autobidUserID,
                         "bidderLiablity":bidderLiablity,
                         "bidderID":bidderID,
+                        "new":"ok"
                         // "bidderMaxBid":bidderMaxBid,
                     });
                 },
