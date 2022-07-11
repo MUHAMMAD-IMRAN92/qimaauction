@@ -491,7 +491,7 @@ tr.hide-table-padding td {
                     <tbody>
                         @foreach ($auctionProducts as $auctionProduct)
                             <tr class="text-center bidcollapse{{ $auctionProduct->id }}">
-                                <td>Rank{{ $auctionProduct->rank }}</td>
+                                <td>{{ $auctionProduct->rank }}</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>{{ $auctionProduct->size }}</td>
