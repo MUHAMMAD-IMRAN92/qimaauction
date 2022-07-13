@@ -40,8 +40,8 @@ var https = require('https');
 var fs = require('fs');
 var express = require('express');
 var options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
+    // key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
+    // cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
     requestCert: false,
     rejectUnauthorized: false
 };
@@ -57,7 +57,7 @@ app.use(function (req, res, next) {
 
 const cors = require('cors');
 //const app = express();
-let port = 5003;
+let port = 5002;
 
 //app.use(express.static('public'));
 app.use(cors());
