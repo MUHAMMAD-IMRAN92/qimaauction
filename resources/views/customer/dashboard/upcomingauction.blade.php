@@ -151,9 +151,68 @@
             line-height: 16px;
             text-align: center;
 
-            color: #000000;
-        }
-
+                /* color: #FFFFFF; */
+            }
+            .auctiontable tbody tr td
+            {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 29px;
+                /* text-align: center; */
+                color: #000000;
+            }
+            .auctiontabs a.active
+            {
+                background: #D1AF69 !important;
+                border-width: 1px 1px 0px 1px;
+                border-style: solid;
+                border-color: #9C9C9C;
+                border-radius: 10px 10px 0px 0px;
+            }
+            .changecolor
+            {
+                background: #FFFEA2;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
+            .changecolorred
+            {
+                background:red;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
+            .changebuttontext
+            {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 25px;
+                /* identical to box height */
+                color: #FFFFFF;
+            }
+            .alertmsg
+            {
+                background: #DBFFDA;
+                margin-top: 120px;
+            }
+            .errormsgautobid
+            {
+                background: #DBFFDA;
+                margin-top: 12px;
+            }
+            .liabilitytable thead
+            {
+                box-sizing: border-box;
+                background: #E5E5E5;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
         .auctiontable tbody tr td a {
             font-family: 'Open Sans';
             font-style: normal;
@@ -801,6 +860,7 @@
                         "nextIncrement":nextIncrement,
                         "outbidresponse":outbid,
                         "userID":userID,
+                        "new":"ok"
                     });
 
                     //
@@ -815,6 +875,7 @@
         $(".autobid").on("click", function(e) {
             e.preventDefault();
             $('.errorMsgAutoBid'+id).html('');
+            $(".waiting"+id).html('Open');
             var id               = $(this).attr('data-id');
             var currentBidPrice  = $('.bidData1'+id).html().replace(/[^0-9]/gi, '');
             var autobidamount    = $('.autobidamount'+id).val();
@@ -926,8 +987,9 @@
             $('.errorMsgAutoBid'+data.bidID).html('');
             $(".singlebidClass"+data.bidID ).css("display", "block");
             $(".autobidClass"+data.bidID ).css("display", "block");
-            $('.errorMsgAutoBid'+data.bidID).html('Your lost your Bid is Outed.');
-        }       
+            $(".bidcollapse"+data.bidID).addClass("changecolorred");
+            $('.errorMsgAutoBid'+data.bidID).html('You lost your Bid is Outed.');
+        }
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".bidData3" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');

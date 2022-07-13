@@ -13,6 +13,8 @@ use App\Models\Process;
 use App\Models\Image;
 use App\Models\SingleBid;
 use App\Models\User;
+use App\Models\WinningCofees;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +30,7 @@ class AuctionController extends Controller
         return view('admin.auction.index');
 
     }
- 
+
     public function auctionProducts($id)
     {
 
@@ -234,15 +236,8 @@ return response()->json($auction_products);
         $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
         $auctionProducts        =   AuctionProduct::with('products')->get();
-        // foreach ($auctionProducts   as $key => $value) {
-        //    if(isset($value->latestAutoBidPrice))
-        //    {
-        //     dump( $value->latestAutoBidPrice->bid_amount);
-        //    }
-        // }
-        // dd("dhhd");
         $agreement              =   AcceptAgreement::where('user_id',$user)->first();
-        return view('customer.dashboard.upcomingauction',compact('auctionProducts','auction','agreement'));
+        return view('customer.auction_pages.auction_home3',compact('auctionProducts','auction','agreement'));
     }
     public function singleBidData(Request $request)
     {
@@ -260,80 +255,200 @@ return response()->json($auction_products);
             $singleBid->user_id             =   Auth::user()->id;
             $singleBid->auction_product_id  =   $request->id;
             $singleBid->save();
-            $singleBidStartPrice            =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
-            $bidLimit                       =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
-            $bidIncrementNew                =   $bidLimit[0]->increment;
-            $singleBid->bidIncrement        =   $bidIncrementNew;
-            $userPaddleNum                  =   Auth::user()->paddle_number;
-            $singleBid->user_paddleNo       =   $userPaddleNum;
-            return response()->json($singleBid);
-        }
-        else
-        {
-            $singleBidStartPrice                =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
-            $auctionPStartPrice                 =   AuctionProduct::where('id',$request->id)->first();
-            $bidLimit                           =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
-            $bidIncrement                       =   $bidLimit[0]->increment;
-            $singleBidData                      =   new SingleBid();
-            $singleBidData->bid_amount          =   $auctionPStartPrice->start_price;
-            $singleBidData->auction_id          =   $auctionPStartPrice->auction_id;
-            $singleBidData->user_id             =   Auth::user()->id;
-            $singleBidData->auction_product_id  =   $request->id;
-            $newbidPrice                        =   $bidIncrement + $singleBidStartPrice;
-            $singleBidData->bid_amount          =   $newbidPrice;
-            $singleBidData->save();
-            $autoBidsData                       =   AutoBid::where('auction_product_id',$request->id)->where('is_active','1')->get();
-            foreach($autoBidsData as $autoBids)
-            {
+
+            // if autobid
+            $autoBidsData                       =   AutoBid::where('auction_product_id',$request->id)->where('is_active','1')->first();
+            // foreach($autoBidsData as $autoBids)
+            // {
+                if(isset($autoBidsData))
+                {
                 $singleBidStartPrice          =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
                 $bidLimit                     =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
                 $bidIncrement                 =   $bidLimit[0]->increment;
                 $autoBid                      =   new SingleBid();
-                $autoBid->auction_id          =   $autoBids->auction_id;
-                $autoBid->user_id             =   $autoBids->user_id;
+                $autoBid->auction_id          =   $autoBidsData->auction_id;
+                $autoBid->user_id             =   $autoBidsData->user_id;
                 $autoBid->auction_product_id  =   $request->id;
                 $newbidPrice                  =   $bidIncrement + $singleBidStartPrice;
-                if($newbidPrice >= $autoBids->bid_amount)
+                if($newbidPrice >= $autoBidsData->bid_amount)
                 {
-                    $currentAutoBid             =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBids->user_id)->update([
+                    $currentAutoBid             =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBidsData->user_id)->update([
                         'is_active'=>'0'
                     ]);
-                    $latestAutoBid                   =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBids->user_id)->orderBy('created_at','desc')->first();
+                    $latestAutoBid                   =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBidsData->user_id)->orderBy('created_at','desc')->first();
                     $isActive                        =   $latestAutoBid->is_active;
-                    $singleBidData->outAutobid       =   $isActive;
-                    $singleBidData->autoBidUserID    =   $autoBids->user_id;
+                    $singleBid->outAutobid       =   $isActive;
+                    $singleBid->autoBidUser      =   $autoBidsData->user_id;
                 }
                 else
                 {
                     $autoBid->bid_amount          =   $newbidPrice;
                     $autoBid->save();
                 }
-
             }
-            $singleBidPricelatest            =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
-            // $singleBidData->bid_amount       =    $singleBidPricelatest;
-            // $bidAmoutLatest               =   $singleBidPricelatest->bid_amount;
-            $bidLimit                        =   Bidlimit::where('min','<',$singleBidPricelatest)->orderBy('min','desc')->limit(1)->get();
-            $bidIncrementLatest              =   $bidLimit[0]->increment;
-            // $latestBidIncrement              =   $bidIncrementLatest + $singleBidPricelatest;
-            // dd($latestBidIncrement);
-            $singleBidData->bidIncrement     =   $bidIncrementLatest;
 
-            // $userPaddleNum                  =   User::where('id',$singleBidPricelatest->user_id)->first()->paddle_number;
-            //  dd( $userPaddleNum );
-            // $singleBidData->bidIncrement        =   $bidIncrement;
-            // $singleBidData->user_paddleNo       =   $userPaddleNum;
+            $singleBid->bid_amountNew       =   $newbidPrice;
+            $singleBidStartPrice            =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
+            $bidAmount                      =   $singleBidStartPrice->bid_amount;
+            $bidLimit                       =   Bidlimit::where('min','<',$bidAmount)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrementNew                =   $bidLimit[0]->increment;
+            $singleBid->bidIncrement        =   $bidIncrementNew;
+            $userPaddleNum                  =   User::where('id',$singleBidStartPrice->user_id)->first()->paddle_number;
+            // $singleBid->user_paddleNo       =   $userPaddleNum;
+            $userPaddleNum                  =   User::where('id',$singleBidStartPrice->user_id)->first()->paddle_number;
+            $singleBid->userPaddleNo        =    $userPaddleNum;
+
+            // $singleBidMaxpriceUser          =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $auctionProduct                 =   AuctionProduct::where('id',$request->id)->first()->weight;
+            $totalLiabilty                  =   $bidAmount * $auctionProduct;
+            $singleBid->bidderMaxAmount     =   $bidAmount;
+            $inc                            =   $bidAmount + $bidIncrementNew;
+            $totalLiabilty                  =   $inc * $auctionProduct;
+            $singleBid->liablity            =   $totalLiabilty;
+            return response()->json($singleBid);
+        }
+        else
+        {
+            $auctionPStartPrice                 =   AuctionProduct::where('id',$request->id)->first();
+            $singleBidStartPrice                =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $bidLimit                           =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrement                       =   $bidLimit[0]->increment;
+            $singleBidData                      =   new SingleBid();
+            // $singleBidData->bid_amount          =   $auctionPStartPrice->start_price;
+            $singleBidData->auction_id          =   $auctionPStartPrice->auction_id;
+            $singleBidData->user_id             =   Auth::user()->id;
+            $singleBidData->auction_product_id  =   $request->id;
+            $newbidPrice                        =   $bidIncrement + $singleBidStartPrice;
+            $singleBidData->bid_amount          =   $newbidPrice;
+            $singleBidData->save();
+            $autoBidsData                       =   AutoBid::where('auction_product_id',$request->id)->where('is_active','1')->first();
+            // foreach($autoBidsData as $autoBids)
+            // {
+                if(isset($autoBidsData))
+                {
+                $singleBidStartPrice          =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+                $bidLimit                     =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
+                $bidIncrement                 =   $bidLimit[0]->increment;
+                $autoBid                      =   new SingleBid();
+                $autoBid->auction_id          =   $autoBidsData->auction_id;
+                $autoBid->user_id             =   $autoBidsData->user_id;
+                $autoBid->auction_product_id  =   $request->id;
+                $newbidPrice                  =   $bidIncrement + $singleBidStartPrice;
+                if($newbidPrice >= $autoBidsData->bid_amount)
+                {
+                    $currentAutoBid             =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBidsData->user_id)->update([
+                        'is_active'=>'0'
+                    ]);
+                    $latestAutoBid                   =   AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBidsData->user_id)->orderBy('created_at','desc')->first();
+                    $isActive                        =   $latestAutoBid->is_active;
+                    $singleBidData->outAutobid       =   $isActive;
+                    $singleBidData->autoBidUser      =   $autoBidsData->user_id;
+                }
+                else
+                {
+                    $autoBid->bid_amount          =   $newbidPrice;
+                    $autoBid->save();
+                }
+            }
+            // }
+            $singleBidPricelatest               =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
+            // dd($singleBidPricelatest);
+            $bidAmountL                         =   $singleBidPricelatest->bid_amount;
+            $bidLimit                           =   Bidlimit::where('min','<',$bidAmountL)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrementLatest                 =   $bidLimit[0]->increment;
+            $singleBidData->bidIncrement        =   $bidIncrementLatest;
+            $singleBidData->bid_amountNew       =   $bidAmountL;
+            $autoBidmax                         =   AutoBid::where('auction_product_id',$request->id)->where('is_active','1')->orderBy('bid_amount','desc')->first();
+            if(isset($autoBidmax))
+            {
+                $autoBidmaxAmount                   =  $autoBidmax->bid_amount;
+                $singleBidData->autoBidmaxData      =   $autoBidmaxAmount;
+            }
+            $userPaddleNum                      =   User::where('id',$singleBidPricelatest->user_id)->first()->paddle_number;
+            $singleBidData->userPaddleNo        =    $userPaddleNum;
+
+            // $singleBidMaxpriceUser              =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $auctionProduct                     =   AuctionProduct::where('id',$request->id)->first()->weight;
+            $inc                                =   $bidAmountL + $bidIncrementLatest;
+            $totalLiabilty                      =   $inc * $auctionProduct;
+            // $singleBidData->bidderMaxAmount     =   $bidIncrementLatest;
+            $singleBidData->liablity            =   $totalLiabilty;
             return response()->json($singleBidData);
         }
     }
     public function autoBidData(Request $request)
     {
+        $checkSingleBid                     =   SingleBid::where('auction_product_id',$request->id)->first();
+        if(!isset($checkSingleBid,$checkSingleBid->bid_amount))
+        {
+            $auctionPData                   =   AuctionProduct::where('id',$request->id)->first();
+            $auctionProductPrice            =   $auctionPData->start_price;
+            $bidLimit                       =   Bidlimit::where('min','<',$auctionProductPrice)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrement                   =   $bidLimit[0]->increment;
+            $newbidPrice                    =   $bidIncrement + $auctionProductPrice;
+            $singleBid                      =   new SingleBid();
+            $singleBid->bid_amount          =   $newbidPrice;
+            $singleBid->auction_id          =   $auctionPData->auction_id;
+            $singleBid->user_id             =   Auth::user()->id;
+            $singleBid->auction_product_id  =   $request->id;
+            $singleBid->save();
+
+            $singleBid->bid_amountNew       =   $newbidPrice;
+            $singleBidStartPrice            =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
+            $bidAmount                      =   $singleBidStartPrice->bid_amount;
+            $bidLimit                       =   Bidlimit::where('min','<',$bidAmount)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrementNew                =   $bidLimit[0]->increment;
+            $singleBid->bidIncrement        =   $bidIncrementNew;
+            $userPaddleNum                  =   User::where('id',$singleBidStartPrice->user_id)->first()->paddle_number;
+            // $singleBid->user_paddleNo       =   $userPaddleNum;
+            $userPaddleNum                  =   User::where('id',$singleBidStartPrice->user_id)->first()->paddle_number;
+            $singleBid->userPaddleNo        =    $userPaddleNum;
+
+            // $singleBidMaxpriceUser          =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $auctionProduct                 =   AuctionProduct::where('id',$request->id)->first()->weight;
+            $totalLiabilty                  =   $bidAmount * $auctionProduct;
+            $singleBid->bidderMaxAmount     =   $bidAmount;
+            $inc                            =   $bidAmount + $bidIncrementNew;
+            $totalLiabilty                  =   $inc * $auctionProduct;
+            $singleBid->liablity            =   $totalLiabilty;
+        }
             $autoBidData                      =   new AutoBid();
             $autoBidData->auction_id          =   $request->auctionid;
             $autoBidData->user_id             =   Auth::user()->id;
             $autoBidData->auction_product_id  =   $request->id;
             $autoBidData->bid_amount          =   $request->autobidamount;
             $autoBidData->save();
+            $autobids                         =   AutoBid::where('auction_product_id',$request->id)->where('is_active','1')->orderBy('created_at','desc')->first();
+            $singleBidPricelatest             =   SingleBid::where('auction_product_id',$request->id)->where('user_id',$autobids->user_id)->orderBy('bid_amount','desc')->first();
+            if(!isset($singleBidPricelatest))
+            {
+                $singleBidStartPrice            =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+                $bidLimit                       =   Bidlimit::where('min','<',$singleBidStartPrice)->orderBy('min','desc')->limit(1)->get();
+                $bidIncrement                   =   $bidLimit[0]->increment;
+                $singleBid                      =   new SingleBid();
+                $singleBid->auction_id          =   $autobids->auction_id;
+                $singleBid->user_id             =   $autobids->user_id;
+                $singleBid->auction_product_id  =   $request->id;
+                $newbidPrice                    =   $bidIncrement + $singleBidStartPrice;
+                $singleBid->bid_amount          =   $newbidPrice;
+                $singleBid->save();
+            }
+            $singleBidPricelatest               =   SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
+            // dd($singleBidPricelatest);
+            $bidAmountL                         =   $singleBidPricelatest->bid_amount;
+            $bidLimit                           =   Bidlimit::where('min','<',$bidAmountL)->orderBy('min','desc')->limit(1)->get();
+            $bidIncrementLatest                 =   $bidLimit[0]->increment;
+            $autoBidData->bidIncrement        =   $bidIncrementLatest;
+            $autoBidData->bid_amountNew       =   $bidAmountL;
+            $userPaddleNum                      =   User::where('id',$singleBidPricelatest->user_id)->first()->paddle_number;
+            $autoBidData->userPaddleNo        =    $userPaddleNum;
+
+            // $singleBidMaxpriceUser              =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
+            $auctionProduct                     =   AuctionProduct::where('id',$request->id)->first()->weight;
+            $inc                                =   $bidAmountL + $bidIncrementLatest;
+            $totalLiabilty                      =   $inc * $auctionProduct;
+            // $singleBidData->bidderMaxAmount     =   $bidIncrementLatest;
+            $autoBidData->liablity            =   $totalLiabilty;
             return response()->json($autoBidData);
     }
 
@@ -361,7 +476,7 @@ return response()->json($auction_products);
     public function prductBiddingDetail($id)
     {
         $auctionId = base64_decode($id);
-          $auction_products = AuctionProduct::with('products')->get();                          
+          $auction_products = AuctionProduct::with('products')->get();
            $products = Product::with('region','village','governorate','reviews')->get();
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
     }
@@ -391,5 +506,22 @@ return response()->json($auction_products);
         // $agreement              =   AcceptAgreement::where('user_id',$user)->first();
         return view('customer.auction_pages.auction_home2',compact('auctionProducts','auction'));
     }
+    public function winningCoffee()
+    {
+        $winningCoffees =   WinningCofees::all();
+        return view('customer.dashboard.index-new',compact('winningCoffees'));
+    }
+    public function winningCoffeeProducts($id)
+    {
+        $winningCoffeesData =   WinningCofees::where('code',$id)->with('images')->first();
+        return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
+    }
 
+    public function newslettersignup(Request $request){
+        $news = new Newsletter();
+        $news->name = $request->name;
+        $news->email = $request->email;
+        $news->save();
+        return redirect('/');
+    }
 }

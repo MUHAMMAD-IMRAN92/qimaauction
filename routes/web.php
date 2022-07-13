@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'customer.dashboard.index');
-Route::view('/index-new', 'customer.dashboard.index-new');
+// Route::view('/', 'customer.dashboard.index');
+Route::post('signup',[App\Http\Controllers\AuctionController::class, 'newslettersignup']);
+Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
+// Route::view('/index-new', 'customer.dashboard.index-new');
+Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
+Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
-Route::view('/product/7189', 'customer.dashboard.products-landing');
 
-// Route::view('/auction-home2', 'customer.auction_pages.auction_home2');
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){

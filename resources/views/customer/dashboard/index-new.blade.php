@@ -24,82 +24,147 @@
     <!-- Fonts End      -->
 </head>
 <style>
+    .section-2-text b p {
+        color: black;
+        /* color: #fff; */
+        font-size: large;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 29px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .section-2-logos img {
+        height: auto;
+        width: 155px;
+        margin-bottom: 20px;
+    }
+
     .style-td-1 {
         font-size: 22px;
         color: #232B38;
         font-weight: 700;
+
         border-bottom: 1px solid black;
         font-family: 'Montserrat';
-        padding:10px;
+        padding: 10px;
+        line-height: normal;
+
+
+
+
+
+
+
+
+
     }
+
     .style-td-2 {
         font-weight: 600;
         color: #E78460;
         font-size: 47px;
+
         font-family: 'Montserrat';
+        padding: 10px;
         border-bottom: 1px solid black;
-        padding:10px;
+
+
     }
+
     .style-td-3 {
         font-family: 'Montserrat';
         line-height: 25px;
+        padding: 10px;
         /* display: flex; */
         align-items: #232B37;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 14px;
         color: #232B38;
         padding: 10px;
+
         border-bottom: 1px solid black;
+
+
     }
+
     .style-td-4 {
         font-family: 'Montserrat';
         font-weight: 600;
         color: #232B38;
         font-size: 22px;
-        padding:10px;
+        padding: 10px;
+        padding: 3px;
         border-bottom: 1px solid black;
+
+
+
     }
+
     .style-td-5 {
         font-family: 'Montserrat';
         line-height: 20px;
         color: #232B38;
+        padding: 10px;
+
         font-size: 20px;
         border-bottom: 1px solid black;
         font-weight: 600;
-        padding:10px;
+
     }
+
     .style-td-6 {
         font-family: 'Montserrat';
         line-height: 39px;
         color: #232B38;
-        padding:10px;
+        padding: 3px;
         font-size: 24px;
+        padding: 10px;
+
         border-bottom: 1px solid black;
         font-weight: 700;
+
+
+
     }
+
     .style-td-6 button {
         font-size: 20px;
         background: black;
         color: white;
+
         padding: 3px;
         border-bottom: 1px solid black;
+
     }
+
     #winc {
         text-align: center;
         color: #232B38;
-        margin-top: 30px;
-        margin-bottom: 30px;
+
+        margin-bottom: 10px;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
-        font-size: 64px;
+        font-size: 50px;
         line-height: 78px;
+
+
+
         color: #232B38;
     }
+
+
     table {
         margin-top: 60px;
         margin-bottom: 100px;
     }
+
     .rank {
         font-family: 'Montserrat';
         font-style: normal;
@@ -107,222 +172,260 @@
         font-size: 62px;
         line-height: 80px;
         border-bottom: 1px solid black;
+
+
+
+
+
+
         color: #E78460;
         padding: 10px;
+
     }
+
     tr th {
         font-weight: 400;
     }
+
     .imgh2 {
         text-align: center;
         margin-top: 50px;
+
     }
+
     .imgh2 h2 {
-        margin-top: 10px;
+        margin-top: 20px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 49px;
+
+        text-transform: uppercase;
+
+        color: #232B38;
+
     }
+
     .img-size img {
-      width: -webkit-fill-available;
+
+        width: -webkit-fill-available;
     }
+
     .button {
         text-align: center;
         margin-top: 20px;
         margin-bottom: 50px;
         margin-left: 10px;
-        padding: 10px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
     }
+
+    .button h5 {
+        padding: 10px;
+        margin-bottom: 0px;
+    }
+
     .button button {
         background-color: black;
         color: white;
-        padding: 8px;
-        border-radius: 5px;
-    }
-    .button button a {
-        color: white;
-        text-decoration: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500 !important;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-feature-settings: 'kern'off;
 
+        color: #FFFFFF;
+        border-radius: 5px;
+        padding: 10px;
     }
+    .button button a{
+        text-decoration: none;
+        color: #fff;
+    }
+
     .vl {
         border-right: 1px solid black;
         height: 100px;
+
         display: flex;
-        text-align: justify;
+        /* text-align: justify; */
         align-items: center;
         padding: 10px;
     }
+    .border-vl{
+        border-right: 1px solid black;
+        height: 100px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+   .border-vl .para{
+
+
+   }
+   .table-row
+   {
+    font-family: 'Montserrat';
+    font-size: 13px;
+
+   }
+
     @media all and (max-width : 1050px) {
         .table-row {
             font-size: 10px;
         }
+
         #winc {
             font-size: 54px;
         }
+
         .style-td-1 {
+
             font-size: 15px;
 
         }
+
         .rank {
             font-size: 30px;
 
         }
+
         .style-td-2 {
             font-size: 26px;
 
         }
+
         .style-td-3 {
             font-size: 11px;
             line-height: normal;
+
         }
+
         .style-td-4 {
             font-size: 15px;
+
         }
+
         .style-td-5 {
 
             font-size: 15px;
+
         }
+
         .style-td-6 {
             font-size: 20px;
 
         }
+
         .button button {
             font-size: 12px;
 
         }
+
         .button button h5 {
             font-size: 20px;
         }
+
+        .imgh2 h2 {
+            font-size: 25px;
+        }
+
     }
+
     @media all and (max-width : 770px) {
-        .table-row {
-            font-size: 10px;
+
+
+        .button button h5 {
+            font-size: 15px;
         }
 
-        .imgh2 img {
-            width: 100px;
+        .imgh2 h2 {
+            font-size: 15px;
         }
 
-        #winc {
-            font-size: 44px;
-        }
-        .style-td-1 {
-
-            font-size: 8px;
-
-        }
-
-        .rank {
-            font-size: 16px;
-
-        }
-
-        .style-td-2 {
-            font-size: 16px;
-
-        }
-        .style-td-3 {
-            font-size: 8px;
-
-        }
-
-        .style-td-4 {
-            font-size: 9px;
-
-        }
-
-        .style-td-5 {
-
-            font-size: 9px;
-
-        }
-
-        .style-td-6 {
-            font-size: 13px;
-
-        }
 
     }
 
     @media all and (max-width : 600px) {
-        .button {
-            padding: 0px;
-        }
-
-        #winc {
-            font-size: 34px;
-        }
-
-        .justify {
-            justify-content: flex-end;
-        }
-
-        .table-row {
-            font-size: 7px;
-        }
-
-        .table-row .genetics {
-            display: none;
-
-        }
-
-        .table-row .process {
-            display: none;
-        }
-
-        .style-td-5 {
-            display: none;
-        }
-
-        .style-td-1 {
-            padding: 0px font-size:6px;
-
-
-        }
-
-        .rank {
-            font-size: 10px;
-            padding: 0px;
-
-        }
-
-        .style-td-2 {
-            font-size: 10px;
-            padding: 0px;
-        }
-
-        .style-td-3 {
-            font-size: 8px;
-            padding: 0px;
-
-        }
-
-        .style-td-4 {
-            font-size: 7px;
-            padding: 0px;
-
-        }
-
-        .style-td-5 {
-
-            font-size: 7px;
-            padding: 0px;
-
-        }
-
-        .style-td-6 {
-            display: none;
-
-
-        }
 
         .button button {
             font-size: 8px;
         }
+        .banner-btn button{
+            font-size:11px;
+        }
     }
+    @media only screen and (max-width: 1440px) and (min-width: 1024px)
+        {
+            .banner-btn button {
+            font-size: 20px !important;
+            }
+        }
+
 
     @media all and (max-width : 500px) {
         .button button {
-            font-size: 3px;
+            border: 1px solid black;
+            font-size: 8px;
+            padding: 5px;
+            line-height: 10px;
+        }
+        .button button a
+        {
+            font-weight: 600;
+        }
+
+        .button {
+
+            /* display: flex; */
+            padding: 0px;
+            margin-top: 40px;
+            margin-left: 0px;
         }
     }
+
+    .banner-btn {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .banner-btns {
+        border-color: #fff !important;
+        background-color: unset;
+        padding: 10px;
+        font-family: 'Montserrat';
+        font-weight: 600;
+        /* font-family: 'Montserrat' */
+    }
+    @media only screen and (max-width:1300px){
+        .custom_table_reponsive{
+            width: 100%;
+            display:block;
+            overflow-x:auto !important;
+        }
+    }
+    a.btn-outline-dark {
+    font-family: 'Montserrat';
+    font-size: 17px;
+    font-weight: 600;
+    border: 3px solid #232B38;
+    border-radius: 5px;
+    padding: 16px;
+    margin-top: 10px;
+}
+.fourth_col{
+    border-right: 1px solid black;
+    height: 100px;
+}
 </style>
 
 <body>
@@ -353,14 +456,11 @@
 
                         </div>
                         <div class="my-3 banner-btn">
-                            <button type="button" style="border-color:#fff !important;background-color: unset;"
-                                class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">Purchase
-                                Sample Set</button>
-                            <button type="button" style="border-color:#fff !important;background-color: unset;"
-                                class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">Register
-                                for Auction</button>
+                            <button type="button" class="btn btn-primary banner-btns mb-1"
+                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
+                                SAMPLE SET</button>
+                            <button type="button" class="btn btn-primary banner-btns mb-1"
+                                OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">REGISTER FOR AUCTION</button>
                         </div>
                     </div>
                 </div>
@@ -381,34 +481,35 @@
             </div>
         </div> -->
     </div>
-    <section id="backgroung-img-section-2">
+    <section>
         <div class="container-fluid" style="margin-top: -8px;">
             <div class="row" style="padding-top:40px;padding-bottom:40px">
                 <!-- <div class="col-lg-12 text-center pt-4 pb-3">
                     <a href="https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/" type="button" class="btn btn-outline-light">BUY SAMPLE SET</a>
                 </div> -->
                 <div class="col-lg-12 section-2 text-center pt-3 pb-3">
-                    <img src="{{ asset('public/images/LOGO_0001_Vector-Smart-Object 1.png') }}" alt="">
+                    <img src="{{ asset('public/images/logo-1-vector.png') }}" alt="">
                 </div>
                 <div class="col-lg-8 section-2-text pt-3 pb-3" style="margin:auto">
-                    <p class="text-center section-2-custom-text">
-                        This year’s instalment of the successful auction series will be centred around the theme of
-                        “Catalyzing peace and prosperity”, to highlight and celebrate Yemeni coffee’s role in promoting
-                        peace and development efforts in Yemen.
-                    </p>
+                    <b>
+                        <p class="text-center section-2-custom-text">
+                            This year’s instalment of the successful auction series will be centred around the theme of
+                            “Catalyzing peace and prosperity”, to highlight and celebrate Yemeni coffee’s role in
+                            promoting
+                            peace and development efforts in Yemen.
+                        </p>
+                    </b>
                 </div>
                 <div class="col-lg-12 text-center pt-2 section-2-logos">
                     <!-- <div class="row"> -->
                     <!-- <div class="col-lg-12 text-center"> -->
-                    <img class="mr-2" src="{{ asset('public/images/LOGO_0000_Vector-Smart-Object 1.png') }}"
-                        alt="">
-                    <img class="ml-2" src="{{ asset('public/images/LOGO_0005_Vector-Smart-Object 1.png') }}"
-                        alt="">
+                    <img class="mr-2" src="{{ asset('public/images/logo-2-vector.png') }}" alt="">
+                    <img class="ml-2" src="{{ asset('public/images/logo-3-vector.png') }}" alt="">
                     <!-- </div> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-12 text-center pt-3 section-2-logos">
-                    <img src="{{ asset('public/images/LOGO_0004_Vector-Smart-Object 1.png') }}" alt="">
+                    <img src="{{ asset('public/images/logo-4-vector.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -416,150 +517,65 @@
 
     <section>
         <div class="container">
-            <div class="row justify">
+            <div class="row">
                 <div class="col-12">
                     <h2 id="winc">WINNING COFFEES</h2>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-md-12 pad">
-
-                        <table style="width:100%">
-                            <tr class="table-row">
-                                <th style="border-bottom:1px solid black;">RANK</th>
-                                <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
-                                <th style="border-bottom:1px solid black;">JURY SCORE</th>
-                                <th style="border-bottom:1px solid black;">REGION & ALTITUE</th>
-                                <th style="border-bottom:1px solid black;">LOT SIZE</th>
-                                <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
-                                <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
-                                <th></th>
-
-                            </tr>
-                            <tr>
-                                <td class="rank">
-                                    <div class="vl">#1</div>
-                                </td>
-
-                                <td class="style-td-1">
-                                    <div class="vl">ALISUBAIH 7189</div>
-                                </td>
-
-                                <td class="style-td-2">
-                                    <div class="vl">90.1</div>
-                                </td>
-
-                                <td class="style-td-3">
-                                    <div class="vl">BAITALALHAYMA KHARIJIYASANA
-                                        2300MASL</div>
-                                </td>
-
-                                <td class="style-td-4">
-                                    <div class="vl">163lbs</div>
-                                </td>
-
-                                <td class="style-td-5">
-                                    <div class="vl">SLOWDRIED</div>
-                                </td>
-
-                                <td class="style-td-6">
-                                    YEMENIA
-                                </td>
-
-                                <td class="button"><button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-
-
-
-
-                            </tr>
-                            <tr>
-                                <td class="rank">
-                                    <div class="vl">#2</div>
-                                </td>
-                                <td class=style-td-1>
-                                    <div class="vl">AKRAM DARWAISH 7406</div>
-                                </td>
-                                <td class="style-td-2">
-                                    <div class="vl">90</div>
-                                </td>
-                                <td class="style-td-3">
-                                    <div class="vl">QABALALQAFR
-                                        IBB1800-2000MASL</div>
-                                </td>
-                                <td class="style-td-4">
-                                    <div class="vl">74lbs</div>
-                                </td>
-                                <td class="style-td-5">
-                                    <div class="vl">NATURAL</div>
-                                </td>
-                                <td class="style-td-6">SL-34</td>
-                                <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-
-                            </tr>
-                            <tr>
-                                <td class="rank">
-                                    <div class="vl">#3</div>
-                                </td>
-                                <td class="style-td-1">
-                                    <div class="vl">BAITALALXII
-                                        8595</div>
-                                </td>
-                                <td class="style-td-2 ";>
-                                    <div class="vl " style="
-    color: #232B38;
-">89.6</div>
-                                </td>
-                                <td class="style-td-3">
-                                    <div class="vl">BAITALALHAYMA KHARIJIYASANA
-                                        2300MASL</div>
-                                </td>
-                                <td class="style-td-4">
-                                    <div class="vl">200lbs</div>
-                                </td>
-                                <td style="
-                                        COLOR: #E78460;
-                                    " class="style-td-5">
-                                    <div class="vl" s>ALCHEMY</div>
-                                </td>
-                                <td class="style-td-6">YEMENIA
-
-                                </td>
-                                <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-                            </tr>
-                            <tr>
-                                <td class="rank">
-                                    <div class="vl">#4</div>
-                                </td>
-                                <td class="style-td-1">
-                                    <div class="vl">ALISUBAIH
-                                        7189</div>
-                                </td>
-                                <td class="style-td-2">
-                                    <div class="vl" style="
-    color: #232B38;
-">89.2</div>
-                                </td>
-                                <td class="style-td-3">
-                                    <div class="vl">BAITALALHAYMA KHARIJIYASANA
-                                        2300MASL</div>
-                                </td>
-                                <td class="style-td-4">
-                                    <div class="vl">163lbs</div>
-                                </td>
-                                <td class="style-td-5">
-                                    <div class="vl">SLOWDRIED</div>
-                                </td>
-                                <td class="style-td-6">YEMENIA
-                                </td>
-                                <td class="button"> <button><a href="{{url ('/product/7189')}}">MORE INFORMATION</a></button></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
             </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="custom_table_reponsive">
+                            <table class="" style="width:100%">
+                                <tr class="table-row">
+                                    <th style="border-bottom:1px solid black;">RANK</th>
+                                    <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
+                                    <th style="border-bottom:1px solid black;">JURY SCORE</th>
+                                    <th style="border-bottom:1px solid black ;">REGION & ALTITUDE</th>
+                                    <th style="border-bottom:1px solid black;">LOT SIZE (LBS)</th>
+                                    <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
+                                    <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
+                                    <th></th>
+                                </tr>
+                                @foreach ($winningCoffees as $winningCoffee)
+                                <tr>
+                                    <td class="rank">
+                                        <div class="vl">#{{$winningCoffee->rank}}</div>
+                                    </td>
+
+                                    <td class="style-td-1 ">
+                                        <div class="border-vl align-items-center ">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
+                                    </td>
+
+                                    <td class="style-td-2">
+                                        <div class="vl">{{$winningCoffee->score}}</div>
+                                    </td>
+
+                                    <td class="style-td-3">
+                                        <div class="fourth_col align-items-center">
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->village}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;"> {{$winningCoffee->region}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->governorate}}</p>
+                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->altitude}}</p>
+                                        </div>
+                                    </td>
+
+                                    <td class="style-td-4">
+                                        <div class="vl">{{$winningCoffee->quantity}}</div>
+                                    </td>
+
+                                    <td class="style-td-5">
+                                        <div class="vl" style="">{{$winningCoffee->process}}</div>
+                                    </td>
+
+                                    <td class="style-td-6">{{$winningCoffee->genetics}}</td>
+
+                                    <td class="button"><button><a href="{{url ('/product',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
+                                </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                </div>
+        </div>
         </div>
     </section>
 
@@ -600,84 +616,86 @@
             </div>
         </div>
     </section>
-    <section>
+    <section style="margin-bottom: 20px;">
         <div class="container">
             <div class="row">
                 <div class="col-12 imgh2">
-                    <img src="././././public/images/bestofyemen.png" alt="">
+                    <img src="{{ asset('public/images/bestofyemen.png') }}">
                     <h2>INTERNATIONAL JURY</h2>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-right:0;margin-left:0">
                     <div class="col-2  img-size">
-                        <img src="././././public/images/1.png" alt="">
+                        <img src="{{ asset('public/images/1.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/2.png" alt="" width:60>
-                    </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/3.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/4.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/5.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/6.png" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/2.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/3.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/4.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/5.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/6.png') }}" alt=""></div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
-                        <img src="././././public/images/7.png" alt="">
+                        <img src="{{ asset('public/images/7.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/8.png" alt="" width:60>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/8.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/9.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/10.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/9.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/10.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/11.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/13.png" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/11.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/13.png') }}" alt="">
+                    </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
-                        <img src="././././public/images/14.png" alt="">
+                        <img src="{{ asset('public/images/14.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/15.png" alt="" width:60>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/16.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/16.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/17.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/18.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/19.png" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/17.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/18.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/19.png') }}" alt="">
+                    </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
-                        <img src="././././public/images/20.png" alt="">
+                        <img src="{{ asset('public/images/20.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/21.png" alt="" width:60>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/22.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/22.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/23.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/24.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/25.png" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/23.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/24.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/25.png') }}" alt="">
+                    </div>
 
-                </div>
-                <div class="row">
+                
                     <div class="col-2 img-size">
-                        <img src="././././public/images/26.png" alt="">
+                        <img src="{{ asset('public/images/26.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/27.png" alt="" width:60>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/28.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="././././public/images/28.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/29.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/30.png" alt=""></div>
-                    <div class="col-2 img-size"> <img src="././././public/images/31.png" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/29.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/30.png') }}" alt="">
+                    </div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/31.png') }}" alt="">
+                    </div>
 
                 </div>
 
             </div>
-            <div class="button">
-                <button>
-                    <h5 style="
-                    font-size: 18px;
-                    padding: 4px;
-                    margin-bottom: 0px;
-                ">VIEW THE WINNING COFFEES</h5>
-                </button>
-            </div>
+            {{-- <div class="button">
+                    <button>
+                        <h5>VIEW THE WINNING COFFEES</h5>
+                    </button>
+                </div> --}}
         </div>
         </div>
     </section>
@@ -733,7 +751,7 @@
             </div>
         </div>
     </section>
-    <section class="section-4">
+    <section class="section-4" >
         <div class="container py-5">
             <!-- <div class=""> -->
             <div class="row">
@@ -786,6 +804,8 @@
     </section>
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+            <form action="{{url('/signup')}}" method="post">
+                <input type="hideen" name="_token" value="{{csrf_token()}}" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -799,23 +819,24 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" class="form-control">
+                                    <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Email</label>
-                                    <input type="text" placeholder="Enter Your Email" class="form-control">
+                                    <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark">Submit</button>
+                        <button type="submit" class="btn btn-dark">Submit</button>
                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </section>
 </body>

@@ -28,9 +28,6 @@
   align-items: center;
   justify-content: space-between;
   font: 20px;
-
-
-
 }
 
 .navbar-list {
@@ -41,8 +38,6 @@
   display: inline-block;
   padding: 10px 10px;
   font-weight: 400;
-
-
 }
 #width a img{
   margin-left: 108px;
@@ -54,7 +49,6 @@
   color: black;
   margin-left: 5px;
   margin-right: 5px;
-
 }
 
 .menu {
@@ -64,14 +58,10 @@
 .menu-item {
   width: 20px;
   height: 5px;
-
   background-color: black;
   padding: 2px;
   margin-top: 3px;
 }
-
-
-
 
 @media all and (max-width : 999px) {
   #width a img{
@@ -105,23 +95,11 @@
       display: none;
   }
 
-
-
   .active {
       display: block;
   }
 
-
-
-
-
-
-
 }
-
-
-
-
 .bio_graphy h1{
   font-family: 'Montserrat';
   font-style: normal;
@@ -173,7 +151,7 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 70px;
+  font-size: 50px;
   text-transform: uppercase;
   color: #000000;
     }
@@ -181,7 +159,7 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 17px;
   text-transform: uppercase;
   color: #232B38;
     }
@@ -190,7 +168,14 @@
     }
     .image_with_text_image img{
       width: 100%;
-      height: 225px;
+      /* height: 240px; */
+      height: auto;
+    }
+    .farmer-display{
+        margin-top: 2.4rem;
+    }
+    .genetics-area{
+        margin-top: 2rem;
     }
     .image_with_text_text p{
   font-family: 'Montserrat';
@@ -237,15 +222,44 @@
   align-items: center;
   color: #000000;
     }
+
+    @media only screen and (max-width:768px){
+        .image_with_text_image img{
+            height: auto;
+        }
+    }
+
+
+   @media only screen and (min-width:768px){
+    .img-with-text-mar .col-md-6{
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+    .img-with-img-mar .col-md-6{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .img-with-img-mar-second .col-md-6{
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+    .cup-profile{
+        margin-right: 11px;
+    }
+    .farmer_cutting{
+        margin-left: -5px;
+    }
+   }
 </style>
 <body>
+
   <nav class="navbar navbar-fix">
-    <div id="width"><a href="#"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
+    <div id="width"><a href="{{url ('/')}}"><img  src={{ asset('public/images/logo.land.png') }}  width="180px"  alt="">
         </a>
     </div>
     <div>
-        <ul class="navbar-list" style="margin-right: 15px ;margin-top: 9px; " id="nav-list">
-            <li class="list-items"> <a style="
+        <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+            {{-- <li class="list-items"> <a style="
               font-weight: 500;
           " >SIGN IN </a>
             </li>
@@ -257,7 +271,7 @@
             <li class="list-items"> <a style="
               font-weight: 500;
           " > WINNING COFFEES </a>
-            </li>
+            </li> --}}
             <a href="#"><i class="fa fa-instagram" ></i> </a>
             <a  href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
@@ -287,26 +301,23 @@
      <div class="row">
       <div class="col-md-12">
         <div class="bio_graphy">
-             <h1>#1</h1>
-             <h1>ALI SUBAIH</h1>
-             <h3>7189</h3>
+             <h1>#{{$winningCoffeesData->rank}}</h1>
+             <h1>{{$winningCoffeesData->name}}</h1>
+             <h3>{{$winningCoffeesData->code}}</h3>
         </div>
 
         <div class="region_flex">
           <div class="region_text">
-              <h6>REGION:</h6>
+              <h6>REGION :&nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>Bait Alal <</h6>
+                <h6>{{$winningCoffeesData->village}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Hayma Kharijiya <</h6>
+            <h6>{{$winningCoffeesData->region}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>Sanaa <</h6>
-          </div>
-          <div class="regional_name">
-            <h6>Yemen</h6>
+            <h6>{{$winningCoffeesData->governorate}} &nbsp; </h6>
           </div>
           <div>
 
@@ -314,10 +325,10 @@
         </div>
         <div class="region_flex">
           <div class="region_text">
-              <h6>ALTITUDE :</h6>
+              <h6>ALTITUDE : &nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>2,300 MASL</h6>
+                <h6>{{$winningCoffeesData->altitude}}</h6>
           </div>
           <div>
 
@@ -325,29 +336,29 @@
         </div>
       </div>
      </div>
-     <div class="row">
+     <div class="row img-with-text-mar">
         <div class="col-md-6">
-            <img class="farmer-display" src={{ asset('public/images/farmer.png') }} alt="">
+            <img class="farmer-display" src="{{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_1)}}"alt="">
         </div>
         <div class="col-md-6">
            <div class="genetics-area">
              <p style="margin-bottom: 0;"> JURY SCORE</p>
-             <h6>90.1</h6>
+             <h6>{{$winningCoffeesData->score}}</h6>
            </div>
            <div class="region_flex">
             <div class="region_text">
-                <h6>LOT SIZE :</h6>
+                <h6>LOT SIZE :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>163LBS</h6>
+                  <h6>{{$winningCoffeesData->quantity}}LBS</h6>
             </div>
           </div>
           <div class="region_flex">
             <div class="region_text">
-                <h6>PROCESS : </h6>
+                <h6>PROCESS :&nbsp;  </h6>
             </div>
             <div class="regional_name">
-                  <h6>SLOW DRIED</h6>
+                  <h6>{{$winningCoffeesData->process}}</h6>
             </div>
           </div>
           <div class="genetic_content">
@@ -356,39 +367,38 @@
           </div>
           <div class="region_flex">
             <div class="region_text">
-                <h6>GENETICS :</h6>
+                <h6>GENETICS :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>YEMENIA</h6>
+                  <h6>{{$winningCoffeesData->genetics}}</h6>
             </div>
           </div>
           <div class="row">
                 <div class="col-md-6">
                     <div class="image_with_text_image">
 
-                      <img src={{ asset('public/images/geneticsfarmer.png') }} alt="">
+                      <img src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_2)}} alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
                   <div class="image_with_text_text">
-                    <p><i>“Coffee supports me in my illness and happiness.
-                     I will not stop growing coffee until the last day of my life”.</i></p>
+                    <p><i>{{$winningCoffeesData->quotes ?? ''}}</i></p>
                  </div>
                 </div>
           </div>
         </div>
      </div>
-     <div class="row mt-3 mb-3">
+     <div class="row mt-1 img-with-img-mar mb-3">
         <div class="col-md-6">
          <div class="row">
            <div class="col-md-6">
            </div>
            <div class="col-md-6">
             <div class="cup-profile">
-              <img style="width:100%;" src={{ asset('public/images/cup-profile.png') }}  alt="">
+              <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_3)}}  alt="">
               <div class="cup_profile_datails">
                 <p style="margin-bottom: 0;">Cup profile:</p>
-                <h6>JASMINE / PEACH / HONEY / BERGAMOT / APRICOT / VANILLA / APPLE PIE</h6>
+                <h6>{{$winningCoffeesData->cup_profile}}</h6>
                 <p></p>
               </div>
               </div>
@@ -397,26 +407,21 @@
         </div>
         <div class="col-md-6">
         <div class="farmer_cutting">
-          <img style="width: 100%;" src={{ asset('public/images/farmer_cutting.png') }} alt="">
-        <h3>the human behind the coffee</h3>
-        <p style="margin-bottom: 0;">Ali is 65 years old. He has 6 children. He started growing coffee when he was 20 years old beside his father with love. He joined the army for 35 years and then retired, even when he was away from the farm he always thought of it.
-          After his father passed away, he took full responsibility of taking care of the farm with the help of his brother.
-          When their sons grew up, they stood by side him to help him on the farm until he until became one of the best farmers in the village
-          He advises all Yemeni farmers to pay attention to agriculture in general, and in particular to coffee cultivation. He also advises them to use natural manure and take care of watering.
-          ​​His farm is about 250 Libna San'ani (One Libna= 44 square meters). He grows Odeni, Doaeri and Tofahi coffee on his farm. Alongside coffee, he grows a small amount of grain.
-          Coffee is the wealth of all Yemenis.
+          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
+        <h3>the story behind the coffee</h3>
+        <p style="margin-bottom: 0;">{!!$winningCoffeesData->farmer_story!!}
           </p>
         </div>
         </div>
      </div>
-     <div class="row mt-3 mb-3">
+     <div class="row img-with-img-mar-second mt-2 mb-3">
       <div class="col-md-6">
        <div class="row">
          <div class="col-md-6">
          </div>
          <div class="col-md-6">
-          <div class="cup-profile">
-            <img style="width:100%;" src={{ asset('public/images/farming.png') }} alt="">
+          <div class="cup-profile2">
+            <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_5)}} alt="">
             </div>
          </div>
        </div>
@@ -424,8 +429,8 @@
       <div class="col-md-6">
      <div class="row">
        <div class="col-md-6">
-        <div class="farmer_cutting">
-          <img style="width: 100%;" src={{ asset('public/images/preview.png') }}  alt="">
+        <div class="farmer_cutting2">
+          <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_6)}}  alt="">
         </div>
        </div>
        <div class="col-md-6">
@@ -433,11 +438,8 @@
        </div>
      </div>
      <div class="farmer_cutting">
-      <h3>the region of bait alal</h3>
-        <p style="margin-bottom: 0;">Bait Alal is located in the region of Hayma Kharijiya in Sana’a. It is home to 300 farming families and the Bait Alal is perched on a mountain top at an altitude of 2300 metres above sea level. The farmers in Bait Alal see the coffee tree as a symbol of pride and they believe that coffee originated from this area.
-          The land has been passed down through the generations, some of the farmers have ownership documents that show that the lands and the coffee trees date back a few hundred years. The farmers face difficulties due to the harsh climate which is one of the reasons for low yields being produced. However, no matter how small the harvest is or how harsh the conditions, the farmers never abandon their coffee trees.
-          Bait Alal is also home to Al Ruwad is Yemen’s largest and most established specialty coffee cooperative, serving 285 families – the equivalent of around 2000 people.
-
+      <h3>the region of {{$winningCoffeesData->region}}</h3>
+        <p style="margin-bottom: 0;">{{$winningCoffeesData->region_story}}
           </p>
      </div>
       </div>
@@ -492,37 +494,56 @@
     </div>
 </section>
 <section>
-    <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Name</label>
-                                <input type="text" placeholder="Enter Your Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" placeholder="Enter Your Email" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark">Submit</button>
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
+      <form action="{{url('/signup')}}" method="post">
+          <input type="hideen" name="_token" value="{{csrf_token()}}" >
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Name</label>
+                              <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="">Email</label>
+                              <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-dark">Submit</button>
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              </div>
+          </div>
+      </div>
+      </form>
+  </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+  $(function(){
+    $("#signup-for-newsletter").on("click", function() {
+        $("#newsltterModel").modal("show");
+    });
+  })
+  </script>
 </html>

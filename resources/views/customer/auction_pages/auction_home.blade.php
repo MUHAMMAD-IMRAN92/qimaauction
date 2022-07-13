@@ -10,7 +10,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     {{-- web sockets --}}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+     <script type="text/javascript">
+        //  var socket = io('http://localhost:5002');
+         var socket = io('<?= env('SOCKETS') ?>');
 
+     </script>
     </head>
 <style>
     body {
@@ -398,6 +404,13 @@ content: '+';
     /* text-align: center; */
     color: #000000;
 }
+.changecolor
+{
+    background: #FFFEA2;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #9C9C9C;
+}
 
 </style>
 
@@ -743,4 +756,14 @@ content: '+';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
+<script>
+    socket.on('add_bid_updates', function(data) {
+        $(".waiting"+data.bidID).html('Open');
+        $(".bidcollapse"+data.bidID).addClass("changecolor");
+        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
+        $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
+        $(".paddleno" + data.bidID).html(data.paddleNo);
+    })
+</script>
+
 </html>

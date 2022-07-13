@@ -64,6 +64,7 @@ class CustomerController extends Controller
         $customer->bid_limit        =   $request->bid_limit;
         $customer->paddle_number    =   $request->paddle_number;
         $customer->status           =   $request->status;
+        $customer->is_admin           =   1;
         $customer->save();
         $token = Str::random(64);
 
