@@ -21,7 +21,7 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-        // var socket = io('http://localhost:5002');
+        // var socket = io('http://localhost:5003');
         var socket = io('<?= env('SOCKETS') ?>');
     </script>
 
@@ -494,10 +494,12 @@
                                                             ${{number_format($finalIncSinglebid,1)}}
                                                         </p>
                                                         <div>
+                                                            @if(!isset($auctionProduct->latestAutoBidPrice->bid_amount))
                                                             <button class="btn btn-success singlebid singlebidClass{{$auctionProduct->id}}"
                                                                 id="{{ $auctionProduct->id }}"
                                                                 href="javascript:void(0)"
                                                                 data-id="{{ $auctionProduct->id }}" style="border-radius: 5px;">Bid Now</button>
+                                                                @endif
                                                         </div>
                                                     </div>
                                                     <div id="alertMessage"
@@ -508,9 +510,19 @@
                                                         @csrf
                                                             <input type="hidden" class="form-control auctionid{{$auctionProduct->id }}" value="{{$auctionProduct->auction_id}}" id="autobidamount" >
                                                           $ &nbsp;<input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" style="width: 50%;" >
-                                                          &nbsp;<button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
-                                                        type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
-                                                        <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div>
+                                                          &nbsp;
+                                                          @if(isset($auctionProduct->latestAutoBidPrice->user_id) && $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
+                                                          <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
+                                                              type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
+                                                        @endif
+                                                        @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && ($auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id))
+                
+                                                            <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
+                                                                <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
+                                                            </div>
+                                                        @else 
+                                                        {{-- <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div> --}}
+                                                        @endif
                                                     </form>
                                                 </div>
                                                     <div class="col-4">
@@ -900,7 +912,11 @@
                         $(".singlebidClass"+id ).css("display", "none");
                         $(".autobidClass"+id ).css("display", "none");
                         // var bidPrice    =   response.bid_amount;
-                        //
+                        socket.emit('auto_bid_updates', {
+                                        "autobidamount": autobidamount,
+                                        'id' : id,
+                                        'user_id':response.user_id,
+                                    });
                     },
                     error: function(error) {
                         console.log(error)
@@ -943,6 +959,9 @@
                             $(".singlebidClass"+id ).css("display", "block");
                             $(".autobidClass"+id ).css("display", "block");
                         }
+                        socket.emit('auto_bid_updates', {
+                                        "autobidamount": 0;
+                                 });
                     },
                     error: function(error) {
                         console.log(error)
@@ -958,7 +977,14 @@
         })
 </script>
 <script>
+    socket.on('auto_bid_updates', function(data) {
+        if(data.user_id == {{Auth::user()->id}})
+        {
+            $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        }
+    });
     socket.on('add_bid_updates', function(data) {
+        
         if(data.outbidresponse == 0 && data.userID == {{Auth::user()->id}})
         {
             $('.errorMsgAutoBid'+data.bidID).html('');

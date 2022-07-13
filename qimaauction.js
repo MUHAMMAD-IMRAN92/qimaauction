@@ -40,8 +40,8 @@ var https = require('https');
 var fs = require('fs');
 var express = require('express');
 var options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
+    // key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
+    // cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
     requestCert: false,
     rejectUnauthorized: false
 };
@@ -57,7 +57,7 @@ app.use(function (req, res, next) {
 
 const cors = require('cors');
 //const app = express();
-let port = 5003;
+let port = 5002;
 
 //app.use(express.static('public'));
 app.use(cors());
@@ -72,9 +72,20 @@ let clients = 0
 var sockets = {};
 var arr = [];
 io.on('connection', function (socket) {
-    console.log("got from qimaauction.js");
-    socket.on('add_bid_updates', function (data) {
-        io.emit('add_bid_updates', {"bidderID":data.bidderID,"bidderLiablity":data.bidderLiablity,"singleBidammounttesting": data.singleBidammounttesting, "bidID": data.bidID, "paddleNo": data.paddleNo, "increment": data.increment, "nextIncrement": data.nextIncrement, "outbidresponse": data.outbidresponse, "userID": data.userID, });
+// socket.on('message_get', function (data) {
+// io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
+// });
+
+    socket.on('auto_bid_updates', function (data) {
+       io.emit('auto_bid_updates', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id  });
+    });
+socket.on('add_bid_updates', function (data) {
+    io.emit('add_bid_updates', { 
+        "bidderID":data.bidderID,"bidderLiablity":data.bidderLiablity,
+        "singleBidammounttesting":data.singleBidammounttesting,
+        "bidID":data.bidID,"paddleNo":data.paddleNo,
+        "increment":data.increment,"nextIncrement":data.nextIncrement,
+        "outbidresponse":data.outbidresponse,"userID":data.userID,});
     });
     socket.on('disconnect', function () {
         if (sockets[socket.id] != undefined) {
