@@ -976,6 +976,11 @@ tr.hide-table-padding td {
                         var bidderID        =   response.user_id;
                         var bidderMaxBid    =   response.bidderMaxAmount;
                         $('.errorMsgAutoBid'+id).html('');
+                        socket.emit('auto_bid_updates', {
+                                        "autobidamount": autobidamount,
+                                        'id' : id,
+                                        'user_id':response.user_id,
+                                    });
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
@@ -1036,6 +1041,9 @@ tr.hide-table-padding td {
                             $(".singlebidClass"+id ).css("display", "block");
                             $(".autobidClass"+id ).css("display", "block");
                         }
+                        socket.emit('auto_bid_updates', {
+                                        "autobidamount": 0;
+                                 });
                     },
                     error: function(error) {
                         console.log(error)
@@ -1051,6 +1059,12 @@ tr.hide-table-padding td {
         })
 </script>
 <script>
+     socket.on('auto_bid_updates', function(data) {
+        // if(data.user_id == {{Auth::user()->id}})
+        // {
+            $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        // }
+    });
     socket.on('add_bid_updates', function(data) {
         if(data.outbidresponse == 0 && data.autobidUserID == {{Auth::user()->id}})
         {

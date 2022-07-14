@@ -4,7 +4,7 @@
     <style>
         .errormsgautobid {
             background: #DBFFDA;
-            margin-top: 12px;
+            margin-top: 0px;
         }
 
         .table thead th {
@@ -19,18 +19,22 @@
         .table2 tr td {
             width: 68px;
         }
- 
+
+        table.table-bordered thead tr th,
+        .table-bordered tbody tr td {
+            border: 1px solid #eacf99;
+        }
 
         .headerSortDown:after,
         .headerSortUp:after {
             content: ' ';
             position: relative;
             left: 10px;
-            border: 7px solid transparent;
+            border: 4px solid transparent;
         }
 
         .headerSortDown:after {
-            top: 3px;
+            top: 2px;
             border-top-color: silver;
         }
 
@@ -62,9 +66,32 @@
                     </button> --}}
                     </div>
                     <div class="modal-body">
-                        Size : <p class="form-control" id="size"></p>
-                        Weight : <p class="form-control" id="weight"></p>
-                        Rank : <p class="form-control" id="rank"></p>
+                        <b>Size</b>&ensp;&ensp;&ensp; : <span class="col-md-5" id="size"></span><br><br>
+                        <b>Weight</b>&ensp;: <span class="col-md-5" id="weight"></span><br><br>
+                        <b>Rank</b>&ensp;&ensp;&ensp; : <span class="col-md-5" id="rank"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="user_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">User Detail</h5>
+                        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button> --}}
+                    </div>
+                    <div class="modal-body">
+                        <b>Name</b> : <span class="col-md-5" id="name"></span><br><br>
+                        <b>Email</b> : <span class="col-md-5" id="email"></span><br><br>
+                        <b>PhoneNo</b> : <span class="col-md-5" id="phone"></span><br><br>
+                        <b>Company</b> : <span class="col-md-5" id="company"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -99,7 +126,6 @@
                                                     {{-- <th>Id</th> --}}
                                                     <td></td>
                                                     <th>Product</th>
-                                                    <th>User</th>
                                                     <th>Winning Bid</th>
                                                     <th>Paddle No</th>
                                                     <th>Reserved Price</th>
@@ -123,22 +149,28 @@
                                                                 </td>
                                                                 <td id="product{{ $auction->id }}" type="button"
                                                                     style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px"
-                                                                    class="btn btn-primary product"
+                                                                    class="btn product"
                                                                     data-auctionProductId="{{ $auction->id }}"
                                                                     data-toggle="modal" data-target="#auction_model">
                                                                     <b>
-                                                                        <h6>{{ $pro->product_title }}</h6>
+                                                                        <h6><b>{{ $pro->product_title }}</b></h6>
                                                                     </b>
-                                                                </td>
-                                                                <td id="paddleNo{{ $auction->id }}">
-                                                                    {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
                                                                 </td>
                                                                 <td id="price{{ $auction->id }}" allign="right">
                                                                     {{ isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price }}
                                                                 </td>
-                                                                <td id="paddleNo{{ $auction->id }}" allign="right">
-                                                                    {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
-                                                                </td>
+                                                                @if (isset($auction->latestBidPrice->user))
+                                                                    <td id="paddleNo{{ $auction->id }}" allign="right"
+                                                                        class="user" data-toggle="modal"
+                                                                        data-target="#user_model"
+                                                                        data-userId="{{ $auction->latestBidPrice->user->first()->id }}">
+                                                                        <b>{{ $auction->latestBidPrice->user->first()->paddle_number }}</b>
+                                                                    </td>
+                                                                @else
+                                                                    <td>
+                                                                        ---
+                                                                    </td>
+                                                                @endif
                                                                 <td allign="right">
                                                                     {{ $auction->reserve_price }}
                                                                 </td>
@@ -161,16 +193,17 @@
                                                                             value="{{ $latestAutoBidPrice ?? '0' }}"
                                                                             name="autoBidAmount"
                                                                             id="autoBidAmount{{ $auction->id }}"
-                                                                            style="width: 80px; border-radius : 3px;padding:6px">
+                                                                            style="width: 80px; border-radius : 1px;padding:4px; border: 1px solid #d1af69;">
                                                                         <input type="hidden"
                                                                             id="userId{{ $auction->id }}"
                                                                             value="{{ isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->user_id : '--' }}">
                                                                         <button data-id="{{ $auction->id }}"
-                                                                            class="autobid btn btn-success"><i
-                                                                                class="fa fa-edit"></i></button>
-                                                                        <div
-                                                                            class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
-                                                                        </div>
+                                                                            class="autobid btn btn-sm success"
+                                                                            style="font-size:16px;margin-top: -22px;"><i
+                                                                                class="fa fa-pencil"></i>
+                                                                            <div
+                                                                                class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
+                                                                            </div>
                                                                     </td>
                                                                 @else
                                                                     <td>
@@ -195,180 +228,200 @@
                             </div>
                         </div>
                     </div>
-                        <div class="container tab-pane fade" id="nav-profile" role="tabpanel"
-                            aria-labelledby="nav-profile-tab">
+                    <div class="container tab-pane fade" id="nav-profile" role="tabpanel"
+                        aria-labelledby="nav-profile-tab">
 
-                            <div class="card  col-lg-12">
-                                <div class="card-content">
-                                    <div class="card-body card-dashboard">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="auction-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>User</th>
-                                                        <th>Paddle Number</th>
-                                                        <th>Liability</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        $i = 0;
-                                                    @endphp
-                                                    @if (count($auction_products) > 0)
-                                                        @foreach ($auction_products as $auction)
-                                                            @foreach ($auction->products as $key => $pro)
-                                                                @if ($auction->latestBidPrice)
-                                                                    <tr id="{{ ++$i }}">
-                                                                        <td class="headerSortUp headerSortDown move">
-                                                                            <a href=""></a>
-                                                                        </td>
-                                                                        <td>
-                                                                            {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
-                                                                        </td>
-                                                                        <td id="paddleNo{{ $auction->id }}">
-                                                                            {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
-                                                                        </td>
-                                                                        <td>
-                                                                            @php
-                                                                                $bidprice = isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price;
-                                                                            @endphp
-                                                                            {{ $auction->weight * $bidprice }}
-                                                                        </td>
-                                                                    </tr>
-                                                                @endif
-                                                            @endforeach
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="auction-table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>User</th>
+                                                    <th>Paddle Number</th>
+                                                    <th>Liability</th>
+                                                    {{-- <th></th> --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 0;
+                                                @endphp
+                                                @if (count($auction_products) > 0)
+                                                    @foreach ($auction_products as $auction)
+                                                        @foreach ($auction->products as $key => $pro)
+                                                            @if ($auction->latestBidPrice)
+                                                                <tr id="{{ ++$i }}">
+                                                                    <td class="headerSortUp headerSortDown move">
+                                                                        <a href=""></a>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
+                                                                    </td>
+                                                                    <td id="paddleNo{{ $auction->id }}">
+                                                                        {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
+                                                                    </td>
+                                                                    <td>
+                                                                        @php
+                                                                            $bidprice = isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price;
+                                                                        @endphp
+                                                                        {{ $auction->weight * $bidprice }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
                                                         @endforeach
-                                                    @else
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>No record yet</td>
-                                                        </tr>
-                                                    @endif
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>No record yet</td>
+                                                    </tr>
+                                                @endif
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <script>
-                $(document).ready(function() {
-                    // var socket = io('http://localhost:5002');
-                    var socket = io('<?= env('SOCKETS') ?>');
-
-                    socket.on('auto_bid_updates', function(data) {
-                        $("#autoBidAmount" + data.id).val(data.autobidamount);
-                        if(data.autobidamount == 0)
-                        {
-                            $('.editblock').html('--');
-                        }
-                    });
-
-                    socket.on('add_bid_updates', function(data) {
-                        $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
-                        $("#paddleNo" + data.bidID).html(data.paddleNo);
-                    });
-
-                    $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {
-                        var row = $(this).parents("tr:first");
-                        if ($(this).is(".headerSortUp")) {
-                            row.insertBefore(row.prev());
-                        } else if ($(this).is(".headerSortDown")) {
-                            row.insertAfter(row.next());
-                        } else if ($(this).is(".top")) {
-                            //row.insertAfter($("table tr:first"));
-                            row.insertBefore($("table tr:first"));
-                        } else {
-                            row.insertAfter($("table tr:last"));
-                        }
-                    });
-                    $(document).on('click', '.product', function() {
-
-                        var id = $(this).attr('data-auctionProductId');
-                        $.ajax({
-                            type: 'POST',
-                            url: `{{ route('getAuctionProduct') }}`,
-                            data: {
-                                auctioProductId: id,
-                                _token: "{{ csrf_token() }}",
-                            },
-                            success: function(data) {
-                                $("#weight").html(data.weight);
-                                $("#size").html(data.size);
-                                $("#rank").html(data.rank);
-                                // $("#auction_model").modal("show");     
-                            }
-                        });
-                    });
-
-
-                    // Update Auto Bid Data
-                    $(".autobid").on("click", function(e) {
-                        e.preventDefault();
-                        $('.errorMsgAutoBid').hide();
-                        $('.errorMsgAutoBid' + id).hide();
-                        var id = $(this).attr('data-id');
-                        var autobidId = $("#autobidId" + id).val();
-                        var userId = $("#userId" + id).val();
-                        var autobidamount = $('#autoBidAmount' + id).val();
-                        var currentBidPrice = ($('#price' + id).html()).replace(/\s/g, '');
-                        console.log(currentBidPrice, autobidamount)
-                        if (parseFloat(autobidamount) >= parseFloat(currentBidPrice)) {
-                            swal({
-                                title: `Confirm AutoBid $` + autobidamount + `?`,
-                                text: "You will remain highest bidder until your limit reached.",
-                                type: "error",
-                                buttons: true,
-                                dangerMode: true,
-                            }).then((result) => {
-                                if (result) {
-                                    $.ajax({
-                                        url: "{{ route('updateSaveAutoBids') }}",
-                                        method: 'POST',
-                                        data: {
-                                            id: id,
-                                            autobidId: autobidId,
-                                            autobidamount: autobidamount,
-                                            _token: "{{ csrf_token() }}",
-                                        },
-                                        success: function(response) {
-                                            $('.errorMsgAutoBid' + id).html('<p>Your $' +
-                                                autobidamount + ' Bid is confirmed.</p>');
-                                            // $('#product' + id).addClass("mt-3");
-                                            $('#autobidamount' + id).val('');
-                                            socket.emit('auto_bid_updates', {
-                                                "autobidamount": autobidamount,
-                                                'id': id,
-                                                'user_id': userId,
-                                            });
-                                        },
-                                        error: function(error) {
-                                            console.log(error)
-                                        }
-                                    });
-                                } else {
-                                    swal("Your cancelled your autobid.");
-                                }
-
-                            });
-                        } else {
-                            $('.errorMsgAutoBid' + id).html(
-                                '<p>Please enter the amount greater than current bid amount.</p>');
-                            $('#product' + id).addClass("mt-4");
-                            $('#autobidamount' + id).val('');
-                        }
-                    })
-                    // End Update Auto Bid Data
-
+        <script>
+            $(document).ready(function() {
+                var socket = io('<?= env('SOCKETS') ?>');
+                socket.on('auto_bid_updates', function(data) {
+                    $("#autoBidAmount" + data.id).val(data.autobidamount);
+                    if (data.autobidamount == 0) {
+                        $('.editblock').html('--');
+                    }
                 });
-            </script>
 
-        @endsection
+                socket.on('add_bid_updates', function(data) {
+                    $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
+                    $("#paddleNo" + data.bidID).html(data.paddleNo);
+                });
+
+                $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {
+                    var row = $(this).parents("tr:first");
+                    if ($(this).is(".headerSortUp")) {
+                        row.insertBefore(row.prev());
+                    } else if ($(this).is(".headerSortDown")) {
+                        row.insertAfter(row.next());
+                    } else if ($(this).is(".top")) {
+                        //row.insertAfter($("table tr:first"));
+                        row.insertBefore($("table tr:first"));
+                    } else {
+                        row.insertAfter($("table tr:last"));
+                    }
+                });
+                ////////////////  Get Product Information /////////////////
+                $(document).on('click', '.product', function() {
+
+                    var id = $(this).attr('data-auctionProductId');
+                    $.ajax({
+                        type: 'POST',
+                        url: `{{ route('getAuctionProduct') }}`,
+                        data: {
+                            auctioProductId: id,
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            $("#weight").html(data.weight);
+                            $("#size").html(data.size);
+                            $("#rank").html(data.rank);
+                            // $("#auction_model").modal("show");     
+                        }
+                    });
+                });
+                ////////////////  End Get Product Information /////////////////
+                ////////////////  Get Product Information /////////////////
+                $(document).on('click', '.user', function() {
+
+                    var id = $(this).attr('data-userId');
+                    $.ajax({
+                        type: 'POST',
+                        url: `{{ route('getUser') }}`,
+                        data: {
+                            userId: id,
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(data) {
+                            $("#name").html(data.name);
+                            $("#email").html(data.email);
+                            $("#phone").html(data.phone_no);
+                            $("#company").html(data.company);
+                            // $("#auction_model").modal("show");     
+                        }
+                    });
+                });
+                ////////////////  End Get Product Information /////////////////
+
+                // Update Auto Bid Data
+                $(".autobid").on("click", function(e) {
+                    e.preventDefault();
+                    $('.errorMsgAutoBid').hide();
+                    $('.errorMsgAutoBid' + id).hide();
+                    var id = $(this).attr('data-id');
+                    var autobidId = $("#autobidId" + id).val();
+                    var userId = $("#userId" + id).val();
+                    var autobidamount = $('#autoBidAmount' + id).val();
+                    var currentBidPrice = ($('#price' + id).html()).replace(/\s/g, '');
+                    console.log(currentBidPrice, autobidamount)
+                    if (parseFloat(autobidamount) >= parseFloat(currentBidPrice)) {
+                        swal({
+                            title: `Confirm AutoBid $` + autobidamount + `?`,
+                            text: "You will remain highest bidder until your limit reached.",
+                            type: "error",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((result) => {
+                            if (result) {
+                                $.ajax({
+                                    url: "{{ route('updateSaveAutoBids') }}",
+                                    method: 'POST',
+                                    data: {
+                                        id: id,
+                                        autobidId: autobidId,
+                                        autobidamount: autobidamount,
+                                        _token: "{{ csrf_token() }}",
+                                    },
+                                    success: function(response) {
+                                        $('.errorMsgAutoBid' + id).html('<p>Your $' +
+                                            autobidamount + ' Bid is confirmed.</p>');
+                                        // $('.errorMsgAutoBid' + id).delay(2000);
+                                        // $('#product' + id).addClass("mt-3");
+                                        $('#autobidamount' + id).val('');
+                                        socket.emit('auto_bid_updates', {
+                                            "autobidamount": autobidamount,
+                                            'id': id,
+                                            'user_id': userId,
+                                        });
+                                    },
+                                    error: function(error) {
+                                        console.log(error)
+                                    }
+                                });
+                            } else {
+                                swal("Your cancelled your autobid.");
+                            }
+
+                        });
+                    } else {
+                        $('.errorMsgAutoBid' + id).html(
+                            '<p>Please enter the amount greater than current bid amount.</p>');
+                        // $('#product' + id).addClass("mt-4");
+                        $('#autobidamount' + id).val('');
+                    }
+                })
+                // End Update Auto Bid Data
+
+            });
+        </script>
+
+    @endsection

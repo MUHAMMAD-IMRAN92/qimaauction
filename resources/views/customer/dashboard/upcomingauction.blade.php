@@ -21,7 +21,6 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-        // var socket = io('http://localhost:5003');
         var socket = io('<?= env('SOCKETS') ?>');
     </script>
 
@@ -829,7 +828,7 @@
                     else {
                         $(".changetext"+id).text("Bid");
                     }
-  });
+             });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
@@ -852,6 +851,7 @@
                     var outbid          =   response.outAutobid;
                     var userID          =   response.autoBidUserID;
                     $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is confirmned.</p>');
+                   
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
@@ -978,13 +978,12 @@
 </script>
 <script>
     socket.on('auto_bid_updates', function(data) {
-        if(data.user_id == {{Auth::user()->id}})
-        {
+        // if(data.user_id == {{Auth::user()->id}})
+        // {
             $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
-        }
+        // }
     });
     socket.on('add_bid_updates', function(data) {
-        
         if(data.outbidresponse == 0 && data.userID == {{Auth::user()->id}})
         {
             $('.errorMsgAutoBid'+data.bidID).html('');

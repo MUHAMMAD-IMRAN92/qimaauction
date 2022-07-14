@@ -92,6 +92,12 @@ class AuctionController extends Controller
                         ->first();
          return response()->json($auction_products);
     }
+     public function getUser(Request $request)
+     {
+        $user = User::where('id',$request->userId)
+                        ->first();
+         return response()->json($user);
+     }
     public function deleteAuctionProduct(Request $request)
     {
         $auction_products = AuctionProduct::where('id',$request->auctioProductId)->delete();
