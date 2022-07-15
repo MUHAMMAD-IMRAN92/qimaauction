@@ -26,16 +26,18 @@ Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
-
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
-
 });
+Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
+Route::post('/auction/getAuctionProduct', [App\Http\Controllers\AuctionController::class, 'getAuctionProduct'])->name('getAuctionProduct');
+Route::post('/auction/getUser', [App\Http\Controllers\AuctionController::class, 'getUser'])->name('getUser');
+Route::group(['middleware' => ['auth', 'isAdminDashboard']], function(){
 
-
-
+    Route::get('/auction/adminDashboard', [App\Http\Controllers\AuctionController::class, 'prductBiddingDashboard'])->name('prductBiddingDashboard');
+});
 Route::group(['middleware' => ['auth', 'isAdmin']], function(){
 
     Route::get('dashboard', function(){
@@ -145,8 +147,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/auction/allauction', [App\Http\Controllers\AuctionController::class, 'allauction']);
     Route::get('/auction/products/{id}', [App\Http\Controllers\AuctionController::class, 'auctionProducts']);
     Route::post('/auction/saveAuctionProduct', [App\Http\Controllers\AuctionController::class, 'saveAuctionProduct'])->name('saveAuctionProduct');
-    Route::post('/auction/getAuctionProduct', [App\Http\Controllers\AuctionController::class, 'getAuctionProduct'])->name('getAuctionProduct');
-    Route::post('/auction/getUser', [App\Http\Controllers\AuctionController::class, 'getUser'])->name('getUser');
     Route::delete('/auction/deleteAuctionProduct', [App\Http\Controllers\AuctionController::class, 'deleteAuctionProduct'])->name('deleteAuctionProduct');
     Route::get('/auction/create', [App\Http\Controllers\AuctionController::class, 'create']);
     Route::get('/auction/edit/{id}', [App\Http\Controllers\AuctionController::class, 'edit']);
@@ -158,7 +158,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
     Route::get('/auction/autobids', [App\Http\Controllers\AuctionController::class, 'autoBids'])->name('autobids');
     Route::get('/auction/updateAutoBids/{id}', [App\Http\Controllers\AuctionController::class, 'updateAutoBids'])->name('updateAutoBids');
-    Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
     Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);

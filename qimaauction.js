@@ -15,7 +15,10 @@ io.on('connection', function (socket) {
 // });
 
 socket.on('auto_bid_updates', function (data) {
-    io.emit('auto_bid_updates', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id  });
+    io.emit('auto_bid_updates', { "latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id  });
+ });
+ socket.on('auto_bid_delete', function (data) {
+    io.emit('auto_bid_delete', { "autobidamount":data.autobidamount,"auction_product_id":data.auction_product_id});
  });
 socket.on('add_bid_updates', function (data) {
  io.emit('add_bid_updates', { 

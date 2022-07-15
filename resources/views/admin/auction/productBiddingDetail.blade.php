@@ -174,42 +174,38 @@
                                                                 <td allign="right">
                                                                     {{ $auction->reserve_price }}
                                                                 </td>
-                                                                <td allign="right">
+                                                                <input type="hidden" id="pweight{{ $auction->id }}" value="{{$auction->weight}}">
+                                                                <td allign="right" id="liability{{ $auction->id }}">
                                                                     @php
                                                                         $bidprice = isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price;
                                                                     @endphp
                                                                     {{ $auction->weight * $bidprice }}
                                                                 </td>
                                                                 {{-- data all --}}
-                                                                @if (isset($auction->latestAutoBidPrice))
-                                                                    <td class="editblock">
+                                                                {{-- @if (isset($auction->latestAutoBidPrice)) --}}
+                                                                    <td class="editblock{{ $auction->id }}">
                                                                         <input type="hidden"
                                                                             id="autobidId{{ $auction->id }}"
-                                                                            value="{{ $auction->latestAutoBidPrice->id }}">
+                                                                            value="{{ $auction->latestAutoBidPrice->id ?? '0' }}">
                                                                         @php
                                                                             $latestAutoBidPrice = isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->bid_amount : null;
                                                                         @endphp
+                                                                        
                                                                         <input type="number"
                                                                             value="{{ $latestAutoBidPrice ?? '0' }}"
                                                                             name="autoBidAmount"
                                                                             id="autoBidAmount{{ $auction->id }}"
-                                                                            style="width: 80px; border-radius : 1px;padding:4px; border: 1px solid #d1af69;">
+                                                                            style="width: 80px; border-radius : 1px;padding:4px; border: 1px solid #d1af69;" {{(isset($latestAutoBidPrice)) ? '' : 'disabled'}}>
                                                                         <input type="hidden"
                                                                             id="userId{{ $auction->id }}"
                                                                             value="{{ isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->user_id : '--' }}">
-                                                                        <button data-id="{{ $auction->id }}"
-                                                                            class="autobid btn btn-sm success"
-                                                                            style="font-size:16px;margin-top: -22px;"><i
-                                                                                class="fa fa-pencil"></i>
-                                                                            <div
-                                                                                class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
-                                                                            </div>
+                                                                        <button data-id="{{ $auction->id }}" id="editbtn{{ $auction->id }}" {{(isset($latestAutoBidPrice)) ? '' : 'disabled'}}
+                                                                            class="autobid btn btn-sm success" 
+                                                                            style="font-size:16px;">save </button>
+                                                                            <div class="errormsgautobid errorMsgAutoBid{{ $auction->id }}"></div>                                                                    
+                                                                           
                                                                     </td>
-                                                                @else
-                                                                    <td>
-                                                                        No Auto Bid
-                                                                    </td>
-                                                                @endif
+                                        
                                                             </tr>
                                                         @endforeach
                                                     @endforeach
@@ -230,7 +226,6 @@
                     </div>
                     <div class="container tab-pane fade" id="nav-profile" role="tabpanel"
                         aria-labelledby="nav-profile-tab">
-
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -296,15 +291,30 @@
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');
                 socket.on('auto_bid_updates', function(data) {
-                    $("#autoBidAmount" + data.id).val(data.autobidamount);
-                    if (data.autobidamount == 0) {
-                        $('.editblock').html('--');
-                    }
+                     var amount = (+data.autobidamount).toFixed(2);
+                    $("#autoBidAmount" + data.id).val(amount);
+                    $("#autobidId" +  data.id).val(data.latestAutoBidId);
+                    $("#userId" + data.bidID).val(data.user_id);
+                    $("#autoBidAmount" + data.id).prop('disabled', false);
+                    $("#editbtn" + data.bidID).prop('disabled', false);
+                });
+                socket.on('auto_bid_delete', function(data) {
+                
+                    // if (data.autobidamount == 0) {
+                        $("#autoBidAmount" + data.auction_product_id).val(0);
+                        $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
+                        $("#editbtn" + data.auction_product_id).prop('disabled', true);
+                        // $('.editblock' + data.auction_product_id).html('No Auto Bid');
+                    // }
                 });
 
                 socket.on('add_bid_updates', function(data) {
-                    $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
+                    $("#price" + data.bidID).html(data.singleBidammounttesting);
                     $("#paddleNo" + data.bidID).html(data.paddleNo);
+                    var pweight =  $('#pweight' + data.bidID).val();
+                    // $("#liability" + data.bidID).html(data.singleBidammounttesting * pweight );
+                    // $("#autoBidAmount" + data.id).val(data.autobidamount);
+                    // $("#userId" + data.bidID).val(data.user_id);
                 });
 
                 $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {
@@ -373,7 +383,7 @@
                     var autobidamount = $('#autoBidAmount' + id).val();
                     var currentBidPrice = ($('#price' + id).html()).replace(/\s/g, '');
                     console.log(currentBidPrice, autobidamount)
-                    if (parseFloat(autobidamount) >= parseFloat(currentBidPrice)) {
+                    if (autobidamount >= parseFloat(currentBidPrice)) {
                         swal({
                             title: `Confirm AutoBid $` + autobidamount + `?`,
                             text: "You will remain highest bidder until your limit reached.",
@@ -392,10 +402,10 @@
                                         _token: "{{ csrf_token() }}",
                                     },
                                     success: function(response) {
-                                        $('.errorMsgAutoBid' + id).html('<p>Your $' +
+                                        $('.errorMsgAutoBid' + id).html('<p">Your $' +
                                             autobidamount + ' Bid is confirmed.</p>');
                                         // $('.errorMsgAutoBid' + id).delay(2000);
-                                        // $('#product' + id).addClass("mt-3");
+                                        // $('#product' + id).addClass("mt-5");
                                         $('#autobidamount' + id).val('');
                                         socket.emit('auto_bid_updates', {
                                             "autobidamount": autobidamount,
