@@ -582,29 +582,29 @@
         <div class="row boxrow">
             <p id="timer_text"></p>
         </div>
-        <div class="row boxrow auction_pending" style="display: none;">
-            <div class="col-3">
+        <div class="row boxrow auction_pending" style="display: none;width:auto">
+            <div class="col-2">
                 <h2 id="days">-</h2>
                 <p>Days</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h2 id="hours">-</h2>
                 <p>Hours</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h2 id="minutes">-</h2>
                 <p>Minutes</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h2 id="seconds">-</h2>
                 <p>Seconds </p>
             </div>
