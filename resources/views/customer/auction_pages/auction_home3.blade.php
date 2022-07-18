@@ -578,11 +578,11 @@
             </div>
         </div>
     </section>
-    <div class="container box text-center section-4-text-1">
+    <div class="container box text-center section-4-text-1 auction_pending" style="display: none;">
         <div class="row boxrow">
-            <p id="timer_text"></p>
+            <p class="timer_text"></p>
         </div>
-        <div class="row boxrow auction_pending" style="display: none;width:auto">
+        <div class="row boxrow ">
             <div class="col-2">
                 <h2 id="days">-</h2>
                 <p>Days</p>
@@ -609,7 +609,18 @@
                 <p>Seconds </p>
             </div>
         </div>
-        <div class="row boxrow auction_started" style="display: none;">
+        <div class="row boxrow">
+            <div class="col-8 ">
+                <p id="countdown" style="color: red;font-size: small;"></p>
+            </div>
+        </div>
+    </div>
+    <div class="container box text-center section-4-text-1 auction_started" style="display: none;">
+        <div class="row boxrow">
+            <p class="timer_text"></p>
+        </div>
+        <div class="row boxrow">
+            
             <div class="col-3">
                 <h2 id="minutes">-</h2>
                 <p>Minutes</p>
@@ -1510,7 +1521,7 @@
             var timer_text = "Auction Starting in";
             var timer2 = "{{$interval3}}";
         }
-            $('#timer_text').html(timer_text);
+            $('.timer_text').html(timer_text);
             clearInterval(interval);
              window.interval = setInterval(function() {
                 var timer = timer2.split(':');
