@@ -956,6 +956,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $total_liability = 0; @endphp
                                 @foreach ($auctionProducts as $auctionProduct)
                                     @php
                                         $openCheck = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)->first();
