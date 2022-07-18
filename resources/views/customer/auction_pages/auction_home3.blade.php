@@ -584,6 +584,13 @@
         </div>
         <div class="row boxrow auction_pending" style="display: none;">
             <div class="col-3">
+                <h2 id="days">-</h2>
+                <p>Days</p>
+            </div>
+            <div>
+                <h2>:</h2>
+            </div>
+            <div class="col-3">
                 <h2 id="hours">-</h2>
                 <p>Hours</p>
             </div>
@@ -1465,6 +1472,7 @@
     function resetTimer(data){
         var timer_text = "";
         var hours= 0;
+        var days= 0;
         if("{{$auction->auctionStatus()}}" == "active"){
             @php
             $date_a = new DateTime($auction->endDate);
@@ -1508,9 +1516,10 @@
                 var timer = timer2.split(':');
                 //by parsing integer, I avoid all extra string processing
                 if(timer.length > 2){
-                    var hours = parseInt(timer[0], 10);
-                    var minutes = parseInt(timer[1], 10);
-                    var seconds = parseInt(timer[2], 10);
+                    var days = parseInt(timer[0], 10);
+                    var hours = parseInt(timer[1], 10);
+                    var minutes = parseInt(timer[2], 10);
+                    var seconds = parseInt(timer[3], 10);
                 }
                 else{
                     var minutes = parseInt(timer[0], 10);
@@ -1522,6 +1531,7 @@
                 seconds = (seconds < 0) ? 59 : seconds;
                 seconds = seconds.toString().padStart(2, "0");
                 //minutes = (minutes < 10) ?  minutes : minutes;
+                $('#days').html(days.toString().padStart(2, "0"));
                 $('#hours').html(hours.toString().padStart(2, "0"));
                 $('#minutes').html(minutes.toString().padStart(2, "0"));
                 $('#seconds').html(seconds);
