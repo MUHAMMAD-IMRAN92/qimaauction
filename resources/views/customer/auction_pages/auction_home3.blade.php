@@ -1000,7 +1000,7 @@
                                                 
                                             </div>
                                         </td>
-                                        <td class="liability{{ $auctionProduct->id }}">---</td>
+                                        <td class="liability{{ $auctionProduct->id }}">{{ $auctionProduct->weight * $auctionProduct->latestBidPrice->bid_amount}}</td>
                                         @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
