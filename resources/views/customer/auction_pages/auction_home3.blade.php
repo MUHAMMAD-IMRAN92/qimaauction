@@ -1538,6 +1538,7 @@
         }
             $('.timer_text').html(timer_text);
             clearInterval(interval);
+                var timer = timer2.split(':');
             if(timer.length > 2){
                      days = parseInt(timer[0], 10);
                      hours = parseInt(timer[1], 10);
