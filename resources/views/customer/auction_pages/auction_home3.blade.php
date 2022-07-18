@@ -580,6 +580,8 @@
     </section>
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
+            {{$auction->startDate}}
+            {{date('Y-m-d H:i:s')}}
             <p class="timer_text"></p>
         </div>
         <div class="row boxrow ">
