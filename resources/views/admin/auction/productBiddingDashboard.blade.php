@@ -92,7 +92,7 @@
         <div class="navbar-wrapper">
             <div class="navbar-container content">
                 <div class="navbar-collapse" id="navbar-mobile">
-                    <h3>Live Bidding Dashboard</h3>
+                    <h3>Auction Dashboard</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a
@@ -355,7 +355,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="margin-left: 115px">
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-lg-12 mb-2">
                     <nav>
@@ -500,10 +500,10 @@
                                                 <table class="table" id="auction-table">
                                                     <thead>
                                                         <tr>
-                                                            <th></th>
-                                                            <th>User</th>
-                                                            <th>Paddle Number</th>
-                                                            <th>Liability</th>
+                                                            <td></td>
+                                                            <td><b>User</b></td>
+                                                            <td><b>Paddle Number</b></td>
+                                                            <td><b>Liability</b></td>
                                                             {{-- <th></th> --}}
                                                         </tr>
                                                     </thead>
@@ -516,13 +516,13 @@
                                                                 @foreach ($auction->products as $key => $pro)
                                                                     @if ($auction->latestBidPrice)
                                                                         <tr id="{{ ++$i }}">
-                                                                            <td class="headerSortUp headerSortDown move">
+                                                                            <td class="headerSortUp headerSortDown move"  width="5%">
                                                                                 <a href=""></a>
                                                                             </td>
                                                                             <td>
                                                                                 {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
                                                                             </td>
-                                                                            <td id="paddleNo{{ $auction->id }}">
+                                                                            <td id="paddleNo{{ $auction->id }}" width="30%">
                                                                                 {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
                                                                             </td>
                                                                             <td>
