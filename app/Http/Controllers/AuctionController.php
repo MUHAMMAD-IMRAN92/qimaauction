@@ -89,9 +89,15 @@ class AuctionController extends Controller
     {
         $auction_products = AuctionProduct::where('id',$request->auctioProductId)
                         ->with('products')
-                        ->first();
+                        ->first();        
          return response()->json($auction_products);
     }
+     public function getUser(Request $request)
+     {
+        $user = User::where('id',$request->userId)
+                        ->first();
+         return response()->json($user);
+     }
     public function deleteAuctionProduct(Request $request)
     {
         $auction_products = AuctionProduct::where('id',$request->auctioProductId)->delete();
@@ -517,6 +523,13 @@ return response()->json($auction_products);
             $auction_products = AuctionProduct::with('products')->get();
            $products = Product::with('region','village','governorate','reviews')->get();
          return view('admin.auction.productBiddingDetail',compact('auction_products','products','auctionId'));
+    }
+
+    public function prductBiddingDashboard()
+    {
+          $auction_products = AuctionProduct::with('products')->get();
+           $products = Product::with('region','village','governorate','reviews')->get();
+         return view('admin.auction.productBiddingDashboard',compact('auction_products','products'));
     }
     public function updateSaveAutoBids(Request $request)
     {

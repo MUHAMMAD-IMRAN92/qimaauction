@@ -472,7 +472,12 @@
                                 <span class="menu-item @if (request()->is('/customer/index')) 'active' @endif"
                                     data-i18n="eCommerce">Manage Customer</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li @if (request()->is('auction/index')) class='active' @endif><a
+                            href="{{ url('/auction/index') }}">
+                            <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
+                                data-i18n="eCommerce">Manage Auction</span></a>
+                        </li>
+                        {{-- <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
                                     </span></a>
                             <ul class="menu-content">
@@ -487,7 +492,7 @@
                                         data-i18n="eCommerce">Auto Bids</span></a>
                             </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Open Cupping</span></a>
                         <ul>
