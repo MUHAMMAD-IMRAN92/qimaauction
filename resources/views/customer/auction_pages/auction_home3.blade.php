@@ -582,7 +582,27 @@
         <div class="row boxrow">
             <p id="timer_text"></p>
         </div>
-        <div class="row boxrow">
+        <div class="row boxrow auction_pending" style="display: none;">
+            <div class="col-3">
+                <h2 id="hours">-</h2>
+                <p>Hours</p>
+            </div>
+            <div>
+                <h2>:</h2>
+            </div>
+            <div class="col-3">
+                <h2 id="minutes">-</h2>
+                <p>Minutes</p>
+            </div>
+            <div>
+                <h2>:</h2>
+            </div>
+            <div class="col-3">
+                <h2 id="seconds">-</h2>
+                <p>Seconds </p>
+            </div>
+        </div>
+        <div class="row boxrow auction_started" style="display: none;">
             <div class="col-3">
                 <h2 id="minutes">-</h2>
                 <p>Minutes</p>
@@ -1457,11 +1477,15 @@
             $interval3 = $interva13->format('%h:%i:%s');
             @endphp
             if(data.checkTimer==0){
+                $('.auction_pending').hide();
+                $('.auction_started').show();
             var timer_text = "Auction Ending in";
 
                 var timer2 = "03:00";
             }
             else{
+                $('.auction_started').show();
+                $('.auction_pending').hide();
             var timer_text = "Auction Ending in";
 
                 var timer2 = "{{$interval2}}";
@@ -1472,6 +1496,8 @@
 
         }
         else{
+                $('.auction_started').hide();
+                $('.auction_pending').show();
             var timer_text = "Auction Starting in";
             var timer2 = "{{$interval3}}";
         }
