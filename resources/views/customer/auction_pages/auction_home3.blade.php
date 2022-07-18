@@ -1485,9 +1485,9 @@
                 --seconds;
                 minutes = (seconds < 0) ? --minutes : minutes;
                 seconds = (seconds < 0) ? 59 : seconds;
-                seconds = (seconds < 10) ? '0' + seconds : seconds;
+                seconds = seconds.toString().padStart(2, "0");
                 //minutes = (minutes < 10) ?  minutes : minutes;
-                $('#minutes').html('0' + minutes);
+                $('#minutes').html(minutes.toString().padStart(2, "0"));
                 $('#seconds').html(seconds);
                 if (minutes < 0) clearInterval(interval);
                 //check if both minutes and seconds are 0
