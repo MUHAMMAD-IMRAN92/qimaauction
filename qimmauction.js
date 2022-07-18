@@ -40,8 +40,8 @@ var https = require('https');
 var fs = require('fs');
 var express = require('express');
 var options = {
-    // key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
-    // cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
     requestCert: false,
     rejectUnauthorized: false
 };
