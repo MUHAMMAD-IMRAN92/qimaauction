@@ -969,14 +969,14 @@
                                             ->first();
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr style="display:none;"
+                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)  {{}} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
                                         @if (isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
                                         border-width: 1px 0px;
                                         border-style: solid;
                                         border-color: #9C9C9C;" @endif>
-                                        <td>Rank{{ $auctionProduct->rank }}</td>
+                                        <td>{{ $auctionProduct->rank }}</td>
                                         <td>--</td>
                                         <td>--</td>
                                         <td>{{ $auctionProduct->size }}</td>
@@ -997,10 +997,7 @@
                                             <div style="display: flex; align-items:center; gap:10px;">
                                                 <span
                                                     class="bidData1{{ $auctionProduct->id }}">${{ $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price }}/lb</span>
-                                                <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                    data-id="{{ $auctionProduct->id }}" id="accordion1"
-                                                    data-toggle="collapse" data-parent="#accordion1"
-                                                    href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                                
                                             </div>
                                         </td>
                                         <td class="liability{{ $auctionProduct->id }}">---</td>
