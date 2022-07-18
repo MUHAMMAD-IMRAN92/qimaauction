@@ -20,7 +20,10 @@ class AuctionProduct extends Model
     {
         return $this->hasOne(AutoBid::class,'auction_product_id','id')->where('is_active','1')->latestOfMany();
     }
-
+    public function singleBids()
+    {
+        return $this->hasMany(SingleBid::class,'auction_product_id','id');
+    }
     protected $guarded = [''];
 
 }

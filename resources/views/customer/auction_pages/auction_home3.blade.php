@@ -20,9 +20,8 @@
     {{-- web sockets --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript">
-              var socket = io('<?= env('SOCKETS') ?>');
-
-        // var socket = io('http://localhost:5002');
+      var socket = io('<?= env('SOCKETS') ?>');
+        // var socket = io('http://localhost:500');
     </script>
     </head>
 <style>
@@ -72,74 +71,124 @@
     width:212px;
     height:122px;
  }
+ /* Footer css */
  #footer1 {
-    background-color: #D1AF69;
-    color: black;
+        background-color: #D1AF69;
+        color: black;
+        padding: 0px 40px;
 
-
-}
-#footer1 .search-bar{
-    margin-top: 10px;
-    width :100%;
-
-   color:#646C78 ;
-   background-color: #D1AF69;
-
-   border: 1px solid #646C78;
-border-radius: 5px;
-
-}
-#footer1 h2{
-    font-size:22px;
-}
-.last-section{
-    text-align:center;
-    background-color:#D1AF69;
-}
-.last-section h3{
-    color:black;
-    font-size:22px;
-    padding-bottom:20px;
-    margin-left:15px;
-padding-left:0px;
-}
-
-
-@media all and (max-width : 768px) {
-
-    #footer1{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
 
     }
 
-#footer1 .search-bar{
-    margin-bottom:20px;
-    margin-left:20px;
-}
+    #footer1 .search-bar {
+        margin-top: 10px;
+        width: 80%;
 
-.container{
-    padding:20px;
-}
-}
-.low{
-    margin-top:30px;
-}
-#footer1 li{
-    font-size:12px;
-}
-.avatar {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-.search-icon{
- position:absolute;
- top:15px;
- right:15px;
-}
+        color: #646C78;
+        background-color: #D1AF69;
+
+        border: 1px solid #646C78;
+        border-radius: 3px;
+
+    }
+
+    #footer1 h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .last-section {
+        text-align: center;
+        background-color: #D1AF69;
+
+
+
+    }
+
+    .last-section h3 {
+        color: black;
+        font-size: 22px;
+        padding-bottom: 20px;
+        margin-left: 15px;
+        margin-top: 40px;
+    }
+
+
+    @media all and (max-width : 999px) {
+
+        #footer1 {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+        }
+
+        #footer1 .search-bar {
+            width: 40%;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+    }
+    @media all and (max-width : 768px){
+        .last-section h3 {
+            font-size: 17px !important;
+        }
+
+    }
+    .low {
+        margin-top: 30px;
+    }
+
+    #footer1 li {
+        font-size: 12px;
+    }
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .search-icon {
+        position: relative;
+        top: 1px;
+        right: 25px;
+    }
+    .img-vector {
+        width: 8px;
+        margin-bottom: 3px;
+        margin-right: 6px;
+    }
+    p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    b {
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .footer-head {
+        padding: 20px;
+    }
+    .position-bar {
+
+        position: relative;
+    }
+    .p-low {
+
+        line-height: 35px;
+        display: block;
+    }
+    .p-low img {
+        margin-right: 10px;
+    }
 /* auction table css */
 tr.hide-table-padding td {
             padding: 0;
@@ -288,7 +337,14 @@ tr.hide-table-padding td {
             }
             .changecolor
             {
-                background: #FFFEA2;
+                background:#FFFEA2;
+                border-width: 1px 0px;
+                border-style: solid;
+                border-color: #9C9C9C;
+            }
+            .changecolorwining
+            {
+                background: #DBFFDA;
                 border-width: 1px 0px;
                 border-style: solid;
                 border-color: #9C9C9C;
@@ -415,7 +471,60 @@ tr.hide-table-padding td {
             text-align: center;
             color: #000000;
         }
+        .box {
+        width: 295px;
+        border: 3px solid #D1AF69;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .boxrow
+    {
+        text-align: center;
+        gap:20px;
+        justify-content: center;
+    }
+    .boxrow h2{
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 88px;
+        text-align: center;
+        color: #4D3705;
+            }
+    .boxrow p{
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        text-align: center;
+        color: #4D3705;
+    }
+    .tablenav
+    {
+        margin-top: 40px;
+    }
+    @media all and (max-width : 768px){
+    .tablenav a{
+        font-size:12px !important;
+    }
 
+    }
+    @media all and (max-width : 600px){
+        .box{
+            width:300px;
+        }
+        .boxrow h2{
+            font-size: 37px;
+            gap:5px;
+        }
+
+    }
+    @media all and (max-width : 340px){
+        .tablenav a{
+            font-size:10px;
+        }
+    }
 </style>
 
 <body>
@@ -442,25 +551,31 @@ tr.hide-table-padding td {
         <img src="{{asset ('public/images/logo-banner.png')}}" width=40px alt="">
     </div>
 </div>
-<section>
-</section>
 </section>
 <section>
-    <div class="row">
-        {{-- <div class="col-lg-12 pb-2 text-center section-4-img">
-            <img src="{{asset('public/images/LOGO_0003_Vector-Smart-Object 1.png')}}" alt="">
-        </div> --}}
-        <div class="col-lg-12 text-center section-4-text-1">
-            <p class="time real-timer m-0"></p>
-            @php
-                $date = date('j F Y', strtotime($auction->startDate));
-            @endphp
-            <p class="date">{{ $date }}</p>
+    <div class="container box text-center section-4-text-1">
+        <div class="row boxrow">
+            <div class="col-3">
+                <h2 id="minutes">03</h2>
+                <p>Minutes</p>
+            </div>
+            <div>
+                <h2>:</h2>
+            </div>
+            <div class="col-3">
+                <h2 id="seconds">00</h2>
+                <p>Seconds </p>
+            </div>
+        </div>
+        <div class="row boxrow">
+            <div class="col-8 ">
+                <p id="countdown" style="color: red;font-size: small;"></p>
+            </div>
         </div>
     </div>
     <div class="container">
-        <nav>
-            <div class="col-4" style="padding-left: 0; !important">
+        <nav class="tablenav">
+            <div class="col-sm-5 col-8" style="padding-left: 0; !important">
                 <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active mr-2" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                         role="tab" aria-controls="nav-home" aria-selected="true">Auction</a>
@@ -481,8 +596,8 @@ tr.hide-table-padding td {
                             <th scope="col">Weight</th>
                             <th scope="col">Process</th>
                             <th scope="col">Genetics</th>
-                            <th scope="col">Bid</th>
-                            <th scope="col">Total Value</th>
+                            <th scope="col">Your Bid</th>
+                            <th scope="col">Current Bid</th>
                             <th scope="col">Lot Name</th>
                             <th scope="col">High Bidder</th>
                             <th scope="col">Time Left</th>
@@ -490,8 +605,19 @@ tr.hide-table-padding td {
                     </thead>
                     <tbody>
                         @foreach ($auctionProducts as $auctionProduct)
-                            <tr class="text-center bidcollapse{{ $auctionProduct->id }}">
-                                <td>{{ $auctionProduct->rank }}</td>
+                        @php
+                        $openCheck                       =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->first();
+                        $openCheckautobid                =   App\Models\AutoBid::where('auction_product_id',$auctionProduct->id)->first();
+                        $singleBidPricelatest            =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->orderBy('bid_amount','desc')->first();
+                        // dd($singleBidPricelatest);
+                        $userBid                         =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first();
+                        $isEmpty                         =   sizeof($singleBids);
+                        @endphp
+                            <tr class="text-center bidcollapse{{ $auctionProduct->id }}"  @if(isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif @if(isset($openCheck) || isset($openCheckautobid)) style=" background: #FFFEA2;
+                                border-width: 1px 0px;
+                                border-style: solid;
+                                border-color: #9C9C9C;" @endif>
+                                <td>Rank{{ $auctionProduct->rank }}</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>{{ $auctionProduct->size }}</td>
@@ -508,8 +634,9 @@ tr.hide-table-padding td {
                                 @foreach ($auctionProduct->products as $products)
                                     <td>--</td>
                                 @endforeach
+                                <td class="userbid{{$auctionProduct->id}}" @if(isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id != Auth::user()->id) style="color: #e78460;" @endif>{{$userBid->bid_amount ?? '---'}}</td>
                                 <td>
-                                    <div style="display: flex;">
+                                    <div style="display: flex; align-items:center; gap:10px;">
                                         <span class="bidData1{{ $auctionProduct->id }}">${{$auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price}}/lb</span>
                                         <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{$auctionProduct->id}}"  data-id="{{ $auctionProduct->id }}" id="accordion1"
                                             data-toggle="collapse" data-parent="#accordion1"
@@ -523,11 +650,16 @@ tr.hide-table-padding td {
                                         <td>Community Lot</td>
                                     @endif
                                 @endforeach
-                                <td>5</td>
-                                <td class="paddleno{{ $auctionProduct->id }}">--</td>
-                                <td>
+                                @if(isset($singleBidPricelatest))
+                                    @foreach ($singleBidPricelatest->user as $userData )
+                                    <td class="paddleno{{ $auctionProduct->id }}">{{$userData->paddle_number ?? '---'}}</td>
+                                    @endforeach
+                                    @else
+                                    <td class="paddleno{{ $auctionProduct->id }}">---</td>
+                                    @endif
+                                    <td>
                                     <div style="display: flex;">
-                                        <span class="waiting{{ $auctionProduct->id }}">Waiting Bid</span>
+                                        <span class="waiting{{ $auctionProduct->id }}"> @if(isset($openCheck) || isset($openCheckautobid))Open @else Waiting Bid @endif</span>
                                         <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
                                     </div>
                                 </td>
@@ -584,7 +716,7 @@ tr.hide-table-padding td {
                                             <div class="row ">
                                                 <div class="col-4">
                                                     <div class="input-group mb-3" style="justify-content: flex-end;">
-                                                        <p class="mr-1 increment{{ $auctionProduct->id }}">
+                                                        <p class="mr-1 mt-2 increment{{ $auctionProduct->id }}">
                                                             @php
                                                                 //increment in singlebid price
                                                                 $incPriceSinglebid               =  $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price;
@@ -620,7 +752,7 @@ tr.hide-table-padding td {
                                                                 <th scope="col">Bid</th>
                                                                 <td
                                                                     scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    ---</td>
+                                                                    {{$auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price}}/lb</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Weight</th>
@@ -628,7 +760,7 @@ tr.hide-table-padding td {
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Total Liability</th>
-                                                                <td scope="col" class="totalliability{{$auctionProduct->id}}">---</td>
+                                                                <td scope="col" class="totalliability{{$auctionProduct->id}}">{{$auctionProduct->weight*$finalIncSinglebid}}</td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -643,75 +775,124 @@ tr.hide-table-padding td {
                 </table>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <table class="table table-bordered liabilitytable">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">Rank</th>
-                            <th scope="col">Jury Score</th>
-                            <th scope="col">Your Score</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Weight</th>
-                            <th scope="col">Process</th>
-                            <th scope="col">Genetics</th>
-                            <th scope="col">Bid</th>
-                            <th scope="col">Total Value</th>
-                            <th scope="col">Lot Name</th>
-                            <th scope="col">High Bidder</th>
-                            <th scope="col">Time Left</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-center">
-                            <td>*1</td>
-                            <td>90.1</td>
-                            <td>80.1</td>
-                            <td>4</td>
-                            <td>163lbs</td>
-                            <td>Pulp</td>
-                            <td>Garnica</td>
-                            <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                            <td>$4750.00</td>
-                            <td>SAN-HEY-03-125</td>
-                            <td>6560 <a class="btn btn-success">Winning</a></td>
-                            <td>Open:</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>*1</td>
-                            <td>90.1</td>
-                            <td>80.1</td>
-                            <td>4</td>
-                            <td>163lbs</td>
-                            <td>Pulp</td>
-                            <td>Garnica</td>
-                            <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                            <td>$4750.00</td>
-                            <td>SAN-HEY-03-125</td>
-                            <td>6560 <a class="btn btn-success">Winning</a></td>
-                            <td>Open:</td>
+                <div class="container" style="
+                padding-left: inherit;">
+                    <div class="table-responsive">
+                        <table class="table table-responsive auctiontable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Rank</th>
+                                    <th scope="col">Jury Score</th>
+                                    <th scope="col">Your Score</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Weight</th>
+                                    <th scope="col">Process</th>
+                                    <th scope="col">Genetics</th>
+                                    <th scope="col">Current Bid</th>
+                                    <th scope="col">Total Liability</th>
+                                    <th scope="col">Lot Name</th>
+                                    <th scope="col">High Bidder</th>
+                                    <th scope="col">Time Left</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($auctionProducts as $auctionProduct)
+                                @php
+                                    $openCheck                       =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->first();
+                                    $openCheckautobid                =   App\Models\AutoBid::where('auction_product_id',$auctionProduct->id)->first();
+                                    $singleBidPricelatest            =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->orderBy('bid_amount','desc')->first();
+                                    $userBid                         =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first();
+                                    $isEmpty                         =   sizeof($singleBids);
+                                @endphp
+                                    <tr style="display:none;" class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"  @if(isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif @if(isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
+                                        border-width: 1px 0px;
+                                        border-style: solid;
+                                        border-color: #9C9C9C;" @endif>
+                                        <td>Rank{{ $auctionProduct->rank }}</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>{{ $auctionProduct->size }}</td>
+                                        <td>{{ $auctionProduct->weight }}/lb</td>
+                                        @foreach ($auctionProduct->products as $products)
+                                            @if ($products->pro_process == '1')
+                                                <td>Natural</td>
+                                            @elseif ($products->pro_process == '2')
+                                                <td>Slow Dried</td>
+                                            @else
+                                                <td>Alchemy</td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($auctionProduct->products as $products)
+                                            <td>--</td>
+                                        @endforeach
+                                        <td>
+                                            <div style="display: flex; align-items:center; gap:10px;">
+                                                <span class="bidData1{{ $auctionProduct->id }}">${{$auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price}}/lb</span>
+                                                <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{$auctionProduct->id}}"  data-id="{{ $auctionProduct->id }}" id="accordion1"
+                                                    data-toggle="collapse" data-parent="#accordion1"
+                                                    href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                            </div>
+                                        </td>
+                                        <td class="liability{{$auctionProduct->id}}">---</td>
+                                        @foreach ($auctionProduct->products as $products)
+                                            @if ($products->pro_lot_type == '1')
+                                                <td>Farmer Lot</td>
+                                            @else
+                                                <td>Community Lot</td>
+                                            @endif
+                                        @endforeach
+                                        @if(isset($singleBidPricelatest))
+                                        @foreach ($singleBidPricelatest->user as $userData )
+                                            <td class="auctionpaddleno{{ $auctionProduct->id }}">{{$userData->paddle_number}}@if(isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)<button class="btn btn-success">Winning</button>@endif</td>
+                                        @endforeach
+                                        @else
+                                            <td class="auctionpaddleno{{ $auctionProduct->id }}">---</td>
+                                        @endif
+                                            <td>
+                                            <div style="display: flex;">
+                                                <span class="waiting{{ $auctionProduct->id }}"> @if(isset($openCheck) || isset($openCheckautobid))Open @else Waiting Bid @endif</span>
+                                                <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                {{-- <tr>
+                                    <th scope="row">Value:</th>
+                                    <td></td>
+                                    <td>12</td>
+                                    <td>489</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
-                        </tr>
-                        <tr class="text-center">
-                            <td>*1</td>
-                            <td>90.1</td>
-                            <td>80.1</td>
-                            <td>4</td>
-                            <td>163lbs</td>
-                            <td>Pulp</td>
-                            <td>Garnica</td>
-                            <td>$25.00/lb<a class="btn btn-primary" href="#">BID</a></td>
-                            <td>$4750.00</td>
-                            <td>SAN-HEY-03-125</td>
-                            <td>6560 <a class="btn btn-success">Winning</a></td>
-                            <td>Open:</td>
+                                    <td>$25,682.00</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Packing:</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>$0.60/lb</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
-                        </tr>
+                                    <td>$200.00</td>
+                                </tr> --}}
+                                <tr style="display:none;" class="finalliabilitytr">
+                                    <th scope="row">Your Liability</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        </tbody>
-        </table>
+                                    <td class="finalliability">--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
     </div>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -741,54 +922,46 @@ tr.hide-table-padding td {
     </div>
 
 </section>
-<div class="container-fluid" id="footer1" >
-    <div class="row" style="padding: 20px; margin-right: 0; !important;">
-    <div class="col-md-3 low" >
-        <h2  ><b>LEGAL</b></h2>
-       <p>Term and Conditions</p>
-       <p>Term of Use</p>
-       <p> Privacy Policy</p>
-       <p>Cookie Policy</p>
+<section>
+    <div class="container-fluid" id="footer1">
+        <div class="row footer-head  ">
+            <div class="offset-lg-1 col-lg-2 low">
+                <h2><b>LEGAL</b></h2>
+                <p>Term and Conditions</p>
+                <p>Term of Use</p>
+                <p> Privacy Policy</p>
+                <p>Cookie Policy</p>
 
-    </div>
-    <div class="col-md-3 search-bar1 low" >
-        <h2 ><b>SEARCH</b></h2>
-        <div style="
-    position: relative; ">
+            </div>
+            <div class="col-lg-3 search-bar1 low">
+                <h2><b>SEARCH</b></h2>
+                <div class="position-bar">
 
-        <input  type="text" placeholder="Search"  class="search-bar" >
-        <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search" class="search-bar">
+                    <i class="fa fa-search search-icon"></i>
+                </div>
+            </div>
+            <div class="col-lg-2 low">
+                <h2><b>QUICK LINKS</b></h2>
+                <p><img src="{{ asset('public/images/Vector.png')}}" alt="" class="img-vector"> Contact us</p>
+                <p> <img src="{{ asset('public/images/Vector.png')}}" alt="" class="img-vector"> Blog</p>
+                <p> <img src="{{ asset('public/images/Vector.png')}}" alt="" class="img-vector"> FAQ</p>
+                <p> <img src="{{ asset('public/images/Vector.png')}}" alt="" class="img-vector"> Our Sponsors</p>
+
+            </div>
+            <div class="col-lg-4 low">
+                <h2 class="h2-low"><b>QIMA COFFEE AUCTION</b></h2>
+                <p class="p-low"> <img src="{{ asset('public/images/home-icon1.png')}}" alt=""> 2250 NW 22nd Ave #612
+                    Portland OR 97210</p>
+                <p class="p-low"><img src="{{ asset('public/images/call-icon1.png')}}" alt="">(503) 208-2872</p>
+                <p class="p-low"> <img src="{{ asset('public/images/message-icon1.png')}}" alt="">support@qimacoffeeauction.com</p>
+            </div>
         </div>
+            <div class="last-section ">
+                <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
+            </div>
     </div>
-    <div class="col-md-3 low"  >
-        <h2 ><b>QUICK LINKS</b></h2>
-       <p>Contact us</p>
-       <p> Blog</p>
-     <p>FAQ</p>
-       <p>Our Sponsors</p>
-
-    </div>
-
-
-    <div class="col-md-3 low" >
-        <h2   ><b>QIMA COFFE AUCTION</b></h2>
-       <p> <img src="{{asset('public/images/home-icon1.png')}}"  style="margin-right:10px;" alt=""> 2250 NW 22nd Ave #612 Po-rtland OR 97210</p>
-      <p><img src="{{asset('public/images/call-icon1.png')}}" alt="" style="margin-right:10px;">(503) 208-2872</p>
-      <p> <img src="{{asset('public/images/message-icon1.png')}}"  style="margin-right:10px;" alt="">support@qimauction</p>
-
-
-    </div>
-
-
-
-
-<div class=" row last-section ">
-    <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
-</div>
-</div>
-</div>
 </section>
-
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -803,50 +976,6 @@ tr.hide-table-padding td {
 
 
 <script>
-    // Set the date we're counting down to
-    var date = `{{ date('m-d-Y H:i:s', strtotime($auction->startDate)) }}`;
-    var countDownDate = new Date(date);
-    // {new Date("Aug 9, 2022 00:00:00").getTime();}
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-        // debugger
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
-        if (days < 10) {
-            days = "0" + days;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        // Output the result in an element with id="demo"
-        $(".real-timer").text(days + ":" + hours + ":" +
-            minutes + ":" + seconds);
-        //   document.getElementsByClassName("real-timer").innerHTML = days + ":" + hours + ":"
-        //   + minutes + ":" + seconds + ":";
-
-        // If the count down is over, write some text
-        //   if (distance < 0) {
-        //     clearInterval(x);
-        //     document.getElementById("demo").innerHTML = "EXPIRED";
-        //   }
-    }, 1000);
     $("#signup-for-newsletter").on("click", function() {
         $("#newsltterModel").modal("show");
     });
@@ -889,17 +1018,26 @@ tr.hide-table-padding td {
                 },
                 success: function(response) {
                     console.log(response);
-                    var bidPrice        =   response.bid_amountNew;
-                    var bidID           =   response.auction_product_id;
-                    var increment       =   response.bidIncrement;
-                    var paddleNo        =   response.userPaddleNo;
-                    var nextIncrement   =   +increment + +bidPrice;
-                    var outbid          =   response.outAutobid;
-                    var autobidUserID   =   response.autoBidUser
-                    var bidderLiablity  =   response.liablity;
-                    var bidderID        =   response.user_id;
-                    var bidderMaxBid    =   response.bidderMaxAmount;
-                    var autoBidmax      =   response.autoBidmaxData;
+                    var bidPrice            =   response.bid_amountNew;
+                    var bidID               =   response.auction_product_id;
+                    var increment           =   response.bidIncrement;
+                    var paddleNo            =   response.userPaddleNo;
+                    var nextIncrement       =   +increment + +bidPrice;
+                    var outbid              =   response.outAutobid;
+                    var autobidUserID       =   response.autoBidUser
+                    var bidderLiablity      =   response.liablityInc;
+                    var liabiltyUser        =   response.liabiltyUser;
+                    var bidderID            =   response.user_id;
+                    var bidderMaxBid        =   response.bidderMaxAmount;
+                    var autoBidmax          =   response.autoBidmaxData;
+                    var checkTimer          =   response.timerCheck;
+                    var userBidAmount       =   response.userBidAmount;
+                    var winningBidder       =   response.winningBidder;
+                    var latestSingleBidUser =   response.latestSingleBidUser;
+                    var bidAmountUser       =   response.bidAmountUser;
+                    var liability           =   response.liability;
+                    var checkStartTimer     =   response.checkStartTimer;
+                    // alert(latestSingleBidUser);
                     $('.errorMsgAutoBid'+id).html('');
                     if(bidPrice < autoBidmax)
                     {
@@ -919,7 +1057,14 @@ tr.hide-table-padding td {
                         "autobidUserID":autobidUserID,
                         "bidderLiablity":bidderLiablity,
                         "bidderID":bidderID,
-                        "new":"ok"
+                        "userBidAmount":userBidAmount,
+                        "winningBidder":winningBidder,
+                        "latestSingleBidUser":latestSingleBidUser,
+                        "bidAmountUser":bidAmountUser,
+                        "liabiltyUser":liabiltyUser,
+                        "checkTimer":checkTimer,
+                        "liability":liability,
+                        "checkStartTimer":checkStartTimer,
                         // "bidderMaxBid":bidderMaxBid,
                     });
                 },
@@ -963,7 +1108,6 @@ tr.hide-table-padding td {
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        console.log(response);
                         console.log(response);
                         var bidPrice        =   response.bid_amountNew;
                         var bidID           =   response.auction_product_id;
@@ -1051,6 +1195,7 @@ tr.hide-table-padding td {
         })
 </script>
 <script>
+     var total = 0;
     socket.on('add_bid_updates', function(data) {
         if(data.outbidresponse == 0 && data.autobidUserID == {{Auth::user()->id}})
         {
@@ -1059,20 +1204,81 @@ tr.hide-table-padding td {
             $(".autobidClass"+data.bidID ).css("display", "block");
             $('.errorMsgAutoBid'+data.bidID).html('You lost your Bid is Outed.');
         }
-        // if(data.bidderID == {{Auth::user()->id}})
+        if(data.winningBidder == {{Auth::user()->id}})
+        {
+            // $(".bidcollapse"+data.bidID).removeClass("changecolor");
+            $(".liabilitybidcollapse"+data.bidID).show();
+            $(".finalliabilitytr").show();
+            $(".userbid"+data.bidID).css("color" ,"black");
+            $(".liabilitybidcollapse"+data.bidID).addClass("changecolorwining");
+            $(".auctionpaddleno"+data.bidID).html(data.paddleNo +'<button class="btn btn-success">Winning</button>');
+        }
+        else
+        {
+            $(".liabilitybidcollapse"+data.bidID).hide();
+            $(".userbid"+data.bidID).css("color" ,"#e78460");
+        }
+        if(data.latestSingleBidUser == {{Auth::user()->id}})
+        {
+            $(".singlebidClass"+data.bidID).attr("disabled", true);
+            $(".singlebidClass"+data.bidID).css('background','#B3B3B3');
+            $(".singlebidClass"+data.bidID).css('color','black');
+
+        }
+        else
+        {
+            $(".singlebidClass"+data.bidID).attr("disabled", false);
+            $(".singlebidClass"+data.bidID).css('background','#28a745');
+        }
+        if(data.bidAmountUser == {{Auth::user()->id}})
+        {
+            $(".userbid" + data.bidID).html(data.userBidAmount.toLocaleString('en-US')+'/lb');
+        }
+        if(data.liabiltyUser == {{Auth::user()->id}})
+        {
+            total   = total+data.liability;
+            $(".liability"+data.bidID).html('$' + data.liability.toLocaleString('en-US')+'/lb');
+            $(".finalliability").html('$' + total.toLocaleString('en-US')+'/lb');
+            $(".totalliability"+data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US')+'/lb');
+        }
+        if(data.checkTimer == 0)
+        {
+            var timer2 = "03:00";
+            var interval = setInterval(function() {
+            var timer = timer2.split(':');
+            //by parsing integer, I avoid all extra string processing
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+            //minutes = (minutes < 10) ?  minutes : minutes;
+            $('#minutes').html('0'+minutes);
+            $('#seconds').html(seconds);
+            if (minutes < 0) clearInterval(interval);
+            //check if both minutes and seconds are 0
+            if ((seconds <= 0) && (minutes <= 0)){
+                    clearInterval(interval);
+                    location.reload();
+            }
+            timer2 = minutes + ':' + seconds;
+            }, 1000);
+        }
+        // if(data.checkTimer == 0 && data.checkStartTimer == "starttimer")
         // {
-        //     $(".totalliability"+data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US')+'/lb');
-        //     $(".biddermaxbid"+data.bidID).html('$' + data.bidderMaxBid.toLocaleString('en-US')+'/lb');
+
+        //     clearInterval(interval);
+
+        //     //by parsing integer, I avoid all extra string processing
+
         // }
         $(".waiting"+data.bidID).html('Open');
         $(".bidcollapse"+data.bidID).addClass("changecolor");
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
-        $(".totalliability"+data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US')+'/lb');
         $(".biddermaxbid"+data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US')+'/lb');
-
-
     })
 </script>
 
