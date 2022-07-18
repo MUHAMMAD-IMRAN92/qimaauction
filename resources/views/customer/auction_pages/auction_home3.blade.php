@@ -755,7 +755,7 @@
                                         <div style="display: flex; align-items:center; gap:10px;">
                                             <span
                                                 class="bidData1{{ $auctionProduct->id }}">${{ $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price }}/lb</span>
-                                                @if($auction->auctionStatus=='active')
+                                                @if($auction->auctionStatus() =='active')
                                             <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
                                                 data-id="{{ $auctionProduct->id }}" id="accordion1"
                                                 data-toggle="collapse" data-parent="#accordion1"
