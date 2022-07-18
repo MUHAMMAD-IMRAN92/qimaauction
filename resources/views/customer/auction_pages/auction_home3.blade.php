@@ -969,7 +969,7 @@
                                             ->first();
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)  {{}} @else style="display:none;" @endif
+                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)  {{""}} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
                                         @if (isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
