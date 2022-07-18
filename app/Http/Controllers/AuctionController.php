@@ -237,11 +237,11 @@ return response()->json($auction_products);
         $jury->delete();
         return redirect('/auction/index')->with('msg', 'Auction Deleted Successfully');
     }
-    public function auctionFrontend()
+    public function auctionFrontend(Request $request)
     {
         $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
-        if($auction->auctionStatus() == 'ended'){
+        if($request->ended == 1) //$auction->auctionStatus() == 'ended'){
             $auction->is_hidden = 1;
             $auction->save(); 
         }

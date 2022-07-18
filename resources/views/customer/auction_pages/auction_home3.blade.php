@@ -1590,7 +1590,7 @@
                 if ((seconds <= 0) && (minutes <= 0)) {
                     clearInterval(interval);
                     // set is_hidden of auction = 1
-                    location.reload();
+                    window.location = window.location.href + "?ended=1";//location.reload();
                 }
                 if(timer.length > 2){
                     timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
