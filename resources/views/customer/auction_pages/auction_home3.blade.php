@@ -335,7 +335,6 @@
         border-style: solid;
         border-color: #9C9C9C;
     }
-
     .auctiontable tbody tr td a {
         font-family: 'Open Sans';
         font-style: normal;
@@ -343,12 +342,9 @@
         font-size: 18px;
         line-height: 25px;
         /* identical to box height */
-
         /* text-align: center; */
-
         /* color: #FFFFFF; */
     }
-
     .auctiontable tbody tr td {
         font-family: 'Playfair Display';
         font-style: normal;
@@ -383,12 +379,10 @@
         /* identical to box height */
         color: #FFFFFF;
     }
-
     .errormsgautobid {
         background: #DBFFDA;
         margin-top: 12px;
     }
-
     .liabilitytable thead {
         box-sizing: border-box;
         background: #E5E5E5;
@@ -416,9 +410,7 @@
         font-size: 18px;
         line-height: 25px;
         /* identical to box height */
-
         text-align: center;
-
         color: #FFFFFF;
     }
 
@@ -791,13 +783,10 @@
                 <p>Term of Use</p>
                 <p> Privacy Policy</p>
                 <p>Cookie Policy</p>
-
             </div>
             <div class="col-md-3 search-bar1 low">
                 <h2><b>SEARCH</b></h2>
-                <div style="
-    position: relative; ">
-
+                <div style="position: relative;">
                     <input type="text" placeholder="Search" class="search-bar">
                     <i class="fas fa-search search-icon"></i>
                 </div>
@@ -808,10 +797,7 @@
                 <p> Blog</p>
                 <p>FAQ</p>
                 <p>Our Sponsors</p>
-
             </div>
-
-
             <div class="col-md-3 low">
                 <h2><b>QIMA COFFE AUCTION</b></h2>
                 <p> <img src="{{ asset('public/images/home-icon1.png') }}" style="margin-right:10px;"
@@ -820,8 +806,6 @@
                         style="margin-right:10px;">(503) 208-2872</p>
                 <p> <img src="{{ asset('public/images/message-icon1.png') }}" style="margin-right:10px;"
                         alt="">support@qimauction</p>
-
-
             </div>
 
 
@@ -1084,8 +1068,7 @@
                                 $('.errorMsgAutoBid' + id).html('');
                                 $(".singlebidClass" + id).css("display", "block");
                                 $(".autobidClass" + id).css("display", "block");
-                            }
-                         
+                            }                      
                                      socket.emit('auto_bid_delete', {
                                     "autobidamount": 0,
                                     "auction_product_id": auction_product_id,
