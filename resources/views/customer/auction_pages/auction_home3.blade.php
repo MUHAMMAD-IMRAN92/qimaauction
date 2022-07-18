@@ -1538,6 +1538,16 @@
         }
             $('.timer_text').html(timer_text);
             clearInterval(interval);
+            if(timer.length > 2){
+                     days = parseInt(timer[0], 10);
+                     hours = parseInt(timer[1], 10);
+                    var minutes = parseInt(timer[2], 10);
+                    var seconds = parseInt(timer[3], 10);
+                }
+                else{
+                    var minutes = parseInt(timer[0], 10);
+                    var seconds = parseInt(timer[1], 10);
+                }
             $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
