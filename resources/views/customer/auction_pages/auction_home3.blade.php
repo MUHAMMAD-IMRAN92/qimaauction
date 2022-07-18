@@ -580,15 +580,18 @@
     </section>
     <div class="container box text-center section-4-text-1">
         <div class="row boxrow">
+            <p id="timer_text"></p>
+        </div>
+        <div class="row boxrow">
             <div class="col-3">
-                <h2 id="minutes">03</h2>
+                <h2 id="minutes">-</h2>
                 <p>Minutes</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
             <div class="col-3">
-                <h2 id="seconds">00</h2>
+                <h2 id="seconds">-</h2>
                 <p>Seconds </p>
             </div>
         </div>
@@ -1440,6 +1443,7 @@
         '/lb');
     })
     function resetTimer(data){
+        var timer_text = "";
         if("{{$auction->auctionStatus()}}" == "active"){
             @php
             $date_a = new DateTime($auction->endDate);
@@ -1471,7 +1475,7 @@
             var timer_text = "Auction Starting in";
             var timer2 = "{{$interval3}}";
         }
-
+            $('#timer_text').html(timer_text);
             clearInterval(interval);
              window.interval = setInterval(function() {
                 var timer = timer2.split(':');
