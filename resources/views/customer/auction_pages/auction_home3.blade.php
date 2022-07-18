@@ -1552,7 +1552,7 @@
             $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
-                $('.seconds').html(seconds);
+                $('.seconds').html(seconds.toString().padStart(2, "0"));
                 if(window.empty!=0){
                     return;
                 }
