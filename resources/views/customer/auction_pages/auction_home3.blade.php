@@ -1538,6 +1538,13 @@
         }
             $('.timer_text').html(timer_text);
             clearInterval(interval);
+            $('.days').html(days.toString().padStart(2, "0"));
+                $('.hours').html(hours.toString().padStart(2, "0"));
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds);
+                if(window.empty!=0){
+                    return;
+                }
              window.interval = setInterval(function() {
                 var timer = timer2.split(':');
                 //by parsing integer, I avoid all extra string processing
