@@ -41,6 +41,6 @@ if (sockets[socket.id] != undefined) {
     });
     });
 
-http.listen(5003, function () {
-console.log('listening on *:5003');
+http.listen(5002, function () {
+console.log('listening on *:5002');
 });

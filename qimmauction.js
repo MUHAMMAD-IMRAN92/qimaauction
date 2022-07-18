@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 
 const cors = require('cors');
 //const app = express();
-let port = 3003;
+let port = 5002;
 
 //app.use(express.static('public'));
 app.use(cors());
