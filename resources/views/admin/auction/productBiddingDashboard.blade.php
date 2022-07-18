@@ -81,18 +81,18 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
-    data-menu="vertical-menu-modern" data-col="2-columns">
+<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click" style="margin-left: -83px"
+   >
     @if (session('success'))
         <div class="col-md-12 alert alert-success">
             {{ session('success') }}
     @endif
     <!-- BEGIN: Header-->
-    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
+    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow"  style="margin-right:145px;">
         <div class="navbar-wrapper">
             <div class="navbar-container content">
                 <div class="navbar-collapse" id="navbar-mobile">
-                    <h3> Best Of Yemen Coffee 2022</h3>
+                    <h3>Live Bidding Dashboard</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a
@@ -317,8 +317,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Product Detail</h5>
                         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button> --}}
+                            <span aria-hidden="true">&times;</span>
+                            </button> --}}
                     </div>
                     <div class="modal-body">
                         <b>Size</b>&ensp;&ensp;&ensp; : <span class="col-md-5" id="size"></span><br><br>
@@ -359,7 +359,7 @@
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-lg-12 mb-2">
                     <nav>
-                        <div class="col-4">
+                        <div class="col-4 mt-4">
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
                                     href="#nav-home" role="tab" aria-controls="nav-home"
@@ -376,7 +376,7 @@
                                     <div class="card-content">
                                         <div class="card-body card-dashboard col-lg-12">
                                             <div class="table-responsive">
-                                                <table class="table table-striped" id="auction-table">
+                                                <table class="table" id="auction-table">
                                                     <thead class="table-heading">
                                                         <tr>
                                                             {{-- <th>Id</th> --}}
@@ -497,7 +497,7 @@
                                     <div class="card-content">
                                         <div class="card-body card-dashboard">
                                             <div class="table-responsive">
-                                                <table class="table table-striped" id="auction-table">
+                                                <table class="table" id="auction-table">
                                                     <thead>
                                                         <tr>
                                                             <th></th>
@@ -569,14 +569,15 @@
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });
                 socket.on('auto_bid_delete', function(data) {
+                    $('.errorMsgAutoBid' + data.auction_product_id).hide();
                     $("#autoBidAmount" + data.auction_product_id).val(0);
-                    $("#autoBidAmount" + data.auction_product_id).hide();
-                    $("#editbtn" + data.auction_product_id).hide();
+                        $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
+                        $("#editbtn" + data.auction_product_id).prop('disabled', true);
                 });
 
                 socket.on('add_bid_updates', function(data) {
                     $("#price" + data.bidID).html(data.singleBidammounttesting);
-                    $("#paddleNo" + data.bidID).html(data.paddleNo);
+                    $("#paddleNo" + data.bidID).html('<b>' + data.paddleNo + '</b>');
                 });
 
                 $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {

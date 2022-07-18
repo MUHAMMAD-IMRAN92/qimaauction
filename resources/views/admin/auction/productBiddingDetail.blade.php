@@ -119,7 +119,7 @@
                                 <div class="card-content">
                                     <div class="card-body card-dashboard col-lg-12">
                                         <div class="table-responsive">
-                                            <table class="table table-striped" id="auction-table">
+                                            <table class="table" id="auction-table">
                                                 <thead class="table-heading">
                                                     <tr>
                                                         {{-- <th>Id</th> --}}
@@ -229,7 +229,7 @@
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
                                         <div class="table-responsive">
-                                            <table class="table table-striped" id="auction-table">
+                                            <table class="table" id="auction-table">
                                                 <thead>
                                                     <tr>
                                                         <th></th>
@@ -300,15 +300,11 @@
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });
                 socket.on('auto_bid_delete', function(data) {
-                
-                    // if (data.autobidamount == 0) {
+                        $('.errorMsgAutoBid' + data.auction_product_id).hide();
                         $("#autoBidAmount" + data.auction_product_id).val(0);
                         $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
                         $("#editbtn" + data.auction_product_id).prop('disabled', true);
-                        // $('.editblock' + data.auction_product_id).html('No Auto Bid');
-                    // }
                 });
-
                 socket.on('add_bid_updates', function(data) {
                     $("#price" + data.bidID).html(data.singleBidammounttesting);
                     $("#paddleNo" + data.bidID).html(data.paddleNo);
