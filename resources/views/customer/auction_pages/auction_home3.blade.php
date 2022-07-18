@@ -1483,7 +1483,7 @@
             $interva13 = date_diff($date_b,$date_c);
 
             $interval2 = $interval->format('%i:%s');
-            $interval3 = $interva13->format('%h:%i:%s');
+            $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
             if(data.checkTimer==0){
                 $('.auction_pending').hide();
