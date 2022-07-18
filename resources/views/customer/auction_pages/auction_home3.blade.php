@@ -706,7 +706,7 @@
                                 <th scope="col">Current Bid</th>
                                 <th scope="col">Lot Name</th>
                                 <th scope="col">High Bidder</th>
-                                <th scope="col">Time Left</th>
+                                <th scope="col" colspan="2">Time Left</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -789,8 +789,10 @@
                                                     Waiting Bid
                                                 @endif
                                             </span>
-                                            <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮ </a>
                                     </td>
                                 </tr>
                                 @if (!isset($agreement) ||
