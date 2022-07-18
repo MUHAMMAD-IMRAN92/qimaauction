@@ -578,7 +578,7 @@
             </div>
         </div>
     </section>
-    <div class="container box text-center section-4-text-1 auction_pending" style="display: none;">
+    <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             <p class="timer_text"></p>
         </div>
