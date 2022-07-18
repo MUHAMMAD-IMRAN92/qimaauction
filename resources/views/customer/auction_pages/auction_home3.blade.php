@@ -1521,6 +1521,7 @@
                 seconds = (seconds < 0) ? 59 : seconds;
                 seconds = seconds.toString().padStart(2, "0");
                 //minutes = (minutes < 10) ?  minutes : minutes;
+                $('#hours').html(hours.toString().padStart(2, "0"));
                 $('#minutes').html(minutes.toString().padStart(2, "0"));
                 $('#seconds').html(seconds);
                 if (minutes < 0) clearInterval(interval);
