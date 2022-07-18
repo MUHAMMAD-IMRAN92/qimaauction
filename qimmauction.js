@@ -62,12 +62,12 @@ let port = 5003;
 //app.use(express.static('public'));
 app.use(cors());
 var server = https.createServer(options, app);
-// const io = require('socket.io')(server, {
-//     cors: {
-//         origin: '*'
-//     }
-// });
-var io = require('socket.io')(http);
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*'
+    }
+});
+// var io = require('socket.io')(http);
 let clients = 0
 //const io = socket(server);
 var sockets = {};
