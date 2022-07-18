@@ -186,6 +186,8 @@
                                                 {{-- <th>Id</th> --}}
                                                 <th>Title</th>
                                                 <th>Start Price</th>
+                                                <th>Reserve Price</th>
+                                                <th>Weight</th>
                                                 <th>Size</th>
                                                 <th>Rank</th>
                                                 {{-- <th>Jury Score</th> --}}
@@ -206,6 +208,12 @@
                                                             </td>
                                                             <td>
                                                                 {{ $auction->start_price }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->reserve_price }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->weight }}
                                                             </td>
                                                             <td>
                                                                 {{ $auction->size }}
@@ -256,8 +264,7 @@
                 // var socket = io('http://localhost:5002');
                 var socket = io('<?= env('SOCKETS') ?>');
                 ////// save AuctionProduct /////
-        socket.on('add_bid_updates', function (data) {
-
+                 socket.on('add_bid_updates', function (data) {
             // $("#price").html('$'+data.singleBidammounttesting);
             $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
             // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
@@ -373,7 +380,9 @@
                                      var id = data.id;
                              }
                             var markup = "<tr id=" + id + "><td>" + title + "</td><td>" + data
-                                .start_price + "</td><td>" + data.size + "</td><td>" + data.rank +
+                                .start_price + "</td><td>" + data
+                                .reserve_price + "</td><td>" + data
+                                .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
                                 "</td><td><i id='edit' data-auctionId=" + data.id +
                                 " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
                                 .id + " class='fas fa-trash-o'></i></td></tr>";

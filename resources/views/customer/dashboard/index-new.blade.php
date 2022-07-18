@@ -532,7 +532,7 @@
                                     <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
                                     <th style="border-bottom:1px solid black;">JURY SCORE</th>
                                     <th style="border-bottom:1px solid black ;">REGION & ALTITUDE</th>
-                                    <th style="border-bottom:1px solid black;">LOT SIZE</th>
+                                    <th style="border-bottom:1px solid black;">LOT SIZE (LBS)</th>
                                     <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
                                     <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
                                     <th></th>
