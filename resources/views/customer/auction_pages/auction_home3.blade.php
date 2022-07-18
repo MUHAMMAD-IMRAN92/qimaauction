@@ -1542,8 +1542,8 @@
                 var timer = timer2.split(':');
                 //by parsing integer, I avoid all extra string processing
                 if(timer.length > 2){
-                    var days = parseInt(timer[0], 10);
-                    var hours = parseInt(timer[1], 10);
+                     days = parseInt(timer[0], 10);
+                     hours = parseInt(timer[1], 10);
                     var minutes = parseInt(timer[2], 10);
                     var seconds = parseInt(timer[3], 10);
                 }
