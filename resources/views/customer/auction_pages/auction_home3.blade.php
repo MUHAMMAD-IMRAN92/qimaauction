@@ -1298,6 +1298,12 @@
 </script>
 <script>
     var total = 0;
+    socket.on('auto_bid_updates', function(data) {
+        // if(data.user_id == {{Auth::user()->id}})
+        // {
+            $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        // }
+    });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
