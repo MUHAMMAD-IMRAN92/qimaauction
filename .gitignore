@@ -11,7 +11,7 @@ Homestead.json
 Homestead.yaml
 qimaauction
 npm-debug.log
-qimaauction.js
+# qimaauction.js
 oldqimmauction.js
 yarn-error.log
 /.idea
