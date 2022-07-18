@@ -71,7 +71,7 @@
         font-size: 47px;
 
         font-family: 'Montserrat';
-        padding: 10px;
+      padding: 0px;
         border-bottom: 1px solid black;
 
 
@@ -425,6 +425,7 @@
 .fourth_col{
     border-right: 1px solid black;
     height: 100px;
+    padding:inherit;
 }
 </style>
 
@@ -543,7 +544,7 @@
                                     </td>
 
                                     <td class="style-td-1 ">
-                                        <div class="border-vl align-items-center ">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
+                                        <div class="vl">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
                                     </td>
 
                                     <td class="style-td-2">
@@ -551,7 +552,7 @@
                                     </td>
 
                                     <td class="style-td-3">
-                                        <div class="fourth_col align-items-center">
+                                        <div class="fourth_col">
                                            <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->village}}</p>
                                            <p style="margin-bottom: 0; min-width: max-content;"> {{$winningCoffee->region}}</p>
                                            <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->governorate}}</p>
@@ -633,7 +634,7 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/5.png') }}" alt=""></div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/6.png') }}" alt=""></div>
 
-                
+
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/7.png') }}" alt="">
                     </div>
@@ -646,7 +647,7 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/13.png') }}" alt="">
                     </div>
 
-                
+
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/14.png') }}" alt="">
                     </div>
@@ -660,7 +661,7 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/19.png') }}" alt="">
                     </div>
 
-                
+
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/20.png') }}" alt="">
                     </div>
@@ -674,7 +675,7 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/25.png') }}" alt="">
                     </div>
 
-                
+
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/26.png') }}" alt="">
                     </div>
