@@ -241,6 +241,10 @@ return response()->json($auction_products);
     {
         $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
+        if($auction->auctionStatus() == 'ended'){
+            $auction->is_hidden = 1;
+            $auction->save(); 
+        }
         $auctionProducts        =   AuctionProduct::with('products','singleBids')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
         $agreement              =   AcceptAgreement::where('user_id',$user)->first();
