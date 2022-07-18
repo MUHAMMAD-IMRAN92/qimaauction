@@ -1426,6 +1426,7 @@
 <script>
     var total = 0;
     var interval ;
+    var empty = '{{$isEmpty}}';
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
@@ -1464,6 +1465,7 @@
             $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US') + '/lb');
         }
         if (data.checkTimer == 0) {
+            window.empty = data.checkTimer;
             resetTimer(data);
         }
         // if(data.checkTimer == 0 && data.checkStartTimer == "starttimer")
@@ -1486,6 +1488,10 @@
         var timer_text = "";
         var hours= 0;
         var days= 0;
+        @php
+        $isEmpty = sizeof($singleBids);
+        @endphp
+        
         if("{{$auction->auctionStatus()}}" == "active"){
             @php
             $date_a = new DateTime($auction->endDate);
@@ -1498,17 +1504,24 @@
             $interval2 = $interval->format('%i:%s');
             $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
-            if(data.checkTimer==0){
+            if(data && data.checkTimer==0){
                 $('.auction_pending').hide();
                 $('.auction_started').show();
-            var timer_text = "Auction Ending in";
+                var timer_text = "Auction Ending in";
+
+                var timer2 = "03:00";
+            }
+            else if(window.empty !=0 ){
+                $('.auction_pending').hide();
+                $('.auction_started').show();
+                var timer_text = "Auction Ending in";
 
                 var timer2 = "03:00";
             }
             else{
                 $('.auction_started').show();
                 $('.auction_pending').hide();
-            var timer_text = "Auction Ending in";
+                var timer_text = "Auction Ending in";
 
                 var timer2 = "{{$interval2}}";
             }
