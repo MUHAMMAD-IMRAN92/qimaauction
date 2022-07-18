@@ -781,7 +781,9 @@
                                     <td>
                                         <div style="display: flex;">
                                             <span class="waiting{{ $auctionProduct->id }}">
-                                                @if (isset($openCheck) || isset($openCheckautobid))
+                                                @if($auction->auctionStatus() =='active')
+                                                    -
+                                                @elseif (isset($openCheck) || isset($openCheckautobid))
                                                     Open
                                                 @else
                                                     Waiting Bid
