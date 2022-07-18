@@ -1543,7 +1543,7 @@
                     location.reload();
                 }
                 if(timer.length > 2){
-                    timer2 = hours + ':' + minutes + ':' + seconds;
+                    timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
                 }else{
                     timer2 = minutes + ':' + seconds;
                 }
