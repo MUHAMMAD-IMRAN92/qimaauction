@@ -25,8 +25,9 @@ Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 
 
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
-Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'isCustomer']], function(){
-    Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
+Route::group(['middleware' => ['auth', 'isCustomer']], function(){
+
+    Route::get('/auction', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auction');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');

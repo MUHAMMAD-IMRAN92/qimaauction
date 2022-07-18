@@ -26,7 +26,7 @@ socket.on('add_bid_updates', function (data) {
      "singleBidammounttesting":data.singleBidammounttesting,
      "bidID":data.bidID,"paddleNo":data.paddleNo,
      "increment":data.increment,"nextIncrement":data.nextIncrement,
-     "outbidresponse":data.outbidresponse,"userID":data.userID,});
+     "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,});
  });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
