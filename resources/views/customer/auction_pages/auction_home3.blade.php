@@ -586,28 +586,28 @@
         </div>
         <div class="row boxrow ">
             <div class="col-2">
-                <h2 id="days">-</h2>
+                <h2 class="days">-</h2>
                 <p>Days</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
             <div class="col-2">
-                <h2 id="hours">-</h2>
+                <h2 class="hours">-</h2>
                 <p>Hours</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
             <div class="col-2">
-                <h2 id="minutes">-</h2>
+                <h2 class="minutes">-</h2>
                 <p>Minutes</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
             <div class="col-2">
-                <h2 id="seconds">-</h2>
+                <h2 class="seconds">-</h2>
                 <p>Seconds </p>
             </div>
         </div>
@@ -624,14 +624,14 @@
         <div class="row boxrow">
             
             <div class="col-3">
-                <h2 id="minutes">-</h2>
+                <h2 class="minutes">-</h2>
                 <p>Minutes</p>
             </div>
             <div>
                 <h2>:</h2>
             </div>
             <div class="col-3">
-                <h2 id="seconds">-</h2>
+                <h2 class="seconds">-</h2>
                 <p>Seconds </p>
             </div>
         </div>
@@ -1557,10 +1557,10 @@
                 seconds = (seconds < 0) ? 59 : seconds;
                 seconds = seconds.toString().padStart(2, "0");
                 //minutes = (minutes < 10) ?  minutes : minutes;
-                $('#days').html(days.toString().padStart(2, "0"));
-                $('#hours').html(hours.toString().padStart(2, "0"));
-                $('#minutes').html(minutes.toString().padStart(2, "0"));
-                $('#seconds').html(seconds);
+                $('.days').html(days.toString().padStart(2, "0"));
+                $('.hours').html(hours.toString().padStart(2, "0"));
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds);
                 if (minutes < 0) clearInterval(interval);
                 //check if both minutes and seconds are 0
                 if ((seconds <= 0) && (minutes <= 0)) {
