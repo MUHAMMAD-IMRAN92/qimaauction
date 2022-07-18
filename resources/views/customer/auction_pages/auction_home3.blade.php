@@ -1464,6 +1464,7 @@
     })
     function resetTimer(data){
         var timer_text = "";
+        var hours= 0;
         if("{{$auction->auctionStatus()}}" == "active"){
             @php
             $date_a = new DateTime($auction->endDate);
