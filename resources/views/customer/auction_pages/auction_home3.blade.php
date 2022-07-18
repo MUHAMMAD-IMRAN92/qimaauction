@@ -552,7 +552,6 @@
 </style>
 
 <body>
-
     <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
@@ -579,7 +578,28 @@
             </div>
         </div>
     </section>
-    <section>
+    <div class="container box text-center section-4-text-1">
+        <div class="row boxrow">
+            <div class="col-3">
+                <h2 id="minutes">03</h2>
+                <p>Minutes</p>
+            </div>
+            <div>
+                <h2>:</h2>
+            </div>
+            <div class="col-3">
+                <h2 id="seconds">00</h2>
+                <p>Seconds </p>
+            </div>
+        </div>
+        <div class="row boxrow">
+            <div class="col-8 ">
+                <p id="countdown" style="color: red;font-size: small;"></p>
+            </div>
+        </div>
+    </div>
+    {{-- @if($auction->auctionStatus() == "active")
+    {
         <div class="container box text-center section-4-text-1">
             <div class="row boxrow">
                 <div class="col-3">
@@ -600,6 +620,22 @@
                 </div>
             </div>
         </div>
+    }
+    @elseif ($auction->auctionStatus() == "pending")
+    {
+        <div class="row">
+        <div class="col-lg-12 text-center section-4-text-1">
+            <p class="time real-timer m-0"></p>
+            @php
+                $date = date('j F Y', strtotime($auction->startDate));
+            @endphp
+            <p class="date">{{ $date }}</p>
+        </div>
+        </div>
+    }
+    @endif --}}
+    <section>
+
         <div class="container">
             <nav class="tablenav">
                 <div class="col-sm-5 col-8" style="padding-left: 0; !important">
@@ -644,6 +680,7 @@
                                         ->orderBy('bid_amount', 'desc')
                                         ->first();
                                     $isEmpty = sizeof($singleBids);
+
                                 @endphp
                                 <tr class="text-center bidcollapse{{ $auctionProduct->id }}"
                                     @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
@@ -777,6 +814,8 @@
                                                                         ->get();
                                                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
                                                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
+                                                                     // check latest bid user
+                                                                    $latestSingleBid     =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->orderBy('created_at','desc')->first();
                                                                 @endphp
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
@@ -786,7 +825,7 @@
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
-                                                                    style="border-radius: 5px;">Bid Now</button>
+                                                                    style="border-radius: 5px;" @if(isset($latestSingleBid->user_id) && $latestSingleBid->user_id != Auth::user()->id) style="background:red;" @endif>Bid Now</button>
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -1075,6 +1114,51 @@
 
 
 <script>
+        // Set the date we're counting down to
+        var date = `{{ date('m-d-Y H:i:s', strtotime($auction->startDate)) }}`;
+    var countDownDate = new Date(date);
+    // {new Date("Aug 9, 2022 00:00:00").getTime();}
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        // debugger
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        if (days < 10) {
+            days = "0" + days;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        // Output the result in an element with id="demo"
+        $(".real-timer").text(days + ":" + hours + ":" +
+            minutes + ":" + seconds);
+        //   document.getElementsByClassName("real-timer").innerHTML = days + ":" + hours + ":"
+        //   + minutes + ":" + seconds + ":";
+
+        // If the count down is over, write some text
+        //   if (distance < 0) {
+        //     clearInterval(x);
+        //     document.getElementById("demo").innerHTML = "EXPIRED";
+        //   }
+    }, 1000);
+
     $("#signup-for-newsletter").on("click", function() {
         $("#newsltterModel").modal("show");
     });
@@ -1298,6 +1382,7 @@
 </script>
 <script>
     var total = 0;
+    var interval ;
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
@@ -1336,27 +1421,7 @@
             $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US') + '/lb');
         }
         if (data.checkTimer == 0) {
-            var timer2 = "03:00";
-            var interval = setInterval(function() {
-                var timer = timer2.split(':');
-                //by parsing integer, I avoid all extra string processing
-                var minutes = parseInt(timer[0], 10);
-                var seconds = parseInt(timer[1], 10);
-                --seconds;
-                minutes = (seconds < 0) ? --minutes : minutes;
-                seconds = (seconds < 0) ? 59 : seconds;
-                seconds = (seconds < 10) ? '0' + seconds : seconds;
-                //minutes = (minutes < 10) ?  minutes : minutes;
-                $('#minutes').html('0' + minutes);
-                $('#seconds').html(seconds);
-                if (minutes < 0) clearInterval(interval);
-                //check if both minutes and seconds are 0
-                if ((seconds <= 0) && (minutes <= 0)) {
-                    clearInterval(interval);
-                    location.reload();
-                }
-                timer2 = minutes + ':' + seconds;
-            }, 1000);
+            resetTimer(data);
         }
         // if(data.checkTimer == 0 && data.checkStartTimer == "starttimer")
         // {
@@ -1373,6 +1438,65 @@
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".biddermaxbid" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') +
         '/lb');
+    })
+    function resetTimer(data){
+        if("{{$auction->auctionStatus()}}" == "active"){
+            @php
+            $date_a = new DateTime($auction->endDate);
+            $date_b = new DateTime(date('Y-m-d H:i:s'));
+            $date_c = new DateTime($auction->startDate);
+
+            $interval = date_diff($date_a,$date_b);
+            $interva13 = date_diff($date_b,$date_c);
+
+            $interval2 = $interval->format('%i:%s');
+            $interval3 = $interva13->format('%i:%s');
+            @endphp
+            if(data.checkTimer==0){
+            var timer_text = "Auction Ending in";
+
+                var timer2 = "03:00";
+            }
+            else{
+            var timer_text = "Auction Ending in";
+
+                var timer2 = "{{$interval2}}";
+            }
+        }
+        else if("{{$auction->auctionStatus()}}" == "ended")
+        {
+
+        }
+        else{
+            var timer_text = "Auction Starting in";
+            var timer2 = "{{$interval3}}";
+        }
+
+            clearInterval(interval);
+             window.interval = setInterval(function() {
+                var timer = timer2.split(':');
+                //by parsing integer, I avoid all extra string processing
+                var minutes = parseInt(timer[0], 10);
+                var seconds = parseInt(timer[1], 10);
+                --seconds;
+                minutes = (seconds < 0) ? --minutes : minutes;
+                seconds = (seconds < 0) ? 59 : seconds;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;
+                //minutes = (minutes < 10) ?  minutes : minutes;
+                $('#minutes').html('0' + minutes);
+                $('#seconds').html(seconds);
+                if (minutes < 0) clearInterval(interval);
+                //check if both minutes and seconds are 0
+                if ((seconds <= 0) && (minutes <= 0)) {
+                    clearInterval(interval);
+                    // set is_hidden of auction = 1
+                    location.reload();
+                }
+                timer2 = minutes + ':' + seconds;
+            }, 1000);
+    }
+    $(function(){
+        resetTimer();
     })
 </script>
 
