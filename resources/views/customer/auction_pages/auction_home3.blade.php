@@ -1454,7 +1454,7 @@
             $interva13 = date_diff($date_b,$date_c);
 
             $interval2 = $interval->format('%i:%s');
-            $interval3 = $interva13->format('%i:%s');
+            $interval3 = $interva13->format('%h:%i:%s');
             @endphp
             if(data.checkTimer==0){
             var timer_text = "Auction Ending in";
@@ -1480,8 +1480,16 @@
              window.interval = setInterval(function() {
                 var timer = timer2.split(':');
                 //by parsing integer, I avoid all extra string processing
-                var minutes = parseInt(timer[0], 10);
-                var seconds = parseInt(timer[1], 10);
+                if(timer.length > 2){
+                    var hours = parseInt(timer[0], 10);
+                    var minutes = parseInt(timer[1], 10);
+                    var seconds = parseInt(timer[2], 10);
+                }
+                else{
+                    var minutes = parseInt(timer[0], 10);
+                    var seconds = parseInt(timer[1], 10);
+                }
+                
                 --seconds;
                 minutes = (seconds < 0) ? --minutes : minutes;
                 seconds = (seconds < 0) ? 59 : seconds;
@@ -1496,7 +1504,11 @@
                     // set is_hidden of auction = 1
                     location.reload();
                 }
-                timer2 = minutes + ':' + seconds;
+                if(timer.length > 2){
+                    timer2 = hours + ':' + minutes + ':' + seconds;
+                }else{
+                    timer2 = minutes + ':' + seconds;
+                }
             }, 1000);
     }
     $(function(){
