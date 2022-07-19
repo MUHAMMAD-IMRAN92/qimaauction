@@ -756,7 +756,7 @@
                                     <td>
                                         <div style="display: flex; align-items:center; gap:10px;">
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }}">${{ $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price }}/lb</span>
+                                                class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
                                                 @if($auction->auctionStatus() =='active')
                                             <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
                                                 data-id="{{ $auctionProduct->id }}" id="accordion1"
@@ -858,7 +858,7 @@
                                                             <p class="mr-1 mt-2 increment{{ $auctionProduct->id }}">
                                                                 @php
                                                                     //increment in singlebid price
-                                                                    $incPriceSinglebid = $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price;
+                                                                    $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
                                                                     $bidLimitSinglebid = App\Models\Bidlimit::where('min', '<', $incPriceSinglebid)
                                                                         ->orderBy('min', 'desc')
                                                                         ->limit(1)
@@ -909,7 +909,7 @@
                                                                 <th scope="col">Bid</th>
                                                                 <td
                                                                     scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    {{ $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price }}/lb
+                                                                    {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -999,12 +999,21 @@
                                         <td>
                                             <div style="display: flex; align-items:center; gap:10px;">
                                                 <span
-                                                    class="bidData1{{ $auctionProduct->id }}">${{ $auctionProduct->latestBidPrice->bid_amount ?? $auctionProduct->start_price }}/lb</span>
+                                                    class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
+
                                             </div>
                                         </td>
-                                        <td class="liability{{ $auctionProduct->id }}">
-                                        </td>
-                                        @foreach ($auctionProduct->products as $products)
+                                        @php
+                                        if($singleBidPricelatest->user_id == Auth::user()->id)
+                                        {
+                                            $datavalue =isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight);
+                                              $total_liability =   $total_liability + $datavalue;
+                                        }
+
+                                        @endphp
+                                        <td class="liability{{ $auctionProduct->id }}">{{  isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight)}}</td>
+
+                                           @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
                                             @else
@@ -1035,7 +1044,9 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                 @endforeach
+
                                 {{-- <tr>
                                     <th scope="row">Value:</th>
                                     <td></td>
@@ -1058,7 +1069,7 @@
 
                                     <td>$200.00</td>
                                 </tr> --}}
-                                <tr style="display:none;" class="finalliabilitytr">
+                                <tr  class="finalliabilitytr">
                                     <th scope="row">Your Liability</th>
                                     <td></td>
                                     <td></td>
@@ -1067,7 +1078,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="finalliability">--</td>
+                                    <td class="finalliability">{{$total_liability}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1341,8 +1352,9 @@
             e.preventDefault();
             $('.errorMsgAutoBid' + id).html('');
             var id = $(this).attr('data-id');
-            var currentBidPrice = $('.bidData1' + id).html().replace(/[^0-9]/gi, '');
+            var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount = $('.autobidamount' + id).val();
+            console.log(autobidamount,currentBidPrice);
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
                     '<p>Please enter the amount greater than current bid amount.</p>');
@@ -1367,14 +1379,22 @@
                                 _token: "{{ csrf_token() }}",
                             },
                             success: function(response) {
-                                 var latestAutoBidId = response.id;
+                                console.log('response');
+                                console.log(response);
+                                if(response.message !== null)
+                                {
+                                    $('.errorMsgAutoBid' + id).html(response.message);
+                                }
+                                else
+                                {
+                                    var latestAutoBidId = response.id;
                                 var bidPrice = response.bid_amountNew;
                                 var bidID = response.auction_product_id;
                                 var increment = response.bidIncrement;
                                 var paddleNo = response.userPaddleNo;
                                 var nextIncrement = +increment + +bidPrice;
                                 var outbid = response.outAutobid;
-                                var autobidUserID = response.autoBidUser
+                                var autobidUserID = response.bidder_user_id;
                                 var bidderLiablity = response.liablity;
                                 var bidderID = response.user_id;
                                 var bidderMaxBid = response.bidderMaxAmount;
@@ -1391,7 +1411,7 @@
                                     "bidderID": bidderID,
                                     // "bidderMaxBid":bidderMaxBid,
                                 });
-      socket.emit('auto_bid_updates', {
+                                 socket.emit('auto_bid_updates', {
                                     "autobidamount": autobidamount,
                                     "latestAutoBidId":latestAutoBidId,
                                     'id': id,
@@ -1402,10 +1422,11 @@
                                     '<p>Current autobid is $' + autobidamount +
                                     ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                     id + '>Remove</a>}</p>');
-                                $('.autobidamount' + id).val('');
-                                $('.alertMessage' + id).html('');
-                                $(".singlebidClass" + id).css("display", "none");
-                                $(".autobidClass" + id).css("display", "none");
+                                    $('.autobidamount' + id).val('');
+                                    $('.alertMessage' + id).html('');
+                                    $(".singlebidClass" + id).css("display", "none");
+                                    $(".autobidClass" + id).css("display", "none");
+                                }
                             },
                             error: function(error) {
                                 console.log(error)
@@ -1466,6 +1487,7 @@
     var interval ;
     var empty = '{{$isEmpty}}';
     socket.on('add_bid_updates', function(data) {
+        console.log(data.autobidUserID,{{ Auth::user()->id }},data.outbidresponse);
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
             $(".singlebidClass" + data.bidID).css("display", "block");
