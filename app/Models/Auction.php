@@ -12,4 +12,20 @@ class Auction extends Model
     {
         return $this->hasMany(Image::class, 'auction_id' ,'id' );
     }
+
+    public function auctionStatus(){
+        $auction_startdate = date_create($this->startDate);
+        $date_convert = date_format($auction_startdate, "Y-m-d H:i:s");
+        if($date_convert > date('Y-m-d H:i:s')){ // auction is not started yet
+            return "pending";
+        }elseif($date_convert < date('Y-m-d H:i:s') && $this->is_hidden ==0){ // auction in progress
+            return "active";
+        }
+        // elseif($this->startDate < date('Y-m-d H:i:s') && $this->is_hidden ==1){
+        //     return "ended";
+        // }
+        else{
+            return "ended";
+        }
+    }
 }

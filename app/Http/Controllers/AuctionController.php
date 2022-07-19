@@ -89,7 +89,7 @@ class AuctionController extends Controller
     {
         $auction_products = AuctionProduct::where('id',$request->auctioProductId)
                         ->with('products')
-                        ->first();        
+                        ->first();
          return response()->json($auction_products);
     }
      public function getUser(Request $request)
@@ -237,10 +237,14 @@ return response()->json($auction_products);
         $jury->delete();
         return redirect('/auction/index')->with('msg', 'Auction Deleted Successfully');
     }
-    public function auctionFrontend()
+    public function auctionFrontend(Request $request)
     {
         $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
+        if($request->ended == 1){ //$auction->auctionStatus() == 'ended'){
+            $auction->is_hidden = 1;
+            $auction->save(); 
+        }
         $auctionProducts        =   AuctionProduct::with('products','singleBids')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
         $agreement              =   AcceptAgreement::where('user_id',$user)->first();
@@ -317,6 +321,9 @@ return response()->json($auction_products);
             $singleBids                     =   AuctionProduct::doesnthave('singleBids')->get();
             $isEmpty                        =   sizeof($singleBids);
             $singleBid->timerCheck          =   $isEmpty;
+            if($isEmpty==0){
+                date('Y-M-d H:i:s',strtotime('+3 minutes'));
+            }
             $userBid                        =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first();
             $userBidAmount                  =   $userBid->bid_amount;
             $singleBid->bidAmountUser       =   $userBid->user_id;
@@ -416,7 +423,7 @@ return response()->json($auction_products);
             $singleBidData->winningBidder       =   $singleBidPricelatest->user_id;
             $singleBidData->checkStartTimer     =   "starttimer";
             $latestSingleBid                    =   SingleBid::where('auction_product_id',$request->id)->orderBy('created_at','desc')->first();
-            $singleBidData->latestSingleBidUser                =   $latestSingleBid->user_id;
+            $singleBidData->latestSingleBidUser =   $latestSingleBid->user_id;
             return response()->json($singleBidData);
         }
     }
