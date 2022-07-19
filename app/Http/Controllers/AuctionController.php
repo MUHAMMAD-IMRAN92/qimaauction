@@ -243,7 +243,7 @@ return response()->json($auction_products);
         $auction                =   Auction::first();
         if($request->ended == 1){ //$auction->auctionStatus() == 'ended'){
             $auction->is_hidden = 1;
-            $auction->save(); 
+            $auction->save();
         }
         $auctionProducts        =   AuctionProduct::with('products','singleBids')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
@@ -581,5 +581,15 @@ return response()->json($auction_products);
         $news->email = $request->email;
         $news->save();
         return redirect('/');
+    }
+    public function openSideBar(Request $request)
+    {
+        $auctionProducts    = AuctionProduct::where('id',$request->id)->with('products')->first();
+        return response()->json($auctionProducts);
+    }
+    public function winningProductsSidebar($id)
+    {
+        $winningCoffeesData =   WinningCofees::where('id',$id)->with('images')->first();
+        return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
     }
 }
