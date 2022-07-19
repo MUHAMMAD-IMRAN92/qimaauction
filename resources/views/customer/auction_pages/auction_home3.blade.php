@@ -249,14 +249,14 @@
     }
 
     /* The sidebar links */
-    .sidebar a {
+    /* .sidebar a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         font-size: 25px;
         color: #818181;
         display: block;
         transition: 0.3s;
-    }
+    } */
 
     /* When you mouse over the navigation links, change their color */
     .sidebar a:hover {
@@ -549,6 +549,8 @@
             font-size: 10px;
         }
     }
+    /* sidebar css */
+
 </style>
 
 <body>
@@ -622,7 +624,7 @@
             <p class="timer_text"></p>
         </div>
         <div class="row boxrow">
-            
+
             <div class="col-3">
                 <h2 class="minutes">-</h2>
                 <p>Minutes</p>
@@ -792,7 +794,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮ </a>
+                                        <a class="openbtn openSidebar"data-id="{{$auctionProduct->id}}" style="color: #000000;"> ⋮ </a>
                                     </td>
                                 </tr>
                                 @if (!isset($agreement) ||
@@ -998,19 +1000,19 @@
                                             <div style="display: flex; align-items:center; gap:10px;">
                                                 <span
                                                     class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
-                                                
+
                                             </div>
                                         </td>
-                                        @php 
+                                        @php
                                         if($singleBidPricelatest->user_id == Auth::user()->id)
                                         {
                                             $datavalue =isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight);
                                               $total_liability =   $total_liability + $datavalue;
                                         }
-                                     
+
                                         @endphp
                                         <td class="liability{{ $auctionProduct->id }}">{{  isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight)}}</td>
-                                       
+
                                            @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
@@ -1042,9 +1044,9 @@
                                             </div>
                                         </td>
                                     </tr>
-                                   
+
                                 @endforeach
-                              
+
                                 {{-- <tr>
                                     <th scope="row">Value:</th>
                                     <td></td>
@@ -1092,22 +1094,23 @@
                     <tbody>
                         <tr>
                             <th scope="col">Weight</th>
-                            <td scope="col">163/lbs</td>
+                            <td scope="col" class="weight">---</td>
                         </tr>
                         <tr>
                             <th scope="col">Rank</th>
-                            <td scope="col">1a</td>
+                            <td scope="col" class="rank">---</td>
                         </tr>
                         <tr>
-                            <th scope="col">Lot ID</th>
-                            <td scope="col">01102</td>
+                            <th scope="col">Lot Name</th>
+                            <td scope="col" class="lotName"> ---</td>
                         </tr>
                         <tr>
                             <th scope="col">Score</th>
-                            <td scope="col">90.1</td>
+                            <td scope="col" class="score">---</td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="moreBtn" style="display:flex;justify-content: center;"></div>
             </div>
 
     </section>
@@ -1235,6 +1238,37 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+        //OpenSidebar
+        $(".openSidebar").click(function(){
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: "{{ route('opensidebar') }}",
+                method: 'POST',
+                data: {
+                    id: id,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    $(".weight").html(response.weight);
+                    $(".rank").html(response.rank);
+                    if(response.products[0].pro_lot_type == 1)
+                    {
+                        $(".lotName").html('Farmer Lot');
+                    }
+                    else
+                    {
+                        $(".lotName").html('Community Lot');
+                    }
+                    $(".score").html(response.jury_score);
+                    $(".moreBtn").html('<a href="{{ url('productdetail',':id')}}"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>')
+                    document.getElementById("mySidebar").style.width = "250px";
+                    document.getElementById("main").style.marginLeft = "250px";
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        });
         //start bid
         $(".startBid").click(function() {
             var id = $(this).attr('data-id');
@@ -1517,7 +1551,7 @@
         @php
         $isEmpty = sizeof($singleBids);
         @endphp
-        
+
         if("{{$auction->auctionStatus()}}" == "active"){
             @php
             $date_a = new DateTime($auction->endDate);
@@ -1595,7 +1629,7 @@
                     var minutes = parseInt(timer[0], 10);
                     var seconds = parseInt(timer[1], 10);
                 }
-                
+
                 --seconds;
                 minutes = (seconds < 0) ? --minutes : minutes;
                 seconds = (seconds < 0) ? 59 : seconds;
