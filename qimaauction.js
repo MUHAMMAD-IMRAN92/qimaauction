@@ -22,7 +22,7 @@ socket.on('auto_bid_updates', function (data) {
  });
 socket.on('add_bid_updates', function (data) {
  io.emit('add_bid_updates', { 
-     "bidderID":data.bidderID,"bidderLiablity":data.bidderLiablity,
+     "bidderID":data.bidderID,"bidderLiablity":data.bidderLiablity,"autobidUserID":data.autobidUserID,
      "singleBidammounttesting":data.singleBidammounttesting,
      "bidID":data.bidID,"paddleNo":data.paddleNo,
      "increment":data.increment,"nextIncrement":data.nextIncrement,
