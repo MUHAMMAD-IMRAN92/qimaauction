@@ -875,6 +875,9 @@
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
                                                             <div>
+                                                                @if(isset($latestSingleBid->user_id) && $latestSingleBid->user_id == Auth::user()->id)
+                                                                <button class="btn btn-success" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
+                                                                @else
                                                                 <button
                                                                     class="btn btn-success singlebid singlebidClass{{ $auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
@@ -1348,25 +1351,25 @@
                 },
                 success: function(response) {
                     console.log(response);
-                    var bidPrice = response.bid_amountNew;
-                    var bidID = response.auction_product_id;
-                    var increment = response.bidIncrement;
-                    var paddleNo = response.userPaddleNo;
-                    var nextIncrement = +increment + +bidPrice;
-                    var outbid = response.outAutobid;
-                    var autobidUserID = response.autoBidUser
-                    var bidderLiablity = response.liablityInc;
-                    var liabiltyUser = response.liabiltyUser;
-                    var bidderID = response.user_id;
-                    var bidderMaxBid = response.bidderMaxAmount;
-                    var autoBidmax = response.autoBidmaxData;
-                    var checkTimer = response.timerCheck;
-                    var userBidAmount = response.userBidAmount;
-                    var winningBidder = response.winningBidder;
+                    var bidPrice            = response.bid_amountNew;
+                    var bidID               = response.auction_product_id;
+                    var increment           = response.bidIncrement;
+                    var paddleNo            = response.userPaddleNo;
+                    var nextIncrement       = +increment + +bidPrice;
+                    var outbid              = response.outAutobid;
+                    var autobidUserID       = response.autoBidUser
+                    var bidderLiablity      = response.liablityInc;
+                    var liabiltyUser        = response.liabiltyUser;
+                    var bidderID            = response.user_id;
+                    var bidderMaxBid        = response.bidderMaxAmount;
+                    var autoBidmax          = response.autoBidmaxData;
+                    var checkTimer          = response.timerCheck;
+                    var userBidAmount       = response.userBidAmount;
+                    var winningBidder       = response.winningBidder;
                     var latestSingleBidUser = response.latestSingleBidUser;
-                    var bidAmountUser = response.bidAmountUser;
-                    var liability = response.liability;
-                    var checkStartTimer = response.checkStartTimer;
+                    var bidAmountUser       = response.bidAmountUser;
+                    var liability           = response.liability;
+                    var checkStartTimer     = response.checkStartTimer;
                     // alert(latestSingleBidUser);
                     $('.errorMsgAutoBid' + id).html('');
                     if (bidPrice < autoBidmax) {
@@ -1378,22 +1381,22 @@
                     }
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
-                        "bidID": bidID,
-                        "increment": increment,
-                        "paddleNo": paddleNo,
-                        "nextIncrement": nextIncrement,
-                        "outbidresponse": outbid,
-                        "autobidUserID": autobidUserID,
-                        "bidderLiablity": bidderLiablity,
-                        "bidderID": bidderID,
-                        "userBidAmount": userBidAmount,
-                        "winningBidder": winningBidder,
-                        "latestSingleBidUser": latestSingleBidUser,
-                        "bidAmountUser": bidAmountUser,
-                        "liabiltyUser": liabiltyUser,
-                        "checkTimer": checkTimer,
-                        "liability": liability,
-                        "checkStartTimer": checkStartTimer,
+                        "bidID"                  : bidID,
+                        "increment"              : increment,
+                        "paddleNo"               : paddleNo,
+                        "nextIncrement"          : nextIncrement,
+                        "outbidresponse"         : outbid,
+                        "autobidUserID"          : autobidUserID,
+                        "bidderLiablity"         : bidderLiablity,
+                        "bidderID"               : bidderID,
+                        "userBidAmount"          : userBidAmount,
+                        "winningBidder"          : winningBidder,
+                        "latestSingleBidUser"    : latestSingleBidUser,
+                        "bidAmountUser"          : bidAmountUser,
+                        "liabiltyUser"           : liabiltyUser,
+                        "checkTimer"             : checkTimer,
+                        "liability"              : liability,
+                        "checkStartTimer"        : checkStartTimer,
                         // "bidderMaxBid":bidderMaxBid,
                     });
                 },
@@ -1407,7 +1410,7 @@
         $(".autobid").on("click", function(e) {
             e.preventDefault();
             $('.errorMsgAutoBid' + id).html('');
-            var id = $(this).attr('data-id');
+            var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount = $('.autobidamount' + id).val();
             console.log(autobidamount, currentBidPrice);
@@ -1506,9 +1509,9 @@
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
-                type: "error",
-                buttons: true,
-                dangerMode: true,
+                type        : "error",
+                buttons     : true,
+                dangerMode  : true,
             }).then((result) => {
                 if (result) {
                     $.ajax({
@@ -1577,7 +1580,7 @@
         if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".singlebidClass" + data.bidID).attr("disabled", true);
             $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            $(".singlebidClass" + data.bidID).css('color', 'black');
+            // $(".singlebidClass" + data.bidID).css('color', 'black');
 
         } else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
@@ -1596,14 +1599,6 @@
             window.empty = data.checkTimer;
             resetTimer(data);
         }
-        // if(data.checkTimer == 0 && data.checkStartTimer == "starttimer")
-        // {
-
-        //     clearInterval(interval);
-
-        //     //by parsing integer, I avoid all extra string processing
-
-        // }
         $(".waiting" + data.bidID).html('Open');
         // $(".bidcollapse" + data.bidID).addClass("changecolor");
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
@@ -1623,74 +1618,87 @@
 
         if ("{{ $auction->auctionStatus() }}" == "active") {
             @php
-                $date_a = new DateTime($auction->endDate);
-                $date_b = new DateTime(date('Y-m-d H:i:s'));
-                $date_c = new DateTime($auction->startDate);
-                
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-                
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
+            $date_a = new DateTime($auction->endTime);
+            $date_b = new DateTime(date('Y-m-d H:i:s'));
+            $date_c = new DateTime($auction->startDate);
+
+            $interval   = date_diff($date_a,$date_b);
+            $interva13  = date_diff($date_b,$date_c);
+
+            $interval2  = $interval->format('%i:%s');
+            $interval3  = $interva13->format('%d:%h:%i:%s');
             @endphp
             if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
+                var timer2     = "03:00";
+                var timer = timer2.split(':');
 
-                var timer2 = "03:00";
-            } else if (window.empty != 0) {
+            }
+            else if(window.empty !=0 ){
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
+                var timer2     = "03:00";
+                var timer = timer2.split(':');
 
-                var timer2 = "03:00";
-            } else {
+            }
+            else{
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
+                var timer2     = "{{$interval2}}";
+                var timer = timer2.split(':');
 
-                var timer2 = "{{ $interval2 }}";
             }
         } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
-        } else {
-            $('.auction_started').hide();
-            $('.auction_pending').show();
+        }
+        // else if("{{$auction->auctionStatus()}}" == "running")
+        // {
+
+        // }
+        else{
+                $('.auction_started').hide();
+                $('.auction_pending').show();
             var timer_text = "Auction Starting in";
-            var timer2 = "{{ $interval3 }}";
-        }
-        $('.timer_text').html(timer_text);
-        clearInterval(interval);
-        var timer = timer2.split(':');
-        if (timer.length > 2) {
-            days = parseInt(timer[0], 10);
-            hours = parseInt(timer[1], 10);
-            var minutes = parseInt(timer[2], 10);
-            var seconds = parseInt(timer[3], 10);
-        } else {
-            var minutes = parseInt(timer[0], 10);
-            var seconds = parseInt(timer[1], 10);
-        }
-        $('.days').html(days.toString().padStart(2, "0"));
-        $('.hours').html(hours.toString().padStart(2, "0"));
-        $('.minutes').html(minutes.toString().padStart(2, "0"));
-        $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
-            return;
-        }
-        window.interval = setInterval(function() {
+            var timer2     = "{{$interval3}}";
             var timer = timer2.split(':');
-            //by parsing integer, I avoid all extra string processing
-            if (timer.length > 2) {
-                days = parseInt(timer[0], 10);
-                hours = parseInt(timer[1], 10);
-                var minutes = parseInt(timer[2], 10);
-                var seconds = parseInt(timer[3], 10);
-            } else {
-                var minutes = parseInt(timer[0], 10);
-                var seconds = parseInt(timer[1], 10);
-            }
+
+        }
+            $('.timer_text').html(timer_text);
+            clearInterval(interval);
+            if(timer.length > 2){
+                     days   = parseInt(timer[0], 10);
+                     hours  = parseInt(timer[1], 10);
+                    var minutes = parseInt(timer[2], 10);
+                    var seconds = parseInt(timer[3], 10);
+                }
+                else{
+                    var minutes = parseInt(timer[0], 10);
+                    var seconds = parseInt(timer[1], 10);
+                }
+            $('.days').html(days.toString().padStart(2, "0"));
+                $('.hours').html(hours.toString().padStart(2, "0"));
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds.toString().padStart(2, "0"));
+                if(window.empty!=0 && "{{$auction->auctionStatus()}}" == "active"){
+                    return;
+                }
+             window.interval = setInterval(function() {
+                var timer    = timer2.split(':');
+                //by parsing integer, I avoid all extra string processing
+                if(timer.length > 2){
+                     days   = parseInt(timer[0], 10);
+                     hours  = parseInt(timer[1], 10);
+                    var minutes = parseInt(timer[2], 10);
+                    var seconds = parseInt(timer[3], 10);
+                }
+                else{
+                    var minutes = parseInt(timer[0], 10);
+                    var seconds = parseInt(timer[1], 10);
+                }
 
             --seconds;
             minutes = (seconds < 0) ? --minutes : minutes;
