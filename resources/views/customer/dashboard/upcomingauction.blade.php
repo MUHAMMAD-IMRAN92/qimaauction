@@ -512,15 +512,16 @@
                                                           &nbsp;
                                                           @if(isset($auctionProduct->latestAutoBidPrice->user_id) && $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                           <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
-                                                              type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
-                                                        @endif
+                                                              type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">
+                                                              Auto Bid
+                                                         </button>
+                                                          @endif
                                                         @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && ($auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id))
-                
                                                             <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
                                                                 <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
                                                             </div>
-                                                        @else 
-                                                        {{-- <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div> --}}
+                                                        {{-- @else 
+                                                        <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"><p>You are outbidated</p></div> --}}
                                                         @endif
                                                     </form>
                                                 </div>
@@ -980,6 +981,7 @@
     socket.on('auto_bid_updates', function(data) {
         // if(data.user_id == {{Auth::user()->id}})
         // {
+            alert("sjdj");
             $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
         // }
     });
