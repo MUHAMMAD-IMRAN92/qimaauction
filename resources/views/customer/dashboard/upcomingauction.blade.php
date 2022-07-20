@@ -513,14 +513,14 @@
                                                           @if(isset($auctionProduct->latestAutoBidPrice->user_id) && $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                           <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
                                                               type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
-                                                        @endif
+                                                          @endif
                                                         @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && ($auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id))
                 
                                                             <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
                                                                 <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
                                                             </div>
                                                         @else 
-                                                        {{-- <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"></div> --}}
+                                                        <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"><p>You are outbidated</p></div>
                                                         @endif
                                                     </form>
                                                 </div>

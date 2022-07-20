@@ -884,23 +884,23 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
-                                                        <form class="form-inline" action="" method="POST">
+                                                        <form class="form-inline" action="" method="POST" >
                                                             @csrf
-                                                            <input type="hidden"
-                                                                class="form-control auctionid{{ $auctionProduct->id }}"
-                                                                value="{{ $auctionProduct->auction_id }}"
-                                                                id="autobidamount">
-                                                            $ &nbsp;<input type="number" name="autobidamount"
-                                                                class="form-control autobidamount{{ $auctionProduct->id }}"
-                                                                id="autobidamount" style="width: 50%;">
-                                                            &nbsp;<button
-                                                                class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
-                                                                type="submit" href="javascript:void(0)"
-                                                                data-id="{{ $auctionProduct->id }}">Auto
-                                                                Bid</button>
-                                                            <div
-                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                            </div>
+                                                                <input type="hidden" class="form-control auctionid{{$auctionProduct->id }}" value="{{$auctionProduct->auction_id}}" id="autobidamount" >
+                                                              $ &nbsp;<input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" style="width: 50%;" >
+                                                              &nbsp;
+                                                              @if(isset($auctionProduct->latestAutoBidPrice->user_id) && $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
+                                                              <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
+                                                                  type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
+                                                              @endif
+                                                            @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && ($auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id))
+                    
+                                                                <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
+                                                                    <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
+                                                                </div>
+                                                            @else 
+                                                            <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">You are outbidated</div>
+                                                            @endif
                                                         </form>
                                                     </div>
                                                     <div class="col-4">
