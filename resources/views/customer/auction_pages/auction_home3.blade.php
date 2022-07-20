@@ -353,14 +353,14 @@
     }
 
     .changecolor {
-        background: #DBFFDA;
+        background: #FFFEA2;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
     }
 
-    .changecolorlosing {
-        background: #FFFFFF;
+    .changecolorwining {
+        background: #DBFFDA;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
@@ -424,8 +424,12 @@
         border-radius: 10px 10px 0px 0px;
     }
 
-
-
+    .changecolor {
+        background: #FFFEA2;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
 
     .changebuttontext {
         font-family: 'Open Sans';
@@ -441,6 +445,7 @@
         background: #DBFFDA;
         margin-top: 12px;
     }
+
 
     .liabilitytable thead {
         box-sizing: border-box;
@@ -545,8 +550,8 @@
             font-size: 10px;
         }
     }
-    /* sidebar css */
 
+    /* sidebar css */
 </style>
 
 <body>
@@ -578,8 +583,8 @@
     </section>
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
-            {{$auction->startDate}}
-            {{date('Y-m-d H:i:s')}}
+            {{ $auction->startDate }}
+            {{ date('Y-m-d H:i:s') }}
             <p class="timer_text"></p>
         </div>
         <div class="row boxrow ">
@@ -639,7 +644,7 @@
             </div>
         </div>
     </div>
-    {{-- @if($auction->auctionStatus() == "active")
+    {{-- @if ($auction->auctionStatus() == 'active')
     {
         <div class="container box text-center section-4-text-1">
             <div class="row boxrow">
@@ -721,11 +726,14 @@
                                         ->orderBy('bid_amount', 'desc')
                                         ->first();
                                     $isEmpty = sizeof($singleBids);
-
+                                    
                                 @endphp
-                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
-                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif "
-                                    >
+                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}"
+                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
+                                    @if (isset($openCheck) || isset($openCheckautobid)) style=" background: #FFFEA2;
+                                border-width: 1px 0px;
+                                border-style: solid;
+                                border-color: #9C9C9C;" @endif>
                                     <td>{{ $auctionProduct->rank }}</td>
                                     <td>--</td>
                                     <td>--</td>
@@ -750,12 +758,12 @@
                                         <div style="display: flex; align-items:center; gap:10px;">
                                             <span
                                                 class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
-                                                @if($auction->auctionStatus() =='active')
-                                            <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                data-id="{{ $auctionProduct->id }}" id="accordion1"
-                                                data-toggle="collapse" data-parent="#accordion1"
-                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                                @endif
+                                            @if ($auction->auctionStatus() == 'active')
+                                                <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
+                                                    data-id="{{ $auctionProduct->id }}" id="accordion1"
+                                                    data-toggle="collapse" data-parent="#accordion1"
+                                                    href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                            @endif
                                         </div>
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
@@ -776,7 +784,7 @@
                                     <td>
                                         <div style="display: flex;">
                                             <span class="waiting{{ $auctionProduct->id }}">
-                                                @if($auction->auctionStatus() !='active')
+                                                @if ($auction->auctionStatus() != 'active')
                                                     -
                                                 @elseif (isset($openCheck) || isset($openCheckautobid))
                                                     Open
@@ -787,7 +795,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="openbtn openSidebar"data-id="{{$auctionProduct->id}}" style="color: #000000;"> ⋮ </a>
+                                        <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                            style="color: #000000;"> ⋮ </a>
                                     </td>
                                 </tr>
                                 @if (!isset($agreement) ||
@@ -858,8 +867,10 @@
                                                                         ->get();
                                                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
                                                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
-                                                                     // check latest bid user
-                                                                    $latestSingleBid     =   App\Models\SingleBid::where('auction_product_id',$auctionProduct->id)->orderBy('created_at','desc')->first();
+                                                                    // check latest bid user
+                                                                    $latestSingleBid = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
+                                                                        ->orderBy('created_at', 'desc')
+                                                                        ->first();
                                                                 @endphp
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
@@ -869,7 +880,9 @@
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
-                                                                    style="border-radius: 5px;" @if(isset($latestSingleBid->user_id) && $latestSingleBid->user_id != Auth::user()->id) style="background:red;" @endif>Bid Now</button>
+                                                                    style="border-radius: 5px;"
+                                                                    @if (isset($latestSingleBid->user_id) && $latestSingleBid->user_id != Auth::user()->id) style="background:red;" @endif>Bid
+                                                                    Now</button>
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -877,22 +890,71 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
-                                                        <form class="form-inline" action="" method="POST" >
+                                                        <form class="form-inline" action="" method="POST">
                                                             @csrf
-                                                                <input type="hidden" class="form-control auctionid{{$auctionProduct->id }}" value="{{$auctionProduct->auction_id}}" id="autobidamount" >
-                                                              $ &nbsp;<input type="number" name="autobidamount" class="form-control autobidamount{{ $auctionProduct->id }}" id="autobidamount" style="width: 50%;" >
-                                                              &nbsp;
-                                                              @if(isset($auctionProduct->latestAutoBidPrice->user_id) && $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
-                                                              <button class="btn btn-success autobid autobidClass{{$auctionProduct->id}}"
-                                                                  type="submit" href="javascript:void(0)" data-id="{{ $auctionProduct->id }}">Auto Bid</button>
-                                                              @endif
-                                                            @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && ($auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id))
-                    
-                                                                <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
-                                                                    <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
+                                                            <input type="hidden"
+                                                                class="form-control auctionid{{ $auctionProduct->id }}"
+                                                                value="{{ $auctionProduct->auction_id }}"
+                                                                id="autobidamount">
+                                                            &nbsp;<input type="number" name="autobidamount"
+                                                                class="form-control autobidamount{{ $auctionProduct->id }}"
+                                                                id="autobidamount" style="width: 50%;">
+                                                            &nbsp;
+                                                            @if(isset($auctionProduct->latestAutoBidPrice))
+                                                            @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id
+                                                                        &&  $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
+                                                                 <button
+                                                                    class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    type="submit" href="javascript:void(0)"
+                                                                    data-id="{{ $auctionProduct->id }}">Auto
+                                                                    Bid</button>
+                                                                <div
+                                                                    class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
                                                                 </div>
-                                                            @else 
-                                                            <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">You are outbidated</div>
+                                                            @endif
+                                                            @else
+                                                                <button
+                                                                class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                type="submit" href="javascript:void(0)"
+                                                                data-id="{{ $auctionProduct->id }}">Auto
+                                                                Bid</button>
+                                                            @endif
+                                                            <div
+                                                            class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
+                                                            </div>
+                                                    
+                                                                {{-- @if (isset($auctionProduct->latestAutoBidPrice->user_id) &&
+                                                                    $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id) --}}
+                                                                    
+                                                                {{-- @endif --}}
+                                                                @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
+                                                                    $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                                    <button
+                                                                        class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}" style="display: none"
+                                                                        type="submit" href="javascript:void(0)"
+                                                                        data-id="{{ $auctionProduct->id }}">Auto  Bid</button>
+                                                                    <div
+                                                                        class="errormsgautobid errormsgautobid{{ $auctionProduct->id }}">
+                                                                        <p>Current autobid is
+                                                                            {{ $auctionProduct->latestAutoBidPrice->bid_amount }}
+                                                                            <a href="javascript:void(0)"
+                                                                                class="removeAutoBID"
+                                                                                data-id="{{ $auctionProduct->id }}">Remove</a>
+                                                                        </p>
+                                                                    </div>
+                                                                 @endif
+                                                                @if (isset($auctionProduct->latestAutoBidPrice))
+                                                                @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id
+                                                                    &&  $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
+                                                                <div
+                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
+                                                                You lost your Bid is Outed
+                                                                </div>
+                                                                @else
+                                                                {{-- <div
+                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
+                                                                </div> --}}
+                                                                @endif
                                                             @endif
                                                         </form>
                                                     </div>
@@ -965,10 +1027,13 @@
                                             ->first();
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr
+                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
-                                        @if (isset($singleBidPricelatest) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;"  @else style="display:none;"@endif
-                                        >
+                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
+                                        @if (isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
+                                        border-width: 1px 0px;
+                                        border-style: solid;
+                                        border-color: #9C9C9C;" @endif>
                                         <td>{{ $auctionProduct->rank }}</td>
                                         <td>--</td>
                                         <td>--</td>
@@ -994,16 +1059,19 @@
                                             </div>
                                         </td>
                                         @php
-                                        if(isset($auctionProduct->latestBidPrice) &&  $singleBidPricelatest->user_id == Auth::user()->id)
-                                        {
-                                            $datavalue =isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight);
-                                              $total_liability =   $total_liability + $datavalue;
-                                        }
-
+                                            if (isset($singleBidPricelatest)) {
+                                                if ($singleBidPricelatest->user_id == Auth::user()->id) {
+                                                    $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight;
+                                                    $total_liability = $total_liability + $datavalue;
+                                                }
+                                            }
+                                            
                                         @endphp
-                                        <td class="liability{{ $auctionProduct->id }}">{{  isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight)}}</td>
+                                        <td class="liability{{ $auctionProduct->id }}">
+                                            {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
+                                        </td>
 
-                                           @foreach ($auctionProduct->products as $products)
+                                        @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
                                             @else
@@ -1014,7 +1082,7 @@
                                             @foreach ($singleBidPricelatest->user as $userData)
                                                 <td class="auctionpaddleno{{ $auctionProduct->id }}">
                                                     {{ $userData->paddle_number }}@if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)
-
+                                                        <button class="btn btn-success">Winning</button>
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -1034,7 +1102,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                 @endforeach
 
                                 {{-- <tr>
@@ -1059,7 +1126,7 @@
 
                                     <td>$200.00</td>
                                 </tr> --}}
-                                <tr  class="finalliabilitytr">
+                                <tr class="finalliabilitytr">
                                     <th scope="row">Your Liability</th>
                                     <td></td>
                                     <td></td>
@@ -1068,7 +1135,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="finalliability">{{$total_liability}}</td>
+                                    <td class="finalliability">{{ $total_liability }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1165,8 +1232,8 @@
 
 
 <script>
-        // Set the date we're counting down to
-        var date = `{{ date('m-d-Y H:i:s', strtotime($auction->startDate)) }}`;
+    // Set the date we're counting down to
+    var date = `{{ date('m-d-Y H:i:s', strtotime($auction->startDate)) }}`;
     var countDownDate = new Date(date);
     // {new Date("Aug 9, 2022 00:00:00").getTime();}
 
@@ -1229,7 +1296,7 @@
 <script type="text/javascript">
     $(document).ready(function(e) {
         //OpenSidebar
-        $(".openSidebar").click(function(){
+        $(".openSidebar").click(function() {
             var id = $(this).attr('data-id');
             $.ajax({
                 url: "{{ route('opensidebar') }}",
@@ -1241,16 +1308,15 @@
                 success: function(response) {
                     $(".weight").html(response.weight);
                     $(".rank").html(response.rank);
-                    if(response.products[0].pro_lot_type == 1)
-                    {
+                    if (response.products[0].pro_lot_type == 1) {
                         $(".lotName").html('Farmer Lot');
-                    }
-                    else
-                    {
+                    } else {
                         $(".lotName").html('Community Lot');
                     }
                     $(".score").html(response.jury_score);
-                    $(".moreBtn").html('<a href="{{ url('productdetail',':id')}}"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>')
+                    $(".moreBtn").html(
+                        '<a href="{{ url('productdetail', ':id') }}"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
+                        )
                     document.getElementById("mySidebar").style.width = "250px";
                     document.getElementById("main").style.marginLeft = "250px";
                 },
@@ -1344,7 +1410,7 @@
             var id = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount = $('.autobidamount' + id).val();
-            console.log(autobidamount,currentBidPrice);
+            console.log(autobidamount, currentBidPrice);
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
                     '<p>Please enter the amount greater than current bid amount.</p>');
@@ -1371,50 +1437,54 @@
                             success: function(response) {
                                 console.log('response');
                                 console.log(response);
-                                if(response.message !== null)
-                                {
-                                    $('.errorMsgAutoBid' + id).html(response.message);
-                                }
-                                else
-                                {
+                                if (response.message !== null) {
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html(response
+                                        .message);
+                                } else {
                                     var latestAutoBidId = response.id;
-                                var bidPrice = response.bid_amountNew;
-                                var bidID = response.auction_product_id;
-                                var increment = response.bidIncrement;
-                                var paddleNo = response.userPaddleNo;
-                                var nextIncrement = +increment + +bidPrice;
-                                var outbid = response.outAutobid;
-                                var autobidUserID = response.bidder_user_id;
-                                var bidderLiablity = response.liablity;
-                                var bidderID = response.user_id;
-                                var bidderMaxBid = response.bidderMaxAmount;
-                                $('.errorMsgAutoBid' + id).html('');
-                                socket.emit('add_bid_updates', {
-                                    "singleBidammounttesting": bidPrice,
-                                    "bidID": bidID,
-                                    "increment": increment,
-                                    "paddleNo": paddleNo,
-                                    "nextIncrement": nextIncrement,
-                                    "outbidresponse": outbid,
-                                    "autobidUserID": autobidUserID,
-                                    "bidderLiablity": bidderLiablity,
-                                    "bidderID": bidderID,
-                                    // "bidderMaxBid":bidderMaxBid,
-                                });
-                                 socket.emit('auto_bid_updates', {
-                                    "autobidamount": autobidamount,
-                                    "latestAutoBidId":latestAutoBidId,
-                                    'id': id,
-                                    "bidID": bidID,
-                                    'user_id': response.user_id,
-                                });                                $('.errorMsgAutoBid' + id).html('');
-                                $('.errorMsgAutoBid' + id).html(
-                                    '<p>Current autobid is $' + autobidamount +
-                                    ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                    id + '>Remove</a>}</p>');
+                                    var bidPrice = response.bid_amountNew;
+                                    var bidID = response.auction_product_id;
+                                    var increment = response.bidIncrement;
+                                    var paddleNo = response.userPaddleNo;
+                                    var nextIncrement = +increment + +bidPrice;
+                                    var outbid = response.outAutobid;
+                                    var autobidUserID = response.bidder_user_id;
+                                    var bidderLiablity = response.liablity;
+                                    var bidderID = response.user_id;
+                                    var bidderMaxBid = response.bidderMaxAmount;
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    socket.emit('add_bid_updates', {
+                                        "singleBidammounttesting": bidPrice,
+                                        "bidID": bidID,
+                                        "increment": increment,
+                                        "paddleNo": paddleNo,
+                                        "nextIncrement": nextIncrement,
+                                        "outbidresponse": outbid,
+                                        "autobidUserID": autobidUserID,
+                                        "bidderLiablity": bidderLiablity,
+                                        "bidderID": bidderID,
+                                        // "bidderMaxBid":bidderMaxBid,
+                                    });
+                                    socket.emit('auto_bid_updates', {
+                                        "autobidamount": autobidamount,
+                                        "latestAutoBidId": latestAutoBidId,
+                                        'id': id,
+                                        "bidID": bidID,
+                                        'user_id': response.user_id,
+                                    });
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html(
+                                        '<p>Current autobid is $' +
+                                        autobidamount +
+                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                        id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
                                     $('.alertMessage' + id).html('');
-                                    $(".singlebidClass" + id).css("display", "none");
+                                    $(".singlebidClass" + id).css("display",
+                                    "none");
                                     $(".autobidClass" + id).css("display", "none");
                                 }
                             },
@@ -1449,17 +1519,19 @@
                             _token: "{{ csrf_token() }}",
                         },
                         success: function(response) {
-                            console.log(response); var auction_product_id = response.auction_product_id;
+                            console.log(response);
+                            var auction_product_id = response.auction_product_id;
                             var outbid = response.outAutobid;
                             if (outbid == 0) {
                                 $('.errorMsgAutoBid' + id).html('');
+                                $('.errorMsgAutoBid' + id + id).html('');
                                 $(".singlebidClass" + id).css("display", "block");
                                 $(".autobidClass" + id).css("display", "block");
                             }
-                                     socket.emit('auto_bid_delete', {
-                                    "autobidamount": 0,
-                                    "auction_product_id": auction_product_id,
-                                });
+                            socket.emit('auto_bid_delete', {
+                                "autobidamount": 0,
+                                "auction_product_id": auction_product_id,
+                            });
                         },
                         error: function(error) {
                             console.log(error)
@@ -1474,28 +1546,31 @@
 </script>
 <script>
     var total = 0;
-    var interval ;
-    var empty = '{{$isEmpty}}';
+    var interval;
+    var empty = '{{ $isEmpty }}';
+    socket.on('auto_bid_delete', function(data) {
+                                $('.errorMsgAutoBid' + id).html('');
+                                $('.errorMsgAutoBid' + id + id).html('');
+                            });
     socket.on('add_bid_updates', function(data) {
-        console.log(data.autobidUserID,{{ Auth::user()->id }},data.outbidresponse);
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $(".singlebidClass" + data.bidID).css("display", "block");
             $(".autobidClass" + data.bidID).css("display", "block");
-            $('.errorMsgAutoBid' + data.bidID).html('You lost your Bid is Outed.');
+            $(".autobidClass" + data.bidID).css("margin-top", "-44px");
+            $(".autobidClass" + data.bidID).css("margin-left", "153px");
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
+            // $(".bidcollapse"+data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
-            $(".bidcollapse" + data.bidID).removeClass("changecolorlosing");
-            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
-            $(".bidcollapse" + data.bidID).addClass("changecolor");
-            $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+            $(".liabilitybidcollapse" + data.bidID).addClass("changecolorwining");
+            $(".auctionpaddleno" + data.bidID).html(data.paddleNo +
+                '<button class="btn btn-success">Winning</button>');
         } else {
-            console.log("command");
-            $(".bidcollapse" + data.bidID).addClass("changecolorlosing");
-            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
@@ -1535,118 +1610,112 @@
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".biddermaxbid" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') +
-        '/lb');
+            '/lb');
     })
-    function resetTimer(data){
+
+    function resetTimer(data) {
         var timer_text = "";
-        var hours= 0;
-        var days= 0;
+        var hours = 0;
+        var days = 0;
         @php
-        $isEmpty = sizeof($singleBids);
+            $isEmpty = sizeof($singleBids);
         @endphp
 
-        if("{{$auction->auctionStatus()}}" == "active"){
+        if ("{{ $auction->auctionStatus() }}" == "active") {
             @php
-            $date_a = new DateTime($auction->endDate);
-            $date_b = new DateTime(date('Y-m-d H:i:s'));
-            $date_c = new DateTime($auction->startDate);
-
-            $interval = date_diff($date_a,$date_b);
-            $interva13 = date_diff($date_b,$date_c);
-
-            $interval2 = $interval->format('%i:%s');
-            $interval3 = $interva13->format('%d:%h:%i:%s');
+                $date_a = new DateTime($auction->endDate);
+                $date_b = new DateTime(date('Y-m-d H:i:s'));
+                $date_c = new DateTime($auction->startDate);
+                
+                $interval = date_diff($date_a, $date_b);
+                $interva13 = date_diff($date_b, $date_c);
+                
+                $interval2 = $interval->format('%i:%s');
+                $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
-            if(data && data.checkTimer==0){
+            if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
 
                 var timer2 = "03:00";
-            }
-            else if(window.empty !=0 ){
+            } else if (window.empty != 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
 
                 var timer2 = "03:00";
-            }
-            else{
+            } else {
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
 
-                var timer2 = "{{$interval2}}";
+                var timer2 = "{{ $interval2 }}";
             }
-        }
-        else if("{{$auction->auctionStatus()}}" == "ended")
-        {
+        } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
-        }
-        else{
-                $('.auction_started').hide();
-                $('.auction_pending').show();
+        } else {
+            $('.auction_started').hide();
+            $('.auction_pending').show();
             var timer_text = "Auction Starting in";
-            var timer2 = "{{$interval3}}";
+            var timer2 = "{{ $interval3 }}";
         }
-            $('.timer_text').html(timer_text);
-            clearInterval(interval);
-                var timer = timer2.split(':');
-            if(timer.length > 2){
-                     days = parseInt(timer[0], 10);
-                     hours = parseInt(timer[1], 10);
-                    var minutes = parseInt(timer[2], 10);
-                    var seconds = parseInt(timer[3], 10);
-                }
-                else{
-                    var minutes = parseInt(timer[0], 10);
-                    var seconds = parseInt(timer[1], 10);
-                }
-            $('.days').html(days.toString().padStart(2, "0"));
-                $('.hours').html(hours.toString().padStart(2, "0"));
-                $('.minutes').html(minutes.toString().padStart(2, "0"));
-                $('.seconds').html(seconds.toString().padStart(2, "0"));
-                if(window.empty!=0 && "{{$auction->auctionStatus()}}" == "active"){
-                    return;
-                }
-             window.interval = setInterval(function() {
-                var timer = timer2.split(':');
-                //by parsing integer, I avoid all extra string processing
-                if(timer.length > 2){
-                     days = parseInt(timer[0], 10);
-                     hours = parseInt(timer[1], 10);
-                    var minutes = parseInt(timer[2], 10);
-                    var seconds = parseInt(timer[3], 10);
-                }
-                else{
-                    var minutes = parseInt(timer[0], 10);
-                    var seconds = parseInt(timer[1], 10);
-                }
+        $('.timer_text').html(timer_text);
+        clearInterval(interval);
+        var timer = timer2.split(':');
+        if (timer.length > 2) {
+            days = parseInt(timer[0], 10);
+            hours = parseInt(timer[1], 10);
+            var minutes = parseInt(timer[2], 10);
+            var seconds = parseInt(timer[3], 10);
+        } else {
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+        }
+        $('.days').html(days.toString().padStart(2, "0"));
+        $('.hours').html(hours.toString().padStart(2, "0"));
+        $('.minutes').html(minutes.toString().padStart(2, "0"));
+        $('.seconds').html(seconds.toString().padStart(2, "0"));
+        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
+            return;
+        }
+        window.interval = setInterval(function() {
+            var timer = timer2.split(':');
+            //by parsing integer, I avoid all extra string processing
+            if (timer.length > 2) {
+                days = parseInt(timer[0], 10);
+                hours = parseInt(timer[1], 10);
+                var minutes = parseInt(timer[2], 10);
+                var seconds = parseInt(timer[3], 10);
+            } else {
+                var minutes = parseInt(timer[0], 10);
+                var seconds = parseInt(timer[1], 10);
+            }
 
-                --seconds;
-                minutes = (seconds < 0) ? --minutes : minutes;
-                seconds = (seconds < 0) ? 59 : seconds;
-                seconds = seconds.toString().padStart(2, "0");
-                //minutes = (minutes < 10) ?  minutes : minutes;
-                $('.days').html(days.toString().padStart(2, "0"));
-                $('.hours').html(hours.toString().padStart(2, "0"));
-                $('.minutes').html(minutes.toString().padStart(2, "0"));
-                $('.seconds').html(seconds);
-                if (minutes < 0) clearInterval(interval);
-                //check if both minutes and seconds are 0
-                if ((seconds <= 0) && (minutes <= 0)) {
-                    clearInterval(interval);
-                    // set is_hidden of auction = 1
-                    window.location = window.location.href + "?ended=1";//location.reload();
-                }
-                if(timer.length > 2){
-                    timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
-                }else{
-                    timer2 = minutes + ':' + seconds;
-                }
-            }, 1000);
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = seconds.toString().padStart(2, "0");
+            //minutes = (minutes < 10) ?  minutes : minutes;
+            $('.days').html(days.toString().padStart(2, "0"));
+            $('.hours').html(hours.toString().padStart(2, "0"));
+            $('.minutes').html(minutes.toString().padStart(2, "0"));
+            $('.seconds').html(seconds);
+            if (minutes < 0) clearInterval(interval);
+            //check if both minutes and seconds are 0
+            if ((seconds <= 0) && (minutes <= 0)) {
+                clearInterval(interval);
+                // set is_hidden of auction = 1
+                window.location = window.location.href + "?ended=1"; //location.reload();
+            }
+            if (timer.length > 2) {
+                timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
+            } else {
+                timer2 = minutes + ':' + seconds;
+            }
+        }, 1000);
     }
-    $(function(){
+    $(function() {
         resetTimer();
     })
 </script>
