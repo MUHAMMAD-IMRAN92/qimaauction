@@ -353,14 +353,14 @@
     }
 
     .changecolor {
-        background: #FFFEA2;
+        background: #DBFFDA;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
     }
 
-    .changecolorwining {
-        background: #DBFFDA;
+    .changecolorlosing {
+        background: #FFFFFF;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
@@ -424,12 +424,8 @@
         border-radius: 10px 10px 0px 0px;
     }
 
-    .changecolor {
-        background: #FFFEA2;
-        border-width: 1px 0px;
-        border-style: solid;
-        border-color: #9C9C9C;
-    }
+
+
 
     .changebuttontext {
         font-family: 'Open Sans';
@@ -727,12 +723,9 @@
                                     $isEmpty = sizeof($singleBids);
 
                                 @endphp
-                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}"
-                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
-                                    @if (isset($openCheck) || isset($openCheckautobid)) style=" background: #FFFEA2;
-                                border-width: 1px 0px;
-                                border-style: solid;
-                                border-color: #9C9C9C;" @endif>
+                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
+                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif "
+                                    >
                                     <td>{{ $auctionProduct->rank }}</td>
                                     <td>--</td>
                                     <td>--</td>
@@ -972,13 +965,10 @@
                                             ->first();
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)  {{""}} @else style="display:none;" @endif
+                                    <tr
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
-                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
-                                        @if (isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
-                                        border-width: 1px 0px;
-                                        border-style: solid;
-                                        border-color: #9C9C9C;" @endif>
+                                        @if (isset($singleBidPricelatest) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;"  @else style="display:none;"@endif
+                                        >
                                         <td>{{ $auctionProduct->rank }}</td>
                                         <td>--</td>
                                         <td>--</td>
@@ -1004,7 +994,7 @@
                                             </div>
                                         </td>
                                         @php
-                                        if($singleBidPricelatest->user_id == Auth::user()->id)
+                                        if(isset($auctionProduct->latestBidPrice) &&  $singleBidPricelatest->user_id == Auth::user()->id)
                                         {
                                             $datavalue =isset($auctionProduct->latestBidPrice) ? ($auctionProduct->latestBidPrice->bid_amount *  $auctionProduct->weight) :  ($auctionProduct->start_price  *  $auctionProduct->weight);
                                               $total_liability =   $total_liability + $datavalue;
@@ -1024,7 +1014,7 @@
                                             @foreach ($singleBidPricelatest->user as $userData)
                                                 <td class="auctionpaddleno{{ $auctionProduct->id }}">
                                                     {{ $userData->paddle_number }}@if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)
-                                                        <button class="btn btn-success">Winning</button>
+
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -1495,14 +1485,17 @@
             $('.errorMsgAutoBid' + data.bidID).html('You lost your Bid is Outed.');
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
-            // $(".bidcollapse"+data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
-            $(".liabilitybidcollapse" + data.bidID).addClass("changecolorwining");
-            $(".auctionpaddleno" + data.bidID).html(data.paddleNo +
-                '<button class="btn btn-success">Winning</button>');
+            $(".bidcollapse" + data.bidID).removeClass("changecolorlosing");
+            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
+            $(".bidcollapse" + data.bidID).addClass("changecolor");
+            $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
         } else {
+            console.log("command");
+            $(".bidcollapse" + data.bidID).addClass("changecolorlosing");
+            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
@@ -1537,7 +1530,7 @@
 
         // }
         $(".waiting" + data.bidID).html('Open');
-        $(".bidcollapse" + data.bidID).addClass("changecolor");
+        // $(".bidcollapse" + data.bidID).addClass("changecolor");
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
         $(".increment" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
