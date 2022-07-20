@@ -353,7 +353,22 @@
     }
 
     .changecolor {
-        background: #FFFEA2;
+        background: #DBFFDA;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
+
+    .changecolorlosing {
+        background: #FFFFFF;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
+
+    .changebuttontext {
+        font-family: 'Open Sans';
+        font-style        background: #FFFEA2;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
@@ -528,28 +543,14 @@
 
     @media all and (max-width : 768px) {
         .tablenav a {
-            font-size: 12px !important;
-        }
+ <<<<<<< HEAD
+=======
+    .disabledbbtn
+    {
 
     }
-
-    @media all and (max-width : 600px) {
-        .box {
-            width: 300px;
-        }
-
-        .boxrow h2 {
-            font-size: 37px;
-            gap: 5px;
-        }
-
-    }
-
-    @media all and (max-width : 340px) {
-        .tablenav a {
-            font-size: 10px;
-        }
-    }
+    /* sidebar css */
+>>>>>>> 7b1b225f7d0c42ad47990c6e0de602bd5d14e1f8
 
     /* sidebar css */
 </style>
@@ -726,7 +727,7 @@
                                         ->orderBy('bid_amount', 'desc')
                                         ->first();
                                     $isEmpty = sizeof($singleBids);
-                                    
+
                                 @endphp
                                 <tr class="text-center bidcollapse{{ $auctionProduct->id }}"
                                     @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
@@ -758,12 +759,12 @@
                                         <div style="display: flex; align-items:center; gap:10px;">
                                             <span
                                                 class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
-                                            @if ($auction->auctionStatus() == 'active')
-                                                <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                    data-id="{{ $auctionProduct->id }}" id="accordion1"
-                                                    data-toggle="collapse" data-parent="#accordion1"
-                                                    href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                            @endif
+                                                @if($auction->auctionStatus() =='active')
+                                            <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
+                                                data-id="{{ $auctionProduct->id }}" auction-id="{{$auctionProduct->auction_id}}" id="accordion1"
+                                                data-toggle="collapse" data-parent="#accordion1"
+                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                                @endif
                                         </div>
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
@@ -883,7 +884,10 @@
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
-                                                                    style="border-radius: 5px;"
+                                                                    style="border-radius: 5px;">Bid Now</button>
+                                                                @endif
+
+                                                                   style="border-radius: 5px;"
                                                                     @if (isset($latestSingleBid->user_id) && $latestSingleBid->user_id != Auth::user()->id) style="background:red;" @endif>Bid
                                                                     Now</button>
                                                             </div>
@@ -925,10 +929,10 @@
                                                             <div
                                                             class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
                                                             </div>
-                                                    
+
                                                                 {{-- @if (isset($auctionProduct->latestAutoBidPrice->user_id) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id) --}}
-                                                                    
+
                                                                 {{-- @endif --}}
                                                                 @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
@@ -1068,7 +1072,7 @@
                                                     $total_liability = $total_liability + $datavalue;
                                                 }
                                             }
-                                            
+
                                         @endphp
                                         <td class="liability{{ $auctionProduct->id }}">
                                             {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
