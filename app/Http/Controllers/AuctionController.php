@@ -249,6 +249,7 @@ return response()->json($auction_products);
         $auctionProducts        =   AuctionProduct::with('products','singleBids')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
         $agreement              =   AcceptAgreement::where('user_id',$user)->first();
+        // dd($auctionProducts->latestAutoBidPrice);
         return view('customer.auction_pages.auction_home3',compact('auctionProducts','auction','agreement','singleBids'));
     }
     public function singleBidData(Request $request)
@@ -431,13 +432,15 @@ return response()->json($auction_products);
     {
 
         $autoBid = AutoBid::where(['auction_product_id' => $request->id,'is_active' => '1'])->orderBy('created_at','desc')->first();
+       $startprice = AuctionProduct::where('id',$request->id)->first()->start_price;
+
         if(isset($autoBid))
          {
-            if($request->autobidamount == $autoBid->bid_amount)
+            if(($request->autobidamount == $autoBid->bid_amount ) && ($request->autobidamount <= $startprice))
             {
-                return response()->json(['message' => 'Enter other amount']);
+                return response()->json(['message' => 'Enter amount greater than current autobid']);
             }
-            if($request->autobidamount < $autoBid->bid_amount)
+            if($request->autobidamount <= $autoBid->bid_amount)
             {
                    do {
                       $singleBid = SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
@@ -453,7 +456,7 @@ return response()->json($auction_products);
                       $singleBid->auction_product_id  =   $request->id;
                       $singleBid->save();
                       $singleBid = SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
-                    } while ( $singleBid->bid_amount <= $request->autobidamount);
+                    } while ( $singleBid->bid_amount < $request->autobidamount);
                       $autoBidData                      =   new AutoBid();
                       $autoBidData->auction_id          =   $request->auctionid;
                       $autoBidData->user_id             =   Auth::user()->id;
@@ -462,7 +465,7 @@ return response()->json($auction_products);
                       $autoBidData->bid_amount          =   $request->autobidamount;
                       $autoBidData->save();
                  }
-            if($request->autobidamount > $autoBid->bid_amount)
+            if($request->autobidamount >= $autoBid->bid_amount)
             {
               do {
                   $singleBid = SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
@@ -478,7 +481,7 @@ return response()->json($auction_products);
                   $singleBid->auction_product_id  =   $request->id;
                   $singleBid->save();
                   $singleBid = SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
-                } while ( $singleBid->bid_amount <= $autoBid->bid_amount);
+                } while ( $singleBid->bid_amount < $autoBid->bid_amount);
                 AutoBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->update([
                               'is_active'=>'0'
                           ]);
@@ -494,19 +497,22 @@ return response()->json($auction_products);
          }
          else
          {
+            if($request->autobidamount <= $startprice)
+            {
+                return response()->json(['message' => 'Enter amount greater than current autobid']);
+            }
             $singleBid = SingleBid::where('auction_product_id',$request->id)->orderBy('bid_amount','desc')->first();
-            //  $auctionPData                   =   AuctionProduct::where('id',$request->id)->first();
-            //  $auctionProductPrice            =   $auctionPData->start_price;
-            $bidLimit                       =   Bidlimit::where('min','<',$singleBid->bid_amount)->orderBy('min','desc')->first();
+            $auctionPData                   =   AuctionProduct::where('id',$request->id)->first();
+            $auctionProductPrice            =   isset($singleBid) ? $singleBid->bid_amount : $auctionPData->start_price;
+            $bidLimit                       =   Bidlimit::where('min','<',$auctionProductPrice)->orderBy('min','desc')->first();
             $bidIncrement                   =   $bidLimit->increment;
-            $newbidPrice                    =   $bidIncrement + $singleBid->bid_amount;
+            $newbidPrice                    =   $bidIncrement + $auctionProductPrice ;
             $singleBid                      =   new SingleBid();
             $singleBid->bid_amount          =   $newbidPrice;
             $singleBid->auction_id          =   $request->auctionid;
             $singleBid->user_id             =   Auth::user()->id;
             $singleBid->auction_product_id  =   $request->id;
             $singleBid->save();
-
             $autoBidData                      =   new AutoBid();
             $autoBidData->auction_id          =   $request->auctionid;
             $autoBidData->user_id             =   Auth::user()->id;
@@ -515,7 +521,7 @@ return response()->json($auction_products);
             $autoBidData->bid_amount          =   $request->autobidamount;
             $autoBidData->save();
          }
-            $latestAutoBid                   =   AutoBid::where('auction_product_id',$request->id)->where('is_active','0')->orderBy('created_at','desc')->first();
+            $latestAutoBid                   =   AutoBid::where('auction_product_id',$request->id)->where('user_id','!=',auth()->user()->id)->where('is_active','0')->orderBy('created_at','desc')->first();
             // AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBid->user_id)->orderBy('created_at','desc')->first();
             $isActive                        =   isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
             $autoBidData->outAutobid         =   $isActive;
