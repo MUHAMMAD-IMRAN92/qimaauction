@@ -353,7 +353,14 @@
     }
 
     .changecolor {
-        background: #FFFEA2;
+        background: #DBFFDA;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
+    .changebuttontext {
+        font-family: 'Open Sans';
+        font-style        background: #FFFEA2;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
@@ -422,13 +429,6 @@
         border-style: solid;
         border-color: #9C9C9C;
         border-radius: 10px 10px 0px 0px;
-    }
-
-    .changecolor {
-        background: #FFFEA2;
-        border-width: 1px 0px;
-        border-style: solid;
-        border-color: #9C9C9C;
     }
 
     .changebuttontext {
@@ -528,35 +528,9 @@
 
     @media all and (max-width : 768px) {
         .tablenav a {
-            font-size: 12px !important;
-        }
-
-    }
-
-    @media all and (max-width : 600px) {
-        .box {
-            width: 300px;
-        }
-
-        .boxrow h2 {
-            font-size: 37px;
-            gap: 5px;
-        }
-
-    }
-
-    @media all and (max-width : 340px) {
-        .tablenav a {
             font-size: 10px;
         }
     }
-    .disabledbbtn
-    {
-
-    }
-    /* sidebar css */
-
-    /* sidebar css */
 </style>
 
 <body>
@@ -731,16 +705,12 @@
                                         ->orderBy('bid_amount', 'desc')
                                         ->first();
                                     $isEmpty = sizeof($singleBids);
-                                    
+
                                 @endphp
-                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}"
-                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
-                                    @if (isset($openCheck) || isset($openCheckautobid)) style=" background: #FFFEA2;
-                                border-width: 1px 0px;
-                                border-style: solid;
-                                border-color: #9C9C9C;" @endif>
+                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
+                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td>{{ $auctionProduct->rank }}</td>
-                                    <td>--</td>
+                                    <td>{{$auctionProduct->jury_score}}</td>
                                     <td>--</td>
                                     <td>{{ $auctionProduct->size }}</td>
                                     <td>{{ $auctionProduct->weight }}/lb</td>
@@ -772,11 +742,13 @@
                                         </div>
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
-                                        @if ($products->pro_lot_type == '1')
+                                    <td>{{$products->product_title}}</td>
+
+                                        {{-- @if ($products->pro_lot_type == '1')
                                             <td>Farmer Lot</td>
                                         @else
                                             <td>Community Lot</td>
-                                        @endif
+                                        @endif --}}
                                     @endforeach
                                     @if (isset($singleBidPricelatest))
                                         @foreach ($singleBidPricelatest->user as $userData)
@@ -890,7 +862,6 @@
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px;">Bid Now</button>
                                                                 @endif
-
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -930,10 +901,10 @@
                                                             <div
                                                             class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
                                                             </div>
-                                                    
+
                                                                 {{-- @if (isset($auctionProduct->latestAutoBidPrice->user_id) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id) --}}
-                                                                    
+
                                                                 {{-- @endif --}}
                                                                 @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
@@ -1037,11 +1008,7 @@
                                     @endphp
                                     <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
-                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif
-                                        @if (isset($openCheck) || isset($openCheckautobid)) style="background:#FFFEA2
-                                        border-width: 1px 0px;
-                                        border-style: solid;
-                                        border-color: #9C9C9C;" @endif>
+                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td>{{ $auctionProduct->rank }}</td>
                                         <td>--</td>
                                         <td>--</td>
@@ -1073,24 +1040,23 @@
                                                     $total_liability = $total_liability + $datavalue;
                                                 }
                                             }
-                                            
+
                                         @endphp
                                         <td class="liability{{ $auctionProduct->id }}">
                                             {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
                                         </td>
 
                                         @foreach ($auctionProduct->products as $products)
-                                            @if ($products->pro_lot_type == '1')
+                                            {{-- @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
                                             @else
                                                 <td>Community Lot</td>
-                                            @endif
+                                            @endif --}}
                                         @endforeach
                                         @if (isset($singleBidPricelatest))
                                             @foreach ($singleBidPricelatest->user as $userData)
                                                 <td class="auctionpaddleno{{ $auctionProduct->id }}">
                                                     {{ $userData->paddle_number }}@if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)
-                                                        <button class="btn btn-success">Winning</button>
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -1106,7 +1072,8 @@
                                                         Waiting Bid
                                                     @endif
                                                 </span>
-                                                <a class="openbtn" onclick="openNav()" style="color: #000000;"> ⋮</a>
+                                                <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                                    style="color: #000000;"> ⋮ </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -1240,51 +1207,6 @@
 
 
 <script>
-    // Set the date we're counting down to
-    var date = `{{ date('m-d-Y H:i:s', strtotime($auction->startDate)) }}`;
-    var countDownDate = new Date(date);
-    // {new Date("Aug 9, 2022 00:00:00").getTime();}
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-        // debugger
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
-        if (days < 10) {
-            days = "0" + days;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        // Output the result in an element with id="demo"
-        $(".real-timer").text(days + ":" + hours + ":" +
-            minutes + ":" + seconds);
-        //   document.getElementsByClassName("real-timer").innerHTML = days + ":" + hours + ":"
-        //   + minutes + ":" + seconds + ":";
-
-        // If the count down is over, write some text
-        //   if (distance < 0) {
-        //     clearInterval(x);
-        //     document.getElementById("demo").innerHTML = "EXPIRED";
-        //   }
-    }, 1000);
-
     $("#signup-for-newsletter").on("click", function() {
         $("#newsltterModel").modal("show");
     });
@@ -1336,7 +1258,6 @@
         //start bid
         $(".startBid").click(function() {
             var id = $(this).attr('data-id');
-            // $(".bidcollapse"+id).addClass("changecolor");
             if ($(".changetext" + id).text() == "Bid") {
                 $(".changetext" + id).text("Close");
                 $(".changetext" + id).addClass("changebuttontext");
@@ -1557,9 +1478,9 @@
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_delete', function(data) {
-                                $('.errorMsgAutoBid' + id).html('');
-                                $('.errorMsgAutoBid' + id + id).html('');
-                            });
+            $('.errorMsgAutoBid' + id).html('');
+            $('.errorMsgAutoBid' + id + id).html('');
+        });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).html('');
@@ -1575,9 +1496,8 @@
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
-            $(".liabilitybidcollapse" + data.bidID).addClass("changecolorwining");
-            $(".auctionpaddleno" + data.bidID).html(data.paddleNo +
-                '<button class="btn btn-success">Winning</button>');
+            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
+            $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
         } else {
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".userbid" + data.bidID).css("color", "#e78460");
@@ -1585,8 +1505,7 @@
         if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".singlebidClass" + data.bidID).attr("disabled", true);
             $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            // $(".singlebidClass" + data.bidID).css('color', 'black');
-
+            $(".bidcollapse" + data.bidID).addClass("changecolor");
         } else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
             $(".singlebidClass" + data.bidID).css('background', '#28a745');
