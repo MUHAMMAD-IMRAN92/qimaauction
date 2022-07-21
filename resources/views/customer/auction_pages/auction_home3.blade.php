@@ -1489,7 +1489,7 @@
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
-            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
+            $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
         } else {
             $(".liabilitybidcollapse" + data.bidID).hide();
