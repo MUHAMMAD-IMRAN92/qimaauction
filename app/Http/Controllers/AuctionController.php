@@ -612,7 +612,7 @@ return response()->json($auction_products);
     }
     public function winningProductsSidebar($id)
     {
-        $winningCoffeesData =   WinningCofees::where('id',$id)->with('images')->first();
+        $winningCoffeesData =   WinningCofees::where('rank',$id)->with('images')->first();
         return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
     }
 }

@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function(){
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
     Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
-    Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar']);
+    Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
 
 });
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');

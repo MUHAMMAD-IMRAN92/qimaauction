@@ -334,16 +334,6 @@
         /* color: #FFFFFF; */
     }
 
-    .auctiontable tbody tr td {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 29px;
-        /* text-align: center; */
-        color: #000000;
-    }
-
     .auctiontabs a.active {
         background: #D1AF69 !important;
         border-width: 1px 1px 0px 1px;
@@ -360,7 +350,8 @@
     }
     .changebuttontext {
         font-family: 'Open Sans';
-        font-style        background: #FFFEA2;
+        font-style
+        background: #FFFEA2;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
@@ -414,13 +405,20 @@
     }
 
     .auctiontable tbody tr td {
-        font-family: 'Playfair Display';
+        Font-family: 'Playfair Display';
+
+        Font-size: 18px;
+        Line-height: 22px;
+
+
+        color: #000000;
+        /* font-family: 'Playfair Display';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 29px;
         /* text-align: center; */
-        color: #000000;
+        /* color: #000000; */
     }
 
     .auctiontabs a.active {
@@ -531,6 +529,18 @@
             font-size: 10px;
         }
     }
+    .singlebidbtn{
+        background-color: #143D30 !important;
+        color: white;
+
+    }
+    .startbidbtn{
+        background-color: #143D30 !important;
+        color: white;
+    }
+    .fa-star{
+        color: #7A602B;
+    }
 </style>
 
 <body>
@@ -623,42 +633,6 @@
             </div>
         </div>
     </div>
-    {{-- @if ($auction->auctionStatus() == 'active')
-    {
-        <div class="container box text-center section-4-text-1">
-            <div class="row boxrow">
-                <div class="col-3">
-                    <h2 id="minutes">03</h2>
-                    <p>Minutes</p>
-                </div>
-                <div>
-                    <h2>:</h2>
-                </div>
-                <div class="col-3">
-                    <h2 id="seconds">00</h2>
-                    <p>Seconds </p>
-                </div>
-            </div>
-            <div class="row boxrow">
-                <div class="col-8 ">
-                    <p id="countdown" style="color: red;font-size: small;"></p>
-                </div>
-            </div>
-        </div>
-    }
-    @elseif ($auction->auctionStatus() == "pending")
-    {
-        <div class="row">
-        <div class="col-lg-12 text-center section-4-text-1">
-            <p class="time real-timer m-0"></p>
-            @php
-                $date = date('j F Y', strtotime($auction->startDate));
-            @endphp
-            <p class="date">{{ $date }}</p>
-        </div>
-        </div>
-    }
-    @endif --}}
     <section>
 
         <div class="container">
@@ -724,7 +698,13 @@
                                         @endif
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
-                                        <td>--</td>
+                                    @if ($products->genetic_id == '1')
+                                    <td>Yemenia</td>
+                                    @elseif ($products->genetic_id == '2')
+                                        <td>Bourbon</td>
+                                    @else
+                                        <td>SL28</td>
+                                    @endif
                                     @endforeach
                                     <td class="userbid{{ $auctionProduct->id }}"
                                         @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id != Auth::user()->id) style="color: #e78460;" @endif>
@@ -734,7 +714,7 @@
                                             <span
                                                 class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
                                                 @if($auction->auctionStatus() =='active')
-                                            <a class=" btn btn-primary accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
+                                            <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
                                                 data-id="{{ $auctionProduct->id }}" auction-id="{{$auctionProduct->auction_id}}" id="accordion1"
                                                 data-toggle="collapse" data-parent="#accordion1"
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
@@ -856,7 +836,7 @@
                                                                 <button class="btn btn-success" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
                                                                 @else
                                                                 <button
-                                                                    class="btn btn-success singlebid singlebidClass{{ $auctionProduct->id }}"
+                                                                    class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
@@ -883,7 +863,7 @@
                                                             @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id
                                                                         &&  $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                  <button
-                                                                    class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="btn singlebidbtn  btn-success autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="submit" href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
@@ -893,7 +873,7 @@
                                                             @endif
                                                             @else
                                                                 <button
-                                                                class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                class="btn singlebidbtn  autobid autobidClass{{ $auctionProduct->id }}"
                                                                 type="submit" href="javascript:void(0)"
                                                                 data-id="{{ $auctionProduct->id }}">Auto
                                                                 Bid</button>
@@ -1009,8 +989,8 @@
                                     <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
-                                        <td>{{ $auctionProduct->rank }}</td>
-                                        <td>--</td>
+                                        <td><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
+                                        <td>{{$auctionProduct->jury_score}}</td>
                                         <td>--</td>
                                         <td>{{ $auctionProduct->size }}</td>
                                         <td>{{ $auctionProduct->weight }}/lb</td>
@@ -1024,7 +1004,13 @@
                                             @endif
                                         @endforeach
                                         @foreach ($auctionProduct->products as $products)
-                                            <td>--</td>
+                                        @if ($products->genetic_id == '1')
+                                        <td>Yemenia</td>
+                                        @elseif ($products->genetic_id == '2')
+                                            <td>Bourbon</td>
+                                        @else
+                                            <td>SL28</td>
+                                        @endif
                                         @endforeach
                                         <td>
                                             <div style="display: flex; align-items:center; gap:10px;">
@@ -1047,6 +1033,8 @@
                                         </td>
 
                                         @foreach ($auctionProduct->products as $products)
+                                        <td>{{$products->product_title}}</td>
+
                                             {{-- @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
                                             @else
@@ -1236,6 +1224,9 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
+                    var rank = response.rank;
+                    var url = '{{ route("productsidebar", ":id") }}';
+                    url = url.replace(':id',rank);
                     $(".weight").html(response.weight);
                     $(".rank").html(response.rank);
                     if (response.products[0].pro_lot_type == 1) {
@@ -1245,8 +1236,9 @@
                     }
                     $(".score").html(response.jury_score);
                     $(".moreBtn").html(
-                        '<a href="{{ url('productdetail', ':id') }}"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
+                        '<a href="'+url+'"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
                         )
+
                     document.getElementById("mySidebar").style.width = "250px";
                     document.getElementById("main").style.marginLeft = "250px";
                 },
