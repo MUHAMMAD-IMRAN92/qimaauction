@@ -38,7 +38,7 @@ class AuctionController extends Controller
        $auction_products = AuctionProduct::where('auction_id',$auctionId)
                        ->with('products')
                        ->get();
-        $products = Product::with('region','village','governorate','reviews')->get();
+        $products = Product::with('region','village','governorate','reviews')->orderBy('product_title','asc')->get();
       return view('admin.auction.auction_products',compact('auction_products','products','auctionId'));
     }
 
