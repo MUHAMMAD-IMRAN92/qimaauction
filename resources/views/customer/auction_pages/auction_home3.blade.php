@@ -956,7 +956,7 @@
                                                                     &&  $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                 <div
                                                                 class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                                You lost your Bid is Outed
+                                                                {{-- You lost your Bid is Outed --}}
                                                                 </div>
                                                                 @else
                                                                 {{-- <div
@@ -1377,7 +1377,8 @@
                     var checkStartTimer     = response.checkStartTimer;
                     // alert(latestSingleBidUser);
                     $('.errorMsgAutoBid' + id).html('');
-                    if (bidPrice < autoBidmax) {
+                    $('.errorMsgAutoBid' + id + id).html('');
+                    if (bidPrice > autoBidmax) {
                         $('.alertMessage' + id).html('<p>Your $' + bidPrice +
                             '/lb Bid is outed.</p>');
                     } else {
@@ -1582,12 +1583,17 @@
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
-        if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
+        if ( data.outbidresponse == 1 && data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".singlebidClass" + data.bidID).attr("disabled", true);
             $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
             // $(".singlebidClass" + data.bidID).css('color', 'black');
-
-        } else {
+        }
+        else if (data.outbidresponse == 0  && data.latestSingleBidUser == {{ Auth::user()->id }}) {
+            $(".singlebidClass" + data.bidID).attr("disabled", true);
+            $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
+            // $(".singlebidClass" + data.bidID).css('color', 'black');
+        }
+       else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
             $(".singlebidClass" + data.bidID).css('background', '#28a745');
         }
