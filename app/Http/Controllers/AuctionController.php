@@ -345,7 +345,6 @@ class AuctionController extends Controller
             $bidLimit                           =   Bidlimit::where('min', '<', $singleBidStartPrice)->orderBy('min', 'desc')->limit(1)->get();
             $bidIncrement                       =   $bidLimit[0]->increment;
             $singleBidData                      =   new SingleBid();
-            // $singleBidData->bid_amount          =   $auctionPStartPrice->start_price;
             $singleBidData->auction_id          =   $auctionPStartPrice->auction_id;
             $singleBidData->user_id             =   Auth::user()->id;
             $singleBidData->auction_product_id  =   $request->id;
@@ -403,7 +402,6 @@ class AuctionController extends Controller
             $singleBidData->liability           =   $liabiltyNew;
             $inc                                =   $bidAmountL + $bidIncrementLatest;
             $totalLiabilty                      =   $inc * $auctionProduct;
-            // $singleBidData->bidderMaxAmount  =   $bidIncrementLatest;
             $singleBidData->liablityInc         =   $totalLiabilty;
             $singleBidData->liabiltyUser        =   $singleBidPricelatest->user_id;
             $singleBids                         =   AuctionProduct::doesnthave('singleBids')->get();
@@ -624,7 +622,7 @@ class AuctionController extends Controller
     }
     public function winningProductsSidebar($id)
     {
-        $winningCoffeesData =   WinningCofees::where('id', $id)->with('images')->first();
-        return view('customer.dashboard.products-landing', compact('winningCoffeesData'));
+        $winningCoffeesData =   WinningCofees::where('rank',$id)->with('images')->first();
+        return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
     }
 }
