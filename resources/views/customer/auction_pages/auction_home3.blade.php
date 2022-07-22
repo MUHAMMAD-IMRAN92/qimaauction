@@ -1480,6 +1480,14 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
+    socket.on('auto_bid_updates', function(data) {
+        if(data.user_id == {{Auth::user()->id}})
+        {
+            $('.errorMsgAutoBid' + data.id).html('');
+            $('.errorMsgAutoBid' + data.id + data.id).html('');
+            $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        }
+    });
     socket.on('auto_bid_delete', function(data) {
             $('.errorMsgAutoBid' + id).html('');
             $('.errorMsgAutoBid' + id + id).html('');
@@ -1514,6 +1522,11 @@
             $(".singlebidClass" + data.bidID).css('background', '#a6a6a6');
             $(".singlebidClass" + data.bidID).css('color', '#ffffff');
         }
+        // else if (data.outbidresponse == 0  && data.latestSingleBidUser == {{ Auth::user()->id }}) {
+        //     $(".singlebidClass" + data.bidID).attr("disabled", true);
+        //     $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
+        //     // $(".singlebidClass" + data.bidID).css('color', 'black');
+        // }
        else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
             $(".singlebidClass" + data.bidID).css('background', '#143D30');

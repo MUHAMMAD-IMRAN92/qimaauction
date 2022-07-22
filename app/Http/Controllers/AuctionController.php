@@ -371,7 +371,7 @@ class AuctionController extends Controller
                     $currentAutoBid             =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->update([
                         'is_active' => '0'
                     ]);
-                    $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('created_at', 'desc')->first();
+                    $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('bid_amount', 'desc')->first();
                     $isActive                        =   $latestAutoBid->is_active;
                     $singleBidData->outAutobid       =   $isActive;
                     $singleBidData->autoBidUser      =   $autoBidsData->user_id;
