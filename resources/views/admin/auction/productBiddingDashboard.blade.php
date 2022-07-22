@@ -41,7 +41,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/dashboard-ecommerce.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/card-analytics.css') }}">
     <!-- END: Page CSS-->
-
     <!-- BEGIN: Custom CSS-->
     <!-- END: Custom CSS-->
     <!-- BEGIN: Vendor CSS-->
@@ -81,14 +80,15 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click" style="margin-left: -83px"
-   >
+<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
+    style="margin-left: -83px; width: 100%">
     @if (session('success'))
         <div class="col-md-12 alert alert-success">
             {{ session('success') }}
     @endif
     <!-- BEGIN: Header-->
-    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow"  style="margin-right:145px;">
+    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow"
+        style="margin-right:145px;">
         <div class="navbar-wrapper">
             <div class="navbar-container content">
                 <div class="navbar-collapse" id="navbar-mobile">
@@ -337,14 +337,14 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">User Detail</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"><b>User Detail</b></h5>
                         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button> --}}
                     </div>
                     <div class="modal-body">
-                        <b>Name</b> : <span class="col-md-5" id="name"></span><br><br>
-                        <b>Email</b> : <span class="col-md-5" id="email"></span><br><br>
+                        <b>Name</b>&ensp;&ensp;&ensp;&ensp; : <span class="col-md-5" id="name"></span><br><br>
+                        <b>Email</b>&ensp;&ensp;&ensp;&ensp; : <span class="col-md-5" id="email"></span><br><br>
                         <b>PhoneNo</b> : <span class="col-md-5" id="phone"></span><br><br>
                         <b>Company</b> : <span class="col-md-5" id="company"></span>
                     </div>
@@ -400,7 +400,7 @@
                                                             @foreach ($auction_products as $auction)
                                                                 @foreach ($auction->products as $key => $pro)
                                                                     <tr id="{{ ++$i }}" class="mb-1">
-    
+
                                                                         <td class="headerSortUp headerSortDown move">
                                                                         </td>
                                                                         <td id="product{{ $auction->id }}"
@@ -411,7 +411,8 @@
                                                                             data-toggle="modal"
                                                                             data-target="#auction_model">
                                                                             <b>
-                                                                                <h6><b>{{ $pro->product_title }}</b></h6>
+                                                                                <h6><b>{{ $pro->product_title }}</b>
+                                                                                </h6>
                                                                             </b>
                                                                         </td>
                                                                         <td id="price{{ $auction->id }}"
@@ -427,7 +428,10 @@
                                                                                 <b>{{ $auction->latestBidPrice->user->first()->paddle_number }}</b>
                                                                             </td>
                                                                         @else
-                                                                            <td>
+                                                                            <td id="paddleNo{{ $auction->id }}"
+                                                                                allign="right" class="user"
+                                                                                data-toggle="modal" data-target=""
+                                                                                data-userId="0">
                                                                                 ---
                                                                             </td>
                                                                         @endif
@@ -452,7 +456,7 @@
                                                                             @php
                                                                                 $latestAutoBidPrice = isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->bid_amount : null;
                                                                             @endphp
-    
+
                                                                             <input type="number"
                                                                                 value="{{ $latestAutoBidPrice ?? '0' }}"
                                                                                 name="autoBidAmount"
@@ -470,9 +474,9 @@
                                                                             <div
                                                                                 class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
                                                                             </div>
-    
+
                                                                         </td>
-    
+
                                                                     </tr>
                                                                 @endforeach
                                                             @endforeach
@@ -482,9 +486,9 @@
                                                                         <td >No Auction Product yet</td>
                                                                     </tr> --}}
                                                         @endif
-    
+
                                                     </tbody>
-    
+
                                                 </table>
                                             </div>
                                         </div>
@@ -514,23 +518,41 @@
                                                         @if (count($auction_products) > 0)
                                                             @foreach ($auction_products as $auction)
                                                                 @foreach ($auction->products as $key => $pro)
-                                                                    @if ($auction->latestBidPrice)
+                                                                    @if (isset($auction->latestBidPrice))
                                                                         <tr id="{{ ++$i }}">
-                                                                            <td class="headerSortUp headerSortDown move"  width="5%">
+                                                                            <td
+                                                                                class="headerSortUp headerSortDown move">
                                                                                 <a href=""></a>
                                                                             </td>
-                                                                            <td>
-                                                                                {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
-                                                                            </td>
-                                                                            <td id="paddleNo{{ $auction->id }}" width="30%">
+                                                                            {{-- <td>
+                                                                           {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
+                                                                       </td> --}}
+                                                                            <td
+                                                                                id="paddleNo{{ $auction->id }}{{ $auction->id }}">
                                                                                 {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
                                                                             </td>
-                                                                            <td>
+                                                                            <td
+                                                                                id="liability{{ $auction->id }}{{ $auction->id }}">
                                                                                 @php
                                                                                     $bidprice = isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price;
                                                                                 @endphp
                                                                                 {{ $auction->weight * $bidprice }}
                                                                             </td>
+                                                                        </tr>
+                                                                    @else
+                                                                        <tr id="{{ ++$i }}">
+                                                                            <td
+                                                                                class="headerSortUp headerSortDown move">
+                                                                                <a href=""></a>
+                                                                            </td>
+                                                                            <td
+                                                                                id="paddleNo{{ $auction->id }}{{ $auction->id }}">
+                                                                                --</td>
+                                                                            <td
+                                                                                id="liability{{ $auction->id }}{{ $auction->id }}">
+                                                                                {{ $auction->weight * $auction->start_price }}
+                                                                            </td>
+
                                                                         </tr>
                                                                     @endif
                                                                 @endforeach
@@ -541,19 +563,18 @@
                                                                 <td>No record yet</td>
                                                             </tr>
                                                         @endif
-    
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </div>
                         </div>
                     </nav>
 
-                   
+
                 </div>
             </div>
         </div>
@@ -563,21 +584,32 @@
                 socket.on('auto_bid_updates', function(data) {
                     var amount = (+data.autobidamount).toFixed(2);
                     $("#autoBidAmount" + data.id).val(amount);
+                    $("#paddleNo" + data.bidID).attr('data-userId', data.user_id);
+                    $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
                     $("#autobidId" + data.id).val(data.latestAutoBidId);
-                    $("#userId" + data.bidID).val(data.user_id);
+                    $("#userId" + data.bidID).val(data.user_id);         
                     $("#autoBidAmount" + data.id).prop('disabled', false);
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });
                 socket.on('auto_bid_delete', function(data) {
                     $('.errorMsgAutoBid' + data.auction_product_id).hide();
                     $("#autoBidAmount" + data.auction_product_id).val(0);
-                        $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
-                        $("#editbtn" + data.auction_product_id).prop('disabled', true);
+                    $("#paddleNo" + data.auction_product_id).attr('data-userId', '0');
+                    $("#paddleNo" + data.auction_product_id).attr('data-target', "");
+                    $("#paddleNo" + data.auction_product_id).html('--');
+                    $("#paddleNo" + data.auction_product_id + data.auction_product_id).html('--');
+                    $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
+                    $("#editbtn" + data.auction_product_id).prop('disabled', true);
                 });
 
                 socket.on('add_bid_updates', function(data) {
                     $("#price" + data.bidID).html(data.singleBidammounttesting);
+                    $("#paddleNo" + data.bidID).attr('data-userId', data.latestSingleBidUser);
+                    $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
+                    $("#liability" + data.bidID).html(data.liability);
+                    $("#liability" + data.bidID + data.bidID).html(data.liability);
                     $("#paddleNo" + data.bidID).html('<b>' + data.paddleNo + '</b>');
+                    $("#paddleNo" + data.bidID + data.bidID).html('<b>' + data.paddleNo + '</b>');
                 });
 
                 $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {

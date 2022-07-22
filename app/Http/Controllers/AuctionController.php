@@ -370,7 +370,7 @@ class AuctionController extends Controller
                     $currentAutoBid             =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->update([
                         'is_active' => '0'
                     ]);
-                    $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('created_at', 'desc')->first();
+                    $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('bid_amount', 'desc')->first();
                     $isActive                        =   $latestAutoBid->is_active;
                     $singleBidData->outAutobid       =   $isActive;
                     $singleBidData->autoBidUser      =   $autoBidsData->user_id;
@@ -413,7 +413,7 @@ class AuctionController extends Controller
             $singleBidData->userBidAmount       =   $userBidAmount;
             $singleBidData->winningBidder       =   $singleBidPricelatest->user_id;
             $singleBidData->checkStartTimer     =   "starttimer";
-            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('created_at', 'desc')->first();
+            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
             $singleBidData->latestSingleBidUser =   $latestSingleBid->user_id;
             return response()->json($singleBidData);
         }

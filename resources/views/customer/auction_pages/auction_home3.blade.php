@@ -1470,6 +1470,14 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
+    socket.on('auto_bid_updates', function(data) {
+        if(data.user_id == {{Auth::user()->id}})
+        {
+            $('.errorMsgAutoBid' + data.id).html('');
+            $('.errorMsgAutoBid' + data.id + data.id).html('');
+            $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        }
+    });
     socket.on('auto_bid_delete', function(data) {
             $('.errorMsgAutoBid' + id).html('');
             $('.errorMsgAutoBid' + id + id).html('');
@@ -1484,7 +1492,7 @@
             $(".autobidClass" + data.bidID).css("margin-left", "153px");
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
-        if (data.winningBidder == {{ Auth::user()->id }}) {
+        if (data.winningBidder == {{ Auth::user()->id }}){
             // $(".bidcollapse"+data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
@@ -1495,16 +1503,16 @@
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
-        if ( data.outbidresponse == 1 && data.latestSingleBidUser == {{ Auth::user()->id }}) {
+        if ( data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".singlebidClass" + data.bidID).attr("disabled", true);
-            $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            // $(".singlebidClass" + data.bidID).css('color', 'black');
+            // $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
+            $(".singlebidClass" + data.bidID).css('color', 'black');
         }
-        else if (data.outbidresponse == 0  && data.latestSingleBidUser == {{ Auth::user()->id }}) {
-            $(".singlebidClass" + data.bidID).attr("disabled", true);
-            $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            // $(".singlebidClass" + data.bidID).css('color', 'black');
-        }
+        // else if (data.outbidresponse == 0  && data.latestSingleBidUser == {{ Auth::user()->id }}) {
+        //     $(".singlebidClass" + data.bidID).attr("disabled", true);
+        //     $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
+        //     // $(".singlebidClass" + data.bidID).css('color', 'black');
+        // }
        else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
             $(".singlebidClass" + data.bidID).css('background', '#28a745');

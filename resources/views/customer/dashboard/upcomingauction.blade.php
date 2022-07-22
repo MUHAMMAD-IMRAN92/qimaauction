@@ -981,7 +981,6 @@
     socket.on('auto_bid_updates', function(data) {
         // if(data.user_id == {{Auth::user()->id}})
         // {
-            alert("sjdj");
             $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
         // }
     });
