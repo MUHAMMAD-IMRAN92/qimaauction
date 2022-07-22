@@ -336,8 +336,9 @@ class AuctionController extends Controller
             $singleBid->userBidAmount       =   $userBidAmount;
             $singleBid->winningBidder       =   $singleBidStartPrice->user_id;
             $singleBid->checkStartTimer     =   "starttimer";
-            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('created_at', 'desc')->first();
+            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
             $singleBid->latestSingleBidUser     =   $latestSingleBid->user_id;
+            // dd($latestSingleBid->user_id);
             return response()->json($singleBid);
         } else {
             $auctionPStartPrice                 =   AuctionProduct::where('id', $request->id)->first();
@@ -413,8 +414,9 @@ class AuctionController extends Controller
             $singleBidData->userBidAmount       =   $userBidAmount;
             $singleBidData->winningBidder       =   $singleBidPricelatest->user_id;
             $singleBidData->checkStartTimer     =   "starttimer";
-            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('created_at', 'desc')->first();
+            $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
             $singleBidData->latestSingleBidUser =   $latestSingleBid->user_id;
+            // dd($latestSingleBid->user_id);
             return response()->json($singleBidData);
         }
     }
@@ -428,7 +430,7 @@ class AuctionController extends Controller
         //If Already have another Autobid on this product
         if (isset($autoBid)) {
             if ($request->autobidamount == $autoBid->bid_amount) {
-                return response()->json(['message' => 'Enter amount greater than current autobid']);
+                return response()->json(['message' => 'Please enter amount greater or less than current autobid amount.']);
             }
             if ($request->autobidamount < $autoBid->bid_amount) {
                 $userID      =  null;

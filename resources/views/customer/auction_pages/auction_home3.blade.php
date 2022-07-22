@@ -530,9 +530,13 @@
         }
     }
     .singlebidbtn{
-        background-color: #143D30 !important;
+        background-color: #143D30;
         color: white;
 
+
+    }
+    .singlebidbtn:hover{
+        color: white;
     }
     .startbidbtn{
         background-color: #143D30 !important;
@@ -706,9 +710,15 @@
                                         <td>SL28</td>
                                     @endif
                                     @endforeach
+                                    @if(isset($userBid))
                                     <td class="userbid{{ $auctionProduct->id }}"
                                         @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id != Auth::user()->id) style="color: #e78460;" @endif>
-                                        {{ $userBid->bid_amount ?? '---' }}</td>
+
+                                         ${{ $userBid->bid_amount}}/lb</td>
+                                        @else
+                                            <td class="userbid{{ $auctionProduct->id }}">---</td>
+
+                                        @endif
                                     <td>
                                         <div style="display: flex; align-items:center; gap:10px;">
                                             <span
@@ -833,7 +843,7 @@
                                                             </p>
                                                             <div>
                                                                 @if(isset($latestSingleBid->user_id) && $latestSingleBid->user_id == Auth::user()->id)
-                                                                <button class="btn btn-success" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
+                                                                <button class="btn" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
                                                                 @else
                                                                 <button
                                                                     class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}"
@@ -923,7 +933,7 @@
                                                                 <th scope="col">Bid</th>
                                                                 <td
                                                                     scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb
+                                                                    {{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount,1) : number_format($auctionProduct->start_price,1) }}/lb
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -935,7 +945,7 @@
                                                                 <th scope="col">Total Liability</th>
                                                                 <td scope="col"
                                                                     class="totalliability{{ $auctionProduct->id }}">
-                                                                    {{ $auctionProduct->weight * $finalIncSinglebid }}
+                                                                    {{ number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -965,7 +975,7 @@
                                     <th scope="col">Process</th>
                                     <th scope="col">Genetics</th>
                                     <th scope="col">Current Bid</th>
-                                    <th scope="col">Total Liability</th>
+                                    <th scope="col">Your Liability</th>
                                     <th scope="col">Lot Name</th>
                                     <th scope="col">High Bidder</th>
                                     <th scope="col">Time Left</th>
@@ -1015,7 +1025,7 @@
                                         <td>
                                             <div style="display: flex; align-items:center; gap:10px;">
                                                 <span
-                                                    class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
+                                                    class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount,1) : number_format($auctionProduct->start_price,1) }}/lb</span>
 
                                             </div>
                                         </td>
@@ -1029,7 +1039,7 @@
 
                                         @endphp
                                         <td class="liability{{ $auctionProduct->id }}">
-                                            {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
+                                            ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}/lb
                                         </td>
 
                                         @foreach ($auctionProduct->products as $products)
@@ -1090,7 +1100,7 @@
                                     <td>$200.00</td>
                                 </tr> --}}
                                 <tr class="finalliabilitytr">
-                                    <th scope="row">Your Liability</th>
+                                    <th scope="row">Total Liability</th>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -1098,7 +1108,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <td class="finalliability">{{ $total_liability }}</td>
+                                    <td class="finalliability">${{ number_format($total_liability,1)}}/lb</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1485,38 +1495,56 @@
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
+            total = total;
             // $(".bidcollapse"+data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
             $(".bidcollapse" + data.bidID).addClass("changecolor");
+            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
         } else {
+            total = 0;
             $(".liabilitybidcollapse" + data.bidID).hide();
+            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
-        if ( data.outbidresponse == 1 && data.latestSingleBidUser == {{ Auth::user()->id }}) {
+        if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".singlebidClass" + data.bidID).attr("disabled", true);
-            $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            // $(".singlebidClass" + data.bidID).css('color', 'black');
-        }
-        else if (data.outbidresponse == 0  && data.latestSingleBidUser == {{ Auth::user()->id }}) {
-            $(".singlebidClass" + data.bidID).attr("disabled", true);
-            $(".singlebidClass" + data.bidID).css('background', '#B3B3B3');
-            // $(".singlebidClass" + data.bidID).css('color', 'black');
+            $(".singlebidClass" + data.bidID).css('background', '#a6a6a6');
+            $(".singlebidClass" + data.bidID).css('color', '#ffffff');
         }
        else {
             $(".singlebidClass" + data.bidID).attr("disabled", false);
-            $(".singlebidClass" + data.bidID).css('background', '#28a745');
+            $(".singlebidClass" + data.bidID).css('background', '#143D30');
         }
         if (data.bidAmountUser == {{ Auth::user()->id }}) {
-            $(".userbid" + data.bidID).html(data.userBidAmount.toLocaleString('en-US') + '/lb');
+            $(".userbid" + data.bidID).html('$' + data.userBidAmount.toLocaleString('en-US') + '/lb');
         }
         if (data.liabiltyUser == {{ Auth::user()->id }}) {
             total = total + data.liability;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US') + '/lb');
             $(".finalliability").html('$' + total.toLocaleString('en-US') + '/lb');
             $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US') + '/lb');
+        }
+        else
+        {
+            var liablity            =   $(".liability" + data.bidID).html();
+            var resliablity         =   parseFloat(liablity.replace(/[^\d\.]*/g, ''));
+            // alert(resliablity);
+            var totalliabilty       =   $(".finalliability").html();
+            var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
+            // alert(restotalliabilty);
+            var final               =   restotalliabilty-resliablity;
+           if(final>0)
+           {
+            $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
+           }
+           else
+           {
+            $(".finalliability").html('$0/lb');
+           }
+
         }
         if (data.checkTimer == 0) {
             window.empty = data.checkTimer;
