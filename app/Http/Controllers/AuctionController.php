@@ -245,12 +245,30 @@ class AuctionController extends Controller
         $auctionProducts        =   AuctionProduct::with('products', 'singleBids')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
         $agreement              =   AcceptAgreement::where('user_id', $user)->first();
+       $results = $auctionProducts->map(function($e){
+
+        $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+        $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+        $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+        $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+            ->orderBy('bid_amount', 'desc')
+            ->first();
+        $e->userBid = SingleBid::where('auction_product_id', $e->id)
+            ->where('user_id', Auth::user()->id)
+            ->orderBy('bid_amount', 'desc')
+            ->first();
+            $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+            return $e;
+        });
         // dd($auctionProducts->latestAutoBidPrice);
         return view('customer.auction_pages.auction_home3', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
     public function singleBidData(Request $request)
     {
-        $checkSingleBid                     =   SingleBid::where('auction_product_id', $request->id)->first();
+        $checkSingleBid             =   SingleBid::where('auction_product_id', $request->id)->first();
         $currentDate                =   date('Y-m-d H:i:s');
 
         $convertedTime              =   date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
@@ -382,10 +400,8 @@ class AuctionController extends Controller
                 $singleBidData->outAutobid       =   '1';
             }
             $singleBidPricelatest               =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
-            // dd($singleBidPricelatest);
             $bidAmountL                         =   $singleBidPricelatest->bid_amount;
             $bidLimit                           =   Bidlimit::where('min', '<', $bidAmountL)->orderBy('min', 'desc')->limit(1)->get();
-            // dd($bidAmountL);
             $bidIncrementLatest                 =   $bidLimit[0]->increment;
             $singleBidData->bidIncrement        =   $bidIncrementLatest;
             $singleBidData->bid_amountNew       =   $bidAmountL;
