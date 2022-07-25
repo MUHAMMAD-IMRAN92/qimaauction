@@ -545,6 +545,11 @@
     .fa-star{
         color: #7A602B;
     }
+
+
+.table td, .table th {
+    vertical-align: middle !important;
+}
 </style>
 
 <body>
@@ -1107,7 +1112,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-
+                                    <td></td>
                                     <td class="finalliability">${{ number_format($total_liability,1)}}/lb</td>
                                 </tr>
                             </tbody>
@@ -1246,7 +1251,7 @@
                     }
                     $(".score").html(response.jury_score);
                     $(".moreBtn").html(
-                        '<a href="'+url+'"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
+                        '<a href="'+url+'" target="blank"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
                         )
 
                     document.getElementById("mySidebar").style.width = "250px";
@@ -1480,14 +1485,14 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {
-        if(data.user_id == {{Auth::user()->id}})
-        {
-            $('.errorMsgAutoBid' + data.id).html('');
-            $('.errorMsgAutoBid' + data.id + data.id).html('');
-            $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
-        }
-    });
+    // socket.on('auto_bid_updates', function(data) {
+    //     if(data.user_id == {{Auth::user()->id}})
+    //     {
+    //         $('.errorMsgAutoBid' + data.id).html('');
+    //         $('.errorMsgAutoBid' + data.id + data.id).html('');
+    //         $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+    //     }
+    // });
     socket.on('auto_bid_delete', function(data) {
             $('.errorMsgAutoBid' + id).html('');
             $('.errorMsgAutoBid' + id + id).html('');

@@ -449,7 +449,7 @@
                                                                         </td>
                                                                         {{-- data all --}}
                                                                         {{-- @if (isset($auction->latestAutoBidPrice)) --}}
-                                                                        <td class="editblock{{ $auction->id }}">
+                                                                        <td class="editblock{{ $auction->id }}" style="display: flex;">
                                                                             <input type="hidden"
                                                                                 id="autobidId{{ $auction->id }}"
                                                                                 value="{{ $auction->latestAutoBidPrice->id ?? '0' }}">
@@ -505,7 +505,7 @@
                                                     <thead>
                                                         <tr>
                                                             <td></td>
-                                                            <td><b>User</b></td>
+                                                            {{-- <td><b>User</b></td> --}}
                                                             <td><b>Paddle Number</b></td>
                                                             <td><b>Liability</b></td>
                                                             {{-- <th></th> --}}
@@ -587,7 +587,7 @@
                     $("#paddleNo" + data.bidID).attr('data-userId', data.user_id);
                     $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
                     $("#autobidId" + data.id).val(data.latestAutoBidId);
-                    $("#userId" + data.bidID).val(data.user_id);         
+                    $("#userId" + data.bidID).val(data.user_id);
                     $("#autoBidAmount" + data.id).prop('disabled', false);
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });

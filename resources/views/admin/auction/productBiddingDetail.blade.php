@@ -171,7 +171,7 @@
                                                                         <b>{{ $auction->latestBidPrice->user->first()->paddle_number }}</b>
                                                                     </td>
                                                                 @else
-                                                                
+
                                                                     <td id="paddleNo{{ $auction->id }}" allign="right" class="user"
                                                                         data-toggle="modal"
                                                                         data-target="" data-userId="0">
@@ -192,7 +192,7 @@
                                                                 </td>
                                                                 {{-- data all --}}
                                                                 {{-- @if (isset($auction->latestAutoBidPrice)) --}}
-                                                                <td class="editblock{{ $auction->id }}">
+                                                                <td class="editblock{{ $auction->id }}" style="display: flex;">
                                                                     <input type="hidden"
                                                                         id="autobidId{{ $auction->id }}"
                                                                         value="{{ $auction->latestAutoBidPrice->id ?? '0' }}">
@@ -229,9 +229,9 @@
                                                                         <td >No Auction Product yet</td>
                                                                     </tr> --}}
                                                     @endif
-    
+
                                                 </tbody>
-    
+
                                             </table>
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@
                                                     @if (count($auction_products) > 0)
                                                         @foreach ($auction_products as $auction)
                                                             @foreach ($auction->products as $key => $pro)
-                                                       
+
                                                                 @if (isset($auction->latestBidPrice))
                                                                     <tr id="{{ ++$i }}">
                                                                         <td class="headerSortUp headerSortDown move">
@@ -291,9 +291,9 @@
                                                                         </td>
 
                                                                      </tr>
-                                                                
+
                                                                      @endif
-                                                           
+
                                                             @endforeach
                                                         @endforeach
                                                     @else
@@ -302,18 +302,18 @@
                                                             <td>No record yet</td>
                                                         </tr>
                                                     @endif
-    
+
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
 
@@ -377,7 +377,7 @@
                             $("#weight").html(data.weight);
                             $("#size").html(data.size);
                             $("#rank").html(data.rank);
-                            // $("#auction_model").modal("show");     
+                            // $("#auction_model").modal("show");
                         }
                     });
                 });
@@ -398,7 +398,7 @@
                             $("#email").html(data.email);
                             $("#phone").html(data.phone_no);
                             $("#company").html(data.company);
-                            // $("#auction_model").modal("show");     
+                            // $("#auction_model").modal("show");
                         }
                     });
                 });
