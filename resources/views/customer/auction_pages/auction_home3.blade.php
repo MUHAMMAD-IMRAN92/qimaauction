@@ -677,21 +677,12 @@
                         <tbody>
                             @foreach ($auctionProducts as $auctionProduct)
                                 @php
-                                    $openCheck = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)->first();
-                                    $openCheckautobid = App\Models\AutoBid::where('auction_product_id', $auctionProduct->id)->first();
-                                    $singleBidPricelatest = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
-                                        ->orderBy('bid_amount', 'desc')
-                                        ->first();
-                                    // dd($singleBidPricelatest);
-                                    $userBid = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
-                                        ->where('user_id', Auth::user()->id)
-                                        ->orderBy('bid_amount', 'desc')
-                                        ->first();
+
                                     $isEmpty = sizeof($singleBids);
 
                                 @endphp
                                 <tr class="text-center bidcollapse{{ $auctionProduct->id }}
-                                    @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
+                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td>{{ $auctionProduct->rank }}</td>
                                     <td>{{$auctionProduct->jury_score}}</td>
                                     <td>--</td>
@@ -715,11 +706,11 @@
                                         <td>SL28</td>
                                     @endif
                                     @endforeach
-                                    @if(isset($userBid))
+                                    @if(isset($auctionProduct->userBid))
                                     <td class="userbid{{ $auctionProduct->id }}"
-                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id != Auth::user()->id) style="color: #e78460;" @endif>
+                                        @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id != Auth::user()->id) style="color: #e78460;" @endif>
 
-                                         ${{ $userBid->bid_amount}}/lb</td>
+                                         ${{ $auctionProduct->userBid->bid_amount}}/lb</td>
                                         @else
                                             <td class="userbid{{ $auctionProduct->id }}">---</td>
 
@@ -745,8 +736,8 @@
                                             <td>Community Lot</td>
                                         @endif --}}
                                     @endforeach
-                                    @if (isset($singleBidPricelatest))
-                                        @foreach ($singleBidPricelatest->user as $userData)
+                                    @if (isset($auctionProduct->singleBidPricelatest))
+                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }}">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
@@ -758,7 +749,7 @@
                                             <span class="waiting{{ $auctionProduct->id }}">
                                                 @if ($auction->auctionStatus() != 'active')
                                                     -
-                                                @elseif (isset($openCheck) || isset($openCheckautobid))
+                                                @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                     Open
                                                 @else
                                                     Waiting Bid
@@ -839,15 +830,11 @@
                                                                         ->get();
                                                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
                                                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
-                                                                    // check latest bid user
-                                                                    $latestSingleBid = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
-                                                                        ->orderBy('created_at', 'desc')
-                                                                        ->first();
                                                                 @endphp
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
                                                             <div>
-                                                                @if(isset($latestSingleBid->user_id) && $latestSingleBid->user_id == Auth::user()->id)
+                                                                @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
                                                                 <button class="btn" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
                                                                 @else
                                                                 <button
@@ -897,10 +884,6 @@
                                                             class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
                                                             </div>
 
-                                                                {{-- @if (isset($auctionProduct->latestAutoBidPrice->user_id) &&
-                                                                    $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id) --}}
-
-                                                                {{-- @endif --}}
                                                                 @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
                                                                     <button
@@ -922,12 +905,7 @@
                                                                     &&  $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                 <div
                                                                 class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                                {{-- You lost your Bid is Outed --}}
                                                                 </div>
-                                                                @else
-                                                                {{-- <div
-                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                                </div> --}}
                                                                 @endif
                                                             @endif
                                                         </form>
@@ -990,20 +968,11 @@
                                 @php $total_liability = 0; @endphp
                                 @foreach ($auctionProducts as $auctionProduct)
                                     @php
-                                        $openCheck = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)->first();
-                                        $openCheckautobid = App\Models\AutoBid::where('auction_product_id', $auctionProduct->id)->first();
-                                        $singleBidPricelatest = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
-                                            ->orderBy('bid_amount', 'desc')
-                                            ->first();
-                                        $userBid = App\Models\SingleBid::where('auction_product_id', $auctionProduct->id)
-                                            ->where('user_id', Auth::user()->id)
-                                            ->orderBy('bid_amount', 'desc')
-                                            ->first();
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
+                                    <tr @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
-                                        @if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
+                                        @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                         <td>{{$auctionProduct->jury_score}}</td>
                                         <td>--</td>
@@ -1035,13 +1004,12 @@
                                             </div>
                                         </td>
                                         @php
-                                            if (isset($singleBidPricelatest)) {
-                                                if ($singleBidPricelatest->user_id == Auth::user()->id) {
+                                            if (isset($auctionProduct->singleBidPricelatest)) {
+                                                if ($auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {
                                                     $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight;
                                                     $total_liability = $total_liability + $datavalue;
                                                 }
                                             }
-
                                         @endphp
                                         <td class="liability{{ $auctionProduct->id }}">
                                             ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}/lb
@@ -1056,10 +1024,10 @@
                                                 <td>Community Lot</td>
                                             @endif --}}
                                         @endforeach
-                                        @if (isset($singleBidPricelatest))
-                                            @foreach ($singleBidPricelatest->user as $userData)
+                                        @if (isset($auctionProduct->singleBidPricelatest))
+                                            @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                                 <td class="auctionpaddleno{{ $auctionProduct->id }}">
-                                                    {{ $userData->paddle_number }}@if (isset($singleBidPricelatest->user_id) && $singleBidPricelatest->user_id == Auth::user()->id)
+                                                    {{ $userData->paddle_number }}@if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -1069,7 +1037,7 @@
                                         <td>
                                             <div style="display: flex;">
                                                 <span class="waiting{{ $auctionProduct->id }}">
-                                                    @if (isset($openCheck) || isset($openCheckautobid))
+                                                    @if (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                         Open
                                                     @else
                                                         Waiting Bid
@@ -1546,7 +1514,6 @@
             total = total + data.liability;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US') + '/lb');
             $(".finalliability").html('$' + total.toLocaleString('en-US') + '/lb');
-            $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US') + '/lb');
         }
         else
         {
@@ -1578,6 +1545,8 @@
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".biddermaxbid" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') +
             '/lb');
+        $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US') + '/lb');
+
     })
 
     function resetTimer(data) {
