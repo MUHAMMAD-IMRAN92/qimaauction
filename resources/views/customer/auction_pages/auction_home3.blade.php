@@ -870,7 +870,7 @@
                                                                 class="form-control auctionid{{ $auctionProduct->id }}"
                                                                 value="{{ $auctionProduct->auction_id }}"
                                                                 id="autobidamount">
-                                                            &nbsp;<input type="number" name="autobidamount"
+                                                            &nbsp;<input type="number" min="0" name="autobidamount"
                                                                 class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                 id="autobidamount" style="width: 50%;">
                                                             &nbsp;
@@ -1346,7 +1346,7 @@
             $('.errorMsgAutoBid' + id).html('');
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
-            var autobidamount = $('.autobidamount' + id).val();
+            var autobidamount   = $('.autobidamount' + id).val();
             console.log(autobidamount, currentBidPrice);
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
@@ -1391,6 +1391,7 @@
                                     var bidderLiablity = response.liablity;
                                     var bidderID = response.user_id;
                                     var bidderMaxBid = response.bidderMaxAmount;
+                                    var userbidAmount   = response.bid_amount;
                                     $('.errorMsgAutoBid' + id).html('');
                                     socket.emit('add_bid_updates', {
                                         "singleBidammounttesting": bidPrice,
@@ -1410,6 +1411,7 @@
                                         'id': id,
                                         "bidID": bidID,
                                         'user_id': response.user_id,
+                                        "userbidAmount":userbidAmount,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1485,14 +1487,20 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    // socket.on('auto_bid_updates', function(data) {
-    //     if(data.user_id == {{Auth::user()->id}})
-    //     {
-    //         $('.errorMsgAutoBid' + data.id).html('');
-    //         $('.errorMsgAutoBid' + data.id + data.id).html('');
-    //         $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
-    //     }
-    // });
+    socket.on('auto_bid_updates', function(data) {
+
+        $(".waiting" + data.bidID).html('Open');
+        $(".paddleno" + data.bidID).html(data.paddleNo);
+        $(".userbid" + data.bidID).css("color", "black");
+        $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
+
+        // if(data.user_id == {{Auth::user()->id}})
+        // {
+        //     $('.errorMsgAutoBid' + data.id).html('');
+        //     $('.errorMsgAutoBid' + data.id + data.id).html('');
+        //     $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
+        // }
+    });
     socket.on('auto_bid_delete', function(data) {
             $('.errorMsgAutoBid' + id).html('');
             $('.errorMsgAutoBid' + id + id).html('');
