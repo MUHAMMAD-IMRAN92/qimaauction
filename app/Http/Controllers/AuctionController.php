@@ -15,6 +15,7 @@ use App\Models\SingleBid;
 use App\Models\User;
 use App\Models\WinningCofees;
 use App\Models\Newsletter;
+use App\Models\WinningCofeeImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -517,8 +518,8 @@ class AuctionController extends Controller
             $singleBid                      =   new SingleBid();
             $singleBid->bid_amount          =   $newbidPrice;
             $singleBid->auction_id          =   $request->auctionid;
-            $singleBid->user_id             =   Auth::user()->id;
-            $singleBid->auction_product_id  =   $request->id;
+            $singleBid->user_id               =   Auth::user()->id;
+            $singleBid->auction_product_id    =   $request->id;
             $singleBid->save();
             $autoBidData                      =   new AutoBid();
             $autoBidData->auction_id          =   $request->auctionid;
@@ -529,13 +530,11 @@ class AuctionController extends Controller
             $autoBidData->save();
         }
 
-        // AutoBid::where('auction_product_id',$request->id)->where('user_id',$autoBid->user_id)->orderBy('created_at','desc')->first();
-        $isActive                        =   isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
-        $autoBidData->outAutobid         =   $isActive;
-        $autoBidData->message         =   null;
-        $autoBidData->bidder_user_id         =   isset($latestAutoBid) ? $latestAutoBid->user_id : null;
+        $isActive                           =   isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
+        $autoBidData->outAutobid            =   $isActive;
+        $autoBidData->message               =   null;
+        $autoBidData->bidder_user_id        =   isset($latestAutoBid) ? $latestAutoBid->user_id : null;
         $singleBidPricelatest               =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
-        // dd($singleBidPricelatest);
         $bidAmountL                         =   $singleBidPricelatest->bid_amount;
         $bidLimit                           =   Bidlimit::where('min', '<', $bidAmountL)->orderBy('min', 'desc')->limit(1)->get();
         $bidIncrementLatest                 =   $bidLimit[0]->increment;
@@ -543,13 +542,10 @@ class AuctionController extends Controller
         $autoBidData->bid_amountNew         =   $bidAmountL;
         $userPaddleNum                      =   User::where('id', $singleBidPricelatest->user_id)->first()->paddle_number;
         $autoBidData->userPaddleNo          =    $userPaddleNum;
-
-        // $singleBidMaxpriceUser              =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
         $auctionProduct                     =   AuctionProduct::where('id', $request->id)->first()->weight;
         $inc                                =   $bidAmountL + $bidIncrementLatest;
         $totalLiabilty                      =   $inc * $auctionProduct;
-        // $singleBidData->bidderMaxAmount     =   $bidIncrementLatest;
-        $autoBidData->liablity            =   $totalLiabilty;
+        $autoBidData->liablity              =   $totalLiabilty;
         return response()->json($autoBidData);
     }
 
@@ -598,20 +594,14 @@ class AuctionController extends Controller
 
     public function auctionHome()
     {
-        // $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
         $auctionProducts        =   AuctionProduct::with('products')->get();
-        // dd($auctionProducts);
-        // $agreement              =   AcceptAgreement::where('user_id',$user)->first();
         return view('customer.auction_pages.auction_home', compact('auctionProducts', 'auction'));
     }
     public function auctionHomeLoggedIn()
     {
-        // $user                   =   Auth::user()->id;
         $auction                =   Auction::first();
         $auctionProducts        =   AuctionProduct::with('products')->get();
-        // dd($auctionProducts);
-        // $agreement              =   AcceptAgreement::where('user_id',$user)->first();
         return view('customer.auction_pages.auction_home2', compact('auctionProducts', 'auction'));
     }
     public function winningCoffee()
@@ -640,7 +630,14 @@ class AuctionController extends Controller
     }
     public function winningProductsSidebar($id)
     {
-        $winningCoffeesData =   WinningCofees::where('rank',$id)->with('images')->first();
+        $winningCoffeesData     =   WinningCofees::where('rank',$id)->with('images')->first();
         return view('customer.dashboard.products-landing',compact('winningCoffeesData'));
+    }
+    public function saveYourScore(Request $request)
+    {
+       $saveScore   = AuctionProduct::where('id', $request->id)->update([
+            'your_score' => $request->value
+        ]);
+        return response()->json($saveScore);
     }
 }
