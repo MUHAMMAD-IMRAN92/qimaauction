@@ -38,15 +38,18 @@
         @endforeach
             <button type="submit" name="submit" value="submit" class="btn btn-success">Update Agreement</button>
           </form> --}}
+          <div class="card">
+            <div class="card-content">
+                <div class="card-body card-dashboard col-lg-12">
             <div class="mb-3 row-md-12">
                 <table class="table">
-                    <thead>
+                    <thead class="table-heading">
                         {{-- <th>SNo.</th> --}}
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Action(s)</th>
                     </thead>
-                    <tbody>
+                    <tbody class="bordered">
                        @foreach ($agreement as $key => $item)
                        <tr>
                         <td>
@@ -85,6 +88,9 @@
                     </tbody>
                 </table>
             </div>
+                </div>
+            </div>
+          </div>
 
         </div>
     </div>
