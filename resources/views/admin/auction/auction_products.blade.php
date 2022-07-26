@@ -1,7 +1,11 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
-
+  <style>
+  .custom_btn_align{
+    display: contents;
+  }
+  </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -25,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-3 custom_btn_align">
-                    <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
+                    <a class="btn btn-primary waves-effect waves-light mt-2" style="color: white;" id="product">Create Auction
                         Product<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
@@ -44,7 +48,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Create Auction Product</h5>
+                                    <h5 class="modal-title" style="display: block">Create Auction Product</h5>
                                     {{-- <button class="close" data-dismiss="modal"
                                         aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
