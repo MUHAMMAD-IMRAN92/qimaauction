@@ -15,6 +15,7 @@ use App\Models\SingleBid;
 use App\Models\User;
 use App\Models\WinningCofees;
 use App\Models\Newsletter;
+use App\Models\UserScore;
 use App\Models\WinningCofeeImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -249,6 +250,7 @@ class AuctionController extends Controller
        $results = $auctionProducts->map(function($e){
 
         $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+        $e->userscore = UserScore::where('auction_product_id', $e->id)->where('user_id',Auth::user()->id)->first();
 
         $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
         $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
@@ -357,7 +359,25 @@ class AuctionController extends Controller
             $singleBid->checkStartTimer     =   "starttimer";
             $latestSingleBid                    =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
             $singleBid->latestSingleBidUser     =   $latestSingleBid->user_id;
-            // dd($latestSingleBid->user_id);
+            $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data){
+                $v=SingleBid::where('auction_product_id',$data->id)->where('user_id',auth()->user()->id)->orderBy('bid_amount','desc')->first();
+                return $v;
+              });
+              $total =0 ;
+              foreach($data as $amount)
+              {
+                if(isset($amount->auction_product_id))
+                {
+                $auctionProduct                     =   AuctionProduct::where('id',$amount->auction_product_id)->first()->weight;
+                if(isset($auctionProduct))
+                {
+                    $v= $amount->bid_amount * $auctionProduct;
+                      $total +=$v;
+                      $singleBid->finaltotalliability = $total;
+                }
+              }
+            }
+
             return response()->json($singleBid);
         } else {
             $auctionPStartPrice                 =   AuctionProduct::where('id', $request->id)->first();
@@ -414,8 +434,25 @@ class AuctionController extends Controller
             $userPaddleNum                      =   User::where('id', $singleBidPricelatest->user_id)->first()->paddle_number;
             $singleBidData->userPaddleNo        =    $userPaddleNum;
 
-            // $singleBidMaxpriceUser              =   SingleBid::where('auction_product_id',$request->id)->where('user_id',Auth::user()->id)->orderBy('bid_amount','desc')->first()->bid_amount;
-            $auctionProduct                     =   AuctionProduct::where('id', $request->id)->first()->weight;
+            $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data){
+                $v=SingleBid::where('auction_product_id',$data->id)->where('user_id',auth()->user()->id)->orderBy('bid_amount','desc')->first();
+                return $v;
+              });
+              $total =0 ;
+              foreach($data as $amount)
+              {
+              if(isset($amount->auction_product_id))
+              {
+                $auctionProduct                     =   AuctionProduct::where('id',$amount->auction_product_id)->first()->weight;
+                if(isset($auctionProduct))
+                {
+                    $v= $amount->bid_amount * $auctionProduct;
+                      $total +=$v;
+                      $singleBidData->finaltotalliability   = $total;
+
+                }
+              }
+              }
             $liabiltyNew                        =   $bidAmountL * $auctionProduct;
             $singleBidData->liability           =   $liabiltyNew;
             $inc                                =   $bidAmountL + $bidIncrementLatest;
@@ -636,9 +673,11 @@ class AuctionController extends Controller
     }
     public function saveYourScore(Request $request)
     {
-       $saveScore   = AuctionProduct::where('id', $request->id)->update([
-            'your_score' => $request->value
-        ]);
-        return response()->json($saveScore);
+        $userScore = UserScore::updateOrCreate(
+            ['auction_product_id' => $request->id],
+            ['your_score' => $request->value, 'user_id'=> Auth::user()->id]
+        );
+        return response()->json();
     }
+
 }
