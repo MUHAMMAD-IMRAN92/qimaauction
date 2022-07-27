@@ -5,13 +5,18 @@
   .custom_btn_align{
     display: contents;
   }
+  .content-header.row{
+    margin-right: -15px;
+    margin-left: 30px;
+    align-items: center;
+  }
   </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="content-header-left col-md-9 col-12">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             {{-- <h2 class="content-header-title float-left mb-0">Create Auction</h2> --}}
@@ -29,7 +34,7 @@
                     </div>
                 </div>
                 <div class="col-3 custom_btn_align">
-                    <a class="btn btn-primary waves-effect waves-light mt-2" style="color: white;" id="product">Create Auction
+                    <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
                         Product<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
