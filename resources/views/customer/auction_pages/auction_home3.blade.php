@@ -322,7 +322,6 @@
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
-
     }
 
     .auctiontable thead th {
@@ -345,30 +344,13 @@ font-family: 'Montserrat';
     .changecolor {
         background: #DBFFDA;
     }
-    .changebuttontext {
-        font-family: 'Open Sans';
-        font-style
-        background: #FFFEA2;
-        border-width: 1px 0px;
-        border-style: solid;
-        border-color: #9C9C9C;
-    }
+
 
     .changecolorwining {
         background: #DBFFDA;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
-    }
-
-    .changebuttontext {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 25px;
-        /* identical to box height */
-        color: #FFFFFF;
     }
 
     .alertmsg {
@@ -392,7 +374,7 @@ font-family: 'Montserrat';
     font-size: 18px;
     line-height: 25px;
     text-align: center;
-    padding: 0;
+    padding: 2px;
     }
 
     .auctiontable tbody tr td {
@@ -400,7 +382,7 @@ font-family: 'Montserrat';
     Font-size: 18px;
     Line-height: 22px;
     color: #000000;
-    padding: 8px 10px;
+    padding: 8px 4px;
     border: none;
     text-align: center;
     }
@@ -426,15 +408,14 @@ font-family: 'Montserrat';
         border-radius: 10px 10px 0px 0px;
     }
 
-    .changebuttontext {
+    /* .changebuttontext {
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 25px;
-        /* identical to box height */
         color: #FFFFFF;
-    }
+    } */
 
     .errormsgautobid {
         background: #DBFFDA;
@@ -557,6 +538,9 @@ font-family: 'Montserrat';
     margin-bottom: 0px;
 }
 /* hamza css starts */
+/* .hide-table-padding {
+    display: none;
+} */
 .table-container {
     width: 90%;
     margin: 0 auto;
@@ -574,16 +558,16 @@ font-family: 'Montserrat';
 
     .lot-header h3 {
     font-family: Montserrat;
-    font-size: 75px;
-    line-height: 93px;
+    font-size: 60px;
+    line-height: 70px;
     font-weight: 900;
     color: black;
     }
 
     .lot-header h5 {
         font-family: Montserrat;
-        font-size: 40px;
-        line-height: 48px;
+        font-size: 30px;
+        line-height: 40px;
         font-weight: 700;
         color: #232B38;
     }
@@ -631,16 +615,16 @@ font-family: 'Montserrat';
     margin-bottom: 15px;
     }
     .moreBtn button{
-    font-size: 20px;
+font-size: 20px;
     line-height: 24px;
     font-weight: 600;
     font-family: Montserrat;
     color: white;
     background-color: black;
     text-align: center;
-    padding: 5px;
-    max-width: 190px;
+    padding: 10px 5px;
     border-radius: 3px;
+    width: 100%;
     }
     .text-underline{
         text-decoration: underline;
@@ -798,8 +782,8 @@ font-size: 60px;
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">Rank</th>
-                                <th scope="col" style="min-width: 110px;">Jury Score</th>
-                                <th scope="col" style="min-width: 110px;">Your Score</th>
+                                <th scope="col" >Jury Score</th>
+                                <th scope="col" >Your Score</th>
                                 <th scope="col">Weight</th>
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
@@ -808,8 +792,8 @@ font-size: 60px;
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
-                                <th scope="col" style="min-width: 110px;">High Bidder</th>
-                                <th scope="col" style="min-width: 110px;">Time Left</th>
+                                <th scope="col" >High Bidder</th>
+                                <th scope="col" >Time Left</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -825,9 +809,7 @@ font-size: 60px;
                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
-                                <input type="hidden" id="finalIncSinglebid" value="{{$finalIncSinglebid}}">
-                                <input type="hidden"  id="auctionWeight" value="{{$auctionProduct->weight}}">
-                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
+                                <tr class="tr-bb text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
@@ -1091,17 +1073,17 @@ font-size: 60px;
                             <thead>
                                 <tr>
                                     <th scope="col">Rank</th>
-                                    <th scope="col" style="min-width: 110px;">Jury Score</th>
-                                    <th scope="col" style="min-width: 110px;">Your Score</th>
+                                    <th scope="col" >Jury Score</th>
+                                    <th scope="col" >Your Score</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Weight</th>
                                     <th scope="col">Process</th>
                                     <th scope="col">Genetics</th>
-                                    <th scope="col" style="min-width: 120px;">Current Bid</th>
-                                    <th scope="col" style="min-width: 110px;">Your Liability</th>
+                                    <th scope="col" >Current Bid</th>
+                                    <th scope="col" >Your Liability</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col" style="min-width: 120px;">High Bidder</th>
-                                    <th scope="col" style="min-width: 110px;">Time Left</th>
+                                    <th scope="col">High Bidder</th>
+                                    <th scope="col">Time Left</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1111,7 +1093,7 @@ font-size: 60px;
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
                                     <tr @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
-                                        class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
+                                        class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td class="fw-bold"><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                         <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
@@ -1356,14 +1338,14 @@ font-size: 60px;
 
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     function openNav() {
-        document.getElementById("mySidebar").style.width = "350px";
-        document.getElementById("main").style.marginLeft = "350px";
+        document.getElementById("mySidebar").style.width = "500px";
+        document.getElementById("main").style.marginLeft = "500px";
     }
 
     /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("main").style.marginLeft ="0";
     }
 </script>
 <script type="text/javascript">
@@ -1438,7 +1420,7 @@ font-size: 60px;
                     $(".moreBtn").html(
                         '<a href="'+url+'" target="blank"><button >More Information</button></a>'
                         )
-                    document.getElementById("mySidebar").style.width = "400px";
+                    document.getElementById("mySidebar").style.width = "450px";
                 },
                 error: function(error) {
                     console.log(error)
