@@ -330,7 +330,7 @@ font-family: 'Montserrat';
     font-size: 16px;
     line-height: 20px;
     text-align: center;
-    padding: 8px;
+    padding: 10px 8px;
     }
 
     .auctiontabs a.active {
@@ -382,7 +382,7 @@ font-family: 'Montserrat';
     Font-size: 18px;
     Line-height: 22px;
     color: #000000;
-    padding: 8px 4px;
+    padding: 10px 4px;
     border: none;
     text-align: center;
     }
@@ -391,7 +391,7 @@ font-family: 'Montserrat';
         font-weight: bold;
     }
     .tr-bb{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #9C9C9C;
     }
     .yourscore{
         max-width: 40px;
@@ -636,7 +636,7 @@ font-size: 20px;
     }
 
     /* hamza starts ends */
-       @media (max-width:768px) {
+       @media (max-width: 1199px) {
         .tablenav a {
             font-size: 10px;
         }
@@ -672,9 +672,18 @@ font-size: 60px;
     line-height: 20px;
     max-width: 190px;
     }
-    .text-underline{
-        text-decoration: underline;
-    }
+    .auctiontable tbody tr td {
+    Font-size: 12px;
+    Line-height: 16px;
+}
+.auctiontable thead th {
+    font-size: 12px;
+    line-height: 16px;
+}
+.auctiontable tbody tr td a {
+    font-size: 12px;
+    line-height: 18px;
+}
     }
 
     .lot-header h3 {
