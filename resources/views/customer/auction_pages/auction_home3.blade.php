@@ -397,7 +397,7 @@ font-family: 'Montserrat';
         max-width: 40px;
         white-space: nowrap;
         text-overflow: ellipsis;
-  overflow: hidden; 
+  overflow: hidden;
     }
 
     .auctiontabs a.active {
@@ -502,6 +502,11 @@ font-family: 'Montserrat';
         margin-top: 40px;
     }
 
+    @media all and (max-width : 768px) {
+        .tablenav a {
+            font-size: 10px;
+        }
+    }
     .singlebidbtn{
         background-color: #143D30;
         color: white;
@@ -671,6 +676,65 @@ font-size: 60px;
         text-decoration: underline;
     }
     }
+
+    .lot-header h3 {
+        font-family: Montserrat;
+        font-size: 96px;
+        line-height: 117px;
+        font-weight: 900;
+        color: black;
+    }
+
+    .lot-header h5 {
+        font-family: Montserrat;
+        font-size: 40px;
+        line-height: 48px;
+        font-weight: 700;
+        color: #232B38;
+    }
+
+    .lot-description p {
+        font-family: Montserrat;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 300;
+        color: #232B38;
+    }
+
+    .lot-description p span {
+        font-weight: 700;
+    }
+
+    .lot-featured-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .lot-genetis p {
+        font-family: Montserrat;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        color: #232B38;
+    }
+
+    .lot-genetis h3 {
+        font-family: Montserrat;
+        font-size: 32px;
+        line-height: 39px;
+        font-weight: 300;
+        color: #232B38;
+    }
+
+    .lot-genetis h3 span {
+        font-weight: 700;
+    }
+
+    .moreBtn {
+        display: block;
+    }
+
+    /* hamza starts ends */
 </style>
 
 <body>
@@ -813,7 +877,7 @@ font-size: 60px;
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
-                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->your_score ?? '-'}}</td>
+                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->userscore->your_score ?? '-'}}</td>
                                     <td>{{ $auctionProduct->weight }}/lb</td>
                                     <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold">
@@ -1033,7 +1097,7 @@ font-size: 60px;
                                                             @endif
                                                         </form>
                                                     </div>
-                                            
+
                                                     <div class="col-4 AutoSingleBidClick{{ $auctionProduct->id }}" style="display: none" >
                                                         <table class="table mt-2">
                                                             <tr>
@@ -1240,7 +1304,6 @@ font-size: 60px;
 
                     <div class="moreBtn"></div>
                 </div>
-                
             </div>
             {{-- <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -1508,6 +1571,7 @@ font-size: 60px;
                     var bidAmountUser       = response.bidAmountUser;
                     var liability           = response.liability;
                     var checkStartTimer     = response.checkStartTimer;
+                    var finaltotalliability = response.finaltotalliability;
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
                     $(".totalliabilitytext" + id).html('Total Liability')
@@ -1538,6 +1602,7 @@ font-size: 60px;
                         "checkTimer"             : checkTimer,
                         "liability"              : liability,
                         "checkStartTimer"        : checkStartTimer,
+                        "finaltotalliability"    : finaltotalliability,
                         // "bidderMaxBid":bidderMaxBid,
                     });
                 },
@@ -1712,7 +1777,7 @@ font-size: 60px;
         $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
         $(".totalliabilitytext" + data.bidID).html('Maximum Liability')
          $(".totalliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US') + '/lb');
-     
+
         // if(data.user_id == {{Auth::user()->id}})
         // {
         //     $('.errorMsgAutoBid' + data.id).html('');
@@ -1774,8 +1839,9 @@ font-size: 60px;
         if (data.liabiltyUser == {{ Auth::user()->id }}) {
             total = total + data.liability;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US') + '/lb');
-            $(".finalliability").html('$' + total.toLocaleString('en-US') + '/lb');
+            $(".finalliability").html('$' + data.finaltotalliability.toLocaleString('en-US') + '/lb');
         }
+
         else
         {
             var liablity            =   $(".liability" + data.bidID).html();
@@ -1783,7 +1849,6 @@ font-size: 60px;
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-
             $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
 
         }
