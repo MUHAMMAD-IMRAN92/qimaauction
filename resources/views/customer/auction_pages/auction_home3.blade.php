@@ -1839,7 +1839,7 @@ font-size: 60px;
             $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
             else
             {
-                $(".finalliability").html('$'+ 0 +'/lb'); 
+                $(".finalliability").html('$'+ 0 +'/lb');
             }
 
         }
