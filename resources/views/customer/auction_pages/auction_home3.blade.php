@@ -1069,17 +1069,26 @@ font-size: 60px;
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                     <button
-                                                                        class="btn singlebidbtn  btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                        class="btn autobtnclick  btn-success autobid autobidClass{{ $auctionProduct->id }}"
                                                                         type="submit" href="javascript:void(0)"
                                                                         data-id="{{ $auctionProduct->id }}">Auto
-                                                                        Bid</button>
+                                                                        Bid</button> 
+                                                                        <!-- <button class="autobidbtn btn autobid autobidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
+                                                                        href="javascript:void(0)"
+                                                                        data-id="{{ $auctionProduct->id }}"
+                                                                        style="border-radius: 5px; display:none;">Confirm</button>
+                                                                        <button
+                                                                        class="autobidbtn btn cancelautobidbutton removeautobtn{{ $auctionProduct->id }}"
+                                                                        href="javascript:void(0)"
+                                                                        data-id="{{ $auctionProduct->id }}"
+                                                                        style="border-radius: 5px; display:none;background: rgb(20, 61, 48); color: rgb(255, 255, 255);">Cancel</button> -->
                                                                     <div
                                                                         class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <button
-                                                                    class="btn singlebidbtn  autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="btn btn-success autobtnclick  autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="submit" href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
@@ -1499,15 +1508,34 @@ font-size: 60px;
             $(".removesinglebtn"+id).show();
             $(".bidnowbutton"+id).hide();
         });
+        // $(".autobtnclick").click(function() {
+        //     var id = $(this).attr('data-id');
+        //     $(".autobidtable"+id).show();
+        //     $(".autobidtable"+id).hide();
+        //     $(".autobidClass"+id).show();
+        //     $(".removeautobtn"+id).show();
+        //     $(".bidnowbutton"+id).hide();
+        // });
         //cancelbidvtn first
         $(".cancelbidbutton").click(function() {
             var id = $(this).attr('data-id');
-            $(".singlebidtable"+id).hide();
+            $(".autobidtable"+id).hide();
             $(".autobidtable"+id).hide();
             $(".singlebidClass"+id).hide();
             $(".removesinglebtn"+id).hide();
             $(".bidnowbutton"+id).show();
         });
+           //cancelbidvtn first
+        //    $(".cancelautobidbutton").click(function() {
+        //     var id = $(this).attr('data-id');
+        //     $(".autobidtable"+id).hide();
+        //     $(".autobidtable"+id).hide();
+        //     $(".autobidClass"+id).hide();
+        //     $(".removeautobtn"+id).hide();
+        //     $(".bidnowbutton"+id).show();
+        // });
+    
+     
 
 
         //userscore save
@@ -1618,6 +1646,8 @@ font-size: 60px;
         //Autobid
         $(".autobid").on("click", function(e) {
             e.preventDefault();
+            $(".autobidClass"+id).hide();
+            $(".removeautobtn"+id).hide();
             $('.errorMsgAutoBid' + id).html('');
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
@@ -1646,8 +1676,7 @@ font-size: 60px;
                                 if (response.message !== null) {
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
-                                    $('.errorMsgAutoBid' + id + id).html(response
-                                        .message);
+                                    $('.errorMsgAutoBid' + id + id).html(response.message);
                                 } else {
                                     var latestAutoBidId = response.id;
                                     var bidPrice = response.bid_amountNew;
@@ -1792,7 +1821,7 @@ font-size: 60px;
             $(".bidnowbutton" + data.bidID).css("display", "block");
             $(".autobidClass" + data.bidID).css("display", "block");
             $(".autobidClass" + data.bidID).css("margin-top", "-53px");
-            $(".autobidClass" + data.bidID).css("margin-left", "158px");
+            $(".autobidClass" + data.bidID).css("margin-left", "188px");
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
@@ -1857,7 +1886,7 @@ font-size: 60px;
             '/lb');
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
-    })
+    });
 
     function resetTimer(data) {
         var timer_text = "";

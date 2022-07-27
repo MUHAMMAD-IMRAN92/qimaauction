@@ -565,7 +565,7 @@ class AuctionController extends Controller
             $autoBidData->bid_amount          =   $request->autobidamount;
             $autoBidData->save();
         }
-
+        $auctionPData                   =   AuctionProduct::where('id',$request->id)->first();
         $isActive                           =   isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
         $autoBidData->outAutobid            =   $isActive;
         $autoBidData->totalAutoBidLiability =    ($auctionPData->weight * $autoBidData->bid_amount);
