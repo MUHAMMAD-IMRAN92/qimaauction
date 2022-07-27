@@ -825,7 +825,9 @@ font-size: 60px;
                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
-                                <tr class="tr-bb text-center bidcollapse{{ $auctionProduct->id }}
+                                <input type="hidden" id="finalIncSinglebid" value="{{$finalIncSinglebid}}">
+                                <input type="hidden"  id="auctionWeight" value="{{$auctionProduct->weight}}">
+                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
@@ -1049,7 +1051,8 @@ font-size: 60px;
                                                             @endif
                                                         </form>
                                                     </div>
-                                                    <div class="col-4">
+                                            
+                                                    <div class="col-4 AutoSingleBidClick{{ $auctionProduct->id }}" style="display: none" >
                                                         <table class="table mt-2">
                                                             <tr>
                                                                 <th scope="col">Bid</th>
@@ -1064,10 +1067,10 @@ font-size: 60px;
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="col">Total Liability</th>
+                                                                <th scope="col" class="totalliabilitytext{{ $auctionProduct->id }}">Total Liability</th>
                                                                 <td scope="col"
                                                                     class="totalliability{{ $auctionProduct->id }}">
-                                                                    {{ number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
+                                                                    {{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -1525,6 +1528,7 @@ font-size: 60px;
                     var checkStartTimer     = response.checkStartTimer;
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
+                    $(".totalliabilitytext" + id).html('Total Liability')
                     if (bidPrice > autoBidmax) {
                         $('.alertMessage' + id).html('<p>Your $' + bidPrice +
                             '/lb Bid is outed.</p>');
@@ -1558,13 +1562,10 @@ font-size: 60px;
                 error: function(error) {
                     console.log(error)
                 }
-
             });
-        }
-        else {
-                    // swal('Your cancelled your bid.');
-                }
-    });
+          }
+        });
+            $(".AutoSingleBidClick" + id).css("display", "block");
         });
         //Autobid
         $(".autobid").on("click", function(e) {
@@ -1618,6 +1619,7 @@ font-size: 60px;
                                     var bidderID = response.user_id;
                                     var bidderMaxBid = response.bidderMaxAmount;
                                     var userbidAmount   = response.bid_amount;
+                                    var totalAutoBidLiability = response.totalAutoBidLiability;
                                     $('.errorMsgAutoBid' + id).html('');
                                     $(".bidcollapse" + bidID).addClass(
                                         "changecolor");
@@ -1642,6 +1644,7 @@ font-size: 60px;
                                         "bidID": bidID,
                                         'user_id': response.user_id,
                                         "userbidAmount":userbidAmount,
+                                        "totalAutoBidLiability": totalAutoBidLiability,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1653,7 +1656,7 @@ font-size: 60px;
                                     $('.autobidamount' + id).val('');
                                     $('.alertMessage' + id).html('');
                                     $(".singlebidClass" + id).css("display",
-                                    "none");
+                                         "none");
                                     $(".autobidClass" + id).css("display", "none");
                                 }
                             },
@@ -1667,6 +1670,7 @@ font-size: 60px;
 
                 });
             }
+            $(".AutoSingleBidClick" + id).css("display", "block");
         });
         //remove autobid
         $(document).on("click", '.removeAutoBID', function(e) {
@@ -1711,7 +1715,7 @@ font-size: 60px;
                 }
             })
         });
-    })
+    });
 </script>
 <script>
     var total = 0;
@@ -1724,7 +1728,9 @@ font-size: 60px;
         $(".userbid" + data.bidID).css("color", "black");
 
         $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
-
+        $(".totalliabilitytext" + data.bidID).html('Maximum Liability')
+         $(".totalliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US') + '/lb');
+     
         // if(data.user_id == {{Auth::user()->id}})
         // {
         //     $('.errorMsgAutoBid' + data.id).html('');
@@ -1737,6 +1743,12 @@ font-size: 60px;
         $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
         $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
         $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
+        var weight = $("#auctionWeight").val();
+        var finalIncSinglebid = $("#finalIncSinglebid").val();
+        var total = 0;
+         var total = (finalIncSinglebid * weight);
+        $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US') + '/lb');
+        $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {

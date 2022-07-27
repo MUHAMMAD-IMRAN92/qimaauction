@@ -532,6 +532,7 @@ class AuctionController extends Controller
 
         $isActive                           =   isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
         $autoBidData->outAutobid            =   $isActive;
+        $autoBidData->totalAutoBidLiability =    ($auctionPData->weight * $autoBidData->bid_amount);
         $autoBidData->message               =   null;
         $autoBidData->bidder_user_id        =   isset($latestAutoBid) ? $latestAutoBid->user_id : null;
         $singleBidPricelatest               =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
