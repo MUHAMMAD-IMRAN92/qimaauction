@@ -1828,7 +1828,6 @@ font-size: 60px;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
             $(".finalliability").html('$' + data.finaltotalliability.toLocaleString('en-US'));
         }
-
         else
         {
             var liablity            =   $(".liability" + data.bidID).html();
@@ -1836,7 +1835,12 @@ font-size: 60px;
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-            $(".finalliability").html('$'+ final.toLocaleString('en-US'));
+            if(final > 0)
+            $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
+            else
+            {
+                $(".finalliability").html('$'+ 0 +'/lb'); 
+            }
 
         }
         if (data.checkTimer == 0) {

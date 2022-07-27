@@ -372,11 +372,11 @@ class AuctionController extends Controller
                 if(isset($auctionProduct))
                 {
                     $v= $amount->bid_amount * $auctionProduct;
-                      $total +=$v;
-                      $singleBid->finaltotalliability = $total;
+                      $total +=$v;                    
                 }
               }
             }
+            $singleBid->finaltotalliability = $total;
 
             return response()->json($singleBid);
         } else {
@@ -448,11 +448,10 @@ class AuctionController extends Controller
                 {
                     $v= $amount->bid_amount * $auctionProduct;
                       $total +=$v;
-                      $singleBidData->finaltotalliability   = $total;
-
                 }
               }
               }
+            $singleBidData->finaltotalliability   = $total;
             $liabiltyNew                        =   $bidAmountL * $auctionProduct;
             $singleBidData->liability           =   $liabiltyNew;
             $inc                                =   $bidAmountL + $bidIncrementLatest;
