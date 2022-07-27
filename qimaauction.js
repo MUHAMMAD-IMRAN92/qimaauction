@@ -38,6 +38,7 @@ io.on('connection', function (socket) {
     // socket.on('message_get', function (data) {
     // io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
     // });
+
     socket.on('auto_bid_updates', function (data) {
         io.emit('auto_bid_updates', { "latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"paddleNo":data.paddleNo,"userbidAmount":data.userbidAmount,"totalAutoBidLiability":data.totalAutoBidLiability });
      });
@@ -63,8 +64,10 @@ io.on('connection', function (socket) {
         });
         }
         });
-        });
+    });
 
 server.listen(port, function () {
     console.log('Express server listening on port ' + server.address().port);
 });
+
+

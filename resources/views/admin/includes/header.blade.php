@@ -394,9 +394,6 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                        <li class="nav-item">
-                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Configuration</span></a>
-                            <ul>
                                 <li @if (request()->is('categories/*')) class='active' @endif><a
                                         href="{{ url('/categories/index') }}">
                                         {{-- <i class="feather icon-circle"></i> --}}
@@ -430,8 +427,7 @@
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
                                         data-i18n="eCommerce">Bid Limit</span></a>
-                            </li>
-                            </ul>
+                           
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
                             <ul>

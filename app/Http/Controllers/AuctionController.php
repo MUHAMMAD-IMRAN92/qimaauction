@@ -626,7 +626,7 @@ class AuctionController extends Controller
     }
     public function openSideBar(Request $request)
     {
-        $auctionProducts    = AuctionProduct::where('id', $request->id)->with('products')->first();
+        $auctionProducts    = AuctionProduct::where('id', $request->id)->with('products','winningImages')->first();
         return response()->json($auctionProducts);
     }
     public function winningProductsSidebar($id)

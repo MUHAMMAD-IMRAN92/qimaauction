@@ -281,6 +281,9 @@
         padding: 10px 15px;
         border: none;
     }
+    .finalliabilitytr{
+        text-align: center
+    }
 
     /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
     #main {
@@ -315,7 +318,6 @@
     }
 
     .auctiontable thead {
-        box-sizing: border-box;
         background: #E5E5E5;
         border-width: 1px 0px;
         border-style: solid;
@@ -324,14 +326,12 @@
     }
 
     .auctiontable thead th {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 16px;
-        text-align: center;
-
-        /* color: #FFFFFF; */
+font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    padding: 8px;
     }
 
     .auctiontabs a.active {
@@ -344,9 +344,6 @@
 
     .changecolor {
         background: #DBFFDA;
-        border-width: 1px 0px;
-        border-style: solid;
-        border-color: #9C9C9C;
     }
     .changebuttontext {
         font-family: 'Open Sans';
@@ -392,33 +389,33 @@
     }
 
     .auctiontable tbody tr td a {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 25px;
-        /* identical to box height */
-
-        /* text-align: center; */
-
-        /* color: #FFFFFF; */
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    padding: 0;
     }
 
     .auctiontable tbody tr td {
-        Font-family: 'Playfair Display';
+    font-family: 'Montserrat';
+    Font-size: 18px;
+    Line-height: 22px;
+    color: #000000;
+    padding: 8px 10px;
+    border: none;
+    text-align: center;
+    }
 
-        Font-size: 18px;
-        Line-height: 22px;
-
-
-        color: #000000;
-        /* font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 29px;
-        /* text-align: center; */
-        /* color: #000000; */
+    .fw-bold{
+        font-weight: bold;
+    }
+    .tr-bb{
+            border-bottom: 1px solid black;
+    }
+    .yourscore{
+        max-width: 40px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+  overflow: hidden; 
     }
 
     .auctiontabs a.active {
@@ -524,11 +521,6 @@
         margin-top: 40px;
     }
 
-    @media all and (max-width : 768px) {
-        .tablenav a {
-            font-size: 10px;
-        }
-    }
     .singlebidbtn{
         background-color: #143D30;
         color: white;
@@ -557,13 +549,21 @@
 }
 .tdtimer
 {
-    display: flex
+    display: flex;
+        justify-content: center;
 }
 .tdtimer p
 {
     margin-bottom: 0px;
 }
 /* hamza css starts */
+.table-container {
+    width: 90%;
+    margin: 0 auto;
+}
+.sidebar-container{
+    padding: 20px 30px;
+}
 .lot-header h4 {
         font-family: Montserrat;
         font-size: 72px;
@@ -573,11 +573,11 @@
     }
 
     .lot-header h3 {
-        font-family: Montserrat;
-        font-size: 96px;
-        line-height: 117px;
-        font-weight: 900;
-        color: black;
+    font-family: Montserrat;
+    font-size: 75px;
+    line-height: 93px;
+    font-weight: 900;
+    color: black;
     }
 
     .lot-header h5 {
@@ -603,6 +603,7 @@
     .lot-featured-img img {
         width: 100%;
         height: auto;
+        margin-bottom: 10px;
     }
 
     .lot-genetis p {
@@ -615,8 +616,8 @@
 
     .lot-genetis h3 {
         font-family: Montserrat;
-        font-size: 32px;
-        line-height: 39px;
+        font-size: 28px;
+        line-height: 36px;
         font-weight: 300;
         color: #232B38;
     }
@@ -626,16 +627,66 @@
     }
 
     .moreBtn {
-        font-family: Montserrat;
-        font-size: 20px;
-        line-height: 24px;
-        font-weight: 600;
-        display: block;
-        color: white;
-        background-color: black;
+           display: block;
+    margin-bottom: 15px;
+    }
+    .moreBtn button{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    font-family: Montserrat;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 5px;
+    max-width: 190px;
+    border-radius: 3px;
+    }
+    .text-underline{
+        text-decoration: underline;
     }
 
     /* hamza starts ends */
+       @media (max-width:768px) {
+        .tablenav a {
+            font-size: 10px;
+        }
+        .lot-header h4 {
+        font-size: 72px;
+        line-height: 87px;
+    }
+    .lot-header h3 {
+font-size: 60px;
+    line-height: 65px;
+    }
+
+    .lot-header h5 {
+ font-size: 32px;
+    line-height: 36px;
+    }
+
+    .lot-description p {
+        font-size: 18px;
+        line-height: 21px;
+    }
+    .lot-genetis p {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .lot-genetis h3 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .moreBtn button{
+    font-size: 18px;
+    line-height: 20px;
+    max-width: 190px;
+    }
+    .text-underline{
+        text-decoration: underline;
+    }
+    }
 </style>
 
 <body>
@@ -730,7 +781,7 @@
     </div> --}}
     <section>
 
-        <div class="container">
+        <div class="table-container">
             <nav class="tablenav">
                 <div class="col-sm-5 col-8" style="padding-left: 0; !important">
                     <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
@@ -747,17 +798,18 @@
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">Rank</th>
-                                <th scope="col">Jury Score</th>
-                                <th scope="col">Your Score</th>
+                                <th scope="col" style="min-width: 110px;">Jury Score</th>
+                                <th scope="col" style="min-width: 110px;">Your Score</th>
                                 <th scope="col">Weight</th>
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
+                                <th scope="col"></th>
                                 <th scope="col">Total Value</th>
-                                <th scope="col">Lot Name</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
-                                <th scope="col">High Bidder</th>
-                                <th scope="col" colspan="2">Time Left</th>
+                                <th scope="col" style="min-width: 110px;">High Bidder</th>
+                                <th scope="col" style="min-width: 110px;">Time Left</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -777,23 +829,22 @@
                                 <input type="hidden"  id="auctionWeight" value="{{$auctionProduct->weight}}">
                                 <tr class="text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
-                                    <td>{{ $auctionProduct->rank }}</td>
-                                    <td>{{$auctionProduct->jury_score}}</td>
-                                    <td contenteditable='true' class="yourscore" data-id="{{ $auctionProduct->id }}" id="score" style="max-width: 50px;">{{$auctionProduct->your_score ?? '---'}}</td>
+                                    <td class="fw-bold">{{ $auctionProduct->rank }}</td>
+                                    <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
+                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->your_score ?? '-'}}</td>
                                     <td>{{ $auctionProduct->weight }}/lb</td>
                                     <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
-                                    <td>
-                                        <div style="display: flex; align-items:center; gap:10px;">
-                                            <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
-                                                @if($auction->auctionStatus() =='active')
+                                    <td class="fw-bold">
+                                        <div>
+                                            <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
+                                       </div>
+                                    </td>
+                                    <td>    @if($auction->auctionStatus() =='active')
                                             <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
                                                 data-id="{{ $auctionProduct->id }}" auction-id="{{$auctionProduct->auction_id}}" id="accordion1"
                                                 data-toggle="collapse" data-parent="#accordion1"
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                                @endif
-                                        </div>
-                                    </td>
+                                                @endif</td>
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
                                     <td class="liability{{ $auctionProduct->id}}">
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}/lb
@@ -802,7 +853,7 @@
                                         <td class="liability{{ $auctionProduct->id}}">---</td>
                                         @endif
                                     @foreach ($auctionProduct->products as $products)
-                                    <td>{{$products->product_title}}</td>
+                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}">{{$products->product_title}}  </a></td>
 
                                         {{-- @if ($products->pro_lot_type == '1')
                                             <td>Farmer Lot</td>
@@ -830,11 +881,11 @@
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }}">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
-                                        <td class="paddleno{{ $auctionProduct->id }}">Waiting Bid</td>
+                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
                                     @endif
                                     <td>
                                         <div >
@@ -855,10 +906,10 @@
                                             </span>
                                         </div>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                             style="color: #000000;"> ⋮ </a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @if (!isset($agreement) ||
                                     $agreement->privacy_policy_id != '1' ||
@@ -1035,24 +1086,22 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="container" style="
-                padding-left: inherit;">
                     <div class="table-responsive">
                         <table class="table table-responsive auctiontable">
                             <thead>
                                 <tr>
                                     <th scope="col">Rank</th>
-                                    <th scope="col">Jury Score</th>
-                                    <th scope="col">Your Score</th>
+                                    <th scope="col" style="min-width: 110px;">Jury Score</th>
+                                    <th scope="col" style="min-width: 110px;">Your Score</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Weight</th>
                                     <th scope="col">Process</th>
                                     <th scope="col">Genetics</th>
-                                    <th scope="col">Current Bid</th>
-                                    <th scope="col">Your Liability</th>
-                                    <th scope="col">Lot Name</th>
-                                    <th scope="col">High Bidder</th>
-                                    <th scope="col">Time Left</th>
+                                    <th scope="col" style="min-width: 120px;">Current Bid</th>
+                                    <th scope="col" style="min-width: 110px;">Your Liability</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col" style="min-width: 120px;">High Bidder</th>
+                                    <th scope="col" style="min-width: 110px;">Time Left</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1064,11 +1113,11 @@
                                     <tr @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
-                                        <td><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
-                                        <td>{{$auctionProduct->jury_score}}</td>
+                                        <td class="fw-bold"><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
+                                        <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
                                         <td>--</td>
                                         <td>{{ $auctionProduct->size }}</td>
-                                        <td>{{ $auctionProduct->weight }}/lb</td>
+                                        <td class="fw-bold">{{ $auctionProduct->weight }}/lb</td>
                                         @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_process == '1')
                                                 <td>Natural</td>
@@ -1107,7 +1156,7 @@
                                         </td>
 
                                         @foreach ($auctionProduct->products as $products)
-                                        <td>{{$products->product_title}}</td>
+                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"> {{$products->product_title}} </a></td>
 
                                             {{-- @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
@@ -1131,11 +1180,9 @@
                                                     @if (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                         Open
                                                     @else
-                                                        Waiting Bid
+                                                        Awaiting Bid
                                                     @endif
                                                 </span>
-                                                <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
-                                                    style="color: #000000;"> ⋮ </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -1164,7 +1211,7 @@
                                     <td>$200.00</td>
                                 </tr> --}}
                                 <tr class="finalliabilitytr">
-                                    <th scope="row">Total Liability</th>
+                                    <th >Total Liability</th>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -1177,11 +1224,10 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
               <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div class="container">
+                <div class="sidebar-container">
                     <div class="lot-header">
                         <h3 class="rank"></h3>
                             <h3 class="juryscore"></h3>
@@ -1197,7 +1243,10 @@
                         <p>WINNING BIDDER: <span class="paddleno"></span></p>
                     </div>
                     <div class="lot-featured-img">
-                        <img src="<?= asset('public/images/avatar.png') ?>">
+                        <img class="img-status">
+                        <input type="hidden" name="image-source"
+                        value="{{asset('/public/images/product_images/')}}"
+                        id="image-source" />
                     </div>
                     <div class="lot-description">
                         <p>PROCESS: <span class="proprocess"></span></p>
@@ -1207,8 +1256,9 @@
 
                     </div>
 
+                    <div class="moreBtn"></div>
                 </div>
-                <div class="moreBtn" style="display:flex;justify-content: center;"></div>
+                
             </div>
             {{-- <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -1340,6 +1390,7 @@
                     var paddleno   = $('.paddleno'+id).html();
                     var process    = response.products[0].pro_process;
                     var genetics   = response.products[0].genetic_id;
+                    var image      = response.winning_images[0].image_1;
                     var url        = '{{ route("productsidebar", ":id") }}';
                     url            = url.replace(':id',rank);
                     $(".weight").html(response.weight);
@@ -1381,12 +1432,13 @@
                         $(".lotName").html('Community Lot');
                     }
                     $(".score").html(response.jury_score);
+                    var source = $("#image-source").val();
+                    var res = source.concat('/'+image);
+                    $('.img-status').attr('src', res);
                     $(".moreBtn").html(
-                        '<a href="'+url+'" target="blank"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
+                        '<a href="'+url+'" target="blank"><button >More Information</button></a>'
                         )
-
                     document.getElementById("mySidebar").style.width = "400px";
-                    document.getElementById("main").style.marginLeft = "400px";
                 },
                 error: function(error) {
                     console.log(error)
@@ -1435,8 +1487,16 @@
         });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
-            var id = $(this).attr('data-id');
-
+            var id                = $(this).attr('data-id');
+            var singlebidamount   = $('.nextincrement' + id).html();
+            swal({
+                title: `Confirm  Bid` + singlebidamount +`?`,
+                // text: "You will remain highest bidder until your limit reached.",
+                type        : "error",
+                buttons     : true,
+                dangerMode  : true,
+            }).then((result) => {
+                if (result) {
             $.ajax({
                 url: "{{ route('singlebiddata') }}",
                 async: false,
@@ -1503,8 +1563,9 @@
                     console.log(error)
                 }
             });
+          }
+        });
             $(".AutoSingleBidClick" + id).css("display", "block");
-
         });
         //Autobid
         $(".autobid").on("click", function(e) {
@@ -1513,7 +1574,6 @@
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
-            console.log(autobidamount, currentBidPrice);
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
                     '<p>Please enter the amount greater than current bid amount.</p>');
@@ -1655,7 +1715,7 @@
                 }
             })
         });
-    })
+    });
 </script>
 <script>
     var total = 0;
@@ -1666,6 +1726,7 @@
         // $(".waiting" + data.bidID).html('Open');
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".userbid" + data.bidID).css("color", "black");
+
         $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
         $(".totalliabilitytext" + data.bidID).html('Maximum Liability')
          $(".totalliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US') + '/lb');
@@ -1679,6 +1740,7 @@
     });
     socket.on('auto_bid_delete', function(data) {
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
+        $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
         $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
         $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
         var weight = $("#auctionWeight").val();
@@ -1739,14 +1801,8 @@
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-           if(final>0)
-           {
+
             $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
-           }
-           else
-           {
-            $(".finalliability").html('$0/lb');
-           }
 
         }
         if (data.checkTimer == 0) {
