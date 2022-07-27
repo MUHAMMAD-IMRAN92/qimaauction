@@ -322,7 +322,6 @@
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
-
     }
 
     .auctiontable thead th {
@@ -331,7 +330,7 @@ font-family: 'Montserrat';
     font-size: 16px;
     line-height: 20px;
     text-align: center;
-    padding: 8px;
+    padding: 10px 8px;
     }
 
     .auctiontabs a.active {
@@ -345,30 +344,13 @@ font-family: 'Montserrat';
     .changecolor {
         background: #DBFFDA;
     }
-    .changebuttontext {
-        font-family: 'Open Sans';
-        font-style
-        background: #FFFEA2;
-        border-width: 1px 0px;
-        border-style: solid;
-        border-color: #9C9C9C;
-    }
+
 
     .changecolorwining {
         background: #DBFFDA;
         border-width: 1px 0px;
         border-style: solid;
         border-color: #9C9C9C;
-    }
-
-    .changebuttontext {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 25px;
-        /* identical to box height */
-        color: #FFFFFF;
     }
 
     .alertmsg {
@@ -392,7 +374,7 @@ font-family: 'Montserrat';
     font-size: 18px;
     line-height: 25px;
     text-align: center;
-    padding: 0;
+    padding: 2px;
     }
 
     .auctiontable tbody tr td {
@@ -400,7 +382,7 @@ font-family: 'Montserrat';
     Font-size: 18px;
     Line-height: 22px;
     color: #000000;
-    padding: 8px 10px;
+    padding: 10px 4px;
     border: none;
     text-align: center;
     }
@@ -409,13 +391,13 @@ font-family: 'Montserrat';
         font-weight: bold;
     }
     .tr-bb{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #9C9C9C;
     }
     .yourscore{
         max-width: 40px;
         white-space: nowrap;
         text-overflow: ellipsis;
-  overflow: hidden; 
+  overflow: hidden;
     }
 
     .auctiontabs a.active {
@@ -426,15 +408,14 @@ font-family: 'Montserrat';
         border-radius: 10px 10px 0px 0px;
     }
 
-    .changebuttontext {
+    /* .changebuttontext {
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 25px;
-        /* identical to box height */
         color: #FFFFFF;
-    }
+    } */
 
     .errormsgautobid {
         background: #DBFFDA;
@@ -521,6 +502,11 @@ font-family: 'Montserrat';
         margin-top: 40px;
     }
 
+    @media all and (max-width : 768px) {
+        .tablenav a {
+            font-size: 10px;
+        }
+    }
     .singlebidbtn{
         background-color: #143D30;
         color: white;
@@ -557,6 +543,9 @@ font-family: 'Montserrat';
     margin-bottom: 0px;
 }
 /* hamza css starts */
+/* .hide-table-padding {
+    display: none;
+} */
 .table-container {
     width: 90%;
     margin: 0 auto;
@@ -574,16 +563,16 @@ font-family: 'Montserrat';
 
     .lot-header h3 {
     font-family: Montserrat;
-    font-size: 75px;
-    line-height: 93px;
+    font-size: 60px;
+    line-height: 70px;
     font-weight: 900;
     color: black;
     }
 
     .lot-header h5 {
         font-family: Montserrat;
-        font-size: 40px;
-        line-height: 48px;
+        font-size: 30px;
+        line-height: 40px;
         font-weight: 700;
         color: #232B38;
     }
@@ -631,23 +620,23 @@ font-family: 'Montserrat';
     margin-bottom: 15px;
     }
     .moreBtn button{
-    font-size: 20px;
+font-size: 20px;
     line-height: 24px;
     font-weight: 600;
     font-family: Montserrat;
     color: white;
     background-color: black;
     text-align: center;
-    padding: 5px;
-    max-width: 190px;
+    padding: 10px 5px;
     border-radius: 3px;
+    width: 100%;
     }
     .text-underline{
         text-decoration: underline;
     }
 
     /* hamza starts ends */
-       @media (max-width:768px) {
+       @media (max-width: 1199px) {
         .tablenav a {
             font-size: 10px;
         }
@@ -683,10 +672,78 @@ font-size: 60px;
     line-height: 20px;
     max-width: 190px;
     }
-    .text-underline{
-        text-decoration: underline;
+    .auctiontable tbody tr td {
+    Font-size: 12px;
+    Line-height: 16px;
+}
+.auctiontable thead th {
+    font-size: 12px;
+    line-height: 16px;
+}
+.auctiontable tbody tr td a {
+    font-size: 12px;
+    line-height: 18px;
+}
     }
+
+    .lot-header h3 {
+        font-family: Montserrat;
+        font-size: 96px;
+        line-height: 117px;
+        font-weight: 900;
+        color: black;
     }
+
+    .lot-header h5 {
+        font-family: Montserrat;
+        font-size: 40px;
+        line-height: 48px;
+        font-weight: 700;
+        color: #232B38;
+    }
+
+    .lot-description p {
+        font-family: Montserrat;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 300;
+        color: #232B38;
+    }
+
+    .lot-description p span {
+        font-weight: 700;
+    }
+
+    .lot-featured-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .lot-genetis p {
+        font-family: Montserrat;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        color: #232B38;
+    }
+
+    .lot-genetis h3 {
+        font-family: Montserrat;
+        font-size: 32px;
+        line-height: 39px;
+        font-weight: 300;
+        color: #232B38;
+    }
+
+    .lot-genetis h3 span {
+        font-weight: 700;
+    }
+
+    .moreBtn {
+        display: block;
+    }
+
+    /* hamza starts ends */
 </style>
 
 <body>
@@ -798,8 +855,8 @@ font-size: 60px;
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">Rank</th>
-                                <th scope="col" style="min-width: 110px;">Jury Score</th>
-                                <th scope="col" style="min-width: 110px;">Your Score</th>
+                                <th scope="col" >Jury Score</th>
+                                <th scope="col" >Your Score</th>
                                 <th scope="col">Weight</th>
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
@@ -808,8 +865,8 @@ font-size: 60px;
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
-                                <th scope="col" style="min-width: 110px;">High Bidder</th>
-                                <th scope="col" style="min-width: 110px;">Time Left</th>
+                                <th scope="col" >High Bidder</th>
+                                <th scope="col" >Time Left</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -825,13 +882,11 @@ font-size: 60px;
                                     $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
-                                <input type="hidden" id="finalIncSinglebid" value="{{$finalIncSinglebid}}">
-                                <input type="hidden"  id="auctionWeight" value="{{$auctionProduct->weight}}">
-                                <tr class="text-center bidcollapse{{ $auctionProduct->id }}
+                                <tr class="tr-bb text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
-                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->your_score ?? '-'}}</td>
+                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->userscore->your_score ?? '-'}}</td>
                                     <td>{{ $auctionProduct->weight }}/lb</td>
                                     <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold">
@@ -1051,7 +1106,7 @@ font-size: 60px;
                                                             @endif
                                                         </form>
                                                     </div>
-                                            
+
                                                     <div class="col-4 AutoSingleBidClick{{ $auctionProduct->id }}" style="display: none" >
                                                         <table class="table mt-2">
                                                             <tr>
@@ -1091,17 +1146,17 @@ font-size: 60px;
                             <thead>
                                 <tr>
                                     <th scope="col">Rank</th>
-                                    <th scope="col" style="min-width: 110px;">Jury Score</th>
-                                    <th scope="col" style="min-width: 110px;">Your Score</th>
+                                    <th scope="col" >Jury Score</th>
+                                    <th scope="col" >Your Score</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Weight</th>
                                     <th scope="col">Process</th>
                                     <th scope="col">Genetics</th>
-                                    <th scope="col" style="min-width: 120px;">Current Bid</th>
-                                    <th scope="col" style="min-width: 110px;">Your Liability</th>
+                                    <th scope="col" >Current Bid</th>
+                                    <th scope="col" >Your Liability</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col" style="min-width: 120px;">High Bidder</th>
-                                    <th scope="col" style="min-width: 110px;">Time Left</th>
+                                    <th scope="col">High Bidder</th>
+                                    <th scope="col">Time Left</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1111,7 +1166,7 @@ font-size: 60px;
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
                                     <tr @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
-                                        class="text-center liabilitybidcollapse{{ $auctionProduct->id }}"
+                                        class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td class="fw-bold"><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                         <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
@@ -1258,7 +1313,6 @@ font-size: 60px;
 
                     <div class="moreBtn"></div>
                 </div>
-                
             </div>
             {{-- <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -1356,14 +1410,14 @@ font-size: 60px;
 
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     function openNav() {
-        document.getElementById("mySidebar").style.width = "350px";
-        document.getElementById("main").style.marginLeft = "350px";
+        document.getElementById("mySidebar").style.width = "500px";
+        document.getElementById("main").style.marginLeft = "500px";
     }
 
     /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("main").style.marginLeft ="0";
     }
 </script>
 <script type="text/javascript">
@@ -1438,7 +1492,7 @@ font-size: 60px;
                     $(".moreBtn").html(
                         '<a href="'+url+'" target="blank"><button >More Information</button></a>'
                         )
-                    document.getElementById("mySidebar").style.width = "400px";
+                    document.getElementById("mySidebar").style.width = "450px";
                 },
                 error: function(error) {
                     console.log(error)
@@ -1526,6 +1580,7 @@ font-size: 60px;
                     var bidAmountUser       = response.bidAmountUser;
                     var liability           = response.liability;
                     var checkStartTimer     = response.checkStartTimer;
+                    var finaltotalliability = response.finaltotalliability;
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
                     $(".totalliabilitytext" + id).html('Total Liability')
@@ -1556,6 +1611,7 @@ font-size: 60px;
                         "checkTimer"             : checkTimer,
                         "liability"              : liability,
                         "checkStartTimer"        : checkStartTimer,
+                        "finaltotalliability"    : finaltotalliability,
                         // "bidderMaxBid":bidderMaxBid,
                     });
                 },
@@ -1730,7 +1786,7 @@ font-size: 60px;
         $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
         $(".totalliabilitytext" + data.bidID).html('Maximum Liability')
          $(".totalliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US') + '/lb');
-     
+
         // if(data.user_id == {{Auth::user()->id}})
         // {
         //     $('.errorMsgAutoBid' + data.id).html('');
@@ -1792,7 +1848,7 @@ font-size: 60px;
         if (data.liabiltyUser == {{ Auth::user()->id }}) {
             total = total + data.liability;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US') + '/lb');
-            $(".finalliability").html('$' + total.toLocaleString('en-US') + '/lb');
+            $(".finalliability").html('$' + data.finaltotalliability.toLocaleString('en-US') + '/lb');
         }
         else
         {
@@ -1801,8 +1857,12 @@ font-size: 60px;
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-
+            if(final > 0)
             $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
+            else
+            {
+                $(".finalliability").html('$'+ 0 +'/lb'); 
+            }
 
         }
         if (data.checkTimer == 0) {
