@@ -24,6 +24,10 @@ class AuctionProduct extends Model
     {
         return $this->hasMany(SingleBid::class,'auction_product_id','id');
     }
+    public function winningImages()
+    {
+        return $this->hasMany(WinningCofeeImages::class,'user_id','id');
+    }
     protected $guarded = [''];
 
 }

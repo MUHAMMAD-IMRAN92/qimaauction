@@ -1194,7 +1194,10 @@
                         <p>WINNING BIDDER: <span class="paddleno"></span></p>
                     </div>
                     <div class="lot-featured-img">
-                        <img src="<?= asset('public/images/avatar.png') ?>">
+                        <img class="img-status">
+                        <input type="hidden" name="image-source"
+                        value="{{asset('/public/images/product_images/')}}"
+                        id="image-source" />
                     </div>
                     <div class="lot-description">
                         <p>PROCESS: <span class="proprocess"></span></p>
@@ -1337,6 +1340,7 @@
                     var paddleno   = $('.paddleno'+id).html();
                     var process    = response.products[0].pro_process;
                     var genetics   = response.products[0].genetic_id;
+                    var image      = response.winning_images[0].image_1;
                     var url        = '{{ route("productsidebar", ":id") }}';
                     url            = url.replace(':id',rank);
                     $(".weight").html(response.weight);
@@ -1378,12 +1382,13 @@
                         $(".lotName").html('Community Lot');
                     }
                     $(".score").html(response.jury_score);
+                    var source = $("#image-source").val();
+                    var res = source.concat('/'+image);
+                    $('.img-status').attr('src', res);
                     $(".moreBtn").html(
                         '<a href="'+url+'" target="blank"><button  style="background: #143D30; color:#FFFFFF;padding: 10px 25px;">More Information</button></a>'
                         )
-
                     document.getElementById("mySidebar").style.width = "400px";
-                    document.getElementById("main").style.marginLeft = "400px";
                 },
                 error: function(error) {
                     console.log(error)
@@ -1432,7 +1437,16 @@
         });
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
-            var id = $(this).attr('data-id');
+            var id                = $(this).attr('data-id');
+            var singlebidamount   = $('.nextincrement' + id).html();
+            swal({
+                title: `Confirm  Bid` + singlebidamount +`?`,
+                // text: "You will remain highest bidder until your limit reached.",
+                type        : "error",
+                buttons     : true,
+                dangerMode  : true,
+            }).then((result) => {
+                if (result) {
             $.ajax({
                 url: "{{ route('singlebiddata') }}",
                 async: false,
@@ -1471,8 +1485,8 @@
                         $('.alertMessage' + id).html('<p>Your $' + bidPrice +
                             '/lb Bid is confirmed.</p>');
                     }
-                    $(".autobidamount" + id).addClass("mt-1");
-                    $(".autobidamount" + id).removeClass("mb-1");
+                    // $(".autobidamount" + id).addClass("mt-1");
+                    // $(".autobidamount" + id).removeClass("mb-1");
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID"                  : bidID,
@@ -1497,8 +1511,13 @@
                 error: function(error) {
                     console.log(error)
                 }
-            });
 
+            });
+        }
+        else {
+                    // swal('Your cancelled your bid.');
+                }
+    });
         });
         //Autobid
         $(".autobid").on("click", function(e) {
@@ -1507,7 +1526,6 @@
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
-            console.log(autobidamount, currentBidPrice);
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
                     '<p>Please enter the amount greater than current bid amount.</p>');
@@ -1657,6 +1675,7 @@
         // $(".waiting" + data.bidID).html('Open');
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".userbid" + data.bidID).css("color", "black");
+
         $(".userbid" + data.bidID).html('$' + data.userbidAmount.toLocaleString('en-US') + '/lb');
 
         // if(data.user_id == {{Auth::user()->id}})
@@ -1668,6 +1687,7 @@
     });
     socket.on('auto_bid_delete', function(data) {
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
+        $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
         $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
         $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
     });
@@ -1675,11 +1695,11 @@
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $(".autobidamount" + data.bidID).addClass("mb-1");
+            $(".autobidamount" + data.bidID).addClass("mb-2");
             $(".singlebidClass" + data.bidID).css("display", "block");
             $(".autobidClass" + data.bidID).css("display", "block");
-            $(".autobidClass" + data.bidID).css("margin-top", "-49px");
-            $(".autobidClass" + data.bidID).css("margin-left", "153px");
+            $(".autobidClass" + data.bidID).css("margin-top", "-53px");
+            $(".autobidClass" + data.bidID).css("margin-left", "158px");
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
@@ -1722,14 +1742,8 @@
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-           if(final>0)
-           {
+
             $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
-           }
-           else
-           {
-            $(".finalliability").html('$0/lb');
-           }
 
         }
         if (data.checkTimer == 0) {

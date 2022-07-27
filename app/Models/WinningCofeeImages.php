@@ -12,4 +12,8 @@ class WinningCofeeImages extends Model
     {
         return $this->belongsTo(WinningCofees::class);
     }
+    public function auctionProductImages()
+    {
+        return $this->belongsTo(AuctionProduct::class);
+    }
 }

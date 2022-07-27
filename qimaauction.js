@@ -1,43 +1,18 @@
-var https = require('https');
-var fs = require('fs');
-var express = require('express');
-var options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/sockets.skylinxtech.com/fullchain.pem'),
-    requestCert: false,
-    rejectUnauthorized: false
-};
-const app = express();
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
-//const socket = require('socket.io');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+// var db = require('./db.js');
+// var mydb = new db();
 
-const cors = require('cors');
-//const app = express();
-let port = 5002;
-
-//app.use(express.static('public'));
-app.use(cors());
-var server = https.createServer(options, app);
-const io = require('socket.io')(server, {
-    cors: {
-        origin: '*'
-    }
+app.get('/', function (req, res) {
+res.send('Working fine New');
 });
-// var io = require('socket.io')(http);
-let clients = 0
-//const io = socket(server);
 var sockets = {};
 var arr = [];
 io.on('connection', function (socket) {
-    // socket.on('message_get', function (data) {
-    // io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
-    // });
+// socket.on('message_get', function (data) {
+// io.emit('message_send', { 'singleBidammount': singleBidammount,'singleidcid': singleidcid,'singlebidpid': singlebidpid,'singlebidaid': singlebidaid,'singlebidmsterpId': singlebidmsterpId});
+// });
 
     socket.on('auto_bid_updates', function (data) {
         io.emit('auto_bid_updates', { "latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"paddleNo":data.paddleNo,"userbidAmount":data.userbidAmount  });
@@ -66,6 +41,6 @@ io.on('connection', function (socket) {
         });
         });
 
-server.listen(port, function () {
-    console.log('Express server listening on port ' + server.address().port);
+http.listen(5002, function () {
+console.log('listening on *:5002');
 });
