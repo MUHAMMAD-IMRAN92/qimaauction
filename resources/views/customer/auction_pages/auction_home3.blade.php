@@ -1435,7 +1435,7 @@ font-size: 60px;
                     $(".moreBtn").html(
                         '<a href="'+url+'" target="blank"><button >More Information</button></a>'
                         )
-                    document.getElementById("mySidebar").style.width = "350px";
+                    document.getElementById("mySidebar").style.width = "400px";
                 },
                 error: function(error) {
                     console.log(error)
