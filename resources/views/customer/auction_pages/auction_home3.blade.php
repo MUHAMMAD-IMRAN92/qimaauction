@@ -344,6 +344,9 @@ font-family: 'Montserrat';
     .changecolor {
         background: #DBFFDA;
     }
+    .changecolorLose {
+        background: #f7e98f;
+    }
 
 
     .changecolorwining {
@@ -1828,6 +1831,10 @@ font-size: 60px;
             $(".autobidClass" + data.bidID).css("margin-top", "-53px");
             $(".autobidClass" + data.bidID).css("margin-left", "188px");
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 5000);
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
@@ -1844,6 +1851,10 @@ font-size: 60px;
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 5000);
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
         if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
