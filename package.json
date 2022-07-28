@@ -25,6 +25,6 @@
         "socket.io": "^1.5.1"
     },
     "dependencies": {
-        "nodemon": "^2.0.18"
+        "nodemon": "^2.0.19"
     }
 }

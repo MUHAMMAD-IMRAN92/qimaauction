@@ -1206,7 +1206,7 @@ font-size: 60px;
                                     @php
                                         $isEmpty = sizeof($singleBids);
                                     @endphp
-                                    <tr @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
+                                    <tr id="bid_row_{{ $auctionProduct->id}}" @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
                                         class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }}"
                                         @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td class="fw-bold"><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
@@ -1247,7 +1247,7 @@ font-size: 60px;
                                                 }
                                             }
                                         @endphp
-                                        <td class="liability{{ $auctionProduct->id }}">
+                                        <td class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }} @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }}  @endif">
                                             ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
                                         </td>
 
@@ -1429,7 +1429,6 @@ font-size: 60px;
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    console.log(response);
                     var rank       = response.rank;
                     var juryscore  = response.jury_score;
                     var name       = response.products[0].product_title;
@@ -1565,7 +1564,6 @@ font-size: 60px;
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    console.log(response);
 
                 },
                 error: function(error) {
@@ -1590,7 +1588,6 @@ font-size: 60px;
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    console.log(response);
                     var bidPrice            = response.bid_amountNew;
                     var bidID               = response.auction_product_id;
                     var increment           = response.bidIncrement;
@@ -1677,8 +1674,6 @@ font-size: 60px;
                                 _token: "{{ csrf_token() }}",
                             },
                             success: function(response) {
-                                console.log('response');
-                                console.log(response);
                                 if (response.message !== null) {
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1765,7 +1760,6 @@ font-size: 60px;
                             _token: "{{ csrf_token() }}",
                         },
                         success: function(response) {
-                            console.log(response);
                             var auction_product_id = response.auction_product_id;
                             var outbid = response.outAutobid;
                             if (outbid == 0) {
@@ -1831,8 +1825,8 @@ font-size: 60px;
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
             total = total;
-            // $(".bidcollapse"+data.bidID).removeClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).show();
+            $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
             $(".bidcollapse" + data.bidID).addClass("changecolor");
@@ -1841,6 +1835,7 @@ font-size: 60px;
         } else if (data.winningBidder != undefined) {
             total = 0;
             $(".liabilitybidcollapse" + data.bidID).hide();
+            $(".liability_your" + data.bidID).removeClass('liabilty_shown');
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
@@ -1858,8 +1853,16 @@ font-size: 60px;
         }
         if (data.liabiltyUser == {{ Auth::user()->id }}) {
             total = total + data.liability;
+            var total_bid=0;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-            $(".finalliability").html('$' + data.finaltotalliability.toLocaleString('en-US'));
+            setTimeout(() => {
+                $('.liabilty_shown').each(function(i, obj) {
+                s_bid=$(obj).html();
+                formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
+    total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
+});
+            $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
+        }, 500);
         }
         else
         {
@@ -1868,12 +1871,24 @@ font-size: 60px;
             var totalliabilty       =   $(".finalliability").html();
             var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
             var final               =   restotalliabilty-resliablity;
-            if(final > 0)
-            $(".finalliability").html('$'+ final.toLocaleString('en-US') + '/lb');
+            total_bid=0;
+            setTimeout(() => {
+                $('.liabilty_shown').each(function(i, obj) {
+                s_bid=$(obj).html();
+                formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
+        total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
+});
+
+
+
+
+            if(total_bid > 0)
+            $(".finalliability").html('$'+ total_bid.toLocaleString('en-US') + '/lb');
             else
             {
                 $(".finalliability").html('$'+ 0 +'/lb');
             }
+        }, 500);
 
         }
         if (data.checkTimer == 0) {

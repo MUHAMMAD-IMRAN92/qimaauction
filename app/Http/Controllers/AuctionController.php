@@ -372,7 +372,7 @@ class AuctionController extends Controller
                 if(isset($auctionProduct))
                 {
                     $v= $amount->bid_amount * $auctionProduct;
-                      $total +=$v;                    
+                      $total +=$v;
                 }
               }
             }
@@ -439,14 +439,16 @@ class AuctionController extends Controller
                 return $v;
               });
               $total =0 ;
+              $auctionProduct                     =   AuctionProduct::where('id',$request->id)->first()->weight;
+
               foreach($data as $amount)
               {
               if(isset($amount->auction_product_id))
               {
-                $auctionProduct                     =   AuctionProduct::where('id',$amount->auction_product_id)->first()->weight;
-                if(isset($auctionProduct))
+                $auctionProduct_lib                     =   AuctionProduct::where('id',$amount->auction_product_id)->first()->weight;
+                if(isset($auctionProduct_lib))
                 {
-                    $v= $amount->bid_amount * $auctionProduct;
+                    $v= $amount->bid_amount * $auctionProduct_lib;
                       $total +=$v;
                 }
               }
