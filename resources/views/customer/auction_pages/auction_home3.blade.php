@@ -1079,23 +1079,23 @@ font-size: 60px;
                                                                         Bid</button>
 
                                                                     <div
-                                                                        class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
+                                                                        class="errormsgautobid ijaz errorMsgAutoBid{{ $auctionProduct->id }}">
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <button
                                                                     class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                     href="javascript:void(0)"
+                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
                                                                     <button
                                                                     class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                    type="submit" href="javascript:void(0)"
+                                                                    type="button"
                                                                     data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
                                                                     </button>
                                                                     <button
                                                                     class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
-                                                                    href="javascript:void(0)"
+                                                                    type="button"
                                                                     data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
                                                                     </button>
                                                             @endif
@@ -1108,7 +1108,7 @@ font-size: 60px;
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
                                                                 <div
-                                                                    class="errormsgautobid errormsgautobid{{ $auctionProduct->id }}">
+                                                                    class="errormsgautobid ahmed errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p>Current autobid is
                                                                         {{ $auctionProduct->latestAutoBidPrice->bid_amount }}
                                                                         <a href="javascript:void(0)" class="removeAutoBID"
@@ -1117,15 +1117,13 @@ font-size: 60px;
                                                                 </div>
                                                             @endif
                                                             <div
-                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
+                                                                class="errormsgautobid bhatti errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
                                                             </div>
 
                                                             @if (isset($auctionProduct->latestAutoBidPrice))
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
-                                                                    <div
-                                                                        class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                                    </div>
+
                                                                 @endif
                                                             @endif
                                                         </form>
@@ -1619,7 +1617,6 @@ font-size: 60px;
                     var liability           = response.liability;
                     var checkStartTimer     = response.checkStartTimer;
                     var finaltotalliability = response.finaltotalliability;
-                    // alert(finaltotalliability);
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
                     if (bidPrice > autoBidmax) {
@@ -1629,8 +1626,6 @@ font-size: 60px;
                         $('.alertMessage' + id).html('<p>Your $' + bidPrice +
                             '/lb Bid is confirmed.</p>');
                     }
-                    // $(".autobidamount" + id).addClass("mt-1");
-                    // $(".autobidamount" + id).removeClass("mb-1");
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID"                  : bidID,
@@ -1650,7 +1645,6 @@ font-size: 60px;
                         "liability"              : liability,
                         "checkStartTimer"        : checkStartTimer,
                         "finaltotalliability"    : finaltotalliability,
-                        // "bidderMaxBid":bidderMaxBid,
                     });
                 },
                 error: function(error) {
@@ -1665,9 +1659,11 @@ font-size: 60px;
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
+            $(".removeautobtn"+id).hide();
             if (autobidamount <= currentBidPrice) {
+                $('.showerrormessages').remove();
                 $('.errorMsgAutoBid' + id).html(
-                    '<p>Please enter the amount greater than current bid amount.</p>');
+                    '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>');
                 $('.autobidamount' + id).val('');
             } else {
                         var auctionid = $('.auctionid' + id).val();
@@ -1752,6 +1748,7 @@ font-size: 60px;
             var id = $(this).attr('data-id');
             $(".singlebidtable"+id).hide();
             $(".autobidtable"+id).hide();
+            $(".bidnowautobutton"+id).show();
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
@@ -1825,9 +1822,9 @@ font-size: 60px;
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $(".autobidamount" + data.bidID).addClass("mb-2");
             $(".bidnowbutton" + data.bidID).css("display", "block");
-            $(".autobidClass" + data.bidID).css("display", "block");
-            $(".autobidClass" + data.bidID).css("margin-top", "-53px");
-            $(".autobidClass" + data.bidID).css("margin-left", "188px");
+            $(".bidnowautobutton" + data.bidID).css("display", "block");
+            $(".bidnowautobutton" + data.bidID).css("margin-bottom: ", "9px;");
+            // $(".autobidClass" + data.bidID).css("margin-left", "188px");
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
