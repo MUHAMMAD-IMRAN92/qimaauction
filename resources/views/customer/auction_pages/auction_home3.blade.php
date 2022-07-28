@@ -1137,12 +1137,12 @@ font-size: 60px;
                                                                 <th scope="col">Bid</th>
                                                                 <td
                                                                     scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    {{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount,1) : number_format($auctionProduct->start_price,1) }}/lb
+                                                                    ${{ number_format($finalIncSinglebid, 1) }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Weight</th>
-                                                                <td scope="col">{{ $auctionProduct->weight }}/lb
+                                                                <td scope="col" >{{ $auctionProduct->weight }}/lb
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1160,12 +1160,12 @@ font-size: 60px;
                                                                 <th scope="col">Bid</th>
                                                                 <td
                                                                     scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    {{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount,1) : number_format($auctionProduct->start_price,1) }}/lb
+                                                                    ${{ number_format($finalIncSinglebid, 1) }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Weight</th>
-                                                                <td scope="col">{{ $auctionProduct->weight }}/lb
+                                                                <td scope="col" class="weightautobid{{$auctionProduct->id}}">{{ $auctionProduct->weight }}/lb
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1536,11 +1536,17 @@ font-size: 60px;
         //auto bid
         $(".autobtnclick").click(function() {
             var id = $(this).attr('data-id');
-            $(".autobidtable"+id).hide();
+            $(".autobidtable"+id).show();
             $(".singlebidtable"+id).hide();
             $(".autobidClass"+id).show();
             $(".removeautobtn"+id).show();
             $(".bidnowautobutton"+id).hide();
+            var autobidamount = $(".autobidamount"+id).val();
+            var weightautobid = $(".weightautobid"+id).html();
+            var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
+
+           $(".maximumliability"+id).html(weight*autobidamount.toLocaleString());
+            // var finalmax    = parseFloat(autobidamount.replace(/[^\d\.]*/g, ''))
         });
          //cancelbidvtn first auto bid
         $(".removeautobid").click(function() {
@@ -1795,7 +1801,7 @@ font-size: 60px;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         $(".paddleno" + data.bidID).html(data.paddleNo);
-        $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
+        // $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
 
         // if(data.user_id == {{Auth::user()->id}})
         // {
@@ -1912,7 +1918,7 @@ font-size: 60px;
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
-        $(".biddermaxbid" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') +
+        $(".biddermaxbid" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US') +
             '/lb');
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
