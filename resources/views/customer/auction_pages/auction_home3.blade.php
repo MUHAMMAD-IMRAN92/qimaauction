@@ -1159,8 +1159,8 @@ font-size: 60px;
                                                             <tr>
                                                                 <th scope="col">Bid</th>
                                                                 <td
-                                                                    scope="col"class="biddermaxbid{{ $auctionProduct->id }}">
-                                                                    ${{ number_format($finalIncSinglebid, 1) }}
+                                                                    scope="col"class="autobiddermaxbid{{ $auctionProduct->id }}">
+                                                                    ---
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1544,7 +1544,7 @@ font-size: 60px;
             var autobidamount = $(".autobidamount"+id).val();
             var weightautobid = $(".weightautobid"+id).html();
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
-
+            $(".autobiddermaxbid"+id).html('$'+autobidamount);
            $(".maximumliability"+id).html(weight*autobidamount.toLocaleString());
             // var finalmax    = parseFloat(autobidamount.replace(/[^\d\.]*/g, ''))
         });
