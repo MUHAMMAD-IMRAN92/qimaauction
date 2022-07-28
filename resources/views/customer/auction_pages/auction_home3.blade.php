@@ -364,6 +364,10 @@ font-family: 'Montserrat';
         background: #DBFFDA;
         margin-top: 12px;
     }
+    .errormsgautobidAmount {
+        background: #DBFFDA;
+        margin-top: 12px;
+    }
 
     .liabilitytable thead {
         box-sizing: border-box;
@@ -1117,7 +1121,10 @@ font-size: 60px;
                                                                 </div>
                                                             @endif
                                                             <div
-                                                                class="errormsgautobid bhatti errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
+                                                                class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}{{ $auctionProduct->id }}">
+                                                            </div>
+                                                            <div
+                                                                class="errormsgautobidAmount showMessageForAmount{{ $auctionProduct->id }}">
                                                             </div>
 
                                                             @if (isset($auctionProduct->latestAutoBidPrice))
@@ -1535,7 +1542,11 @@ font-size: 60px;
         });
         //auto bid
         $(".autobtnclick").click(function() {
+
             var id = $(this).attr('data-id');
+            current_val=$('.autobidamount'+id).val();
+            if(current_val){
+            $('.showMessageForAmount'+id).hide();
             $(".autobidtable"+id).show();
             $(".singlebidtable"+id).hide();
             $(".autobidClass"+id).show();
@@ -1546,6 +1557,10 @@ font-size: 60px;
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
             $(".autobiddermaxbid"+id).html('$'+autobidamount);
            $(".maximumliability"+id).html(weight*autobidamount.toLocaleString());
+            }else{
+                $('.showMessageForAmount'+id).show();
+                $('.showMessageForAmount'+id).html('Please Enter Some Amount First');
+            }
             // var finalmax    = parseFloat(autobidamount.replace(/[^\d\.]*/g, ''))
         });
          //cancelbidvtn first auto bid
