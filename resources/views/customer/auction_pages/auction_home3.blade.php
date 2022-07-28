@@ -1072,7 +1072,7 @@ font-size: 60px;
                                                                         class="btn autobtnclick  btn-success autobid autobidClass{{ $auctionProduct->id }}"
                                                                         type="submit" href="javascript:void(0)"
                                                                         data-id="{{ $auctionProduct->id }}">Auto
-                                                                        Bid</button> 
+                                                                        Bid</button>
                                                                         <!-- <button class="autobidbtn btn autobid autobidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
                                                                         href="javascript:void(0)"
                                                                         data-id="{{ $auctionProduct->id }}"
@@ -1261,22 +1261,28 @@ font-size: 60px;
                                             @endif --}}
                                         @endforeach
                                         @if (isset($auctionProduct->singleBidPricelatest))
-                                            @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                                <td class="auctionpaddleno{{ $auctionProduct->id }}">
-                                                    {{ $userData->paddle_number }}@if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
-                                                    @endif
-                                                </td>
-                                            @endforeach
-                                        @else
-                                            <td class="auctionpaddleno{{ $auctionProduct->id }}">---</td>
-                                        @endif
+                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold">
+                                                {{ $userData->paddle_number ?? '---' }}</td>
+                                        @endforeach
+                                    @else
+                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
+                                    @endif
                                         <td>
-                                            <div style="display: flex;">
+                                            <div >
                                                 <span class="waiting{{ $auctionProduct->id }}">
-                                                    @if (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
+                                                    @if ($auction->auctionStatus() != 'active')
+                                                        -
+                                                    @else
+                                                    <div class="tdtimer">
+                                                            <p class="minutes">-</p>
+                                                            <p>:</p>
+                                                            <p class="seconds">-</p>
+                                                    </div>
+                                                    {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                         Open
                                                     @else
-                                                        Awaiting Bid
+                                                        Waiting Bid --}}
                                                     @endif
                                                 </span>
                                             </div>
@@ -1534,8 +1540,8 @@ font-size: 60px;
         //     $(".removeautobtn"+id).hide();
         //     $(".bidnowbutton"+id).show();
         // });
-    
-     
+
+
 
 
         //userscore save
@@ -1789,8 +1795,6 @@ font-size: 60px;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-
-        // $(".waiting" + data.bidID).html('Open');
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
 
@@ -1876,8 +1880,6 @@ font-size: 60px;
             window.empty = data.checkTimer;
             resetTimer(data);
         }
-        // $(".waiting" + data.bidID).html('Open');
-        // $(".bidcollapse" + data.bidID).addClass("changecolor");
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
