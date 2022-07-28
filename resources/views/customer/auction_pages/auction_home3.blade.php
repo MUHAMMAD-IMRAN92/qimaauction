@@ -1304,7 +1304,7 @@ font-size: 60px;
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td class="finalliability">${{ number_format($total_liability,1)}}/lb</td>
+                                    <td class="finalliability">${{ number_format($total_liability,1)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1908,10 +1908,10 @@ font-size: 60px;
 
 
             if(total_bid > 0)
-            $(".finalliability").html('$'+ total_bid.toLocaleString('en-US') + '/lb');
+            $(".finalliability").html('$'+ total_bid.toLocaleString('en-US'));
             else
             {
-                $(".finalliability").html('$'+ 0 +'/lb');
+                $(".finalliability").html('$'+ 0 );
             }
         }, 500);
 
