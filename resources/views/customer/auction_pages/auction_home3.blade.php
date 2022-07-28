@@ -1028,14 +1028,15 @@ font-size: 60px;
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
                                                             <div>
-                                                                @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
-                                                                <button class="btn" style="background: #B3B3B3;  cursor: not-allowed;color:#FFFFFF;">Bid Now</button>
-                                                                @else
+                                                                {{-- @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
+                                                                <button class="btn" >Bid Now</button>
+                                                                @else --}}
                                                                 <button
                                                                     class="singlebidbtn btn singlebtnclick bidnowbutton{{$auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
+                                                                    @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
                                                                     style="border-radius: 5px;">Bid Now</button>
                                                                     <button class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
@@ -1046,7 +1047,7 @@ font-size: 60px;
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px; display:none;">Cancel</button>
-                                                                @endif
+                                                                {{-- @endif --}}
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
