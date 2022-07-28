@@ -908,7 +908,7 @@ font-size: 60px;
                                         <td class="liability{{ $auctionProduct->id}}">---</td>
                                         @endif
                                     @foreach ($auctionProduct->products as $products)
-                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}">{{$products->product_title}}  </a></td>
+                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}">{{$products->product_title}}  </a></td>
 
                                         {{-- @if ($products->pro_lot_type == '1')
                                             <td>Farmer Lot</td>
@@ -1252,7 +1252,7 @@ font-size: 60px;
                                         </td>
 
                                         @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"> {{$products->product_title}} </a></td>
+                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar"data-image="" data-id="{{ $auctionProduct->id }}"> {{$products->product_title}} </a></td>
 
                                             {{-- @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
@@ -1404,26 +1404,31 @@ font-size: 60px;
         $("#newsltterModel").modal("show");
     });
 
-    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "500px";
-        document.getElementById("main").style.marginLeft = "500px";
-    }
+    // /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    // function openNav() {
+    //     document.getElementById("mySidebar").style.width = "500px";
+    //     document.getElementById("main").style.marginLeft = "500px";
+    // }
 
-    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft ="0";
     }
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+        $('.img-status').attr('');
+
         //OpenSidebar
         setTimeout(function(){
             window.location.reload();
         },300000)
         $(".openSidebar").click(function() {
             var id = $(this).attr('data-id');
+            var image = $(this).attr('data-image');
+            var source = $("#image-source").val();
+                    var res = source.concat('/'+image);
+                    $('.img-status').attr('src', res);
             $.ajax({
                 url: "{{ route('opensidebar') }}",
                 method: 'POST',
@@ -1442,7 +1447,6 @@ font-size: 60px;
                     var paddleno   = $('.paddleno'+id).html();
                     var process    = response.products[0].pro_process;
                     var genetics   = response.products[0].genetic_id;
-                    var image      = response.winning_images[0].image_1;
                     var url        = '{{ route("productsidebar", ":id") }}';
                     url            = url.replace(':id',rank);
                     $(".weight").html(response.weight);
@@ -1484,9 +1488,7 @@ font-size: 60px;
                         $(".lotName").html('Community Lot');
                     }
                     $(".score").html(response.jury_score);
-                    var source = $("#image-source").val();
-                    var res = source.concat('/'+image);
-                    $('.img-status').attr('src', res);
+
                     $(".moreBtn").html(
                         '<a href="'+url+'" target="blank"><button >More Information</button></a>'
                         )
