@@ -1658,6 +1658,7 @@ font-size: 60px;
                 }
             });
         });
+
         //Autobid
         $(".autobid").on("click", function(e) {
             e.preventDefault();
@@ -1666,6 +1667,9 @@ font-size: 60px;
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
             $(".removeautobtn"+id).hide();
+            $(".autobidamount"+id).hide();
+            $(".autobidtable"+id).hide();
+            $(".nextincrement"+id).hide();
             if (autobidamount <= currentBidPrice) {
                 $('.showerrormessages').remove();
                 $('.errorMsgAutoBid' + id).html(
@@ -1752,6 +1756,8 @@ font-size: 60px;
         $(document).on("click", '.removeAutoBID', function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
+            $(".autobidamount"+id).show();
+            $(".nextincrement"+id).show();
             $(".singlebidtable"+id).hide();
             $(".autobidtable"+id).hide();
             $(".bidnowautobutton"+id).show();
