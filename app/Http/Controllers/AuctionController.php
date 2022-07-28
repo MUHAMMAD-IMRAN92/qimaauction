@@ -244,7 +244,7 @@ class AuctionController extends Controller
             $auction->save();
             return redirect('auction');
         }
-        $auctionProducts        =   AuctionProduct::with('products', 'singleBids')->get();
+        $auctionProducts        =   AuctionProduct::with('products', 'singleBids','winningImages')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
         $agreement              =   AcceptAgreement::where('user_id', $user)->first();
        $results = $auctionProducts->map(function($e){
@@ -664,7 +664,7 @@ class AuctionController extends Controller
     }
     public function openSideBar(Request $request)
     {
-        $auctionProducts    = AuctionProduct::where('id', $request->id)->with('products','winningImages')->first();
+        $auctionProducts    = AuctionProduct::where('id', $request->id)->with('products')->first();
         return response()->json($auctionProducts);
     }
     public function winningProductsSidebar($id)
