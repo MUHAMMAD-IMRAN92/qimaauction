@@ -1024,7 +1024,7 @@ font-size: 60px;
                                         <td colspan="10">
                                             <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
                                                 <div class="row ">
-                                                    <div class="col-4">
+                                                    <div class="col-6">
                                                         <div class="input-group mb-3"
                                                             style="justify-content: flex-end;">
                                                             <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
@@ -1057,7 +1057,7 @@ font-size: 60px;
                                                             class="alertmsg alertMessage{{ $auctionProduct->id }}">
                                                         </div>
                                                     </div>
-                                                    <div class="col-4">
+                                                    <div class="col-6">
                                                         <form class="form-inline" action="" method="POST">
                                                             @csrf
                                                             <input type="hidden"
@@ -1073,34 +1073,36 @@ font-size: 60px;
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                     <button
-                                                                        class="btn autobtnclick  btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                        class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
                                                                         type="submit" href="javascript:void(0)"
                                                                         data-id="{{ $auctionProduct->id }}">Auto
                                                                         Bid</button>
-                                                                        <!-- <button class="autobidbtn btn autobid autobidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
-                                                                        href="javascript:void(0)"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="border-radius: 5px; display:none;">Confirm</button>
-                                                                        <button
-                                                                        class="autobidbtn btn cancelautobidbutton removeautobtn{{ $auctionProduct->id }}"
-                                                                        href="javascript:void(0)"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="border-radius: 5px; display:none;background: rgb(20, 61, 48); color: rgb(255, 255, 255);">Cancel</button> -->
+
                                                                     <div
                                                                         class="errormsgautobid errorMsgAutoBid{{ $auctionProduct->id }}">
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <button
-                                                                    class="btn btn-success autobtnclick  autobid autobidClass{{ $auctionProduct->id }}"
-                                                                    type="submit" href="javascript:void(0)"
+                                                                    class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
+                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
+                                                                    <button
+                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    type="submit" href="javascript:void(0)"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
+                                                                    </button>
+                                                                    <button
+                                                                    class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
+                                                                    href="javascript:void(0)"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
+                                                                    </button>
                                                             @endif
                                                             @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                 $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
                                                                 <button
-                                                                    class="btn btn-success autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
                                                                     style="display: none" type="submit"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
@@ -1128,7 +1130,9 @@ font-size: 60px;
                                                             @endif
                                                         </form>
                                                     </div>
-
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-8"></div>
                                                     <div class="col-4 singlebidtable{{ $auctionProduct->id }}" style="display: none;">
                                                         <table class="table mt-2">
                                                             <tr>
@@ -1421,7 +1425,6 @@ font-size: 60px;
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
-        $('.img-status').attr('');
 
         //OpenSidebar
         setTimeout(function(){
@@ -1429,6 +1432,7 @@ font-size: 60px;
         },300000)
         $(".openSidebar").click(function() {
             var id = $(this).attr('data-id');
+            $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
                     var res = source.concat('/'+image);
@@ -1522,35 +1526,33 @@ font-size: 60px;
             $(".removesinglebtn"+id).show();
             $(".bidnowbutton"+id).hide();
         });
-        // $(".autobtnclick").click(function() {
-        //     var id = $(this).attr('data-id');
-        //     $(".autobidtable"+id).show();
-        //     $(".autobidtable"+id).hide();
-        //     $(".autobidClass"+id).show();
-        //     $(".removeautobtn"+id).show();
-        //     $(".bidnowbutton"+id).hide();
-        // });
-        //cancelbidvtn first
+        //cancelbidvtn first single bid
         $(".cancelbidbutton").click(function() {
             var id = $(this).attr('data-id');
             $(".autobidtable"+id).hide();
-            $(".autobidtable"+id).hide();
+            $(".singlebidtable"+id).hide();
             $(".singlebidClass"+id).hide();
             $(".removesinglebtn"+id).hide();
             $(".bidnowbutton"+id).show();
         });
-           //cancelbidvtn first
-        //    $(".cancelautobidbutton").click(function() {
-        //     var id = $(this).attr('data-id');
-        //     $(".autobidtable"+id).hide();
-        //     $(".autobidtable"+id).hide();
-        //     $(".autobidClass"+id).hide();
-        //     $(".removeautobtn"+id).hide();
-        //     $(".bidnowbutton"+id).show();
-        // });
-
-
-
+        //auto bid
+        $(".autobtnclick").click(function() {
+            var id = $(this).attr('data-id');
+            $(".autobidtable"+id).hide();
+            $(".singlebidtable"+id).hide();
+            $(".autobidClass"+id).show();
+            $(".removeautobtn"+id).show();
+            $(".bidnowautobutton"+id).hide();
+        });
+         //cancelbidvtn first auto bid
+        $(".removeautobid").click(function() {
+            var id = $(this).attr('data-id');
+            $(".autobidtable"+id).hide();
+            $(".singlebidtable"+id).hide();
+            $(".autobidClass"+id).hide();
+            $(".removeautobtn"+id).hide();
+            $(".bidnowautobutton"+id).show();
+        });
 
         //userscore save
         $(".yourscore").keypress(function (e) {
@@ -1659,14 +1661,10 @@ font-size: 60px;
         //Autobid
         $(".autobid").on("click", function(e) {
             e.preventDefault();
-            $(".autobidClass"+id).hide();
-            $(".removeautobtn"+id).hide();
             $('.errorMsgAutoBid' + id).html('');
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
-            $(".singlebidtable"+id).hide();
-            $(".autobidtable"+id).show();
             if (autobidamount <= currentBidPrice) {
                 $('.errorMsgAutoBid' + id).html(
                     '<p>Please enter the amount greater than current bid amount.</p>');
