@@ -1555,7 +1555,7 @@ font-size: 60px;
             var weightautobid = $(".weightautobid"+id).html();
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
             $(".autobiddermaxbid"+id).html('$'+autobidamount);
-           $(".maximumliability"+id).html(parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
+           $(".maximumliability"+id).html('$'+parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
             }else{
                 $('.showMessageForAmount'+id).show();
                 $('.showMessageForAmount'+id).html('Please Enter Some Amount First');
@@ -1691,6 +1691,7 @@ font-size: 60px;
                 $('.errorMsgAutoBid' + id).html(
                     '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>');
                 $('.autobidamount' + id).val('');
+
             } else {
                         var auctionid = $('.auctionid' + id).val();
                         $.ajax({
@@ -1708,6 +1709,11 @@ font-size: 60px;
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(response.message);
+                                    $('.autobidamount'+id).show();
+                                    $('.autobidamount'+id).val('');
+                                    $('.bidnowautobutton'+id).show();
+                                    $('.autobidClass'+id).hide();
+                                    $('.nextincrement'+id).show();
                                 } else {
                                     var latestAutoBidId = response.id;
                                     var bidPrice = response.bid_amountNew;
@@ -1859,6 +1865,8 @@ font-size: 60px;
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
             }, 5000);
+            $('.autobidamount'+data.bidID).show();
+            $('.nextincrement'+data.bidID).show();
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
@@ -1920,9 +1928,6 @@ font-size: 60px;
                 formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
         total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
 });
-
-
-
 
             if(total_bid > 0)
             $(".finalliability").html('$'+ total_bid.toLocaleString('en-US'));
