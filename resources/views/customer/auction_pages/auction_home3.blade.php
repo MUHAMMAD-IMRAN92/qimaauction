@@ -1149,7 +1149,7 @@ font-size: 60px;
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Weight</th>
-                                                                <td scope="col" >{{ $auctionProduct->weight }}/lb
+                                                                <td scope="col" >{{ $auctionProduct->weight }}lbs
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1172,14 +1172,14 @@ font-size: 60px;
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col">Weight</th>
-                                                                <td scope="col" class="weightautobid{{$auctionProduct->id}}">{{ $auctionProduct->weight }}/lb
+                                                                <td scope="col" class="weightautobid{{$auctionProduct->id}}">{{ $auctionProduct->weight }}lbs
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="col" class="totalliabilitytext{{ $auctionProduct->id }}">Maximum Liability</th>
                                                                 <td scope="col"
                                                                     class="maximumliability{{ $auctionProduct->id }}">
-                                                                    {{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
+                                                                    ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -1777,6 +1777,8 @@ font-size: 60px;
             $(".singlebidtable"+id).hide();
             $(".autobidtable"+id).hide();
             $(".bidnowautobutton"+id).show();
+            $(".autobidClass"+id).hide();
+
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
@@ -1799,7 +1801,6 @@ font-size: 60px;
                                 $('.errorMsgAutoBid' + id).html('');
                                 $('.errorMsgAutoBid' + id + id).html('');
                                 $(".bidnowbutton" + id).css("display", "block");
-                                $(".autobidClass" + id).css("display", "block");
                             }
                             socket.emit('auto_bid_delete', {
                                 "autobidamount": 0,
