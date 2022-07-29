@@ -893,12 +893,12 @@ font-size: 60px;
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
-                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->userscore->your_score ?? '-'}}</td>
-                                    <td>{{ $auctionProduct->weight }}</td>
+                                    <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->userscore->your_score ?? ''}}</td>
+                                    <td>{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold">
                                         <div>
-                                            <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lb</span>
+                                            <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
                                        </div>
                                     </td>
                                     <td>    @if($auction->auctionStatus() =='active')
@@ -1156,7 +1156,7 @@ font-size: 60px;
                                                                 <th scope="col" class="totalliabilitytext{{ $auctionProduct->id }}">Total Liability</th>
                                                                 <td scope="col"
                                                                     class="totalliability{{ $auctionProduct->id }}">
-                                                                    {{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
+                                                                    ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -1198,19 +1198,19 @@ font-size: 60px;
                     <div class="table-responsive">
                         <table class="table table-responsive auctiontable">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="col">Rank</th>
                                     <th scope="col" >Jury Score</th>
                                     <th scope="col" >Your Score</th>
-                                    <th scope="col">Size</th>
                                     <th scope="col">Weight</th>
+                                    <th scope="col">Increment</th>
+                                    <th scope="col">Bid</th>
+                                    <th scope="col">Total Value</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Process</th>
                                     <th scope="col">Genetics</th>
-                                    <th scope="col">Current Bid</th>
-                                    <th scope="col">Your Liability</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">High Bidder</th>
-                                    <th scope="col">Time Left</th>
+                                    <th scope="col" >High Bidder</th>
+                                    <th scope="col" >Time Left</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1224,9 +1224,34 @@ font-size: 60px;
                                         @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
                                         <td class="fw-bold"><i class="fa fa-star" aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                         <td class="fw-bold">{{$auctionProduct->jury_score}}</td>
-                                        <td>--</td>
-                                        <td>{{ $auctionProduct->size }}</td>
-                                        <td class="fw-bold">{{ $auctionProduct->weight }}</td>
+                                        <td contenteditable='true' class="text-underline yourscore" data-id="{{ $auctionProduct->id }}" id="score">{{$auctionProduct->userscore->your_score ?? ''}}</td>
+                                        <td class="fw-bold">{{ $auctionProduct->weight }}lbs</td>
+                                        <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
+                                        <td class="fw-bold">
+                                            <div>
+                                                <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
+                                           </div>
+                                        </td>
+                                        @php
+                                        if (isset($auctionProduct->singleBidPricelatest)) {
+                                            if ($auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {
+                                                $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight;
+                                                $total_liability = $total_liability + $datavalue;
+                                            }
+                                        }
+                                    @endphp
+                                    <td class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }} @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }}  @endif">
+                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
+                                    </td>
+                                        @foreach ($auctionProduct->products as $products)
+                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar" data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}"> {{$products->product_title}} </a></td>
+
+                                            {{-- @if ($products->pro_lot_type == '1')
+                                                <td>Farmer Lot</td>
+                                            @else
+                                                <td>Community Lot</td>
+                                            @endif --}}
+                                        @endforeach
                                         @foreach ($auctionProduct->products as $products)
                                             @if ($products->pro_process == '1')
                                                 <td>Natural</td>
@@ -1244,34 +1269,6 @@ font-size: 60px;
                                         @else
                                             <td>SL28</td>
                                         @endif
-                                        @endforeach
-                                        <td>
-                                            <div style="display: flex; align-items:center; gap:10px;">
-                                                <span
-                                                    class="bidData1{{ $auctionProduct->id }}">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount,1) : number_format($auctionProduct->start_price,1) }}/lb</span>
-
-                                            </div>
-                                        </td>
-                                        @php
-                                            if (isset($auctionProduct->singleBidPricelatest)) {
-                                                if ($auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {
-                                                    $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight;
-                                                    $total_liability = $total_liability + $datavalue;
-                                                }
-                                            }
-                                        @endphp
-                                        <td class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }} @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }}  @endif">
-                                            ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
-                                        </td>
-
-                                        @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar"data-image="" data-id="{{ $auctionProduct->id }}"> {{$products->product_title}} </a></td>
-
-                                            {{-- @if ($products->pro_lot_type == '1')
-                                                <td>Farmer Lot</td>
-                                            @else
-                                                <td>Community Lot</td>
-                                            @endif --}}
                                         @endforeach
                                         @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
@@ -1304,8 +1301,6 @@ font-size: 60px;
                                 @endforeach
                                 <tr class="finalliabilitytr">
                                     <th >Total Liability</th>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -1440,8 +1435,11 @@ font-size: 60px;
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
-                    var res = source.concat('/'+image);
-                    $('.img-status').attr('src', res);
+            var res = source.concat('/'+image);
+            $('.img-status').attr('src', res);
+            var currentbid = $(".bidData1"+id).html();
+            var totalvalue = $(".liability"+id).html();
+
             $.ajax({
                 url: "{{ route('opensidebar') }}",
                 method: 'POST',
@@ -1455,8 +1453,9 @@ font-size: 60px;
                     var name       = response.products[0].product_title;
                     var code       = response.products[0].sample;
                     var size       = response.size;
-                    var currentbid = {{isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}
-                    var totalvalue = {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
+
+                    // var currentbid = {{isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}
+                    // var totalvalue = {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
                     var paddleno   = $('.paddleno'+id).html();
                     var process    = response.products[0].pro_process;
                     var genetics   = response.products[0].genetic_id;
@@ -1468,8 +1467,8 @@ font-size: 60px;
                     $(".name").html(name);
                     $(".code").html(code);
                     $(".size").html(size+'LBS');
-                    $(".currentbid").html('$'+currentbid.toLocaleString('en-US'));
-                    $(".totalvalue").html('$'+totalvalue.toLocaleString('en-US'));
+                    $(".currentbid").html(currentbid.toLocaleString('en-US'));
+                    $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
                     if (genetics == 1)
                     {
@@ -1556,7 +1555,7 @@ font-size: 60px;
             var weightautobid = $(".weightautobid"+id).html();
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
             $(".autobiddermaxbid"+id).html('$'+autobidamount);
-           $(".maximumliability"+id).html(weight*autobidamount.toLocaleString());
+           $(".maximumliability"+id).html(parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
             }else{
                 $('.showMessageForAmount'+id).show();
                 $('.showMessageForAmount'+id).html('Please Enter Some Amount First');
@@ -1608,6 +1607,8 @@ font-size: 60px;
             var singlebidamount   = $('.nextincrement' + id).html();
             $(".singlebidClass"+id).hide();
             $(".removesinglebtn"+id).hide();
+            $(".autobidtable"+id).hide();
+            $(".singlebidtable"+id).hide();
             $(".bidnowbutton"+id).show();
             $.ajax({
                 url: "{{ route('singlebiddata') }}",
@@ -1935,7 +1936,7 @@ font-size: 60px;
             window.empty = data.checkTimer;
             resetTimer(data);
         }
-        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lb');
+        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + 'lbs');
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
