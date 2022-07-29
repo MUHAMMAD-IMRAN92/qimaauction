@@ -585,6 +585,12 @@ class AuctionController extends Controller
         $inc                                =   $bidAmountL + $bidIncrementLatest;
         $totalLiabilty                      =   $inc * $auctionProduct;
         $autoBidData->liablity              =   $totalLiabilty;
+        $singleBidPricelatest               =   SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
+        $bidAmountL                         =   $singleBidPricelatest->bid_amount;
+        $bidLimit                           =   Bidlimit::where('min', '<', $bidAmountL)->orderBy('min', 'desc')->limit(1)->get();
+        $bidIncrementLatest                 =   $bidLimit[0]->increment;
+        $autoBidData->bidIncrement        =   $bidIncrementLatest;
+        $autoBidData->bid_amountNew       =   $bidAmountL;
         return response()->json($autoBidData);
     }
 

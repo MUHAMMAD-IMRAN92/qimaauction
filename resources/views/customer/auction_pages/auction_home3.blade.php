@@ -1068,10 +1068,19 @@ font-size: 60px;
                                                                 class="form-control auctionid{{ $auctionProduct->id }}"
                                                                 value="{{ $auctionProduct->auction_id }}"
                                                                 id="autobidamount">
+                                                                @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
+                                                                $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
                                                             &nbsp;<input type="number" min="0"
                                                                 name="autobidamount"
                                                                 class="form-control autobidamount{{ $auctionProduct->id }}"
+                                                                id="autobidamount" style="width: 50%; display:none;">
+                                                                @else
+                                                                <input type="number" min="0"
+                                                                name="autobidamount"
+                                                                class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                 id="autobidamount" style="width: 50%;">
+                                                                @endif
+
                                                             &nbsp;
                                                             @if (isset($auctionProduct->latestAutoBidPrice))
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
@@ -1728,6 +1737,7 @@ font-size: 60px;
                                     var bidderMaxBid = response.bidderMaxAmount;
                                     var userbidAmount   = response.bid_amount;
                                     var totalAutoBidLiability = response.totalAutoBidLiability;
+                                    var bid_amountNew       = response.bid_amountNew;
                                     $('.errorMsgAutoBid' + id).html('');
                                     $(".bidcollapse" + bidID).addClass(
                                         "changecolor");
@@ -1755,6 +1765,8 @@ font-size: 60px;
                                         "totalAutoBidLiability": totalAutoBidLiability,
                                         "outbid":outbid,
                                         "autobidUserID":autobidUserID,
+                                        "bid_amountNew":bid_amountNew,
+                                        "nextIncrement":nextIncrement,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1848,7 +1860,11 @@ font-size: 60px;
                 data.autobidamount +
                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                 data.bidID + '>Remove</a>}</p>');
+                // $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         }
+        $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
+        $(".nextincrement"+data.bidID).html('$'+data.nextIncrement.toLocaleString('en-US'));
+
         if(data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}){
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $('.errorMsgAutoBid' + data.bidID+data.bidID).html('You lost your Bid is Outed.');
