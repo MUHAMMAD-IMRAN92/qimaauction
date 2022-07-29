@@ -1641,13 +1641,13 @@ font-size: 60px;
                     var finaltotalliability = response.finaltotalliability;
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
-                    if (bidPrice > autoBidmax) {
-                        $('.alertMessage' + id).html('<p>Your $' + bidPrice +
-                            '/lb Bid is outed.</p>');
-                    } else {
-                        $('.alertMessage' + id).html('<p>Your $' + bidPrice +
-                            '/lb Bid is confirmed.</p>');
-                    }
+                    // if (bidPrice > autoBidmax) {
+                    //     $('.alertMessage' + id).html('<p>Your $' + bidPrice +
+                    //         '/lb Bid is outed.</p>');
+                    // } else {
+                    //     $('.alertMessage' + id).html('<p>Your $' + bidPrice +
+                    //         '/lb Bid is confirmed.</p>');
+                    // }
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID"                  : bidID,
@@ -1733,18 +1733,18 @@ font-size: 60px;
                                         "changecolor");
                                     $(".liabilitybidcollapse" + bidID).addClass(
                                         "changecolor");
-                                    socket.emit('add_bid_updates', {
-                                        "singleBidammounttesting": bidPrice,
-                                        "bidID": bidID,
-                                        "increment": increment,
-                                        "paddleNo": paddleNo,
-                                        "nextIncrement": nextIncrement,
-                                        "outbidresponse": outbid,
-                                        "autobidUserID": autobidUserID,
-                                        "bidderLiablity": bidderLiablity,
-                                        "bidderID": bidderID,
-                                        // "bidderMaxBid":bidderMaxBid,
-                                    });
+                                    // socket.emit('add_bid_updates', {
+                                    //     "singleBidammounttesting": bidPrice,
+                                    //     "bidID": bidID,
+                                    //     "increment": increment,
+                                    //     "paddleNo": paddleNo,
+                                    //     "nextIncrement": nextIncrement,
+                                    //     "outbidresponse": outbid,
+                                    //     "autobidUserID": autobidUserID,
+                                    //     "bidderLiablity": bidderLiablity,
+                                    //     "bidderID": bidderID,
+                                    //     // "bidderMaxBid":bidderMaxBid,
+                                    // });
                                     socket.emit('auto_bid_updates', {
                                         "autobidamount": autobidamount,
                                         "latestAutoBidId": latestAutoBidId,
@@ -1753,14 +1753,16 @@ font-size: 60px;
                                         'user_id': response.user_id,
                                         "userbidAmount":userbidAmount,
                                         "totalAutoBidLiability": totalAutoBidLiability,
+                                        "outbid":outbid,
+                                        "autobidUserID":autobidUserID,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
-                                    $('.errorMsgAutoBid' + id + id).html(
-                                        '<p>Current autobid is $' +
-                                        autobidamount +
-                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                        id + '>Remove</a>}</p>');
+                                    // $('.errorMsgAutoBid' + id + id).html(
+                                    //     '<p>Current autobid is $' +
+                                    //     autobidamount +
+                                    //     ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                    //     id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
                                     $('.alertMessage' + id).html('');
                                     $(".bidnowbutton" + id).css("display",
@@ -1838,8 +1840,27 @@ font-size: 60px;
         //     $('.errorMsgAutoBid' + data.id + data.id).html('');
         //     $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
         // }
+        if(data.user_id == {{ Auth::user()->id }})
+        {
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            $('.errorMsgAutoBid' + data.bidID +data.bidID).html(
+                '<p>Current autobid is $' +
+                data.autobidamount +
+                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                data.bidID + '>Remove</a>}</p>');
+        }
+        if(data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}){
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            $('.errorMsgAutoBid' + data.bidID+data.bidID).html('You lost your Bid is Outed.');
+            $('.nextincrement'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).show();
+            $('.autobidamount'+data.bidID).show();
+            $('.bidnowautobutton'+data.bidID).show();
+
+        }
     });
     socket.on('auto_bid_delete', function(data) {
+        $(".alertMessage"+data.bidID).html('');
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
         $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
         $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
@@ -1852,6 +1873,7 @@ font-size: 60px;
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
     socket.on('add_bid_updates', function(data) {
+        // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
@@ -1867,7 +1889,10 @@ font-size: 60px;
             }, 5000);
             $('.autobidamount'+data.bidID).show();
             $('.nextincrement'+data.bidID).show();
+            $(".alertMessage"+data.bidID).hide('');
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
+            $(".alertMessage"+data.bidID).hide('');
+
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
             total = total;
@@ -1893,10 +1918,12 @@ font-size: 60px;
             $(".bidnowbutton" + data.bidID).attr("disabled", true);
             $(".bidnowbutton" + data.bidID).css('background', '#a6a6a6');
             $(".bidnowbutton" + data.bidID).css('color', '#ffffff');
+            $(".alertMessage"+data.bidID).html('<p>Your $' + data.singleBidammounttesting +'/lb Bid is confirmed.</p>');
         }
        else {
             $(".bidnowbutton" + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            $(".alertMessage"+data.bidID).html('<p>You have been outbid.</p>');
         }
         if (data.bidAmountUser == {{ Auth::user()->id }}) {
             $(".userbid" + data.bidID).html('$' + data.userBidAmount.toLocaleString('en-US') + '/lb');
