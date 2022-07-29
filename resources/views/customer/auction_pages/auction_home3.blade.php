@@ -137,7 +137,7 @@
 
     }
 
-    @media all and (max-width : 768px) {
+    @media screen and (max-width : 768px) {
         .last-section h3 {
             font-size: 17px !important;
         }
@@ -160,10 +160,13 @@
     }
 
     .search-icon {
-        position: relative;
-        top: 1px;
-        right: 25px;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        color: #8b7f7f;
+        font-size: 18px;
     }
+
 
     .img-vector {
         width: 8px;
@@ -187,7 +190,9 @@
     }
 
     .footer-head {
+        justify-content: space-evenly;
         padding: 20px;
+        margin: 0;
     }
 
     .position-bar {
@@ -281,8 +286,9 @@
         padding: 10px 15px;
         border: none;
     }
-    .finalliabilitytr{
-        text-align: center
+
+    .finalliabilitytr {
+        text-align: center;
     }
 
     /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -319,18 +325,18 @@
 
     .auctiontable thead {
         background: #E5E5E5;
-        border-width: 1px 0px;
+        /* border-width: 1px 0px;
         border-style: solid;
-        border-color: #9C9C9C;
+        border-color: #9C9C9C; */
     }
 
     .auctiontable thead th {
-font-family: 'Montserrat';
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    padding: 10px 8px;
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        padding: 10px 8px;
     }
 
     .auctiontabs a.active {
@@ -344,6 +350,7 @@ font-family: 'Montserrat';
     .changecolor {
         background: #DBFFDA;
     }
+
     .changecolorLose {
         background: #f7e98f;
     }
@@ -364,6 +371,7 @@ font-family: 'Montserrat';
         background: #DBFFDA;
         margin-top: 12px;
     }
+
     .errormsgautobidAmount {
         background: #DBFFDA;
         margin-top: 12px;
@@ -378,33 +386,35 @@ font-family: 'Montserrat';
     }
 
     .auctiontable tbody tr td a {
-    font-size: 18px;
-    line-height: 25px;
-    text-align: center;
-    padding: 2px;
+        font-size: 18px;
+        line-height: 25px;
+        text-align: center;
+        padding: 2px;
     }
 
     .auctiontable tbody tr td {
-    font-family: 'Montserrat';
-    Font-size: 18px;
-    Line-height: 22px;
-    color: #000000;
-    padding: 10px 4px;
-    border: none;
-    text-align: center;
+        font-family: 'Montserrat';
+        Font-size: 18px;
+        Line-height: 22px;
+        color: #000000;
+        padding: 10px 4px;
+        border: none;
+        text-align: center;
     }
 
-    .fw-bold{
+    .fw-bold {
         font-weight: bold;
     }
-    .tr-bb{
-            border-bottom: 1px solid #9C9C9C;
+
+    .tr-bb {
+        border-bottom: 1px solid #9C9C9C;
     }
-    .yourscore{
+
+    .yourscore {
         max-width: 40px;
         white-space: nowrap;
         text-overflow: ellipsis;
-  overflow: hidden;
+        overflow: hidden;
     }
 
     .auctiontabs a.active {
@@ -509,58 +519,66 @@ font-family: 'Montserrat';
         margin-top: 40px;
     }
 
-    @media all and (max-width : 768px) {
-        .tablenav a {
-            font-size: 10px;
-        }
-    }
-    .singlebidbtn{
+
+    .singlebidbtn {
         background-color: #143D30;
         color: white;
 
 
     }
-    .singlebidbtn:hover{
+
+    .singlebidbtn:hover {
         color: white;
     }
-    .startbidbtn{
+    .singlebidbtn {
+        margin-top: 5px;
+    }
+
+    .startbidbtn {
         background-color: #143D30 !important;
         color: white;
     }
-    .fa-star{
+
+    .fa-star {
         color: #7A602B;
     }
 
 
-.table td, .table th {
-    vertical-align: middle !important;
-}
-.intialinc
-{
-    style=float: left;
-    width:75px;
-}
-.tdtimer
-{
-    display: flex;
-        justify-content: center;
-}
-.tdtimer p
-{
-    margin-bottom: 0px;
-}
-/* hamza css starts */
-/* .hide-table-padding {
+    .table td,
+    .table th {
+        vertical-align: middle !important;
+    }
+
+    .intialinc {
+        style=float: left;
+        width: 75px;
+    }
+
+    .tdtimer {
+        display: flex;
+    }
+
+    .tdtimer p {
+        margin-bottom: 0px;
+    }
+
+    /* sklt css starts */
+
+    /* .hide-table-padding {
     display: none;
 } */
-.table-container {
-    width: 90%;
-    margin: 0 auto;
-}
-.sidebar-container{
-    padding: 20px 30px;
-}
-.lot-header h4 {
+    .table-container {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sidebar-container {
+        padding: 20px 30px;
+    }
+
+    .lot-header h4 {
         font-family: Montserrat;
         font-size: 72px;
         line-height: 87px;
@@ -569,11 +587,11 @@ font-family: 'Montserrat';
     }
 
     .lot-header h3 {
-    font-family: Montserrat;
-    font-size: 60px;
-    line-height: 70px;
-    font-weight: 900;
-    color: black;
+        font-family: Montserrat;
+        font-size: 60px;
+        line-height: 70px;
+        font-weight: 900;
+        color: black;
     }
 
     .lot-header h5 {
@@ -623,74 +641,25 @@ font-family: 'Montserrat';
     }
 
     .moreBtn {
-           display: block;
-    margin-bottom: 15px;
+        display: block;
+        margin-bottom: 15px;
     }
-    .moreBtn button{
-font-size: 20px;
-    line-height: 24px;
-    font-weight: 600;
-    font-family: Montserrat;
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 10px 5px;
-    border-radius: 3px;
-    width: 100%;
+
+    .moreBtn button {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        font-family: Montserrat;
+        color: white;
+        background-color: black;
+        text-align: center;
+        padding: 10px 5px;
+        border-radius: 3px;
+        width: 100%;
     }
-    .text-underline{
+
+    .text-underline {
         text-decoration: underline;
-    }
-
-    /* hamza starts ends */
-       @media (max-width: 1199px) {
-        .tablenav a {
-            font-size: 10px;
-        }
-        .lot-header h4 {
-        font-size: 72px;
-        line-height: 87px;
-    }
-    .lot-header h3 {
-font-size: 60px;
-    line-height: 65px;
-    }
-
-    .lot-header h5 {
- font-size: 32px;
-    line-height: 36px;
-    }
-
-    .lot-description p {
-        font-size: 18px;
-        line-height: 21px;
-    }
-    .lot-genetis p {
-        font-size: 14px;
-        line-height: 17px;
-    }
-
-    .lot-genetis h3 {
-        font-size: 28px;
-        line-height: 34px;
-    }
-    .moreBtn button{
-    font-size: 18px;
-    line-height: 20px;
-    max-width: 190px;
-    }
-    .auctiontable tbody tr td {
-    Font-size: 12px;
-    Line-height: 16px;
-}
-.auctiontable thead th {
-    font-size: 12px;
-    line-height: 16px;
-}
-.auctiontable tbody tr td a {
-    font-size: 12px;
-    line-height: 18px;
-}
     }
 
     .lot-header h3 {
@@ -750,7 +719,365 @@ font-size: 60px;
         display: block;
     }
 
-    /* hamza starts ends */
+    .footer-policy a,
+    .footer-links a {
+        font-size: 18px;
+        line-height: 24px;
+        font-family: Montserrat;
+        color: black;
+        display: block;
+        text-decoration: none;
+        margin: 5px 0;
+    }
+
+    .footer-policy h2,
+    .footer-search h2,
+    .footer-links h2,
+    .footer-contact h2 {
+        font-size: 22px;
+        line-height: 26px;
+        font-family: Montserrat;
+        color: black;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .footer-policy,
+    .footer-search,
+    .footer-links,
+    .footer-contact {
+        margin-top: 20px;
+    }
+
+    .footer-contact p {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .footer-contact p img {
+        width: auto;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .footer-container {
+        background-color: #D1AF69;
+        color: black;
+        padding: 30px;
+        font-family: 'Montserrat';
+    }
+
+    .searchbar-container--footer {
+        position: relative;
+        border: 1px solid black;
+        width: 80%;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+
+
+    .footer-container .search-bar {
+        width: 100%;
+        color: black;
+        background-color: transparent;
+        border: transparent;
+        padding: 5px;
+    }
+
+    .footer-copyright {
+        text-align: center;
+        background-color: #D1AF69;
+    }
+
+    .footer-copyright h3 {
+        color: black;
+        font-size: 16px;
+    }
+
+    .bid-now-btn-field {
+        justify-content: end;
+    }
+.lh-zero{
+    line-height: 0;
+}
+.bid-row .form-inline{
+    justify-content: end;
+}
+
+    @media (max-width: 1199px) {
+        .tablenav a {
+            font-size: 10px;
+        }
+
+        .lot-header h4 {
+            font-size: 72px;
+            line-height: 87px;
+        }
+
+        .lot-header h3 {
+            font-size: 60px;
+            line-height: 65px;
+        }
+
+        .lot-header h5 {
+            font-size: 32px;
+            line-height: 36px;
+        }
+
+        .lot-description p {
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+        .lot-genetis p {
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+        .lot-genetis h3 {
+            font-size: 28px;
+            line-height: 34px;
+        }
+
+        .moreBtn button {
+            font-size: 18px;
+            line-height: 20px;
+            max-width: 190px;
+        }
+
+        .auctiontable tbody tr td {
+            Font-size: 12px;
+            Line-height: 16px;
+        }
+
+        .auctiontable thead th {
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        .auctiontable tbody tr td a {
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .footer-policy a,
+        .footer-links a {
+            font-size: 13px;
+            line-height: 22px;
+        }
+
+        .footer-contact p {
+            font-size: 13px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .tab-content {
+            width: 100%;
+        }
+
+        /* Force table to not be like tables anymore */
+
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        td {
+            position: relative;
+        }
+
+        .td-res-pl {
+            padding-left: 65% !important;
+        }
+
+        td:before {
+            position: absolute;
+            top: 12px;
+            left: 40px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        .yourscore {
+            max-width: none;
+        }
+
+        .table-pt-res {
+            padding: 10px 0;
+        }
+        .auctiontable tbody tr td {
+    text-align: left;
+}
+
+        /* .bid-now-btn-field {
+            justify-content: start;
+        } */
+            .finalliabilitytr {
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+.nav-tabs {
+    border-bottom: none;
+}
+        /* auction data */
+
+        .auction-data td:nth-of-type(1):before {
+            content: "Rank";
+        }
+
+        .auction-data td:nth-of-type(2):before {
+            content: "Jury Score";
+        }
+
+        .auction-data td:nth-of-type(3):before {
+            content: "Your Score	";
+        }
+
+        .auction-data td:nth-of-type(4):before {
+            content: "Weight";
+        }
+
+        .auction-data td:nth-of-type(5):before {
+            content: "Increment";
+        }
+
+        .auction-data td:nth-of-type(6):before {
+            content: "Bid";
+        }
+
+        .auction-data td:nth-of-type(7):before {
+            content: " ";
+        }
+
+        .auction-data td:nth-of-type(8):before {
+            content: "Total Value";
+        }
+
+        .auction-data td:nth-of-type(9):before {
+            content: "Name";
+        }
+
+        .auction-data td:nth-of-type(10):before {
+            content: "Process";
+        }
+
+        .auction-data td:nth-of-type(11):before {
+            content: "Genetics";
+        }
+
+        .auction-data td:nth-of-type(12):before {
+            content: "High Bidder";
+        }
+
+        .auction-data td:nth-of-type(13):before {
+            content: "Time Left";
+        }
+
+
+        /* Libility Data */
+        .liability-data td:nth-of-type(1):before {
+            content: "Rank";
+        }
+
+        .liability-data td:nth-of-type(2):before {
+            content: "Jury Score";
+        }
+
+        .liability-data td:nth-of-type(3):before {
+            content: "Your Score";
+        }
+
+        .liability-data td:nth-of-type(4):before {
+            content: "Size";
+        }
+
+        .liability-data td:nth-of-type(5):before {
+            content: "Weight";
+        }
+
+        .liability-data td:nth-of-type(6):before {
+            content: "Process";
+        }
+
+        .liability-data td:nth-of-type(7):before {
+            content: "Genetics ";
+        }
+
+        .liability-data td:nth-of-type(8):before {
+            content: "Current Bid";
+        }
+
+        .liability-data td:nth-of-type(9):before {
+            content: "Your Liability";
+        }
+
+        .liability-data td:nth-of-type(10):before {
+            content: "Name";
+        }
+
+        .liability-data td:nth-of-type(11):before {
+            content: "High Bidder";
+        }
+
+        .liability-data td:nth-of-type(12):before {
+            content: "Time Left";
+        }
+
+
+
+
+        /* bid row hidding content */
+        .hide-table-padding td:nth-of-type(1):before, .hide-table-padding td:nth-of-type(2):before {
+            content: "";
+        }
+
+                /* .finalliabilitytr td:nth-of-type(1):before, .finalliabilitytr td:nth-of-type(2):before,.finalliabilitytr td:nth-of-type(3):before,
+                .finalliabilitytr td:nth-of-type(4):before,
+                .finalliabilitytr td:nth-of-type(5):before,
+                .finalliabilitytr td:nth-of-type(6):before,
+                .finalliabilitytr td:nth-of-type(7):before, .finalliabilitytr td:nth-of-type(8):before, {
+            content: ""  !important;
+        } */
+
+        .finalliabilitytr td{
+            display: none;
+        }
+        .finalliabilitytr td.finalliability{
+            display: block;
+        }
+
+
+    }
+
+
+
+
+
+    @media screen and (max-width : 768px) {
+        .tablenav a {
+            font-size: 10px;
+        }
+
+        .footer-container {
+            padding: 25px 0px;
+        }
+
+    }
+
+    /* sklt ends */
 </style>
 
 <body>
@@ -846,24 +1173,26 @@ font-size: 60px;
     <section>
 
         <div class="table-container">
-            <nav class="tablenav">
-                <div class="col-sm-5 col-8" style="padding-left: 0; !important">
-                    <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active mr-2" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                            role="tab" aria-controls="nav-home" aria-selected="true">Auction</a>
-                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                            role="tab" aria-controls="nav-profile" aria-selected="false">Your Liability</a>
-                    </div>
-                </div>
-            </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <nav class="tablenav">
+                    <div class="col-sm-5 col-8" style="padding-left: 0; !important">
+                        <div class="nav nav-tabs nav-fill auctiontabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active mr-2" id="nav-home-tab" data-toggle="tab"
+                                href="#nav-home" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Auction</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                                role="tab" aria-controls="nav-profile" aria-selected="false">Your Liability</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-home-tab">
                     <table class="table table-responsive auctiontable">
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">Rank</th>
-                                <th scope="col" >Jury Score</th>
-                                <th scope="col" >Your Score</th>
+                                <th scope="col">Jury Score</th>
+                                <th scope="col">Your Score</th>
                                 <th scope="col">Weight</th>
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
@@ -872,8 +1201,8 @@ font-size: 60px;
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
-                                <th scope="col" >High Bidder</th>
-                                <th scope="col" >Time Left</th>
+                                <th scope="col">High Bidder</th>
+                                <th scope="col">Time Left</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -901,21 +1230,28 @@ font-size: 60px;
                                             <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
                                        </div>
                                     </td>
-                                    <td>    @if($auction->auctionStatus() =='active')
+                                    <td class="td-res-pl">
+                                        @if ($auction->auctionStatus() == 'active')
                                             <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                data-id="{{ $auctionProduct->id }}" auction-id="{{$auctionProduct->auction_id}}" id="accordion1"
+                                                data-id="{{ $auctionProduct->id }}"
+                                                auction-id="{{ $auctionProduct->auction_id }}" id="accordion1"
                                                 data-toggle="collapse" data-parent="#accordion1"
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                                @endif</td>
-                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
-                                    <td class="liability{{ $auctionProduct->id}}">
-                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
-                                    </td>
-                                        @else
-                                        <td class="liability{{ $auctionProduct->id}}">---</td>
                                         @endif
+                                    </td>
+                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
+                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                        <td class="liability{{ $auctionProduct->id }} td-res-pl">
+                                            ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                        </td>
+                                    @else
+                                        <td class="liability{{ $auctionProduct->id }} td-res-pl">---</td>
+                                    @endif
                                     @foreach ($auctionProduct->products as $products)
-                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}">{{$products->product_title}}  </a></td>
+                                        <td class="fw-bold text-underline td-res-pl"><a
+                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                                data-image="{{ $auctionProduct->winningImages[0]->image_1 }}">{{ $products->product_title }}
+                                            </a></td>
 
                                         {{-- @if ($products->pro_lot_type == '1')
                                             <td>Farmer Lot</td>
@@ -925,42 +1261,42 @@ font-size: 60px;
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
-                                            <td>Natural</td>
+                                            <td class="td-res-pl">Natural</td>
                                         @elseif ($products->pro_process == '2')
-                                            <td>Slow Dried</td>
+                                            <td class="td-res-pl">Slow Dried</td>
                                         @else
-                                            <td>Alchemy</td>
+                                            <td class="td-res-pl">Alchemy</td>
                                         @endif
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
-                                    @if ($products->genetic_id == '1')
-                                    <td>Yemenia</td>
-                                    @elseif ($products->genetic_id == '2')
-                                        <td>Bourbon</td>
-                                    @else
-                                        <td>SL28</td>
-                                    @endif
+                                        @if ($products->genetic_id == '1')
+                                            <td class="td-res-pl">Yemenia</td>
+                                        @elseif ($products->genetic_id == '2')
+                                            <td class="td-res-pl">Bourbon</td>
+                                        @else
+                                            <td class="td-res-pl">SL28</td>
+                                        @endif
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
-                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
+                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
-                                    <td>
-                                        <div >
-                                            <span class="waiting{{ $auctionProduct->id }}">
+                                    <td class="td-res-pl">
+                                        <div>
+                                            <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
                                                 @if ($auction->auctionStatus() != 'active')
                                                     -
                                                 @else
-                                                <div class="tdtimer">
+                                                    <div class="tdtimer">
                                                         <p class="minutes">-</p>
                                                         <p>:</p>
                                                         <p class="seconds">-</p>
-                                                </div>
-                                                {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
+                                                    </div>
+                                                    {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                     Open
                                                 @else
                                                     Waiting Bid --}}
@@ -977,14 +1313,14 @@ font-size: 60px;
                                     $agreement->privacy_policy_id != '1' ||
                                     $agreement->terms_conditions_id != '2' ||
                                     $agreement->bid_agrement_id != '3')
-                                    <tr class="hide-table-padding">
+                                    <tr class="hide-table-padding bid-row">
                                         <td colspan="12">
                                             <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
                                                 <div class="card">
                                                     <h5 class="card-header">Bidding Agreement</h5>
                                                     <div class="card-body">
-                                                        <form action="{{ url('/accept-agrements') }}"
-                                                            method="POST" autocomplete="off">
+                                                        <form action="{{ url('/accept-agrements') }}" method="POST"
+                                                            autocomplete="off">
                                                             @csrf
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
@@ -1023,33 +1359,36 @@ font-size: 60px;
                                         </td>
                                     </tr>
                                 @else
-                                    <tr class="hide-table-padding ">
+                                    <tr class="hide-table-padding bid-row">
                                         <td></td>
                                         <td colspan="10">
-                                            <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3">
+                                            <div id="collapseOne{{ $auctionProduct->id }}" class="collapse in p-3 ">
                                                 <div class="row ">
-                                                    <div class="col-6">
-                                                        <div class="input-group mb-3"
-                                                            style="justify-content: flex-end;">
-                                                            <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="input-group mb-3 bid-now-btn-field">
+                                                            <p
+                                                                class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
                                                             <div>
-                                                                {{-- @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
+                                                                {{-- @if (isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
                                                                 <button class="btn" >Bid Now</button>
                                                                 @else --}}
                                                                 <button
-                                                                    class="singlebidbtn btn singlebtnclick bidnowbutton{{$auctionProduct->id }}"
+                                                                    class="singlebidbtn btn singlebtnclick bidnowbutton{{ $auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
-                                                                    @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
+                                                                    @if (isset($auctionProduct->latestSingleBid->user_id) &&
+                                                                        $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
                                                                     style="border-radius: 5px;">Bid Now</button>
-                                                                    <button class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
+                                                                <button
+                                                                    class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}"
+                                                                    id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px; display:none;">Confirm</button>
-                                                                    <button
+                                                                <button
                                                                     class="singlebidbtn btn cancelbidbutton removesinglebtn{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
@@ -1061,7 +1400,7 @@ font-size: 60px;
                                                             class="alertmsg alertMessage{{ $auctionProduct->id }}">
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-sm-6 col-lg-6">
                                                         <form class="form-inline" action="" method="POST">
                                                             @csrf
                                                             <input type="hidden"
@@ -1089,19 +1428,21 @@ font-size: 60px;
                                                             @else
                                                                 <button
                                                                     class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                     type="button"
+                                                                    type="button"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
-                                                                    <button
+                                                                <button
                                                                     class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="button"
-                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
-                                                                    </button>
-                                                                    <button
+                                                                    data-id="{{ $auctionProduct->id }}"
+                                                                    style="display: none;" id="confirmbtn">Confirm
+                                                                </button>
+                                                                <button
                                                                     class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
                                                                     type="button"
-                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
-                                                                    </button>
+                                                                    data-id="{{ $auctionProduct->id }}"
+                                                                    style="display: none;">Cancel
+                                                                </button>
                                                             @endif
                                                             @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                 $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
@@ -1115,7 +1456,8 @@ font-size: 60px;
                                                                     class="errormsgautobid ahmed errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p>Current autobid is
                                                                         {{ $auctionProduct->latestAutoBidPrice->bid_amount }}
-                                                                        <a href="javascript:void(0)" class="removeAutoBID"
+                                                                        <a href="javascript:void(0)"
+                                                                            class="removeAutoBID"
                                                                             data-id="{{ $auctionProduct->id }}">Remove</a>
                                                                     </p>
                                                                 </div>
@@ -1130,15 +1472,15 @@ font-size: 60px;
                                                             @if (isset($auctionProduct->latestAutoBidPrice))
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
-
                                                                 @endif
                                                             @endif
                                                         </form>
                                                     </div>
                                                 </div>
-                                                    <div class="row">
-                                                        <div class="col-8"></div>
-                                                    <div class="col-4 singlebidtable{{ $auctionProduct->id }}" style="display: none;">
+                                                <div class="row">
+                                                    <div class="col-8"></div>
+                                                    <div class="col-4 singlebidtable{{ $auctionProduct->id }}"
+                                                        style="display: none;">
                                                         <table class="table mt-2">
                                                             <tr>
                                                                 <th scope="col">Bid</th>
@@ -1153,7 +1495,9 @@ font-size: 60px;
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="col" class="totalliabilitytext{{ $auctionProduct->id }}">Total Liability</th>
+                                                                <th scope="col"
+                                                                    class="totalliabilitytext{{ $auctionProduct->id }}">
+                                                                    Total Liability</th>
                                                                 <td scope="col"
                                                                     class="totalliability{{ $auctionProduct->id }}">
                                                                     ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
@@ -1161,7 +1505,8 @@ font-size: 60px;
                                                             </tr>
                                                         </table>
                                                     </div>
-                                                    <div class="col-4 autobidtable{{ $auctionProduct->id }}" style="display: none;">
+                                                    <div class="col-4 autobidtable{{ $auctionProduct->id }}"
+                                                        style="display: none;">
                                                         <table class="table mt-2">
                                                             <tr>
                                                                 <th scope="col">Bid</th>
@@ -1176,7 +1521,9 @@ font-size: 60px;
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="col" class="totalliabilitytext{{ $auctionProduct->id }}">Maximum Liability</th>
+                                                                <th scope="col"
+                                                                    class="totalliabilitytext{{ $auctionProduct->id }}">
+                                                                    Maximum Liability</th>
                                                                 <td scope="col"
                                                                     class="maximumliability{{ $auctionProduct->id }}">
                                                                     ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->weight * $finalIncSinglebid,1) }}
@@ -1263,31 +1610,31 @@ font-size: 60px;
                                         @endforeach
                                         @foreach ($auctionProduct->products as $products)
                                         @if ($products->genetic_id == '1')
-                                        <td>Yemenia</td>
+                                            <td class="td-res-pl">Yemenia</td>
                                         @elseif ($products->genetic_id == '2')
-                                            <td>Bourbon</td>
+                                            <td class="td-res-pl">Bourbon</td>
                                         @else
-                                            <td>SL28</td>
+                                            <td class="td-res-pl">SL28</td>
                                         @endif
                                         @endforeach
                                         @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
-                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
+                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
-                                        <td>
-                                            <div >
-                                                <span class="waiting{{ $auctionProduct->id }}">
-                                                    @if ($auction->auctionStatus() != 'active')
-                                                        -
-                                                    @else
+                                    <td class="td-res-pl">
+                                        <div>
+                                            <span class="waiting{{ $auctionProduct->id }}">
+                                                @if ($auction->auctionStatus() != 'active')
+                                                    -
+                                                @else
                                                     <div class="tdtimer">
-                                                            <p class="minutes">-</p>
-                                                            <p>:</p>
-                                                            <p class="seconds">-</p>
+                                                        <p class="minutes">-</p>
+                                                        <p>:</p>
+                                                        <p class="seconds">-</p>
                                                     </div>
                                                     {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
                                                         Open
@@ -1308,18 +1655,30 @@ font-size: 60px;
                                     <td></td>
                                     <td class="finalliability">${{ number_format($total_liability,1)}}</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                            <tr class="finalliabilitytr">
+                                <th>Total Liability</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="finalliability">${{ number_format($total_liability, 1) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-              <div id="mySidebar" class="sidebar">
+            <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="sidebar-container">
                     <div class="lot-header">
                         <h3 class="rank"></h3>
-                            <h3 class="juryscore"></h3>
-                            <h5 class="name"></h5>
-                            <h5 class="code"></h5>
+                        <h3 class="juryscore"></h3>
+                        <h5 class="name"></h5>
+                        <h5 class="code"></h5>
                     </div>
                     <hr>
                     <div class="lot-description">
@@ -1332,8 +1691,7 @@ font-size: 60px;
                     <div class="lot-featured-img">
                         <img class="img-status">
                         <input type="hidden" name="image-source"
-                        value="{{asset('/public/images/product_images/')}}"
-                        id="image-source" />
+                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
                     </div>
                     <div class="lot-description">
                         <p>PROCESS: <span class="proprocess"></span></p>
@@ -1348,48 +1706,44 @@ font-size: 60px;
             </div>
     </section>
     <section>
-        <div class="container-fluid" id="footer1">
-            <div class="row footer-head  ">
-                <div class="offset-lg-1 col-lg-2 low">
-                    <h2><b>LEGAL</b></h2>
-                    <p>Term and Conditions</p>
-                    <p>Term of Use</p>
-                    <p> Privacy Policy</p>
-                    <p>Cookie Policy</p>
+        <div class="footer-container">
+            <div class="row footer-head">
+                <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
+                    <h2>LEGAL</h2>
+                    <a href="#">Term and Conditions</a>
+                    <a href="#"> Term of Use</a>
+                    <a href="#"> Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
 
                 </div>
-                <div class="col-lg-3 search-bar1 low">
-                    <h2><b>SEARCH</b></h2>
-                    <div class="position-bar">
+                <div class="col-lg-3 col-md-4 col-sm-6 footer-search">
+                    <h2>SEARCH</h2>
+                    <div class="searchbar-container--footer">
 
                         <input type="text" placeholder="Search" class="search-bar">
                         <i class="fa fa-search search-icon"></i>
                     </div>
                 </div>
-                <div class="col-lg-2 low">
-                    <h2><b>QUICK LINKS</b></h2>
-                    <p><img src="{{ asset('public/images/Vector.png') }}" alt="" class="img-vector">
-                        Contact us</p>
-                    <p> <img src="{{ asset('public/images/Vector.png') }}" alt="" class="img-vector"> Blog
-                    </p>
-                    <p> <img src="{{ asset('public/images/Vector.png') }}" alt="" class="img-vector"> FAQ
-                    </p>
-                    <p> <img src="{{ asset('public/images/Vector.png') }}" alt="" class="img-vector"> Our
-                        Sponsors</p>
+                <div class="col-lg-3 col-md-4 col-sm-6 footer-links">
+                    <h2>QUICK LINKS</h2>
+                    <a href="#">Contact Us</a>
+                    <a href="#"> Blog</a>
+                    <a href="#"> FAQ</a>
+                    <a href="#">Our Sponsers</a>
 
                 </div>
-                <div class="col-lg-4 low">
-                    <h2 class="h2-low"><b>QIMA COFFEE AUCTION</b></h2>
-                    <p class="p-low"> <img src="{{ asset('public/images/home-icon1.png') }}" alt=""> 2250
+                <div class="col-lg-3 col-md-4 col-sm-6 footer-contact">
+                    <h2>QIMA COFFEE AUCTION</h2>
+                    <p> <img src="{{ asset('public/images/home-icon1.png') }}" alt=""> 2250
                         NW 22nd Ave #612
                         Portland OR 97210</p>
-                    <p class="p-low"><img src="{{ asset('public/images/call-icon1.png') }}" alt="">(503)
+                    <p><img src="{{ asset('public/images/call-icon1.png') }}" alt="">(503)
                         208-2872</p>
-                    <p class="p-low"> <img src="{{ asset('public/images/message-icon1.png') }}"
+                    <p> <img src="{{ asset('public/images/message-icon1.png') }}"
                             alt="">support@qimacoffeeauction.com</p>
                 </div>
             </div>
-            <div class="last-section ">
+            <div class="footer-copyright">
                 <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
@@ -1427,9 +1781,9 @@ font-size: 60px;
     $(document).ready(function(e) {
 
         //OpenSidebar
-        setTimeout(function(){
+        setTimeout(function() {
             window.location.reload();
-        },300000)
+        }, 300000)
         $(".openSidebar").click(function() {
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
@@ -1462,7 +1816,7 @@ font-size: 60px;
                     var url        = '{{ route("productsidebar", ":id") }}';
                     url            = url.replace(':id',rank);
                     $(".weight").html(response.weight);
-                    $(".rank").html('#'+rank);
+                    $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
                     $(".name").html(name);
                     $(".code").html(code);
@@ -1470,28 +1824,18 @@ font-size: 60px;
                     $(".currentbid").html(currentbid.toLocaleString('en-US'));
                     $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
-                    if (genetics == 1)
-                    {
+                    if (genetics == 1) {
                         $(".genetics").html('Yemenia');
-                    }
-                    else if(genetics == 2)
-                    {
+                    } else if (genetics == 2) {
                         $(".genetics").html('Bourbon');
-                    }
-                    else
-                    {
+                    } else {
                         $(".genetics").html('SL28');
                     }
-                    if (process == 1)
-                    {
+                    if (process == 1) {
                         $(".proprocess").html('Natural');
-                    }
-                    else if(process == 2)
-                    {
+                    } else if (process == 2) {
                         $(".proprocess").html('Slow Dried');
-                    }
-                    else
-                    {
+                    } else {
                         $(".proprocess").html('Alchemy');
                     }
                     if (response.products[0].pro_lot_type == 1) {
@@ -1502,8 +1846,9 @@ font-size: 60px;
                     $(".score").html(response.jury_score);
 
                     $(".moreBtn").html(
-                        '<a href="'+url+'" target="blank"><button >More Information</button></a>'
-                        )
+                        '<a href="' + url +
+                        '" target="blank"><button >More Information</button></a>'
+                    )
                     document.getElementById("mySidebar").style.width = "450px";
                 },
                 error: function(error) {
@@ -1524,20 +1869,20 @@ font-size: 60px;
         //singlebtnclick first
         $(".singlebtnclick").click(function() {
             var id = $(this).attr('data-id');
-            $(".singlebidtable"+id).show();
-            $(".autobidtable"+id).hide();
-            $(".singlebidClass"+id).show();
-            $(".removesinglebtn"+id).show();
-            $(".bidnowbutton"+id).hide();
+            $(".singlebidtable" + id).show();
+            $(".autobidtable" + id).hide();
+            $(".singlebidClass" + id).show();
+            $(".removesinglebtn" + id).show();
+            $(".bidnowbutton" + id).hide();
         });
         //cancelbidvtn first single bid
         $(".cancelbidbutton").click(function() {
             var id = $(this).attr('data-id');
-            $(".autobidtable"+id).hide();
-            $(".singlebidtable"+id).hide();
-            $(".singlebidClass"+id).hide();
-            $(".removesinglebtn"+id).hide();
-            $(".bidnowbutton"+id).show();
+            $(".autobidtable" + id).hide();
+            $(".singlebidtable" + id).hide();
+            $(".singlebidClass" + id).hide();
+            $(".removesinglebtn" + id).hide();
+            $(".bidnowbutton" + id).show();
         });
         //auto bid
         $(".autobtnclick").click(function() {
@@ -1562,34 +1907,33 @@ font-size: 60px;
             }
             // var finalmax    = parseFloat(autobidamount.replace(/[^\d\.]*/g, ''))
         });
-         //cancelbidvtn first auto bid
+        //cancelbidvtn first auto bid
         $(".removeautobid").click(function() {
             var id = $(this).attr('data-id');
-            $(".autobidtable"+id).hide();
-            $(".singlebidtable"+id).hide();
-            $(".autobidClass"+id).hide();
-            $(".removeautobtn"+id).hide();
-            $(".bidnowautobutton"+id).show();
+            $(".autobidtable" + id).hide();
+            $(".singlebidtable" + id).hide();
+            $(".autobidClass" + id).hide();
+            $(".removeautobtn" + id).hide();
+            $(".bidnowautobutton" + id).show();
         });
 
         //userscore save
-        $(".yourscore").keypress(function (e) {
-            if($(this).html() == "---")
-            {
-             $(this).html("");
+        $(".yourscore").keypress(function(e) {
+            if ($(this).html() == "---") {
+                $(this).html("");
             }
             if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
         });
         $(".yourscore").focusout(function(e) {
             e.preventDefault();
-            var id    = $(this).attr('data-id');
+            var id = $(this).attr('data-id');
             let value = $(this).html();
             $.ajax({
                 url: "{{ route('saveyourscore') }}",
                 method: 'POST',
                 data: {
                     id: id,
-                    value:value,
+                    value: value,
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
@@ -1619,25 +1963,25 @@ font-size: 60px;
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    var bidPrice            = response.bid_amountNew;
-                    var bidID               = response.auction_product_id;
-                    var increment           = response.bidIncrement;
-                    var paddleNo            = response.userPaddleNo;
-                    var nextIncrement       = +increment + +bidPrice;
-                    var outbid              = response.outAutobid;
-                    var autobidUserID       = response.autoBidUser
-                    var bidderLiablity      = response.liablityInc;
-                    var liabiltyUser        = response.liabiltyUser;
-                    var bidderID            = response.user_id;
-                    var bidderMaxBid        = response.bidderMaxAmount;
-                    var autoBidmax          = response.autoBidmaxData;
-                    var checkTimer          = response.timerCheck;
-                    var userBidAmount       = response.userBidAmount;
-                    var winningBidder       = response.winningBidder;
+                    var bidPrice = response.bid_amountNew;
+                    var bidID = response.auction_product_id;
+                    var increment = response.bidIncrement;
+                    var paddleNo = response.userPaddleNo;
+                    var nextIncrement = +increment + +bidPrice;
+                    var outbid = response.outAutobid;
+                    var autobidUserID = response.autoBidUser
+                    var bidderLiablity = response.liablityInc;
+                    var liabiltyUser = response.liabiltyUser;
+                    var bidderID = response.user_id;
+                    var bidderMaxBid = response.bidderMaxAmount;
+                    var autoBidmax = response.autoBidmaxData;
+                    var checkTimer = response.timerCheck;
+                    var userBidAmount = response.userBidAmount;
+                    var winningBidder = response.winningBidder;
                     var latestSingleBidUser = response.latestSingleBidUser;
-                    var bidAmountUser       = response.bidAmountUser;
-                    var liability           = response.liability;
-                    var checkStartTimer     = response.checkStartTimer;
+                    var bidAmountUser = response.bidAmountUser;
+                    var liability = response.liability;
+                    var checkStartTimer = response.checkStartTimer;
                     var finaltotalliability = response.finaltotalliability;
                     $('.errorMsgAutoBid' + id).html('');
                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1650,23 +1994,23 @@ font-size: 60px;
                     // }
                     socket.emit('add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
-                        "bidID"                  : bidID,
-                        "increment"              : increment,
-                        "paddleNo"               : paddleNo,
-                        "nextIncrement"          : nextIncrement,
-                        "outbidresponse"         : outbid,
-                        "autobidUserID"          : autobidUserID,
-                        "bidderLiablity"         : bidderLiablity,
-                        "bidderID"               : bidderID,
-                        "userBidAmount"          : userBidAmount,
-                        "winningBidder"          : winningBidder,
-                        "latestSingleBidUser"    : latestSingleBidUser,
-                        "bidAmountUser"          : bidAmountUser,
-                        "liabiltyUser"           : liabiltyUser,
-                        "checkTimer"             : checkTimer,
-                        "liability"              : liability,
-                        "checkStartTimer"        : checkStartTimer,
-                        "finaltotalliability"    : finaltotalliability,
+                        "bidID": bidID,
+                        "increment": increment,
+                        "paddleNo": paddleNo,
+                        "nextIncrement": nextIncrement,
+                        "outbidresponse": outbid,
+                        "autobidUserID": autobidUserID,
+                        "bidderLiablity": bidderLiablity,
+                        "bidderID": bidderID,
+                        "userBidAmount": userBidAmount,
+                        "winningBidder": winningBidder,
+                        "latestSingleBidUser": latestSingleBidUser,
+                        "bidAmountUser": bidAmountUser,
+                        "liabiltyUser": liabiltyUser,
+                        "checkTimer": checkTimer,
+                        "liability": liability,
+                        "checkStartTimer": checkStartTimer,
+                        "finaltotalliability": finaltotalliability,
                     });
                 },
                 error: function(error) {
@@ -1679,17 +2023,18 @@ font-size: 60px;
         $(".autobid").on("click", function(e) {
             e.preventDefault();
             $('.errorMsgAutoBid' + id).html('');
-            var id              = $(this).attr('data-id');
+            var id = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
-            var autobidamount   = $('.autobidamount' + id).val();
-            $(".removeautobtn"+id).hide();
-            $(".autobidamount"+id).hide();
-            $(".autobidtable"+id).hide();
-            $(".nextincrement"+id).hide();
+            var autobidamount = $('.autobidamount' + id).val();
+            $(".removeautobtn" + id).hide();
+            $(".autobidamount" + id).hide();
+            $(".autobidtable" + id).hide();
+            $(".nextincrement" + id).hide();
             if (autobidamount <= currentBidPrice) {
                 $('.showerrormessages').remove();
                 $('.errorMsgAutoBid' + id).html(
-                    '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>');
+                    '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>'
+                );
                 $('.autobidamount' + id).val('');
 
             } else {
@@ -1790,9 +2135,9 @@ font-size: 60px;
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
-                type        : "error",
-                buttons     : true,
-                dangerMode  : true,
+                type: "error",
+                buttons: true,
+                dangerMode: true,
             }).then((result) => {
                 if (result) {
                     $.ajax({
@@ -1834,7 +2179,7 @@ font-size: 60px;
         $(".paddleno" + data.bidID).html(data.paddleNo);
         // $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
 
-        // if(data.user_id == {{Auth::user()->id}})
+        // if(data.user_id == {{ Auth::user()->id }})
         // {
         //     $('.errorMsgAutoBid' + data.id).html('');
         //     $('.errorMsgAutoBid' + data.id + data.id).html('');
@@ -1930,31 +2275,29 @@ font-size: 60px;
         }
         if (data.liabiltyUser == {{ Auth::user()->id }}) {
             total = total + data.liability;
-            var total_bid=0;
+            var total_bid = 0;
             $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
             setTimeout(() => {
                 $('.liabilty_shown').each(function(i, obj) {
-                s_bid=$(obj).html();
-                formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
-    total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
-});
-            $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
-        }, 500);
-        }
-        else
-        {
-            var liablity            =   $(".liability" + data.bidID).html();
-            var resliablity         =   parseFloat(liablity.replace(/[^\d\.]*/g, ''));
-            var totalliabilty       =   $(".finalliability").html();
-            var restotalliabilty    =   parseFloat(totalliabilty.replace( /[^\d\.]*/g, ''));
-            var final               =   restotalliabilty-resliablity;
-            total_bid=0;
+                    s_bid = $(obj).html();
+                    formated_amount = parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
+                    total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
+                });
+                $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
+            }, 500);
+        } else {
+            var liablity = $(".liability" + data.bidID).html();
+            var resliablity = parseFloat(liablity.replace(/[^\d\.]*/g, ''));
+            var totalliabilty = $(".finalliability").html();
+            var restotalliabilty = parseFloat(totalliabilty.replace(/[^\d\.]*/g, ''));
+            var final = restotalliabilty - resliablity;
+            total_bid = 0;
             setTimeout(() => {
                 $('.liabilty_shown').each(function(i, obj) {
-                s_bid=$(obj).html();
-                formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
-        total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
-});
+                    s_bid = $(obj).html();
+                    formated_amount = parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
+                    total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
+                });
 
             if(total_bid > 0)
             $(".finalliability").html('$'+ total_bid.toLocaleString('en-US'));
@@ -1989,87 +2332,83 @@ font-size: 60px;
 
         if ("{{ $auction->auctionStatus() }}" == "active") {
             @php
-            $date_a = new DateTime($auction->endTime);
-            $date_b = new DateTime(date('Y-m-d H:i:s'));
-            $date_c = new DateTime($auction->startDate);
-
-            $interval   = date_diff($date_a,$date_b);
-            $interva13  = date_diff($date_b,$date_c);
-
-            $interval2  = $interval->format('%i:%s');
-            $interval3  = $interva13->format('%d:%h:%i:%s');
+                $date_a = new DateTime($auction->endTime);
+                $date_b = new DateTime(date('Y-m-d H:i:s'));
+                $date_c = new DateTime($auction->startDate);
+                
+                $interval = date_diff($date_a, $date_b);
+                $interva13 = date_diff($date_b, $date_c);
+                
+                $interval2 = $interval->format('%i:%s');
+                $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
             if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
-                var timer2     = "03:00";
+                var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            }
-            else if(window.empty !=0 ){
+            } else if (window.empty != 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
-                var timer2     = "03:00";
+                var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            }
-            else{
+            } else {
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
-                var timer2     = "{{$interval2}}";
+                var timer2 = "{{ $interval2 }}";
                 var timer = timer2.split(':');
 
             }
         } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
         }
-        // else if("{{$auction->auctionStatus()}}" == "running")
+        // else if("{{ $auction->auctionStatus() }}" == "running")
         // {
 
         // }
-        else{
-                $('.auction_started').hide();
-                $('.auction_pending').show();
+        else {
+            $('.auction_started').hide();
+            $('.auction_pending').show();
             var timer_text = "Auction Starting in";
-            var timer2     = "{{$interval3}}";
+            var timer2 = "{{ $interval3 }}";
             var timer = timer2.split(':');
 
         }
-            $('.timer_text').html(timer_text);
-            clearInterval(interval);
-            if(timer.length > 2){
-                     days   = parseInt(timer[0], 10);
-                     hours  = parseInt(timer[1], 10);
-                    var minutes = parseInt(timer[2], 10);
-                    var seconds = parseInt(timer[3], 10);
-                }
-                else{
-                    var minutes = parseInt(timer[0], 10);
-                    var seconds = parseInt(timer[1], 10);
-                }
-            $('.days').html(days.toString().padStart(2, "0"));
-                $('.hours').html(hours.toString().padStart(2, "0"));
-                $('.minutes').html(minutes.toString().padStart(2, "0"));
-                $('.seconds').html(seconds.toString().padStart(2, "0"));
-                if(window.empty!=0 && "{{$auction->auctionStatus()}}" == "active"){
-                    return;
-                }
-             window.interval = setInterval(function() {
-                var timer    = timer2.split(':');
-                //by parsing integer, I avoid all extra string processing
-                if(timer.length > 2){
-                     days   = parseInt(timer[0], 10);
-                     hours  = parseInt(timer[1], 10);
-                    var minutes = parseInt(timer[2], 10);
-                    var seconds = parseInt(timer[3], 10);
-                }
-                else{
-                    var minutes = parseInt(timer[0], 10);
-                    var seconds = parseInt(timer[1], 10);
-                }
+        $('.timer_text').html(timer_text);
+        clearInterval(interval);
+        if (timer.length > 2) {
+            days = parseInt(timer[0], 10);
+            hours = parseInt(timer[1], 10);
+            var minutes = parseInt(timer[2], 10);
+            var seconds = parseInt(timer[3], 10);
+        } else {
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+        }
+        $('.days').html(days.toString().padStart(2, "0"));
+        $('.hours').html(hours.toString().padStart(2, "0"));
+        $('.minutes').html(minutes.toString().padStart(2, "0"));
+        $('.seconds').html(seconds.toString().padStart(2, "0"));
+        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
+            return;
+        }
+        window.interval = setInterval(function() {
+            var timer = timer2.split(':');
+            //by parsing integer, I avoid all extra string processing
+            if (timer.length > 2) {
+                days = parseInt(timer[0], 10);
+                hours = parseInt(timer[1], 10);
+                var minutes = parseInt(timer[2], 10);
+                var seconds = parseInt(timer[3], 10);
+            } else {
+                var minutes = parseInt(timer[0], 10);
+                var seconds = parseInt(timer[1], 10);
+            }
 
             --seconds;
             minutes = (seconds < 0) ? --minutes : minutes;
@@ -2100,4 +2439,3 @@ font-size: 60px;
 </script>
 
 </html>
-
