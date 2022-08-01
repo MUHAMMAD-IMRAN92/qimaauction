@@ -1801,7 +1801,9 @@ font-size: 60px;
             $(".autobidtable"+id).hide();
             $(".bidnowautobutton"+id).show();
             $(".autobidClass"+id).hide();
-
+            $(".autobidClass"+data.bidID).show();
+            $(".bidnowbutton"+data.bidID).prop('disabled',false);
+            
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
