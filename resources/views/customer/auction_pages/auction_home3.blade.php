@@ -1727,6 +1727,8 @@ font-size: 60px;
                 $('.errorMsgAutoBid' + id).html(
                     '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>');
                 $('.autobidamount' + id).val('');
+                $('.bidnowautobutton'+id).show();
+
 
             } else {
                         var auctionid = $('.auctionid' + id).val();
