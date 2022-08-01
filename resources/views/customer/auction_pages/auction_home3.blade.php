@@ -898,7 +898,7 @@ font-size: 60px;
                                     <td class="increment{{$auctionProduct->id}}">${{ number_format($bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold">
                                         <div>
-                                            <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
+                                            <span class="bidData1{{ $auctionProduct->id }} intialinc" >${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
                                        </div>
                                     </td>
                                     <td>    @if($auction->auctionStatus() =='active')
