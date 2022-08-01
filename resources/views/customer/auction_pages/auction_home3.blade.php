@@ -1801,9 +1801,8 @@ font-size: 60px;
             $(".autobidtable"+id).hide();
             $(".bidnowautobutton"+id).show();
             $(".autobidClass"+id).hide();
-            $(".autobidClass"+id).show();
             $(".bidnowbutton"+id).prop('disabled',false);
-            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            $(".bidnowbutton" + id).css('background', '#143D30');
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
@@ -1938,7 +1937,7 @@ font-size: 60px;
             $('.nextincrement'+data.bidID).show();
             $(".alertMessage"+data.bidID).hide('');
             $(".autobidClass1"+data.bidID).show();
-            
+
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You have been outbid.');
             $(".alertMessage"+data.bidID).hide('');
 
