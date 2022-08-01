@@ -40,7 +40,7 @@ io.on('connection', function (socket) {
     // });
 
     socket.on('auto_bid_updates', function (data) {
-        io.emit('auto_bid_updates', {"paddleNo": data.paddleNo,"latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"totalAutoBidLiability":data.totalAutoBidLiability,"outbid":data.outbid,"autobidUserID":data.autobidUserID,"bid_amountNew":data.bid_amountNew,"nextIncrement":data.nextIncrements,"liability":data.liability });
+        io.emit('auto_bid_updates', {"paddleNo": data.paddleNo,"latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"totalAutoBidLiability":data.totalAutoBidLiability,"outbid":data.outbid,"autobidUserID":data.autobidUserID,"bid_amountNew":data.bid_amountNew,"nextIncrement":data.nextIncrement,"liability":data.liability });
      });
      socket.on('auto_bid_delete', function (data) {
         io.emit('auto_bid_delete', { "autobidamount":data.autobidamount,"auction_product_id":data.auction_product_id});
