@@ -1718,6 +1718,7 @@ font-size: 60px;
             var id              = $(this).attr('data-id');
             var currentBidPrice = $('.bidData1' + id).html();
             var autobidamount   = $('.autobidamount' + id).val();
+            var weight
             $(".removeautobtn"+id).hide();
             $(".autobidamount"+id).hide();
             $(".autobidtable"+id).hide();
@@ -1727,7 +1728,7 @@ font-size: 60px;
                 $('.errorMsgAutoBid' + id).html(
                     '<p class="showerrormessages">Please enter the amount greater than current bid amount.</p>');
                 $('.autobidamount' + id).val('');
-                $('.bidnowautobutton'+id).show();
+                $('.bidnowautobutton'+id+id).show();
 
 
             } else {
@@ -1757,6 +1758,9 @@ font-size: 60px;
                                     var bidPrice = response.bid_amountNew;
                                     var bidID = response.auction_product_id;
                                     var increment = response.bidIncrement;
+                                    var weightautobid = $(".weightautobid"+id).html();
+                                    var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
+                                    var liability   = weight*bidPrice;
                                     var paddleNo = response.userPaddleNo;
                                     var nextIncrement = +increment + +bidPrice;
                                     var outbid = response.outAutobid;
@@ -1796,7 +1800,8 @@ font-size: 60px;
                                         "autobidUserID":autobidUserID,
                                         "bid_amountNew":bid_amountNew,
                                         "nextIncrement":nextIncrement,
-                                        "paddleNo":paddleNo
+                                        "paddleNo":paddleNo,
+                                        "liability":liability,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1908,6 +1913,7 @@ font-size: 60px;
         }
         $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         $(".nextincrement"+data.bidID).html('$'+data.nextIncrement.toLocaleString('en-US'));
+        $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
 
         if(data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}){
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
