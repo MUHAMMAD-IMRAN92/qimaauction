@@ -1845,6 +1845,7 @@ font-size: 60px;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         console.log('autobid updated')
+        console.log(data)
         $(".paddleno" + data.bidID).html(data.paddleNo);
         // $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
 
