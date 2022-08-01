@@ -1902,6 +1902,8 @@ font-size: 60px;
             });
             $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
         }, 500);
+        resetTimer();
+
     });
     socket.on('auto_bid_delete', function(data) {
         $(".alertMessage"+data.bidID).html('');
