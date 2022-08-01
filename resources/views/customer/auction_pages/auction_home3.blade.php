@@ -361,7 +361,7 @@ font-family: 'Montserrat';
     }
 
     .errormsgautobid {
-        background: #DBFFDA;
+        /* background: #DBFFDA; */
         margin-top: 12px;
     }
     .errormsgautobidAmount {
@@ -423,11 +423,6 @@ font-family: 'Montserrat';
         line-height: 25px;
         color: #FFFFFF;
     } */
-
-    .errormsgautobid {
-        background: #DBFFDA;
-        margin-top: 12px;
-    }
 
 
     .liabilitytable thead {
@@ -1031,13 +1026,29 @@ font-size: 60px;
                                                     <div class="col-6">
                                                         <div class="input-group mb-3"
                                                             style="justify-content: flex-end;">
+                                                            @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
+                                                            $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                            <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}" style="display: none;">
+                                                                ${{ number_format($finalIncSinglebid, 1) }}
+                                                            </p>
+                                                            @else
                                                             <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
                                                                 ${{ number_format($finalIncSinglebid, 1) }}
                                                             </p>
+                                                            @endif
                                                             <div>
                                                                 {{-- @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
                                                                 <button class="btn" >Bid Now</button>
                                                                 @else --}}
+                                                                @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
+                                                                $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                                  <button
+                                                                  class="singlebidbtn btn singlebtnclick bidnowbutton{{$auctionProduct->id }}"
+                                                                  id="{{ $auctionProduct->id }}"
+                                                                  href="javascript:void(0)"
+                                                                  data-id="{{ $auctionProduct->id }}"
+                                                                  style="border-radius: 5px; display:none;">Bid Now</button>
+                                                                  @else
                                                                 <button
                                                                     class="singlebidbtn btn singlebtnclick bidnowbutton{{$auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
@@ -1045,6 +1056,7 @@ font-size: 60px;
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     @if(isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
                                                                     style="border-radius: 5px;">Bid Now</button>
+                                                                    @endif
                                                                     <button class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}" id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
@@ -1075,7 +1087,7 @@ font-size: 60px;
                                                                 class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                 id="autobidamount" style="width: 50%; display:none;">
                                                                 @else
-                                                                <input type="number" min="0"
+                                                                <input type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" min="0" pattern="[0-9]{10}" maxlength="10"
                                                                 name="autobidamount"
                                                                 class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                 id="autobidamount" style="width: 50%;">
@@ -1114,18 +1126,27 @@ font-size: 60px;
                                                             @endif
                                                             @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                 $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
-                                                                <button
-                                                                    class="singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                    style="display: none" type="submit"
-                                                                    href="javascript:void(0)"
-                                                                    data-id="{{ $auctionProduct->id }}">Auto
-                                                                    Bid</button>
+                                                                 <button
+                                                                 class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
+                                                                  type="button"
+                                                                 data-id="{{ $auctionProduct->id }}" style="display: none;">Auto
+                                                                 Bid</button>
+                                                                 <button
+                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
+                                                                    </button>
+                                                                    <button
+                                                                    class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
+                                                                    </button>
                                                                 <div
-                                                                    class="errormsgautobid ahmed errormsgautobid{{ $auctionProduct->id }}">
-                                                                    <p>Current autobid is
-                                                                        {{ $auctionProduct->latestAutoBidPrice->bid_amount }}
+                                                                    class="errormsgautobid ahmed errormsgautobid{{ $auctionProduct->id }}" style="background: white;">
+                                                                    <p >CURRENT AUTOBID IS
+                                                                        ${{ $auctionProduct->latestAutoBidPrice->bid_amount }}/lb
                                                                         <a href="javascript:void(0)" class="removeAutoBID"
-                                                                            data-id="{{ $auctionProduct->id }}">Remove</a>
+                                                                            data-id="{{ $auctionProduct->id }}" style="color:#000000">{Remove}</a>
                                                                     </p>
                                                                 </div>
                                                             @endif
@@ -1722,7 +1743,6 @@ font-size: 60px;
                                     $('.autobidamount'+id).show();
                                     $('.autobidamount'+id).val('');
                                     $('.bidnowautobutton'+id).show();
-                                    $(".autobidClass"+data.bidID).show();
                                     $('.autobidClass'+id).hide();
                                     $('.nextincrement'+id).show();
                                 } else {
@@ -1862,7 +1882,7 @@ font-size: 60px;
         {
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $('.errorMsgAutoBid' + data.bidID +data.bidID).html(
-                '<p>Current autobid is $' +
+                '<p>CURRENT AUTOBID IS $' +
                 data.autobidamount +
                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                 data.bidID + '>Remove</a>}</p>');
