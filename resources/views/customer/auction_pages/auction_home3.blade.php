@@ -1722,6 +1722,7 @@ font-size: 60px;
                                     $('.autobidamount'+id).show();
                                     $('.autobidamount'+id).val('');
                                     $('.bidnowautobutton'+id).show();
+                                    $(".autobidClass"+data.bidID).show();
                                     $('.autobidClass'+id).hide();
                                     $('.nextincrement'+id).show();
                                 } else {
