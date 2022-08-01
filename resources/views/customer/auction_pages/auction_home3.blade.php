@@ -1803,7 +1803,7 @@ font-size: 60px;
             $(".autobidClass"+id).hide();
             $(".autobidClass"+id).show();
             $(".bidnowbutton"+id).prop('disabled',false);
-            
+            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
@@ -1875,6 +1875,10 @@ font-size: 60px;
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+        }else{
+            $(".liabilitybidcollapse" + data.bidID).hide();
+            $(".liability_your" + data.bidID).removeClass('liabilty_shown');
+
         }
         $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         $(".nextincrement"+data.bidID).html('$'+data.nextIncrement.toLocaleString('en-US'));
@@ -1888,6 +1892,14 @@ font-size: 60px;
             $('.bidnowautobutton'+data.bidID).show();
 
         }
+        setTimeout(() => {
+            $('.liabilty_shown').each(function(i, obj) {
+                s_bid=$(obj).html();
+                formated_amount=parseFloat(s_bid.replace(/[^\d\.]*/g, ''));
+                total_bid = parseFloat(total_bid) + parseFloat(formated_amount);
+            });
+            $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
+        }, 500);
     });
     socket.on('auto_bid_delete', function(data) {
         $(".alertMessage"+data.bidID).html('');
