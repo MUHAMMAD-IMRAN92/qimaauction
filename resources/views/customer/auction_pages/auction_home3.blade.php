@@ -1801,8 +1801,8 @@ font-size: 60px;
             $(".autobidtable"+id).hide();
             $(".bidnowautobutton"+id).show();
             $(".autobidClass"+id).hide();
-            $(".autobidClass"+data.bidID).show();
-            $(".bidnowbutton"+data.bidID).prop('disabled',false);
+            $(".autobidClass"+id).show();
+            $(".bidnowbutton"+id).prop('disabled',false);
             
             swal({
                 title: `Remove Auto Bid ?`,
