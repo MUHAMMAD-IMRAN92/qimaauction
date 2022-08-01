@@ -1892,6 +1892,8 @@ font-size: 60px;
             $('.bidnowautobutton'+data.bidID).show();
 
         }
+        var total_bid=0;
+
         setTimeout(() => {
             $('.liabilty_shown').each(function(i, obj) {
                 s_bid=$(obj).html();
