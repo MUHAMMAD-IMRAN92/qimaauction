@@ -424,6 +424,11 @@ font-family: 'Montserrat';
         color: #FFFFFF;
     } */
 
+    .errormsgautobid {
+        /* background: #DBFFDA; */
+        margin-top: 12px;
+    }
+
 
     .liabilitytable thead {
         box-sizing: border-box;
