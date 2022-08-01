@@ -907,13 +907,13 @@ font-size: 60px;
                                                 data-toggle="collapse" data-parent="#accordion1"
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
                                                 @endif</td>
-                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                    {{-- @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) --}}
                                     <td class="liability{{ $auctionProduct->id}}">
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
                                     </td>
-                                        @else
+                                        {{-- @else
                                         <td class="liability{{ $auctionProduct->id}}">---</td>
-                                        @endif
+                                        @endif --}}
                                     @foreach ($auctionProduct->products as $products)
                                     <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}">{{$products->product_title}}  </a></td>
 
