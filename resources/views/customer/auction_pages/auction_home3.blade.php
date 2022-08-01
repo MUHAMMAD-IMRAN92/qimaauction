@@ -1878,7 +1878,7 @@ font-size: 60px;
 
         if(data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}){
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $('.errorMsgAutoBid' + data.bidID+data.bidID).html('You lost your Bid is Outed.');
+            $('.errorMsgAutoBid' + data.bidID+data.bidID).html('You have been outbid.');
             $('.nextincrement'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
@@ -1917,7 +1917,9 @@ font-size: 60px;
             $('.autobidamount'+data.bidID).show();
             $('.nextincrement'+data.bidID).show();
             $(".alertMessage"+data.bidID).hide('');
-            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You lost your Bid is Outed.');
+            $(".autobidClass1"+data.bidID).show();
+            
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You have been outbid.');
             $(".alertMessage"+data.bidID).hide('');
 
         }
