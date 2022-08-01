@@ -1564,6 +1564,7 @@ font-size: 60px;
             var weightautobid = $(".weightautobid"+id).html();
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
             $(".autobiddermaxbid"+id).html('$'+autobidamount);
+            console.log(parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
            $(".maximumliability"+id).html('$'+parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
             }else{
                 $('.showMessageForAmount'+id).show();
