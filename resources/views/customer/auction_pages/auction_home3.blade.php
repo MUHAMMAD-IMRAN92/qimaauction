@@ -1565,7 +1565,7 @@ font-size: 60px;
             var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
             $(".autobiddermaxbid"+id).html('$'+autobidamount);
             console.log(parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
-           $(".maximumliability"+id).html('$'+parseFloat(weight*autobidamount).toFixed(2).toLocaleString('en-US'));
+           $(".maximumliability"+id).html('$'+commify(parseFloat(weight*autobidamount).toFixed(2)));
             }else{
                 $('.showMessageForAmount'+id).show();
                 $('.showMessageForAmount'+id).html('Please Enter Some Amount First');
@@ -2114,6 +2114,13 @@ font-size: 60px;
     $(function() {
         resetTimer();
     })
+    function commify(n) {
+        var parts = n.toString().split(".");
+        const numberPart = parts[0];
+        const decimalPart = parts[1];
+        const thousands = /\B(?=(\d{3})+(?!\d))/g;
+        return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
+    }
 </script>
 
 </html>
