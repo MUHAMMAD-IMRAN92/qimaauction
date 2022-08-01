@@ -1768,6 +1768,7 @@ font-size: 60px;
                                         "autobidUserID":autobidUserID,
                                         "bid_amountNew":bid_amountNew,
                                         "nextIncrement":nextIncrement,
+                                        "paddleNo":paddleNo
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -1864,6 +1865,13 @@ font-size: 60px;
                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                 data.bidID + '>Remove</a>}</p>');
                 // $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
+            $(".liabilitybidcollapse" + data.bidID).show();
+            $(".liability_your" + data.bidID).addClass('liabilty_shown');
+            $(".finalliabilitytr").show();
+            $(".userbid" + data.bidID).css("color", "black");
+            $(".bidcollapse" + data.bidID).addClass("changecolor");
+            $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
+            $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
         }
         $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         $(".nextincrement"+data.bidID).html('$'+data.nextIncrement.toLocaleString('en-US'));
