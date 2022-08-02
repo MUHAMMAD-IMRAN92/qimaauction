@@ -722,6 +722,10 @@
     justify-content: end;
 }
 
+.sidebaropen-width{
+    width: 450px;
+}
+
     @media (max-width: 1199px) {
         .tablenav a {
             font-size: 10px;
@@ -991,6 +995,9 @@
         .tablenav a {
             font-size: 10px;
         }
+        .sidebaropen-width{
+    width: 300px;
+}
     }
 
     @media screen and (max-height: 450px) {
@@ -1377,21 +1384,19 @@
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                     <button
-                                                                        class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}">Auto
-                                                                        Bid</button>
+                                                                    class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
+                                                                     type="button"
+                                                                    data-id="{{ $auctionProduct->id }}">Auto
+                                                                    Bid</button>
                                                                     <button
-                                                                        class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="display: none;" id="confirmbtn">Confirm
+                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
                                                                     </button>
                                                                     <button
-                                                                        class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="display: none;">Cancel
+                                                                    class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
                                                                     </button>
                                                                     <div
                                                                         class="errormsgautobid  errorMsgAutoBid{{ $auctionProduct->id }}">
@@ -1438,7 +1443,7 @@
                                                                 </button>
                                                                 <div
                                                                     class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
-                                                                    <p>CURRENT AUTOBID IS
+                                                                    <p >CURRENT AUTOBID IS
                                                                         ${{ $auctionProduct->latestAutoBidPrice->bid_amount }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
@@ -1762,17 +1767,19 @@
 
     // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
+
+        $("#mySidebar").removeClass('sidebaropen-width');
     }
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
-
         //OpenSidebar
         setTimeout(function() {
             window.location.reload();
         }, 300000)
         $(".openSidebar").click(function() {
+
+           $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
@@ -1795,9 +1802,6 @@
                     var name = response.products[0].product_title;
                     var code = response.products[0].sample;
                     var size = response.size;
-
-                    // var currentbid = {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}
-                    // var totalvalue = {{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight }}
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
@@ -1837,7 +1841,6 @@
                         '<a href="' + url +
                         '" target="blank"><button >More Information</button></a>'
                     )
-                    document.getElementById("mySidebar").style.width = "450px";
                 },
                 error: function(error) {
                     console.log(error)
@@ -2031,95 +2034,95 @@
 
 
             } else {
-                var auctionid = $('.auctionid' + id).val();
-                $.ajax({
-                    url: "{{ route('autobiddata') }}",
-                    async: false,
-                    method: 'POST',
-                    data: {
-                        id: id,
-                        autobidamount: autobidamount,
-                        auctionid: auctionid,
-                        _token: "{{ csrf_token() }}",
-                    },
-                    success: function(response) {
-                        if (response.message !== null) {
-                            $('.errorMsgAutoBid' + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html(response.message);
-                            $('.autobidamount' + id).show();
-                            $('.autobidamount' + id).val('');
-                            $('.bidnowautobutton' + id).show();
-                            $('.autobidClass' + id).hide();
-                            $('.nextincrement' + id).show();
-                        } else {
-                            var latestAutoBidId = response.id;
-                            var bidPrice = response.bid_amountNew;
-                            var bidID = response.auction_product_id;
-                            var increment = response.bidIncrement;
-                            var weightautobid = $(".weightautobid" + id).html();
-                            var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
-                            var liability = weight * bidPrice;
-                            var paddleNo = response.userPaddleNo;
-                            var nextIncrement = +increment + +bidPrice;
-                            var outbid = response.outAutobid;
-                            var autobidUserID = response.bidder_user_id;
-                            var bidderLiablity = response.liablity;
-                            var bidderID = response.user_id;
-                            var bidderMaxBid = response.bidderMaxAmount;
-                            var userbidAmount = response.bid_amount;
-                            var totalAutoBidLiability = response.totalAutoBidLiability;
-                            var bid_amountNew = response.bid_amountNew;
-                            $('.errorMsgAutoBid' + id).html('');
-                            $(".bidcollapse" + bidID).addClass(
-                                "changecolor");
-                            $(".liabilitybidcollapse" + bidID).addClass(
-                                "changecolor");
-                            // socket.emit('add_bid_updates', {
-                            //     "singleBidammounttesting": bidPrice,
-                            //     "bidID": bidID,
-                            //     "increment": increment,
-                            //     "paddleNo": paddleNo,
-                            //     "nextIncrement": nextIncrement,
-                            //     "outbidresponse": outbid,
-                            //     "autobidUserID": autobidUserID,
-                            //     "bidderLiablity": bidderLiablity,
-                            //     "bidderID": bidderID,
-                            //     // "bidderMaxBid":bidderMaxBid,
-                            // });
-                            socket.emit('auto_bid_updates', {
-                                "autobidamount": autobidamount,
-                                "latestAutoBidId": latestAutoBidId,
-                                'id': id,
-                                "bidID": bidID,
-                                'user_id': response.user_id,
-                                "userbidAmount": userbidAmount,
-                                "totalAutoBidLiability": totalAutoBidLiability,
-                                "outbid": outbid,
-                                "autobidUserID": autobidUserID,
-                                "bid_amountNew": bid_amountNew,
-                                "nextIncrement": nextIncrement,
-                                "paddleNo": paddleNo,
-                                "liability": liability,
-                            });
-                            $('.errorMsgAutoBid' + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html(
-                                '<p>Current autobid is $' +
-                                autobidamount +
-                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                id + '>Remove</a>}</p>');
-                            $('.autobidamount' + id).val('');
-                            $('.alertMessage' + id).html('');
-                            $(".bidnowbutton" + id).css("display",
-                                "none");
-                            $(".autobidClass" + id).css("display", "none");
-                        }
-                    },
-                    error: function(error) {
-                        console.log(error)
-                    }
-                });
+                        var auctionid = $('.auctionid' + id).val();
+                        $.ajax({
+                            url: "{{ route('autobiddata') }}",
+                            async: false,
+                            method: 'POST',
+                            data: {
+                                id: id,
+                                autobidamount: autobidamount,
+                                auctionid: auctionid,
+                                _token: "{{ csrf_token() }}",
+                            },
+                            success: function(response) {
+                                if (response.message !== null) {
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html(response.message);
+                                    $('.autobidamount'+id).show();
+                                    $('.autobidamount'+id).val('');
+                                    $('.bidnowautobutton'+id).show();
+                                    $('.autobidClass'+id).hide();
+                                    $('.nextincrement'+id).show();
+                                } else {
+                                    var latestAutoBidId = response.id;
+                                    var bidPrice = response.bid_amountNew;
+                                    var bidID = response.auction_product_id;
+                                    var increment = response.bidIncrement;
+                                    var weightautobid = $(".weightautobid"+id).html();
+                                    var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
+                                    var liability   = weight*bidPrice;
+                                    var paddleNo = response.userPaddleNo;
+                                    var nextIncrement = +increment + +bidPrice;
+                                    var outbid = response.outAutobid;
+                                    var autobidUserID = response.bidder_user_id;
+                                    var bidderLiablity = response.liablity;
+                                    var bidderID = response.user_id;
+                                    var bidderMaxBid = response.bidderMaxAmount;
+                                    var userbidAmount   = response.bid_amount;
+                                    var totalAutoBidLiability = response.totalAutoBidLiability;
+                                    var bid_amountNew       = response.bid_amountNew;
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $(".bidcollapse" + bidID).addClass(
+                                        "changecolor");
+                                    $(".liabilitybidcollapse" + bidID).addClass(
+                                        "changecolor");
+                                    // socket.emit('add_bid_updates', {
+                                    //     "singleBidammounttesting": bidPrice,
+                                    //     "bidID": bidID,
+                                    //     "increment": increment,
+                                    //     "paddleNo": paddleNo,
+                                    //     "nextIncrement": nextIncrement,
+                                    //     "outbidresponse": outbid,
+                                    //     "autobidUserID": autobidUserID,
+                                    //     "bidderLiablity": bidderLiablity,
+                                    //     "bidderID": bidderID,
+                                    //     // "bidderMaxBid":bidderMaxBid,
+                                    // });
+                                    socket.emit('auto_bid_updates', {
+                                        "autobidamount": autobidamount,
+                                        "latestAutoBidId": latestAutoBidId,
+                                        'id': id,
+                                        "bidID": bidID,
+                                        'user_id': response.user_id,
+                                        "userbidAmount":userbidAmount,
+                                        "totalAutoBidLiability": totalAutoBidLiability,
+                                        "outbid":outbid,
+                                        "autobidUserID":autobidUserID,
+                                        "bid_amountNew":bid_amountNew,
+                                        "nextIncrement":nextIncrement,
+                                        "paddleNo":paddleNo,
+                                        "liability":liability,
+                                    });
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html(
+                                        '<p>Current autobid is $' +
+                                        autobidamount +
+                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                        id + '>Remove</a>}</p>');
+                                    $('.autobidamount' + id).val('');
+                                    $('.alertMessage' + id).html('');
+                                    $(".bidnowbutton" + id).css("display",
+                                         "none");
+                                    $(".autobidClass" + id).css("display", "none");
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error)
+                            }
+                        });
             }
         });
         //remove autobid
@@ -2182,14 +2185,15 @@
         console.log(data)
         $(".paddleno" + data.bidID).html(data.paddleNo);
 
-        if (data.user_id == {{ Auth::user()->id }}) {
+        if(data.user_id == {{ Auth::user()->id }})
+        {
             // $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             // $('.errorMsgAutoBid' + data.bidID +data.bidID).html(
             //     '<p>CURRENT AUTOBID IS $' +
             //     data.autobidamount +
             //     ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
             //     data.bidID + '>Remove</a>}</p>');
-            // $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
+                // $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2197,7 +2201,8 @@
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
-        } else {
+        }
+        else{
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
 
@@ -2209,10 +2214,10 @@
         if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You have been outbid.');
-            $('.nextincrement' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).show();
-            $('.autobidamount' + data.bidID).show();
-            $('.bidnowautobutton' + data.bidID).show();
+            $('.nextincrement'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).show();
+            $('.autobidamount'+data.bidID).show();
+            $('.bidnowautobutton'+data.bidID).show();
 
         }
         var total_bid = 0;
@@ -2361,10 +2366,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-                
+
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-                
+
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
