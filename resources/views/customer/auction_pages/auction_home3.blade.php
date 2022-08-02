@@ -1814,11 +1814,11 @@ font-size: 60px;
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
-                                    // $('.errorMsgAutoBid' + id + id).html(
-                                    //     '<p>Current autobid is $' +
-                                    //     autobidamount +
-                                    //     ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                    //     id + '>Remove</a>}</p>');
+                                    $('.errorMsgAutoBid' + id + id).html(
+                                        '<p>Current autobid is $' +
+                                        autobidamount +
+                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                        id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
                                     $('.alertMessage' + id).html('');
                                     $(".bidnowbutton" + id).css("display",
@@ -1891,22 +1891,15 @@ font-size: 60px;
         console.log('autobid updated')
         console.log(data)
         $(".paddleno" + data.bidID).html(data.paddleNo);
-        // $(".maximumliability" + data.bidID).html('$' + data.totalAutoBidLiability.toLocaleString('en-US'));
 
-        // if(data.user_id == {{Auth::user()->id}})
-        // {
-        //     $('.errorMsgAutoBid' + data.id).html('');
-        //     $('.errorMsgAutoBid' + data.id + data.id).html('');
-        //     $('.errorMsgAutoBid'+ data.id + data.id ).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
-        // }
         if(data.user_id == {{ Auth::user()->id }})
         {
-            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $('.errorMsgAutoBid' + data.bidID +data.bidID).html(
-                '<p>CURRENT AUTOBID IS $' +
-                data.autobidamount +
-                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                data.bidID + '>Remove</a>}</p>');
+            // $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            // $('.errorMsgAutoBid' + data.bidID +data.bidID).html(
+            //     '<p>CURRENT AUTOBID IS $' +
+            //     data.autobidamount +
+            //     ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+            //     data.bidID + '>Remove</a>}</p>');
                 // $(".bidData1"+data.bidID).html('$'+data.bid_amountNew.toLocaleString('en-US') + 'lbs');
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -1927,7 +1920,7 @@ font-size: 60px;
 
         if(data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}){
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $('.errorMsgAutoBid' + data.bidID+data.bidID).html('You have been outbid.');
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('You have been outbid.');
             $('.nextincrement'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();

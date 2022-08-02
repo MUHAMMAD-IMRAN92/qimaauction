@@ -512,7 +512,7 @@ class AuctionController extends Controller
                 $autoBidData->is_active           =   '0';
                 $autoBidData->bid_amount          =   $request->autobidamount;
                 $autoBidData->save();
-                $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', auth()->user()->id)->where('is_active', '!=', '1')->orderBy('created_at', 'desc')->first();
+                $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', auth()->user()->id)->where('is_active', '!=', '1')->orderBy('bid_amount', 'desc')->first();
             }
             if ($request->autobidamount > $autoBid->bid_amount) {
                 $userID      =  null;
@@ -543,7 +543,7 @@ class AuctionController extends Controller
                 $autoBidData->is_active           =   '1';
                 $autoBidData->bid_amount          =   $request->autobidamount;
                 $autoBidData->save();
-                $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', '!=', auth()->user()->id)->where('is_active', '0')->orderBy('created_at', 'desc')->first();
+                $latestAutoBid                   =   AutoBid::where('auction_product_id', $request->id)->where('user_id', '!=', auth()->user()->id)->where('is_active', '0')->orderBy('bid_amount', 'desc')->first();
             }
         } else {
             //If no Autobid on this product
