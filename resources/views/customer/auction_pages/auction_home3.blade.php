@@ -915,7 +915,7 @@ font-size: 60px;
                                         <td class="liability{{ $auctionProduct->id}}">---</td>
                                         @endif --}}
                                     @foreach ($auctionProduct->products as $products)
-                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}">{{$products->product_title}}  </a></td>
+                                    <td class="fw-bold text-underline"><a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-image="{{isset($auctionProduct->winningImages[0])?$auctionProduct->winningImages[0]->image_1:''}}">{{$products->product_title}}  </a></td>
 
                                         {{-- @if ($products->pro_lot_type == '1')
                                             <td>Farmer Lot</td>
@@ -1288,7 +1288,7 @@ font-size: 60px;
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight,1) : number_format($auctionProduct->start_price * $auctionProduct->weight,1) }}
                                     </td>
                                         @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar" data-id="{{ $auctionProduct->id }}" data-image="{{$auctionProduct->winningImages[0]->image_1}}"> {{$products->product_title}} </a></td>
+                                        <td class="fw-bold text-underline"> <a class="openbtn openSidebar" data-id="{{ $auctionProduct->id }}" data-image="{{isset($auctionProduct->winningImages[0])?$auctionProduct->winningImages[0]->image_1:""}}"> {{$products->product_title}} </a></td>
 
                                             {{-- @if ($products->pro_lot_type == '1')
                                                 <td>Farmer Lot</td>
