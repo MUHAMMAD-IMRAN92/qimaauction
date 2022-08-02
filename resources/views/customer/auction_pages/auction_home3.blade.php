@@ -1103,13 +1103,22 @@ font-size: 60px;
                                                                 @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id != auth()->user()->id)
                                                                     <button
-                                                                        class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                        type="submit" href="javascript:void(0)"
-                                                                        data-id="{{ $auctionProduct->id }}">Auto
-                                                                        Bid</button>
-
+                                                                    class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
+                                                                     type="button"
+                                                                    data-id="{{ $auctionProduct->id }}">Auto
+                                                                    Bid</button>
+                                                                    <button
+                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;" id="confirmbtn">Confirm
+                                                                    </button>
+                                                                    <button
+                                                                    class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
+                                                                    type="button"
+                                                                    data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
+                                                                    </button>
                                                                     <div
-                                                                        class="errormsgautobid ijaz errorMsgAutoBid{{ $auctionProduct->id }}">
+                                                                        class="errormsgautobid  errorMsgAutoBid{{ $auctionProduct->id }}">
                                                                     </div>
                                                                 @endif
                                                             @else
@@ -1147,7 +1156,7 @@ font-size: 60px;
                                                                     data-id="{{ $auctionProduct->id }}" style="display: none;">Cancel
                                                                     </button>
                                                                 <div
-                                                                    class="errormsgautobid ahmed errormsgautobid{{ $auctionProduct->id }}" style="background: white;">
+                                                                    class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p >CURRENT AUTOBID IS
                                                                         ${{ $auctionProduct->latestAutoBidPrice->bid_amount }}/lb
                                                                         <a href="javascript:void(0)" class="removeAutoBID"
@@ -1906,7 +1915,8 @@ font-size: 60px;
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
-        }else{
+        }
+        else{
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
 
