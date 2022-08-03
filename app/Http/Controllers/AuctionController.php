@@ -242,7 +242,7 @@ class AuctionController extends Controller
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
             $auction->is_hidden = 1;
             $auction->save();
-            return redirect('auction');
+            return redirect('auction-winners');
         }
         $auctionProducts        =   AuctionProduct::with('products', 'singleBids','winningImages')->get();
         $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
@@ -706,6 +706,35 @@ class AuctionController extends Controller
             ['your_score' => $request->value, 'user_id'=> Auth::user()->id]
         );
         return response()->json();
+    }
+    public function auctionWinners(Request $request)
+    {
+        $auction                =   Auction::first();
+        if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
+            $auction->is_hidden = 1;
+            $auction->save();
+            return redirect('auction');
+        }
+        $auctionProducts        =   AuctionProduct::with('products', 'singleBids','winningImages')->get();
+        $singleBids             =   AuctionProduct::doesnthave('singleBids')->get();
+       $results = $auctionProducts->map(function($e){
+
+        $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+        $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+        $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+        $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+            ->orderBy('bid_amount', 'desc')
+            ->first();
+        $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+        ->orderBy('created_at', 'desc')
+        ->first();
+        $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+        ->orderBy('bid_amount', 'desc')
+        ->first();
+        return $e;
+        });
+        return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'auction', 'singleBids'));
     }
 
 }
