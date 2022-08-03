@@ -456,9 +456,9 @@
 
                         </div>
                         <div class="my-3 banner-btn">
-                            <button type="button" class="btn btn-primary banner-btns mb-1"
+                            {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
-                                SAMPLE SET</button>
+                                SAMPLE SET</button> --}}
                             <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">REGISTER FOR AUCTION</button>
                         </div>
