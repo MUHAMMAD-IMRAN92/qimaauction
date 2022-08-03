@@ -21,6 +21,8 @@ Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
+Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
+
 // Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
 
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
@@ -31,7 +33,6 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function(){
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
-    Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
     Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
     Route::post('/saveyourscore', [App\Http\Controllers\AuctionController::class, 'saveYourScore'])->name('saveyourscore');
 
