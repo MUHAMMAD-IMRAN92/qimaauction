@@ -453,7 +453,7 @@
                             <span class="real-timer"></span>
                         </div>
                         <div class="font-fam video-text-2" style="color: white;">
-                            <p style="">AUGUST 9<sup>th</sup></p>
+                            <p style="">AUGUST 18<sup>th</sup></p>
 
                         </div>
                         <div class="my-3 banner-btn">
@@ -761,7 +761,7 @@
                 </div>
                 <div class="col-lg-12 text-center section-4-text-1">
                     <p class="time real-timer m-0"></p>
-                    <p class="date">AUGUST 9<sup>th</sup> </p>
+                    <p class="date">AUGUST 18<sup>th</sup> </p>
                 </div>
             </div>
 
@@ -860,7 +860,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("Aug 9, 2022 00:00:00").getTime();
+    var countDownDate = new Date("Aug 18, 2022 00:00:00").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function() {
