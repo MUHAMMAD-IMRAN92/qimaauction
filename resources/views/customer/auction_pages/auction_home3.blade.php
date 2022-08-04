@@ -718,9 +718,7 @@
 .lh-zero{
     line-height: 0;
 }
-.bid-row .form-inline{
-    justify-content: end;
-}
+
 
 .sidebaropen-width{
     width: 450px;
@@ -962,7 +960,9 @@
         }
 
 
-
+        .bid-row .form-inline{
+    justify-content: end;
+}
 
         /* bid row hidding content */
         .hide-table-padding td:nth-of-type(1):before,
