@@ -527,7 +527,7 @@
         color: white;
     }
 
-    .startbidbtn {
+    .startbidbtn, .startbidbtn:hover {
         background-color: #143D30 !important;
         color: white;
     }
@@ -726,6 +726,12 @@
     width: 450px;
 }
 
+.card-header{
+            display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+
     @media (max-width: 1199px) {
         .tablenav a {
             font-size: 10px;
@@ -831,6 +837,8 @@
             padding-right: 10px;
             white-space: nowrap;
         }
+
+
 
         .yourscore {
             max-width: none;
@@ -1235,10 +1243,14 @@
                                         <td colspan="13">
                                             <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
                                                 <div class="card">
-                                                    <h5 class="card-header">You need to login to Bid.</h5>
-                                                    <div class="card-body">
-                                                           <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
+                                                    <div class="card-header">
+                                                        <h5 style="margin: 0 20px">You need to login to Bid.</h5>
+                                                        <a style="padding: 5px; border-radius: 4px;"  href="{{ route('customer.login') }}" class="startbidbtn">Login</a>
+
                                                     </div>
+                                                    {{-- <div class="card-body">
+                                                           <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </td>

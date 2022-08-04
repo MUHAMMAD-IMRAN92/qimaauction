@@ -427,7 +427,7 @@
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
                                         data-i18n="eCommerce">Bid Limit</span></a>
-                           
+
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
                             <ul>
@@ -457,7 +457,6 @@
                         </li> --}}
                         <li @if (request()->is('product/*')) class='active' @endif><a
                                 href="{{ url('/product/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
                                 <span class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
                         </li>

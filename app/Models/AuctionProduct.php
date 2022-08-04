@@ -28,6 +28,16 @@ class AuctionProduct extends Model
     {
         return $this->hasMany(WinningCofeeImages::class,'user_id','id');
     }
+    public function autoBids()
+    {
+        return $this->hasMany(AutoBid::class,'auction_product_id','id');
+    }
+    public function autoBidActive()
+    {
+        return $this->hasOne(AutoBid::class,'auction_product_id','id')->where('is_active','1')->orderBy('created_at','desc');
+    }
+
+
     protected $guarded = [''];
 
 }
