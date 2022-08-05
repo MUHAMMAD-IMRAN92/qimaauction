@@ -452,7 +452,7 @@ class AuctionController extends Controller {
             $singleBidData->checkStartTimer = "starttimer";
             $latestSingleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
             $loser = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->skip(1)->first();
-            $autoBidData->loser_user = $loser ? $loser->user_id : '';
+            $singleBidData->loser_user = $loser ? $loser->user_id : '';
             $singleBidData->latestSingleBidUser = $latestSingleBid->user_id;
             // dd($latestSingleBid->user_id);
             return response()->json($singleBidData);
@@ -463,26 +463,45 @@ class AuctionController extends Controller {
         $user = Auth::user()->id;
         $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['singleBids', 'autoBidActive', 'latestBidPrice'])
                 ->first();
+
         $startprice = $auctionProductsData->start_price;
         if ($request->autobidamount <= $startprice) {
             return response()->json(['message' => 'Enter amount greater than product price']);
         }
+        $singleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
+        if ($singleBid->user_id == $user) {
+            $autoBidData = new AutoBid();
+            $autoBidData->auction_id = $request->auctionid;
+            $autoBidData->user_id = $user;
+            $autoBidData->auction_product_id = $request->id;
+            $autoBidData->is_active = '1';
+            $autoBidData->bid_amount = $request->autobidamount;
+            $autoBidData->save();
+            return response()->json(['success' => 'Bid Added Successfully']);
+        }
+
         //If Already have another Autobid on this product
         if (isset($auctionProductsData->autoBidActive)) {
+
             if ($request->autobidamount == $auctionProductsData->autoBidActive->bid_amount) {
                 return response()->json(['message' => 'Please enter amount greater or less than current autobid amount.']);
             }
             if ($request->autobidamount < $auctionProductsData->autoBidActive->bid_amount) {
                 $userID = null;
                 do {
-                    $singleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
+
                     $bidLimit = Bidlimit::where('min', '<', $singleBid->bid_amount)->orderBy('min', 'desc')->first();
                     $bidIncrement = $bidLimit->increment;
                     $newbidPrice = $bidIncrement + $singleBid->bid_amount;
                     $singleBidData = new SingleBid();
                     $singleBidData->bid_amount = $newbidPrice;
                     $singleBidData->auction_id = $request->auctionid;
-                    $singleBidData->user_id = (!isset($userID)) ? $user : $userID;
+                    if ($auctionProductsData->autoBidActive->bid_amount == $newbidPrice) {
+                        $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
+                    } else {
+                        $singleBidData->user_id = (!isset($userID)) ? $user : $userID;
+                    }
+
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->save();
                     $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->offset(1)->first()->user_id;
@@ -506,12 +525,12 @@ class AuctionController extends Controller {
                     $singleBid = new SingleBid();
                     $singleBid->bid_amount = $newbidPrice;
                     $singleBid->auction_id = $request->auctionid;
-                    if($singleBid->bid_amount >  $auctionProductsData->autoBidActive->bid_amount){
-                        $singleBid->user_id =$user;
-                    }else{
+                    if ($singleBid->bid_amount > $auctionProductsData->autoBidActive->bid_amount) {
+                        $singleBid->user_id = $user;
+                    } else {
                         $singleBid->user_id = (!isset($userID)) ? $user : $userID;
                     }
-                    
+
                     $singleBid->auction_product_id = $request->id;
                     $singleBid->save();
                     $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->offset(1)->first()->user_id;

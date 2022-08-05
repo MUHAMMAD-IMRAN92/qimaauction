@@ -1,5 +1,5 @@
 <html lang="en">
-
+<!--#fae2e2-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1079,30 +1079,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container box text-center section-4-text-1 auction_started" style="display: none;">
-        <div class="row boxrow">
-            <p class="timer_text"></p>
-        </div>
-        <div class="row boxrow">
-
-            <div class="col-3">
-                <h2 class="minutes">-</h2>
-                <p>Minutes</p>
-            </div>
-            <div>
-                <h2>:</h2>
-            </div>
-            <div class="col-3">
-                <h2 class="seconds">-</h2>
-                <p>Seconds </p>
-            </div>
-        </div>
-        <div class="row boxrow">
-            <div class="col-8 ">
-                <p id="countdown" style="color: red;font-size: small;"></p>
-            </div>
-        </div>
-    </div> --}}
+     
     <section>
 
         <div class="table-container">
@@ -1177,24 +1154,18 @@
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
                                         @endif
                                     </td>
-                                    {{-- @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) --}}
+                                     
                                     <td class="liability{{ $auctionProduct->id }} td-res-pl">
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
                                     </td>
-                                    {{-- @else
-                                        <td class="liability{{ $auctionProduct->id}}">---</td>
-                                        @endif --}}
+                                     
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">{{ $products->product_title }}
                                             </a></td>
 
-                                        {{-- @if ($products->pro_lot_type == '1')
-                                            <td>Farmer Lot</td>
-                                        @else
-                                            <td>Community Lot</td>
-                                        @endif --}}
+                                        
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
@@ -1233,18 +1204,12 @@
                                                         <p>:</p>
                                                         <p class="seconds">-</p>
                                                     </div>
-                                                    {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
-                                                    Open
-                                                @else
-                                                    Waiting Bid --}}
+                                                     
                                                 @endif
                                             </span>
                                         </div>
                                     </td>
-                                    {{-- <td>
-                                        <a class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
-                                            style="color: #000000;"> ⋮ </a>
-                                    </td> --}}
+                                  
                                 </tr>
                                 @if (!isset($agreement) ||
                                     $agreement->privacy_policy_id != '1' ||
@@ -1316,9 +1281,7 @@
                                                                 </p>
                                                             @endif
                                                             <div>
-                                                                {{-- @if (isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)
-                                                                <button class="btn" >Bid Now</button>
-                                                                @else --}}
+                                                                
                                                                 @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
                                                                     <button
@@ -1598,11 +1561,7 @@
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
                                                 {{ $products->product_title }} </a></td>
 
-                                        {{-- @if ($products->pro_lot_type == '1')
-                                                <td>Farmer Lot</td>
-                                            @else
-                                                <td>Community Lot</td>
-                                            @endif --}}
+                                        
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
@@ -1641,10 +1600,7 @@
                                                         <p>:</p>
                                                         <p class="seconds">-</p>
                                                     </div>
-                                                    {{-- @elseif (isset($auctionProduct->openCheck) || isset($auctionProduct->openCheckautobid))
-                                                        Open
-                                                    @else
-                                                        Waiting Bid --}}
+                                                     
                                                 @endif
                                             </span>
                                         </div>
@@ -2046,7 +2002,21 @@
                                 _token: "{{ csrf_token() }}",
                             },
                             success: function(response) {
-                                if (response.message !== null) {
+                            
+                                 if (response.success) { 
+                                    $('.errorMsgAutoBid' + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html('');
+                                    $('.errorMsgAutoBid' + id + id).html(
+                                        '<p>Current autobid is $' +
+                                        autobidamount +
+                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                        id + '>Remove</a>}</p>');
+                                    $('.autobidamount' + id).val('');
+                                    $('.alertMessage' + id).html('');
+                                    $(".bidnowbutton" + id).css("display",
+                                         "none");
+                                    $(".autobidClass" + id).css("display", "none");
+                                }else  if (response.message !== null) { 
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(response.message);
@@ -2055,7 +2025,7 @@
                                     $('.bidnowautobutton'+id).show();
                                     $('.autobidClass'+id).hide();
                                     $('.nextincrement'+id).show();
-                                } else {
+                                }else { 
                                     var latestAutoBidId = response.id;
                                     var bidPrice = response.bid_amountNew;
                                     var bidID = response.auction_product_id;
@@ -2209,7 +2179,7 @@
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 5000); 
+            }, 10000); 
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $(".alertMessage" + data.bidID).css('background','#f16767');
             $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
@@ -2233,6 +2203,10 @@
         resetTimer(data);
 
     });
+    function roundedToFixed(input, digits){
+  var rounded = Math.pow(10, digits);
+  return (Math.round(input * rounded) / rounded).toFixed(digits);
+}
     socket.on('auto_bid_delete', function(data) {
         $(".alertMessage" + data.bidID).html('');
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
@@ -2247,6 +2221,7 @@
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
     socket.on('add_bid_updates', function(data) {
+     
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
@@ -2260,7 +2235,7 @@
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 5000); 
+            }, 10000); 
             $('.autobidamount' + data.bidID).show();
             $('.nextincrement' + data.bidID).show();
             $(".alertMessage" + data.bidID).hide('');
@@ -2301,7 +2276,7 @@
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 5000);
+            }, 10000);
             $(".bidnowbutton" + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
             $(".alertMessage" + data.bidID).css('background','#f16767');
@@ -2348,8 +2323,9 @@
             window.empty = data.checkTimer;
             resetTimer(data);
         }
+        var incrementedvalue=roundedToFixed(data.nextIncrement,1);
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lbs');
-        $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
+        $(".nextincrement" + data.bidID).html('$' + incrementedvalue.toLocaleString('en-US'));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".paddleno" + data.bidID).addClass('fw-bold');

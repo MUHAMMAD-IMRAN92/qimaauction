@@ -1184,7 +1184,7 @@
                                     @if (isset($auctionProduct->highestbid))
                                         @foreach ($auctionProduct->highestbid->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                {{ $userData->name ?? '---' }}</td>
+                                                {{ $userData->company ?? '---' }}</td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
