@@ -481,15 +481,12 @@ class AuctionController extends Controller {
         }
 
         //If Already have another Autobid on this product
-        \Log::info('Already have another autobid check');
         if (isset($auctionProductsData->autoBidActive)) {
 
             if ($request->autobidamount == $auctionProductsData->autoBidActive->bid_amount) {
                 return response()->json(['message' => 'Please enter amount greater or less than current autobid amount.']);
             }
             if ($request->autobidamount < $auctionProductsData->autoBidActive->bid_amount) {
-                \Log::info('Going into the check of less than');
-                \Log::info($auctionProductsData->autoBidActive);
                 $userID = null;
                 do {
 
@@ -510,10 +507,8 @@ class AuctionController extends Controller {
                     $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->offset(1)->first()->user_id;
                     $singleBid->bid_amount = $newbidPrice;
                 } while ($singleBid->bid_amount < $request->autobidamount);
-                \Log::info($auctionProductsData->autoBidActive);
                 $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first()->user_id;
 
-                \Log::info($userID);
 
                 if($userID != $auctionProductsData->autoBidActive->user_id){
                     $singleBidData = new SingleBid();
