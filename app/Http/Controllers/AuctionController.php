@@ -505,6 +505,7 @@ class AuctionController extends Controller {
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->save();
                     $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->offset(1)->first()->user_id;
+                    $singleBid->bid_amount = $newbidPrice;
                 } while ($singleBid->bid_amount < $request->autobidamount);
                 $autoBidData = new AutoBid();
                 $autoBidData->auction_id = $request->auctionid;
