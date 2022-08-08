@@ -498,7 +498,7 @@ class AuctionController extends Controller {
                     $newbidPrice = $bidIncrement + $singleBid->bid_amount;
                     $singleBidData = new SingleBid();
                     $singleBidData->bid_amount = $newbidPrice;
-                    $singleBidData->auction_id = $request->auctionid;
+                    $singleBidData->auction_id = '15';$request->auctionid;
                     if ($auctionProductsData->autoBidActive->bid_amount == $newbidPrice) {
                         $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     } else {
@@ -519,7 +519,7 @@ class AuctionController extends Controller {
                     $bidIncrement = $bidLimit->increment;
                     $newbidPrice = $bidIncrement + $singleBid->bid_amount;
                     $singleBidData->bid_amount = $newbidPrice;
-                    $singleBidData->auction_id = $request->auctionid;
+                    $singleBidData->auction_id = '20';$request->auctionid;
                     $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->save();
@@ -542,7 +542,7 @@ class AuctionController extends Controller {
                     $newbidPrice = $bidIncrement + $singleBid->bid_amount;
                     $singleBid = new SingleBid();
                     $singleBid->bid_amount = $newbidPrice;
-                    $singleBid->auction_id = '11';$request->auctionid;
+                    $singleBid->auction_id = $request->auctionid;
                     if ($singleBid->bid_amount > $auctionProductsData->autoBidActive->bid_amount) {
                         $singleBid->user_id = $user;
                     } else {
@@ -557,7 +557,7 @@ class AuctionController extends Controller {
                     'is_active' => '0'
                 ]);
                 $autoBidData = new AutoBid();
-                $autoBidData->auction_id = '12';$request->auctionid;
+                $autoBidData->auction_id = $request->auctionid;
                 $autoBidData->user_id = $user;
                 $autoBidData->auction_product_id = $request->id;
                 $autoBidData->is_active = '1';
