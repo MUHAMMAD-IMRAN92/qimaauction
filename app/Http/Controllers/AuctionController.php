@@ -466,6 +466,7 @@ class AuctionController extends Controller {
 
         $startprice = $auctionProductsData->start_price;
         if ($request->autobidamount <= $startprice) {
+
             return response()->json(['message' => 'Enter amount greater than product price']);
         }
         $singleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
@@ -484,8 +485,32 @@ class AuctionController extends Controller {
         if (isset($auctionProductsData->autoBidActive)) {
 
             if ($request->autobidamount == $auctionProductsData->autoBidActive->bid_amount) {
-                return response()->json(['message' => 'Please enter amount greater or less than current autobid amount.']);
-            }
+
+                $autoBidData = new AutoBid();
+                $autoBidData->auction_id = $request->auctionid;
+                $autoBidData->user_id = $user;
+                $autoBidData->auction_product_id = $request->id;
+                $autoBidData->is_active = '0';
+                $autoBidData->bid_amount = $request->autobidamount;
+                $autoBidData->save();
+                $other_id = $auctionProductsData->autoBidActive->user_id;
+                $get_last_bid = $auctionProductsData->latestBidPriceAmount;
+                $singleBidData = new SingleBid();
+                $singleBidData->bid_amount = $request->autobidamount - .5;
+                $singleBidData->auction_id = '15';
+                $singleBidData->user_id = $user;
+                $singleBidData->auction_product_id = $request->id;
+                $singleBidData->save();
+
+                $singleBidData = new SingleBid();
+                $singleBidData->bid_amount = $request->autobidamount;
+                $singleBidData->auction_id = '15';
+                $singleBidData->user_id = $other_id;
+                $singleBidData->auction_product_id = $request->id;
+                $singleBidData->save();
+                $autoBidData = $auctionProductsData->autoBidActive;
+//                return response()->json(['message' => 'Please enter amount greater or less than current autobid amount.']);
+            }else{
             if ($request->autobidamount < $auctionProductsData->autoBidActive->bid_amount) {
                 $userID = null;
                 do {
@@ -496,7 +521,6 @@ class AuctionController extends Controller {
                     $singleBidData = new SingleBid();
                     $singleBidData->bid_amount = $newbidPrice;
                     $singleBidData->auction_id = '15';
-                    $request->auctionid;
                     if ($auctionProductsData->autoBidActive->bid_amount == $newbidPrice) {
                         $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     } else {
@@ -562,7 +586,7 @@ class AuctionController extends Controller {
                 $autoBidData->bid_amount = $request->autobidamount;
                 $autoBidData->save();
                 $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('user_id', '!=', $user)->where('is_active', '0')->orderBy('bid_amount', 'desc')->first();
-            }
+        }}
         } else {
             //If no Autobid on this product
             $singleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();

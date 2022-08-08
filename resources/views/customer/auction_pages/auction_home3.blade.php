@@ -2164,8 +2164,6 @@
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        console.log('auto_bid_updates');
-        console.log(data);
         $(".paddleno" + data.bidID).html(data.paddleNo);
 
         if(data.user_id == {{ Auth::user()->id }})
@@ -2271,7 +2269,7 @@
             $('.nextincrement' + data.bidID).show();
             $(".alertMessage" + data.bidID).hide('');
             $(".autobidClass1" + data.bidID).show();
-            $('.bidnowbutton'+bidID).attr("disabled", false); 
+            $('.bidnowbutton'+data.bidID).attr("disabled", false); 
              $(".alertMessage" + data.bidID).css('background','#f16767');
             $('.alertMessage' + data.bidID).html('You have been outbid.');
             $(".alertMessage" + data.bidID).hide('');
@@ -2303,7 +2301,6 @@
                 '/lb Bid is confirmed.</p>');
         } else {
         if(data.loser && data.loser == {{ Auth::user()->id }}){
-                console.log('its hers2');
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
