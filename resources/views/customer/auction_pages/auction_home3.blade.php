@@ -1312,7 +1312,7 @@
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px; display:none;">Cancel</button>
-                                                                {{-- @endif --}}
+                                                                 
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -1834,8 +1834,14 @@
         //auto bid
         $(".autobtnclick").click(function() {
 
-            var id = $(this).attr('data-id');
+            var id = $(this).attr('data-id'); 
+            var minamount=$('.nextincrement'+id).html();
+            var float_amount = parseFloat(minamount.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]); 
             current_val = $('.autobidamount' + id).val();
+            if(current_val && current_val < float_amount){
+                $('.showMessageForAmount' + id).show();
+                $('.showMessageForAmount' + id).html('Please Enter Amount Greater the or equal to '+float_amount);
+            }else{
             if (current_val) {
                 $('.showMessageForAmount' + id).hide();
                 $(".autobidtable" + id).show();
@@ -1852,7 +1858,7 @@
             } else {
                 $('.showMessageForAmount' + id).show();
                 $('.showMessageForAmount' + id).html('Please Enter Some Amount First');
-            }
+            }}
             // var finalmax    = parseFloat(autobidamount.replace(/[^\d\.]*/g, ''))
         });
         //cancelbidvtn first auto bid
@@ -2124,13 +2130,18 @@
                             id: id,
                             _token: "{{ csrf_token() }}",
                         },
-                        success: function(response) {
+                        success: function(response) { 
                             var auction_product_id = response.auction_product_id;
                             var outbid = response.outAutobid;
                             if (outbid == 0) {
+                                current_user_id={{ Auth::user()->id }}; 
                                 $('.errorMsgAutoBid' + id).html('');
                                 $('.errorMsgAutoBid' + id + id).html('');
                                 $(".bidnowbutton" + id).css("display", "block");
+                                if(response.winner_id == current_user_id){
+                                    $(".bidnowbutton" + id).prop('disabled', true);
+                                    $(".bidnowbutton" + id).css('background', '#a6a6a6');
+                                }
                             }
                             socket.emit('auto_bid_delete', {
                                 "autobidamount": 0,
@@ -2153,6 +2164,8 @@
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
+        console.log('auto_bid_updates');
+        console.log(data);
         $(".paddleno" + data.bidID).html(data.paddleNo);
 
         if(data.user_id == {{ Auth::user()->id }})
@@ -2188,7 +2201,25 @@
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
             $('.bidnowautobutton'+data.bidID).show();
-
+             $('.bidnowbutton'+data.bidID).attr("disabled", false); 
+             $(".bidnowbutton" +data.bidID).css('background', '##143D30');
+        }
+        if (data.loser == {{ Auth::user()->id }}) {
+           
+           $(".bidcollapse" + data.bidID).removeClass("changecolor");
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 10000); 
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            $(".alertMessage" + data.bidID).css('background','#f16767');
+            $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+            $('.nextincrement'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).show();
+            $('.autobidamount'+data.bidID).show();
+            $('.bidnowautobutton'+data.bidID).show(); 
+            $('.bidnowbutton'+data.bidID).attr("disabled", false); 
+             $(".bidnowbutton" +data.bidID).css('background', '#143D30');
         }
         var total_bid = 0;
 
@@ -2221,8 +2252,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) {
-     
+    socket.on('add_bid_updates', function(data) { 
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
