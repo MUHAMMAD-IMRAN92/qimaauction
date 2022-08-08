@@ -510,6 +510,17 @@ class AuctionController extends Controller {
                     $userID = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->offset(1)->first()->user_id;
                     $singleBid->bid_amount = $newbidPrice;
                 } while ($singleBid->bid_amount < $request->autobidamount);
+                if($userID != $auctionProductsData->autoBidActive->user_id){
+                    $singleBidData = new SingleBid();
+                    $bidLimit = Bidlimit::where('min', '<', $singleBid->bid_amount)->orderBy('min', 'desc')->first();
+                    $bidIncrement = $bidLimit->increment;
+                    $newbidPrice = $bidIncrement + $singleBid->bid_amount;
+                    $singleBidData->bid_amount = $newbidPrice;
+                    $singleBidData->auction_id = $request->auctionid;
+                    $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
+                    $singleBidData->auction_product_id = $request->id;
+                    $singleBidData->save();
+                }
                 $autoBidData = new AutoBid();
                 $autoBidData->auction_id = $request->auctionid;
                 $autoBidData->user_id = $user;
