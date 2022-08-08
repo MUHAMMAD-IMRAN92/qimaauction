@@ -511,6 +511,7 @@ class AuctionController extends Controller {
                     $singleBid->bid_amount = $newbidPrice;
                 } while ($singleBid->bid_amount < $request->autobidamount);
                 \Log::info($auctionProductsData->autoBidActive);
+                \Log::info($userID);
 
                 if($userID != $auctionProductsData->autoBidActive->user_id){
                     $singleBidData = new SingleBid();
