@@ -725,6 +725,13 @@
 .sidebaropen-width{
     width: 450px;
 }
+.changecolor
+{
+    background: #FFFEA2;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #9C9C9C;
+}
 
 .card-header{
             display: flex;

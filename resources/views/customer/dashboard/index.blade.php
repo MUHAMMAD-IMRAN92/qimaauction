@@ -46,7 +46,7 @@
                             <span class="real-timer"></span>
                         </div>
                         <div class="font-fam video-text-2" style="color: white;">
-                            <p style="">AUGUST 9<sup>th</sup></p>
+                            <p style="">AUGUST 18<sup>th</sup></p>
 
                         </div>
                         <div class="my-3 banner-btn">
@@ -195,7 +195,7 @@
                 </div>
                 <div class="col-lg-12 text-center section-4-text-1">
                     <p class="time real-timer m-0"></p>
-                    <p class="date">AUGUST 9<sup>th</sup> </p>
+                    <p class="date">AUGUST 18<sup>th</sup> </p>
                 </div>
             </div>
 
