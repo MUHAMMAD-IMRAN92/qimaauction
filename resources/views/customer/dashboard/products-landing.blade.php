@@ -301,9 +301,9 @@
      <div class="row">
       <div class="col-md-12">
         <div class="bio_graphy">
-             <h1>#{{$winningCoffeesData->rank}}</h1>
-             <h1>{{$winningCoffeesData->name}}</h1>
-             <h3>{{$winningCoffeesData->code}}</h3>
+             <h1>#{{$winningCoffeesData->rank ?? ''}}</h1>
+             <h1>{{$winningCoffeesData->name ?? ''}}</h1>
+             <h3>{{$winningCoffeesData->code ?? ''}}</h3>
         </div>
 
         <div class="region_flex">
@@ -311,13 +311,13 @@
               <h6>REGION :&nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>{{$winningCoffeesData->village}} <&nbsp; </h6>
+                <h6>{{$winningCoffeesData->village ?? ''}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>{{$winningCoffeesData->region}} <&nbsp; </h6>
+            <h6>{{$winningCoffeesData->region ?? ''}} <&nbsp; </h6>
           </div>
           <div class="regional_name">
-            <h6>{{$winningCoffeesData->governorate}} &nbsp; </h6>
+            <h6>{{$winningCoffeesData->governorate ?? ''}} &nbsp; </h6>
           </div>
           <div>
 
@@ -328,7 +328,7 @@
               <h6>ALTITUDE : &nbsp; </h6>
           </div>
           <div class="regional_name">
-                <h6>{{$winningCoffeesData->altitude}}</h6>
+                <h6>{{$winningCoffeesData->altitude ?? ''}}</h6>
           </div>
           <div>
 
@@ -338,19 +338,21 @@
      </div>
      <div class="row img-with-text-mar">
         <div class="col-md-6">
+          @if(isset($winningCoffeesData->images->image_1))
             <img class="farmer-display" src="{{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_1)}}"alt="">
-        </div>
+           @endif
+          </div>
         <div class="col-md-6">
            <div class="genetics-area">
              <p style="margin-bottom: 0;"> JURY SCORE</p>
-             <h6>{{$winningCoffeesData->score}}</h6>
+             <h6>{{$winningCoffeesData->score ?? ''}}</h6>
            </div>
            <div class="region_flex">
             <div class="region_text">
                 <h6>LOT SIZE :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>{{$winningCoffeesData->quantity}}LBS</h6>
+                  <h6>{{$winningCoffeesData->quantity ?? ''}}LBS</h6>
             </div>
           </div>
           <div class="region_flex">
@@ -358,7 +360,7 @@
                 <h6>PROCESS :&nbsp;  </h6>
             </div>
             <div class="regional_name">
-                  <h6>{{$winningCoffeesData->process}}</h6>
+                  <h6>{{$winningCoffeesData->process ?? ''}}</h6>
             </div>
           </div>
           <div class="genetic_content">
@@ -370,14 +372,15 @@
                 <h6>GENETICS :&nbsp; </h6>
             </div>
             <div class="regional_name">
-                  <h6>{{$winningCoffeesData->genetics}}</h6>
+                  <h6>{{$winningCoffeesData->genetics ?? ''}}</h6>
             </div>
           </div>
           <div class="row">
                 <div class="col-md-6">
                     <div class="image_with_text_image">
-
+                       @if(isset($winningCoffeesData->images))
                       <img src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_2)}} alt="">
+                      @endif
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -395,10 +398,12 @@
            </div>
            <div class="col-md-6">
             <div class="cup-profile">
+              @if(isset($winningCoffeesData->images))
               <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_3)}}  alt="">
+               @endif
               <div class="cup_profile_datails">
                 <p style="margin-bottom: 0;">Cup profile:</p>
-                <h6>{{$winningCoffeesData->cup_profile}}</h6>
+                <h6>{{@$winningCoffeesData->cup_profile}}</h6>
                 <p></p>
               </div>
               </div>
@@ -407,9 +412,11 @@
         </div>
         <div class="col-md-6">
         <div class="farmer_cutting">
+          @if(isset($winningCoffeesData->images))
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_4)}} alt="">
-        <h3>the story behind the coffee</h3>
-        <p style="margin-bottom: 0;">{!!$winningCoffeesData->farmer_story!!}
+          @endif
+          <h3>the story behind the coffee</h3>
+        <p style="margin-bottom: 0;">{!!@$winningCoffeesData->farmer_story!!}
           </p>
         </div>
         </div>
@@ -421,8 +428,10 @@
          </div>
          <div class="col-md-6">
           <div class="cup-profile2">
+            @if(isset($winningCoffeesData->images))
             <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_5)}} alt="">
-            </div>
+            @endif  
+          </div>
          </div>
        </div>
       </div>
@@ -430,7 +439,10 @@
      <div class="row">
        <div class="col-md-6">
         <div class="farmer_cutting2">
+          @if(isset($winningCoffeesData->images))
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_6)}}  alt="">
+          @endif
+        
         </div>
        </div>
        <div class="col-md-6">
@@ -438,8 +450,8 @@
        </div>
      </div>
      <div class="farmer_cutting">
-      <h3>the region of {{$winningCoffeesData->region}}</h3>
-        <p style="margin-bottom: 0;">{{$winningCoffeesData->region_story}}
+      <h3>the region of {{@$winningCoffeesData->region}}</h3>
+        <p style="margin-bottom: 0;">{{@$winningCoffeesData->region_story}}
           </p>
      </div>
       </div>

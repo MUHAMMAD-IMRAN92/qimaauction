@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card .card-header{
+        justify-content: center !important;
+    }
+    .card-text{
+        text-align: center;
+    margin: 10px;
+
+    }
+
+</style>
 
     <body
         class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
@@ -21,13 +32,13 @@
                                         <img src="{{ asset('public/app-assets/images/pages/login.png') }}" alt="branding logo">
                                     </div>
                                     <div class="col-lg-6 col-12 p-0">
-                                        <div class="card rounded-0 mb-0 px-2">
-                                            <div class="card-header pb-1">
+                                        <div class="card rounded-0 mb-0 card-text">
+                                            <div class="card-header ">
                                                 <div class="card-title">
-                                                    <h4 class="mb-0">Login</h4>
+                                                    <h4 class="mb-0 ">Login</h4>
                                                 </div>
                                             </div>
-                                            <p class="px-2">Welcome Back To Auction</p>
+                                            <p class="card-text">Welcome Back To Auction</p>
                                             <div class="card-content">
                                                 <div class="card-body pt-1">
                                                     <form method="POST" action="{{ route('login') }}">
@@ -85,7 +96,7 @@
                                                         {{-- <a  href="{{ route('register') }}"
                                                             class="btn btn-outline-primary float-left btn-inline">Register</a> --}}
                                                         <button type="submit"
-                                                            class="btn btn-primary float-right btn-inline">Login</button>
+                                                            class="btn btn-primary  btn-inline">Login</button>
                                                     </form>
                                                 </div>
                                             </div>

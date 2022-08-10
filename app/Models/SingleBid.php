@@ -14,4 +14,8 @@ class SingleBid extends Model
     {
         return $this->hasMany(User::class,'id','user_id');
     }
+    public function auctionProducts()
+    {
+        return $this->belongsTo(AuctionProduct::class);
+    }
 }
