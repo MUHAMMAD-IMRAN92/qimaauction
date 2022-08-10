@@ -31,7 +31,7 @@ class HomeController extends Controller
         if($user == 0) {
             return redirect('dashboard');
         } else {
-            return redirect('customer/AuctionProducts');
+            return redirect('/auction');
         }
 
         // $user = $this->user;

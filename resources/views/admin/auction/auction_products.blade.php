@@ -1,13 +1,22 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
-
+  <style>
+  .custom_btn_align{
+    display: contents;
+  }
+  .content-header.row{
+    margin-right: -15px;
+    margin-left: 30px;
+    align-items: center;
+  }
+  </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="content-header-left col-md-9 col-12">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             {{-- <h2 class="content-header-title float-left mb-0">Create Auction</h2> --}}
@@ -44,7 +53,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Create Auction Product</h5>
+                                    <h5 class="modal-title" style="display: block">Create Auction Product</h5>
                                     {{-- <button class="close" data-dismiss="modal"
                                         aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -186,6 +195,8 @@
                                                 {{-- <th>Id</th> --}}
                                                 <th>Title</th>
                                                 <th>Start Price</th>
+                                                <th>Reserve Price</th>
+                                                <th>Weight</th>
                                                 <th>Size</th>
                                                 <th>Rank</th>
                                                 {{-- <th>Jury Score</th> --}}
@@ -206,6 +217,12 @@
                                                             </td>
                                                             <td>
                                                                 {{ $auction->start_price }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->reserve_price }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->weight }}
                                                             </td>
                                                             <td>
                                                                 {{ $auction->size }}
@@ -256,8 +273,7 @@
                 // var socket = io('http://localhost:5002');
                 var socket = io('<?= env('SOCKETS') ?>');
                 ////// save AuctionProduct /////
-        socket.on('add_bid_updates', function (data) {
-
+                 socket.on('add_bid_updates', function (data) {
             // $("#price").html('$'+data.singleBidammounttesting);
             $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
             // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
@@ -373,7 +389,9 @@
                                      var id = data.id;
                              }
                             var markup = "<tr id=" + id + "><td>" + title + "</td><td>" + data
-                                .start_price + "</td><td>" + data.size + "</td><td>" + data.rank +
+                                .start_price + "</td><td>" + data
+                                .reserve_price + "</td><td>" + data
+                                .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
                                 "</td><td><i id='edit' data-auctionId=" + data.id +
                                 " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
                                 .id + " class='fas fa-trash-o'></i></td></tr>";

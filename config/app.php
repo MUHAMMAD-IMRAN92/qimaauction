@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Qimaauction Third Party packages
-         Yoeunes\Toastr\ToastrServiceProvider::class,
+        //  Yoeunes\Toastr\ToastrServiceProvider::class,
 
     ],
 

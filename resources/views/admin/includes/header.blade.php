@@ -54,7 +54,7 @@
     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
@@ -394,9 +394,6 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                        <li class="nav-item">
-                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Configuration</span></a>
-                            <ul>
                                 <li @if (request()->is('categories/*')) class='active' @endif><a
                                         href="{{ url('/categories/index') }}">
                                         {{-- <i class="feather icon-circle"></i> --}}
@@ -430,8 +427,7 @@
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
                                         data-i18n="eCommerce">Bid Limit</span></a>
-                            </li>
-                            </ul>
+
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
                             <ul>
@@ -461,7 +457,6 @@
                         </li> --}}
                         <li @if (request()->is('product/*')) class='active' @endif><a
                                 href="{{ url('/product/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
                                 <span class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
                         </li>
@@ -472,7 +467,12 @@
                                 <span class="menu-item @if (request()->is('/customer/index')) 'active' @endif"
                                     data-i18n="eCommerce">Manage Customer</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li @if (request()->is('auction/index')) class='active' @endif><a
+                            href="{{ url('/auction/index') }}">
+                            <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
+                                data-i18n="eCommerce">Manage Auction</span></a>
+                        </li>
+                        {{-- <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
                                     </span></a>
                             <ul class="menu-content">
@@ -487,7 +487,7 @@
                                         data-i18n="eCommerce">Auto Bids</span></a>
                             </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Open Cupping</span></a>
                         <ul>
