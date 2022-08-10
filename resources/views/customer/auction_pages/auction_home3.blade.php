@@ -2184,8 +2184,7 @@
 
         }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
-//        data.nextIncrement  = Math.round(data.nextIncrement,1).toFixed(1);
-//console.log(data.nextIncrement);
+        data.nextIncrement  = Math.round(data.nextIncrement,.5).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
         if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
