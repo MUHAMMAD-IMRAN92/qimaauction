@@ -5,17 +5,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 // Route::view('/', 'customer.dashboard.index');
-Route::post('signup',[App\Http\Controllers\AuctionController::class, 'newslettersignup']);
+Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslettersignup']);
 Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
@@ -29,7 +29,7 @@ Route::get('/auction-winners', [App\Http\Controllers\AuctionController::class, '
 
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
-Route::group(['middleware' => ['auth', 'isCustomer']], function(){
+Route::group(['middleware' => ['auth', 'isCustomer']], function() {
 
     Route::get('/auction', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auction');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
@@ -37,30 +37,35 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function(){
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
     Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
     Route::post('/saveyourscore', [App\Http\Controllers\AuctionController::class, 'saveYourScore'])->name('saveyourscore');
-
 });
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
 Route::post('/auction/getAuctionProduct', [App\Http\Controllers\AuctionController::class, 'getAuctionProduct'])->name('getAuctionProduct');
 Route::post('/auction/getUser', [App\Http\Controllers\AuctionController::class, 'getUser'])->name('getUser');
-Route::group(['middleware' => ['auth', 'isAdminDashboard']], function(){
+Route::group(['middleware' => ['auth', 'isAdminDashboard']], function() {
 
     Route::get('/auction/adminDashboard', [App\Http\Controllers\AuctionController::class, 'prductBiddingDashboard'])->name('prductBiddingDashboard');
 });
-Route::group(['middleware' => ['auth', 'isAdmin']], function(){
+Route::get('user_logout', function () {
+    if (Auth::user()) {
+        Auth::logout();
+    }
+    return Redirect::to('/auction-home');
+})->name('user_logout');
+Route::group(['middleware' => ['auth', 'isAdmin']], function() {
 
-    Route::get('dashboard', function(){
-    return view('admin.dashboard.index');
+    Route::get('dashboard', function() {
+        return view('admin.dashboard.index');
     });
 
-     //Category CRUD Routes
-     Route::get('/categories/index', [App\Http\Controllers\CategoryController::class, 'index']);
-     Route::get('/categories/allcategories', [App\Http\Controllers\CategoryController::class, 'allCategory']);
-     Route::get('/categories/create', [App\Http\Controllers\CategoryController::class, 'create']);
-     Route::post('/categories/create', [App\Http\Controllers\CategoryController::class, 'save']);
-     Route::get('/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit']);
-     Route::post('/categories/edit', [App\Http\Controllers\CategoryController::class, 'update']);
-     Route::get('/categories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'delete']);
-     //Flavour CRUD Routes
+    //Category CRUD Routes
+    Route::get('/categories/index', [App\Http\Controllers\CategoryController::class, 'index']);
+    Route::get('/categories/allcategories', [App\Http\Controllers\CategoryController::class, 'allCategory']);
+    Route::get('/categories/create', [App\Http\Controllers\CategoryController::class, 'create']);
+    Route::post('/categories/create', [App\Http\Controllers\CategoryController::class, 'save']);
+    Route::get('/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit']);
+    Route::post('/categories/edit', [App\Http\Controllers\CategoryController::class, 'update']);
+    Route::get('/categories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'delete']);
+    //Flavour CRUD Routes
     Route::get('/flavour/index', [App\Http\Controllers\FlavourController::class, 'index']);
     Route::get('/flavour/allflavour', [App\Http\Controllers\FlavourController::class, 'allflavour']);
     Route::get('/flavour/create', [App\Http\Controllers\FlavourController::class, 'create']);
@@ -135,7 +140,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/product/delete_product_image/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
     //Product & Jury
-    Route::post('/product/sent_to_jury',  [App\Http\Controllers\ProductController::class, 'sentToJury']);
+    Route::post('/product/sent_to_jury', [App\Http\Controllers\ProductController::class, 'sentToJury']);
     //jury CRUD
     Route::get('/jury/index', [App\Http\Controllers\JuryController::class, 'index']);
     Route::get('/jury/alljury', [App\Http\Controllers\JuryController::class, 'alljury']);
@@ -146,9 +151,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     Route::get('/jury/delete/{id}', [App\Http\Controllers\JuryController::class, 'delete']);
     Route::get('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJury']);
     Route::post('/jury/sample_search', [App\Http\Controllers\JuryController::class, 'sampleSearch'])->name('sample_search');
-    Route::post('/jury/ajax_send_to_jury',  [App\Http\Controllers\JuryController::class, 'ajaxSendToJuryPost'])->name('ajax_send_to_jury');
-    Route::post('/jury/send_to_jury',  [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
-    Route::post('/jury/update_send_to_jury',  [App\Http\Controllers\JuryController::class, 'updateSentToJury'])->name('updateSentToJury');
+    Route::post('/jury/ajax_send_to_jury', [App\Http\Controllers\JuryController::class, 'ajaxSendToJuryPost'])->name('ajax_send_to_jury');
+    Route::post('/jury/send_to_jury', [App\Http\Controllers\JuryController::class, 'sendToJuryPost']);
+    Route::post('/jury/update_send_to_jury', [App\Http\Controllers\JuryController::class, 'updateSentToJury'])->name('updateSentToJury');
 
     //auction CRUD
     Route::get('/auction/index', [App\Http\Controllers\AuctionController::class, 'index']);
@@ -185,55 +190,52 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function(){
     //Agreement Controller
     Route::get('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement']);
     Route::post('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement'])->name('agreement');
-
-
-
 });
 
 Auth::routes();
 Route::get('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('news');
 Route::get('/newsletterSave', [App\Http\Controllers\HomeController::class, 'newsletterpost'])->name('newsletter');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dev_test', [App\Http\Controllers\DevTestController::class , 'index']);
+Route::get('/dev_test', [App\Http\Controllers\DevTestController::class, 'index']);
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::middleware(['auth'])->group(function () {
     //Dashboard Route
     // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 });
-    //Open Cupping
-    Route::get('/cupping/index', [App\Http\Controllers\OpenCuppingController::class, 'index']);
-    Route::post('/cupping/openCuppingUser', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingUser'])->name('openCuppingUser');
-    Route::get('/cupping/create', [App\Http\Controllers\OpenCuppingController::class, 'create']);
-    Route::post('/cupping/save', [App\Http\Controllers\OpenCuppingController::class, 'store'])->name('open_cupping');
-    Route::get('/cupping/show/{userId?}', [App\Http\Controllers\OpenCuppingController::class, 'show'])->name('show_cupping');
-    Route::get('/jury/link/give_cupping_review/{userId}/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
-    Route::post('/jury/link/saveCuppingReview', [App\Http\Controllers\OpenCuppingController::class, 'saveCuppingReview']);
-    Route::get('/cupping/openCuppingFeedback', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingFeedback'])->name('openCuppingFeedback');
-    Route::get('/cupping/openCuppingSummary', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingSummary'])->name('openCuppingSummary');
-    Route::get('/cupping/openCuppingReviewDetail/{sample?}', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingReviewDetail'])->name('openCuppingReviewDetail');
-    //End Cupping
-    Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
-    Route::get('/jury/link/give_review/{table?}/{juryId?}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
-    Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
+//Open Cupping
+Route::get('/cupping/index', [App\Http\Controllers\OpenCuppingController::class, 'index']);
+Route::post('/cupping/openCuppingUser', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingUser'])->name('openCuppingUser');
+Route::get('/cupping/create', [App\Http\Controllers\OpenCuppingController::class, 'create']);
+Route::post('/cupping/save', [App\Http\Controllers\OpenCuppingController::class, 'store'])->name('open_cupping');
+Route::get('/cupping/show/{userId?}', [App\Http\Controllers\OpenCuppingController::class, 'show'])->name('show_cupping');
+Route::get('/jury/link/give_cupping_review/{userId}/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
+Route::post('/jury/link/saveCuppingReview', [App\Http\Controllers\OpenCuppingController::class, 'saveCuppingReview']);
+Route::get('/cupping/openCuppingFeedback', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingFeedback'])->name('openCuppingFeedback');
+Route::get('/cupping/openCuppingSummary', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingSummary'])->name('openCuppingSummary');
+Route::get('/cupping/openCuppingReviewDetail/{sample?}', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingReviewDetail'])->name('openCuppingReviewDetail');
+//End Cupping
+Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
+Route::get('/jury/link/give_review/{table?}/{juryId?}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
+Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
 
-    Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
-    Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::class, 'reviewedSamples']);
-    Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
-    Route::post('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
-    Route::get('/review/review_detail/{sample?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
-    //CSV Routes
-    Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewController::class, 'reviewDetailCsv'])->name('reviewdetail_csv');
-    Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
-    Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
-    Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
+Route::get('/jury/formSample', [App\Http\Controllers\ReviewController::class, 'form']);
+Route::get('/review/reviewed_samples', [App\Http\Controllers\ReviewController::class, 'reviewedSamples']);
+Route::get('/review/summary', [App\Http\Controllers\ReviewController::class, 'reviewSummary']);
+Route::post('/review/tabledata/{juryId?}/{table?}', [App\Http\Controllers\ReviewController::class, 'reviewTableData'])->name('sampletable');
+Route::get('/review/review_detail/{sample?}', [App\Http\Controllers\ReviewController::class, 'reviewDetail'])->name('review_detail');
+//CSV Routes
+Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewController::class, 'reviewDetailCsv'])->name('reviewdetail_csv');
+Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
+Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
+Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
 
 
-    //Customer Reset Passwords Routes
-    Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
-    Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-    Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin'])->name('customer.login');
-    //
-    Route::view('/terms_conditions','customer/pages/terms_conditions');
-    Route::view('/privacy_policy','customer/pages/privacy_policy');
-    Route::view('/bid_agreement','customer/pages/bid_agreement');
-    Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
+//Customer Reset Passwords Routes
+Route::get('reset-password/{token}', [App\Http\Controllers\CustomerController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [App\Http\Controllers\CustomerController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, 'customerLogin'])->name('customer.login');
+//
+Route::view('/terms_conditions', 'customer/pages/terms_conditions');
+Route::view('/privacy_policy', 'customer/pages/privacy_policy');
+Route::view('/bid_agreement', 'customer/pages/bid_agreement');
+Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);

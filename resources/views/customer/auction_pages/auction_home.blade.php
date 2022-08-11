@@ -1034,9 +1034,7 @@
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
             @if(Auth::user())
-            <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-             document.getElementById('logout-form').submit();">
+            <a href="{{ route('user_logout') }}" >
             <p>LOG OUT</p>
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
