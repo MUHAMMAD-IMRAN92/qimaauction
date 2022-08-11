@@ -1140,7 +1140,7 @@
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount, 1) : number_format($auctionProduct->start_price, 1) }}/lbs</span>
                                         </div>
                                     </td>
                                     <td class="td-res-pl">
@@ -1405,7 +1405,7 @@
                                                                 <div
                                                                     class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p >CURRENT AUTOBID IS
-                                                                        ${{ $auctionProduct->latestAutoBidPrice->bid_amount }}/lb
+                                                                        ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
                                                                             data-id="{{ $auctionProduct->id }}"
@@ -1537,7 +1537,7 @@
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount, 1) : number_format($auctionProduct->start_price, 1) }}lbs</span>
                                         </div>
                                     </td>
                                     @php
@@ -1834,11 +1834,11 @@
 
             var id = $(this).attr('data-id');
             var minamount=$('.nextincrement'+id).html();
-            var float_amount = parseFloat(minamount.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+            var float_amount = parseFloat(minamount.replace(/[^0-9.]/g,''));
             current_val = $('.autobidamount' + id).val();
             if(current_val && current_val < float_amount){
                 $('.showMessageForAmount' + id).show();
-                $('.showMessageForAmount' + id).html('Please Enter Amount Greater the or equal to '+float_amount);
+                $('.showMessageForAmount' + id).html('Please Enter Amount Greater than or equal to '+float_amount);
             }else{
             if (current_val) {
                 $('.showMessageForAmount' + id).hide();
@@ -1879,7 +1879,9 @@
         $(".yourscore").focusout(function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
-            let value = $(this).html();
+            let value = $.trim($(this).html());
+            
+            if(value){
             $.ajax({
                 url: "{{ route('saveyourscore') }}",
                 method: 'POST',
@@ -1895,8 +1897,9 @@
                     console.log(error)
                 }
             });
-
+  }
         });
+  
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
@@ -2012,7 +2015,7 @@
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
                                         '<p>Current autobid is $' +
-                                        autobidamount +
+                                        addCommas(autobidamount) +
                                         ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                         id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
@@ -2085,7 +2088,7 @@
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
                                         '<p>Current autobid is $' +
-                                        autobidamount +
+                                        addCommas(autobidamount) +
                                         ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                         id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
@@ -2180,7 +2183,7 @@
         }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         data.nextIncrement  = parseFloat(data.nextIncrement).toFixed(1);
-        $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
+        $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
         if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) { 
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
@@ -2370,11 +2373,11 @@
         }
         var incrementedvalue=roundedToFixed(data.nextIncrement,1);
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lbs');
-        $(".nextincrement" + data.bidID).html('$' + incrementedvalue.toLocaleString('en-US'));
+        $(".nextincrement" + data.bidID).html('$' + addCommas(incrementedvalue));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".paddleno" + data.bidID).addClass('fw-bold');
-        $(".biddermaxbid" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US') +
+        $(".biddermaxbid" + data.bidID).html('$' + addCommas(data.nextIncrement) +
             '/lb');
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
@@ -2502,6 +2505,18 @@
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
+    function addCommas(nStr)
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
 </script>
 
 </html>
