@@ -2162,7 +2162,7 @@
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-console.log(data);
+        $(".paddleno" + data.bidID).html(data.paddleNo);
         if(data.user_id == {{ Auth::user()->id }})
         {
             $(".liabilitybidcollapse" + data.bidID).show();
