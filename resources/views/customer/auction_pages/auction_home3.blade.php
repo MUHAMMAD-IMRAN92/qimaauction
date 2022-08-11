@@ -2161,10 +2161,10 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {
+    socket.on('auto_bid_updates', function(data) {   
         $(".paddleno" + data.bidID).html(data.paddleNo);
         if(data.user_id == {{ Auth::user()->id }})
-        {
+        { 
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2182,7 +2182,7 @@
         data.nextIncrement  = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
+        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) { 
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
@@ -2198,7 +2198,7 @@
              $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '##143D30');
         }
-        if(data.user_id != {{ Auth::user()->id }}){
+        if(data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}){ 
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
@@ -2213,7 +2213,6 @@
              $(".bidnowbutton" +data.bidID).css('background', '#143D30');
         }
         if (data.loser == {{ Auth::user()->id }}) {
-
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
@@ -2260,7 +2259,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) { 
+    socket.on('add_bid_updates', function(data) {  
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
