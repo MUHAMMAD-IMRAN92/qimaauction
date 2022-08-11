@@ -269,6 +269,7 @@ class AuctionController extends Controller {
         $auction = Auction::first();
         $auction->endTime = $convertedTime;
         $auction->save();
+
         if (!isset($checkSingleBid, $checkSingleBid->bid_amount)) {
             $auctionPData = AuctionProduct::where('id', $request->id)->first();
             $auctionProductPrice = $auctionPData->start_price;
@@ -366,16 +367,25 @@ class AuctionController extends Controller {
 
             return response()->json($singleBid);
         } else {
+            $autoBidsData = AutoBid::where('auction_product_id', $request->id)->where('is_active', '1')->first();
             $auctionPStartPrice = AuctionProduct::where('id', $request->id)->first();
             $singleBidStartPrice = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first()->bid_amount;
             $bidLimit = Bidlimit::where('min', '<', $singleBidStartPrice)->orderBy('min', 'desc')->limit(1)->get();
             $bidIncrement = $bidLimit[0]->increment;
             $singleBidData = new SingleBid();
             $singleBidData->auction_id = $auctionPStartPrice->auction_id;
-            $singleBidData->user_id = Auth::user()->id;
+
             $singleBidData->auction_product_id = $request->id;
             $newbidPrice = $bidIncrement + $singleBidStartPrice;
             $singleBidData->bid_amount = $newbidPrice;
+            if(isset($autoBidsData) && $newbidPrice == $autoBidsData->bid_amount)
+            {
+                $singleBidData->user_id = $autoBidsData->user_id;
+            }
+            else
+            {
+                $singleBidData->user_id = Auth::user()->id;
+            }
             $singleBidData->save();
             $autoBidsData = AutoBid::where('auction_product_id', $request->id)->where('is_active', '1')->first();
 
