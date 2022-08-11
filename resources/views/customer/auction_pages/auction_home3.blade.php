@@ -2163,7 +2163,7 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) { tml(data.paddleNo);
+    socket.on('auto_bid_updates', function(data) {
 
         if(data.user_id == {{ Auth::user()->id }})
         {
