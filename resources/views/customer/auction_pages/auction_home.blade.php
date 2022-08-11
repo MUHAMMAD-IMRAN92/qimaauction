@@ -1177,7 +1177,7 @@
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format($bidIncrementSinglebid, 1) }}</td>
+                                        ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
