@@ -1165,7 +1165,7 @@
                                         ->limit(1)
                                         ->get();
                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
+                                    $finalIncSinglebid = (float)$incPriceSinglebid + (float)$bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
                                 <tr
