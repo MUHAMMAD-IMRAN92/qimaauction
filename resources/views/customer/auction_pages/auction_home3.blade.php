@@ -1079,7 +1079,7 @@
             </div>
         </div>
     </div>
-     
+
     <section>
 
         <div class="table-container">
@@ -1124,7 +1124,7 @@
                                         ->limit(1)
                                         ->get();
                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
+                                    $finalIncSinglebid = (float)$incPriceSinglebid + (float)$bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
                                 <tr
@@ -1138,7 +1138,7 @@
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format($bidIncrementSinglebid, 1) }}</td>
+                                        ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
@@ -1154,18 +1154,18 @@
                                                 href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
                                         @endif
                                     </td>
-                                     
+
                                     <td class="liability{{ $auctionProduct->id }} td-res-pl">
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
                                     </td>
-                                     
+
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">{{ $products->product_title }}
                                             </a></td>
 
-                                        
+
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
@@ -1204,12 +1204,12 @@
                                                         <p>:</p>
                                                         <p class="seconds">-</p>
                                                     </div>
-                                                     
+
                                                 @endif
                                             </span>
                                         </div>
                                     </td>
-                                  
+
                                 </tr>
                                 @if (!isset($agreement) ||
                                     $agreement->privacy_policy_id != '1' ||
@@ -1281,7 +1281,7 @@
                                                                 </p>
                                                             @endif
                                                             <div>
-                                                                
+
                                                                 @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
                                                                     <button
@@ -1312,7 +1312,7 @@
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px; display:none;">Cancel</button>
-                                                                 
+
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -1535,7 +1535,7 @@
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format($bidIncrementSinglebid, 1) }}</td>
+                                        ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
@@ -1561,7 +1561,7 @@
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
                                                 {{ $products->product_title }} </a></td>
 
-                                        
+
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
@@ -1600,7 +1600,7 @@
                                                         <p>:</p>
                                                         <p class="seconds">-</p>
                                                     </div>
-                                                     
+
                                                 @endif
                                             </span>
                                         </div>
@@ -1693,7 +1693,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
+                <h3>Â© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
     </section>
@@ -1834,9 +1834,9 @@
         //auto bid
         $(".autobtnclick").click(function() {
 
-            var id = $(this).attr('data-id'); 
+            var id = $(this).attr('data-id');
             var minamount=$('.nextincrement'+id).html();
-            var float_amount = parseFloat(minamount.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]); 
+            var float_amount = parseFloat(minamount.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
             current_val = $('.autobidamount' + id).val();
             if(current_val && current_val < float_amount){
                 $('.showMessageForAmount' + id).show();
@@ -2008,8 +2008,8 @@
                                 _token: "{{ csrf_token() }}",
                             },
                             success: function(response) {
-                            
-                                 if (response.success) { 
+
+                                 if (response.success) {
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
@@ -2022,7 +2022,7 @@
                                     $(".bidnowbutton" + id).css("display",
                                          "none");
                                     $(".autobidClass" + id).css("display", "none");
-                                }else  if (response.message !== null) { 
+                                }else  if (response.message !== null) {
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(response.message);
@@ -2031,7 +2031,7 @@
                                     $('.bidnowautobutton'+id).show();
                                     $('.autobidClass'+id).hide();
                                     $('.nextincrement'+id).show();
-                                }else { 
+                                }else {
                                     var latestAutoBidId = response.id;
                                     var bidPrice = response.bid_amountNew;
                                     var bidID = response.auction_product_id;
@@ -2130,11 +2130,11 @@
                             id: id,
                             _token: "{{ csrf_token() }}",
                         },
-                        success: function(response) { 
+                        success: function(response) {
                             var auction_product_id = response.auction_product_id;
                             var outbid = response.outAutobid;
                             if (outbid == 0) {
-                                current_user_id={{ Auth::user()->id }}; 
+                                current_user_id={{ Auth::user()->id }};
                                 $('.errorMsgAutoBid' + id).html('');
                                 $('.errorMsgAutoBid' + id + id).html('');
                                 $(".bidnowbutton" + id).css("display", "block");
@@ -2163,13 +2163,10 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {
-        console.log(data);
-        console.log('its here');
-        $(".paddleno" + data.bidID).html(data.paddleNo);
+    socket.on('auto_bid_updates', function(data) { tml(data.paddleNo);
 
         if(data.user_id == {{ Auth::user()->id }})
-        { 
+        {
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2184,7 +2181,7 @@
 
         }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
-        data.nextIncrement  = Math.round(data.nextIncrement,.5).toFixed(1);
+        data.nextIncrement  = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
         if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
@@ -2192,7 +2189,7 @@
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000); 
+            }, 10000);
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $(".alertMessage" + data.bidID).css('background','#f16767');
             $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
@@ -2200,24 +2197,24 @@
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
             $('.bidnowautobutton'+data.bidID).show();
-             $('.bidnowbutton'+data.bidID).attr("disabled", false); 
+             $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '##143D30');
         }
         if (data.loser == {{ Auth::user()->id }}) {
-           
+
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000); 
+            }, 10000);
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
             $(".alertMessage" + data.bidID).css('background','#f16767');
             $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
             $('.nextincrement'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
-            $('.bidnowautobutton'+data.bidID).show(); 
-            $('.bidnowbutton'+data.bidID).attr("disabled", false); 
+            $('.bidnowautobutton'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '#143D30');
         }
         var total_bid = 0;
@@ -2251,7 +2248,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) { 
+    socket.on('add_bid_updates', function(data) {
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
@@ -2265,12 +2262,12 @@
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000); 
+            }, 10000);
             $('.autobidamount' + data.bidID).show();
             $('.nextincrement' + data.bidID).show();
             $(".alertMessage" + data.bidID).hide('');
             $(".autobidClass1" + data.bidID).show();
-            $('.bidnowbutton'+data.bidID).attr("disabled", false); 
+            $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".alertMessage" + data.bidID).css('background','#f16767');
             $('.alertMessage' + data.bidID).html('You have been outbid.');
             $(".alertMessage" + data.bidID).hide('');
@@ -2290,7 +2287,7 @@
             // total = 0;
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
-            $(".bidcollapse" + data.bidID).removeClass("changecolor"); 
+            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".userbid" + data.bidID).css("color", "#e78460");
         }
         if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
