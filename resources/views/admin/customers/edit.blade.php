@@ -96,6 +96,23 @@
                                                 </div>
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
+                                                        <input type="text" id="company" class="form-control"  name="company" value="{{$customer->company}}">
+                                                        <label for="company">Company</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="role">
+                                                            <option value="" selected>Select Role</option>
+                                                            <option value="0"{{$customer->is_admin == '0' ? 'selected' : ''}}>Admin</option>
+                                                            <option value="1"{{$customer->is_admin == '1' ? 'selected' : ''}}>User</option>
+                                                            <option value="2"{{$customer->is_admin == '2' ? 'selected' : ''}}>Auction Dashboard Admin</option>
+                                                          </select>
+                                                        @error('role') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
                                                         <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="status">
                                                             <option value="">Select Status</option>
                                                             <option value="Verified"{{ $customer->status == 'Verified' ? 'selected' : ''}}>Verified</option>

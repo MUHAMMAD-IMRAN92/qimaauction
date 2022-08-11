@@ -406,10 +406,7 @@
                                                         @if (isset($auction_products))
                                                             @foreach ($auction_products as $auction)
                                                                 @foreach ($auction->products as $key => $pro)
-                                                                <tr id="{{ ++$i }}" class="mb-1">
-    
-                                                                    {{-- <td class="headerSortUp headerSortDown move">
-                                                                    </td> --}}
+                                                                <tr id="{{ ++$i }}" class="mb-1"> 
                                                                     <td id="product{{ $auction->id }}"
                                                                         type="button"
                                                                         style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px"

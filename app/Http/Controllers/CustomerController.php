@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $customers      =   User::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
         });
-        $customers      =   $customers->where('is_hidden', '0')->where('is_admin','1')->skip((int)$start)->take((int)$length)->get();
+        $customers      =   $customers->where('is_hidden', '0')->where('is_admin','!=','0')->skip((int)$start)->take((int)$length)->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal'      => $customer_count,
@@ -52,7 +52,8 @@ class CustomerController extends Controller
             'phone_no'      => 'required|max:12',
             'password'      => 'required',
             'status'        => 'required',
-            'paddle_number' => 'required|min:4|unique:users'
+            'paddle_number' => 'required|min:4|unique:users',
+            'role'          => 'required'
             // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
         ]);
         $customer = new  User();
@@ -64,7 +65,9 @@ class CustomerController extends Controller
         $customer->bid_limit        =   $request->bid_limit;
         $customer->paddle_number    =   $request->paddle_number;
         $customer->status           =   $request->status;
-        $customer->is_admin           =   1;
+        $customer->is_admin         =   $request->role;
+        $customer->company          =   $request->company;
+
         $customer->save();
         $token = Str::random(64);
 
@@ -132,7 +135,8 @@ class CustomerController extends Controller
             'phone_no'      => 'required|max:12',
             'password'      => 'required',
             'status'        => 'required',
-            'paddle_number' => 'required|min:4|'
+            'paddle_number' => 'required|min:4|',
+            'role'          => 'required'
             // 'bid_limit' => 'required|min:2|alpha_dash|max:255',
         ]);
         $customer                   =   User::find($request->id);
@@ -143,6 +147,8 @@ class CustomerController extends Controller
         $customer->bid_limit        =   $request->bid_limit;
         $customer->status           =   $request->status;
         $customer->paddle_number    =   $request->paddle_number;
+        $customer->is_admin         =   $request->role;
+        $customer->company          =   $request->company;
 
         $customer->save();
         return redirect('/customer/index');

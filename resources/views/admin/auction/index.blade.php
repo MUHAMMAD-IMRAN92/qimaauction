@@ -80,6 +80,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
+        var base_path='<?= asset('/')?>';
         var t = $('#auction-table').DataTable({
             "processing": true,
             "serverSide": true,
@@ -113,11 +114,11 @@
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
-                            `<a class="" href="/auction/edit/` + ids +
+                            `<a class="" href="`+base_path+`auction/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            `<a class="" href="/auction/products/` + ids +
+                            `<a class="" href="`+base_path+`auction/products/` + ids +
                             `">Products&nbsp</a>` +
-                            `<a class="" href="/auction/dashboard/` + ids +
+                            `<a class="" href="`+base_path+`auction/dashboard/` + ids +
                             `">Dashboard</a>` +
                             '</td>'
                     }

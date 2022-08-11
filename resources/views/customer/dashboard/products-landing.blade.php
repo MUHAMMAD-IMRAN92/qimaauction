@@ -466,7 +466,7 @@
             </div>
             <div class="col-lg-12 text-center section-4-text-1">
                 <p class="time real-timer m-0"></p>
-                <p class="date">AUGUST 9<sup>th</sup> </p>
+                <p class="date">AUGUST 18<sup>th</sup> </p>
             </div>
         </div>
 

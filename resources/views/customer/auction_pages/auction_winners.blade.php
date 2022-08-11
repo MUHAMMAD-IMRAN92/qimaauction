@@ -18,10 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,300&display=swap"
         rel="stylesheet">
     {{-- web sockets --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
-    <script type="text/javascript">
-        var socket = io('<?= env('SOCKETS') ?>');
-    </script>
+
 </head>
 <style>
     body {
@@ -527,7 +524,7 @@
         color: white;
     }
 
-    .startbidbtn, .startbidbtn:hover {
+    .startbidbtn {
         background-color: #143D30 !important;
         color: white;
     }
@@ -725,19 +722,6 @@
 .sidebaropen-width{
     width: 450px;
 }
-.changecolor
-{
-    background: #FFFEA2;
-    border-width: 1px 0px;
-    border-style: solid;
-    border-color: #9C9C9C;
-}
-
-.card-header{
-            display: flex;
-    justify-content: center;
-    align-items: center;
-        }
 
     @media (max-width: 1199px) {
         .tablenav a {
@@ -844,8 +828,6 @@
             padding-right: 10px;
             white-space: nowrap;
         }
-
-
 
         .yourscore {
             max-width: none;
@@ -1032,7 +1014,6 @@
     <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
-
             @if(Auth::user())
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -1047,7 +1028,6 @@
                 <p>LOG IN</p>
             </a>
             @endif
-
             <a href="#"><i class="fa fa-instagram"></i> </a>
             <a href="#"><i class="fa fa-facebook-f"></i></a>
             <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
@@ -1144,12 +1124,8 @@
                             <tr class="text-center">
                                 <th scope="col">Rank</th>
                                 <th scope="col">Jury Score</th>
-                                {{-- <th scope="col">Your Score</th> --}}
                                 <th scope="col">Weight</th>
-                                <th scope="col">Increment</th>
-                                <th scope="col">Bid</th>
-                                <th scope="col"></th>
-                                {{-- <th scope="col">Total Value</th> --}}
+                                <th scope="col">Highest Bid</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
@@ -1174,30 +1150,13 @@
                                 class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    {{-- <td contenteditable='true' class="text-underline yourscore td-res-pl"
-                                        data-id="{{ $auctionProduct->id }}" id="score">
-                                        {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                    <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format($bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
                                         </div>
                                     </td>
-                                    <td class="td-res-pl">
-                                        @if ($auction->auctionStatus() == 'active')
-                                            <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                data-id="{{ $auctionProduct->id }}"
-                                                auction-id="{{ $auctionProduct->auction_id }}" id="accordion1"
-                                                data-toggle="collapse" data-parent="#accordion1"
-                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                        @endif
-                                    </td>
-                                    {{-- <td class="liability{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
-                                    </td> --}}
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
@@ -1222,10 +1181,10 @@
                                             <td class="td-res-pl">SL28</td>
                                         @endif
                                     @endforeach
-                                    @if (isset($auctionProduct->singleBidPricelatest))
-                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                    @if (isset($auctionProduct->highestbid))
+                                        @foreach ($auctionProduct->highestbid->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                {{ $userData->paddle_number ?? '---' }}</td>
+                                                {{ $userData->company ?? '---' }}</td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
@@ -1250,14 +1209,10 @@
                                         <td colspan="13">
                                             <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
                                                 <div class="card">
-                                                    <div class="card-header">
-                                                        <h5 style="margin: 0 20px">You need to login to Bid.</h5>
-                                                        <a style="padding: 5px; border-radius: 4px;"  href="{{ route('customer.login') }}" class="startbidbtn">Login</a>
-
-                                                    </div>
-                                                    {{-- <div class="card-body">
+                                                    <h5 class="card-header">You need to login to Bid.</h5>
+                                                    <div class="card-body">
                                                            <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </td>
@@ -1449,77 +1404,13 @@
                 }
             });
         });
-        //userscore save
-        $(".yourscore").keypress(function(e) {
-            if ($(this).html() == "---") {
-                $(this).html("");
-            }
-            if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
-        });
-        $(".yourscore").focusout(function(e) {
-            e.preventDefault();
-            var id = $(this).attr('data-id');
-            let value = $(this).html();
-            $.ajax({
-                url: "{{ route('saveyourscore') }}",
-                method: 'POST',
-                data: {
-                    id: id,
-                    value: value,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
 
-                },
-                error: function(error) {
-                    console.log(error)
-                }
-            });
-
-        });
     });
 </script>
 <script>
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {
-        $(".paddleno" + data.bidID).html(data.paddleNo);
-        $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
-        $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
-        $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        var total_bid = 0;
-        data.checkTimer = 0;
-        resetTimer(data);
-    });
-    socket.on('auto_bid_delete', function(data) {
-        $(".alertMessage" + data.bidID).html('');
-        $('.errorMsgAutoBid' + data.auction_product_id).html('');
-        $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
-        $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
-        $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
-        // var weight = $("#auctionWeight").val();
-        // var finalIncSinglebid = $("#finalIncSinglebid").val();
-        // var total = 0;
-        //  var total = (finalIncSinglebid * weight);
-        $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
-        $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
-    });
-    socket.on('add_bid_updates', function(data) {
-        if (data.checkTimer == 0) {
-            window.empty = data.checkTimer;
-            resetTimer(data);
-        }
-        $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lbs');
-        $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
-        $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
-        $(".paddleno" + data.bidID).html(data.paddleNo);
-        $(".biddermaxbid" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US') +
-            '/lb');
-        $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
-
-    });
-
     function resetTimer(data) {
         var timer_text = "";
         var hours = 0;

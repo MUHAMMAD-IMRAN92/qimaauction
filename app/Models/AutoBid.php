@@ -13,4 +13,8 @@ class AutoBid extends Model
     {
         return $this->hasOne(User::class,'id','user_id')->latestOfMany();
     }
+    public function auctionProducts()
+   {
+       return $this->belongsTo(AuctionProduct::class);
+   }
 }
