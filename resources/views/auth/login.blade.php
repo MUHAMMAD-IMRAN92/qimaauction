@@ -25,12 +25,16 @@
     margin-bottom: 30px
 }
 .login-container form{
-    margin-top: 20px
+    margin-top: 20px;
+    width: 320px;
 }
 
 @media (max-width: 767px){
 .login-screen-logo{
-    max-width: 300px;
+    max-width: 345px;
+}
+.login-container form{
+    width: 250px;
 }
 }
 
@@ -91,7 +95,7 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary  btn-inline">Login</button>
+                        <button type="submit" class="btn btn-primary  btn-inline" style="font-size: 16px">Login</button>
                     </form>
                 </div>
 
