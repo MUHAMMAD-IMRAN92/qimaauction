@@ -1034,9 +1034,7 @@
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
             @if(Auth::user())
-            <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-             document.getElementById('logout-form').submit();">
+            <a href="{{ route('user_logout') }}" >
             <p>LOG OUT</p>
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -1048,11 +1046,11 @@
             </a>
             @endif
 
-            <a href="#"><i class="fa fa-instagram"></i> </a>
-            <a href="#"><i class="fa fa-facebook-f"></i></a>
-            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+            <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+            <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
         </div>
     </section>
     <section>
@@ -1167,7 +1165,7 @@
                                         ->limit(1)
                                         ->get();
                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
+                                    $finalIncSinglebid = (float)$incPriceSinglebid + (float)$bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
                                 <tr
@@ -1179,7 +1177,7 @@
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format($bidIncrementSinglebid, 1) }}</td>
+                                        ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span

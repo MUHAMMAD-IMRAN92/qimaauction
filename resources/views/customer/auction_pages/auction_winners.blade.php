@@ -26,6 +26,34 @@
     }
 
     .navbar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 20px;
+}
+
+.navbar-list {
+  list-style: none;
+}
+
+.navbar-list .list-items {
+  display: inline-block;
+  padding: 10px 10px;
+  font-weight: 400;
+}
+#width a img{
+  margin-left: 108px;
+  margin-top:20px;
+  margin-bottom: 15px;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+    /* .navbar {
         width: 100%;
         background-color: #D1AF69;
         overflow: auto;
@@ -48,7 +76,7 @@
 
     .navbar a p {
         font-family: 'play-fair';
-    }
+    } */
 
     #background {
         background-image: url({{ asset('public/images/banner2.png') }});
@@ -563,9 +591,12 @@
         display: flex;
         justify-content: center;
     }
-
+    #mySidebar{
+        box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
+    }
     .sidebar-container {
         padding: 20px 30px;
+        width:450px;
     }
 
     .lot-header h4 {
@@ -1011,7 +1042,32 @@
 </style>
 
 <body>
-    <section>
+    <nav class="navbar navbar-fix">
+        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+            </a>
+        </div>
+        <div>
+            <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                
+                <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+                <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+    
+                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+    
+    
+            </ul>
+        </div>
+        {{-- <div class="menu" id="toggle-button">
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+        </div> --}}
+    
+    
+    
+    </nav>
+    {{-- <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
             @if(Auth::user())
@@ -1028,11 +1084,11 @@
                 <p>LOG IN</p>
             </a>
             @endif
-            <a href="#"><i class="fa fa-instagram"></i> </a>
-            <a href="#"><i class="fa fa-facebook-f"></i></a>
-            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+            <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+            <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
         </div>
     </section>
     <section>
@@ -1041,7 +1097,7 @@
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
@@ -1130,7 +1186,7 @@
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
                                 <th scope="col">High Bidder</th>
-                                <th scope="col">Time Left</th>
+                                {{-- <th scope="col">Time Left</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -1189,7 +1245,7 @@
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
-                                    <td class="td-res-pl">
+                                    {{-- <td class="td-res-pl">
                                         <div>
                                             <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
                                                 @if ($auction->auctionStatus() != 'active')
@@ -1203,7 +1259,7 @@
                                                 @endif
                                             </span>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                     <tr class="hide-table-padding bid-row">
                                         <td colspan="13">
@@ -1255,7 +1311,16 @@
                 </div>
             </div>
     </section>
-    <section>
+    <section class="section-4">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12 pb-2 text-center section-4-img">
+                    <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section>
         <div class="footer-container">
             <div class="row footer-head">
                 <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
@@ -1297,7 +1362,7 @@
                 <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1336,7 +1401,7 @@
         }, 300000)
         $(".openSidebar").click(function() {
 
-           $("#mySidebar").toggleClass('sidebaropen-width');
+           $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');

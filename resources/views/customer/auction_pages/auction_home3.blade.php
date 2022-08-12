@@ -24,11 +24,41 @@
     </script>
 </head>
 <style>
+    #mySidebar{
+        box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
+    }
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     .navbar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 20px;
+}
+
+.navbar-list {
+  list-style: none;
+}
+
+.navbar-list .list-items {
+  display: inline-block;
+  padding: 10px 10px;
+  font-weight: 400;
+}
+#width a img{
+  margin-left: 108px;
+  margin-top:20px;
+  margin-bottom: 15px;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+    /* .navbar {
         width: 100%;
         background-color: #D1AF69;
         overflow: auto;
@@ -51,7 +81,7 @@
 
     .navbar a p {
         font-family: 'play-fair';
-    }
+    } */
 
     #background {
         background-image: url({{ asset('public/images/banner2.png') }});
@@ -569,6 +599,7 @@
 
     .sidebar-container {
         padding: 20px 30px;
+        width:450px;
     }
 
     .lot-header h4 {
@@ -1014,13 +1045,36 @@
 </style>
 
 <body>
-    <section>
-        <div class="navbar">
+    {{-- <section> --}}
+        <nav class="navbar navbar-fix">
+            <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+                </a>
+            </div>
+            <div>
+                <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                    
+                    <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+                    <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+        
+                    <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+        
+        
+                </ul>
+            </div>
+            {{-- <div class="menu" id="toggle-button">
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+            </div> --}}
+        
+        
+        
+        </nav>
+        {{-- <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
-            <a href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
+            <a href="{{ route('user_logout') }}">
                 <p>LOG OUT</p>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -1031,15 +1085,15 @@
             <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
             <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
-        </div>
-    </section>
-    <section>
+        </div> --}}
+    {{-- </section> --}}
+    {{-- <section>
         <div id="background">
             <div class="imglogo">
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
@@ -1142,7 +1196,7 @@
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount, 1) : number_format($auctionProduct->start_price, 1) }}/lbs</span>
                                         </div>
                                     </td>
                                     <td class="td-res-pl">
@@ -1407,7 +1461,7 @@
                                                                 <div
                                                                     class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p >CURRENT AUTOBID IS
-                                                                        ${{ $auctionProduct->latestAutoBidPrice->bid_amount }}/lb
+                                                                        ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
                                                                             data-id="{{ $auctionProduct->id }}"
@@ -1539,7 +1593,7 @@
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount, 1) : number_format($auctionProduct->start_price, 1) }}lbs</span>
                                         </div>
                                     </td>
                                     @php
@@ -1654,7 +1708,16 @@
                 </div>
             </div>
     </section>
-    <section>
+    <section class="section-4">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12 pb-2 text-center section-4-img">
+                    <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section>
         <div class="footer-container">
             <div class="row footer-head">
                 <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
@@ -1696,7 +1759,7 @@
                 <h3>Â© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1735,7 +1798,7 @@
         }, 300000)
         $(".openSidebar").click(function() {
 
-           $("#mySidebar").toggleClass('sidebaropen-width');
+           $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
@@ -1836,11 +1899,11 @@
 
             var id = $(this).attr('data-id');
             var minamount=$('.nextincrement'+id).html();
-            var float_amount = parseFloat(minamount.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+            var float_amount = parseFloat(minamount.replace(/[^0-9.]/g,''));
             current_val = $('.autobidamount' + id).val();
             if(current_val && current_val < float_amount){
                 $('.showMessageForAmount' + id).show();
-                $('.showMessageForAmount' + id).html('Please Enter Amount Greater the or equal to '+float_amount);
+                $('.showMessageForAmount' + id).html('Please Enter Amount Greater than or equal to '+float_amount);
             }else{
             if (current_val) {
                 $('.showMessageForAmount' + id).hide();
@@ -1881,7 +1944,9 @@
         $(".yourscore").focusout(function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
-            let value = $(this).html();
+            let value = $.trim($(this).html());
+            
+            if(value){
             $.ajax({
                 url: "{{ route('saveyourscore') }}",
                 method: 'POST',
@@ -1897,8 +1962,9 @@
                     console.log(error)
                 }
             });
-
+  }
         });
+  
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
@@ -2014,7 +2080,7 @@
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
                                         '<p>Current autobid is $' +
-                                        autobidamount +
+                                        addCommas(autobidamount) +
                                         ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                         id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
@@ -2087,7 +2153,7 @@
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
                                         '<p>Current autobid is $' +
-                                        autobidamount +
+                                        addCommas(autobidamount) +
                                         ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                         id + '>Remove</a>}</p>');
                                     $('.autobidamount' + id).val('');
@@ -2163,10 +2229,10 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {
-
+    socket.on('auto_bid_updates', function(data) {   
+        $(".paddleno" + data.bidID).html(data.paddleNo);
         if(data.user_id == {{ Auth::user()->id }})
-        {
+        { 
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2182,9 +2248,9 @@
         }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         data.nextIncrement  = parseFloat(data.nextIncrement).toFixed(1);
-        $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
+        $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
+        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) { 
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
@@ -2200,8 +2266,21 @@
              $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '##143D30');
         }
+        if(data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}){ 
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 10000);
+            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            $(".alertMessage" + data.bidID).css('background','#f16767'); 
+            $('.nextincrement'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).show();
+            $('.autobidamount'+data.bidID).show();
+            $('.bidnowautobutton'+data.bidID).show();
+            $('.bidnowbutton'+data.bidID).attr("disabled", false);
+             $(".bidnowbutton" +data.bidID).css('background', '#143D30');
+        }
         if (data.loser == {{ Auth::user()->id }}) {
-
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
@@ -2248,7 +2327,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) {
+    socket.on('add_bid_updates', function(data) {  
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
@@ -2289,6 +2368,14 @@
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".userbid" + data.bidID).css("color", "#e78460");
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 10000);
+            $(".bidnowbutton" + data.bidID).attr("disabled", false);
+            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            $(".alertMessage" + data.bidID).css('background','#f16767');
+//            $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
         }
         if (data.latestSingleBidUser == {{ Auth::user()->id }}) {
             $(".bidnowbutton" + data.bidID).attr("disabled", true);
@@ -2299,13 +2386,13 @@
                 '/lb Bid is confirmed.</p>');
         } else {
         if(data.loser && data.loser == {{ Auth::user()->id }}){
-            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            setTimeout(() => {
-                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000);
-            $(".bidnowbutton" + data.bidID).attr("disabled", false);
-            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-            $(".alertMessage" + data.bidID).css('background','#f16767');
+//            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+//            setTimeout(() => {
+//                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+//            }, 10000);
+//            $(".bidnowbutton" + data.bidID).attr("disabled", false);
+//            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+//            $(".alertMessage" + data.bidID).css('background','#f16767');
             $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
         }}
         if (data.bidAmountUser == {{ Auth::user()->id }}) {
@@ -2351,11 +2438,11 @@
         }
         var incrementedvalue=roundedToFixed(data.nextIncrement,1);
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lbs');
-        $(".nextincrement" + data.bidID).html('$' + incrementedvalue.toLocaleString('en-US'));
+        $(".nextincrement" + data.bidID).html('$' + addCommas(incrementedvalue));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".paddleno" + data.bidID).addClass('fw-bold');
-        $(".biddermaxbid" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US') +
+        $(".biddermaxbid" + data.bidID).html('$' + addCommas(data.nextIncrement) +
             '/lb');
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
@@ -2483,6 +2570,18 @@
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
+    function addCommas(nStr)
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
 </script>
 
 </html>
