@@ -1053,20 +1053,20 @@
             <div>
                 <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
                     
-                    <a href="#"><i class="fa fa-instagram"></i> </a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+                    <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+                    <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
         
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                    <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
         
         
                 </ul>
             </div>
-            <div class="menu" id="toggle-button">
+            {{-- <div class="menu" id="toggle-button">
                 <div class="menu-item"></div>
                 <div class="menu-item"></div>
                 <div class="menu-item"></div>
-            </div>
+            </div> --}}
         
         
         

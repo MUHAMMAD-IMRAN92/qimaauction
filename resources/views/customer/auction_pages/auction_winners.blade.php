@@ -26,6 +26,34 @@
     }
 
     .navbar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 20px;
+}
+
+.navbar-list {
+  list-style: none;
+}
+
+.navbar-list .list-items {
+  display: inline-block;
+  padding: 10px 10px;
+  font-weight: 400;
+}
+#width a img{
+  margin-left: 108px;
+  margin-top:20px;
+  margin-bottom: 15px;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+    /* .navbar {
         width: 100%;
         background-color: #D1AF69;
         overflow: auto;
@@ -48,7 +76,7 @@
 
     .navbar a p {
         font-family: 'play-fair';
-    }
+    } */
 
     #background {
         background-image: url({{ asset('public/images/banner2.png') }});
@@ -1014,7 +1042,32 @@
 </style>
 
 <body>
-    <section>
+    <nav class="navbar navbar-fix">
+        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+            </a>
+        </div>
+        <div>
+            <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                
+                <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+                <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+    
+                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
+    
+    
+            </ul>
+        </div>
+        {{-- <div class="menu" id="toggle-button">
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+        </div> --}}
+    
+    
+    
+    </nav>
+    {{-- <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
             @if(Auth::user())
@@ -1031,11 +1084,11 @@
                 <p>LOG IN</p>
             </a>
             @endif
-            <a href="#"><i class="fa fa-instagram"></i> </a>
-            <a href="#"><i class="fa fa-facebook-f"></i></a>
-            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+            <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
+            <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
         </div>
     </section>
     <section>
@@ -1044,7 +1097,7 @@
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
