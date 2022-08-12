@@ -228,7 +228,7 @@ class AuctionController extends Controller {
     }
 
     public function auctionFrontend(Request $request) {
-        
+
         $user = Auth::user()->id;
         $auction = Auction::first();
         if($auction->is_hidden == 1){
@@ -614,11 +614,11 @@ class AuctionController extends Controller {
                         $singleBid->user_id = $loser;
                         $singleBid->auction_product_id = $request->id;
                         $singleBid->save();
-                        
+
                         $singleBid = new SingleBid();
                         $singleBid->bid_amount = $auctionProductsData->autoBidActive->bid_amount + .5;
-                        $singleBid->auction_id = $request->auctionid; 
-                        $singleBid->user_id = $user; 
+                        $singleBid->auction_id = $request->auctionid;
+                        $singleBid->user_id = $user;
                         $singleBid->auction_product_id = $request->id;
                         $singleBid->save();
 //                    do {
@@ -818,9 +818,8 @@ class AuctionController extends Controller {
         $userScore = UserScore::updateOrCreate(
                         ['auction_product_id' => $request->id], ['your_score' => $request->value, 'user_id' => Auth::user()->id]
         );
-        return response()->json();
+        return response()->json($userScore);
     }
-
     public function auctionWinners(Request $request) {
         $auction = Auction::first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
