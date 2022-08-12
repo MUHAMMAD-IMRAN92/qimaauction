@@ -1312,15 +1312,15 @@
                                                         <form action="{{ url('/accept-agrements') }}" method="POST"
                                                             autocomplete="off">
                                                             @csrf
-                                                            <div class="form-check">
+                                                            {{-- <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     id="privacy" name="privacy_policy_id"
                                                                     value="1" required>
                                                                 <label for="privacy">I've read and agree to the <a
                                                                         href="{{ url('/privacy_policy') }}"
                                                                         target="_blank">Privacy Policy.</a></label>
-                                                            </div>
-                                                            <div class="form-check">
+                                                            </div> --}}
+                                                            {{-- <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     name="terms_conditions_id" id="terms"
                                                                     value="2" required>
@@ -1328,14 +1328,14 @@
                                                                         href="{{ url('/terms_conditions') }}"
                                                                         target="_blank">Terms And
                                                                         Conditions.</a></label>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     id="agreement" name="bid_agrement_id"
                                                                     value="3" required>
                                                                 <label for="agreement">I've read and agree to the <a
                                                                         href="{{ url('/bid_agreement') }}"
-                                                                        target="_blank">Bid Agreement.</a></label>
+                                                                        target="_blank">Bidding Agreement.</a></label>
                                                             </div>
                                                             <div>
                                                                 <button class="btn btn-primary" type="submit">Proceed
