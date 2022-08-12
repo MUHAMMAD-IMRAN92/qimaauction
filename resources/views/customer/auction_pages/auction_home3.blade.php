@@ -2255,6 +2255,7 @@
         });
     });
 </script>
+    
 <script>
     var total = 0;
     var interval;
