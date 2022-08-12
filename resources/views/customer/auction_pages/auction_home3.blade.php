@@ -1733,7 +1733,7 @@
         }, 300000)
         $(".openSidebar").click(function() {
 
-           $("#mySidebar").toggleClass('sidebaropen-width');
+           $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
