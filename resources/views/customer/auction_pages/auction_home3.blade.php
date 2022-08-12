@@ -1058,10 +1058,10 @@
                     <a href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
                     <a href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
                     <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
-        
+
                     <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
-        
-        
+
+
                 </ul>
             </div>
             {{-- <div class="menu" id="toggle-button">
@@ -1069,9 +1069,9 @@
                 <div class="menu-item"></div>
                 <div class="menu-item"></div>
             </div> --}}
-        
-        
-        
+
+
+
         </nav>
         {{-- <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
@@ -1189,7 +1189,7 @@
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    <td contenteditable='true' class="text-underline yourscore td-res-pl"
+                                    <td contenteditable='true' class="text-underline yourscore td-res-pl auctionyourscore{{ $auctionProduct->id}}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
@@ -1586,7 +1586,7 @@
                                     <td class="fw-bold td-res-pl"><i class="fa fa-star"
                                             aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    <td contenteditable='true' class="text-underline yourscore td-res-pl"
+                                    <td contenteditable='true' class="text-underline yourscore td-res-pl auctionyourscore{{ $auctionProduct->id}}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->weight }}lbs</td>
@@ -1947,18 +1947,19 @@
             e.preventDefault();
             var id = $(this).attr('data-id');
             let value = $.trim($(this).html());
-            
-            if(value){
+            var float_amount = parseFloat(value.replace(/[^0-9.]/g,''));
+            if(float_amount){
             $.ajax({
                 url: "{{ route('saveyourscore') }}",
                 method: 'POST',
                 data: {
                     id: id,
-                    value: value,
+                    value: float_amount,
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-
+                       var yourscore=response.your_score;
+                       $('.auctionyourscore' + id).html(parseFloat(yourscore).toFixed(2));
                 },
                 error: function(error) {
                     console.log(error)
@@ -1966,7 +1967,7 @@
             });
   }
         });
-  
+
         $(".singlebid").on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
@@ -2231,10 +2232,10 @@
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
-    socket.on('auto_bid_updates', function(data) {   
+    socket.on('auto_bid_updates', function(data) {
         $(".paddleno" + data.bidID).html(data.paddleNo);
         if(data.user_id == {{ Auth::user()->id }})
-        { 
+        {
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2252,7 +2253,7 @@
         data.nextIncrement  = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) { 
+        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
@@ -2268,13 +2269,13 @@
              $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '##143D30');
         }
-        if(data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}){ 
+        if(data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}){
             $(".bidcollapse" + data.bidID).addClass("changecolorLose");
             setTimeout(() => {
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
             }, 10000);
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $(".alertMessage" + data.bidID).css('background','#f16767'); 
+            $(".alertMessage" + data.bidID).css('background','#f16767');
             $('.nextincrement'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
@@ -2329,7 +2330,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) {  
+    socket.on('add_bid_updates', function(data) {
         // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
