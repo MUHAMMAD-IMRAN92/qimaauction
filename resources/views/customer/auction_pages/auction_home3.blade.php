@@ -1708,7 +1708,23 @@
                 </div>
             </div>
     </section>
-    <section>
+    <section class="section-4">
+        <div class="container py-5">
+            <hr class=" text-white border" style="margin-top:40px;">
+            <div class="footerz">
+                <div class="row text-center">
+                    <div class="col-12 my-2">
+                        <span class="text-color-size">For the latest news and updates</span>
+                    </div>
+                    <div class="col-12">
+                        <a type="button" class="btn btn-outline-light" id="signup-for-newsletter"
+                            href="javascript:void(0)">SIGN UP FOR NEWSLETTER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section>
         <div class="footer-container">
             <div class="row footer-head">
                 <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
@@ -1750,7 +1766,7 @@
                 <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
