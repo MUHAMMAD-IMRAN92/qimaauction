@@ -30,11 +30,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font: 20px;
+      width: 90%;
+    margin: 10px auto;
 }
 
 .navbar-list {
   list-style: none;
+  padding-left: 0;
+  margin-bottom: 0
 }
 
 .navbar-list .list-items {
@@ -43,9 +46,9 @@
   font-weight: 400;
 }
 #width a img{
-  margin-left: 108px;
+  /* margin-left: 108px;
   margin-top:20px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; */
 }
 .navbar a {
   text-decoration: none;
@@ -149,7 +152,17 @@
         padding: 30px;
         font-family: 'Montserrat';
     }
-
+    .footer{
+            background-color: #232B38;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    }
+    .footer img {
+    height: auto;
+    width: 270px;
+    max-width: 100%;
+}
     .searchbar-container--footer {
         position: relative;
         border: 1px solid black;
@@ -822,6 +835,17 @@
     }
 
     @media screen and (max-width: 800px) {
+                    .navbar {
+                display: block;
+  text-align: center;
+  width: 100%;
+}
+.navbar-list {
+    margin-top: 15px;
+}
+    .footer{
+    position: relative;
+    }
         .tab-content {
             width: 100%;
         }
@@ -896,99 +920,28 @@
         }
 
         .auction-data td:nth-of-type(3):before {
-            content: "Your Score	";
+            content: "Weight";
         }
 
         .auction-data td:nth-of-type(4):before {
-            content: "Weight";
+            content: "Highest Bid";
         }
 
         .auction-data td:nth-of-type(5):before {
-            content: "Increment";
+            content: "Name";
         }
 
         .auction-data td:nth-of-type(6):before {
-            content: "Bid";
+            content: "Process";
         }
 
         .auction-data td:nth-of-type(7):before {
-            content: " ";
-        }
-
-        .auction-data td:nth-of-type(8):before {
-            content: "Total Value";
-        }
-
-        .auction-data td:nth-of-type(9):before {
-            content: "Name";
-        }
-
-        .auction-data td:nth-of-type(10):before {
-            content: "Process";
-        }
-
-        .auction-data td:nth-of-type(11):before {
             content: "Genetics";
         }
 
-        .auction-data td:nth-of-type(12):before {
+        .auction-data td:nth-of-type(8):before {
             content: "High Bidder";
         }
-
-        .auction-data td:nth-of-type(13):before {
-            content: "Time Left";
-        }
-
-
-        /* Libility Data */
-        .liability-data td:nth-of-type(1):before {
-            content: "Rank";
-        }
-
-        .liability-data td:nth-of-type(2):before {
-            content: "Jury Score";
-        }
-
-        .liability-data td:nth-of-type(3):before {
-            content: "Your Score";
-        }
-
-        .liability-data td:nth-of-type(4):before {
-            content: "Size";
-        }
-
-        .liability-data td:nth-of-type(5):before {
-            content: "Weight";
-        }
-
-        .liability-data td:nth-of-type(6):before {
-            content: "Process";
-        }
-
-        .liability-data td:nth-of-type(7):before {
-            content: "Genetics ";
-        }
-
-        .liability-data td:nth-of-type(8):before {
-            content: "Current Bid";
-        }
-
-        .liability-data td:nth-of-type(9):before {
-            content: "Your Liability";
-        }
-
-        .liability-data td:nth-of-type(10):before {
-            content: "Name";
-        }
-
-        .liability-data td:nth-of-type(11):before {
-            content: "High Bidder";
-        }
-
-        .liability-data td:nth-of-type(12):before {
-            content: "Time Left";
-        }
-
 
 
 
@@ -1313,7 +1266,7 @@
                 </div>
             </div>
     </section>
-    <section class="section-4">
+    <section class="footer">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
