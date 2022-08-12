@@ -1069,7 +1069,7 @@
                 </a>
                 @else
                 <a href="{{ route('login') }}">
-                    <i class="fa fa-sign-in" title="Logout"></i>
+                    <i class="fa fa-sign-in" title="Sign in"></i>
                 </a>
                 @endif
                 <a href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
