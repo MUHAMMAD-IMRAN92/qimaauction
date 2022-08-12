@@ -1710,16 +1710,9 @@
     </section>
     <section class="section-4">
         <div class="container py-5">
-            <hr class=" text-white border" style="margin-top:40px;">
-            <div class="footerz">
-                <div class="row text-center">
-                    <div class="col-12 my-2">
-                        <span class="text-color-size">For the latest news and updates</span>
-                    </div>
-                    <div class="col-12">
-                        <a type="button" class="btn btn-outline-light" id="signup-for-newsletter"
-                            href="javascript:void(0)">SIGN UP FOR NEWSLETTER</a>
-                    </div>
+            <div class="row">
+                <div class="col-lg-12 pb-2 text-center section-4-img">
+                    <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
                 </div>
             </div>
         </div>
