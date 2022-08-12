@@ -823,7 +823,11 @@ class AuctionController extends Controller {
 
     public function auctionWinners(Request $request) {
         $auction = Auction::first();
-        
+        if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
+            $auction->is_hidden = 1;
+            $auction->save();
+            return redirect('auction-winners');
+        }
         $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function($e) {
