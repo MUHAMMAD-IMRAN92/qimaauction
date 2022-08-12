@@ -499,7 +499,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 pb-2 text-center section-4-img">
-            <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+            <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
         </div>
         <div class="col-lg-12 text-center section-4-text-1">
             <p class="time real-timer m-0"></p>
