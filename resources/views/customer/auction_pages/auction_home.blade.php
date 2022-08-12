@@ -1353,7 +1353,16 @@
                 </div>
             </div>
     </section>
-    <section>
+    <section class="section-4">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12 pb-2 text-center section-4-img">
+                    <img src="./images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section>
         <div class="footer-container">
             <div class="row footer-head">
                 <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
@@ -1395,7 +1404,7 @@
                 <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
