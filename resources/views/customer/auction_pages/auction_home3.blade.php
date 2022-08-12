@@ -572,6 +572,7 @@
 
     .sidebar-container {
         padding: 20px 30px;
+        width:450px;
     }
 
     .lot-header h4 {
