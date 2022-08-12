@@ -1045,7 +1045,7 @@
 </style>
 
 <body>
-    <section>
+    {{-- <section> --}}
         <nav class="navbar navbar-fix">
             <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
                 </a>
@@ -1071,7 +1071,7 @@
         
         
         </nav>
-        <div class="navbar">
+        {{-- <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
             <a href="{{ route('user_logout') }}">
@@ -1085,15 +1085,15 @@
             <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
             <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
-        </div>
-    </section>
-    <section>
+        </div> --}}
+    {{-- </section> --}}
+    {{-- <section>
         <div id="background">
             <div class="imglogo">
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
