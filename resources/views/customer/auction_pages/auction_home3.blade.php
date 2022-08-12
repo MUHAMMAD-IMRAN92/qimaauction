@@ -1169,7 +1169,7 @@
     </div>
 
     <section>
-        <h2 style="text-align: center">This is a Practice Auction.</h2>
+        <h2 style="text-align: center;font-family:'Montserrat';">This is a Practice Auction.</h2>
 
         <div class="table-container">
             <div class="tab-content" id="nav-tabContent">
