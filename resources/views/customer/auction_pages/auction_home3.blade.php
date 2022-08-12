@@ -1129,6 +1129,7 @@
         </div>
     </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
+        <h2 style="text-align: center">This is a Practice Auction.</h2>
         <div class="row boxrow">
             {{ $auction->startDate }}
             {{ date('Y-m-d H:i:s') }}
