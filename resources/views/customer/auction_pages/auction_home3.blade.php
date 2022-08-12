@@ -30,8 +30,35 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     .navbar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 20px;
+}
+
+.navbar-list {
+  list-style: none;
+}
+
+.navbar-list .list-items {
+  display: inline-block;
+  padding: 10px 10px;
+  font-weight: 400;
+}
+#width a img{
+  margin-left: 108px;
+  margin-top:20px;
+  margin-bottom: 15px;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+    /* .navbar {
         width: 100%;
         background-color: #D1AF69;
         overflow: auto;
@@ -54,7 +81,7 @@
 
     .navbar a p {
         font-family: 'play-fair';
-    }
+    } */
 
     #background {
         background-image: url({{ asset('public/images/banner2.png') }});
