@@ -1063,9 +1063,15 @@
         </div>
         <div>
             <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                @if(Auth::user())
                 <a href="{{ route('user_logout') }}">
                     <i class="fa fa-sign-out" title="Logout"></i>
                 </a>
+                @else
+                <a href="{{ route('login') }}">
+                    <i class="fa fa-sign-in" title="Logout"></i>
+                </a>
+                @endif
                 <a href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
                 <a href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
                 <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
