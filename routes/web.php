@@ -237,5 +237,7 @@ Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, '
 //
 Route::view('/terms_conditions', 'customer/pages/terms_conditions');
 Route::view('/privacy_policy', 'customer/pages/privacy_policy');
-Route::view('/bid_agreement', 'customer/pages/bid_agreement');
+Route::view('/bid_agreement', function(){
+    return redirect('public/bidding_agreement.pdf');
+});//'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
