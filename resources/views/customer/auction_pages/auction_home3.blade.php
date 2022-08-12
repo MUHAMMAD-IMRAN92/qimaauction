@@ -1052,7 +1052,9 @@
             </div>
             <div>
                 <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
-                    
+                    <a href="{{ route('user_logout') }}">
+                        <p>LOG OUT</p>
+                    </a>
                     <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
                     <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
                     <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
