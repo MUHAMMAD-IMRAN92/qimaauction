@@ -1029,7 +1029,34 @@
 </style>
 
 <body>
-    <section>
+    <nav class="navbar navbar-fix">
+        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+            </a>
+        </div>
+        <div>
+            <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                <a href="{{ route('user_logout') }}">
+                    <i class="fa fa-sign-out" title="Logout"></i>
+                </a>
+                <a href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
+                <a href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
+    
+                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+    
+    
+            </ul>
+        </div>
+        {{-- <div class="menu" id="toggle-button">
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+            <div class="menu-item"></div>
+        </div> --}}
+    
+    
+    
+    </nav>
+    {{-- <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
@@ -1050,7 +1077,7 @@
             <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
             <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
-            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
+            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
         </div>
     </section>
     <section>
@@ -1059,7 +1086,7 @@
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
