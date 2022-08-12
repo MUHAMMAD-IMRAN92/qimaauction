@@ -29,6 +29,11 @@
     }
     body {
         font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+
     }
     .navbar {
   background-color: white;
@@ -90,7 +95,7 @@
             background-color: #232B38;
     position: relative;
     width: 100%;
-    bottom: 0;
+    margin-top: auto;
     }
     .footer img {
     height: auto;
