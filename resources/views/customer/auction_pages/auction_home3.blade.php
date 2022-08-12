@@ -35,11 +35,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font: 20px;
+      width: 90%;
+    margin: 10px auto;
 }
 
 .navbar-list {
   list-style: none;
+  padding-left: 0;
+  margin-bottom: 0
 }
 
 .navbar-list .list-items {
@@ -48,9 +51,9 @@
   font-weight: 400;
 }
 #width a img{
-  margin-left: 108px;
+  /* margin-left: 108px;
   margin-top:20px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; */
 }
 .navbar a {
   text-decoration: none;
@@ -82,6 +85,18 @@
     .navbar a p {
         font-family: 'play-fair';
     } */
+
+    .footer{
+            background-color: #232B38;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    }
+    .footer img {
+    height: auto;
+    width: 270px;
+    max-width: 100%;
+}
 
     #background {
         background-image: url({{ asset('public/images/banner2.png') }});
@@ -823,6 +838,17 @@
     }
 
     @media screen and (max-width: 800px) {
+            .navbar {
+                display: block;
+  text-align: center;
+  width: 100%;
+}
+.navbar-list {
+    margin-top: 15px;
+}
+    .footer{
+    position: relative;
+    }
         .tab-content {
             width: 100%;
         }
@@ -1047,11 +1073,11 @@
 <body>
     {{-- <section> --}}
         <nav class="navbar navbar-fix">
-            <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+            <div><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
                 </a>
             </div>
             <div>
-                <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                <ul class="navbar-list" id="nav-list">
                     <a href="{{ route('user_logout') }}">
                         <i class="fa fa-sign-out" title="Logout"></i>
                     </a>
@@ -1073,6 +1099,7 @@
 
 
         </nav>
+
         {{-- <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
@@ -1710,7 +1737,7 @@
                 </div>
             </div>
     </section>
-    <section class="section-4">
+    <section class="footer">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
