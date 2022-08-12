@@ -44,8 +44,8 @@ class AgreementController extends Controller
         $user                           =   Auth::user()->id;
         $agrement                       =   new AcceptAgreement();
         $agrement->user_id              =   $user;
-        $agrement->privacy_policy_id    =   $request->privacy_policy_id;
-        $agrement->terms_conditions_id  =   $request->terms_conditions_id;
+        $agrement->privacy_policy_id    =   1;//$request->privacy_policy_id;
+        $agrement->terms_conditions_id  =   2;//$request->terms_conditions_id;
         $agrement->bid_agrement_id      =   $request->bid_agrement_id;
         $agrement->save();
         return back()->with('success','Agreement saved successfully.');
