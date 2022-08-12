@@ -45,7 +45,9 @@
         <div class="login-container">
             <div class="login-description">
             <h2>WELCOME TO</h2>
+            <a href="/">
             <img class="login-screen-logo" src="{{ asset('public/images/qima-logo2.png') }}" alt="branding logo">
+            </a>
             <h6>LOGIN</h6>
             </div>
                 <div class="login-form--container">
