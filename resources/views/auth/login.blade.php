@@ -100,7 +100,7 @@
                     <div>
                         <hr style="width: 100%">
                         <br>
-                        <button type="button" onclick="window.location='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/'" class="btn btn-success">
+                        <button type="button" onclick="window.location='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/'" style="background-color: #9C9C9C" class="btn btn-success">
                             Register
                         </button>
                       </div>
