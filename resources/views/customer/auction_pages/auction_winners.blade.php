@@ -563,9 +563,12 @@
         display: flex;
         justify-content: center;
     }
-
+    #mySidebar{
+        box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
+    }
     .sidebar-container {
         padding: 20px 30px;
+        width:450px;
     }
 
     .lot-header h4 {
@@ -1130,7 +1133,7 @@
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
                                 <th scope="col">High Bidder</th>
-                                <th scope="col">Time Left</th>
+                                {{-- <th scope="col">Time Left</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -1189,7 +1192,7 @@
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
-                                    <td class="td-res-pl">
+                                    {{-- <td class="td-res-pl">
                                         <div>
                                             <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
                                                 @if ($auction->auctionStatus() != 'active')
@@ -1203,7 +1206,7 @@
                                                 @endif
                                             </span>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                     <tr class="hide-table-padding bid-row">
                                         <td colspan="13">
@@ -1336,7 +1339,7 @@
         }, 300000)
         $(".openSidebar").click(function() {
 
-           $("#mySidebar").toggleClass('sidebaropen-width');
+           $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
