@@ -97,8 +97,9 @@
                         </div>
                         <button type="submit" class="btn btn-primary  btn-inline" style="font-size: 16px">Login</button>
                     </form>
-                    <div class="col-md-6">
-                        <hr>
+                    <div>
+                        <hr style="width: 100%">
+                        <br>
                         <button type="button" onclick="window.location='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/'" class="btn btn-success">
                             Register
                         </button>
