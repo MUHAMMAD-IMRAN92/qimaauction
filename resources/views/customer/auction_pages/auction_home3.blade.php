@@ -24,6 +24,9 @@
     </script>
 </head>
 <style>
+    #mySidebar{
+        box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
+    }
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
