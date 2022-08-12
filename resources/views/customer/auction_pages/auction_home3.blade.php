@@ -1019,6 +1019,31 @@
 
 <body>
     <section>
+        <nav class="navbar navbar-fix">
+            <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+                </a>
+            </div>
+            <div>
+                <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
+                    
+                    <a href="#"><i class="fa fa-instagram"></i> </a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+        
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+        
+        
+                </ul>
+            </div>
+            <div class="menu" id="toggle-button">
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+            </div>
+        
+        
+        
+        </nav>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
