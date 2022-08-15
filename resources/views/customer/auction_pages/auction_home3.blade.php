@@ -1617,16 +1617,16 @@
                                     class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }} liability-data"
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
-                                    <td class="fw-bold td-res-pl"><i class="fa fa-star"
+                                    <td class="fw-bold "><i class="fa fa-star"
                                             aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    <td contenteditable='true' class="text-underline yourscore td-res-pl auctionyourscore{{ $auctionProduct->id}}"
+                                    <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
+                                    <td contenteditable='true' class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id}}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                    <td class="increment{{ $auctionProduct->id }} td-res-pl">
+                                    <td class="fw-bold ">{{ $auctionProduct->weight }}lbs</td>
+                                    <td class="increment{{ $auctionProduct->id }} ">
                                         ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
-                                    <td class="fw-bold td-res-pl">
+                                    <td class="fw-bold ">
                                         <div>
                                             <span
                                                 class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount, 1) : number_format($auctionProduct->start_price, 1) }}lbs</span>
@@ -1642,11 +1642,11 @@
                                     @endphp
                                     <td
                                         class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }} @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
-                                            $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }} @endif td-res-pl">
+                                            $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }} @endif ">
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline td-res-pl"> <a class="openbtn openSidebar"
+                                        <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
                                                 {{ $products->product_title }} </a></td>
@@ -1655,31 +1655,31 @@
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1')
-                                            <td class="td-res-pl">Natural</td>
+                                            <td class="">Natural</td>
                                         @elseif ($products->pro_process == '2')
-                                            <td class="td-res-pl">Slow Dried</td>
+                                            <td class="">Slow Dried</td>
                                         @else
-                                            <td class="td-res-pl">Alchemy</td>
+                                            <td class="">Alchemy</td>
                                         @endif
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
                                         @if ($products->genetic_id == '1')
-                                            <td class="td-res-pl">Yemenia</td>
+                                            <td class="">Yemenia</td>
                                         @elseif ($products->genetic_id == '2')
-                                            <td class="td-res-pl">Bourbon</td>
+                                            <td class="">Bourbon</td>
                                         @else
-                                            <td class="td-res-pl">SL28</td>
+                                            <td class="">SL28</td>
                                         @endif
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold ">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
-                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
+                                        <td class="paddleno{{ $auctionProduct->id }} ">Awaiting Bid</td>
                                     @endif
-                                    <td class="td-res-pl">
+                                    <td class="">
                                         <div>
                                             <span class="waiting{{ $auctionProduct->id }}">
                                                 @if ($auction->auctionStatus() != 'active')
