@@ -865,6 +865,7 @@
         }
 
         td:before {
+            display: none;
             position: absolute;
             top: 12px;
             left: 40px;
