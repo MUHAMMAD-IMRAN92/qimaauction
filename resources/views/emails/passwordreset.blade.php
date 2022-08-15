@@ -105,7 +105,7 @@
 		}
 	/*
 	@tab Page
-	@section Background Style
+	@--section Background Style
 	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
 	*/
 		body,#bodyTable{
@@ -113,7 +113,7 @@
 		}
 	/*
 	@tab Page
-	@section Background Style
+	@--section Background Style
 	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
 	*/
 		#bodyCell{
@@ -121,7 +121,7 @@
 		}
 	/*
 	@tab Page
-	@section Email Border
+	@--section Email Border
 	@tip Set the border for your email.
 	*/
 		.templateContainer{
@@ -129,7 +129,7 @@
 		}
 	/*
 	@tab Page
-	@section Heading 1
+	@--section Heading 1
 	@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
 	@style heading 1
 	*/
@@ -145,7 +145,7 @@
 		}
 	/*
 	@tab Page
-	@section Heading 2
+	@--section Heading 2
 	@tip Set the styling for all second-level headings in your emails.
 	@style heading 2
 	*/
@@ -161,7 +161,7 @@
 		}
 	/*
 	@tab Page
-	@section Heading 3
+	@--section Heading 3
 	@tip Set the styling for all third-level headings in your emails.
 	@style heading 3
 	*/
@@ -177,7 +177,7 @@
 		}
 	/*
 	@tab Page
-	@section Heading 4
+	@--section Heading 4
 	@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
 	@style heading 4
 	*/
@@ -193,7 +193,7 @@
 		}
 	/*
 	@tab Preheader
-	@section Preheader Style
+	@--section Preheader Style
 	@tip Set the background color and borders for your email's preheader area.
 	*/
 		#templatePreheader{
@@ -209,7 +209,7 @@
 		}
 	/*
 	@tab Preheader
-	@section Preheader Text
+	@--section Preheader Text
 	@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
 	*/
 		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
@@ -221,7 +221,7 @@
 		}
 	/*
 	@tab Preheader
-	@section Preheader Link
+	@--section Preheader Link
 	@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
 	*/
 		#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p a{
@@ -231,7 +231,7 @@
 		}
 	/*
 	@tab Header
-	@section Header Style
+	@--section Header Style
 	@tip Set the background color and borders for your email's header area.
 	*/
 		#templateHeader{
@@ -247,7 +247,7 @@
 		}
 	/*
 	@tab Header
-	@section Header Text
+	@--section Header Text
 	@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
 	*/
 		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
@@ -259,7 +259,7 @@
 		}
 	/*
 	@tab Header
-	@section Header Link
+	@--section Header Link
 	@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
 	*/
 		#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
@@ -269,7 +269,7 @@
 		}
 	/*
 	@tab Body
-	@section Body Style
+	@--section Body Style
 	@tip Set the background color and borders for your email's body area.
 	*/
 		#templateBody{
@@ -285,7 +285,7 @@
 		}
 	/*
 	@tab Body
-	@section Body Text
+	@--section Body Text
 	@tip Set the styling for your email's body text. Choose a size and color that is easy to read.
 	*/
 		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
@@ -297,7 +297,7 @@
 		}
 	/*
 	@tab Body
-	@section Body Link
+	@--section Body Link
 	@tip Set the styling for your email's body links. Choose a color that helps them stand out from your text.
 	*/
 		#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
@@ -307,7 +307,7 @@
 		}
 	/*
 	@tab Footer
-	@section Footer Style
+	@--section Footer Style
 	@tip Set the background color and borders for your email's footer area.
 	*/
 		#templateFooter{
@@ -323,7 +323,7 @@
 		}
 	/*
 	@tab Footer
-	@section Footer Text
+	@--section Footer Text
 	@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
 	*/
 		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
@@ -335,7 +335,7 @@
 		}
 	/*
 	@tab Footer
-	@section Footer Link
+	@--section Footer Link
 	@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
 	*/
 		#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
@@ -434,7 +434,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Heading 1
+	@--section Heading 1
 	@tip Make the first-level headings larger in size for better readability on small screens.
 	*/
 		h1{
@@ -445,7 +445,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Heading 2
+	@--section Heading 2
 	@tip Make the second-level headings larger in size for better readability on small screens.
 	*/
 		h2{
@@ -456,7 +456,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Heading 3
+	@--section Heading 3
 	@tip Make the third-level headings larger in size for better readability on small screens.
 	*/
 		h3{
@@ -467,7 +467,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Heading 4
+	@--section Heading 4
 	@tip Make the fourth-level headings larger in size for better readability on small screens.
 	*/
 		h4{
@@ -478,7 +478,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Boxed Text
+	@--section Boxed Text
 	@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
 	*/
 		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
@@ -489,7 +489,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Preheader Visibility
+	@--section Preheader Visibility
 	@tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
 	*/
 		#templatePreheader{
@@ -499,7 +499,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Preheader Text
+	@--section Preheader Text
 	@tip Make the preheader text larger in size for better readability on small screens.
 	*/
 		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
@@ -510,7 +510,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Header Text
+	@--section Header Text
 	@tip Make the header text larger in size for better readability on small screens.
 	*/
 		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
@@ -521,7 +521,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Body Text
+	@--section Body Text
 	@tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
 	*/
 		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
@@ -532,7 +532,7 @@
 }	@media only screen and (max-width: 480px){
 	/*
 	@tab Mobile Styles
-	@section Footer Text
+	@--section Footer Text
 	@tip Make the footer content text larger in size for better readability on small screens.
 	*/
 		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
@@ -804,7 +804,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 18px; padding: 18px;">
-                                <a class="mcnButton " title="Best of Yemen 2022 Auction" href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Best of Yemen 2022 Auction</a>
+                                <a class="mcnButton " title="Best of Yemen 2022 Auction" href="{{ route('customer.login') }}" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Best of Yemen 2022 Auction</a>
                             </td>
                         </tr>
                     </tbody>
@@ -829,27 +829,4 @@ You can reset your password by following <a href="{{ route('reset.password.get',
             </table>
         </center>
     <script type="text/javascript"  src="/yiO1d9OPKhdQ/0zdvr4/BSoeNA/Q73ircpS3Yub/ahssI1QC/FDQ7/ARspJyE"></script></body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome Email</title>
-</head>
-
-<body>
-Welcome to Best of Yemen Coffee 2022: <h2>{{$customer['name']}}</h2>
-<br/>
-Your registered email-id is {{$customer['email']}}
-<br>
-Your Password is {{$password}}
-<br>
-You can reset password from bellow link:
-<a href="{{ route('reset.password.get', $token) }}">Reset Password</a>
-<br>
-Please Click on Login:
-<a href="{{ route('customer.login') }}">Login</a>
-</body>
-
 </html>
