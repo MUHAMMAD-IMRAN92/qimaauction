@@ -78,8 +78,8 @@ class CustomerController extends Controller
             ]);
           Mail::send('emails.passwordreset', ['token' => $token,'customer' => $customer,'password'=>$password], function($message) use($request){
               $message->to($request->email);
-              $message->subject('Reset Password');
-              $message->from('noreply@mg.bestofyemenauction.com','QIMA Coffee');
+              $message->subject('Your Best of Yemen Login Credentials & Practice Auction Link');
+              $message->from('noreply@mg.bestofyemenauction.com','Best of Yemen 2022');
           });
         return redirect('/customer/index');
     }
