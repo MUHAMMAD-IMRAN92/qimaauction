@@ -1617,7 +1617,7 @@
                                     class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }} liability-data"
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
-                                    <td class="fw-bold "><i class="fa fa-star"
+                                    <td class="fw-bold text-center"><i class="fa fa-star"
                                             aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
                                     <td contenteditable='true' class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id}}"
