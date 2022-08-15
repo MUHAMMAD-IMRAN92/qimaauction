@@ -865,14 +865,14 @@
         th,
         td,
         tr {
-            display: block;
+            /* display: block; */
         }
 
         /* Hide table headers (but not display: none;, for accessibility) */
         thead tr {
-            position: absolute;
+            /* position: absolute;
             top: -9999px;
-            left: -9999px;
+            left: -9999px; */
         }
 
         td {
@@ -884,6 +884,7 @@
         }
 
         td:before {
+            display: none;
             position: absolute;
             top: 12px;
             left: 40px;
