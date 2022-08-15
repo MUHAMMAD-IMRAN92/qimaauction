@@ -695,7 +695,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
                             <div style="text-align: center;">
 <p style="text-align: left;color: #222222;"><strong>Auction Platform Tutorial&nbsp;</strong></p>
 
-<p style="color: #222222;text-align: left;">We've designed the platform to be simple and user intuitive. But to make it clearer, we've put together a <a href="https://vimeo.com/manage/videos/739753176/privacy" target="_blank">short instructional video</a> to guide you through the process of using the auction.&nbsp;</p>
+<p style="color: #222222;text-align: left;">We've designed the platform to be simple and user intuitive. But to make it clearer, we've put together a <a href="https://youtu.be/6B8xRAPZiss" target="_blank">short instructional video</a> to guide you through the process of using the auction.&nbsp;</p>
 </div>
 
                         </td>
