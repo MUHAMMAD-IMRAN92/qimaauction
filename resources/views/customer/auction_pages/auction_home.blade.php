@@ -846,14 +846,14 @@
         th,
         td,
         tr {
-            display: block;
+            /* display: block; */
         }
 
         /* Hide table headers (but not display: none;, for accessibility) */
         thead tr {
-            position: absolute;
+            /* position: absolute;
             top: -9999px;
-            left: -9999px;
+            left: -9999px; */
         }
 
         td {
@@ -861,7 +861,7 @@
         }
 
         .td-res-pl {
-            padding-left: 65% !important;
+            /* padding-left: 65% !important; */
         }
 
         td:before {
