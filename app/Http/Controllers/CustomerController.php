@@ -49,7 +49,7 @@ class CustomerController extends Controller
             $validator      =   $request->validate([
             'email'         => 'required|email|unique:users',
             'name'          => 'required',
-            'phone_no'      => 'required|max:12',
+            // 'phone_no'      => 'required|max:12',
             'password'      => 'required',
             'status'        => 'required',
             'paddle_number' => 'required|min:4|unique:users',
