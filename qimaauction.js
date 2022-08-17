@@ -29,6 +29,9 @@ socket.on('add_bid_updates', function (data) {
      "increment":data.increment,"nextIncrement":data.nextIncrement,
      "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,"finaltotalliability":data.finaltotalliability});
  });
+ socket.on('auto_bid_update_user_amount', function (data) {
+    io.emit('auto_bid_update_user_amount', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id});
+ });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
     mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {

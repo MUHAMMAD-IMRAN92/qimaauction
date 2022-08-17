@@ -138,7 +138,7 @@
                                                         <th>Auto Bid</th>
                                                         {{-- <th>Bid History</th> --}}
                                                         {{-- <th>Action(s)</th> --}}
-                                                        <th></th> 
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -149,7 +149,7 @@
                                                         @foreach ($auction_products as $auction)
                                                             @foreach ($auction->products as $key => $pro)
                                                             <tr id="{{ ++$i }}" class="mb-1">
-                                                      
+
                                                                 {{-- <td class="headerSortUp headerSortDown move">
                                                                 </td> --}}
                                                                 <td id="product{{ $auction->id }}"
@@ -166,7 +166,7 @@
                                                                 </td>
                                                                 <td id="price{{ $auction->id }}"
                                                                     allign="right">
-                                                                    {{ isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price }}
+                                                                    ${{ isset($auction->latestBidPrice) ? $auction->latestBidPrice->bid_amount : $auction->start_price }}lbs
                                                                 </td>
                                                                 @if (isset($auction->latestBidPrice->user))
                                                                     <td id="paddleNo{{ $auction->id }}"
@@ -191,7 +191,7 @@
                                                                 <td allign="right"
                                                                     id="liability{{ $auction->id }}">
                                                                     @php
-                                                                        $bidprice = isset($auction->latestBidPrice) ? ($auction->weight * $auction->latestBidPrice->bid_amount) : '---';
+                                                                        $bidprice = isset($auction->latestBidPrice) ? ('$'.$auction->weight * $auction->latestBidPrice->bid_amount) : '---';
                                                                     @endphp
                                                                     {{ $bidprice }}
                                                                 </td>
@@ -275,7 +275,7 @@
                                                                    {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
                                                                </td> --}}
                                                                <td>
-                                                                {{ $auction->rank }} 
+                                                                {{ $auction->rank }}
                                                                </td>
                                                                <td>
                                                                 @php
@@ -285,17 +285,17 @@
                                                                 {{ $user->company ?? '' }}
                                                                </td>
                                                                <td>
-                                                             
+
                                                                        <h6 style="min-width: max-content;">{{ $pro->product_title }}
                                                                        </h6>
-                                                                   
+
                                                                </td>
                                                                {{-- <td id="paddleNo{{ $auction->id }}{{ $auction->id }}">
                                                                    {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
                                                                </td> --}}
                                                                <td  id="liability{{ $auction->id }}{{ $auction->id }}">
                                                                    @php
-                                                                       $bidprice = isset($auction->latestBidPrice) ? ($auction->weight * $auction->latestBidPrice->bid_amount) : '---';
+                                                                       $bidprice = isset($auction->latestBidPrice) ? ('$'.$auction->weight * $auction->latestBidPrice->bid_amount) : '---';
                                                                    @endphp
                                                                    {{ $bidprice }}
                                                                </td>
@@ -328,31 +328,39 @@
                 var socket = io('<?= env('SOCKETS') ?>');
                 socket.on('auto_bid_updates', function(data) {
                      var amount = (+data.autobidamount).toFixed(2);
+                    // $("#paddleno" + data.bidID).html(data.paddleNo);
+                    $("#price" + data.bidID).html('$' + data.bid_amountNew + 'lbs');
+                    $("#liability" + data.bidID).html('$' + data.liability);
                     $("#autoBidAmount" + data.id).val(amount);
                     $("#autobidId" +  data.id).val(data.latestAutoBidId);
                     $("#userId" + data.bidID).val(data.user_id);
                     $("#paddleNo" + data.bidID).attr('data-userId', data.user_id);
                     $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
+                    $("#paddleNo" + data.bidID).html('<b>' + data.paddleNo + '</b>');
+                    $("#paddleNo" + data.bidID + data.bidID).html('<b>' + data.paddleNo + '</b>');
+                    $("#liability" + data.bidID + data.bidID).html('$' + data.liability);
                     $("#autoBidAmount" + data.id).prop('disabled', false);
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });
                 socket.on('auto_bid_delete', function(data) {
                         $('.errorMsgAutoBid' + data.auction_product_id).hide();
                         $("#autoBidAmount" + data.auction_product_id).val(0);
-                        $("#paddleNo" + data.auction_product_id).attr('data-userId', '0');
-                         $("#paddleNo" + data.auction_product_id).attr('data-target', "");
-                         $("#paddleNo" + data.auction_product_id).html('--');
+                        // $("#paddleNo" + data.auction_product_id).attr('data-userId', '0');
+                        //  $("#paddleNo" + data.auction_product_id).attr('data-target', "");
+                        //  $("#paddleNo" + data.auction_product_id).html('--');
                         $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
                         $("#editbtn" + data.auction_product_id).prop('disabled', true);
                 });
                 socket.on('add_bid_updates', function(data) {
-                    $("#price" + data.bidID).html(data.singleBidammounttesting);
+                    $("#price" + data.bidID).html('$' + data.singleBidammounttesting + '/lbs');
                     $("#paddleNo" + data.bidID).attr('data-userId', data.latestSingleBidUser);
                     $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
-                    $("#liability" + data.bidID).html(data.liability);
+                    $("#liability" + data.bidID).html('$'+data.liability);
                     $("#liability" + data.bidID + data.bidID).html(data.liability);
                     $("#paddleNo" + data.bidID).html('<b>' + data.paddleNo + '</b>');
                     $("#paddleNo" + data.bidID + data.bidID).html('<b>' + data.paddleNo + '</b>');
+                    $("#liability" + data.bidID + data.bidID).html('$' + data.liability);
+
                 });
 
                 $(".headerSortDown,.headerSortUp,.top,.bottom").click(function() {
@@ -412,6 +420,7 @@
 
                 // Update Auto Bid Data
                 $(".autobid").on("click", function(e) {
+
                     e.preventDefault();
                     $('.errorMsgAutoBid').hide();
                     $('.errorMsgAutoBid' + id).hide();
@@ -419,9 +428,9 @@
                     var autobidId = $("#autobidId" + id).val();
                     var userId = $("#userId" + id).val();
                     var autobidamount = $('#autoBidAmount' + id).val();
-                    var currentBidPrice = ($('#price' + id).html()).replace(/\s/g, '');
-                    console.log(currentBidPrice, autobidamount)
-                    if (autobidamount >= parseFloat(currentBidPrice)) {
+                    var currentBidPrice = ($('#price' + id).html());
+                    var newcurrentbidprice   = Number(currentBidPrice.replace(/[^0-9\.]+/g,""));
+                    if (autobidamount >= newcurrentbidprice) {
                         swal({
                             title: `Confirm AutoBid $` + autobidamount + `?`,
                             text: "You will remain highest bidder until your limit reached.",
@@ -445,7 +454,7 @@
                                         // $('.errorMsgAutoBid' + id).delay(2000);
                                         // $('#product' + id).addClass("mt-5");
                                         $('#autobidamount' + id).val('');
-                                        socket.emit('auto_bid_updates', {
+                                        socket.emit('auto_bid_update_user_amount', {
                                             "autobidamount": autobidamount,
                                             'id': id,
                                             'user_id': userId,
@@ -460,7 +469,8 @@
                             }
 
                         });
-                    } else {
+                    }
+                    else {
                         $('.errorMsgAutoBid' + id).html(
                             '<p>Please enter the amount greater than current bid amount.</p>');
                         // $('#product' + id).addClass("mt-4");
