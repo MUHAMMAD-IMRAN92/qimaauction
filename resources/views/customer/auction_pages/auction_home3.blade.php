@@ -1975,7 +1975,9 @@
             if ($(this).html() == "---") {
                 $(this).html("");
             }
-            if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+            }
         });
         $(".yourscore").focusout(function(e) {
             e.preventDefault();
