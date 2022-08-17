@@ -472,6 +472,10 @@
                             <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
                                 data-i18n="eCommerce">Manage Auction</span></a>
                         </li>
+                        {{-- <li><a href="{{route('auctionreport_csv',2022)}}" target="_blank" id="export" onclick="exportReport(event.target);">
+                            <span class="menu-item"
+                                data-i18n="eCommerce">Report</span></a>
+                        </li> --}}
                         {{-- <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
                                     </span></a>
@@ -538,3 +542,9 @@
         </div>
     </div>
     <!-- END: Main Menu-->
+    <script>
+        function exportReport(_this) {
+           let _url =`{{ route('auctionreport_csv',2022)}}`;
+           window.location.href = _url;
+        }
+     </script>

@@ -2153,6 +2153,7 @@
                                     var totalAutoBidLiability = response.totalAutoBidLiability;
                                     var bid_amountNew       = response.bid_amountNew;
                                     var loser=response.loser_user;
+                                    var winneruser  = response.winneruser;
                                     $('.errorMsgAutoBid' + id).html('');
                                     $(".bidcollapse" + bidID).addClass(
                                         "changecolor");
@@ -2185,6 +2186,7 @@
                                         "paddleNo":paddleNo,
                                         "liability":liability,
                                         "loser":loser,
+                                        "winneruser":winneruser,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -2262,14 +2264,14 @@
         });
     });
 </script>
-    
+
 <script>
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         $(".paddleno" + data.bidID).html(data.paddleNo);
-        if(data.user_id == {{ Auth::user()->id }})
+        if(data.user_id == {{ Auth::user()->id }} && data.winneruser == {{ Auth::user()->id }})
         {
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -2278,6 +2280,11 @@
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+        }
+        else if(data.winneruser == {{ Auth::user()->id }})
+        {
+            $(".liabilitybidcollapse" + data.bidID).show();
+            $(".liability_your" + data.bidID).addClass('liabilty_shown');
         }
         else{
             $(".liabilitybidcollapse" + data.bidID).hide();
