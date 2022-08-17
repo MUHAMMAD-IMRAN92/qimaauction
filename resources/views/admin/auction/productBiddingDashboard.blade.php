@@ -406,7 +406,7 @@
                                                         @if (isset($auction_products))
                                                             @foreach ($auction_products as $auction)
                                                                 @foreach ($auction->products as $key => $pro)
-                                                                <tr id="{{ ++$i }}" class="mb-1"> 
+                                                                <tr id="{{ ++$i }}" class="mb-1">
                                                                     <td id="product{{ $auction->id }}"
                                                                         type="button"
                                                                         style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px"
@@ -459,7 +459,7 @@
                                                                         @php
                                                                             $latestAutoBidPrice = isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->bid_amount : null;
                                                                         @endphp
-    
+
                                                                         <input type="number"
                                                                             value="{{ $latestAutoBidPrice ?? '0' }}"
                                                                             name="autoBidAmount"
@@ -477,9 +477,9 @@
                                                                         <div
                                                                             class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
                                                                         </div>
-    
+
                                                                     </td>
-    
+
                                                                 </tr>
                                                                 @endforeach
                                                             @endforeach
@@ -489,9 +489,9 @@
                                                                             <td >No Auction Product yet</td>
                                                                         </tr> --}}
                                                         @endif
-    
+
                                                     </tbody>
-    
+
                                                 </table>
                                             </div>
                                         </div>
@@ -530,7 +530,7 @@
                                                                        {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->name : '--' }}
                                                                    </td> --}}
                                                                    <td>
-                                                                    {{ $auction->rank }} 
+                                                                    {{ $auction->rank }}
                                                                    </td>
                                                                    <td>
                                                                     @php
@@ -540,10 +540,10 @@
                                                                     {{ $user->company ?? '' }}
                                                                    </td>
                                                                    <td>
-                                                                 
+
                                                                            <h6 style="min-width: max-content;">{{ $pro->product_title }}
                                                                            </h6>
-                                                                       
+
                                                                    </td>
                                                                    {{-- <td id="paddleNo{{ $auction->id }}{{ $auction->id }}">
                                                                        {{ isset($auction->latestBidPrice->user) ? $auction->latestBidPrice->user->first()->paddle_number : '--' }}
@@ -555,7 +555,7 @@
                                                                        {{ $bidprice }}
                                                                    </td>
                                                                </tr>
-    
+
                                                        @endforeach
                                                    @endforeach
                                                    @else

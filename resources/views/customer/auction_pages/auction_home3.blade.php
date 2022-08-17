@@ -1496,7 +1496,7 @@
                                                                 </button>
                                                                 <div
                                                                     class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
-                                                                    <p >CURRENT AUTOBID IS
+                                                                    <p class="newautobidamount{{$auctionProduct->id}}">CURRENT AUTOBID IS
                                                                         ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
@@ -2118,7 +2118,7 @@
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html(
-                                        '<p>Current autobid is $' +
+                                        '<p class="newautobidamount{{$auctionProduct->id}}">Current autobid is $' +
                                         addCommas(autobidamount) +
                                         ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                         id + '>Remove</a>}</p>');
@@ -2375,8 +2375,18 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
+    socket.on('auto_bid_update_user_amount', function(data) {
+        // alert(data.id);
+        $('.errorMsgAutoBid' + data.id).html('');
+        $('.errorMsgAutoBid' + data.id + data.id).html('');
+        $('.errorMsgAutoBid' + data.id + data.id).html(
+                                        '<p">Current autobid is $' +
+                                        addCommas(data.autobidamount) +
+                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                        data.id + '>Remove</a>}</p>');
+
+    });
     socket.on('add_bid_updates', function(data) {
-        // $(".alertMessage"+data.bidID).html('');
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
