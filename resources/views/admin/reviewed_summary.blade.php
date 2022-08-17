@@ -124,6 +124,5 @@
     function exportTasks(_this) {
        let _url =`{{ route('reviewsummary_csv')}}`;
        window.location.href = _url;
-    //    alert(_url);
     }
  </script>

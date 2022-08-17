@@ -17,6 +17,7 @@ use App\Models\WinningCofees;
 use App\Models\Newsletter;
 use App\Models\UserScore;
 use App\Models\WinningCofeeImages;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -228,7 +229,6 @@ class AuctionController extends Controller {
     }
 
     public function auctionFrontend(Request $request) {
-
         $user = Auth::user()->id;
         $auction = Auction::first();
         if ($auction->is_hidden == 1) {
@@ -236,6 +236,8 @@ class AuctionController extends Controller {
         }
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
             $auction->is_hidden = 1;
+            $auction->endDate  =  date('Y-m-d H:i:s');
+
             $auction->save();
             return redirect('auction-winners');
         }
@@ -340,10 +342,9 @@ class AuctionController extends Controller {
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $isEmpty = sizeof($singleBids);
             $singleBid->timerCheck = $isEmpty;
-            if ($isEmpty == 0) {
-
-                // $updateEndTime   = Auction::where('id',$request->auction_id)->update([
-                // 'endTime'=>$convertedTime]);
+            if ($isEmpty == 0 && $auction->startTime == '') {
+                $updateEndTime   = Auction::where('id',$auctionPData->auction_id)->update([
+                'startTime'=>$currentDate]);
             }
             $userBid = SingleBid::where('auction_product_id', $request->id)->where('user_id', Auth::user()->id)->orderBy('bid_amount', 'desc')->first();
             $userBidAmount = $userBid->bid_amount;
@@ -456,6 +457,11 @@ class AuctionController extends Controller {
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $isEmpty = sizeof($singleBids);
             $singleBidData->timerCheck = $isEmpty;
+            $auctionPData = AuctionProduct::where('id', $request->id)->first();
+            if ($isEmpty == 0 && $auction->startTime == '' ) {
+                $updateEndTime   = Auction::where('id',$auctionPData->auction_id)->update([
+                'startTime'=>$currentDate]);
+            }
             $userBid = SingleBid::where('auction_product_id', $request->id)->where('user_id', Auth::user()->id)->orderBy('bid_amount', 'desc')->first();
             $userBidAmount = $userBid->bid_amount;
             $singleBidData->bidAmountUser = $userBid->user_id;
@@ -515,14 +521,14 @@ class AuctionController extends Controller {
                 $get_last_bid = $auctionProductsData->latestBidPriceAmount;
                 $singleBidData = new SingleBid();
                 $singleBidData->bid_amount = $request->autobidamount - .5;
-                $singleBidData->auction_id = '15';
+                $singleBidData->auction_id = $request->auctionid;
                 $singleBidData->user_id = $user;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->save();
 
                 $singleBidData = new SingleBid();
                 $singleBidData->bid_amount = $request->autobidamount;
-                $singleBidData->auction_id = '15';
+                $singleBidData->auction_id =$request->auctionid;
                 $singleBidData->user_id = $other_id;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->save();
@@ -537,7 +543,7 @@ class AuctionController extends Controller {
                     $singleBidData = new SingleBid();
                     $bidIncrement = $bidLimit->increment;
                     $singleBidData->bid_amount = $request->autobidamount;
-                    $singleBidData->auction_id = '15';
+                    $singleBidData->auction_id =$request->auctionid;
                     $request->auctionid;
                     $singleBidData->user_id = $user;
                     $singleBidData->auction_product_id = $request->id;
@@ -545,7 +551,7 @@ class AuctionController extends Controller {
 
                     $singleBidData = new SingleBid();
                     $singleBidData->bid_amount = $request->autobidamount + $bidIncrement;
-                    $singleBidData->auction_id = '15';
+                    $singleBidData->auction_id = $request->auctionid;
                     $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->save();
@@ -677,6 +683,7 @@ class AuctionController extends Controller {
         $autoBidData->bid_amountNew = $bidAmountL;
         $userPaddleNum = User::where('id', $singleBidPricelatest->user_id)->first()->paddle_number;
         $autoBidData->userPaddleNo = $userPaddleNum;
+        $autoBidData->winneruser   = $singleBidPricelatest->user_id;
         $inc = $bidAmountL + $bidIncrementLatest;
         $totalLiabilty = $inc * $auctionProductsData->weight;
         $autoBidData->liablity = $totalLiabilty;
@@ -843,6 +850,54 @@ class AuctionController extends Controller {
         } else {
             return redirect('auction');
         }
+    }
+    public function auctionReportCSV($year)
+    {
+        $fileName = urlencode("2021_Best_of_Yemen_Auction_Results_Bidding_Report.csv");
+        $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
+            $v = SingleBid::where('auction_product_id', $data->id)->orderBy('bid_amount', 'desc')->first();
+            return $v;
+        });
+        $auction            =   Auction::first();
+        $startTime          =   new Carbon($auction->startTime);
+        $endTime            =   new Carbon($auction->endDate);
+        $auctionTimeTotal   = $startTime->diff($endTime)->format('%I:%S');
+        $total = 0;
+        foreach ($data as $amount)
+        {
+            $total += $amount->bid_amount;
+        }
+        $countProducst   =   count($data);
+        if($countProducst>0)
+        {
+            $avgPrice   =   number_format((float)$total/$countProducst, 2, '.', '');
+        }
+        else
+        {
+            $avgPrice   =   0;
+        }
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+        $columns = array('Year','Total Proceeds','Avg. Price per Pound','Auction Run Time - 3 min clock','Auction Run Time - total');
+        $callback = function() use($total, $columns,$year,$auctionTimeTotal,$avgPrice) {
+        $file = fopen('php://output', 'w');
+        fputcsv($file, $columns);
+        // foreach ($data as $amount) {
+            $row['Years']                           =    $year;
+            $row['Total Proceeds']                  =    $total;
+            $row['Avg. Price per Pound']            =   "$".$avgPrice;
+            $row['Auction Run Time - 3 min clock']  =   $auctionTimeTotal;
+            $row['Auction Run Time - total']        =   $auctionTimeTotal;
+            fputcsv($file, array($row['Years'],$row['Total Proceeds'], $row['Avg. Price per Pound'],$row['Auction Run Time - 3 min clock'],$row['Auction Run Time - total']));
+        // }
+            fclose($file);
+        };
+        return response()->streamDownload($callback, $fileName, $headers);
     }
 
 }

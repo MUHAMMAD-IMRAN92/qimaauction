@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
   |
  */
 // Route::view('/', 'customer.dashboard.index');
+
 Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslettersignup']);
 Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
@@ -228,6 +229,7 @@ Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewCon
 Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
 Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
 Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
+Route::get('/report_csv/{year?}', [App\Http\Controllers\AuctionController::class, 'auctionReportCSV'])->name('auctionreport_csv');
 
 
 //Customer Reset Passwords Routes
