@@ -2246,6 +2246,7 @@
                                 if(response.winner_id == current_user_id){
                                     $(".bidnowbutton" + id).prop('disabled', true);
                                     $(".bidnowbutton" + id).css('background', '#a6a6a6');
+                                    $(".bidcollapse" +  id).addClass("changecolor");
                                 }
                             }
                             socket.emit('auto_bid_delete', {
@@ -2364,7 +2365,7 @@
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
         $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
         $('.errorMsgAutoBid' + data.auction_product_id + data.auction_product_id).html('');
-        $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
+        // $(".bidcollapse" + data.auction_product_id).removeClass("changecolor");
         // var weight = $("#auctionWeight").val();
         // var finalIncSinglebid = $("#finalIncSinglebid").val();
         // var total = 0;
