@@ -1124,7 +1124,7 @@
     </div> --}}
     <section>
         <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
-        <h3 style="text-align: center;font-family:'Montserrat';">Auction starting soon.</h3>
+        <!--<h3 style="text-align: center;font-family:'Montserrat';">Auction starting soon.</h3>-->
         <div class="table-container">
             <div class="tab-content" id="nav-tabContent">
                 <nav class="tablenav">
