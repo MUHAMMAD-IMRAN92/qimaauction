@@ -235,7 +235,7 @@ class AuctionController extends Controller {
             return redirect('auction-winners');
         }
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
-            $auction->is_hidden = 1;
+//            $auction->is_hidden = 1;
             $auction->endDate  =  date('Y-m-d H:i:s');
 
             $auction->save();
