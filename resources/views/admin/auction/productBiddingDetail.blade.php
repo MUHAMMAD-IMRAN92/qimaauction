@@ -328,6 +328,8 @@
                 var socket = io('<?= env('SOCKETS') ?>');
                 socket.on('auto_bid_updates', function(data) {
                      var amount = (+data.autobidamount).toFixed(2);
+                       var current_amount=$("#autoBidAmount" + data.id).val();
+                     if(amount > current_amount){
                     // $("#paddleno" + data.bidID).html(data.paddleNo);
                     $("#price" + data.bidID).html('$' + data.bid_amountNew + 'lbs');
                     $("#liability" + data.bidID).html('$' + data.liability);
@@ -341,6 +343,7 @@
                     $("#liability" + data.bidID + data.bidID).html('$' + data.liability);
                     $("#autoBidAmount" + data.id).prop('disabled', false);
                     $("#editbtn" + data.bidID).prop('disabled', false);
+                    }
                 });
                 socket.on('auto_bid_delete', function(data) {
                         $('.errorMsgAutoBid' + data.auction_product_id).hide();
