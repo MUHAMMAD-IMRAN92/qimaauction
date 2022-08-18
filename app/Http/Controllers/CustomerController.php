@@ -143,7 +143,7 @@ class CustomerController extends Controller
         $customer->name             =   $request->name;
         $customer->email            =   $request->email;
         $customer->phone_no         =   $request->phone_no;
-        $customer->password         =   Hash::make($request->password);;
+        $customer->password         =   Hash::make($request->password);
         $customer->bid_limit        =   $request->bid_limit;
         $customer->status           =   $request->status;
         $customer->paddle_number    =   $request->paddle_number;
@@ -156,5 +156,31 @@ class CustomerController extends Controller
     public function passwordReset($token)
     {
         return view('auth.passwords.reset',['token' => $token,]);
+    }
+    public function resendEmail($id)
+    {
+        $newpass     =   Hash::make('12345678');
+        $newPassword = User::where('id', $id)->update([
+            'password' => $newpass
+        ]);
+
+        $user = User::where('id',$id)->first();
+        $customer=array();
+        // $customer['password']    =   $user->password;
+        $customer['name']        =   $user->name;
+        $customer['email']       =   $user->email;
+        $password           =   '12345678';
+        $token = Str::random(64);
+          DB::table('password_resets')->insert([
+              'email'       => $user->email,
+              'token'       => $token,
+              'created_at'  => Carbon::now()
+            ]);
+            Mail::send('emails.passwordreset', ['token' => $token,'customer' => $customer,'password'=>$password], function($message) use($user){
+                $message->to($user->email);
+              $message->subject('Your Best of Yemen Login Credentials & Practice Auction Link');
+              $message->from('noreply@mg.bestofyemenauction.com','Best of Yemen 2022');
+          });
+        return redirect('/customer/index')->with('Email Resend Successfuly');
     }
 }
