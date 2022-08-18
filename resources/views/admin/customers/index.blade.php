@@ -67,6 +67,7 @@
                                                         <th>Paddle Number</th>
                                                         <th>Status</th>
                                                         <th>Action(s)</th>
+                                                        <th>Resend Email</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -82,6 +83,7 @@
                                                         <th>Paddle Number</th>
                                                         <th>Status</th>
                                                         <th>Action(s)</th>
+                                                        <th>Resend Email</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -163,10 +165,20 @@
                                     var ids = btoa(row.id);
                                     return `<td>` +
                                         `<a  href="/customer/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
-                                            // `<a  href="/categories/delete/`+ids+`"><i class="fa fa-eye-slash" style="font-size:20px;color:red"></i></a>` +
+                                            // `<a  href="/categories/delete/`+ids+`">Resend Email</a>` +
                                         '</td>'
                                 }
                 },
+                {
+
+                    "mRender": function(data, type, row) {
+                                    var ids = row.id;
+                                    return `<td>` +
+                                        // `<a  href="/customer/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
+                                            `<a  href="/customer/email_resend/`+ids+`">Resend Email</a>` +
+                                        '</td>'
+                                }
+                    },
             ],
             "columnDefs": [{
                 "orderable": false,

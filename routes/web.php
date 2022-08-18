@@ -179,6 +179,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     Route::get('/customer/edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit']);
     Route::get('/customer/allcustomers', [App\Http\Controllers\CustomerController::class, 'allCustomer']);
     Route::post('/customer/update', [App\Http\Controllers\CustomerController::class, 'update']);
+    Route::get('/customer/email_resend/{id}', [App\Http\Controllers\CustomerController::class, 'resendEmail']);
+
 
     //Bid Limit Crud
     Route::get('/bidlimit/index', [App\Http\Controllers\BidlimitController::class, 'index']);
