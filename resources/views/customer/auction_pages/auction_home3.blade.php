@@ -2507,6 +2507,7 @@
     });
 
     function resetTimer(data) {
+    console.log('Its Coming To Data');
         var timer_text = "";
         var hours = 0;
         var days = 0;
