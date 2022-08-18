@@ -761,6 +761,9 @@ class AuctionController extends Controller {
             $auction->save();
             return redirect('auction');
         }
+        if ($auction->is_hidden == 1) {
+            return redirect('auction-winners');
+        }
         $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function($e) {
