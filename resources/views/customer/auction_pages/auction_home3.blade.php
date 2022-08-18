@@ -1543,7 +1543,7 @@
                                                                     Total Liability</th>
                                                                 <td scope="col"
                                                                     class="totalliability{{ $auctionProduct->id }}">
-                                                                    ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($auctionProduct->latestAutoBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->weight * $finalIncSinglebid, 1) }}
+                                                                    ${{ isset($auctionProduct->latestAutoBidPrice->bid_amount) ? number_format($finalIncSinglebid * $auctionProduct->weight, 1) : number_format($auctionProduct->weight * $finalIncSinglebid, 1) }}
                                                                 </td>
                                                             </tr>
                                                         </table>
