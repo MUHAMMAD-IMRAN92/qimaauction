@@ -48,7 +48,7 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table">
+                                            <table class="table zero-configuration" id="customer-table" data-page-length='100'>
                                                 <thead>
                                                     <tr class="table-heading">
                                                         <th>Sr</th>

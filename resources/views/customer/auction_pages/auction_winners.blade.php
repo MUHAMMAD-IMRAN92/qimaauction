@@ -1201,7 +1201,7 @@
                                     @endforeach
                                     @if (isset($auctionProduct->highestbid))
                                         @foreach ($auctionProduct->highestbid->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                        <td style="width: 500px !important" class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 {{ $userData->company ?? '---' }}</td>
                                         @endforeach
                                     @else

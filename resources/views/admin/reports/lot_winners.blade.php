@@ -47,7 +47,7 @@
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table">
+                                            <table class="table zero-configuration" id="customer-table" data-page-length='50'>
                                                 <thead>
                                                     <tr class="table-heading">
                                                         {{-- <th>Sr</th> --}}
@@ -85,14 +85,7 @@
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    {{-- <tr>
-                                                        <th>Sr</th>
-                                                        <th>Year</th>
-                                                        <th>Total Proceeds</th>
-                                                        <th>Avg. Price per Pound</th>
-                                                        <th>Auction Run Time - 3 min clock</th>
-                                                        <th>Auction Run Time - total</th>
-                                                    </tr> --}}
+                                                    
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -115,3 +108,11 @@
        window.location.href = _url;
     }
  </script>
+{{-- <script>
+    $(document).ready(function() {
+        $('#customer-table').dataTable( {
+    "pageLength": 50
+  } );
+} );
+
+    </script> --}}
