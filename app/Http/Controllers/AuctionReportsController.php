@@ -22,7 +22,7 @@ class AuctionReportsController extends Controller
         $auction            =   Auction::first();
         $startTime          =   new Carbon($auction->startTime);
         $endTime            =   new Carbon($auction->endDate);
-        $auctionTimeTotal   = $startTime->diff($endTime)->format('%I:%S');
+        $auctionTimeTotal   = $startTime->diff($endTime)->format('%H:%I:%S');
         $total = 0;
         foreach ($data as $amount)
         {
@@ -50,7 +50,7 @@ class AuctionReportsController extends Controller
         $auction            =   Auction::first();
         $startTime          =   new Carbon($auction->startTime);
         $endTime            =   new Carbon($auction->endDate);
-        $auctionTimeTotal   = $startTime->diff($endTime)->format('%I:%S');
+        $auctionTimeTotal   = $startTime->diff($endTime)->format('%H:%I:%S');
         $total = 0;
         foreach ($data as $amount)
         {
