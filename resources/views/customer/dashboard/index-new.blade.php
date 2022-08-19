@@ -449,13 +449,13 @@
                             <img style="width: 270px;"
                                 src="{{ asset('public/images/LOGO_0002_Vector-Smart-Object 1.png') }}" alt="">
                         </div>
-                        <div class="video-text-1 my-3">
+<!--                        <div class="video-text-1 my-3">
                             <span class="real-timer"></span>
-                        </div>
-                        <div class="font-fam video-text-2" style="color: white;">
+                        </div>-->
+<!--                        <div class="font-fam video-text-2" style="color: white;">
                             <p style="">AUGUST 18<sup>th</sup></p>
 
-                        </div>
+                        </div>-->
                         <div class="my-3 banner-btn">
                             {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
