@@ -3,6 +3,7 @@
     font-size: 5rem !important;
   }
 </style>
+
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
@@ -22,7 +23,7 @@
                                     </li>
                                     <li class="breadcrumb-item active">Reports
                                     </li>
-                                    <li class="breadcrumb-item active">Full Bid
+                                    <li class="breadcrumb-item active">Overview
                                     </li>
                                 </ol>
                             </div>
@@ -31,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
-                    <a href="{{route('fullbid_csv')}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
+                    <a href="{{route('auctionreport_csv',2022)}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
                 </div>
             </div>
             <div class="content-body">
@@ -52,30 +53,32 @@
                                                 <thead>
                                                     <tr class="table-heading">
                                                         <th>Sr</th>
-                                                        <th>Bid Amount</th>
-                                                        <th>Bidder Company Name</th>
-                                                        <th>Lot</th>
+                                                        <th>Year</th>
+                                                        <th>Total Proceeds</th>
+                                                        <th>Avg. Price per Pound</th>
+                                                        <th>Auction Run Time - 3 min clock</th>
+                                                        <th>Auction Run Time - total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($singlebids as $singlebid )
-                                                         <tr>
-                                                        <td>{{$loop->iteration}}</td>
-                                                        <td>${{$singlebid->bid_amount}}</td>
-                                                        @foreach ($singlebid->user as $user)
-                                                        <td>{{$user->company}}</td>
-                                                        @endforeach
-                                                        <td>#{{$loop->iteration}} {{$singlebid->products->product_title}}</td>
-                                                    </tr>
-                                                    @endforeach
 
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>{{$year}}</td>
+                                                        <td>${{number_format($total)}}</td>
+                                                        <td>${{number_format($avgPrice)}}</td>
+                                                        <td>{{$auctionTimeTotal}}</td>
+                                                        <td>{{$auctionTimeTotal}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     {{-- <tr>
-                                                      <th>Sr</th>
-                                                        <th>Bid Amount</th>
-                                                        <th>Bidder Company Name</th>
-                                                        <th>Lot</th>
+                                                        <th>Sr</th>
+                                                        <th>Year</th>
+                                                        <th>Total Proceeds</th>
+                                                        <th>Avg. Price per Pound</th>
+                                                        <th>Auction Run Time - 3 min clock</th>
+                                                        <th>Auction Run Time - total</th>
                                                     </tr> --}}
                                                 </tfoot>
                                             </table>
@@ -95,7 +98,7 @@
 @endsection
 <script>
     function exportReport(_this) {
-       let _url =`{{ route('fullbid_csv')}}`;
+       let _url =`{{ route('auctionreport_csv',2022)}}`;
        window.location.href = _url;
     }
  </script>

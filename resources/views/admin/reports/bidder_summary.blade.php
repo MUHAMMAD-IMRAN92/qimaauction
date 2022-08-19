@@ -49,33 +49,33 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table">
+                                            <table class="table zero-configuration" id="customer-table"   data-page-length='50'>
                                                 <thead>
                                                     <tr class="table-heading">
                                                         <th>Sr</th>
                                                         <th>Bidding Company</th>
+                                                        <th>Former Name</th>
                                                         <th>Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @dd($userMaxBids); --}}
-                                                    {{-- @foreach($userMaxBids as $userMaxBid)
+                                                    @php $i=0; @endphp
+                                                    @foreach($userMaxBids as $userMaxBid)
+                                                    <?php
+                                                      foreach ($userMaxBid->products->groupBy('id') as $product){
+                                                          $i++;
+                                                    ?>
                                                     <tr>
-                                                        <td>{{$loop->iteration}}</td>
-                                                        @foreach ($userMaxBid->user as $userdata)
-                                                            <td>{{$userdata->company}}</td>
-                                                        @endforeach
-                                                        <td>{{$userMaxBid->bid_amount}}</td>
-                                                        <td></td>
+                                                        <td>{{$i}}</td> 
+                                                        <td>{{$userMaxBid->company}}</td> 
+                                                        <td>${{$product[0]->bid_amount}}</td>
+                                                        <td>{{$product[0]->product_title}}</td> 
                                                     </tr>
-                                                    @endforeach --}}
+                                                      <?php } ?>
+                                                    @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    {{-- <tr>
-                                                         <th>Sr</th>
-                                                        <th>Bidding Company</th>
-                                                        <th>Amount</th>
-                                                    </tr> --}}
+                                                     
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -97,4 +97,5 @@
        let _url =`{{ route('bidder_summary_csv')}}`;
        window.location.href = _url;
     }
+    
  </script>

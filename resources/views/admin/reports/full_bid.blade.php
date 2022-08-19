@@ -22,7 +22,7 @@
                                     </li>
                                     <li class="breadcrumb-item active">Reports
                                     </li>
-                                    <li class="breadcrumb-item active">Lot Winners
+                                    <li class="breadcrumb-item active">Full Bid
                                     </li>
                                 </ol>
                             </div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
-                    <a href="{{route('lotwinners_report_csv')}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
+                    <a href="{{route('fullbid_csv')}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
                 </div>
             </div>
             <div class="content-body">
@@ -46,52 +46,36 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
+
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table">
+                                            <table class="table zero-configuration" id="customer-table" data-page-length='100'>
                                                 <thead>
                                                     <tr class="table-heading">
-                                                        {{-- <th>Sr</th> --}}
-                                                        <th>Rank</th>
-                                                        <th>Score</th>
-                                                        <th>Farmer</th>
-                                                        <th>Weight (lbs)</th>
-                                                        <th>High Bid</th>
-                                                        <th>Total Value</th>
-                                                        <th>Company</th>
+                                                        <th>Sr</th>
+                                                        <th>Bid Amount</th>
+                                                        <th>Bidder Company Name</th>
+                                                        <th>Lot</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @dd($auctionProducts); --}}
-                                                    @foreach ($auctionProducts as  $product)
-                                                    <tr>
-                                                        {{-- <td>{{$loop->iteration}}</td> --}}
-                                                        <td>{{$product->rank}}</td>
-                                                        <td>{{$product->jury_score}}</td>
-                                                        @foreach ($product->products as $productData)
-                                                            <td>{{$productData->product_title}}</td>
+                                                    @foreach ($singlebids as $singlebid )
+                                                         <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>${{$singlebid->bid_amount}}</td>
+                                                        @foreach ($singlebid->user as $user)
+                                                        <td>{{$user->company}}</td>
                                                         @endforeach
-                                                        <td>{{$product->weight}}</td>
-                                                        <td>${{ isset($product->highestbid) ? $product->highestbid->bid_amount : $product->start_price }}</td>
-                                                        <td>${{ isset($product->highestbid) ? $product->highestbid->bid_amount * $product->weight : $product->start_price*$product->weight }}</td>
-                                                        @if (isset($product->highestbid))
-                                                            @foreach ($product->highestbid->user as $userData)
-                                                                <td>{{ $userData->company ?? '---' }}</td>
-                                                            @endforeach
-                                                            @else
-                                                            <td>---</td>
-                                                        @endif
+                                                        <td>#{{$loop->iteration}} {{$singlebid->products->product_title}}</td>
                                                     </tr>
-
                                                     @endforeach
+
                                                 </tbody>
                                                 <tfoot>
                                                     {{-- <tr>
-                                                        <th>Sr</th>
-                                                        <th>Year</th>
-                                                        <th>Total Proceeds</th>
-                                                        <th>Avg. Price per Pound</th>
-                                                        <th>Auction Run Time - 3 min clock</th>
-                                                        <th>Auction Run Time - total</th>
+                                                      <th>Sr</th>
+                                                        <th>Bid Amount</th>
+                                                        <th>Bidder Company Name</th>
+                                                        <th>Lot</th>
                                                     </tr> --}}
                                                 </tfoot>
                                             </table>
@@ -111,7 +95,7 @@
 @endsection
 <script>
     function exportReport(_this) {
-       let _url =`{{ route('lotwinners_report_csv')}}`;
+       let _url =`{{ route('fullbid_csv')}}`;
        window.location.href = _url;
     }
  </script>
