@@ -55,7 +55,7 @@
                                                         <th>Sr</th>
                                                         <th>Bidding Company</th>
                                                         <th>Former Name</th>
-                                                        <th>Amount</th>
+                                                        <th>Bid Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -66,16 +66,16 @@
                                                           $i++;
                                                     ?>
                                                     <tr>
-                                                        <td>{{$i}}</td> 
-                                                        <td>{{$userMaxBid->company}}</td> 
+                                                        <td>{{$i}}</td>
+                                                        <td>{{$userMaxBid->company}}</td>
+                                                        <td>{{$product[0]->product_title}}</td>
                                                         <td>${{$product[0]->bid_amount}}</td>
-                                                        <td>{{$product[0]->product_title}}</td> 
                                                     </tr>
                                                       <?php } ?>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                     
+
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -97,5 +97,5 @@
        let _url =`{{ route('bidder_summary_csv')}}`;
        window.location.href = _url;
     }
-    
+
  </script>

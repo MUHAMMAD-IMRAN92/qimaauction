@@ -71,8 +71,8 @@
                                                             <td>{{$productData->product_title}}</td>
                                                         @endforeach
                                                         <td>{{$product->weight}}</td>
-                                                        <td>${{ isset($product->highestbid) ? $product->highestbid->bid_amount : $product->start_price }}</td>
-                                                        <td>${{ isset($product->highestbid) ? $product->highestbid->bid_amount * $product->weight : $product->start_price*$product->weight }}</td>
+                                                        <td>${{ isset($product->highestbid) ? number_format($product->highestbid->bid_amount) : number_format($product->start_price) }}</td>
+                                                        <td>${{ isset($product->highestbid) ? number_format($product->highestbid->bid_amount * $product->weight) : number_format($product->start_price*$product->weight) }}</td>
                                                         @if (isset($product->highestbid))
                                                             @foreach ($product->highestbid->user as $userData)
                                                                 <td>{{ $userData->company ?? '---' }}</td>
@@ -85,7 +85,7 @@
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
-                                                    
+
                                                 </tfoot>
                                             </table>
                                         </div>

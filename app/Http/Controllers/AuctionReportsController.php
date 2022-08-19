@@ -19,9 +19,10 @@ class AuctionReportsController extends Controller {
             $v = SingleBid::where('auction_product_id', $data->id)->orderBy('bid_amount', 'desc')->first();
             return $v;
         });
-
+        // dd($data);
         $total = 0;
         foreach ($data as $amount) {
+            // $bidamounttotal=$amount->bid_amount;
             if (isset($amount->auction_product_id)) {
                 $auctionProduct = AuctionProduct::where('id', $amount->auction_product_id)->first()->weight;
                 if (isset($auctionProduct)) {
@@ -35,14 +36,14 @@ class AuctionReportsController extends Controller {
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        // $total = 0;
-        // foreach ($data as $amount)
-        // {
-        //     $total += $amount->bid_amount;
-        // }
+        $bidamounttotal = 0;
+        foreach ($data as $amount)
+        {
+            $bidamounttotal += $amount->bid_amount;
+        }
         $countProduct = count($data);
         if ($countProduct > 0) {
-            $avgPrice = number_format((float) $total / $countProduct, 2, '.', '');
+            $avgPrice = number_format((float) $bidamounttotal / $countProduct, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
@@ -69,14 +70,14 @@ class AuctionReportsController extends Controller {
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        // $total = 0;
-        // foreach ($data as $amount)
-        // {
-        //     $total += $amount->bid_amount;
-        // }
+        $bidamounttotal = 0;
+        foreach ($data as $amount)
+        {
+            $bidamounttotal += $amount->bid_amount;
+        }
         $countProducst = count($data);
         if ($countProducst > 0) {
-            $avgPrice = number_format((float) $total / $countProducst, 2, '.', '');
+            $avgPrice = number_format((float) $bidamounttotal / $countProducst, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
@@ -93,8 +94,8 @@ class AuctionReportsController extends Controller {
             fputcsv($file, $columns);
             // foreach ($data as $amount) {
             $row['Years'] = $year;
-            $row['Total Proceeds'] = $total;
-            $row['Avg. Price per Pound'] = $avgPrice;
+            $row['Total Proceeds'] = '$'.number_format($total);
+            $row['Avg. Price per Pound'] = '$'.number_format($avgPrice);
             $row['Auction Run Time - 3 min clock'] = $auctionTimeTotal;
             $row['Auction Run Time - total'] = $auctionTimeTotal;
             fputcsv($file, array($row['Years'], $row['Total Proceeds'], $row['Avg. Price per Pound'], $row['Auction Run Time - 3 min clock'], $row['Auction Run Time - total']));
@@ -143,8 +144,8 @@ class AuctionReportsController extends Controller {
                 }
                 $row['Weight (lbs)'] = $task["weight"];
 
-                $row['High Bid'] = isset($task->highestbid) ? $task->highestbid->bid_amount : $task->start_price;
-                $row['Total Value'] = isset($task->highestbid) ? $task->highestbid->bid_amount * $task->weight : $task->start_price * $task->weight;
+                $row['High Bid'] = isset($task->highestbid) ? '$'.number_format($task->highestbid->bid_amount) : '$'.number_format($task->start_price);
+                $row['Total Value'] = isset($task->highestbid) ? '$'.number_format($task->highestbid->bid_amount * $task->weight) : '$'.number_format($task->start_price * $task->weight);
                 foreach ($task->highestbid->user as $userData) {
                     $row['Company'] = $userData["company" ?? '---'];
                 }
@@ -157,20 +158,12 @@ class AuctionReportsController extends Controller {
 
     public function bidderSummaryReport() {
         $userMaxBids = User::whereHas('bid')->with('products')->orderBy('id')->get();
-
-//        $userMaxBids=SingleBid::wherehas('user')
-//        ->orderby('bid_amount','desc')->get();
-        // dd($userMaxBids);
-
         return view('admin.reports.bidder_summary', compact('userMaxBids'));
     }
 
     public function bidderSummaryReportCSV() {
         $fileName = urlencode("Bidder_Summary_Report.csv");
-        $userMaxBids = SingleBid::wherehas('user', function($q) {
-                            $q->orderby('bid_amount', 'desc');
-                        })
-                        ->orderby('user_id', 'asc')->get();
+        $userMaxBids = User::whereHas('bid')->with('products')->orderBy('id')->get();
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -178,16 +171,17 @@ class AuctionReportsController extends Controller {
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
-        $columns = array('Company', 'Bid Amount');
+        $columns = array('Bidding Company', 'Former Name','Bid Amount');
         $callback = function() use($userMaxBids, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             foreach ($userMaxBids as $task) {
-                foreach ($task->user as $userdata) {
-                    $row['Company'] = $userdata["company" ?? '---'];
-                }
-                $row['Bid Amount'] = $task['bid_amount'];
-                fputcsv($file, array($row['Company'], $row['Bid Amount']));
+                foreach ($task->products->groupBy('id') as $product){
+                    $row['Company'] = $task["company" ?? '---'];
+                    $row['Former Name'] = $product[0]['product_title'];
+                    $row['Bid Amount'] = '$'.$product[0]['bid_amount'];
+                 }
+                fputcsv($file, array($row['Company'],$row['Former Name'],$row['Bid Amount']));
             }
             fclose($file);
         };
@@ -224,7 +218,7 @@ class AuctionReportsController extends Controller {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             foreach ($singlebids as $task) {
-                $row['Bid Amount'] = $task["bid_amount"];
+                $row['Bid Amount'] = '$'.$task["bid_amount"];
                 foreach ($task->user as $userData) {
                     $row['Bidder Company Name'] = $userData["company" ?? '---'];
                 }
