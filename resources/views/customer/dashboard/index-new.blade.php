@@ -766,10 +766,10 @@
                 <div class="col-lg-12 pb-2 text-center section-4-img">
                     <img src="{{ asset('public/images/LOGO_0003_Vector-Smart-Object 1.png') }}" alt="">
                 </div>
-                <div class="col-lg-12 text-center section-4-text-1">
+<!--                <div class="col-lg-12 text-center section-4-text-1">
                     <p class="time real-timer m-0"></p>
                     <p class="date">AUGUST 18<sup>th</sup> </p>
-                </div>
+                </div>-->
             </div>
 
 
