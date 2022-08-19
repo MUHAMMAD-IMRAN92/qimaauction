@@ -448,6 +448,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Reports</span></a>
+                            <ul>
+                                <li @if (request()->is('report_overview/*')) class='active' @endif><a
+                                        href="{{ route('ReportOverview',2022) }}">
+                                        <span class="menu-item " data-i18n="eCommerce">Overview</span></a>
+                                </li>
+                                <li @if (request()->is('report_lotwinners')) class='active' @endif><a
+                                        href="{{ route('ReportLotWinners') }}">
+                                        <span class="menu-item " data-i18n="eCommerce">Lot Winners</span></a>
+                                </li>
+                                <li @if (request()->is('report_bidder_summary')) class='active' @endif><a
+                                        href="{{ route('ReportBidderSummary') }}">
+                                        <span class="menu-item " data-i18n="eCommerce">Bidder Summary</span></a>
+                                </li>
+                                {{-- <li @if (request()->is('village/*')) class='active' @endif><a
+                                    href="{{ url('/village/index') }}">
+                                    <span class="menu-item " data-i18n="eCommerce">Buyer Distribution</span></a>
+                            </li> --}}
+                            <li @if (request()->is('report_fullbid')) class='active' @endif><a
+                                href="{{ route('ReportFullBid') }}">
+                                <span class="menu-item " data-i18n="eCommerce">Full Bid</span></a>
+                        </li>
+                            </ul>
+                        </li>
 
                         {{-- <li @if (request()->is('origin/*')) class='active' @endif><a
                                 href="{{ url('/origin/index') }}">
@@ -472,10 +497,7 @@
                             <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
                                 data-i18n="eCommerce">Manage Auction</span></a>
                         </li>
-                        {{-- <li><a href="{{route('auctionreport_csv',2022)}}" target="_blank" id="export" onclick="exportReport(event.target);">
-                            <span class="menu-item"
-                                data-i18n="eCommerce">Report</span></a>
-                        </li> --}}
+
                         {{-- <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Manage Auction
                                     </span></a>
@@ -542,9 +564,4 @@
         </div>
     </div>
     <!-- END: Main Menu-->
-    <script>
-        function exportReport(_this) {
-           let _url =`{{ route('auctionreport_csv',2022)}}`;
-           window.location.href = _url;
-        }
-     </script>
+

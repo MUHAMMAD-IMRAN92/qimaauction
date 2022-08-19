@@ -857,49 +857,4 @@ class AuctionController extends Controller {
             return redirect('auction');
         }
     }
-
-    public function auctionReportCSV($year) {
-        $fileName = urlencode("2021_Best_of_Yemen_Auction_Results_Bidding_Report.csv");
-        $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
-            $v = SingleBid::where('auction_product_id', $data->id)->orderBy('bid_amount', 'desc')->first();
-            return $v;
-        });
-        $auction = Auction::first();
-        $startTime = new Carbon($auction->startTime);
-        $endTime = new Carbon($auction->endDate);
-        $auctionTimeTotal = $startTime->diff($endTime)->format('%I:%S');
-        $total = 0;
-        foreach ($data as $amount) {
-            $total += $amount->bid_amount;
-        }
-        $countProducst = count($data);
-        if ($countProducst > 0) {
-            $avgPrice = number_format((float) $total / $countProducst, 2, '.', '');
-        } else {
-            $avgPrice = 0;
-        }
-        $headers = array(
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
-        );
-        $columns = array('Year', 'Total Proceeds', 'Avg. Price per Pound', 'Auction Run Time - 3 min clock', 'Auction Run Time - total');
-        $callback = function() use($total, $columns, $year, $auctionTimeTotal, $avgPrice) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-            // foreach ($data as $amount) {
-            $row['Years'] = $year;
-            $row['Total Proceeds'] = $total;
-            $row['Avg. Price per Pound'] = "$" . $avgPrice;
-            $row['Auction Run Time - 3 min clock'] = $auctionTimeTotal;
-            $row['Auction Run Time - total'] = $auctionTimeTotal;
-            fputcsv($file, array($row['Years'], $row['Total Proceeds'], $row['Avg. Price per Pound'], $row['Auction Run Time - 3 min clock'], $row['Auction Run Time - total']));
-            // }
-            fclose($file);
-        };
-        return response()->streamDownload($callback, $fileName, $headers);
-    }
-
 }
