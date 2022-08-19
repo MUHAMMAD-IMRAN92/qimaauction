@@ -143,11 +143,11 @@ class AuctionReportsController extends Controller
     }
     public function bidderSummaryReport()
     {
-        return view('admin.Reports.bidder_summary');
+        return view('admin.reports.bidder_summary');
     }
     public function bidderSummaryReportCSV()
     {
-        echo"bidderSummaryReportCSV";
+        // echo"bidderSummaryReportCSV";
     }
     public function fullBidReport()
     {
@@ -157,7 +157,7 @@ class AuctionReportsController extends Controller
                     ->first();
             return $e;
     });
-        return view('admin.Reports.full_bid',compact('singlebids'));
+        return view('admin.reports.full_bid',compact('singlebids'));
     }
     public function fullBidReportCSV()
     {
