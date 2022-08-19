@@ -193,6 +193,24 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     //Agreement Controller
     Route::get('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement']);
     Route::post('/agreement', [App\Http\Controllers\AgreementController::class, 'agreement'])->name('agreement');
+
+    //Auction reports routes
+    //Overview report
+    Route::get('/report_overview/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'overViewReport'])->name('ReportOverview');
+    Route::get('/report_overview/csv/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'auctionReportCSV'])->name('auctionreport_csv');
+
+    //Lot winners report
+    Route::get('/report_lotwinners', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReport'])->name('ReportLotWinners');
+    Route::get('/report_lotwinners/csv', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
+
+    //Bidder summary report
+    Route::get('/report_bidder_summary', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReport'])->name('ReportBidderSummary');
+    Route::get('/report_bidder_summary/csv', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReportCSV'])->name('bidder_summary_csv');
+
+    //Full bid report
+    Route::get('/report_fullbid', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReport'])->name('ReportFullBid');
+    Route::get('/report_fullbid/csv', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
+
 });
 
 Auth::routes();
@@ -231,7 +249,6 @@ Route::get('/review/review_detail/csv/{sample}', [App\Http\Controllers\ReviewCon
 Route::get('/review/summary/csv', [App\Http\Controllers\ReviewController::class, 'reviewSummaryCsv'])->name('reviewsummary_csv');
 Route::get('/agreement/{slug?}', [App\Http\Controllers\ReviewController::class, 'agreement']);
 Route::post('/agreements', [App\Http\Controllers\ReviewController::class, 'agreement'])->name('agreement');
-Route::get('/report_csv/{year?}', [App\Http\Controllers\AuctionController::class, 'auctionReportCSV'])->name('auctionreport_csv');
 
 
 //Customer Reset Passwords Routes
