@@ -2505,6 +2505,12 @@
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
     });
+    socket.on('add_auction_status', function(data) {
+        if(data.auctionstatus == 1)
+        {
+            window.location = window.location.href + "?ended=1";
+        }
+    });
 
     function resetTimer(data) {
     console.log('Its Coming To Data');

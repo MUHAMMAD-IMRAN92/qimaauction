@@ -480,11 +480,11 @@
                                 <span class="menu-item @if (request()->is('origin/*')) 'active' @endif"
                                     data-i18n="eCommerce">Origin</span></a>
                         </li> --}}
-                        <li @if (request()->is('product/*')) class='active' @endif><a
+                        {{-- <li @if (request()->is('product/*')) class='active' @endif><a
                                 href="{{ url('/product/index') }}">
                                 <span class="menu-item @if (request()->is('product/*')) 'active' @endif"
                                     data-i18n="eCommerce">Product</span></a>
-                        </li>
+                        </li> --}}
 
 
                         <li @if (request()->is('customer/index')) class='active nav-item' @endif><a

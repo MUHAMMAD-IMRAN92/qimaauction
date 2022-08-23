@@ -58,6 +58,7 @@
             display: !important flex;
          }
     </style>
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -119,6 +120,11 @@
                             </div>
                         </div>
                     </nav>
+                    @if(isset($auction) && $auction->startTime != '')
+                    <div class="col-6 custom_btn_align">
+                        <a class="btn btn-primary waves-effect waves-light endauction" data-id="{{$auction->id}}" id="endauction" >End Auction<a>
+                    </div>
+                    @endif
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="card">
@@ -324,6 +330,7 @@
         </div>
 
         <script>
+
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');
                 socket.on('auto_bid_updates', function(data) {
@@ -397,6 +404,42 @@
                             // $("#auction_model").modal("show");
                         }
                     });
+                });
+                //endauction
+                $(".endauction").on("click", function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr('data-id');
+                    swal({
+                        title: `Are You sure to End Auction ?`,
+                        type: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((result) => {
+                        if (result) {
+                            $.ajax({
+                            url: "{{ route('auctionEnd') }}",
+                            async: false,
+                            method: 'POST',
+                            data: {
+                                id: id,
+                                _token: "{{ csrf_token() }}",
+                            },
+                                success: function(response) {
+                                    swal('Auction is Ended');
+                                var auctionstatus = response;
+
+                                    socket.emit('add_auction_status', {
+                                        "auctionstatus": auctionstatus
+                                    });
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                }
+                            });
+                        } else {
+                            swal('Your Auction is safe');
+                        }
+                    })
                 });
                 ////////////////  End Get Product Information /////////////////
                 ////////////////  Get Product Information /////////////////

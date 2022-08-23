@@ -63,6 +63,17 @@
                                                             <label for="name">Date Time</label>
                                                         </div>
                                                 </div>
+                                                <div class="col-md-6 col-6">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="is_active">
+                                                            <option value="" selected>Select Status</option>
+                                                            <option value="1">Active</option>
+                                                            <option value="0">In Active</option>
+                                                          </select>
+                                                        @error('is_Active') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <textarea id="product-detail" class="form-control" name="product_detail" @error('product_detail') is-invalid @enderror>
@@ -71,6 +82,20 @@
                                                         @error('product_detail')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <input type="file" id="image" class="form-control"
+                                                        accept="image/png, image/jpeg"  name="image[]" multiple required>
+                                                        <label for="city-column">Auction Image</label>
+                                                        @error('image')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                         @enderror
+                                                    </div>
+                                                    <div class="col-md-12 mb-2">
+                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                            alt="" style="max-height: 100px;max-width: 100px;">
                                                     </div>
                                                 </div>
                                                 {{--
@@ -238,20 +263,7 @@
                                                     </div>
                                                 </div>
                                                 --}}
-                                                <div class="col-md-12 col-12">
-                                                    <div class="form-label-group">
-                                                        <input type="file" id="image" class="form-control"
-                                                        accept="image/png, image/jpeg"  name="image[]" multiple required>
-                                                        <label for="city-column">Auction Image</label>
-                                                        @error('image')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                         @enderror
-                                                    </div>
-                                                    <div class="col-md-12 mb-2">
-                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
-                                                            alt="" style="max-height: 100px;max-width: 100px;">
-                                                    </div>
-                                                </div>
+
 
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>

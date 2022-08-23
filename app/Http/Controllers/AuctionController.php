@@ -116,27 +116,19 @@ class AuctionController extends Controller {
         $request->validate([
             'title' => 'required||max:255',
             'startDatetime' => 'required',
+            'is_active' => 'required',
         ]);
         $auction = new Auction();
         $auction->title = $request->title;
-        // $auction->lottitle = $request->lottitle;
-        // $auction->lotnumber = $request->lotnumber;
         $auction->product_detail = $request->product_detail;
-        // $auction->product_id = $request->product_id;
-        // $auction->process_id = $request->process_id;
-        // $auction->genetic_id = $request->genetic_id;
         $auction->startDate = $request->startDatetime;
-        // $auction->startTime = $request->startTime;
-        // $auction->endDate = $request->endDate;
-        // $auction->endTime = $request->endTime;
-        // $auction->weight = $request->weight;
-        // $auction->size = $request->size;
-        // $auction->start_bid_price =12;
-        // $auction->reserved_bid_price = $request->reserved_bid_price;
-        // $auction->increment_bid_price = 12;
-        // $auction->farm = $request->farm;
-        // $auction->score = $request->score;
-        // $auction->rank = $request->rank;
+        $auction->is_active = $request->is_active;
+        if($request->is_active == 1)
+        {
+            Auction::where('id','!=', $request->id)->update([
+                'is_active' => '0'
+            ]);
+        }
         $auction->save();
         if ($request->image) {
             foreach ($request->image as $img) {
@@ -150,8 +142,6 @@ class AuctionController extends Controller {
                 $productImage->save();
             }
         }
-
-
         return redirect('/auction/index')->with('success', 'Auction saved successfully.');
     }
 
@@ -166,7 +156,6 @@ class AuctionController extends Controller {
         $juries = Auction::when($search, function ($q) use ($search) {
                     $q->where('title', 'LIKE', "%$search%");
                 });
-
         $juries = $juries->where('is_hidden', '0')->skip((int) $start)->take((int) $length)->orderBy('id', 'desc')->get();
         $data = array(
             'draw' => $draw,
@@ -198,13 +187,19 @@ class AuctionController extends Controller {
         $request->validate([
             'title' => 'required',
             'startDatetime' => 'required',
-                // 'startTime'  => 'required',
+            'is_active' => 'required',
         ]);
-
         $auction = Auction::find($request->id);
         $auction->title = $request->title;
         $auction->product_detail = $request->product_detail;
         $auction->startDate = $request->startDatetime;
+        $auction->is_active = $request->is_active;
+        if($request->is_active == 1)
+        {
+            Auction::where('id','!=', $request->id)->update([
+                'is_active' => '0'
+            ]);
+        }
         $auction->save();
         if ($request->image) {
             foreach ($request->image as $img) {
@@ -230,18 +225,19 @@ class AuctionController extends Controller {
 
     public function auctionFrontend(Request $request) {
         $user = Auth::user()->id;
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners');
         }
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
-//            $auction->is_hidden = 1;
+           $auction->is_hidden = 1;
             $auction->endDate = date('Y-m-d H:i:s');
 
             $auction->save();
             return redirect('auction-winners');
         }
-        $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
+    //   dd($auctionProducts);
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function($e) {
@@ -272,7 +268,7 @@ class AuctionController extends Controller {
         $currentDate = date('Y-m-d H:i:s');
         $loser = '';
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         $auction->endTime = $convertedTime;
         $auction->save();
         $current_id = Auth::user()->id;
@@ -339,7 +335,7 @@ class AuctionController extends Controller {
             $totalLiabilty = $inc * $auctionProduct;
             $singleBid->liablityInc = $totalLiabilty;
             $singleBid->liabiltyUser = $singleBidStartPrice->user_id;
-            $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+            $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
             $isEmpty = sizeof($singleBids);
             $singleBid->timerCheck = $isEmpty;
             if ($isEmpty == 0 && $auction->startTime == '') {
@@ -736,13 +732,17 @@ class AuctionController extends Controller {
 
     public function prductBiddingDetail($id) {
         $auctionId = base64_decode($id);
-        $auction_products = AuctionProduct::with('products', 'latestBidPrice.user')->get();
+        $auction = Auction::where('is_active','1')->first();
+        $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+        $isEmpty = sizeof($singleBids);
+        $auction_products = AuctionProduct::where('auction_id',$auction->id)->with('products', 'latestBidPrice.user')->get();
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
-        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId'));
+        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId','auction','isEmpty'));
     }
 
     public function prductBiddingDashboard() {
-        $auction_products = AuctionProduct::with('products')->get();
+        $auction = Auction::where('is_active','1')->first();
+        $auction_products = AuctionProduct::where('auction_id',$auction->id)->with('products')->get();
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
         return view('admin.auction.productBiddingDashboard', compact('auction_products', 'products'));
     }
@@ -755,7 +755,7 @@ class AuctionController extends Controller {
     }
 
     public function auctionHome(Request $request) {
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
 //            $auction->is_hidden = 1;
             $auction->save();
@@ -764,7 +764,7 @@ class AuctionController extends Controller {
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners');
         }
-        $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function($e) {
 
@@ -782,12 +782,6 @@ class AuctionController extends Controller {
             return $e;
         });
         return view('customer.auction_pages.auction_home', compact('auctionProducts', 'auction', 'singleBids'));
-    }
-
-    public function auctionHomeLoggedIn() {
-        $auction = Auction::first();
-        $auctionProducts = AuctionProduct::with('products')->get();
-        return view('customer.auction_pages.auction_home2', compact('auctionProducts', 'auction'));
     }
 
     public function winningCoffee() {
@@ -826,14 +820,14 @@ class AuctionController extends Controller {
     }
 
     public function auctionWinners(Request $request) {
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
 //            $auction->is_hidden = 1;
             $auction->save();
             return redirect('auction-winners');
         }
         if ($auction && $auction->is_hidden == 1) {
-            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+            $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function($e) {
 
@@ -856,5 +850,12 @@ class AuctionController extends Controller {
         } else {
             return redirect('auction');
         }
+    }
+    public function auctionEnd(Request $request)
+    {
+        $auctionEnd=Auction::where('id', $request->id)->update([
+            'is_hidden' => '1','endDate' => date('Y-m-d H:i:s')
+        ]);
+        return response()->json($auctionEnd);
     }
 }

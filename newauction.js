@@ -49,6 +49,9 @@ socket.on('add_bid_updates', function (data) {
  socket.on('auto_bid_update_user_amount', function (data) {
     io.emit('auto_bid_update_user_amount', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id});
  });
+ socket.on('add_auction_status', function (data) {
+    io.emit('add_auction_status', { "auctionstatus":data.auctionstatus});
+ });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
     mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {

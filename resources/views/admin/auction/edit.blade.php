@@ -62,6 +62,16 @@
                                                         <label for="name">Date Time</label>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 col-6">
+                                                    <div class="form-label-group">
+                                                        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example " name="is_active">
+                                                            <option value="" selected>Select Status</option>
+                                                            <option value="1"{{$auction->is_active == '1' ? 'selected' : ''}}>Active</option>
+                                                            <option value="0"{{$auction->is_active == '0' ? 'selected' : ''}}>In Active</option>
+                                                          </select>
+                                                        @error('role') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
                                                 <input type="hidden" name="id" value="{{$auction->id}}">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">

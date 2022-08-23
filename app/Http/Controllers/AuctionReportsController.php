@@ -32,7 +32,7 @@ class AuctionReportsController extends Controller {
             }
         }
         // dd($data);
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
@@ -66,7 +66,7 @@ class AuctionReportsController extends Controller {
                 }
             }
         }
-        $auction = Auction::first();
+        $auction = Auction::where('is_active','1')->first();
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
@@ -106,7 +106,8 @@ class AuctionReportsController extends Controller {
     }
 
     public function lotWinnersReport() {
-        $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+        $auction = Auction::where('is_active','1')->first();
+        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
         $results = $auctionProducts->map(function($e) {
             $e->highestbid = SingleBid::where('auction_product_id', $e->id)
                     ->orderBy('bid_amount', 'desc')
@@ -118,7 +119,8 @@ class AuctionReportsController extends Controller {
 
     public function lotWinnersReportCSV() {
         $fileName = urlencode("Lot_Winners_Report.csv");
-        $auctionProducts = AuctionProduct::with('products')->get();
+        $auction = Auction::where('is_active','1')->first();
+        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products')->get();
         $results = $auctionProducts->map(function($e) {
             $e->highestbid = SingleBid::where('auction_product_id', $e->id)
                     ->orderBy('bid_amount', 'desc')

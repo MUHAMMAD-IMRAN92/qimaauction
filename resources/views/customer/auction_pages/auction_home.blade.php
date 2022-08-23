@@ -1590,6 +1590,13 @@
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
     });
+    socket.on('add_auction_status', function(data) {
+        alert(data.auctionstatus);
+        if(data.auctionstatus == 1)
+        {
+            window.location = window.location.href + "?ended=1";
+        }
+    });
 
     function resetTimer(data) {
         var timer_text = "";
