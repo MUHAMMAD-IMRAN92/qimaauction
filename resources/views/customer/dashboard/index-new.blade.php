@@ -577,7 +577,7 @@
 
                                     <td class="style-td-6">{{$winningCoffee->genetics}}</td>
 
-                                    <td class="button"><button><a href="{{url ('/product',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
+                                    <td class="button"><button><a href="{{url ('/winningproduct',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
                                 </tr>
                                 @endforeach
                             </table>

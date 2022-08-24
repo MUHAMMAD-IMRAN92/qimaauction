@@ -20,7 +20,7 @@ Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslette
 Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
-Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
+Route::get('/winningproduct/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
 Route::get('/auction-winners', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
