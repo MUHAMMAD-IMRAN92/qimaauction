@@ -31,23 +31,21 @@ class AuctionReportsController extends Controller {
                 }
             }
         }
-        // dd($data);
         $auction = Auction::where('is_active','1')->first();
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        $bidamounttotal = 0;
-        foreach ($data as $amount)
-        {
-            $bidamounttotal += $amount->bid_amount;
-        }
-        $countProduct = count($data);
-        if ($countProduct > 0) {
-            $avgPrice = number_format((float) $bidamounttotal / $countProduct, 2, '.', '');
+        $totalWeight=AuctionProduct::where('auction_id',$auction->id)->sum('weight');
+        if ($totalWeight > 0) {
+            $avgPrice = number_format((float) $total / $totalWeight, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
-        return view('admin.reports.overview', compact('auctionTimeTotal', 'year', 'avgPrice', 'total'));
+        $bidTime=SingleBid::where('auction_id',$auction->id)->orderby('created_at','asc')->first();
+        $startTime = new Carbon($bidTime->created_at);
+        $endTime = new Carbon($auction->startTime);
+        $timerTotal = $startTime->diff($endTime)->format('%H:%I:%S');
+        return view('admin.reports.overview', compact('auctionTimeTotal', 'year', 'avgPrice', 'total','timerTotal'));
     }
 
     public function auctionReportCSV($year) {
@@ -70,17 +68,16 @@ class AuctionReportsController extends Controller {
         $startTime = new Carbon($auction->startTime);
         $endTime = new Carbon($auction->endDate);
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        $bidamounttotal = 0;
-        foreach ($data as $amount)
-        {
-            $bidamounttotal += $amount->bid_amount;
-        }
-        $countProducst = count($data);
-        if ($countProducst > 0) {
-            $avgPrice = number_format((float) $bidamounttotal / $countProducst, 2, '.', '');
+        $totalWeight=AuctionProduct::where('auction_id',$auction->id)->sum('weight');
+        if ($totalWeight > 0) {
+            $avgPrice = number_format((float) $total / $totalWeight, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
+        $bidTime=SingleBid::where('auction_id',$auction->id)->orderby('created_at','asc')->first();
+        $startTime = new Carbon($bidTime->created_at);
+        $endTime = new Carbon($auction->startTime);
+        $timerTotal = $startTime->diff($endTime)->format('%H:%I:%S');
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -89,14 +86,14 @@ class AuctionReportsController extends Controller {
             "Expires" => "0"
         );
         $columns = array('Year', 'Total Proceeds', 'Avg. Price per Pound', 'Auction Run Time - 3 min clock', 'Auction Run Time - total');
-        $callback = function() use($total, $columns, $year, $auctionTimeTotal, $avgPrice) {
+        $callback = function() use($total, $columns, $year, $auctionTimeTotal, $avgPrice,$timerTotal) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             // foreach ($data as $amount) {
             $row['Years'] = $year;
             $row['Total Proceeds'] = '$'.number_format($total);
-            $row['Avg. Price per Pound'] = '$'.number_format($avgPrice);
-            $row['Auction Run Time - 3 min clock'] = $auctionTimeTotal;
+            $row['Avg. Price per Pound'] = '$'.$avgPrice;
+            $row['Auction Run Time - 3 min clock'] = $timerTotal;
             $row['Auction Run Time - total'] = $auctionTimeTotal;
             fputcsv($file, array($row['Years'], $row['Total Proceeds'], $row['Avg. Price per Pound'], $row['Auction Run Time - 3 min clock'], $row['Auction Run Time - total']));
             // }
@@ -182,8 +179,9 @@ class AuctionReportsController extends Controller {
                     $row['Company'] = $task["company" ?? '---'];
                     $row['Former Name'] = $product[0]['product_title'];
                     $row['Bid Amount'] = '$'.$product[0]['bid_amount'];
-                 }
+
                 fputcsv($file, array($row['Company'],$row['Former Name'],$row['Bid Amount']));
+                }
             }
             fclose($file);
         };

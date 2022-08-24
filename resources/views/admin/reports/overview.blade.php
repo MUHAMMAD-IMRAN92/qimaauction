@@ -61,13 +61,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
                                                     <tr>
                                                         <td>1</td>
                                                         <td>{{$year}}</td>
                                                         <td>${{number_format($total)}}</td>
-                                                        <td>${{number_format($avgPrice)}}</td>
-                                                        <td>{{$auctionTimeTotal}}</td>
+                                                        <td>${{$avgPrice}}</td>
+                                                        <td>{{$timerTotal}}</td>
                                                         <td>{{$auctionTimeTotal}}</td>
                                                     </tr>
                                                 </tbody>
