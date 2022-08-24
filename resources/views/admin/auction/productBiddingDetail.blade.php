@@ -121,7 +121,7 @@
                         </div>
                     </nav>
                     @if(isset($auction) && $auction->startTime != '')
-                    <div class="col-6 custom_btn_align">
+                    <div class="col-12 custom_btn_align mb-1">
                         <a class="btn btn-primary waves-effect waves-light endauction" data-id="{{$auction->id}}" id="endauction" >End Auction<a>
                     </div>
                     @endif

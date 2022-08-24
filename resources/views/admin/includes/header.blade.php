@@ -427,6 +427,12 @@
                                     {{-- <i class="feather icon-circle"></i> --}}
                                     <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
                                         data-i18n="eCommerce">Bid Limit</span></a>
+                                </li>
+                                <li @if (request()->is('product/index')) class='active' @endif><a
+                                    href="{{ url('/product/index') }}">
+                                    <span class="menu-item @if (request()->is('product/index')) 'active' @endif"
+                                        data-i18n="eCommerce">Products</span></a>
+                            </li>
 
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
@@ -448,6 +454,7 @@
                                 </li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Reports</span></a>
                             <ul>
@@ -480,11 +487,7 @@
                                 <span class="menu-item @if (request()->is('origin/*')) 'active' @endif"
                                     data-i18n="eCommerce">Origin</span></a>
                         </li> --}}
-                        {{-- <li @if (request()->is('product/*')) class='active' @endif><a
-                                href="{{ url('/product/index') }}">
-                                <span class="menu-item @if (request()->is('product/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Product</span></a>
-                        </li> --}}
+
 
 
                         <li @if (request()->is('customer/index')) class='active nav-item' @endif><a
