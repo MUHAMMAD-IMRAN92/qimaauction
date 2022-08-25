@@ -122,6 +122,7 @@
                     </nav>
                     @if(isset($auction) && $auction->startTime != '')
                     <div class="col-12 custom_btn_align mb-1">
+                        <a class="btn btn-primary waves-effect waves-light resetauction" data-id="{{$auction->id}}" id="resetauction" >Reset Auction<a>
                         <a class="btn btn-primary waves-effect waves-light endauction" data-id="{{$auction->id}}" id="endauction" >End Auction<a>
                     </div>
                     @endif
@@ -431,6 +432,40 @@
 
                                     socket.emit('add_auction_status', {
                                         "auctionstatus": auctionstatus
+                                    });
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                }
+                            });
+                        } else {
+                            swal('Your Auction is safe');
+                        }
+                    })
+                });
+                $(".resetauction").on("click", function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr('data-id');
+                    swal({
+                        title: `Are You sure to reset Timer ?`,
+                        type: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((result) => {
+                        if (result) {
+                            $.ajax({
+                            url: "{{ route('auctionReset') }}",
+                            async: false,
+                            method: 'POST',
+                            data: {
+                                id: id,
+                                _token: "{{ csrf_token() }}",
+                            },
+                                success: function(response) {
+                                    swal('Timer is Reset');
+                                    var timerreset = response;
+                                    socket.emit('add_timer_reset', {
+                                        "timerreset": timerreset
                                     });
                                 },
                                 error: function(error) {

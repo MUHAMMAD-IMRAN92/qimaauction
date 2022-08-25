@@ -2380,10 +2380,10 @@
         $('.errorMsgAutoBid' + data.id).html('');
         $('.errorMsgAutoBid' + data.id + data.id).html('');
         $('.errorMsgAutoBid' + data.id + data.id).html(
-                                        '<p">Current autobid is $' +
-                                        addCommas(data.autobidamount) +
-                                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                        data.id + '>Remove</a>}</p>');
+        '<p">Current autobid is $' +
+        addCommas(data.autobidamount) +
+        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+        data.id + '>Remove</a>}</p>');
 
     });
     socket.on('add_bid_updates', function(data) {
@@ -2509,6 +2509,13 @@
         if(data.auctionstatus == 1)
         {
             window.location = window.location.href + "?ended=1";
+        }
+    });
+    socket.on('add_timer_reset', function(data) {
+        if(data.timerreset == 1)
+        {
+            data.checkTimer = 0;
+            resetTimer(data);
         }
     });
 

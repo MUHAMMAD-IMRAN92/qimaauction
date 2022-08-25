@@ -52,6 +52,9 @@ socket.on('add_bid_updates', function (data) {
  socket.on('add_auction_status', function (data) {
     io.emit('add_auction_status', { "auctionstatus":data.auctionstatus});
  });
+ socket.on('add_timer_reset', function (data) {
+    io.emit('add_timer_reset', { "timerreset":data.timerreset});
+ });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
     mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {

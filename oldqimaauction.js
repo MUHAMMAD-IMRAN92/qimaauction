@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 const https = require('https');
-const fs = require('fs'); 
+const fs = require('fs');
 var privateKey  = fs.readFileSync('/etc/letsencrypt/live/qimaauction.skylinxtech.com/privkey.pem', 'utf8');
 //var certificate = fs.readFileSync('socket.crt', 'utf8');
 var certificate = fs.readFileSync('/etc/letsencrypt/live/qimaauction.skylinxtech.com/fullchain.pem', 'utf8');
@@ -46,6 +46,9 @@ socket.on('add_bid_updates', function (data) {
  });
  socket.on('add_auction_status', function (data) {
     io.emit('add_auction_status', { "auctionstatus":data.auctionstatus});
+ });
+ socket.on('add_timer_reset', function (data) {
+    io.emit('add_timer_reset', { "timerreset":data.timerreset});
  });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
