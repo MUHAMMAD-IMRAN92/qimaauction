@@ -1597,6 +1597,13 @@
             window.location = window.location.href + "?ended=1";
         }
     });
+    socket.on('add_timer_reset', function(data) {
+        if(data.timerreset == 1)
+        {
+            data.checkTimer = 0;
+            resetTimer(data);
+        }
+    });
 
     function resetTimer(data) {
         var timer_text = "";

@@ -156,7 +156,7 @@ class AuctionController extends Controller {
         $juries = Auction::when($search, function ($q) use ($search) {
                     $q->where('title', 'LIKE', "%$search%");
                 });
-        $juries = $juries->where('is_hidden', '0')->skip((int) $start)->take((int) $length)->orderBy('id', 'desc')->get();
+        $juries = $juries->skip((int) $start)->take((int) $length)->orderBy('id', 'desc')->get();
         $data = array(
             'draw' => $draw,
             'recordsTotal' => $jury_count,
@@ -857,5 +857,10 @@ class AuctionController extends Controller {
             'is_hidden' => '1','endDate' => date('Y-m-d H:i:s')
         ]);
         return response()->json($auctionEnd);
+    }
+    public function auctionReset(Request $request)
+    {
+        $auctionReset='1';
+        return response()->json($auctionReset);
     }
 }

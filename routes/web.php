@@ -173,6 +173,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     Route::get('/auction/autobids', [App\Http\Controllers\AuctionController::class, 'autoBids'])->name('autobids');
     Route::get('/auction/updateAutoBids/{id}', [App\Http\Controllers\AuctionController::class, 'updateAutoBids'])->name('updateAutoBids');
     Route::post('/auction/auctionend', [App\Http\Controllers\AuctionController::class, 'auctionEnd'])->name('auctionEnd');
+    Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'auctionReset'])->name('auctionReset');
+
+
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
     Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);
