@@ -12,7 +12,9 @@ class AuctionProduct extends Model {
     public function products() {
         return $this->hasMany(Product::class, 'id', 'product_id');
     }
-
+    public function product() {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
     public function latestBidPrice() {
         return $this->hasOne(SingleBid::class, 'auction_product_id', 'id')->orderBy('id','desc');
     }

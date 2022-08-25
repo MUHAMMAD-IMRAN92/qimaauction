@@ -198,19 +198,19 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     //Auction reports routes
     //Overview report
     Route::get('/report_overview/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'overViewReport'])->name('ReportOverview');
-    Route::get('/report_overview/csv/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'auctionReportCSV'])->name('auctionreport_csv');
+    Route::get('/report_overview/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'auctionReportCSV'])->name('auctionreport_csv');
 
     //Lot winners report
     Route::get('/report_lotwinners', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReport'])->name('ReportLotWinners');
-    Route::get('/report_lotwinners/csv', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
+    Route::get('/report_lotwinners/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
 
     //Bidder summary report
     Route::get('/report_bidder_summary', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReport'])->name('ReportBidderSummary');
-    Route::get('/report_bidder_summary/csv', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReportCSV'])->name('bidder_summary_csv');
+    Route::get('/report_bidder_summary/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReportCSV'])->name('bidder_summary_csv');
 
     //Full bid report
     Route::get('/report_fullbid', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReport'])->name('ReportFullBid');
-    Route::get('/report_fullbid/csv', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
+    Route::get('/report_fullbid/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
 
 });
 
