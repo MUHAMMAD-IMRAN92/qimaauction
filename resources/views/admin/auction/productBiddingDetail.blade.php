@@ -211,10 +211,11 @@
                                                                         $latestAutoBidPrice = isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->bid_amount : null;
                                                                     @endphp
 
-                                                                    <input type="number"
+                                                                    <input type="text"
                                                                         value="{{ $latestAutoBidPrice ?? '0' }}"
                                                                         name="autoBidAmount"
-                                                                        id="autoBidAmount{{ $auction->id }}"
+                                                                        id="autoBidAmount{{ $auction->id }}" min="0" pattern="[0-9]{10}" maxlength="10"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                                         style="width: 80px; border-radius : 1px;padding:4px; border: 1px solid #d1af69;"
                                                                         {{ isset($latestAutoBidPrice) ? '' : 'disabled' }}>
                                                                     <input type="hidden"

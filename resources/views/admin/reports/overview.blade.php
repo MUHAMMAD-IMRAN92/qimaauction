@@ -12,7 +12,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
+            <div class="content-header row" style="display:block !important">
                 <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
@@ -31,9 +31,22 @@
 
                     </div>
                 </div>
-                <div class="col-6 custom_btn_align">
-                    <a href="{{route('auctionreport_csv',2022)}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
-                </div>
+                <div class="col-4 ">
+                    <form method="get">
+                        <select name="auction_id" class="form-control">
+                        <option value="">Select Aution</option>
+                            @foreach ($auctions as $auction)
+                                <option value="{{$auction->id}}">{{$auction->title}}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" value="Get Data" class="btn btn-primary waves-effect waves-light mt-1 p-0 " >
+                    </form>
+                    </div>
+                    @if(request()->auction_id != '')
+                        <div class="col-12 custom_btn_align mb-2">
+                            <a href="{{route('auctionreport_csv',request()->auction_id)}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
+                        </div>
+                    @endif
             </div>
             <div class="content-body">
 
@@ -63,7 +76,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>1</td>
-                                                        <td>{{$year}}</td>
+                                                        <td>@if(request()->auction_id != ''){{$year}} @else @endif</td>
                                                         <td>${{number_format($total)}}</td>
                                                         <td>${{$avgPrice}}</td>
                                                         <td>{{$timerTotal}}</td>
@@ -97,7 +110,7 @@
 @endsection
 <script>
     function exportReport(_this) {
-       let _url =`{{ route('auctionreport_csv',2022)}}`;
+       let _url =`{{ route('auctionreport_csv',request()->auction_id)}}`;
        window.location.href = _url;
     }
  </script>

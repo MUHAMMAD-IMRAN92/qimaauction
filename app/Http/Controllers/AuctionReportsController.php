@@ -12,10 +12,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AuctionReportsController extends Controller {
+class AuctionReportsController extends Controller
+{
 
-    public function overViewReport($year) {
-        $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
+    public function overViewReport(Request $request,$year)
+    {
+        $auctions=Auction::all();
+        $auction = Auction::where('id',$request->auction_id)->first();
+        $data = SingleBid::where('auction_id', $request->auction_id)->select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function ($data) {
             $v = SingleBid::where('auction_product_id', $data->id)->orderBy('bid_amount', 'desc')->first();
             return $v;
         });
@@ -24,57 +28,58 @@ class AuctionReportsController extends Controller {
         foreach ($data as $amount) {
             // $bidamounttotal=$amount->bid_amount;
             if (isset($amount->auction_product_id)) {
-                $auctionProduct = AuctionProduct::where('id', $amount->auction_product_id)->first()->weight;
+                $auctionProduct = AuctionProduct::where('auction_id', $request->auction_id)->where('id', $amount->auction_product_id)->first()->weight;
                 if (isset($auctionProduct)) {
                     $v = $amount->bid_amount * $auctionProduct;
                     $total += $v;
                 }
             }
         }
-        $auction = Auction::where('is_active','1')->first();
-        $startTime = new Carbon($auction->startTime);
-        $endTime = new Carbon($auction->endDate);
+        $startTime = new Carbon($auction->startTime ?? '');
+        $endTime = new Carbon($auction->endDate ?? '');
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        $totalWeight=AuctionProduct::where('auction_id',$auction->id)->sum('weight');
+        $totalWeight = AuctionProduct::where('auction_id', $auction->id ?? '')->sum('weight');
         if ($totalWeight > 0) {
             $avgPrice = number_format((float) $total / $totalWeight, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
-        $bidTime=SingleBid::where('auction_id',$auction->id)->orderby('created_at','asc')->first();
-        $startTime = new Carbon($bidTime->created_at);
-        $endTime = new Carbon($auction->startTime);
+        $bidTime = SingleBid::where('auction_id', $auction->id ?? '')->orderby('created_at', 'asc')->first();
+        $startTime = new Carbon($bidTime->created_at ?? '');
+        $endTime = new Carbon($auction->startTime ?? '');
         $timerTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        return view('admin.reports.overview', compact('auctionTimeTotal', 'year', 'avgPrice', 'total','timerTotal'));
+        return view('admin.reports.overview', compact('auctionTimeTotal', 'year', 'avgPrice', 'total', 'timerTotal','auctions'));
     }
 
-    public function auctionReportCSV($year) {
+    public function auctionReportCSV($auction_id)
+    {
+        $year='2022';
+        $auction = Auction::where('id',$auction_id)->first();
         $fileName = urlencode("Overview_Report.csv");
-        $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
+        $data = SingleBid::where('auction_id', $auction_id)->select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function ($data) {
             $v = SingleBid::where('auction_product_id', $data->id)->orderBy('bid_amount', 'desc')->first();
             return $v;
         });
         $total = 0;
         foreach ($data as $amount) {
             if (isset($amount->auction_product_id)) {
-                $auctionProduct = AuctionProduct::where('id', $amount->auction_product_id)->first()->weight;
+                $auctionProduct = AuctionProduct::where('auction_id', $auction_id)->where('id', $amount->auction_product_id)->first()->weight;
                 if (isset($auctionProduct)) {
                     $v = $amount->bid_amount * $auctionProduct;
                     $total += $v;
                 }
             }
         }
-        $auction = Auction::where('is_active','1')->first();
         $startTime = new Carbon($auction->startTime);
-        $endTime = new Carbon($auction->endDate);
+        $endTime = new Carbon($auction->endDate );
         $auctionTimeTotal = $startTime->diff($endTime)->format('%H:%I:%S');
-        $totalWeight=AuctionProduct::where('auction_id',$auction->id)->sum('weight');
+        $totalWeight = AuctionProduct::where('auction_id', $auction->id)->sum('weight');
         if ($totalWeight > 0) {
             $avgPrice = number_format((float) $total / $totalWeight, 2, '.', '');
         } else {
             $avgPrice = 0;
         }
-        $bidTime=SingleBid::where('auction_id',$auction->id)->orderby('created_at','asc')->first();
+        $bidTime = SingleBid::where('auction_id', $auction->id)->orderby('created_at', 'asc')->first();
         $startTime = new Carbon($bidTime->created_at);
         $endTime = new Carbon($auction->startTime);
         $timerTotal = $startTime->diff($endTime)->format('%H:%I:%S');
@@ -86,13 +91,13 @@ class AuctionReportsController extends Controller {
             "Expires" => "0"
         );
         $columns = array('Year', 'Total Proceeds', 'Avg. Price per Pound', 'Auction Run Time - 3 min clock', 'Auction Run Time - total');
-        $callback = function() use($total, $columns, $year, $auctionTimeTotal, $avgPrice,$timerTotal) {
+        $callback = function () use ($total, $columns, $year, $auctionTimeTotal, $avgPrice, $timerTotal) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             // foreach ($data as $amount) {
             $row['Years'] = $year;
-            $row['Total Proceeds'] = '$'.number_format($total);
-            $row['Avg. Price per Pound'] = '$'.$avgPrice;
+            $row['Total Proceeds'] = '$' . number_format($total);
+            $row['Avg. Price per Pound'] = '$' . $avgPrice;
             $row['Auction Run Time - 3 min clock'] = $timerTotal;
             $row['Auction Run Time - total'] = $auctionTimeTotal;
             fputcsv($file, array($row['Years'], $row['Total Proceeds'], $row['Avg. Price per Pound'], $row['Auction Run Time - 3 min clock'], $row['Auction Run Time - total']));
@@ -102,26 +107,29 @@ class AuctionReportsController extends Controller {
         return response()->streamDownload($callback, $fileName, $headers);
     }
 
-    public function lotWinnersReport() {
-        $auction = Auction::where('is_active','1')->first();
-        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
-        $results = $auctionProducts->map(function($e) {
+    public function lotWinnersReport(Request $request)
+    {
+        $auctions=Auction::all();
+        // $auction = Auction::where('is_active', '1')->first();
+        $auctionProducts = AuctionProduct::where('auction_id', $request->auction_id)->with('products', 'singleBids', 'winningImages')->get();
+        $results = $auctionProducts->map(function ($e) {
             $e->highestbid = SingleBid::where('auction_product_id', $e->id)
-                    ->orderBy('bid_amount', 'desc')
-                    ->first();
+                ->orderBy('bid_amount', 'desc')
+                ->first();
             return $e;
         });
-        return view('admin.reports.lot_winners', compact('auctionProducts'));
+        return view('admin.reports.lot_winners', compact('auctionProducts','auctions'));
     }
 
-    public function lotWinnersReportCSV() {
+    public function lotWinnersReportCSV($auction_id)
+    {
         $fileName = urlencode("Lot_Winners_Report.csv");
-        $auction = Auction::where('is_active','1')->first();
-        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products')->get();
-        $results = $auctionProducts->map(function($e) {
+        // $auction = Auction::where('is_active', '1')->first();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction_id)->with('products')->get();
+        $results = $auctionProducts->map(function ($e) {
             $e->highestbid = SingleBid::where('auction_product_id', $e->id)
-                    ->orderBy('bid_amount', 'desc')
-                    ->first();
+                ->orderBy('bid_amount', 'desc')
+                ->first();
             return $e;
         });
         $headers = array(
@@ -132,7 +140,7 @@ class AuctionReportsController extends Controller {
             "Expires" => "0"
         );
         $columns = array('Rank', 'Score', 'Farmer', 'Weight (lbs)', 'High Bid', 'Total Value', 'Company');
-        $callback = function() use($auctionProducts, $columns) {
+        $callback = function () use ($auctionProducts, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             foreach ($auctionProducts as $task) {
@@ -143,8 +151,8 @@ class AuctionReportsController extends Controller {
                 }
                 $row['Weight (lbs)'] = $task["weight"];
 
-                $row['High Bid'] = isset($task->highestbid) ? '$'.number_format($task->highestbid->bid_amount) : '$'.number_format($task->start_price);
-                $row['Total Value'] = isset($task->highestbid) ? '$'.number_format($task->highestbid->bid_amount * $task->weight) : '$'.number_format($task->start_price * $task->weight);
+                $row['High Bid'] = isset($task->highestbid) ? '$' . number_format($task->highestbid->bid_amount) : '$' . number_format($task->start_price);
+                $row['Total Value'] = isset($task->highestbid) ? '$' . number_format($task->highestbid->bid_amount * $task->weight) : '$' . number_format($task->start_price * $task->weight);
                 foreach ($task->highestbid->user as $userData) {
                     $row['Company'] = $userData["company" ?? '---'];
                 }
@@ -155,14 +163,26 @@ class AuctionReportsController extends Controller {
         return response()->streamDownload($callback, $fileName, $headers);
     }
 
-    public function bidderSummaryReport() {
-        $userMaxBids = User::whereHas('bid')->with('products')->orderBy('id')->get();
-        return view('admin.reports.bidder_summary', compact('userMaxBids'));
+    public function bidderSummaryReport(Request $request)
+    {
+        $auctions=Auction::all();
+        $auction_id = $request->auction_id;
+        $userMaxBids = User::whereHas('bid', function ($q) use ($auction_id) {
+            $q->whereHas('auction', function ($q) use ($auction_id) {
+                $q->where('id', $auction_id);
+            });
+        })->with('products')->orderBy('id')->get();
+        return view('admin.reports.bidder_summary', compact('userMaxBids','auctions'));
     }
 
-    public function bidderSummaryReportCSV() {
+    public function bidderSummaryReportCSV($auction_id)
+    {
         $fileName = urlencode("Bidder_Summary_Report.csv");
-        $userMaxBids = User::whereHas('bid')->with('products')->orderBy('id')->get();
+        $userMaxBids = User::whereHas('bid', function ($q) use ($auction_id) {
+            $q->whereHas('auction', function ($q) use ($auction_id) {
+                $q->where('id', $auction_id);
+            });
+        })->with('products')->orderBy('id')->get();
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -170,17 +190,17 @@ class AuctionReportsController extends Controller {
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
-        $columns = array('Bidding Company', 'Former Name','Bid Amount');
-        $callback = function() use($userMaxBids, $columns) {
+        $columns = array('Bidding Company', 'Former Name', 'Bid Amount');
+        $callback = function () use ($userMaxBids, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             foreach ($userMaxBids as $task) {
-                foreach ($task->products->groupBy('id') as $product){
+                foreach ($task->products->groupBy('id') as $product) {
                     $row['Company'] = $task["company" ?? '---'];
                     $row['Former Name'] = $product[0]['product_title'];
-                    $row['Bid Amount'] = '$'.$product[0]['bid_amount'];
+                    $row['Bid Amount'] = '$' . $product[0]['bid_amount'];
 
-                fputcsv($file, array($row['Company'],$row['Former Name'],$row['Bid Amount']));
+                    fputcsv($file, array($row['Company'], $row['Former Name'], $row['Bid Amount']));
                 }
             }
             fclose($file);
@@ -188,24 +208,29 @@ class AuctionReportsController extends Controller {
         return response()->streamDownload($callback, $fileName, $headers);
     }
 
-    public function fullBidReport() {
-        $singlebids = SingleBid::orderBy('auction_product_id', 'asc')->get();
-        $results = $singlebids->map(function($e) {
-            $e->products = Product::where('id', $e->auction_product_id)
-                    ->first();
-            return $e;
-        });
-        return view('admin.reports.full_bid', compact('singlebids'));
+    public function fullBidReport(Request $request)
+    {
+        $auctions=Auction::all();
+        // $auction = Auction::where('is_active', '1')->first();
+        $singlebids = SingleBid::where('auction_id', $request->auction_id)->with('aproduct.product')->orderBy('auction_product_id', 'asc')->get();
+        // foreach ($singlebids as $s) {
+        //     print_r($s->aproduct->product);
+        //     exit;
+        // }
+        // $results = $singlebids->map(function($e) {
+        //     $e->products = Product::where('id', $e->auction_product_id)
+        //             ->first();
+        //     return $e;
+        // });
+        return view('admin.reports.full_bid', compact('singlebids','auctions'));
     }
 
-    public function fullBidReportCSV() {
+    public function fullBidReportCSV($auction_id)
+    {
         $fileName = urlencode("Full_Bid_Report.csv");
-        $singlebids = SingleBid::orderBy('auction_product_id', 'asc')->get();
-        $results = $singlebids->map(function($e) {
-            $e->products = Product::where('id', $e->auction_product_id)
-                    ->first();
-            return $e;
-        });
+        // $auction = Auction::where('is_active', '1')->first();
+        $singlebids = SingleBid::where('auction_id', $auction_id)->with('aproduct.product')->orderBy('auction_product_id', 'asc')->get();
+
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -214,20 +239,19 @@ class AuctionReportsController extends Controller {
             "Expires" => "0"
         );
         $columns = array('Bid Amount', 'Bidder Company Name', 'Lot');
-        $callback = function() use($singlebids, $columns) {
+        $callback = function () use ($singlebids, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             foreach ($singlebids as $task) {
-                $row['Bid Amount'] = '$'.$task["bid_amount"];
+                $row['Bid Amount'] = '$' . $task["bid_amount"];
                 foreach ($task->user as $userData) {
                     $row['Bidder Company Name'] = $userData["company" ?? '---'];
                 }
-                $row['Lot'] = $task->products['product_title'];
+                $row['Lot'] = $task->aproduct->product['product_title'];
                 fputcsv($file, array($row['Bid Amount'], $row['Bidder Company Name'], $row['Lot']));
             }
             fclose($file);
         };
         return response()->streamDownload($callback, $fileName, $headers);
     }
-
 }
