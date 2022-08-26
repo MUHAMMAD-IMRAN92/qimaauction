@@ -406,13 +406,7 @@
         font-weight: 600;
         /* font-family: 'Montserrat' */
     }
-    @media only screen and (max-width:1300px){
-        .custom_table_reponsive{
-            width: 100%;
-            display:block;
-            overflow-x:auto !important;
-        }
-    }
+
     a.btn-outline-dark {
     font-family: 'Montserrat';
     font-size: 17px;
@@ -532,7 +526,7 @@
             </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom_table_reponsive">
+                        <div class="table-responsive">
                             <table class="" style="width:100%">
                                 <tr class="table-row">
                                     <th style="border-bottom:1px solid black;">RANK</th>

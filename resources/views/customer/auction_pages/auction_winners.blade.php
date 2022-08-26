@@ -1136,7 +1136,7 @@
                         </div>
                     </div>
                 </nav>
-                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade auction-data table-responsive show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <table class="table auctiontable">
                         <thead>
                             <tr class="text-center">
@@ -1254,7 +1254,7 @@
                         <p>CURRENT BID: <span class="currentbid"></span></p>
                         {{-- <p>TOTAL VALUE: <span class="totalvalue"></span></p> --}}
                         <hr>
-                        <p>WINNING BIDDER: <span class="paddleno"></span></p>
+                        <p >WINNING BIDDER: <br> <span class="paddleno"></span></p>
                     </div>
                     <div class="lot-featured-img">
                         <img class="img-status">
