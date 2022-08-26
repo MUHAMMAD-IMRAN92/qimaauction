@@ -305,7 +305,7 @@
       <div class="col-md-12">
         <div class="bio_graphy">
              <h1>#{{$winningCoffeesData->rank ?? ''}}</h1>
-             <h1>{{$winningCoffeesData->name ?? ''}}</h1>
+             <h1 class="bio-name">{{$winningCoffeesData->name ?? ''}}</h1>
              <h3>{{$winningCoffeesData->code ?? ''}}</h3>
         </div>
 
