@@ -286,11 +286,7 @@
                                                                 {{ $auction->rank }}
                                                                </td>
                                                                <td>
-                                                                @php
-                                                               ;
-                                                                   $user = \App\Models\User::where('id',$pro->user_id)->first();
-                                                                @endphp
-                                                                {{ $user->company ?? '' }}
+                                                                {{ $auction->latestBidPrice->user->first()->company ?? '' }}
                                                                </td>
                                                                <td>
 
