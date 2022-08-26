@@ -450,7 +450,7 @@ class AuctionController extends Controller {
             $totalLiabilty = $inc * $auctionProduct;
             $singleBidData->liablityInc = $totalLiabilty;
             $singleBidData->liabiltyUser = $singleBidPricelatest->user_id;
-            $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+            $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
             $isEmpty = sizeof($singleBids);
             $singleBidData->timerCheck = $isEmpty;
             $auctionPData = AuctionProduct::where('id', $request->id)->first();
@@ -482,6 +482,11 @@ class AuctionController extends Controller {
     }
 
     public function autoBidData(Request $request) {
+        $currentDate = date('Y-m-d H:i:s');
+        $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
+        $auction = Auction::where('is_active','1')->first();
+        $auction->endTime = $convertedTime;
+        $auction->save();
         $user = Auth::user()->id;
         $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['singleBids', 'autoBidActive', 'latestBidPrice'])
                 ->first();
@@ -733,7 +738,7 @@ class AuctionController extends Controller {
     public function prductBiddingDetail($id) {
         $auctionId = base64_decode($id);
         $auction = Auction::where('is_active','1')->first();
-        $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+        $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
         $isEmpty = sizeof($singleBids);
         $auction_products = AuctionProduct::where('auction_id',$auction->id)->with('products', 'latestBidPrice.user')->get();
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
