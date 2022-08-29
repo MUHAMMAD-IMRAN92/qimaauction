@@ -33,7 +33,7 @@
                 
                     <form method="get">
                         <div class="flex-align-center">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 col-12">
                         <select name="auction_id" class="form-control">
                         <option value="">Select Aution</option>
                             @foreach ($auctions as $auction)
@@ -41,17 +41,18 @@
                             @endforeach
                         </select>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3 col-4">
                         <input type="submit" value="Get Data" class="btn btn-primary mt-res-10 waves-effect waves-light p-0 " >
                         </div>
-                         </div>
-                    </form>
-               
-                    @if(request()->auction_id != '')
-                        <div class="col-12 custom_btn_align mb-2">
+                                            @if(request()->auction_id != '')
+                        <div class="col-sm-3 col-4 mt-res-10 custom_btn_align">
                             <a href="{{route('lotwinners_report_csv',request()->auction_id)}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
                         </div>
                     @endif
+                         </div>
+                    </form>
+               
+
             </div>
             <div class="content-body">
 
