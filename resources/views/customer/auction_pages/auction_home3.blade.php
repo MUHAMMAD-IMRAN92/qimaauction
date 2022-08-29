@@ -2156,6 +2156,7 @@
                                     var bid_amountNew       = response.bid_amountNew;
                                     var loser=response.loser_user;
                                     var winneruser  = response.winneruser;
+                                    var checkTimer = response.timerCheck;
                                     $('.errorMsgAutoBid' + id).html('');
                                     $(".bidcollapse" + bidID).addClass(
                                         "changecolor");
@@ -2189,6 +2190,7 @@
                                         "liability":liability,
                                         "loser":loser,
                                         "winneruser":winneruser,
+                                        "checkTimer":checkTimer,
                                     });
                                     $('.errorMsgAutoBid' + id).html('');
                                     $('.errorMsgAutoBid' + id + id).html('');
@@ -2311,7 +2313,7 @@
             $('.bidnowbutton'+data.bidID).show();
             $('.autobidamount'+data.bidID).show();
             $('.bidnowautobutton'+data.bidID).show();
-             $('.bidnowbutton'+data.bidID).attr("disabled", false);
+            $('.bidnowbutton'+data.bidID).attr("disabled", false);
              $(".bidnowbutton" +data.bidID).css('background', '##143D30');
         }
         if(data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}){
@@ -2326,7 +2328,7 @@
             $('.autobidamount'+data.bidID).show();
             $('.bidnowautobutton'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).attr("disabled", false);
-             $(".bidnowbutton" +data.bidID).css('background', '#143D30');
+            $(".bidnowbutton" +data.bidID).css('background', '#143D30');
         }
         if (data.loser == {{ Auth::user()->id }}) {
            $(".bidcollapse" + data.bidID).removeClass("changecolor");
@@ -2342,7 +2344,7 @@
             $('.autobidamount'+data.bidID).show();
             $('.bidnowautobutton'+data.bidID).show();
             $('.bidnowbutton'+data.bidID).attr("disabled", false);
-             $(".bidnowbutton" +data.bidID).css('background', '#143D30');
+            $(".bidnowbutton" +data.bidID).css('background', '#143D30');
         }
         var total_bid = 0;
 
@@ -2354,8 +2356,11 @@
             });
             $(".finalliability").html('$' + total_bid.toLocaleString('en-US'));
         }, 500);
-        data.checkTimer = 0;
-        resetTimer(data);
+
+        if (data.checkTimer == 0) {
+            window.empty = data.checkTimer;
+            resetTimer(data);
+        }
 
     });
     function roundedToFixed(input, digits){
@@ -2540,6 +2545,7 @@
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
+            // alert(data.checkTimer);
             if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
