@@ -122,8 +122,8 @@
                     </nav>
                     @if(isset($auction) && $auction->startTime != '')
                     <div class="col-12 custom_btn_align mb-1">
-                        <a class="btn btn-primary waves-effect waves-light resetauction" data-id="{{$auction->id}}" id="resetauction" >Reset Auction<a>
-                        <a class="btn btn-primary waves-effect waves-light endauction" data-id="{{$auction->id}}" id="endauction" >End Auction<a>
+                        <a class="btn btn-primary waves-effect waves-light resetauction"@if(isset($auction) && $auction->is_hidden==1) style="display:none;" @endif data-id="{{$auction->id}}" id="resetauction" >Reset Auction<a>
+                        <a class="btn btn-primary waves-effect waves-light endauction" @if(isset($auction) && $auction->is_hidden==1) style="display:none;" @endif data-id="{{$auction->id}}" id="endauction" >End Auction<a>
                     </div>
                     @endif
                     <div class="tab-content" id="nav-tabContent">
@@ -429,7 +429,11 @@
                                 success: function(response) {
                                     swal('Auction is Ended');
                                 var auctionstatus = response;
-
+                                if(auctionstatus == 1)
+                                {
+                                    $(".endauction").hide();
+                                    $(".resetauction").hide();
+                                }
                                     socket.emit('add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });

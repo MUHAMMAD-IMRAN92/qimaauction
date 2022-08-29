@@ -737,7 +737,7 @@ class AuctionController extends Controller {
 
     public function prductBiddingDetail($id) {
         $auctionId = base64_decode($id);
-        $auction = Auction::where('is_active','1')->first();
+        $auction = Auction::where('id',$auctionId)->first();
         $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
         $isEmpty = sizeof($singleBids);
         $auction_products = AuctionProduct::where('auction_id',$auction->id)->with('products', 'latestBidPrice.user')->get();
@@ -865,6 +865,11 @@ class AuctionController extends Controller {
     }
     public function auctionReset(Request $request)
     {
+        $currentDate = date('Y-m-d H:i:s');
+        $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
+        $auction = Auction::where('is_active','1')->first();
+        $auction->endTime = $convertedTime;
+        $auction->save();
         $auctionReset='1';
         return response()->json($auctionReset);
     }
