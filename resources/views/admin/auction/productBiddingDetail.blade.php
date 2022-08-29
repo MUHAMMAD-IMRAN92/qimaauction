@@ -204,7 +204,7 @@
                                                                 </td>
                                                                 {{-- data all --}}
                                                                 {{-- @if (isset($auction->latestAutoBidPrice)) --}}
-                                                                <td class="editblock{{ $auction->id }}" style="display: flex; text-allign : left">
+                                                                <td class="editblock{{ $auction->id }}">
                                                                     <input type="hidden"
                                                                         id="autobidId{{ $auction->id }}"
                                                                         value="{{ $auction->latestAutoBidPrice->id ?? '0' }}">
@@ -222,15 +222,23 @@
                                                                     <input type="hidden"
                                                                         id="userId{{ $auction->id }}"
                                                                         value="{{ isset($auction->latestAutoBidPrice) ? $auction->latestAutoBidPrice->user_id : '--' }}">
-                                                                    <button data-id="{{ $auction->id }}"
+                                                                    {{-- <button data-id="{{ $auction->id }}"
                                                                         id="editbtn{{ $auction->id }}"
                                                                         {{ isset($latestAutoBidPrice) ? '' : 'disabled' }}
                                                                         class="autobid btn btn-sm success"
-                                                                        style="font-size:16px;">save </button>
+                                                                        style="font-size:16px;">save </button> --}}
                                                                     <div
                                                                         class="errormsgautobid errorMsgAutoBid{{ $auction->id }}">
                                                                     </div>
 
+                                                                </td>
+                                                                <td>
+                                                                     <button data-id="{{ $auction->id }}"
+                                                                        id="editbtn{{ $auction->id }}"
+                                                                        {{ isset($latestAutoBidPrice) ? '' : 'disabled' }}
+                                                                        class="autobid btn btn-sm success"
+                                                                        style="font-size:16px;">save </button>
+                                                                    
                                                                 </td>
 
                                                             </tr>

@@ -1,7 +1,7 @@
 <style>
-    .table-heading{
-    font-size: 5rem !important;
-  }
+    .table-heading {
+        font-size: 5rem !important;
+    }
 </style>
 
 @extends('admin.layout.default')
@@ -31,60 +31,73 @@
 
                     </div>
                 </div>
-                <div class="col-4 ">
                     <form method="get">
-                        <select name="auction_id" class="form-control">
-                        <option value="">Select Aution</option>
-                            @foreach ($auctions as $auction)
-                                <option value="{{$auction->id}}">{{$auction->title}}</option>
-                            @endforeach
-                        </select>
-                        <input type="submit" value="Get Data" class="btn btn-primary waves-effect waves-light mt-1 p-0 " >
-                    </form>
-                    </div>
-                    @if(request()->auction_id != '')
-                        <div class="col-12 custom_btn_align mb-2">
-                            <a href="{{route('auctionreport_csv',request()->auction_id)}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
+                        <div class="flex-align-center">
+                        <div class="col-sm-6">
+                            <select name="auction_id" class="form-control">
+                                <option value="">Select Aution</option>
+                                @foreach ($auctions as $auction)
+                                    <option value="{{ $auction->id }}">{{ $auction->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    @endif
-            </div>
-            <div class="content-body">
-
-                <!-- Zero configuration table -->
-                <section id="basic-datatable">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-
+                        <div class="col-sm-6">
+                            <input type="submit" value="Get Data"
+                                class="btn btn-primary mt-res-10 waves-effect waves-light  p-0 ">
                                 </div>
-                                <div class="card-content">
-                                    <div class="card-body card-dashboard">
+                                </div>
+                    </form>
+            </div>
+            @if (request()->auction_id != '')
+                <div class="col-12 custom_btn_align mb-2">
+                    <a href="{{ route('auctionreport_csv', request()->auction_id) }}"
+                        class="btn btn-primary waves-effect waves-light" target="_blank" id="export"
+                        onclick="exportReport(event.target);">Export<a>
+                </div>
+            @endif
+        </div>
+        <div class="content-body">
 
-                                        <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table">
-                                                <thead>
-                                                    <tr class="table-heading">
-                                                        <th>Sr</th>
-                                                        <th>Year</th>
-                                                        <th>Total Proceeds</th>
-                                                        <th>Avg. Price per Pound</th>
-                                                        <th>Auction Run Time - 3 min clock</th>
-                                                        <th>Auction Run Time - total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>@if(request()->auction_id != ''){{$year}} @else @endif</td>
-                                                        <td>${{number_format($total)}}</td>
-                                                        <td>${{$avgPrice}}</td>
-                                                        <td>{{$timerTotal}}</td>
-                                                        <td>{{$auctionTimeTotal}}</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    {{-- <tr>
+            <!-- Zero configuration table -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration" id="customer-table">
+                                            <thead>
+                                                <tr class="table-heading">
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                    <th>Total Proceeds</th>
+                                                    <th>Avg. Price per Pound</th>
+                                                    <th>Auction Run Time - 3 min clock</th>
+                                                    <th>Auction Run Time - total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        @if (request()->auction_id != '')
+                                                            {{ $year }}
+                                                        @else
+                                                        @endif
+                                                    </td>
+                                                    <td>${{ number_format($total) }}</td>
+                                                    <td>${{ $avgPrice }}</td>
+                                                    <td>{{ $timerTotal }}</td>
+                                                    <td>{{ $auctionTimeTotal }}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                {{-- <tr>
                                                         <th>Sr</th>
                                                         <th>Year</th>
                                                         <th>Total Proceeds</th>
@@ -92,25 +105,25 @@
                                                         <th>Auction Run Time - 3 min clock</th>
                                                         <th>Auction Run Time - total</th>
                                                     </tr> --}}
-                                                </tfoot>
-                                            </table>
-                                        </div>
+                                            </tfoot>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <!--/ Zero configuration table -->
+                </div>
+            </section>
+            <!--/ Zero configuration table -->
 
-            </div>
         </div>
+    </div>
     </div>
     <!-- END: Content-->
 @endsection
 <script>
     function exportReport(_this) {
-       let _url =`{{ route('auctionreport_csv',request()->auction_id)}}`;
-       window.location.href = _url;
+        let _url = `{{ route('auctionreport_csv', request()->auction_id) }}`;
+        window.location.href = _url;
     }
- </script>
+</script>
