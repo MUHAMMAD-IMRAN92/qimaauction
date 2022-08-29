@@ -238,7 +238,7 @@
                                                                         {{ isset($latestAutoBidPrice) ? '' : 'disabled' }}
                                                                         class="autobid btn btn-sm success"
                                                                         style="font-size:16px;">save </button>
-                                                                    
+
                                                                 </td>
 
                                                             </tr>

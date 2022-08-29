@@ -666,6 +666,16 @@ class AuctionController extends Controller {
             $singleBid->user_id = $user;
             $singleBid->auction_product_id = $request->id;
             $singleBid->save();
+
+            //save timer start time
+            $auctionPData = AuctionProduct::where('id', $request->id)->first();
+            $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
+            $isEmpty = sizeof($singleBids);
+            $singleBid->timerCheck = $isEmpty;
+            if ($isEmpty == 0 && $auction->startTime == '') {
+                $updateEndTime = Auction::where('id', $auctionPData->auction_id)->update([
+                    'startTime' => $currentDate]);
+            }
             $autoBidData = new AutoBid();
             $autoBidData->auction_id = $request->auctionid;
             $autoBidData->user_id = $user;
@@ -674,6 +684,9 @@ class AuctionController extends Controller {
             $autoBidData->bid_amount = $request->autobidamount;
             $autoBidData->save();
         }
+        $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
+        $isEmpty = sizeof($singleBids);
+        $singleBid->timerCheck = $isEmpty;
         $isActive = isset($latestAutoBid) ? $latestAutoBid->is_active : '1';
         $autoBidData->outAutobid = $isActive;
         $autoBidData->totalAutoBidLiability = ($auctionProductsData->weight * $autoBidData->bid_amount);
@@ -698,6 +711,7 @@ class AuctionController extends Controller {
         $autoBidData->bidIncrement = $bidIncrementLatest;
         $autoBidData->bid_amountNew = $bidAmountL;
         $autoBidData->id = $winner;
+        $autoBidData->timerCheck = $isEmpty;
         if (!$loser) {
             $loser = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->skip(1)->first();
             if ($loser) {
