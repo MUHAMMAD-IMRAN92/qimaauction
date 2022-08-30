@@ -259,7 +259,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container tab-pane fade" id="nav-profile" role="tabpanel"
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                         aria-labelledby="nav-profile-tab">
                         <div class="card">
                             <div class="card-content">
