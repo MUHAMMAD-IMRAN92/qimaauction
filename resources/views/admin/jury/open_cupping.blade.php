@@ -80,7 +80,7 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2 pb-1">
-                                                        Please Select Auction
+                                                        Select Auction
                                                     </div>
                                                     <select class="form-control  @error('auction') is-invalid @enderror"
                                                         name="auction_id" id="auction_id">
@@ -95,7 +95,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2 pb-1">
-                                                        Please Select Product and Sample
+                                                         Select Product and Sample
                                                     </div>
                                                     @foreach ($products as $key => $product)
                                                         <div class="row">
