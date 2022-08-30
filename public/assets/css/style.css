@@ -15,6 +15,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     flex-wrap: wrap;
 }
 
+.product-link-a{
+	    color: #d1af69;
+}
+
 
 @media (max-width: 767.98px){
 	.mt-res-10{

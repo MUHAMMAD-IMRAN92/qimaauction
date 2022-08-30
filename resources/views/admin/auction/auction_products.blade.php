@@ -235,13 +235,15 @@
                                                             </td> --}}
                                                             <div>
                                                                 <td>
-                                                                    <i id="edit"
+                                                                    {{-- <i id="edit"
                                                                         data-auctionId="{{ $auction->id }}"
                                                                         class="fas fa-edit"></i>
                                                                     <i id="delete"  data-auctionId="{{ $auction->id }}"
-                                                                        class="fa fa-trash-o"></i>
+                                                                        class="fa fa-trash-o"></i> --}}
                                                                     {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-eye"></a> --}}
+                                                                        <span class="product-link-a" id="edit" data-auctionId="{{ $auction->id }}">Edit</span>
+                                                                        <span class="product-link-a" id="delete" data-auctionId="{{ $auction->id }}">Delete</span>
                                                                 </td>
 
                                                             </div>

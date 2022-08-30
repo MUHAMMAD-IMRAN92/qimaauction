@@ -57,7 +57,7 @@
                 </form>
             </div>
 
-        </div>
+        
         <div class="content-body">
 
             <!-- Zero configuration table -->
@@ -118,6 +118,7 @@
             </section>
             <!--/ Zero configuration table -->
 
+        </div>
         </div>
     </div>
     </div>
