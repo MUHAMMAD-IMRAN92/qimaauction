@@ -43,9 +43,9 @@
                                                 <td>{{$reviewed[$value] .'/'.$sample->total}}</td> 
                                                 {{-- ,'productId'=>$sample->product_id,'juryId'=>$sample->jury_id --}}
                                                 @if($opencupping)
-                                                <td> <a href="{{route('openCuppingReviewDetail',['sample'=>$sample->samples])}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                <td> <a href="{{route('openCuppingReviewDetail',['sample'=>$sample->samples])}}"><span class="product-link-a">View</span></a></td>
                                                 @else
-                                                <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><span class="product-link-a">View</span></a></td>
                                                 @endif
                                                
                                             </tr>
