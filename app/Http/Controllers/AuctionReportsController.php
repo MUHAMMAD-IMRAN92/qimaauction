@@ -172,6 +172,7 @@ class AuctionReportsController extends Controller
                 $q->where('id', $auction_id);
             });
         })->with('products')->orderBy('id')->get();
+
         return view('admin.reports.bidder_summary', compact('userMaxBids','auctions'));
     }
 
