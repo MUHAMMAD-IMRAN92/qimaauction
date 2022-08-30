@@ -232,11 +232,11 @@
                                                                     </div>
 
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-align: left">
                                                                      <button data-id="{{ $auction->id }}"
                                                                         id="editbtn{{ $auction->id }}"
                                                                         {{ isset($latestAutoBidPrice) ? '' : 'disabled' }}
-                                                                        class="autobid btn btn-sm success"
+                                                                        class="autobid btn btn-primary waves-effect waves-light"
                                                                         style="font-size:16px;">save </button>
 
                                                                 </td>
@@ -295,7 +295,7 @@
                                                                </td>
                                                                <td>
                                                                 @php
-                                                               ;
+                                                               
                                                                    $user = \App\Models\User::where('id',$pro->user_id)->first();
                                                                 @endphp
                                                                 {{ $user->company ?? '' }}
