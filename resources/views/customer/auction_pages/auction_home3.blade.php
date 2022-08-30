@@ -2384,12 +2384,15 @@
         // alert(data.id);
         $('.errorMsgAutoBid' + data.id).html('');
         $('.errorMsgAutoBid' + data.id + data.id).html('');
-        $('.errorMsgAutoBid' + data.id + data.id).html(
-        '<p">Current autobid is $' +
-        addCommas(data.autobidamount) +
-        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-        data.id + '>Remove</a>}</p>');
+        if(data.user_id == {{Auth::user()->id}})
+        {
+            $('.errorMsgAutoBid' + data.id + data.id).html(
+            '<p">Current autobid is $' +
+            addCommas(data.autobidamount) +
+            ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+            data.id + '>Remove</a>}</p>');
 
+        }
     });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
@@ -2545,7 +2548,6 @@
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
-            // alert(data.checkTimer);
             if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
