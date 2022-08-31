@@ -212,17 +212,7 @@ class AuctionReportsController extends Controller
     public function fullBidReport(Request $request)
     {
         $auctions=Auction::all();
-        // $auction = Auction::where('is_active', '1')->first();
         $singlebids = SingleBid::where('auction_id', $request->auction_id)->with('aproduct.product')->orderBy('auction_product_id', 'asc')->get();
-        // foreach ($singlebids as $s) {
-        //     print_r($s->aproduct->product);
-        //     exit;
-        // }
-        // $results = $singlebids->map(function($e) {
-        //     $e->products = Product::where('id', $e->auction_product_id)
-        //             ->first();
-        //     return $e;
-        // });
         return view('admin.reports.full_bid', compact('singlebids','auctions'));
     }
 

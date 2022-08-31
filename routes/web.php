@@ -32,6 +32,17 @@ Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['middleware' => ['auth', 'isCustomer']], function() {
 
+    // Route::get('userdashboard', function() {
+    //     return view('user.dashboard.index');
+    // });
+    Route::get('/user-dashboard', [App\Http\Controllers\UserProfileController::class, 'userDashboard']);
+    Route::get('/user-profile', [App\Http\Controllers\UserProfileController::class, 'userProfile']);
+    Route::post('/userprofile/update', [App\Http\Controllers\UserProfileController::class, 'updateUser']);
+    Route::post('/removeimage', [App\Http\Controllers\UserProfileController::class, 'removeUserImage'])->name('removeuserimage');
+
+    Route::get('/highestbids', [App\Http\Controllers\UserProfileController::class, 'highestBids']);
+    Route::get('/allbids', [App\Http\Controllers\UserProfileController::class, 'allBidsData']);
+
     Route::get('/auction', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auction');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');

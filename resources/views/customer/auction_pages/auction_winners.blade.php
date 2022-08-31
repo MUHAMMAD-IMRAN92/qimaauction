@@ -1015,6 +1015,7 @@
                 <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                <a href="{{ url('/user-dashboard') }}"><i title="Profile" class="fa fa-user" aria-hidden="true"></i> </a>
 
 
             </ul>
