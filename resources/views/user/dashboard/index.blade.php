@@ -13,7 +13,7 @@
             <!-- Dashboard Ecommerce Starts -->
             <section id="dashboard-ecommerce">
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-center pb-0">
                                 <div class="avatar bg-rgba-primary p-50 m-0">
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-center pb-0">
                                 <div class="avatar bg-rgba-success p-50 m-0">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-center pb-0">
                                 <div class="avatar bg-rgba-danger p-50 m-0">
@@ -61,22 +61,22 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card">
-                            <div class="card-header d-flex flex-column align-items-start pb-0">
+                            <div class="card-header d-flex flex-column align-items-center pb-0">
                                 <div class="avatar bg-rgba-warning p-50 m-0">
                                     <div class="avatar-content">
                                         <i class="feather icon-package text-warning font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">97.5K</h2>
-                                <p class="mb-0">Orders Received</p>
+                                <h2 class="text-bold-700 mt-1">{{$winner}}</h2>
+                                <p class="mb-0">Winning</p>
                             </div>
                             <div class="card-content">
                                 <div id="line-area-chart-4"></div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </section>
             <!-- Dashboard Ecommerce ends -->

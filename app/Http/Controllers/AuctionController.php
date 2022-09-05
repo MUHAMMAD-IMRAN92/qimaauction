@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AcceptAgreement;
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\AuctionWinners;
 use App\Models\AutoBid;
 use App\Models\Bidlimit;
 use App\Models\Genetic;
@@ -15,6 +16,7 @@ use App\Models\SingleBid;
 use App\Models\User;
 use App\Models\WinningCofees;
 use App\Models\Newsletter;
+use App\Models\ShipmentTrackingStatus;
 use App\Models\UserScore;
 use App\Models\WinningCofeeImages;
 use Carbon\Carbon;
@@ -846,6 +848,40 @@ class AuctionController extends Controller {
             return redirect('auction-winners');
         }
         if ($auction && $auction->is_hidden == 1) {
+            //save data in auction winners
+            $auctionWinners = AuctionWinners::where('auction_id', $auction->id)->get();
+                if($auctionWinners->isEmpty())
+                {
+                $auctions=Auction::all();
+                $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('products', 'singleBids', 'winningImages')->get();
+                $results = $auctionProducts->map(function ($e) {
+                    $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+                        ->orderBy('bid_amount', 'desc')
+                        ->first();
+                    return $e;
+                });
+                        foreach($auctionProducts as $products)
+                        {
+                            $auctionWinners= new AuctionWinners;
+                            $auctionWinners->auction_id         =   $products->auction_id;
+                            $auctionWinners->auction_product_id =   $products->highestbid->auction_product_id;
+                            $auctionWinners->product_id         =   $products->product_id;
+                            $auctionWinners->user_id            =   $products->highestbid->user_id;
+                            $auctionWinners->bid_amount         =   $products->highestbid->bid_amount;
+                            $auctionWinners->total_value        =   $products->highestbid->bid_amount*$products->weight;
+                            $auctionWinners->is_hidden          =   '0';
+                            $auctionWinners->delivery_status    =   'Pending';
+                            $auctionWinners->save();
+
+                            //save dat in statsues table
+                            $trackData = new ShipmentTrackingStatus;
+                            $trackData->auction_winner_id = $auctionWinners->id;
+                            $trackData->delivery_status = 'Pending';
+                            $trackData->save();
+                        }
+
+                }
+
             $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function($e) {

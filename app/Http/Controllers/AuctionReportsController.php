@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\AuctionWinners;
 use App\Models\AutoBid;
 use App\Models\Product;
+use App\Models\ShipmentTrackingStatus;
 use App\Models\SingleBid;
 use App\Models\User;
 use Carbon\Carbon;
@@ -109,8 +111,11 @@ class AuctionReportsController extends Controller
 
     public function lotWinnersReport(Request $request)
     {
+
+        $auctionWinners = AuctionWinners::where('auction_id', $request->auction_id)->get();
+        if($auctionWinners->isEmpty())
+        {
         $auctions=Auction::all();
-        // $auction = Auction::where('is_active', '1')->first();
         $auctionProducts = AuctionProduct::where('auction_id', $request->auction_id)->with('products', 'singleBids', 'winningImages')->get();
         $results = $auctionProducts->map(function ($e) {
             $e->highestbid = SingleBid::where('auction_product_id', $e->id)
@@ -118,7 +123,54 @@ class AuctionReportsController extends Controller
                 ->first();
             return $e;
         });
-        return view('admin.reports.lot_winners', compact('auctionProducts','auctions'));
+
+                foreach($auctionProducts as $products)
+                {
+                    $auctionWinners= new AuctionWinners;
+                    $auctionWinners->auction_id         =   $products->auction_id;
+                    $auctionWinners->auction_product_id =   $products->highestbid->auction_product_id;
+                    $auctionWinners->product_id         =   $products->product_id;
+                    $auctionWinners->user_id            =   $products->highestbid->user_id;
+                    $auctionWinners->bid_amount         =   $products->highestbid->bid_amount;
+                    $auctionWinners->total_value        =   $products->highestbid->bid_amount*$products->weight;
+                    $auctionWinners->is_hidden          =   '0';
+                    $auctionWinners->delivery_status    =   'Pending';
+                    $auctionWinners->save();
+
+                    //save dat in statsues table
+                    $trackData = new ShipmentTrackingStatus;
+                    $trackData->auction_winner_id = $auctionWinners->id;
+                    $trackData->delivery_status = 'Pending';
+                    $trackData->save();
+                }
+
+        }
+
+            $auctions=Auction::all();
+            $auctionWinners = AuctionWinners::where('auction_id', $request->auction_id)->get();
+            $results = $auctionWinners->map(function($e) {
+                $e->products = Product::where('id', $e->product_id)->first();
+                $e->users    = User::where('id', $e->user_id)->first();
+                $e->aproducts = AuctionProduct::where('id',$e->auction_product_id)->first();
+                return $e;
+            });
+        return view('admin.reports.lot_winners', compact('auctionWinners','auctions'));
+    }
+    public function saveDeliveryStatus(Request $request)
+    {
+        // dd($request);
+        $auctionWinner=AuctionWinners::where('id', $request->id)->update([
+            'delivery_status'   => $request->value,
+            'shipping_company'  => $request->company,
+            'company_url'       => $request->url,
+            'tracking_number'   => $request->tracking_num
+        ]);
+        $trackData = new ShipmentTrackingStatus;
+        $trackData->auction_winner_id = $request->id;
+        $trackData->delivery_status = $request->value;
+        $trackData->save();
+        $trackData->id=$request->id;
+        return response()->json($trackData);
     }
 
     public function lotWinnersReportCSV($auction_id)
