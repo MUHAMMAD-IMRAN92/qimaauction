@@ -2,6 +2,7 @@
     .table-heading {
         font-size: 5rem !important;
     }
+
 </style>
 @extends('admin.layout.default')
 @section('title', 'All Transection')
@@ -250,7 +251,10 @@
                     console.log(response.id)
                     var winnerid = response.id;
                     $("#exampleModal"+id).hide();
-                    location.reload();
+                    // $("#exampleModal").modal('hide');
+                    $('.modal-backdrop').remove();
+
+                    // location.reload();
                 },
                 error: function(error) {
                     console.log(error)

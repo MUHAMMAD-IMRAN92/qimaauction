@@ -24,9 +24,9 @@
                                 <h2 class="text-bold-700 mt-1">{{$auctionCount}}</h2>
                                 <p class="mb-0">Auctions</p>
                             </div>
-                            <div class="card-content">
+                            {{-- <div class="card-content">
                                 <div id="line-area-chart-1"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
@@ -40,9 +40,9 @@
                                 <h2 class="text-bold-700 mt-1">{{$bidCount}}</h2>
                                 <p class="mb-0">Total Bids</p>
                             </div>
-                            <div class="card-content">
+                            {{-- <div class="card-content">
                                 <div id="line-area-chart-2"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
@@ -56,9 +56,9 @@
                                 <h2 class="text-bold-700 mt-1">{{$bidCountUser}}</h2>
                                 <p class="mb-0">Your bids</p>
                             </div>
-                            <div class="card-content">
+                            {{-- <div class="card-content">
                                 <div id="line-area-chart-3"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
@@ -72,9 +72,9 @@
                                 <h2 class="text-bold-700 mt-1">{{$winner}}</h2>
                                 <p class="mb-0">Winning</p>
                             </div>
-                            <div class="card-content">
+                            {{-- <div class="card-content">
                                 <div id="line-area-chart-4"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
