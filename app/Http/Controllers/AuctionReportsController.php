@@ -137,7 +137,7 @@ class AuctionReportsController extends Controller
                     $auctionWinners->delivery_status    =   'Pending';
                     $auctionWinners->save();
 
-                    //save dat in statsues table
+                    //save data in statuses table
                     $trackData = new ShipmentTrackingStatus;
                     $trackData->auction_winner_id = $auctionWinners->id;
                     $trackData->delivery_status = 'Pending';
@@ -224,7 +224,7 @@ class AuctionReportsController extends Controller
                 $q->where('id', $auction_id);
             });
         })->with('products')->orderBy('id')->get();
-
+        // dd($userMaxBids);
         return view('admin.reports.bidder_summary', compact('userMaxBids','auctions'));
     }
 
