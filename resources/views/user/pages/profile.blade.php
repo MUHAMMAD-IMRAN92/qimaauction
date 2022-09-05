@@ -105,16 +105,8 @@
 <script>
      //Remove Image
      $(document).ready(function() {
-        var img = document.getElementById("user-image");
-          img.getAttribute("src");
-        if(img.src ==  'http://qimaauction/public/images/avatar.png')
-        {
-            $('.removeimage').attr("disabled", true);
-        }
-        else{
             $(".removeimage").on("click", function(e) {
-
-e.preventDefault();
+        e.preventDefault();
         var id = $(this).attr('data-id');
         swal({
             title: `Are You sure to remove Image?`,
@@ -145,8 +137,6 @@ e.preventDefault();
         })
 
     });
-        }
-
             });
     </script>
 @endsection

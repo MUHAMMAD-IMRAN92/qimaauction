@@ -20,7 +20,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/user-dashboard') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Winning Lots
+                                    <li class="breadcrumb-item active">Highest bids per lots
                                     </li>
                                 </ol>
                             </div>

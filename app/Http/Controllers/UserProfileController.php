@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\AuctionWinners;
+use App\Models\Product;
+use App\Models\ShipmentTrackingStatus;
 use App\Models\SingleBid;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,8 +21,9 @@ class UserProfileController extends Controller
         $user=Auth::user()->id;
         $auctionCount = Auction::all()->count();
         $bidCount     = SingleBid::all()->count();
-        $bidCountUser     = SingleBid::where('user_id',$user)->get()->count();
-        return view('user.dashboard.index',compact('auctionCount','bidCount','bidCountUser'));
+        $bidCountUser = SingleBid::where('user_id',$user)->get()->count();
+        $winner       = AuctionWinners::where('user_id',$user)->get()->count();
+        return view('user.dashboard.index',compact('auctionCount','bidCount','bidCountUser','winner'));
     }
     public function userProfile()
     {
@@ -71,7 +75,7 @@ class UserProfileController extends Controller
             ->first();
         return $e;
         });
-            return view('user.pages.winninglots', compact('auctionProducts', 'auctions'));
+            return view('user.pages.highestbids', compact('auctionProducts', 'auctions'));
     }
     public function allBidsData(Request $request)
     {
@@ -79,5 +83,20 @@ class UserProfileController extends Controller
         $user=Auth::user()->id;
         $singlebids = SingleBid::where('auction_id', $request->auction_id)->where('user_id',$user)->with('aproduct.product')->orderBy('auction_product_id', 'asc')->get();
         return view('user.pages.all_bid', compact('singlebids','auctions'));
+    }
+    public function winningLots(Request $request)
+    {
+        $auctions=Auction::all();
+        $user = Auth::user()->id;
+        $auctionWinners = AuctionWinners::where('auction_id', $request->auction_id)->where('user_id',$user)->with('shipmentStatus')->get();
+        $results = $auctionWinners->map(function($e) {
+            $e->products = Product::where('id', $e->product_id)->first();
+            $e->users    = User::where('id', $e->user_id)->first();
+            $e->aproducts = AuctionProduct::where('id',$e->auction_product_id)->first();
+            return $e;
+        });
+
+        // dd($auctionWinners);
+        return view('user.pages.winning_bids', compact('auctionWinners','auctions'));
     }
 }

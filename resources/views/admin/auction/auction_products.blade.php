@@ -385,7 +385,7 @@
                                 "</td><td><i id='edit' data-auctionId=" + data.id +
                                 " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
                                 .id + " class='fas fa-trash-o'></i></td></tr>";
-                                if (rownumber) {               
+                                if (rownumber) {
                                   $('#' + id).replaceWith(markup);
                                 }
                                 else

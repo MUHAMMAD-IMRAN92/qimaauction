@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function() {
     Route::get('/user-profile', [App\Http\Controllers\UserProfileController::class, 'userProfile']);
     Route::post('/userprofile/update', [App\Http\Controllers\UserProfileController::class, 'updateUser']);
     Route::post('/removeimage', [App\Http\Controllers\UserProfileController::class, 'removeUserImage'])->name('removeuserimage');
+    Route::get('/winninglots', [App\Http\Controllers\UserProfileController::class, 'winningLots']);
 
     Route::get('/highestbids', [App\Http\Controllers\UserProfileController::class, 'highestBids']);
     Route::get('/allbids', [App\Http\Controllers\UserProfileController::class, 'allBidsData']);
@@ -217,6 +218,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     //Lot winners report
     Route::get('/report_lotwinners', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReport'])->name('ReportLotWinners');
     Route::get('/report_lotwinners/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
+    //save delivery status
+    Route::post('/save_deliverystatus', [App\Http\Controllers\AuctionReportsController::class, 'saveDeliveryStatus'])->name('savedeliverystatus');
 
     //Bidder summary report
     Route::get('/report_bidder_summary', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReport'])->name('ReportBidderSummary');
