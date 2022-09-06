@@ -90,8 +90,8 @@
                                                         <td>${{ number_format($winners->bid_amount, 2) }}</td>
                                                         <td>${{ number_format($winners->total_value, 2) }}</td>
                                                         <td>{{ $winners->users->company ?? '---' }}</td>
-                                                        <td>{{$winners->delivery_status}}
-                                                            <a class="btn btn-primary waves-effect waves-light accordion-toggle collapsed"  id="accordion1"
+                                                        <td class="flex-space-between">{{$winners->delivery_status}}
+                                                            <a class="btn btn-primary waves-effect waves-light accordion-toggle collapsed p-10"  id="accordion1"
                                                             data-toggle="collapse" data-parent="#accordion1"
                                                             href="#collapseOne{{$winners->id}}">History<a>
                                                         </td>
@@ -105,7 +105,7 @@
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th>Sr No</th>
-                                                                                    <th>status</th>
+                                                                                    <th>Status</th>
                                                                                     <th>Date Time</th>
                                                                                     {{-- <th>URL</th>
                                                                                     <th>Tracking Number</th> --}}

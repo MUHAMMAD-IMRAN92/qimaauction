@@ -382,9 +382,9 @@
                                 .start_price + "</td><td>" + data
                                 .reserve_price + "</td><td>" + data
                                 .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
-                                "</td><td><i id='edit' data-auctionId=" + data.id +
-                                " class='fas fa-edit'></i><i id='delete' data-auctionId=" + data
-                                .id + " class='fas fa-trash-o'></i></td></tr>";
+                                "</td><td><span id='edit' data-auctionId=" + data.id +
+                                " class='product-link-a'>Edit</span> <span id='delete' data-auctionId=" + data
+                                .id + " class='product-link-a'>Delete</span></td></tr>";
                                 if (rownumber) {
                                   $('#' + id).replaceWith(markup);
                                 }
