@@ -804,23 +804,29 @@
     }
 
     .groupbid-offers ul li {
-        background-color: #f5f5f5;
+        background-color: #dee2e6;
         padding: 15px;
     }
 
     .groupbid-offers ul li span {
-        border: 1px solid black;
-        border-radius: 50px;
-        padding: 6px;
-        margin-right: 20px;
-        background: darkgray;
+    border: 1px solid white;
+    font-size: 20px;
+    line-height: 26px;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    margin-right: 20px;
+    background: #143D30;
     }
     .lot-toggle-btn {
-        border: 1px solid black;
-        border-radius: 50px;
-        padding: 10px;
-        margin-right: 20px;
-        background: darkgray;
+    border: 1px solid white;
+    font-size: 20px;
+    line-height: 26px;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    margin-right: 20px;
+    background: #143D30;
     }
 
     .hide{

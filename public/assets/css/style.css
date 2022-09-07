@@ -117,22 +117,25 @@ label {
 .groupbid-offers ul li {
     background-color: #f5f5f5;
     padding: 15px;
+    border-bottom: 2px solid #D4B168;
 }
 .groupbid-offers ul li span {
-    border: 1px solid black;
-    border-radius: 50px;
+    font-size: 20px;
+    line-height: 26px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 50%;
     padding: 6px;
-    margin-right: 20px;
-    background: darkgray;
+    background: #D4B168;
+    display: block;
+    text-align: center;
+    max-width: max-content;
+    margin: 0 auto;
 }
-    .hide{
-        display: none;
-    }
+.groupbid-offers ul li p{
+margin-bottom: 3px;
+}
 
-    .show-bidconfirm{
-        display: block;
-		margin-bottom: 20px;
-    }
 
 
 @media (max-width: 767.98px){
