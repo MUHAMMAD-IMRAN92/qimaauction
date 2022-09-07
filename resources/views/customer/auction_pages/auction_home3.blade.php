@@ -1830,7 +1830,7 @@
                 <div class="sidebar-container">
                     <div class="groupbid-sidebar">
                         <div class="grouplot-listing">
-                            <h3>Active Group Lot Listing:</h3>
+                            <h3>Active Group Lot Listing</h3>
                             <div class="group-lots">
                                 <h6>
                                     <button type="button" class=" lot-toggle-btn" data-toggle="collapse"
