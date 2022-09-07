@@ -352,86 +352,18 @@
                 <div class="sidebar-container">
                     <div class="groupbid-sidebar">
                         <div class="grouplot-listing">
-                            <h3>Active Group Lot Listing:</h3>
-                            <div class="group-lots">
-                                <h6>
-                                    <button type="button" class=" lot-toggle-btn" data-toggle="collapse"
-                                        data-target="#demo"> 29 </button> 20 * 6 = 120
-                                </h6>
-                                <div id="demo" class="groupbid-offers collapse">
-                                    <form>
-                                        <div class="col-8">
-                                            <p>Remaining bags: 5</p>
-                                            <label>Bags Quantity:</label>
-                                            <input type="number" class="form-control" id="bid_amount"
-                                                name="Bid Amount">
-                                            <p><span style="font-weight: bold">Weight: </span>60/lbs</p>
-                                            <label>Amount: </label>
-                                            <input type="number" class="form-control" id="bid_amount"
-                                                name="Bid Amount">
-                                            <br>
-                                            <input type="button" onclick="showBidConfirm()"
-                                                class="admin-btn btn-primary show-bid-confirm"
-                                                value="Post Group Bid">
-                                            <br>
-                                            <div class="bid-confirm-sec hide">
-                                                <br>
-                                                <p><span style="font-weight: bold">Bid: </span> $247</p>
-                                                <p><span style="font-weight: bold">Weight: </span> 105.65lbs</p>
-                                                <p><span style="font-weight: bold">Liability: </span>$25,984.65</p>
-                                                <div>
-                                                    <input type="submit" class="admin-btn btn-primary waves-effect"
-                                                        value="Confirm">
-                                                    <input type="button" onclick="hideBidConfirm()"
-                                                        class="admin-btn btn-primary waves-effect" value="Cancel">
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                            <h3 class="mb-2 fw-bold">Bidding details</h3>
+                            <div class="lot-bidding-details mb-2">
+                                <p><span class="fw-bold">Product: </span> Coffee</p>
+                                <p><span class="fw-bold">Total Weight: </span> 147.25/lbs</p>
+                                <p><span class="fw-bold">Status: </span> Preparing</p>
                             </div>
 
-                            <div class="groupbid-offers other-offers mt-10">
-                                <p>Other's Offers:</p>
-                                <ul>
-                                    <li> <span>29</span> 20 * 6 = 120 </li>
-                                </ul>
-                            </div>
-                            <div class="groupbid-offers my-offers">
+                            <div class="groupbid-offers active-offers">
                                 <p>My Offers:</p>
                                 <ul>
                                     <li> <span>29</span> 20 * 6 = 120 </li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="current-group-bid">
-                            <div class="col-8">
-                                <form>
-                                    <p>Total bags: 5</p>
-                                    <label>Bags Quantity:</label>
-                                    <input type="number" class="form-control" id="bid_amount" name="Bid Amount">
-                                    <p><span style="font-weight: bold">Weight: </span>60/lbs</p>
-                                    <label>Amount: </label>
-                                    <input type="number" class="form-control" id="bid_amount" name="Bid Amount">
-                                    <br>
-                                    <input type="button" onclick="showBidConfirm()" class="admin-btn btn-primary waves-effect"
-                                        value="Post Group Bid">
-                                    <br>
-                                    <div class="bid-confirm-sec hide">
-                                        <br>
-                                        <p><span style="font-weight: bold">Bid: </span> $247</p>
-                                        <p><span style="font-weight: bold">Weight: </span> 105.65lbs</p>
-                                        <p><span style="font-weight: bold">Liability: </span>$25,984.65</p>
-
-                                        <input type="submit" class="admin-btn btn-primary waves-effect" value="Confirm">
-                                        <input type="button" onclick="hideBidConfirm()" class="admin-btn btn-primary waves-effect"
-                                            value="Cancel">
-
-                                    </div>
-                                </form>
-
                             </div>
                         </div>
                     </div>
@@ -453,12 +385,12 @@
                 $("#groupbid_sidebar").addClass('sidebaropen-width');
             })
 
-                function showBidConfirm() {
-        $(".bid-confirm-sec").addClass('show-bidconfirm');
-    }
-    function hideBidConfirm() {
-        $(".bid-confirm-sec").removeClass('show-bidconfirm');
-    }
+    //             function showBidConfirm() {
+    //     $(".bid-confirm-sec").addClass('show-bidconfirm');
+    // }
+    // function hideBidConfirm() {
+    //     $(".bid-confirm-sec").removeClass('show-bidconfirm');
+    // }
 
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');

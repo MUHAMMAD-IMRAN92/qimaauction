@@ -12,6 +12,9 @@ label {
     padding-left: 0;
     font-weight: 500;
 }
+.fw-bold{
+    font-weight: bold;
+}
 .mt-10{
 	margin-top: 10px;
 }
