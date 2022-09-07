@@ -811,7 +811,7 @@
     .groupbid-offers ul li span {
         border: 1px solid black;
         border-radius: 50px;
-        padding: 10px;
+        padding: 6px;
         margin-right: 20px;
         background: darkgray;
     }
@@ -1598,7 +1598,6 @@
                                                     <div class="col-sm-4 col-lg-4 align-left">
                                                         <button class="singlebidbtn btn openGroupSidebar"
                                                             id="{{ $auctionProduct->id }}"
-                                                            onclick="closeGroupSidebar()"
                                                             data-id="{{ $auctionProduct->id }}"
                                                             style="border-radius: 5px;">Group Bidding</button>
                                                     </div>
