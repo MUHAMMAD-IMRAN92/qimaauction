@@ -362,7 +362,11 @@
                             <div class="groupbid-offers active-offers">
                                 <p>My Offers:</p>
                                 <ul>
-                                    <li> <span>29</span> 20 * 6 = 120 </li>
+                                    <li> <span>29</span>
+                                         <p>Paddle # 1042</p>
+                                         <p>Weight: 100.00/lbs</p>
+                                         <p>Amount: $23.61</p>
+                                        </li>
                                 </ul>
                             </div>
                         </div>
