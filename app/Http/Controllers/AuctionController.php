@@ -16,7 +16,9 @@ use App\Models\SingleBid;
 use App\Models\User;
 use App\Models\WinningCofees;
 use App\Models\Newsletter;
+use App\Models\Offers;
 use App\Models\ShipmentTrackingStatus;
+use App\Models\UserOffers;
 use App\Models\UserScore;
 use App\Models\WinningCofeeImages;
 use Carbon\Carbon;
@@ -261,6 +263,7 @@ class AuctionController extends Controller {
                     ->first();
             return $e;
         });
+
         // dd($auctionProducts->latestAutoBidPrice);
         return view('customer.auction_pages.auction_home3', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
@@ -922,5 +925,57 @@ class AuctionController extends Controller {
         $auction->save();
         $auctionReset='1';
         return response()->json($auctionReset);
+    }
+    public function groupBidSideBar(Request $request)
+    {
+        $groupbidDatas      = UserOffers::all();
+        $accopied_wieght    = UserOffers::where('auction_product_id',$request->id)->sum('weight');
+        $total_weight       = AuctionProduct::where('id',$request->id)->value('weight');
+        $groupbid=[];
+        $i=0;
+        foreach($groupbidDatas as $groupbid_offer){
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->first();
+            $groupbid[$i]=$user_offer;
+            $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
+            $groupbid[$i]['remainig_weight']=$total_weight-$accopied_wieght;
+            if($groupbid_offer->user_id==Auth::user()->id){
+                $groupbid[$i]['my_check']=true;
+            }
+            else
+            {
+                $groupbid[$i]['my_check']=false;
+            }
+            $i++;
+        }
+        return response()->json($groupbid);
+    }
+    public function saveGroupBidOffer(Request $request)
+    {
+        $user                               =   Auth::user()->id;
+        $currentDate                        =   date('Y-m-d H:i:s');
+        $auction                            =   Auction::where('is_active',1)->first();
+        $groupOfferData                     =   new Offers();
+        $groupOfferData->auction_id         =   $auction->id;
+        $groupOfferData->auction_product_id =   $request->id;
+        $groupOfferData->amount             =   $request->amount;
+        $groupOfferData->weight             =   $request->weight;
+        $groupOfferData->is_active          =   '1';
+        $groupOfferData->paddle_number      =   $auction->id.$user.$request->id;
+        $groupOfferData->expired_at         =   $currentDate;
+        $groupOfferData->save();
+        //save data in user offers table
+        $userOfffers                        = new UserOffers();
+        $userOfffers->user_id               = $user;
+        $userOfffers->offer_id              = $groupOfferData->id;
+        $userOfffers->weight                = $request->weight;
+        $userOfffers->auction_product_id    =  $request->id;
+        $userOfffers->save();
+        return response()->json(['groupOfferData' => $groupOfferData , 'userOfffers' => $userOfffers]);
+
+    }
+    public function groupbidAdminSidebar(Request $request)
+    {
+        $OffersData =   Offers::where('auction_product_id',$request->id)->get();
+        return response()->json(['OffersData' => $OffersData]);
     }
 }

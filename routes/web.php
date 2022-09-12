@@ -49,6 +49,11 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function() {
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
     Route::post('/saveyourscore', [App\Http\Controllers\AuctionController::class, 'saveYourScore'])->name('saveyourscore');
+    //group bidding routes
+    Route::post('/savegroupbid', [App\Http\Controllers\AuctionController::class, 'saveGroupBidOffer'])->name('savegroupbidoffer');
+    Route::post('/groupbidsidebar', [App\Http\Controllers\AuctionController::class, 'groupBidSideBar'])->name('groupbiddingsidebar');
+
+
 });
 Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
@@ -186,6 +191,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     Route::get('/auction/updateAutoBids/{id}', [App\Http\Controllers\AuctionController::class, 'updateAutoBids'])->name('updateAutoBids');
     Route::post('/auction/auctionend', [App\Http\Controllers\AuctionController::class, 'auctionEnd'])->name('auctionEnd');
     Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'auctionReset'])->name('auctionReset');
+    Route::post('/groupbidsidebaradmin', [App\Http\Controllers\AuctionController::class, 'groupbidAdminSidebar'])->name('groupbidadminsidebar');
 
 
     //Customer CRUD

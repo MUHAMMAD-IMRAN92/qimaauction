@@ -304,7 +304,7 @@
                                                                     </td>
                                                                     <td>
                                                                         @php
-                                                                            
+
                                                                             $user = \App\Models\User::where('id', $pro->user_id)->first();
                                                                         @endphp
                                                                         {{ $user->company ?? '' }}
@@ -352,21 +352,21 @@
                 <div class="sidebar-container">
                     <div class="groupbid-sidebar">
                         <div class="grouplot-listing">
-                            <h3 class="mb-2 fw-bold">Bidding details</h3>
+                            <h3 class="mb-2 fw-bold">Group Bidding details</h3>
                             <div class="lot-bidding-details mb-2">
                                 <p><span class="fw-bold">Product: </span> Coffee</p>
                                 <p><span class="fw-bold">Total Weight: </span> 147.25/lbs</p>
-                                <p><span class="fw-bold">Status: </span> Preparing</p>
+                                {{-- <p><span class="fw-bold">Status: </span> Preparing</p> --}}
                             </div>
 
                             <div class="groupbid-offers active-offers">
-                                <p>My Offers:</p>
-                                <ul>
-                                    <li> <span>29</span>
+                                <p>Offers:</p>
+                                <ul id="offers">
+                                    {{-- <li> <span>29</span>
                                          <p>Paddle # 1042</p>
                                          <p>Weight: 100.00/lbs</p>
                                          <p>Amount: $23.61</p>
-                                        </li>
+                                        </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -387,6 +387,29 @@
 
             $(".openGroupSidebar").click(function() {
                 $("#groupbid_sidebar").addClass('sidebaropen-width');
+                var id     =  $(this).attr('data-id');
+                $.ajax({
+                url: "{{ route('groupbidadminsidebar') }}",
+                method: 'POST',
+                data: {
+                    id: id,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    var offerData=response.OffersData;
+                        console.log(offerData)
+                        var i;
+                        $('#offers').empty();
+                            for (i = 0; i < offerData.length; ++i) {
+                                var weight=offerData[i].weight/20;
+                                $('#offers').append("<li><span class='lotid'>"+offerData[i].auction_product_id+"</span><p>Amount:$"+offerData[i].amount+"<br>Bags:"+weight+"</p></li>");
+
+                            }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
             })
 
     //             function showBidConfirm() {

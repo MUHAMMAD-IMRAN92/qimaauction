@@ -17,7 +17,8 @@ class CreateUserOffersTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('offer_id');
-            $table->string('weight');
+            $table->decimal('weight');
+            $table->string('auction_product_id');
             $table->timestamps();
         });
     }
