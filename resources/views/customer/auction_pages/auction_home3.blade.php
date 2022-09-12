@@ -1305,7 +1305,7 @@
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
-                                    <td class="fw-bold ">{{ $auctionProduct->rank }}</td>
+                                    <td class="fw-bold productrank{{$auctionProduct->id}}">{{ $auctionProduct->rank }}</td>
                                     <input class="auctionproductid{{$auctionProduct->id}}" type="hidden" value="{{$auctionProduct->id}}">
                                     <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
                                     <td contenteditable='true'
@@ -1844,7 +1844,7 @@
                 <div class="sidebar-container">
                     <div class="groupbid-sidebar">
                         <div class="grouplot-listing" id="grouplot-listing">
-                            <p>Lot ID:<span class="lotproductid"></span></p><h3>Active Group Lot Listing</h3>
+                            <p class="hide">Lot ID:<span class="lotproductid "></span></p><h3>Active Group Lot Listing</h3>
                             <div class="group-lots">
                             <ul id="other-offers">
                             </ul>
@@ -1946,7 +1946,6 @@
     // }
 
     function closeGroupSidebar() {
-
         $("#groupbid_sidebar").removeClass('sidebaropen-width');
     }
 </script>
@@ -1960,11 +1959,11 @@
         $(".openGroupSidebar").click(function() {
             $("#groupbid_sidebar").addClass('sidebaropen-width');
             var id     = $(this).attr('data-id');
+            var rank   = $('.productrank'+id).html();
             $('.lotproductid').html(id);
             var weight = $('.productweight'+id).html();
             var finalweight= parseFloat(weight.replace(/[^0-9.]/g, ''));
             $('.productbags').html(finalweight/20);
-
             $.ajax({
                 url: "{{ route('groupbiddingsidebar') }}",
                 method: 'POST',
@@ -1974,22 +1973,33 @@
                 },
                 success: function(response) {
                             var my=response;
-                            console.log(my)
+                            console.log(my);
                           $('#offers').empty();
                           $('#other-offers').empty();
+
+                        //   var isActive = my.is_active.groupOfferData.is_active;
+                        // var amount   = response.groupOfferData.amount;
+                        // var user_id  = response.userOfffers.user_id;
+                        // if(isActive==1 && user_id=={{Auth::user()->id}})
+                        // {
+                        //     $('.offerdiv').show();
+                        //     $('.groupbiddiv').hide();
+                        //     $('.offerpost').html('$'+amount);
+                        // }
                              var i;
                             for (i = 0; i < my.length; ++i) {
-                                var weight=my[i].accopied_wieght/20;
+                                var weight    = my[i].accopied_wieght/20;
+                                var amount    = my[i].amount;
+                                var liability = my[i].accopied_wieght*amount;
                                 if (my[i].my_check==true) {
-                                    $('#offers').append("<li><span class='lotid'>"+my[i].auction_product_id+"</span><p>Amount:"+my[i].amount+"Bags:"+weight+"</p></li>");
+                                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"</p></li>");
 
                                 } else {
-                                    $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].auction_product_id+" </button>20 * 6 = 120</h6><div id='demo"+i+"' class='groupbid-offers collapse'><form> <div class='col-8'> <p>Remaining bags: 5</p> <label>Bags Quantity:</label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <p><span style='font-weight: bold'>Weight: </span>60/lbs</p> <label>Amount: </label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <br> <input type='button' onclick='showBidConfirm()' class='singlebidbtn btn ' value='Post Group Bid'> <br> <div class=' hide' > <br> <p><span style='font-weight: bold'>Bid: </span> $247</p> <p><span style='font-weight: bold'>Weight: </span> 105.65lbs</p> <p><span style='font-weight: bold'>Liability: </span>$25,984.65</p> <input type='submit' class='singlebidbtn btn' value='Confirm'> <input type='button' onclick='hideBidConfirm()' class='singlebidbtn btn' value='Cancel'> </div> </div> </form> </div></li>");
+                                    $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].auction_product_id+" </button><p>Remaining bags: 5</p></h6><div id='demo"+i+"' class='groupbid-offers collapse'><form> <div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <p><span style='font-weight: bold'>Weight: </span>60/lbs</p> <label>Amount: </label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <br> <input type='button' onclick='showBidConfirm()' class='singlebidbtn btn ' value='Post Group Bid'> <br> <div class=' hide' > <br> <p><span style='font-weight: bold'>Bid: </span> $247</p> <p><span style='font-weight: bold'>Weight: </span> 105.65lbs</p> <p><span style='font-weight: bold'>Liability: </span>$25,984.65</p> <input type='submit' class='singlebidbtn btn' value='Confirm'> <input type='button' onclick='hideBidConfirm()' class='singlebidbtn btn' value='Cancel'> </div> </div> </form> </div></li>");
 
                                 }
                             }
-                        // var amount = response.amount;
-                        // alert(amount);
+
                     },
                     error: function(error) {
                         console.log(error)
@@ -2018,8 +2028,13 @@
         });
         //show liabilty div
         $('.show-bid-confirm').click(function(){
-            var amount = $('.groupbidamount').val();
-            var bags = $('.bag_quantity').val();
+            var amount      = $('.groupbidamount').val();
+            var bags        = $('.bag_quantity').val();
+            var id          = $('.lotproductid').html();
+            // alert(id);
+            var currentbid       = $('.bidData1'+id).html();
+            var finalcurrentbid = parseFloat(currentbid.replace(/[^0-9.]/g, ''));
+
             if(bags == '')
             {
                 $('.validationbags').html('Please enter Bags.');
@@ -2027,6 +2042,10 @@
             if(amount == '')
             {
                 $('.validationamount').html('Please enter Amount.');
+            }
+            if(amount <= finalcurrentbid)
+            {
+                $('.validationamount').html('Enter amount greater than current bid amount.');
             }
             else
             {
@@ -2036,12 +2055,11 @@
                 var weight         = $('.finalweight').html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 var liability      = finalweight*groupbidamount;
-                $('.bidamount').html(groupbidamount);
+                $('.bidamount').html('$'+groupbidamount);
                 $('.liabilityweight').html(weight);
                 $('.finalliability').html('$'+liability);
 
             }
-
         });
         $('.cancelgroupbtn').click(function(){
             $('.show-bid-confirm').show();
@@ -2073,6 +2091,13 @@
                             $('.groupbiddiv').hide();
                             $('.offerpost').html('$'+amount);
                         }
+
+                        //         socket.emit('add_groupbid_updates', {
+                        //         "singleBidammounttesting": bidPrice,
+                        //         "bidID": bidID,
+                        //         "increment": increment,
+                        //         "paddleNo": paddleNo,
+                        // });
                     },
                     error: function(error) {
                         console.log(error)

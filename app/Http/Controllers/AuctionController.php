@@ -928,16 +928,17 @@ class AuctionController extends Controller {
     }
     public function groupBidSideBar(Request $request)
     {
-        $groupbidDatas      = UserOffers::all();
+        $groupbidDatas      = UserOffers::where('auction_product_id',$request->id)->get();
         $accopied_wieght    = UserOffers::where('auction_product_id',$request->id)->sum('weight');
-        $total_weight       = AuctionProduct::where('id',$request->id)->value('weight');
+        $total_weight       = AuctionProduct::where('id',$request->id);
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
             $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->first();
             $groupbid[$i]=$user_offer;
             $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
-            $groupbid[$i]['remainig_weight']=$total_weight-$accopied_wieght;
+            $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
+            $groupbid[$i]['rank']=$total_weight->value('rank');
             if($groupbid_offer->user_id==Auth::user()->id){
                 $groupbid[$i]['my_check']=true;
             }
@@ -959,6 +960,7 @@ class AuctionController extends Controller {
         $groupOfferData->auction_product_id =   $request->id;
         $groupOfferData->amount             =   $request->amount;
         $groupOfferData->weight             =   $request->weight;
+        $groupOfferData->start_time         =  date('Y-m-d H:i:s');
         $groupOfferData->is_active          =   '1';
         $groupOfferData->paddle_number      =   $auction->id.$user.$request->id;
         $groupOfferData->expired_at         =   $currentDate;
@@ -970,6 +972,8 @@ class AuctionController extends Controller {
         $userOfffers->weight                = $request->weight;
         $userOfffers->auction_product_id    =  $request->id;
         $userOfffers->save();
+
+
         return response()->json(['groupOfferData' => $groupOfferData , 'userOfffers' => $userOfffers]);
 
     }
