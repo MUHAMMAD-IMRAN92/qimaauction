@@ -941,10 +941,12 @@ class AuctionController extends Controller {
             $groupbid[$i]['rank']=$total_weight->value('rank');
             if($groupbid_offer->user_id==Auth::user()->id){
                 $groupbid[$i]['my_check']=true;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
             }
             else
             {
                 $groupbid[$i]['my_check']=false;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
             }
             $i++;
         }
