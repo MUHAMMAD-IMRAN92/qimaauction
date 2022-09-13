@@ -979,9 +979,33 @@ class AuctionController extends Controller {
         $userOfffers->weight                = $request->weight;
         $userOfffers->auction_product_id    =  $request->id;
         $userOfffers->save();
-
-
-        return response()->json(['groupOfferData' => $groupOfferData , 'userOfffers' => $userOfffers]);
+        // offers data
+        $groupbidDatas      = UserOffers::where('auction_product_id',$request->id)->get();
+        $accopied_wieght    = UserOffers::where('auction_product_id',$request->id)->sum('weight');
+        $total_weight       = AuctionProduct::where('id',$request->id);
+        $groupbid=[];
+        $i=0;
+        foreach($groupbidDatas as $groupbid_offer){
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
+            if($user_offer!==null){
+            $groupbid[$i]=$user_offer;
+            $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
+            $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
+            $groupbid[$i]['rank']=$total_weight->value('rank');
+            if($groupbid_offer->user_id==Auth::user()->id){
+                $groupbid[$i]['my_check']=true;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            else
+            {
+                $groupbid[$i]['my_check']=false;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            $i++;
+        }
+        }
+        $adminOffers =   Offers::where('auction_product_id',$request->id)->get();
+        return response()->json(['groupOfferData' => $groupOfferData , 'userOfffers' => $userOfffers ,'groupbid' => $groupbid,'adminOffers'=>$adminOffers]);
 
     }
     public function groupbidAdminSidebar(Request $request)
