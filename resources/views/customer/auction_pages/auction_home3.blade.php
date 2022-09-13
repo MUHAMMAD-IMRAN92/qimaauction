@@ -1996,11 +1996,12 @@
                                     var weight    = my[i].accopied_wieght/20;
                                     var amount    = my[i].amount;
                                     var liability = my[i].accopied_wieght*amount;
+                                    var rem_weight =my[i].remainig_weight/20;
                                     if (my[i].my_check==true) {
-                                        $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"</p></li>");
+                                        $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"<br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li>");
 
                                     } else {
-                                        $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].rank+" </button><li><p>Amount:$<span class='offeramount'>"+my[i].amount+"</span></p><p>Remaining Bags:<span class='bagsremaining'>"+weight+"</span></p></li></h6><div id='demo"+i+"' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quantity' id='remaining_bag_quantity' data-id='"+i+"' name='bag_quantity'> <span class='validationbags colorered'></span><p style='font-weight: bold'>Weight:<span class='finalweight'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm'>Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysec'><br><p style='font-weight: bold'>Bid:<span class='bidamount'></span></p><p style='font-weight: bold'>Weight:<span class='liabilityweight'></span> </p><p style='font-weight: bold'>Liability:<span class='finalliability'></span></p><button class='singlebidbtn btn participategroupbidbutton' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn'>Cancel</button></div> </div> </div></li>");
+                                        $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].rank+" </button><li><p>Amount:$<span class='offeramount"+my[i].id+"'>"+my[i].amount+"</span></p><p>Remaining Bags:<span class='remainingbags"+my[i].id+"'>"+rem_weight+"</span><br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li></h6><div id='demo"+i+"' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant"+my[i].id+"' id='remaining_bag_quantity' data-id='"+my[i].id+"' name='bag_quantity'><input type='hidden' class='offerhiddenid"+my[i].id+"' value='"+my[i].id+"'> <span class='validationbags"+my[i].id+" colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight"+my[i].id+"'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid"+my[i].id+"' data-id="+my[i].id+">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended"+my[i].id+"'><br><p style='font-weight: bold'>Bid:<span class='bidamountappended"+my[i].id+"'></span></p><p style='font-weight: bold'>Weight:<span class='liabilityweight"+my[i].id+"'></span> </p><p style='font-weight: bold'>Liability:<span class='liabilityappended"+my[i].id+"'></span></p><button class='singlebidbtn btn participategroupbidbutton' data-id='"+my[i].id+"' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn' data-id='"+my[i].id+"'>Cancel</button></div> </div> </div></li>");
 
                                     }
                                 }
@@ -2017,7 +2018,7 @@
                                 var amount    = my[i].amount;
                                 var liability = my[i].accopied_wieght*amount;
                                 if (my[i].my_check==true) {
-                                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"</p></li>");
+                                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"<br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li>");
 
                                 } else {
                                     $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].auction_product_id+" </button><p>Remaining bags: </p></h6><div id='demo"+i+"' class='groupbid-offers collapse'><form> <div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <p><span style='font-weight: bold'>Weight: </span>60/lbs</p> <label>Amount: </label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <br> <input type='button' onclick='showBidConfirm()' class='singlebidbtn btn ' value='Post Group Bid'> <br> <div class=' hide' > <br> <p><span style='font-weight: bold'>Bid: </span> $247</p> <p><span style='font-weight: bold'>Weight: </span> 105.65lbs</p> <p><span style='font-weight: bold'>Liability: </span>$25,984.65</p> <input type='submit' class='singlebidbtn btn' value='Confirm'> <input type='button' onclick='hideBidConfirm()' class='singlebidbtn btn' value='Cancel'> </div> </div> </form> </div></li>");
@@ -2034,7 +2035,8 @@
         });
         //for appended data
         $(document).on('change', '#remaining_bag_quantity', function() {
-         var maxvalue = $('.bagsremaining').html();
+          var id     = $(this).attr('data-id');
+          var maxvalue = $('.remainingbags'+id).html();
           var max = maxvalue;
           var min = 1;
           if ($(this).val() > max)
@@ -2047,43 +2049,47 @@
           }
         });
         $(document).on('focusout', '#remaining_bag_quantity', function() {
+            var id     = $(this).attr('data-id');
             var quantity    = $(this).val();
             var totalweight = quantity*20;
-             $('.finalweight').html(totalweight+'/lbs');
+             $('.appendedfinalweight'+id).html(totalweight+'/lbs');
         });
         $(document).on('click', '.appended-bid-confirm', function() {
-            var bags        = $('#remaining_bag_quantity').val();
+            var id     = $(this).attr('data-id');
+            var bags   = $('.bag_quant'+id).val();
             if(bags == '')
             {
-                $('.validationbags').html('Please enter Bags.');
+                $('.validationbags'+id).html('Please enter Bags.');
             }
             else
             {
-                $('.appended-bid-confirm').hide();
-                $('.liabiltysec').show();
-                var groupbidamount = $('.offeramount').html();
-                var weight         = $('.finalweight').html();
+                $('.confirmgrpbid'+id).hide();
+                $('.liabiltysecappended'+id).show();
+                var groupbidamount = $('.offeramount'+id).html();
+                var weight         = $('.appendedfinalweight'+id).html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 var liability      = finalweight*groupbidamount;
-                $('.bidamount').html('$'+groupbidamount);
-                $('.liabilityweight').html(weight);
-                $('.finalliability').html('$'+liability);
+                $('.bidamountappended'+id).html('$'+groupbidamount);
+                $('.liabilityweight'+id).html(weight);
+                $('.liabilityappended'+id).html('$'+liability);
             }
         });
         $(document).on('click', '.cancelappendedgroupbtn', function() {
-            $('.appended-bid-confirm').show();
-            $('.liabiltysec').hide();
+            var id     = $(this).attr('data-id');
+            $('.confirmgrpbid'+id).show();
+            $('.liabiltysecappended'+id).hide();
         });
         $(document).on('click', '.participategroupbidbutton', function() {
-            var lotid          = $('.lotproductid').html();
-            var weight         = $('.finalweight').html();
+            var id             = $(this).attr('data-id');
+            // var lotid          = $('.lotproductid').html();
+            var weight         = $('.appendedfinalweight'+id).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-            var groupbidamount = $('.offeramount').html();
+            var groupbidamount = $('.offeramount'+id).html();
             $.ajax({
                     url: "{{ route('savegroupbidoffer') }}",
                     method: 'POST',
                     data: {
-                        id: lotid,
+                        id: id,
                         weight: finalweight,
                         amount:groupbidamount,
                         _token: "{{ csrf_token() }}",
@@ -3034,4 +3040,5 @@
     }
 </script>
 
+@include('customer.auction_pages.homejs')
 </html>

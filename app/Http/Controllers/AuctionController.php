@@ -24,6 +24,7 @@ use App\Models\WinningCofeeImages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class AuctionController extends Controller {
 
@@ -934,7 +935,8 @@ class AuctionController extends Controller {
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
-            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->first();
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
+            if($user_offer!==null){
             $groupbid[$i]=$user_offer;
             $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
             $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
@@ -950,7 +952,9 @@ class AuctionController extends Controller {
             }
             $i++;
         }
+    }
         return response()->json($groupbid);
+
     }
     public function saveGroupBidOffer(Request $request)
     {
@@ -962,7 +966,8 @@ class AuctionController extends Controller {
         $groupOfferData->auction_product_id =   $request->id;
         $groupOfferData->amount             =   $request->amount;
         $groupOfferData->weight             =   $request->weight;
-        $groupOfferData->start_time         =  date('Y-m-d H:i:s');
+        $groupOfferData->start_time         =   Carbon::now();
+        $groupOfferData->end_time           =  Carbon::now()->addSecond(30);
         $groupOfferData->is_active          =   '1';
         $groupOfferData->paddle_number      =   $auction->id.$user.$request->id;
         $groupOfferData->expired_at         =   $currentDate;
@@ -983,5 +988,16 @@ class AuctionController extends Controller {
     {
         $OffersData =   Offers::where('auction_product_id',$request->id)->get();
         return response()->json(['OffersData' => $OffersData]);
+    }
+
+    public function groupbidupdateStatus(Request $request)
+    {
+        $OffersData =   Offers::find($request->id);
+        $OffersData->end_time=date('Y-m-d H:i:s');
+        $OffersData->is_active=0;
+        $OffersData->save();
+
+        return response()->json(['success'=> 'Auction expired.']);
+
     }
 }
