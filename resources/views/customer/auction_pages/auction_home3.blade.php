@@ -2009,24 +2009,11 @@
                             }
                         else
                         {
+                            $('.groupbiddiv').show();
+                            $('.offerdiv').hide();
                             $('#offers').empty();
-                            // $('.offerpost').hide();
                             $('#other-offers').empty();
-                            var i;
-                            for (i = 0; i < my.length; ++i) {
-                                var weight    = my[i].accopied_wieght/20;
-                                var amount    = my[i].amount;
-                                var liability = my[i].accopied_wieght*amount;
-                                if (my[i].my_check==true) {
-                                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"<br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li>");
-
-                                } else {
-                                    $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].auction_product_id+" </button><p>Remaining bags: </p></h6><div id='demo"+i+"' class='groupbid-offers collapse'><form> <div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <p><span style='font-weight: bold'>Weight: </span>60/lbs</p> <label>Amount: </label> <input type='number' class='form-control' id='bid_amount' name='Bid Amount'> <br> <input type='button' onclick='showBidConfirm()' class='singlebidbtn btn ' value='Post Group Bid'> <br> <div class=' hide' > <br> <p><span style='font-weight: bold'>Bid: </span> $247</p> <p><span style='font-weight: bold'>Weight: </span> 105.65lbs</p> <p><span style='font-weight: bold'>Liability: </span>$25,984.65</p> <input type='submit' class='singlebidbtn btn' value='Confirm'> <input type='button' onclick='hideBidConfirm()' class='singlebidbtn btn' value='Cancel'> </div> </div> </form> </div></li>");
-
-                                }
                         }
-                    }
-
                     },
                     error: function(error) {
                         console.log(error)
@@ -2081,7 +2068,7 @@
         });
         $(document).on('click', '.participategroupbidbutton', function() {
             var id             = $(this).attr('data-id');
-            // var lotid          = $('.lotproductid').html();
+            var lotid          = $('.lotproductid').html();
             var weight         = $('.appendedfinalweight'+id).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
             var groupbidamount = $('.offeramount'+id).html();
@@ -2096,16 +2083,21 @@
                     },
                     success: function(response) {
                         // console.log(response);
-                        // var isActive = response.groupOfferData.is_active;
-                        // var amount   = response.groupOfferData.amount;
-                        // var user_id  = response.userOfffers.user_id;
-                        // if(isActive==1 && user_id=={{Auth::user()->id}})
-                        // {
-                        //     $('.offerdiv').show();
-                        //     $('.groupbiddiv').hide();
-                        //     $('.offerpost').html('$'+amount);
-                        // }
-
+                        var isActive    = response.groupOfferData.is_active;
+                        var amount      = response.groupOfferData.amount;
+                        var user_id     = response.userOfffers.user_id;
+                        var offersdata  = response.groupbid;
+                        var adminofferData = response.adminOffers;
+                        if(isActive==1 && user_id=={{Auth::user()->id}})
+                        {
+                            $('.offerdiv').show();
+                            $('.groupbiddiv').hide();
+                            $('.offerpost').html('$'+amount);
+                        }
+                            socket.emit('add_groupbid_updates', {
+                             "offersdata": offersdata,
+                             "adminofferData":adminofferData,
+                        });
                     },
                     error: function(error) {
                         console.log(error)
@@ -2187,22 +2179,21 @@
                     },
                     success: function(response) {
                         // console.log(response);
-                        var isActive = response.groupOfferData.is_active;
-                        var amount   = response.groupOfferData.amount;
-                        var user_id  = response.userOfffers.user_id;
+                        var isActive    = response.groupOfferData.is_active;
+                        var amount      = response.groupOfferData.amount;
+                        var user_id     = response.userOfffers.user_id;
+                        var offersdata  = response.groupbid;
+                        var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
                             $('.offerdiv').show();
                             $('.groupbiddiv').hide();
                             $('.offerpost').html('$'+amount);
                         }
-
-                        //         socket.emit('add_groupbid_updates', {
-                        //         "singleBidammounttesting": bidPrice,
-                        //         "bidID": bidID,
-                        //         "increment": increment,
-                        //         "paddleNo": paddleNo,
-                        // });
+                            socket.emit('add_groupbid_updates', {
+                             "offersdata": offersdata,
+                             "adminofferData":adminofferData,
+                        });
                     },
                     error: function(error) {
                         console.log(error)
@@ -2542,18 +2533,6 @@
                                 "changecolor");
                             $(".liabilitybidcollapse" + bidID).addClass(
                                 "changecolor");
-                            // socket.emit('add_bid_updates', {
-                            //     "singleBidammounttesting": bidPrice,
-                            //     "bidID": bidID,
-                            //     "increment": increment,
-                            //     "paddleNo": paddleNo,
-                            //     "nextIncrement": nextIncrement,
-                            //     "outbidresponse": outbid,
-                            //     "autobidUserID": autobidUserID,
-                            //     "bidderLiablity": bidderLiablity,
-                            //     "bidderID": bidderID,
-                            //     // "bidderMaxBid":bidderMaxBid,
-                            // });
                             socket.emit('auto_bid_updates', {
                                 "autobidamount": autobidamount,
                                 "latestAutoBidId": latestAutoBidId,
@@ -2770,6 +2749,49 @@
                 data.id + '>Remove</a>}</p>');
 
         }
+    });
+    socket.on('add_groupbid_updates', function(data) {
+
+        var my = data.offersdata;
+        console.log(my);
+        if(my.length != 0)
+        {
+            $('#offers').empty();
+            $('#other-offers').empty();
+            var isActive         = my[0].is_active;
+            var amount           = my[0].amount;
+            var user_id          = my[0].user_id;
+            var lotid            = $('.lotproductid').html();
+            var auctionproductid = my[0].auction_product_id;
+            if(isActive==1 && user_id=={{Auth::user()->id}})
+            {
+                $('.offerdiv').show();
+                $('.groupbiddiv').hide();
+                $('.offerpost').html('$'+amount);
+            }
+            var i;
+            for (i = 0; i < my.length; ++i) {
+                var weight    = my[i].accopied_wieght/20;
+                var amount    = my[i].amount;
+                var liability = my[i].accopied_wieght*amount;
+                var rem_weight =my[i].remainig_weight/20;
+                // alert
+                if (my[i].user_id=={{Auth::user()->id}}) {
+                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"<br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li>");
+
+                } else {
+                    $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].rank+" </button><li><p>Amount:$<span class='offeramount"+my[i].id+"'>"+my[i].amount+"</span></p><p>Remaining Bags:<span class='remainingbags"+my[i].id+"'>"+rem_weight+"</span><br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li></h6><div id='demo"+i+"' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant"+my[i].id+"' id='remaining_bag_quantity' data-id='"+my[i].id+"' name='bag_quantity'><input type='hidden' class='offerhiddenid"+my[i].id+"' value='"+my[i].id+"'> <span class='validationbags"+my[i].id+" colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight"+my[i].id+"'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid"+my[i].id+"' data-id="+my[i].id+">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended"+my[i].id+"'><br><p style='font-weight: bold'>Bid:<span class='bidamountappended"+my[i].id+"'></span></p><p style='font-weight: bold'>Weight:<span class='liabilityweight"+my[i].id+"'></span> </p><p style='font-weight: bold'>Liability:<span class='liabilityappended"+my[i].id+"'></span></p><button class='singlebidbtn btn participategroupbidbutton' data-id='"+my[i].id+"' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn' data-id='"+my[i].id+"'>Cancel</button></div> </div> </div></li>");
+
+                }
+            }
+        }
+            else
+            {
+                $('.groupbiddiv').show();
+                $('.offerdiv').hide();
+                $('#offers').empty();
+                $('#other-offers').empty();
+            }
     });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {

@@ -651,6 +651,18 @@
                 // End Update Auto Bid Data
 
             });
+            //group bid sockets data
+            socket.on('add_groupbid_updates', function(data) {
+                // console.log(data.adminofferData);
+                var offerData = data.adminofferData;
+                var i;
+                $('#offers').empty();
+                    for (i = 0; i < offerData.length; ++i) {
+                        var weight=offerData[i].weight/20;
+                        $('#offers').append("<li><span class='lotid'>"+offerData[i].auction_product_id+"</span><p>Amount:$"+offerData[i].amount+"<br>Bags:"+weight+"</p></li>");
+
+                    }
+            });
         </script>
 
     @endsection
