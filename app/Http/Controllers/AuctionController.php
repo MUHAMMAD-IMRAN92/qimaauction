@@ -1035,7 +1035,11 @@ class AuctionController extends Controller {
                 'is_active' => '0'
             ]);
         }
+        Offers::where('id',$request->offerid)->update([
+            'end_time' => Carbon::now()->addSecond(30)
+        ]);      
         // offers data
+
         $groupbidDatas      = UserOffers::where('auction_product_id',$request->auctionproductid)->get();
         $accopied_wieght    = UserOffers::where('auction_product_id',$request->auctionproductid)->sum('weight');
         $total_weight       = AuctionProduct::where('id',$request->auctionproductid);
@@ -1073,12 +1077,37 @@ class AuctionController extends Controller {
 
     public function groupbidupdateStatus(Request $request)
     {
-        $OffersData =   Offers::find($request->id);
+        $OffersData =  Offers::find($request->id);
         $OffersData->end_time=date('Y-m-d H:i:s');
         $OffersData->is_active=0;
         $OffersData->save();
-
-        return response()->json(['success'=> 'Auction expired.']);
+        $id=$OffersData->auction_product_id;
+        $groupbidDatas      = UserOffers::where('auction_product_id',$id)->get();
+        $accopied_wieght    = UserOffers::where('auction_product_id',$id)->sum('weight');
+        $total_weight       = AuctionProduct::where('id',$id);
+        $groupbid=[];
+        $i=0;
+        foreach($groupbidDatas as $groupbid_offer){
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
+            if($user_offer!==null){
+            $groupbid[$i]=$user_offer;
+            $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
+            $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
+            $groupbid[$i]['rank']=$total_weight->value('rank');
+            if($groupbid_offer->user_id==Auth::user()->id){
+                $groupbid[$i]['my_check']=true;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            else
+            {
+                $groupbid[$i]['my_check']=false;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            $i++;
+        }
+        }
+        
+        return response()->json(['success'=> 'Auction expired.','offersdata'=>$groupbid]);
 
     }
 }
