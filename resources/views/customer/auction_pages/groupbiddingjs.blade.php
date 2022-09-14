@@ -110,18 +110,165 @@ $(".openGroupSidebar").click(function() {
             $('.liabiltysecappended'+id).hide();
         });
         $(document).on('click', '.participategroupbidbutton', function() {
-            var id              = $(this).attr('data-id');
-            var lotid           = $('.lotproductid').html();
-            var weight         = $('.appendedfinalweight'+id).html();
+            var offerid        = $(this).attr('data-id');
+            var id             = $('.lotproductid').html();
+            var weight         = $('.appendedfinalweight'+offerid).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-            var groupbidamount = $('.offeramount'+id).html();
-
-            $.ajax({
+            var groupbidamount = $('.offeramount'+offerid).html();
+             //lot total weight
+            var rembags = $('.remainingbags'+offerid).html();
+            var bagssdded   =   $('.bag_quant'+offerid).val();
+            // var lotweight       = $('.productweight'+id).html();
+            // var finallotweight = parseFloat(lotweight.replace(/[^0-9.]/g, ''));
+            var auctionid = $('.auctionid' + id).val();
+            if(bagssdded == rembags)
+            {
+                //save data in autobid table if offer is on all weight
+                $.ajax({
+                    url: "{{ route('autobiddata') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        autobidamount:groupbidamount,
+                        auctionid:auctionid,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        if (response.success) {
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(
+                                '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
+                                addCommas(response.bid_amount) +
+                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                id + '>Remove</a>}</p>');
+                            $('.autobidamount' + id).val('');
+                            $('.alertMessage' + id).html('');
+                            $(".bidnowbutton" + id).css("display",
+                                "none");
+                            $(".autobidClass" + id).css("display", "none");
+                        } else if (response.message !== null) {
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(response.message);
+                            $('.autobidamount' + id).show();
+                            $('.autobidamount' + id).val('');
+                            $('.bidnowautobutton' + id).show();
+                            $('.autobidClass' + id).hide();
+                            $('.nextincrement' + id).show();
+                        } else {
+                            var latestAutoBidId = response.id;
+                            var bidPrice = response.bid_amountNew;
+                            var bidID = response.auction_product_id;
+                            var increment = response.bidIncrement;
+                            var weightautobid = $(".weightautobid" + id).html();
+                            var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
+                            var liability = weight * bidPrice;
+                            var paddleNo = response.userPaddleNo;
+                            var nextIncrement = +increment + +bidPrice;
+                            var outbid = response.outAutobid;
+                            var autobidUserID = response.bidder_user_id;
+                            var bidderLiablity = response.liablity;
+                            var bidderID = response.user_id;
+                            var bidderMaxBid = response.bidderMaxAmount;
+                            var userbidAmount = response.bid_amount;
+                            var totalAutoBidLiability = response.totalAutoBidLiability;
+                            var bid_amountNew = response.bid_amountNew;
+                            var loser = response.loser_user;
+                            var winneruser = response.winneruser;
+                            var checkTimer = response.timerCheck;
+                            $('.errorMsgAutoBid' + id).html('');
+                            $(".bidcollapse" + bidID).addClass(
+                                "changecolor");
+                            $(".liabilitybidcollapse" + bidID).addClass(
+                                "changecolor");
+                            socket.emit('auto_bid_updates', {
+                                "autobidamount": userbidAmount,
+                                "latestAutoBidId": latestAutoBidId,
+                                'id': id,
+                                "bidID": bidID,
+                                'user_id': response.user_id,
+                                "userbidAmount": userbidAmount,
+                                "totalAutoBidLiability": totalAutoBidLiability,
+                                "outbid": outbid,
+                                "autobidUserID": autobidUserID,
+                                "bid_amountNew": bid_amountNew,
+                                "nextIncrement": nextIncrement,
+                                "paddleNo": paddleNo,
+                                "liability": liability,
+                                "loser": loser,
+                                "winneruser": winneruser,
+                                "checkTimer": checkTimer,
+                            });
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(
+                                '<p>Current autobid is $' +
+                                addCommas(response.bid_amount) +
+                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                id + '>Remove</a>}</p>');
+                            $('.autobidamount' + id).val('');
+                            $('.alertMessage' + id).html('');
+                            $(".bidnowbutton" + id).css("display",
+                                "none");
+                            $(".autobidClass" + id).css("display", "none");
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+                //save data in user offers table
+                $.ajax({
                     url: "{{ route('saveothergroupbidoffer') }}",
                     method: 'POST',
                     data: {
-                        offerid:id,
-                        auctionproductid: lotid,
+                        offerid:offerid,
+                        auctionproductid: id,
+                        weight: finalweight,
+                        amount:groupbidamount,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        $('#offers').empty();
+                        $('#other-offers').empty();
+                        $('#bag_quantity').val('');
+                        $('#bid_amount').val('');
+                        $('.show-bid-confirm').show();
+                        $('.liabiltysec').hide();
+
+
+                        // var isActive    = response.activeOffers.is_active;
+                        // var amount      = response.activeOffers.amount;
+                        // var user_id     = response.otherOfffers.user_id;
+                        // var offersdata  = response.groupbid;
+                        // var adminofferData = response.adminOffers;
+                        // if(isActive==1 && user_id=={{Auth::user()->id}})
+                        // {
+                        //     $('.offerdiv').show();
+                        //     $('.groupbiddiv').hide();
+                        //     $('.offerpost').html('$'+amount);
+                        // }
+                        //     socket.emit('add_groupbid_updates', {
+                        //      "offersdata": offersdata,
+                        //      "adminofferData":adminofferData,
+                        // });
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+            else
+            {
+                $.ajax({
+                    url: "{{ route('saveothergroupbidoffer') }}",
+                    method: 'POST',
+                    data: {
+                        offerid:offerid,
+                        auctionproductid: id,
                         weight: finalweight,
                         amount:groupbidamount,
                         _token: "{{ csrf_token() }}",
@@ -148,6 +295,8 @@ $(".openGroupSidebar").click(function() {
                         console.log(error)
                     }
                 });
+            }
+
         });
         $( ".bag_quantity" ).change(function() {
         var maxvalue = $('.productbags').html();
@@ -209,27 +358,130 @@ $(".openGroupSidebar").click(function() {
         });
         //save group bid offer
         $('.confirmgroupbidbutton').click(function(){
-            var lotid          = $('.lotproductid').html();
+            var id          = $('.lotproductid').html();
             //group offer weight
             var weight         = $('.finalweight').html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
             var groupbidamount = $('.groupbidamount').val();
             //lot total weight
-            var lotweight      = $('.productweight'+lotid).html();
+            var lotweight       = $('.productweight'+id).html();
             var finallotweight = parseFloat(lotweight.replace(/[^0-9.]/g, ''));
-            var auctionid      = $('.auctionid' + lotid).val();
+            var auctionid = $('.auctionid' + id).val();
             if(finalweight == finallotweight)
             {
+                //save data in autobid table if offer is on all weight
                 $.ajax({
                     url: "{{ route('autobiddata') }}",
                     method: 'POST',
                     data: {
-                        id: lotid,
+                        id: id,
                         autobidamount:groupbidamount,
                         auctionid:auctionid,
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        // console.log(response);
+                        if (response.success) {
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(
+                                '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
+                                addCommas(response.bid_amount) +
+                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                id + '>Remove</a>}</p>');
+                            $('.autobidamount' + id).val('');
+                            $('.alertMessage' + id).html('');
+                            $(".bidnowbutton" + id).css("display",
+                                "none");
+                            $(".autobidClass" + id).css("display", "none");
+                        } else if (response.message !== null) {
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(response.message);
+                            $('.autobidamount' + id).show();
+                            $('.autobidamount' + id).val('');
+                            $('.bidnowautobutton' + id).show();
+                            $('.autobidClass' + id).hide();
+                            $('.nextincrement' + id).show();
+                        } else {
+                            var latestAutoBidId = response.id;
+                            var bidPrice = response.bid_amountNew;
+                            var bidID = response.auction_product_id;
+                            var increment = response.bidIncrement;
+                            var weightautobid = $(".weightautobid" + id).html();
+                            var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
+                            var liability = weight * bidPrice;
+                            var paddleNo = response.userPaddleNo;
+                            var nextIncrement = +increment + +bidPrice;
+                            var outbid = response.outAutobid;
+                            var autobidUserID = response.bidder_user_id;
+                            var bidderLiablity = response.liablity;
+                            var bidderID = response.user_id;
+                            var bidderMaxBid = response.bidderMaxAmount;
+                            var userbidAmount = response.bid_amount;
+                            var totalAutoBidLiability = response.totalAutoBidLiability;
+                            var bid_amountNew = response.bid_amountNew;
+                            var loser = response.loser_user;
+                            var winneruser = response.winneruser;
+                            var checkTimer = response.timerCheck;
+                            $('.errorMsgAutoBid' + id).html('');
+                            $(".bidcollapse" + bidID).addClass(
+                                "changecolor");
+                            $(".liabilitybidcollapse" + bidID).addClass(
+                                "changecolor");
+                            socket.emit('auto_bid_updates', {
+                                "autobidamount": userbidAmount,
+                                "latestAutoBidId": latestAutoBidId,
+                                'id': id,
+                                "bidID": bidID,
+                                'user_id': response.user_id,
+                                "userbidAmount": userbidAmount,
+                                "totalAutoBidLiability": totalAutoBidLiability,
+                                "outbid": outbid,
+                                "autobidUserID": autobidUserID,
+                                "bid_amountNew": bid_amountNew,
+                                "nextIncrement": nextIncrement,
+                                "paddleNo": paddleNo,
+                                "liability": liability,
+                                "loser": loser,
+                                "winneruser": winneruser,
+                                "checkTimer": checkTimer,
+                            });
+                            $('.errorMsgAutoBid' + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html('');
+                            $('.errorMsgAutoBid' + id + id).html(
+                                '<p>Current autobid is $' +
+                                addCommas(response.bid_amount) +
+                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                                id + '>Remove</a>}</p>');
+                            $('.autobidamount' + id).val('');
+                            $('.alertMessage' + id).html('');
+                            $(".bidnowbutton" + id).css("display",
+                                "none");
+                            $(".autobidClass" + id).css("display", "none");
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+                //save data in offers table
+                $.ajax({
+                    url: "{{ route('savegroupbidoffer') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        weight: finalweight,
+                        amount:groupbidamount,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        $('#offers').empty();
+                        $('#other-offers').empty();
+                        $('#bag_quantity').val('');
+                        $('#bid_amount').val('');
+                        $('.show-bid-confirm').show();
+                        $('.liabiltysec').hide();
                         // console.log(response);
                         // var isActive    = response.groupOfferData.is_active;
                         // var amount      = response.groupOfferData.amount;
@@ -252,11 +504,14 @@ $(".openGroupSidebar").click(function() {
                     }
                 });
             }
-            $.ajax({
+            else
+            {
+                //save data in only offers table
+                $.ajax({
                     url: "{{ route('savegroupbidoffer') }}",
                     method: 'POST',
                     data: {
-                        id: lotid,
+                        id: id,
                         weight: finalweight,
                         amount:groupbidamount,
                         _token: "{{ csrf_token() }}",
@@ -283,5 +538,6 @@ $(".openGroupSidebar").click(function() {
                         console.log(error)
                     }
                 });
+            }
         });
 </script>

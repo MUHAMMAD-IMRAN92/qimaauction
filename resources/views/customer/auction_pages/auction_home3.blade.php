@@ -1883,7 +1883,7 @@
                                         <p style="font-weight: bold">Weight:<span class="liabilityweight"></span> </p>
                                         <p style="font-weight: bold">Liability:<span class="finalliability"></span></p>
                                         <button class="singlebidbtn btn confirmgroupbidbutton" href="javascript:void(0)">Confirm</button>
-                                        <button type="button" onclick="hideBidConfirm()" class="singlebidbtn btn cancelgroupbtn">Cancel</button>
+                                        <button type="button"  class="singlebidbtn btn cancelgroupbtn">Cancel</button>
                                     </div>
                                 {{-- </form> --}}
 
@@ -1939,14 +1939,6 @@
 
         $("#mySidebar").removeClass('sidebaropen-width');
     }
-
-    // function showBidConfirm() {
-    //     $(".bid-confirm-sec").addClass('show-bidconfirm');
-    // }
-    // function hideBidConfirm() {
-    //     $(".bid-confirm-sec").removeClass('show-bidconfirm');
-    // }
-
     function closeGroupSidebar() {
         $("#groupbid_sidebar").removeClass('sidebaropen-width');
     }
@@ -2391,6 +2383,7 @@
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
+        console.log(data);
         $(".paddleno" + data.bidID).html(data.paddleNo);
         if (data.user_id == {{ Auth::user()->id }} && data.winneruser == {{ Auth::user()->id }}) {
             $(".liabilitybidcollapse" + data.bidID).show();
