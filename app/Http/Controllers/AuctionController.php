@@ -971,6 +971,15 @@ class AuctionController extends Controller {
         $groupOfferData->is_active          =   '1';
         $groupOfferData->paddle_number      =   $auction->id.$user.$request->id;
         $groupOfferData->expired_at         =   $currentDate;
+        $total_weight                       = AuctionProduct::where('id',$request->id)->first()->weight;
+        if($request->weight == $total_weight)
+        {
+            $groupOfferData->is_active          =   '0';
+        }
+        else
+        {
+            $groupOfferData->is_active          =   '1';
+        }
         $groupOfferData->save();
         //save data in user offers table
         $userOfffers                        = new UserOffers();
@@ -1017,6 +1026,15 @@ class AuctionController extends Controller {
         $otherOfffers->weight                =  $request->weight;
         $otherOfffers->auction_product_id    =  $request->auctionproductid;
         $otherOfffers->save();
+        $total_weight                        = AuctionProduct::where('id',$request->auctionproductid)->first()->weight;
+        $offerweight                         = Offers::where('id',$request->offerid)->where('is_active',1)->first();
+        $finalweight                         =   $offerweight->weight+$request->weight;
+        if($finalweight == $total_weight)
+        {
+            Offers::where('id',$request->offerid)->where('is_active',1)->update([
+                'is_active' => '0'
+            ]);
+        }
         // offers data
         $groupbidDatas      = UserOffers::where('auction_product_id',$request->auctionproductid)->get();
         $accopied_wieght    = UserOffers::where('auction_product_id',$request->auctionproductid)->sum('weight');
