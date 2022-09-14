@@ -1008,6 +1008,45 @@ class AuctionController extends Controller {
         return response()->json(['groupOfferData' => $groupOfferData , 'userOfffers' => $userOfffers ,'groupbid' => $groupbid,'adminOffers'=>$adminOffers]);
 
     }
+    public function saveOtherGroupbidOffer(Request $request)
+    {
+        $user                                =  Auth::user()->id;
+        $otherOfffers                        =  new UserOffers();
+        $otherOfffers->user_id               =  $user;
+        $otherOfffers->offer_id              =  $request->offerid;
+        $otherOfffers->weight                =  $request->weight;
+        $otherOfffers->auction_product_id    =  $request->auctionproductid;
+        $otherOfffers->save();
+        // offers data
+        $groupbidDatas      = UserOffers::where('auction_product_id',$request->auctionproductid)->get();
+        $accopied_wieght    = UserOffers::where('auction_product_id',$request->auctionproductid)->sum('weight');
+        $total_weight       = AuctionProduct::where('id',$request->auctionproductid);
+        $groupbid=[];
+        $i=0;
+        foreach($groupbidDatas as $groupbid_offer){
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
+            if($user_offer!==null){
+            $groupbid[$i]=$user_offer;
+            $groupbid[$i]['accopied_wieght']=$groupbid_offer->weight;
+            $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
+            $groupbid[$i]['rank']=$total_weight->value('rank');
+            if($groupbid_offer->user_id==Auth::user()->id){
+                $groupbid[$i]['my_check']=true;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            else
+            {
+                $groupbid[$i]['my_check']=false;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            $i++;
+        }
+        }
+        $activeOffers =   Offers::where('id',$request->offerid)->where('auction_product_id',$request->auctionproductid)->where('is_active',1)->first();
+        $adminOffers  =   Offers::where('auction_product_id',$request->auctionproductid)->get();
+        return response()->json(['otherOfffers' => $otherOfffers,'groupbid' => $groupbid,'adminOffers'=>$adminOffers,'activeOffers'=>$activeOffers]);
+
+    }
     public function groupbidAdminSidebar(Request $request)
     {
         $OffersData =   Offers::where('auction_product_id',$request->id)->get();

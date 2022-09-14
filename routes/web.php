@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function() {
     Route::post('/savegroupbid', [App\Http\Controllers\AuctionController::class, 'saveGroupBidOffer'])->name('savegroupbidoffer');
     Route::post('/groupbidsidebar', [App\Http\Controllers\AuctionController::class, 'groupBidSideBar'])->name('groupbiddingsidebar');
     Route::post('/groupbidupdateStatus', [App\Http\Controllers\AuctionController::class, 'groupbidupdateStatus'])->name('groupbidupdateStatus');
-    
+    Route::post('/othergroupbidoffer', [App\Http\Controllers\AuctionController::class, 'saveOtherGroupbidOffer'])->name('saveothergroupbidoffer');
 
 });
 Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
