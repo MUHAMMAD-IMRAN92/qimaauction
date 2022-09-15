@@ -335,27 +335,24 @@
             }
 
         });
-        $( ".bag_quantity" ).focusout(function() {
-        var maxvalue = $('.productbags').html();
-          var max = maxvalue;
-          var min = 1;
-
-          if ($(this).val() > max)
-          {
-            $('.validationbags').html('Please enter a value less than or equal to '+max+'');
-            $('.bag_quantity').val('');
-            //   $(this).val(max);
-          }
-          else if ($(this).val() < min)
-          {
-              $(this).val(min);
-          }
-        });
         //show bags quantity
         $(".bag_quantity").focusout(function(){
-            var quantity    = $(this).val();
-            var totalweight = quantity*20;
-             $('.finalweight').html(totalweight+'/lbs');
+          var maxvalue = $('.productbags').html();
+          var maximumbags = maxvalue;
+          if (parseInt($(this).val()) > maximumbags)
+          {
+            $('.validationbags').html('Please enter a value less than or equal to total bags.');
+            $('.show-bid-confirm').prop('disabled', true);
+          }
+            else
+            {
+                $('.validationbags').html('');
+                $('.show-bid-confirm').prop('disabled', false);
+                var quantity    = $(this).val();
+                var totalweight = quantity*20;
+                $('.finalweight').html(totalweight+'/lbs');
+            }
+
         });
         //show liabilty div
         $('.show-bid-confirm').click(function(){
@@ -380,6 +377,8 @@
             }
             else
             {
+                $('.validationamount').html('');
+                $('.validationbags').html('');
                 $('.show-bid-confirm').hide();
                 $('.liabiltysec').show();
                 var groupbidamount = $('.groupbidamount').val();

@@ -22,7 +22,6 @@ function countdown() {
 }
 
 function doSomething(offer_id) {
-
             $.ajax({
                 url: "{{ route('groupbidupdateStatus') }}",
                 method: 'POST',
@@ -32,13 +31,22 @@ function doSomething(offer_id) {
                 },
                 success: function(response) {
                             var my=response;
+                            if(my.length == undefined)
+                            {
+                                $('#offers').empty();
+                                $('#other-offers').empty();
+                                $('#bag_quantity').val('');
+                                $('#bid_amount').val('');
+                                $('.show-bid-confirm').show();
+                                $('.liabiltysec').hide();
+                            }
                             var offersdata=response.offersdata
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                             //  "adminofferData":adminofferData,
 
                         });
-                            console.log(offersdata);
+                            // console.log(offersdata);
                     },
                     error: function(error) {
                         console.log(error)
