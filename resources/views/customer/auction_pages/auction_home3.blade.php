@@ -1288,7 +1288,7 @@ border: 1px solid white;
                         </div>
                     </div>
                 </nav>
-                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel"
+                <div class="tab-pane fade auction-data table-responsive show active" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
                     <table class="table auctiontable">
                         <thead>
@@ -1705,7 +1705,7 @@ border: 1px solid white;
                 </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="table-responsive">
                     <table class="table auctiontable">
                         <thead>
@@ -1898,7 +1898,7 @@ border: 1px solid white;
                                 <input type="number" class="form-control bag_quantity" id="bag_quantity"
                                     name="bag_quantity">
                                 <span class="validationbags colorered"></span>
-                                <h5>Weight:<span class="finalweight">--</span></h5>
+                                <h5>Weight: <span class="finalweight">--</span></h5>
                                 <label>Amount: </label>
                                 <input type="number" min="1" class="form-control groupbidamount"
                                     id="bid_amount" name="Bid Amount">
@@ -1954,7 +1954,7 @@ border: 1px solid white;
                             </div>
 
                             <div class="alert alert-success offerdiv hide" role="alert">
-                                <p>You posted offer of: <span class="offerpost">---</span></p>
+                                <p style="margin: 0">You posted offer of: <span class="offerpost">---</span></p>
                             </div>
                         </div>
                     </div>
@@ -2596,13 +2596,13 @@ border: 1px solid white;
 
                 } else {
                     $('#other-offers').append(
-                        "<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo" +
-                        i + "'> " + my[i].rank + " </button><li><p style='line-height: 30px'>Amount: $<span class='ml-30 offeramount" + my[i]
-                        .id + "'>" + my[i].amount +
+                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
+                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span style='margin-left: 90px' class='offeramount" + my[i]
+                        .id + "'>" + '$' + my[i].amount +
                         "</span><br>Remaining Bags: <span class='ml-30 remainingbags" + my[i].id + "'>" +
                         rem_weight + "</span><br>Remaining time :<b class='ml-30' id='some_div" + i + "'></b>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time) +
-                        "</p></li></h6><div id='demo" + i +
+                        "</p></li><div id='demo" + i +
                         "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
                         my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
                         "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
