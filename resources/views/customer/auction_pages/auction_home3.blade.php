@@ -38,6 +38,16 @@
 
     }
 
+    .mt-15{
+        margin-top: 15px
+    }
+    .mx-10{
+        margin: auto 10px;
+    }
+    .ml-30{
+        margin-left: 30px;
+    }
+
     .navbar {
         background-color: white;
         display: flex;
@@ -245,13 +255,13 @@
         line-height: 20px;
     }
 
-    b {
+    /* b {
 
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
         line-height: 30px;
-    }
+    } */
 
     .footer-head {
         padding: 20px;
@@ -483,15 +493,6 @@
         border-radius: 10px 10px 0px 0px;
     }
 
-    /* .changebuttontext {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 25px;
-        color: #FFFFFF;
-    } */
-
     .errormsgautobid {
         /* background: #DBFFDA; */
         margin-top: 12px;
@@ -580,16 +581,10 @@
     .singlebidbtn {
         background-color: #143D30;
         color: white;
-
-
+        font-family: 'Montserrat';
     }
 
     .singlebidbtn:hover {
-        color: white;
-    }
-
-    .startbidbtn {
-        background-color: #143D30 !important;
         color: white;
     }
 
@@ -617,10 +612,7 @@
         margin-bottom: 0px;
     }
 
-    /* hamza css starts */
-    /* .hide-table-padding {
-    display: none;
-} */
+
     .table-container {
         width: 90%;
         margin: 0 auto;
@@ -647,6 +639,11 @@
         line-height: 70px;
         font-weight: 900;
         color: black;
+    }
+
+    .startbidbtn {
+        background-color: #143D30 !important;
+        color: white;
     }
 
     .lot-header h5 {
@@ -788,16 +785,43 @@
         width: 450px;
     }
 
-.group-lots ul{
-    list-style: none;
-    padding-left: 0;
-}
+    .group-lots ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
     /* Groupbid sidebar starts */
     .groupbid-sidebar {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        font-family: 'Montserrat';
+    }
+
+    .bid-confirm-sec table{
+        width: 100%;
+    }
+
+    .groupbid-sidebar p, .groupbid-sidebar td {
+        Font-size: 16px;
+        Line-height: 22px;
+        color: #000000;
+        padding: 10px 4px;
+        border: none;
+        margin-bottom: 5px;
+    }
+
+    .groupbid-sidebar h5, .groupbid-sidebar th {
+        Font-size: 16px;
+        Line-height: 22px;
+        color: #212529;
+        padding: 10px 4px;
+        border: none;
+        font-weight: bold;
+    }
+    .offerpost{
+        margin-left: 10px;
     }
 
     .groupbid-offers ul {
@@ -811,32 +835,26 @@
         padding: 15px;
     }
 
-    .groupbid-offers ul li span {
-    border: 1px solid white;
+    .groupbid-offers ul li span, .lot-toggle-btn {
+border: 1px solid white;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 23px;
     color: white;
     border-radius: 50%;
     padding: 6px;
     margin-right: 20px;
     background: #143D30;
-    }
-    .lot-toggle-btn {
-    border: 1px solid white;
-    font-size: 20px;
-    line-height: 26px;
-    color: white;
-    border-radius: 50%;
-    padding: 6px;
-    margin-right: 20px;
-    background: #143D30;
+    width: 35px;
+    height: 35px;
+    display: block;
+    text-align: center;
     }
 
-    .hide{
+    .hide {
         display: none;
     }
 
-    .show-bidconfirm{
+    .show-bidconfirm {
         display: block;
     }
 
@@ -1145,10 +1163,12 @@
             font-size: 18px;
         }
     }
-    .colorered
-    {
-        color: red;
+
+    .colorered {
+        color: #143D30;
+        background: #DBFFDA;
     }
+
     /* hamza starts ends */
 </style>
 
@@ -1305,14 +1325,17 @@
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
                                     @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
-                                    <td class="fw-bold productrank{{$auctionProduct->id}}">{{ $auctionProduct->rank }}</td>
-                                    <input class="auctionproductid{{$auctionProduct->id}}" type="hidden" value="{{$auctionProduct->id}}">
+                                    <td class="fw-bold productrank{{ $auctionProduct->id }}">
+                                        {{ $auctionProduct->rank }}</td>
+                                    <input class="auctionproductid{{ $auctionProduct->id }}" type="hidden"
+                                        value="{{ $auctionProduct->id }}">
                                     <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
                                     <td contenteditable='true'
                                         class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id }}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td>
-                                    <td class=" productweight{{$auctionProduct->id}}">{{ $auctionProduct->weight }}lbs</td>
+                                    <td class=" productweight{{ $auctionProduct->id }}">
+                                        {{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} ">
                                         ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold">
@@ -1844,12 +1867,15 @@
                 <div class="sidebar-container">
                     <div class="groupbid-sidebar">
                         <div class="grouplot-listing" id="grouplot-listing">
-                            <p class="hide">Lot ID:<span class="lotproductid "></span></p><h3>Active Group Lot Listing</h3>
+                            <p class="hide">Lot ID:<span class="lotproductid "></span></p>
+                            <h3>Active Group Lot Listing</h3>
                             <div class="group-lots">
-                                <p>Other Offers:</p>
-                            <ul id="other-offers">
-                            </ul>
+                                <p class="fw-bold">Other Offers:</p>
+                                <ul id="other-offers">
+                                </ul>
                             </div>
+                            <hr>
+                            
                             {{-- <div class="groupbid-offers other-offers">
                                 <p>Other's Offers:</p>
                                 <ul>
@@ -1857,41 +1883,79 @@
                                 </ul>
                             </div> --}}
                             <div class="groupbid-offers my-offers">
-                                <p>My Offers:</p>
+                                <p class="fw-bold">My Offers:</p>
                                 <ul id="offers">
                                 </ul>
                             </div>
+                           
                         </div>
                         <div class="current-group-bid">
                             <div class="col-8 groupbiddiv">
                                 {{-- <form method="POST">
                                     @csrf --}}
-                                    <p>Total bags: <span class="productbags">--</span></p>
-                                    <label>Bags Quantity:</label>
-                                    <input type="number" class="form-control bag_quantity" id="bag_quantity" name="bag_quantity">
-                                    <span class="validationbags colorered"></span>
-                                    <p style="font-weight: bold">Weight:<span class="finalweight" >--</span></p>
-                                    <label>Amount: </label>
-                                    <input type="number" min="1" class="form-control groupbidamount" id="bid_amount" name="Bid Amount">
-                                    <span class="validationamount colorered"></span>
-                                    <br>
-                                    <button type="button" class="singlebidbtn btn show-bid-confirm" value="">Post Group Bid</button>
-                                    <br>
-                                    <div class="bid-confirm-sec hide liabiltysec">
-                                        <br>
-                                        <p style="font-weight: bold">Bid:<span class="bidamount"></span></p>
+                                <p>Total bags: <span class="productbags">--</span></p>
+                                <label>Bags Quantity:</label>
+                                <input type="number" class="form-control bag_quantity" id="bag_quantity"
+                                    name="bag_quantity">
+                                <span class="validationbags colorered"></span>
+                                <h5>Weight:<span class="finalweight">--</span></h5>
+                                <label>Amount: </label>
+                                <input type="number" min="1" class="form-control groupbidamount"
+                                    id="bid_amount" name="Bid Amount">
+                                <span class="validationamount colorered"></span>
+                                <br>
+                                <button type="button" class="singlebidbtn btn show-bid-confirm" value="">Post
+                                    Group Bid</button>
+                                <br>
+                                <div class="bid-confirm-sec hide liabiltysec">
+
+                                    {{-- <p style="font-weight: bold">Bid:<span class="bidamount"></span></p>
                                         <p style="font-weight: bold">Weight:<span class="liabilityweight"></span> </p>
                                         <p style="font-weight: bold">Liability:<span class="finalliability"></span></p>
                                         <button class="singlebidbtn btn confirmgroupbidbutton" href="javascript:void(0)">Confirm</button>
-                                        <button type="button"  class="singlebidbtn btn cancelgroupbtn">Cancel</button>
+                                        <button type="button"  class="singlebidbtn btn cancelgroupbtn">Cancel</button> --}}
+
+                                    <table>
+                                        <tr>
+                                            <th style="border-top: 1px solid #dee2e6;">
+                                                Bid:
+                                            </th>
+                                            <td class="bidamount">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="border-top: 1px solid #dee2e6;">
+                                                Weight:
+                                            </th>
+                                            <td class="liabilityweight">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="border-top: 1px solid #dee2e6;">
+                                                Liability:
+                                            </th>
+                                            <td class="finalliability">
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="mt-15">
+                                             <button class="singlebidbtn btn confirmgroupbidbutton"
+                                                href="javascript:void(0)">Confirm</button>
+                                            <button type="button"
+                                                class="singlebidbtn btn cancelgroupbtn">Cancel</button>
                                     </div>
+
+                                </div>
                                 {{-- </form> --}}
 
                             </div>
 
-                            <div class="alert alert-success offerdiv hide" role="alert" >
+                            <div class="alert alert-success offerdiv hide" role="alert">
                                 <p>You posted offer of: <span class="offerpost">---</span></p>
-                              </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1939,6 +2003,7 @@
 
         $("#mySidebar").removeClass('sidebaropen-width');
     }
+
     function closeGroupSidebar() {
         $("#groupbid_sidebar").removeClass('sidebaropen-width');
     }
@@ -2503,44 +2568,69 @@
 
         var my = data.offersdata;
         console.log(my);
-        if(my.length != 0)
-        {
+        if (my.length != 0) {
             $('#offers').empty();
             $('#other-offers').empty();
-            var isActive         = my[0].is_active;
-            var amount           = my[0].amount;
-            var user_id          = my[0].user_id;
-            var lotid            = $('.lotproductid').html();
+            var isActive = my[0].is_active;
+            var amount = my[0].amount;
+            var user_id = my[0].user_id;
+            var lotid = $('.lotproductid').html();
             var auctionproductid = my[0].auction_product_id;
-            if(isActive==1 && user_id=={{Auth::user()->id}})
-            {
+            if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
                 $('.offerdiv').show();
                 $('.groupbiddiv').hide();
-                $('.offerpost').html('$'+amount);
+                $('.offerpost').html('$' + amount);
             }
             var i;
             for (i = 0; i < my.length; ++i) {
-                var weight    = my[i].accopied_wieght/20;
-                var amount    = my[i].amount;
-                var liability = my[i].accopied_wieght*amount;
-                var rem_weight =my[i].remainig_weight/20;
+                var weight = my[i].accopied_wieght / 20;
+                var amount = my[i].amount;
+                var liability = my[i].accopied_wieght * amount;
+                var rem_weight = my[i].remainig_weight / 20;
                 // alert
-                if (my[i].user_id=={{Auth::user()->id}}) {
-                    $('#offers').append("<li><span class='lotid'>"+my[i].rank+"</span><p>Amount:$"+my[i].amount+"<br>Bags:"+weight+"<br>Liablity:$"+liability+"<br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li>");
+                if (my[i].user_id == {{ Auth::user()->id }}) {
+                    $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + my[i]
+                        .amount + "<br>Bags: " + weight + "<br>Liablity: $" + liability +
+                        "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
+                            .start_time, my[i].end_time) + "</p></li>");
 
                 } else {
-                    $('#other-offers').append("<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo"+i+"'> "+my[i].rank+" </button><li><p>Amount:$<span class='offeramount"+my[i].id+"'>"+my[i].amount+"</span></p><p>Remaining Bags:<span class='remainingbags"+my[i].id+"'>"+rem_weight+"</span><br>remaining time:<div id='some_div"+i+"'></div>"+counter(my[i].id,i,my[i].start_time,my[i].end_time)+"</p></li></h6><div id='demo"+i+"' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant"+my[i].id+"' id='remaining_bag_quantity' data-id='"+my[i].id+"' name='bag_quantity'><input type='hidden' class='offerhiddenid"+my[i].id+"' value='"+my[i].id+"'> <span class='validationbags"+my[i].id+" colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight"+my[i].id+"'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid"+my[i].id+"' data-id="+my[i].id+">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended"+my[i].id+"'><br><p style='font-weight: bold'>Bid:<span class='bidamountappended"+my[i].id+"'></span></p><p style='font-weight: bold'>Weight:<span class='liabilityweight"+my[i].id+"'></span> </p><p style='font-weight: bold'>Liability:<span class='liabilityappended"+my[i].id+"'></span></p><button class='singlebidbtn btn participategroupbidbutton' data-id='"+my[i].id+"' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn' data-id='"+my[i].id+"'>Cancel</button></div> </div> </div></li>");
+                    $('#other-offers').append(
+                        "<li><h6><button type='button' class=' lot-toggle-btn' data-toggle='collapse' data-target='#demo" +
+                        i + "'> " + my[i].rank + " </button><li><p style='line-height: 30px'>Amount: $<span class='ml-30 offeramount" + my[i]
+                        .id + "'>" + my[i].amount +
+                        "</span><br>Remaining Bags: <span class='ml-30 remainingbags" + my[i].id + "'>" +
+                        rem_weight + "</span><br>Remaining time :<b class='ml-30' id='some_div" + i + "'></b>" +
+                        counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                        "</p></li></h6><div id='demo" + i +
+                        "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
+                        my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
+                        "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
+                        "' value='" + my[i].id + "'> <span class='validationbags" + my[i].id +
+                        " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
+                        my[i].id +
+                        "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
+                        my[i].id + "' data-id=" + my[i].id +
+                        ">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended" +
+                        my[i].id + "'><br><p >Bid: <b class='bidamountappended" +
+                        my[i].id +
+                        "'></b></p><p>Weight: <b class='liabilityweight" +
+                        my[i].id +
+                        "'></b> </p><p>Liability: <b class='liabilityappended" +
+                        my[i].id +
+                        "'></b></p><div><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
+                        my[i].id +
+                        "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
+                        my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
 
                 }
             }
+        } else {
+            $('.groupbiddiv').show();
+            $('.offerdiv').hide();
+            $('#offers').empty();
+            $('#other-offers').empty();
         }
-            else
-            {
-                $('.groupbiddiv').show();
-                $('.offerdiv').hide();
-                $('#offers').empty();
-                $('#other-offers').empty();
-            }
     });
     socket.on('add_bid_updates', function(data) {
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
@@ -2688,10 +2778,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
+                
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-
+                
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
@@ -2812,4 +2902,5 @@
 </script>
 
 @include('customer.auction_pages.homejs')
+
 </html>
