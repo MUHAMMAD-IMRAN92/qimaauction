@@ -148,6 +148,9 @@ $(".openGroupSidebar").click(function() {
                             $(".bidnowbutton" + id).css("display",
                                 "none");
                             $(".autobidClass" + id).css("display", "none");
+                            $(".bidnowautobutton" + id).css("display", "none");
+                            $(".autobidamount" + id).hide();
+                            $(".nextincrement" + id).hide();
                         } else if (response.message !== null) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -213,6 +216,9 @@ $(".openGroupSidebar").click(function() {
                             $(".bidnowbutton" + id).css("display",
                                 "none");
                             $(".autobidClass" + id).css("display", "none");
+                            $(".bidnowautobutton" + id).css("display", "none");
+                            $(".autobidamount" + id).hide();
+                            $(".nextincrement" + id).hide();
                         }
                     },
                     error: function(error) {
@@ -284,7 +290,6 @@ $(".openGroupSidebar").click(function() {
                         {
                             $('.offerdiv').show();
                             $('.groupbiddiv').hide();
-                            
                             $('.offerpost').html('$'+amount);
                         }
                             socket.emit('add_groupbid_updates', {
@@ -395,7 +400,11 @@ $(".openGroupSidebar").click(function() {
                             $(".bidnowbutton" + id).css("display",
                                 "none");
                             $(".autobidClass" + id).css("display", "none");
+                            $(".bidnowautobutton" + id).css("display", "none");
+                            $(".autobidamount" + id).hide();
+                            $(".nextincrement" + id).hide();
                         } else if (response.message !== null) {
+                            // alert('(response.message !== null');
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(response.message);
@@ -460,6 +469,9 @@ $(".openGroupSidebar").click(function() {
                             $(".bidnowbutton" + id).css("display",
                                 "none");
                             $(".autobidClass" + id).css("display", "none");
+                              $(".bidnowautobutton" + id).css("display", "none");
+                            $(".autobidamount" + id).hide();
+                            $(".nextincrement" + id).hide();
                         }
                     },
                     error: function(error) {
