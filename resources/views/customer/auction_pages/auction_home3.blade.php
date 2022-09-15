@@ -1875,7 +1875,7 @@ border: 1px solid white;
                                 </ul>
                             </div>
                             <hr>
-                            
+
                             {{-- <div class="groupbid-offers other-offers">
                                 <p>Other's Offers:</p>
                                 <ul>
@@ -1887,7 +1887,7 @@ border: 1px solid white;
                                 <ul id="offers">
                                 </ul>
                             </div>
-                           
+
                         </div>
                         <div class="current-group-bid">
                             <div class="col-8 groupbiddiv">
@@ -2778,10 +2778,10 @@ border: 1px solid white;
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-                
+
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-                
+
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
