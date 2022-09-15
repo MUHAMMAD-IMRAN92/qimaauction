@@ -95,25 +95,42 @@
         });
 });
 //for appended data
- $(document).on('change', '#remaining_bag_quantity', function() {
-          var id     = $(this).attr('data-id');
-          var maxvalue = $('.remainingbags'+id).html();
-          var max = maxvalue;
-          var min = 1;
-          if ($(this).val() > max)
-          {
-              $(this).val(max);
-          }
-          else if ($(this).val() < min)
-          {
-              $(this).val(min);
-          }
-        });
+//  $(document).on('change', '#remaining_bag_quantity', function() {
+//           var id     = $(this).attr('data-id');
+//           var maxvalue = $('.remainingbags'+id).html();
+//           var max = maxvalue;
+//           var min = 1;
+//           if ($(this).val() > max)
+//           {
+//               $(this).val(max);
+//           }
+//           else if ($(this).val() < min)
+//           {
+//               $(this).val(min);
+//           }
+//         });
         $(document).on('focusout', '#remaining_bag_quantity', function() {
-            var id     = $(this).attr('data-id');
-            var quantity    = $(this).val();
-            var totalweight = quantity*20;
-             $('.appendedfinalweight'+id).html(totalweight+'/lbs');
+            var id       = $(this).attr('data-id');
+            var maxvalue = $('.remainingbags'+id).html();
+            var maximumbags = maxvalue;
+            if (parseInt($(this).val()) > maximumbags)
+            {
+                $('.validationbags'+id).html('Please enter a value less than or equal to total bags.');
+                $('.confirmgrpbid'+id).prop('disabled', true);
+            }
+            else
+            {
+                $('.validationbags'+id).html('');
+                $('.confirmgrpbid'+id).prop('disabled', false);
+                    var quantity    = $(this).val();
+                    var totalweight = quantity*20;
+                    $('.appendedfinalweight'+id).html(totalweight+'/lbs');
+            }
+
+            // var id     = $(this).attr('data-id');
+            // var quantity    = $(this).val();
+            // var totalweight = quantity*20;
+            //  $('.appendedfinalweight'+id).html(totalweight+'/lbs');
         });
         $(document).on('click', '.appended-bid-confirm', function() {
             var id     = $(this).attr('data-id');
@@ -127,10 +144,12 @@
                 $('.confirmgrpbid'+id).hide();
                 $('.liabiltysecappended'+id).show();
                 var groupbidamount = $('.offeramount'+id).html();
+               var finalgroupbidamount= parseFloat(groupbidamount.replace(/[^0-9.]/g, ''));
                 var weight         = $('.appendedfinalweight'+id).html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-                var liability      = finalweight*groupbidamount;
-                $('.bidamountappended'+id).html('$'+groupbidamount);
+                // alert(groupbidamount);
+                var liability      = finalweight*finalgroupbidamount;
+                $('.bidamountappended'+id).html(groupbidamount);
                 $('.liabilityweight'+id).html(weight);
                 $('.liabilityappended'+id).html('$'+liability);
             }
