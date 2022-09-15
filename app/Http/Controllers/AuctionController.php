@@ -960,7 +960,7 @@ class AuctionController extends Controller {
     {
         $user                               =   Auth::user()->id;
         $currentDate                        =   date('Y-m-d H:i:s');
-        $auction                            =   Auction::where('is_active',1)->first();
+        $auction                            =   Auction::where('is_active','1')->first();
         $groupOfferData                     =   new Offers();
         $groupOfferData->auction_id         =   $auction->id;
         $groupOfferData->auction_product_id =   $request->id;
@@ -1037,9 +1037,8 @@ class AuctionController extends Controller {
         }
         Offers::where('id',$request->offerid)->update([
             'end_time' => Carbon::now()->addSecond(30)
-        ]);      
+        ]);
         // offers data
-
         $groupbidDatas      = UserOffers::where('auction_product_id',$request->auctionproductid)->get();
         $total_weight       = AuctionProduct::where('id',$request->auctionproductid);
         $groupbid=[];
@@ -1106,7 +1105,7 @@ class AuctionController extends Controller {
             $i++;
         }
         }
-        
+
         return response()->json(['success'=> 'Auction expired.','offersdata'=>$groupbid]);
 
     }
