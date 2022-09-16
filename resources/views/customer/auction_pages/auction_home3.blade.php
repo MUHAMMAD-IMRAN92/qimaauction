@@ -2571,7 +2571,7 @@ border: 1px solid white;
         var lotid = $('.lotproductid').html();
         // alert(my.auction_product_id);
         if (my.length != 0) {
-            $('#offers').empty();
+            var strValue=$('#offers').empty();
             $('#other-offers').empty();
             var isActive = my[0].is_active;
             var amount = my[0].amount;
@@ -2584,6 +2584,9 @@ border: 1px solid white;
                 $('.offerpost').html('$' + amount);
             }
             var i;
+        //     for (let i = 0; i < timerId; i++) {
+        //     window.clearInterval(i);
+        // }
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;

@@ -19,6 +19,7 @@
                 console.log(my);
                 // alert(my.length)
                 if (my.length != 0) {
+                    
                     $('#offers').empty();
                     $('#other-offers').empty();
                     var isActive = my[0].is_active;
@@ -34,6 +35,7 @@
 
                     var i;
                     for (i = 0; i < my.length; ++i) {
+                        
                         var weight = my[i].accopied_wieght / 20;
                         var amount = my[i].amount;
                         var liability = my[i].accopied_wieght * amount;
@@ -335,6 +337,7 @@
                     },
                     success: function(response) {
                         console.log(response);
+                        
                         var isActive    = response.activeOffers.is_active;
                         var amount      = response.activeOffers.amount;
                         var user_id     = response.otherOfffers.user_id;
@@ -346,6 +349,7 @@
                             $('.groupbiddiv').hide();
                             $('.offerpost').html('$'+amount);
                         }
+                        // console.log("test"+offersdata)
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
