@@ -49,11 +49,11 @@
                         } else {
                             $('#other-offers').append(
                                 "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
-                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 30px'>Amount: <span style='margin-left: 90px' class='offeramount" + my[i].id +
+                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 30px'>Amount: <span  class='offeramount" + my[i].id +
                                 "'>" + '$' + my[i].amount +
-                                "</span><br>Remaining Bags: <span class='ml-30 remainingbags" + my[
+                                "</span><br>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
-                                "</span><br>Remaining time: <b class='ml-30' id='some_div" + i + "'></b>" +
+                                "</span><br>Remaining time: <b  id='some_div" + i + "'></b>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time) +
                                 "</p></li><div id='demo" + i +
                                 "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant" +
