@@ -164,7 +164,11 @@
             var id             = $('.lotproductid').html();
             var weight         = $('.appendedfinalweight'+offerid).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-            var groupbidamount = $('.offeramount'+offerid).html();
+
+            var  bidamount = $('.offeramount'+offerid).html();
+            var groupbidamount= parseFloat(bidamount.replace(/[^0-9.]/g, ''));
+
+            // alert(groupbidamount);
              //lot total weight
             var rembags = $('.remainingbags'+offerid).html();
             var bagssdded   =   $('.bag_quant'+offerid).val();
