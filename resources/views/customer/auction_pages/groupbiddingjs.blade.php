@@ -19,7 +19,7 @@
                 console.log(my);
                 // alert(my.length)
                 if (my.length != 0) {
-                    
+
                     $('#offers').empty();
                     $('#other-offers').empty();
                     var isActive = my[0].is_active;
@@ -35,7 +35,7 @@
 
                     var i;
                     for (i = 0; i < my.length; ++i) {
-                        
+
                         var weight = my[i].accopied_wieght / 20;
                         var amount = my[i].amount;
                         var liability = my[i].accopied_wieght * amount;
@@ -126,7 +126,7 @@
                 $('.confirmgrpbid'+id).prop('disabled', false);
                     var quantity    = $(this).val();
                     var totalweight = quantity*20;
-                    $('.appendedfinalweight'+id).html(totalweight+'/lbs');
+                    $('.appendedfinalweight'+id).html(totalweight+'lbs');
             }
 
             // var id     = $(this).attr('data-id');
@@ -151,9 +151,9 @@
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 // alert(groupbidamount);
                 var liability      = finalweight*finalgroupbidamount;
-                $('.bidamountappended'+id).html(groupbidamount);
+                $('.bidamountappended'+id).html(commify(groupbidamount));
                 $('.liabilityweight'+id).html(weight);
-                $('.liabilityappended'+id).html('$'+liability);
+                $('.liabilityappended'+id).html('$'+commify(liability));
             }
         });
         $(document).on('click', '.cancelappendedgroupbtn', function() {
@@ -337,7 +337,7 @@
                     },
                     success: function(response) {
                         console.log(response);
-                        
+
                         var isActive    = response.activeOffers.is_active;
                         var amount      = response.activeOffers.amount;
                         var user_id     = response.otherOfffers.user_id;
@@ -377,7 +377,7 @@
                 $('.show-bid-confirm').prop('disabled', false);
                 var quantity    = $(this).val();
                 var totalweight = quantity*20;
-                $('.finalweight').html(totalweight+'/lbs');
+                $('.finalweight').html(totalweight+'lbs');
             }
 
         });
@@ -412,18 +412,20 @@
                 var weight         = $('.finalweight').html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 var liability      = finalweight*groupbidamount;
-                $('.bidamount').html('$'+groupbidamount);
+                $('.bidamount').html('$'+ commify(groupbidamount));
                 $('.liabilityweight').html(weight);
-                $('.finalliability').html('$'+liability);
-
+                $('.finalliability').html('$'+commify(liability));
+                $('.confirmgroupbidbutton').prop('disabled', false);
             }
         });
         $('.cancelgroupbtn').click(function(){
             $('.show-bid-confirm').show();
             $('.liabiltysec').hide();
+            $('.confirmgroupbidbutton').prop('disabled', false);
         });
         //save group bid offer
         $('.confirmgroupbidbutton').click(function(){
+            $('.confirmgroupbidbutton').prop('disabled', true);
             var id          = $('.lotproductid').html();
             //group offer weight
             var weight         = $('.finalweight').html();
@@ -549,12 +551,16 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        var amount = response.groupOfferData.amount;
                         $('#offers').empty();
                         $('#other-offers').empty();
                         $('#bag_quantity').val('');
                         $('#bid_amount').val('');
                         $('.show-bid-confirm').show();
                         $('.liabiltysec').hide();
+                        $('.offerdiv').show();
+                        // $('.groupbiddiv').hide();
+                        $('.offerpost').html('$'+amount);
                         // console.log(response);
                         // var isActive    = response.groupOfferData.is_active;
                         // var amount      = response.groupOfferData.amount;
