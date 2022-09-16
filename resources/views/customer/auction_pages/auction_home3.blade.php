@@ -2568,6 +2568,8 @@ border: 1px solid white;
 
         var my = data.offersdata;
         console.log(my);
+        var lotid = $('.lotproductid').html();
+        // alert(my.auction_product_id);
         if (my.length != 0) {
             $('#offers').empty();
             $('#other-offers').empty();
@@ -2594,7 +2596,7 @@ border: 1px solid white;
                         "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time) + "</p></li>");
 
-                } else {
+                } else if(lotid == my[i].auction_product_id) {
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span style='margin-left: 90px' class='offeramount" + my[i]
