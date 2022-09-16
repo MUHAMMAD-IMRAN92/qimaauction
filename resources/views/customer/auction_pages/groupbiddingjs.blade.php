@@ -16,7 +16,7 @@
             },
             success: function(response) {
                 var my = response;
-                console.log(my);
+                // console.log(my);
                 // alert(my.length)
                 if (my.length != 0) {
 
@@ -42,9 +42,9 @@
                         var rem_weight = my[i].remainig_weight / 20;
                         if (my[i].my_check == true) {
                             $('#offers').append("<li><span class='lotid'>" + my[i].rank +
-                                "</span><p>Amount: $" + my[i].amount + "<br>Bags:" + weight +
-                                "<br>Liablity:$" + liability +
-                                "<br>Remaining time: <div id='some_div" + i + "'></div>" +
+                                "</span><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
+                                "<br>Liablity:$" + commify(liability) +
+                                "<br>Remaining time: <b id='some_div" + i + "'></b>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time) +
                                 "</p></li>");
 
@@ -52,7 +52,7 @@
                             $('#other-offers').append(
                                 "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 30px'>Amount: <span  class='offeramount" + my[i].id +
-                                "'>" + '$' + my[i].amount +
+                                "'>" + '$' + commify(my[i].amount) +
                                 "</span><br>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
                                 "</span><br>Remaining time: <b  id='some_div" + i + "'></b>" +
@@ -196,7 +196,7 @@
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
-                                addCommas(response.bid_amount) +
+                                    commify(response.bid_amount) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');
                             $('.autobidamount' + id).val('');
@@ -336,7 +336,7 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
 
                         var isActive    = response.activeOffers.is_active;
                         var amount      = response.activeOffers.amount;
@@ -606,7 +606,7 @@
                         {
                             $('.offerdiv').show();
                             $('.groupbiddiv').hide();
-                            $('.offerpost').html('$'+amount);
+                            $('.offerpost').html('$'+ commify(amount));
                         }
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,

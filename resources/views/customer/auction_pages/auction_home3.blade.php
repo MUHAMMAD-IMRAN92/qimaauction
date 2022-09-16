@@ -1895,7 +1895,7 @@ border: 1px solid white;
                                     @csrf --}}
                                 <p>Total bags: <span class="productbags">--</span></p>
                                 <label>Bags Quantity:</label>
-                                <input type="number" class="form-control bag_quantity" id="bag_quantity"
+                                <input type="number" class="form-control bag_quantity" min="0" id="bag_quantity"
                                     name="bag_quantity">
                                 <span class="validationbags colorered"></span>
                                 <h5>Weight: <span class="finalweight">--</span></h5>
@@ -2448,7 +2448,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        console.log(data);
+        // console.log(data);
         $(".paddleno" + data.bidID).html(data.paddleNo);
         if (data.user_id == {{ Auth::user()->id }} && data.winneruser == {{ Auth::user()->id }}) {
             $(".liabilitybidcollapse" + data.bidID).show();
@@ -2567,7 +2567,7 @@ border: 1px solid white;
     socket.on('add_groupbid_updates', function(data) {
 
         var my = data.offersdata;
-        console.log(my);
+        // console.log(my);
         var lotid = $('.lotproductid').html();
         // alert(my.auction_product_id);
         if (my.length != 0) {
@@ -2594,8 +2594,8 @@ border: 1px solid white;
                 var rem_weight = my[i].remainig_weight / 20;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
-                    $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + my[i]
-                        .amount + "<br>Bags: " + weight + "<br>Liablity: $" + liability +
+                    $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + commify(my[i]
+                        .amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
                         "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time) + "</p></li>");
 
@@ -2603,7 +2603,7 @@ border: 1px solid white;
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
-                        .id + "'>" + '$' + my[i].amount +
+                        .id + "'>" + '$' + commify(my[i].amount) +
                         "</span><br>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
                         rem_weight + "</span><br>Remaining time :<b  id='some_div" + i + "'></b>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time) +
@@ -2770,7 +2770,7 @@ border: 1px solid white;
     });
 
     function resetTimer(data) {
-        console.log('Its Coming To Data');
+        // console.log('Its Coming To Data');
         var timer_text = "";
         var hours = 0;
         var days = 0;

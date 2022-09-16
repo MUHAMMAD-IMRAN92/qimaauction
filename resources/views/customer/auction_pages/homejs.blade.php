@@ -23,8 +23,8 @@ function countdown() {
         clearTimeout(timerId);
         doSomething(offer_id);
     } else {
-        console.log(timeLeft)
-        console.log('id'+timerId)
+        // console.log(timeLeft)
+        // console.log('id'+timerId)
         document.getElementById('some_div'+id).innerHTML = timeLeft + ' seconds remaining';
         timeLeft--;
     }
