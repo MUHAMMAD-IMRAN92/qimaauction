@@ -1031,7 +1031,7 @@ class AuctionController extends Controller {
         $finalweight                         =   $offerweight->weight+$request->weight;
         if($finalweight == $total_weight)
         {
-            Offers::where('id',$request->offerid)->where('is_active',1)->update([
+            Offers::where('id',$request->offerid)->where('is_active','1')->update([
                 'is_active' => '0'
             ]);
         }
