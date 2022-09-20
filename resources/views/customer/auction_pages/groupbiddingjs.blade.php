@@ -3,6 +3,8 @@
         $("#groupbid_sidebar").addClass('sidebaropen-width');
         var id = $(this).attr('data-id');
         var rank = $('.productrank' + id).html();
+        $('#groupbidoffers').empty();
+        $('#groupbidoffers').append("<li><span class='lotid'>"+rank+"</span></li>");
         $('.lotproductid').html(id);
         var weight = $('.productweight' + id).html();
         var finalweight = parseFloat(weight.replace(/[^0-9.]/g, ''));
@@ -28,9 +30,9 @@
                     var lotid = $('.lotproductid').html();
                     var auctionproductid = my[0].auction_product_id;
                     if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
-                        $('.offerdiv').show();
-                        $('.groupbiddiv').hide();
-                        $('.offerpost').html('$' + amount);
+                        // $('.offerdiv').show();
+                        // $('.groupbiddiv').hide();
+                        // $('.offerpost').html('$' + amount);
                     }
 
                     var i;
@@ -207,6 +209,8 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
+
+
                         } else if (response.message !== null) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -275,6 +279,7 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
+
                         }
                     },
                     error: function(error) {
@@ -345,9 +350,9 @@
                         var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
-                            $('.offerdiv').show();
-                            $('.groupbiddiv').hide();
-                            $('.offerpost').html('$'+amount);
+                            // $('.offerdiv').show();
+                            // $('.groupbiddiv').hide();
+                            // $('.offerpost').html('$'+amount);
                         }
                         // console.log("test"+offersdata)
                             socket.emit('add_groupbid_updates', {
@@ -465,6 +470,7 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
+
                         } else if (response.message !== null) {
                             // alert('(response.message !== null');
                             $('.errorMsgAutoBid' + id).html('');
@@ -534,6 +540,7 @@
                               $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
+
                         }
                     },
                     error: function(error) {
@@ -560,7 +567,7 @@
                         $('.liabiltysec').hide();
                         $('.offerdiv').show();
                         // $('.groupbiddiv').hide();
-                        $('.offerpost').html('$'+amount);
+                        // $('.offerpost').html('$'+amount);
                         // console.log(response);
                         // var isActive    = response.groupOfferData.is_active;
                         // var amount      = response.groupOfferData.amount;
@@ -604,9 +611,9 @@
                         var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
-                            $('.offerdiv').show();
-                            $('.groupbiddiv').hide();
-                            $('.offerpost').html('$'+ commify(amount));
+                            // $('.offerdiv').show();
+                            // $('.groupbiddiv').hide();
+                            // $('.offerpost').html('$'+ commify(amount));
                         }
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
