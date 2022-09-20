@@ -930,10 +930,10 @@ class AuctionController extends Controller {
     public function groupBidSideBar(Request $request)
     {
         $groupbidDatas      = UserOffers::get();
-        $total_weight       = AuctionProduct::where('id',$request->id);
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
+            $total_weight       = AuctionProduct::where('id',$groupbid_offer['auction_product_id']);
             $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
             if($user_offer!==null){
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
@@ -990,10 +990,10 @@ class AuctionController extends Controller {
         $userOfffers->save();
         // offers data
         $groupbidDatas      = UserOffers::get();
-        $total_weight       = AuctionProduct::where('id',$request->id);
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
+            $total_weight       = AuctionProduct::where('id',$groupbid_offer['auction_product_id']);
             $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
             if($user_offer!==null){
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
@@ -1040,10 +1040,10 @@ class AuctionController extends Controller {
         ]);
         // offers data
         $groupbidDatas      = UserOffers::get();
-        $total_weight       = AuctionProduct::where('id',$request->auctionproductid);
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
+            $total_weight       = AuctionProduct::where('id',$groupbid_offer['auction_product_id']);
             $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
             if($user_offer!==null){
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
@@ -1082,10 +1082,10 @@ class AuctionController extends Controller {
         $OffersData->save();
         $id=$OffersData->auction_product_id;
         $groupbidDatas      = UserOffers::get();
-        $total_weight       = AuctionProduct::where('id',$id);
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
+            $total_weight       = AuctionProduct::where('id',$groupbid_offer['auction_product_id']);
             $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
             if($user_offer!==null){
             $groupbid[$i]=$user_offer;
