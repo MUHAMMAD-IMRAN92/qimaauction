@@ -1526,7 +1526,7 @@ border: 1px solid white;
                                                                 id="autobidamount">
                                                             @if (isset($auctionProduct->latestAutoBidPrice->bid_amount) &&
                                                                 $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
-                                                                &nbsp;<input type="number" min="0"
+                                                                &nbsp;<input type="number" min="1"
                                                                     name="autobidamount"
                                                                     class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                     id="autobidamount"
@@ -1534,7 +1534,7 @@ border: 1px solid white;
                                                             @else
                                                                 <input type="text"
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                                                    min="0" pattern="[0-9]{10}" maxlength="10"
+                                                                    min="1" pattern="[0-9]{10}" maxlength="10"
                                                                     name="autobidamount"
                                                                     class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                     id="autobidamount" style="width: 50%;">
@@ -1899,7 +1899,7 @@ border: 1px solid white;
                                     @csrf --}}
                                 <p>Total bags: <span class="productbags">--</span></p>
                                 <label>Bags Quantity:</label>
-                                <input type="number" class="form-control bag_quantity" min="0" id="bag_quantity"
+                                <input type="number" class="form-control bag_quantity" min="1" id="bag_quantity"
                                     name="bag_quantity">
                                 <span class="validationbags colorered"></span>
                                 <h5>Weight: <span class="finalweight">--</span></h5>
@@ -2574,7 +2574,7 @@ border: 1px solid white;
         }
     });
     socket.on('add_groupbid_updates', function(data) {
-
+        // alert(data.isOtheroffer);
         var my = data.offersdata;
         // console.log(my);
         var lotid = $('.lotproductid').html();
@@ -2613,7 +2613,8 @@ border: 1px solid white;
                             .start_time, my[i].end_time) + "</p></li>");
 
                 }
-                else{
+                else if (data.isOtheroffer != 1){
+
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
