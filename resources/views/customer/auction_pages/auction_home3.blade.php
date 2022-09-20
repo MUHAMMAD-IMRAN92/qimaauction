@@ -2588,9 +2588,12 @@ border: 1px solid white;
             var lotid = $('.lotproductid').html();
             var auctionproductid = my[0].auction_product_id;
             if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
-                // $('.offerdiv').show();
-                // $('.groupbiddiv').hide();
-                // $('.offerpost').html('$' + amount);
+                $('#bag_quantity').val('');
+                $('#bid_amount').val('');
+                $('.show-bid-confirm').show();
+                $('.liabiltysec').hide();
+                $('.finalweight').html('');
+                $('.confirmgroupbidbutton').prop('disabled', false);
             }
             var i;
         //     for (let i = 0; i < timerId; i++) {
@@ -2603,7 +2606,7 @@ border: 1px solid white;
                 var rem_weight = my[i].remainig_weight / 20;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
-                    console.log('my');
+                    // console.log('my');
                     $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + commify(my[i]
                         .amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
                         "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
@@ -2638,9 +2641,13 @@ border: 1px solid white;
                         my[i].id +
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
+
+                }
+
             }
+
         }
-        } else {
+        else {
             $('.groupbiddiv').show();
             $('.offerdiv').hide();
             $('#offers').empty();
