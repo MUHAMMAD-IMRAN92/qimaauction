@@ -929,7 +929,7 @@ class AuctionController extends Controller {
     }
     public function groupBidSideBar(Request $request)
     {
-        $groupbidDatas      = UserOffers::where('auction_product_id',$request->id)->get();
+        $groupbidDatas      = UserOffers::get();
         $total_weight       = AuctionProduct::where('id',$request->id);
         $groupbid=[];
         $i=0;
@@ -989,7 +989,7 @@ class AuctionController extends Controller {
         $userOfffers->auction_product_id    =  $request->id;
         $userOfffers->save();
         // offers data
-        $groupbidDatas      = UserOffers::where('auction_product_id',$request->id)->get();
+        $groupbidDatas      = UserOffers::get();
         $total_weight       = AuctionProduct::where('id',$request->id);
         $groupbid=[];
         $i=0;
@@ -1039,7 +1039,7 @@ class AuctionController extends Controller {
             'end_time' => Carbon::now()->addSecond(30)
         ]);
         // offers data
-        $groupbidDatas      = UserOffers::where('auction_product_id',$request->auctionproductid)->get();
+        $groupbidDatas      = UserOffers::get();
         $total_weight       = AuctionProduct::where('id',$request->auctionproductid);
         $groupbid=[];
         $i=0;
@@ -1081,7 +1081,7 @@ class AuctionController extends Controller {
         $OffersData->is_active=0;
         $OffersData->save();
         $id=$OffersData->auction_product_id;
-        $groupbidDatas      = UserOffers::where('auction_product_id',$id)->get();
+        $groupbidDatas      = UserOffers::get();
         $total_weight       = AuctionProduct::where('id',$id);
         $groupbid=[];
         $i=0;

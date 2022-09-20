@@ -18,10 +18,9 @@
             },
             success: function(response) {
                 var my = response;
-                // console.log(my);
+                console.log(my);
                 // alert(my.length)
                 if (my.length != 0) {
-
                     $('#offers').empty();
                     $('#other-offers').empty();
                     var isActive = my[0].is_active;
@@ -37,7 +36,6 @@
 
                     var i;
                     for (i = 0; i < my.length; ++i) {
-
                         var weight = my[i].accopied_wieght / 20;
                         var amount = my[i].amount;
                         var liability = my[i].accopied_wieght * amount;

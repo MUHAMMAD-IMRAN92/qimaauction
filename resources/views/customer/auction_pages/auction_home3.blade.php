@@ -2603,12 +2603,14 @@ border: 1px solid white;
                 var rem_weight = my[i].remainig_weight / 20;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
+                    console.log('my');
                     $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + commify(my[i]
                         .amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
                         "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time) + "</p></li>");
 
                 }
+                else{
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
@@ -2637,6 +2639,7 @@ border: 1px solid white;
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
             }
+        }
         } else {
             $('.groupbiddiv').show();
             $('.offerdiv').hide();
