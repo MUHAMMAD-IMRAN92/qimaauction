@@ -1,14 +1,18 @@
 <script>
     $(".openGroupSidebar").click(function() {
         $("#groupbid_sidebar").addClass('sidebaropen-width');
+        $('#bag_quantity').val('');
+        $('#bid_amount').val('');
+        $('.finalweight').html('');
         var id = $(this).attr('data-id');
         var rank = $('.productrank' + id).html();
         $('#groupbidoffers').empty();
-        $('#groupbidoffers').append("<li><span class='lotid'>"+rank+"</span></li>");
+        $('#groupbidoffers').append("<li><span class='rank'>"+rank+"</span></li>");
         $('.lotproductid').html(id);
         var weight = $('.productweight' + id).html();
         var finalweight = parseFloat(weight.replace(/[^0-9.]/g, ''));
         $('.productbags').html(finalweight / 20);
+
         $.ajax({
             url: "{{ route('groupbiddingsidebar') }}",
             method: 'POST',
@@ -29,9 +33,12 @@
                     var lotid = $('.lotproductid').html();
                     var auctionproductid = my[0].auction_product_id;
                     if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
-                        // $('.offerdiv').show();
-                        // $('.groupbiddiv').hide();
-                        // $('.offerpost').html('$' + amount);
+                        $('#bag_quantity').val('');
+                        $('#bid_amount').val('');
+                        $('.finalweight').html('');
+                        $('.show-bid-confirm').show();
+                        $('.liabiltysec').hide();
+                        $('.confirmgroupbidbutton').prop('disabled', false);
                     }
 
                     var i;
@@ -40,7 +47,10 @@
                         var amount = my[i].amount;
                         var liability = my[i].accopied_wieght * amount;
                         var rem_weight = my[i].remainig_weight / 20;
+                        // alert(my[i].rank);
+
                         if (my[i].my_check == true) {
+                            // alert(my[i].rank);
                             $('#offers').append("<li><span class='lotid'>" + my[i].rank +
                                 "</span><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
                                 "<br>Liablity:$" + commify(liability) +
@@ -348,9 +358,11 @@
                         var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
-                            // $('.offerdiv').show();
-                            // $('.groupbiddiv').hide();
-                            // $('.offerpost').html('$'+amount);
+                            // $('#bag_quantity').val('');
+                            // $('#bid_amount').val('');
+                            // $('.show-bid-confirm').show();
+                            // $('.liabiltysec').hide();
+                            // $('.confirmgroupbidbutton').prop('disabled', false);
                         }
                         // console.log("test"+offersdata)
                             socket.emit('add_groupbid_updates', {
@@ -609,9 +621,11 @@
                         var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
-                            // $('.offerdiv').show();
-                            // $('.groupbiddiv').hide();
-                            // $('.offerpost').html('$'+ commify(amount));
+                            // $('#bag_quantity').val('');
+                            // $('#bid_amount').val('');
+                            // $('.show-bid-confirm').show();
+                            // $('.liabiltysec').hide();
+                            // $('.confirmgroupbidbutton').prop('disabled', false);
                         }
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
