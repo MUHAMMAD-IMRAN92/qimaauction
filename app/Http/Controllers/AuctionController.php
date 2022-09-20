@@ -969,7 +969,7 @@ class AuctionController extends Controller {
         $groupOfferData->start_time         =   Carbon::now();
         $groupOfferData->end_time           =  Carbon::now()->addSecond(30);
         $groupOfferData->is_active          =   '1';
-        $groupOfferData->paddle_number      =   $auction->id.$user.$request->id;
+        $groupOfferData->paddle_number      =  $this->generateUniquePaddleNumber();
         $groupOfferData->expired_at         =   $currentDate;
         $total_weight                       = AuctionProduct::where('id',$request->id)->first()->weight;
         if($request->weight == $total_weight)
@@ -1107,5 +1107,13 @@ class AuctionController extends Controller {
 
         return response()->json(['success'=> 'Auction expired.','offersdata'=>$groupbid]);
 
+    }
+    public function generateUniquePaddleNumber()
+    {
+        do {
+            $code = random_int(1000, 9999);
+        } while (Offers::where("paddle_number", "=", $code)->first());
+  
+        return $code;
     }
 }
