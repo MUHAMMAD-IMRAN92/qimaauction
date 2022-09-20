@@ -351,19 +351,19 @@
                     success: function(response) {
                         // console.log(response);
 
-                        var isActive    = response.activeOffers.is_active;
-                        var amount      = response.activeOffers.amount;
-                        var user_id     = response.otherOfffers.user_id;
-                        var offersdata  = response.groupbid;
-                        var adminofferData = response.adminOffers;
-                        if(isActive==1 && user_id=={{Auth::user()->id}})
-                        {
+                        // var isActive    = response.activeOffers.is_active;
+                        // var amount      = response.activeOffers.amount;
+                        // var user_id     = response.otherOfffers.user_id;
+                        // var offersdata  = response.groupbid;
+                        // var adminofferData = response.adminOffers;
+                        // if(isActive==1 && user_id=={{Auth::user()->id}})
+                        // {
                             // $('#bag_quantity').val('');
                             // $('#bid_amount').val('');
                             // $('.show-bid-confirm').show();
                             // $('.liabiltysec').hide();
                             // $('.confirmgroupbidbutton').prop('disabled', false);
-                        }
+                        // }
                         // console.log("test"+offersdata)
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
