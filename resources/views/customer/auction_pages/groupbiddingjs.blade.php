@@ -356,7 +356,6 @@
                         // var user_id     = response.otherOfffers.user_id;
                         var offersdata  = response.groupbid;
                         var adminofferData = response.adminOffers;
-                        var isOtheroffer = 1;
                         // alert(isOtheroffer);
                         // if(isActive==1 && user_id=={{Auth::user()->id}})
                         // {
@@ -370,7 +369,6 @@
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
-                             "isOtheroffer":isOtheroffer,
                         });
                     },
                     error: function(error) {

@@ -1113,7 +1113,7 @@ class AuctionController extends Controller {
         do {
             $code = random_int(1000, 9999);
         } while (Offers::where("paddle_number", "=", $code)->first());
-  
+
         return $code;
     }
 }

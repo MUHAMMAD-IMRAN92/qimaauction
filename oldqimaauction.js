@@ -51,7 +51,7 @@ socket.on('add_bid_updates', function (data) {
     io.emit('add_timer_reset', { "timerreset":data.timerreset});
  });
  socket.on('add_groupbid_updates', function (data) {
-    io.emit('add_groupbid_updates', { "offersdata":data.offersdata,"adminofferData":data.adminofferData,"isOtheroffer":data.isOtheroffer});
+    io.emit('add_groupbid_updates', { "offersdata":data.offersdata,"adminofferData":data.adminofferData});
  });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {

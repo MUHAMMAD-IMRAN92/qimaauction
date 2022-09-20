@@ -2613,8 +2613,7 @@ border: 1px solid white;
                             .start_time, my[i].end_time) + "</p></li>");
 
                 }
-                else if (data.isOtheroffer != 1){
-                    // alert(data.isOtheroffer);
+                else{
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
