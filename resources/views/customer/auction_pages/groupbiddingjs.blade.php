@@ -51,8 +51,8 @@
 
                         if (my[i].my_check == true) {
                             // alert(my[i].rank);
-                            $('#offers').append("<li><span class='lotid'>" + my[i].rank +
-                                "</span><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
+                            $('#offers').append("<li> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
+                                " </span> <button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button> </div><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
                                 "<br>Liablity:$" + commify(liability) +
                                 "<br>Remaining time: <b id='some_div" + i + "'></b>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time) +
