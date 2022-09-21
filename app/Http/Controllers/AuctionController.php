@@ -929,7 +929,7 @@ class AuctionController extends Controller {
     }
     public function groupBidSideBar(Request $request)
     {
-        $groupbidDatas      = UserOffers::get();
+        $groupbidDatas      = UserOffers::where('status',1)->get();
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
@@ -939,6 +939,7 @@ class AuctionController extends Controller {
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
             $groupbid[$i]=$user_offer;
             $groupbid[$i]['accopied_wieght']=$accopied_wieght;
+            $groupbid[$i]['user_offer_id']=$groupbid_offer->id;
             $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
             $groupbid[$i]['rank']=$total_weight->value('rank');
             if($groupbid_offer->user_id==Auth::user()->id){
@@ -989,7 +990,7 @@ class AuctionController extends Controller {
         $userOfffers->auction_product_id    =  $request->id;
         $userOfffers->save();
         // offers data
-        $groupbidDatas      = UserOffers::get();
+        $groupbidDatas      = UserOffers::where('status',1)->get();
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
@@ -999,6 +1000,7 @@ class AuctionController extends Controller {
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
             $groupbid[$i]=$user_offer;
             $groupbid[$i]['accopied_wieght']=$accopied_wieght;
+            $groupbid[$i]['user_offer_id']=$groupbid_offer->id;
             $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
             $groupbid[$i]['rank']=$total_weight->value('rank');
             if($groupbid_offer->user_id==Auth::user()->id){
@@ -1039,7 +1041,7 @@ class AuctionController extends Controller {
             'end_time' => Carbon::now()->addSecond(30)
         ]);
         // offers data
-        $groupbidDatas      = UserOffers::get();
+        $groupbidDatas      = UserOffers::where('status',1)->get();
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
@@ -1049,6 +1051,7 @@ class AuctionController extends Controller {
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
             $groupbid[$i]=$user_offer;
             $groupbid[$i]['accopied_wieght']=$accopied_wieght;
+            $groupbid[$i]['user_offer_id']=$groupbid_offer->id;
             $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
             $groupbid[$i]['rank']=$total_weight->value('rank');
             if($groupbid_offer->user_id==Auth::user()->id){
@@ -1081,7 +1084,7 @@ class AuctionController extends Controller {
         $OffersData->is_active=0;
         $OffersData->save();
         $id=$OffersData->auction_product_id;
-        $groupbidDatas      = UserOffers::get();
+        $groupbidDatas      = UserOffers::where('status',1)->get();
         $groupbid=[];
         $i=0;
         foreach($groupbidDatas as $groupbid_offer){
@@ -1091,6 +1094,7 @@ class AuctionController extends Controller {
             $groupbid[$i]=$user_offer;
             $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
             $groupbid[$i]['accopied_wieght']=$accopied_wieght;
+            $groupbid[$i]['user_offer_id']=$groupbid_offer->id;
             $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
             if($groupbid_offer->user_id==Auth::user()->id){
                 $groupbid[$i]['my_check']=true;
@@ -1115,5 +1119,37 @@ class AuctionController extends Controller {
         } while (Offers::where("paddle_number", "=", $code)->first());
 
         return $code;
+    }
+
+    public function updateUserOfferStatus(Request $request){
+        $userBid      = UserOffers::find($request->id);
+        $userBid->status=0;
+        $userBid->save();
+        $groupbidDatas      = UserOffers::where('status',1)->get();
+        $groupbid=[];
+        $i=0;
+        foreach($groupbidDatas as $groupbid_offer){
+            $total_weight       = AuctionProduct::where('id',$groupbid_offer['auction_product_id']);
+            $user_offer=Offers::where('id',$groupbid_offer['offer_id'])->where('is_active','=',1)->first();
+            if($user_offer!==null){
+            $groupbid[$i]=$user_offer;
+            $accopied_wieght    = UserOffers::where('offer_id',$groupbid_offer['offer_id'])->sum('weight');
+            $groupbid[$i]['accopied_wieght']=$accopied_wieght;
+            $groupbid[$i]['user_offer_id']=$groupbid_offer->id;
+            $groupbid[$i]['remainig_weight']=$total_weight->value('weight')-$accopied_wieght;
+            if($groupbid_offer->user_id==Auth::user()->id){
+                $groupbid[$i]['my_check']=true;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            else
+            {
+                $groupbid[$i]['my_check']=false;
+                $groupbid[$i]['user_id']=$groupbid_offer->user_id;
+            }
+            $i++;
+        }
+        }
+        return response()->json(['success'=> 'Auction expired.','offersdata'=>$groupbid]);
+
     }
 }

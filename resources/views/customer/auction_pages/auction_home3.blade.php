@@ -37,6 +37,18 @@
         margin: 0;
 
     }
+    .lotidparent{
+        display: flex !important;
+        justify-content: space-between !important;
+
+    }
+    .lotidparent button{
+        background-color: #dee2e6 !important;
+        border: none !important;
+        font-size: 30px !important;
+       
+    }
+    button:focus { outline: none !important; }
 
     .mt-15{
         margin-top: 15px
@@ -2607,7 +2619,7 @@ border: 1px solid white;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
                     // console.log('my');
-                    $('#offers').append("<li><span class='lotid'>" + my[i].rank + "</span><p style='line-height: 30px'>Amount: $" + commify(my[i]
+                    $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button></div><p style='line-height: 30px'>Amount: $" + commify(my[i]
                         .amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
                         "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time) + "</p></li>");
@@ -2921,6 +2933,43 @@ border: 1px solid white;
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
         }
         return x1 + x2;
+    }
+    function cancelOffer(id){
+        swal({   
+          title: "Are you sure?",   
+          text: "",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",   
+          confirmButtonText: "Yes, delete it!",   
+          closeOnConfirm: false 
+      }).then(isConfirmed => { 
+        if(isConfirmed) {
+            $.ajax({
+                    url: "{{ route('updateUserOfferStatus') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        console.log(response);
+                  
+                        var offersdata  = response.offersdata;
+                       
+                            socket.emit('add_groupbid_updates', {
+                             "offersdata": offersdata,
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+          $(".file").addClass("isDeleted");
+          swal("Deleted!", "Your offer has been deleted.", "success"); 
+}
+        });
+       
     }
 </script>
 
