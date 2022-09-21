@@ -1396,7 +1396,7 @@ border: 1px solid white;
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
@@ -1803,7 +1803,7 @@ border: 1px solid white;
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold ">
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
@@ -1899,6 +1899,12 @@ border: 1px solid white;
                                 <ul id="offers">
                                 </ul>
                             </div>
+                            <hr>
+                            <div class="groupbid-offers my-offers">
+                                <p class="fw-bold">My Winning Offers:</p>
+                                <ul id="mywinningoffers">
+                                </ul>
+                            </div>
 
                         </div>
                         <div class="current-group-bid">
@@ -1919,6 +1925,7 @@ border: 1px solid white;
                                 <input type="number" min="1" class="form-control groupbidamount"
                                     id="bid_amount" name="Bid Amount">
                                 <span class="validationamount colorered"></span>
+                                <span class="fullweight colorered"></span>
                                 <br>
                                 <button type="button" class="singlebidbtn btn show-bid-confirm" value="">Post
                                     Group Bid</button>
@@ -2504,6 +2511,8 @@ border: 1px solid white;
             $('.bidnowautobutton' + data.bidID).show();
             $('.bidnowbutton' + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '##143D30');
+            $('#mywinningoffers').empty();
+
 
         }
         if (data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}) {
@@ -2519,6 +2528,8 @@ border: 1px solid white;
             $('.bidnowautobutton' + data.bidID).show();
             $('.bidnowbutton' + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            $('#mywinningoffers').empty();
+
         }
         if (data.loser == {{ Auth::user()->id }}) {
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
@@ -2535,6 +2546,8 @@ border: 1px solid white;
             $('.bidnowautobutton' + data.bidID).show();
             $('.bidnowbutton' + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            $('#mywinningoffers').empty();
+
 
         }
         var total_bid = 0;
@@ -2585,6 +2598,17 @@ border: 1px solid white;
 
         }
     });
+    // socket.on('add_complte_groupbid', function(data) {
+    //     var my = data.offersdata;
+    //     console.log(my);
+    //     var weight = my.weight / 20;
+    //     var liability =my.weight*my.amount;
+    //     if(my.useroffers[0].user_id == {{Auth::user()->id}})
+    //     {
+    //         $('#mywinningoffers').append("<li><span class='lotid'>" + my.auction_products.rank + "</span><p style='line-height: 30px'>Amount: $" + commify(my.amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
+    //         "</p></li>");
+    //     }
+    // });
     socket.on('add_groupbid_updates', function(data) {
         // alert(data.isOtheroffer);
         var my = data.offersdata;
@@ -2653,11 +2677,8 @@ border: 1px solid white;
                         my[i].id +
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
-
                 }
-
             }
-
         }
         else {
             $('.groupbiddiv').show();
