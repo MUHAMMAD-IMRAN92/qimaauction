@@ -1,5 +1,6 @@
 <script>
     $(".openGroupSidebar").click(function() {
+
         $("#groupbid_sidebar").addClass('sidebaropen-width');
         $('#bag_quantity').val('');
         $('#bid_amount').val('');
@@ -21,9 +22,25 @@
                 _token: "{{ csrf_token() }}",
             },
             success: function(response) {
-                var my = response;
-                console.log(my);
-                // alert(my.length)
+                $('#mywinningoffers').empty();
+                    var winneroffer = response.offerComplete;
+                    console.log(winneroffer);
+                    var i;
+                    for (i = 0; i < winneroffer.length; ++i)
+                    {
+                        var weight = winneroffer[i].weight / 20;
+                        var liability =winneroffer[i].weight*winneroffer[i].amount;
+                        if(winneroffer[i].useroffers.length != 0)
+                        {
+                            if(winneroffer[i].useroffers[0].user_id == {{Auth::user()->id}})
+                            {
+                                $('#mywinningoffers').append("<li><span class='lotid'>" + winneroffer[i].auction_products.rank + "</span><p style='line-height: 30px'>Amount: $" + commify(winneroffer[i].amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
+                                "</p></li>");
+                            }
+
+                        }
+                    }
+                var my = response.groupbid;
                 if (my.length != 0) {
                     $('#offers').empty();
                     $('#other-offers').empty();
@@ -187,6 +204,7 @@
             // var lotweight       = $('.productweight'+id).html();
             // var finallotweight = parseFloat(lotweight.replace(/[^0-9.]/g, ''));
             var auctionid = $('.auctionid' + id).val();
+            var isgroup = '1';
             if(bagssdded == rembags)
             {
                 //save data in autobid table if offer is on all weight
@@ -197,6 +215,7 @@
                         id: id,
                         autobidamount:groupbidamount,
                         auctionid:auctionid,
+                        isgroup:isgroup,
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
@@ -385,6 +404,7 @@
           if (parseInt($(this).val()) > maximumbags)
           {
             $('.validationbags').html('Please enter a value less than or equal to total bags.');
+            $('.bag_quantity').val('');
             $('.show-bid-confirm').prop('disabled', true);
           }
             else
@@ -402,10 +422,14 @@
             var amount      = $('.groupbidamount').val();
             var bags        = $('.bag_quantity').val();
             var id          = $('.lotproductid').html();
-            // alert(id);
-            var currentbid       = $('.bidData1'+id).html();
+            var totalbags   = $('.productbags').html();
+            var currentbid  = $('.bidData1'+id).html();
             var finalcurrentbid = parseFloat(currentbid.replace(/[^0-9.]/g, ''));
-
+            if(bags == totalbags)
+            {
+                // console.log('hello');
+                $('.fullweight').html('You are buying all bags you will not participate in group biding.');
+            }
             if(bags == '')
             {
                 $('.validationbags').html('Please enter Bags.');
@@ -437,6 +461,11 @@
         $('.cancelgroupbtn').click(function(){
             $('.show-bid-confirm').show();
             $('.liabiltysec').hide();
+            $('.fullweight').html('');
+            $('.bag_quantity').val('');
+            $('.groupbidamount').val('');
+            $('.validationbags').html('');
+            $('.validationamount').html('');
             $('.confirmgroupbidbutton').prop('disabled', false);
         });
         //save group bid offer
@@ -552,54 +581,63 @@
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
 
+                            $('#offers').empty();
+                            $('#other-offers').empty();
+                            $('#bag_quantity').val('');
+                            $('#bid_amount').val('');
+                            $('.show-bid-confirm').show();
+                            $('.liabiltysec').hide();
+                            $('.offerdiv').show();
+                            $('.fullweight').html('');
+
                         }
                     },
                     error: function(error) {
                         console.log(error)
                     }
                 });
-                //save data in offers table
-                $.ajax({
-                    url: "{{ route('savegroupbidoffer') }}",
-                    method: 'POST',
-                    data: {
-                        id: id,
-                        weight: finalweight,
-                        amount:groupbidamount,
-                        _token: "{{ csrf_token() }}",
-                    },
-                    success: function(response) {
-                        var amount = response.groupOfferData.amount;
-                        $('#offers').empty();
-                        $('#other-offers').empty();
-                        $('#bag_quantity').val('');
-                        $('#bid_amount').val('');
-                        $('.show-bid-confirm').show();
-                        $('.liabiltysec').hide();
-                        $('.offerdiv').show();
-                        // $('.groupbiddiv').hide();
-                        // $('.offerpost').html('$'+amount);
-                        // console.log(response);
-                        // var isActive    = response.groupOfferData.is_active;
-                        // var amount      = response.groupOfferData.amount;
-                        // var user_id     = response.userOfffers.user_id;
-                        // var offersdata  = response.groupbid;
-                        // var adminofferData = response.adminOffers;
-                        // if(isActive==1 && user_id=={{Auth::user()->id}})
-                        // {
-                        //     $('.offerdiv').show();
-                        //     $('.groupbiddiv').hide();
-                        //     $('.offerpost').html('$'+amount);
-                        // }
-                        //     socket.emit('add_groupbid_updates', {
-                        //      "offersdata": offersdata,
-                        //      "adminofferData":adminofferData,
-                        // });
-                    },
-                    error: function(error) {
-                        console.log(error)
-                    }
-                });
+                // save data in offers table
+                // $.ajax({
+                //     url: "{{ route('savegroupbidoffer') }}",
+                //     method: 'POST',
+                //     data: {
+                //         id: id,
+                //         weight: finalweight,
+                //         amount:groupbidamount,
+                //         _token: "{{ csrf_token() }}",
+                //     },
+                //     success: function(response) {
+                //         // console.log(response);
+                //         // var amount = response.groupOfferData.amount;
+                //         $('#offers').empty();
+                //         $('#other-offers').empty();
+                //         $('#bag_quantity').val('');
+                //         $('#bid_amount').val('');
+                //         $('.show-bid-confirm').show();
+                //         $('.liabiltysec').hide();
+                //         $('.offerdiv').show();
+                //         // $('.groupbiddiv').hide();
+                //         // $('.offerpost').html('$'+amount);
+                //         // console.log(response);
+                //         // var isActive    = response.groupOfferData.is_active;
+                //         // var amount      = response.groupOfferData.amount;
+                //         // var user_id     = response.userOfffers.user_id;
+                //         var offersdata  = response.offerComplete;
+                //         // var adminofferData = response.adminOffers;
+                //         // if(isActive==1 && user_id=={{Auth::user()->id}})
+                //         // {
+                //         //     $('.offerdiv').show();
+                //         //     $('.groupbiddiv').hide();
+                //         //     $('.offerpost').html('$'+amount);
+                //         // }
+                //             socket.emit('add_complte_groupbid', {
+                //              "offersdata": offersdata,
+                //         });
+                //     },
+                //     error: function(error) {
+                //         console.log(error)
+                //     }
+                // });
             }
             else
             {
@@ -615,23 +653,36 @@
                     },
                     success: function(response) {
                         // console.log(response);
-                        var isActive    = response.groupOfferData.is_active;
+                        if(response.message !=null)
+                        {
+                            $('.fullweight').html(response.message);
+                            $('.show-bid-confirm').show();
+                            $('.liabiltysec').hide();
+                            $('.bag_quantity').val('');
+                            $('.groupbidamount').val('');
+                        }
+                        else
+                        {
+                            var isActive    = response.groupOfferData.is_active;
                         var amount      = response.groupOfferData.amount;
                         var user_id     = response.userOfffers.user_id;
                         var offersdata  = response.groupbid;
                         var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
-                            // $('#bag_quantity').val('');
-                            // $('#bid_amount').val('');
-                            // $('.show-bid-confirm').show();
-                            // $('.liabiltysec').hide();
-                            // $('.confirmgroupbidbutton').prop('disabled', false);
+                            $('#bag_quantity').val('');
+                            $('#bid_amount').val('');
+                            $('.show-bid-confirm').show();
+                            $('.liabiltysec').hide();
+                            $('.confirmgroupbidbutton').prop('disabled', false);
+
                         }
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
                         });
+                        }
+
                     },
                     error: function(error) {
                         console.log(error)
