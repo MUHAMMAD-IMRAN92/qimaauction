@@ -2,7 +2,7 @@
     function counter(offer_id,id,time,endtime,timerId=""){
         // alert(endtime)
         // console.log(timerId);
-      
+
         var curnet_time=new Date();
         var curnet_time = AddMinutesToDate(curnet_time,3000);
         var end_time=new Date(endtime);
@@ -10,7 +10,7 @@
         var dif = (seconds/1000)/60;
         var timeLeft = Math.round(dif*60);
         var timerId = setInterval(countdown, 1000);
-        
+
         for (let i = 0; i < timerId; i++) {
             window.clearInterval(i);
         }
@@ -22,7 +22,7 @@ function countdown() {
         clearTimeout(timerId);
         doSomething(offer_id);
     } else {
-        console.log(timerId)
+        // console.log(timerId)
         // console.log(timeLeft)
         // console.log('id'+timerId)
         document.getElementById('some_div'+id).innerHTML = timeLeft + ' seconds remaining';
@@ -43,12 +43,12 @@ function doSomething(offer_id) {
                 success: function(response) {
                             var my=response;
                             var offersdata=response.offersdata
-                            socket.emit('add_groupbid_updates', {
-                             "offersdata": offersdata,
-                            //  "adminofferData":adminofferData,
+                        //     socket.emit('add_groupbid_updates', {
+                        //      "offersdata": offersdata,
+                        //     //  "adminofferData":adminofferData,
 
-                        });
-                            console.log(offersdata);
+                        // });
+                            // console.log(offersdata);
                     },
                     error: function(error) {
                         console.log(error)
