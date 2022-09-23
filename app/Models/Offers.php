@@ -13,6 +13,10 @@ class Offers extends Model
     {
         return $this->hasMany(UserOffers::class,'offer_id','id')->where('user_id',Auth::user()->id);
     }
+    public function allOfferUsers()
+    {
+        return $this->hasMany(UserOffers::class,'offer_id','id');
+    }
     public function auctionProducts()
     {
         return $this->hasOne(AuctionProduct::class,'id','auction_product_id');

@@ -5,6 +5,7 @@
         $('#bag_quantity').val('');
         $('#bid_amount').val('');
         $('.finalweight').html('');
+        $('.fullweight').html('');
         var id = $(this).attr('data-id');
         var rank = $('.productrank' + id).html();
         $('#groupbidoffers').empty();
@@ -22,24 +23,6 @@
                 _token: "{{ csrf_token() }}",
             },
             success: function(response) {
-                $('#mywinningoffers').empty();
-                    var winneroffer = response.offerComplete;
-                    console.log(winneroffer);
-                    var i;
-                    for (i = 0; i < winneroffer.length; ++i)
-                    {
-                        var weight = winneroffer[i].weight / 20;
-                        var liability =winneroffer[i].weight*winneroffer[i].amount;
-                        if(winneroffer[i].useroffers.length != 0)
-                        {
-                            if(winneroffer[i].useroffers[0].user_id == {{Auth::user()->id}})
-                            {
-                                $('#mywinningoffers').append("<li><span class='lotid'>" + winneroffer[i].auction_products.rank + "</span><p style='line-height: 30px'>Amount: $" + commify(winneroffer[i].amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
-                                "</p></li>");
-                            }
-
-                        }
-                    }
                 var my = response.groupbid;
                 if (my.length != 0) {
                     $('#offers').empty();
@@ -64,10 +47,7 @@
                         var amount = my[i].amount;
                         var liability = my[i].accopied_wieght * amount;
                         var rem_weight = my[i].remainig_weight / 20;
-                        // alert(my[i].rank);
-
                         if (my[i].my_check == true) {
-                            // alert(my[i].rank);
                             $('#offers').append("<li> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
                                 " </span> <button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button> </div><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
                                 "<br>Liablity:$" + commify(liability) +
@@ -123,21 +103,7 @@
             }
         });
 });
-//for appended data
-//  $(document).on('change', '#remaining_bag_quantity', function() {
-//           var id     = $(this).attr('data-id');
-//           var maxvalue = $('.remainingbags'+id).html();
-//           var max = maxvalue;
-//           var min = 1;
-//           if ($(this).val() > max)
-//           {
-//               $(this).val(max);
-//           }
-//           else if ($(this).val() < min)
-//           {
-//               $(this).val(min);
-//           }
-//         });
+
         $(document).on('focusout', '#remaining_bag_quantity', function() {
             var id       = $(this).attr('data-id');
             var maxvalue = $('.remainingbags'+id).html();
@@ -155,11 +121,6 @@
                     var totalweight = quantity*20;
                     $('.appendedfinalweight'+id).html(totalweight+'lbs');
             }
-
-            // var id     = $(this).attr('data-id');
-            // var quantity    = $(this).val();
-            // var totalweight = quantity*20;
-            //  $('.appendedfinalweight'+id).html(totalweight+'/lbs');
         });
         $(document).on('click', '.appended-bid-confirm', function() {
             var id     = $(this).attr('data-id');
@@ -176,7 +137,6 @@
                var finalgroupbidamount= parseFloat(groupbidamount.replace(/[^0-9.]/g, ''));
                 var weight         = $('.appendedfinalweight'+id).html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-                // alert(groupbidamount);
                 var liability      = finalweight*finalgroupbidamount;
                 $('.bidamountappended'+id).html(commify(groupbidamount));
                 $('.liabilityweight'+id).html(weight);
@@ -193,20 +153,37 @@
             var id             = $('.lotproductid').html();
             var weight         = $('.appendedfinalweight'+offerid).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
-
             var  bidamount = $('.offeramount'+offerid).html();
             var groupbidamount= parseFloat(bidamount.replace(/[^0-9.]/g, ''));
-
-            // alert(groupbidamount);
-             //lot total weight
             var rembags = $('.remainingbags'+offerid).html();
             var bagssdded   =   $('.bag_quant'+offerid).val();
-            // var lotweight       = $('.productweight'+id).html();
-            // var finallotweight = parseFloat(lotweight.replace(/[^0-9.]/g, ''));
             var auctionid = $('.auctionid' + id).val();
             var isgroup = '1';
             if(bagssdded == rembags)
             {
+                //save data in user offers table
+                $.ajax({
+                    url: "{{ route('saveothergroupbidoffer') }}",
+                    method: 'POST',
+                    data: {
+                        offerid:offerid,
+                        auctionproductid: id,
+                        weight: finalweight,
+                        amount:groupbidamount,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        $('#offers').empty();
+                        $('#other-offers').empty();
+                        $('#bag_quantity').val('');
+                        $('#bid_amount').val('');
+                        $('.show-bid-confirm').show();
+                        $('.liabiltysec').hide();
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
                 //save data in autobid table if offer is on all weight
                 $.ajax({
                     url: "{{ route('autobiddata') }}",
@@ -219,7 +196,6 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        // console.log(response);
                         if (response.success) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -236,8 +212,6 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
-
-
                         } else if (response.message !== null) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -268,6 +242,8 @@
                             var loser = response.loser_user;
                             var winneruser = response.winneruser;
                             var checkTimer = response.timerCheck;
+                            var isgroup    =response.isgroup;
+                            var groupUsers = response.groupUsers;
                             $('.errorMsgAutoBid' + id).html('');
                             $(".bidcollapse" + bidID).addClass(
                                 "changecolor");
@@ -290,6 +266,8 @@
                                 "loser": loser,
                                 "winneruser": winneruser,
                                 "checkTimer": checkTimer,
+                                "isgroup":isgroup,
+                                "groupUsers":groupUsers,
                             });
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -306,49 +284,7 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
-
                         }
-                    },
-                    error: function(error) {
-                        console.log(error)
-                    }
-                });
-                //save data in user offers table
-                $.ajax({
-                    url: "{{ route('saveothergroupbidoffer') }}",
-                    method: 'POST',
-                    data: {
-                        offerid:offerid,
-                        auctionproductid: id,
-                        weight: finalweight,
-                        amount:groupbidamount,
-                        _token: "{{ csrf_token() }}",
-                    },
-                    success: function(response) {
-                        // console.log(response);
-                        $('#offers').empty();
-                        $('#other-offers').empty();
-                        $('#bag_quantity').val('');
-                        $('#bid_amount').val('');
-                        $('.show-bid-confirm').show();
-                        $('.liabiltysec').hide();
-
-
-                        // var isActive    = response.activeOffers.is_active;
-                        // var amount      = response.activeOffers.amount;
-                        // var user_id     = response.otherOfffers.user_id;
-                        // var offersdata  = response.groupbid;
-                        // var adminofferData = response.adminOffers;
-                        // if(isActive==1 && user_id=={{Auth::user()->id}})
-                        // {
-                        //     $('.offerdiv').show();
-                        //     $('.groupbiddiv').hide();
-                        //     $('.offerpost').html('$'+amount);
-                        // }
-                        //     socket.emit('add_groupbid_updates', {
-                        //      "offersdata": offersdata,
-                        //      "adminofferData":adminofferData,
-                        // });
                     },
                     error: function(error) {
                         console.log(error)
@@ -368,23 +304,8 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        // console.log(response);
-
-                        // var isActive    = response.activeOffers.is_active;
-                        // var amount      = response.activeOffers.amount;
-                        // var user_id     = response.otherOfffers.user_id;
                         var offersdata  = response.groupbid;
                         var adminofferData = response.adminOffers;
-                        // alert(isOtheroffer);
-                        // if(isActive==1 && user_id=={{Auth::user()->id}})
-                        // {
-                            // $('#bag_quantity').val('');
-                            // $('#bid_amount').val('');
-                            // $('.show-bid-confirm').show();
-                            // $('.liabiltysec').hide();
-                            // $('.confirmgroupbidbutton').prop('disabled', false);
-                        // }
-                        // console.log("test"+offersdata)
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
@@ -395,7 +316,6 @@
                     }
                 });
             }
-
         });
         //show bags quantity
         $(".bag_quantity").focusout(function(){
@@ -415,7 +335,6 @@
                 var totalweight = quantity*20;
                 $('.finalweight').html(totalweight+'lbs');
             }
-
         });
         //show liabilty div
         $('.show-bid-confirm').click(function(){
@@ -427,7 +346,6 @@
             var finalcurrentbid = parseFloat(currentbid.replace(/[^0-9.]/g, ''));
             if(bags == totalbags)
             {
-                // console.log('hello');
                 $('.fullweight').html('You are buying all bags you will not participate in group biding.');
             }
             if(bags == '')
@@ -493,7 +411,6 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        // console.log(response);
                         if (response.success) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -510,9 +427,7 @@
                             $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
-
                         } else if (response.message !== null) {
-                            // alert('(response.message !== null');
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(response.message);
@@ -580,7 +495,6 @@
                               $(".bidnowautobutton" + id).css("display", "none");
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
-
                             $('#offers').empty();
                             $('#other-offers').empty();
                             $('#bag_quantity').val('');
@@ -589,55 +503,12 @@
                             $('.liabiltysec').hide();
                             $('.offerdiv').show();
                             $('.fullweight').html('');
-
                         }
                     },
                     error: function(error) {
                         console.log(error)
                     }
                 });
-                // save data in offers table
-                // $.ajax({
-                //     url: "{{ route('savegroupbidoffer') }}",
-                //     method: 'POST',
-                //     data: {
-                //         id: id,
-                //         weight: finalweight,
-                //         amount:groupbidamount,
-                //         _token: "{{ csrf_token() }}",
-                //     },
-                //     success: function(response) {
-                //         // console.log(response);
-                //         // var amount = response.groupOfferData.amount;
-                //         $('#offers').empty();
-                //         $('#other-offers').empty();
-                //         $('#bag_quantity').val('');
-                //         $('#bid_amount').val('');
-                //         $('.show-bid-confirm').show();
-                //         $('.liabiltysec').hide();
-                //         $('.offerdiv').show();
-                //         // $('.groupbiddiv').hide();
-                //         // $('.offerpost').html('$'+amount);
-                //         // console.log(response);
-                //         // var isActive    = response.groupOfferData.is_active;
-                //         // var amount      = response.groupOfferData.amount;
-                //         // var user_id     = response.userOfffers.user_id;
-                //         var offersdata  = response.offerComplete;
-                //         // var adminofferData = response.adminOffers;
-                //         // if(isActive==1 && user_id=={{Auth::user()->id}})
-                //         // {
-                //         //     $('.offerdiv').show();
-                //         //     $('.groupbiddiv').hide();
-                //         //     $('.offerpost').html('$'+amount);
-                //         // }
-                //             socket.emit('add_complte_groupbid', {
-                //              "offersdata": offersdata,
-                //         });
-                //     },
-                //     error: function(error) {
-                //         console.log(error)
-                //     }
-                // });
             }
             else
             {
@@ -652,7 +523,6 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        // console.log(response);
                         if(response.message !=null)
                         {
                             $('.fullweight').html(response.message);
@@ -664,10 +534,10 @@
                         else
                         {
                             var isActive    = response.groupOfferData.is_active;
-                        var amount      = response.groupOfferData.amount;
-                        var user_id     = response.userOfffers.user_id;
-                        var offersdata  = response.groupbid;
-                        var adminofferData = response.adminOffers;
+                            var amount      = response.groupOfferData.amount;
+                            var user_id     = response.userOfffers.user_id;
+                            var offersdata  = response.groupbid;
+                            var adminofferData = response.adminOffers;
                         if(isActive==1 && user_id=={{Auth::user()->id}})
                         {
                             $('#bag_quantity').val('');
@@ -675,14 +545,12 @@
                             $('.show-bid-confirm').show();
                             $('.liabiltysec').hide();
                             $('.confirmgroupbidbutton').prop('disabled', false);
-
                         }
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
                         });
                         }
-
                     },
                     error: function(error) {
                         console.log(error)

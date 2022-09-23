@@ -46,7 +46,7 @@
         background-color: #dee2e6 !important;
         border: none !important;
         font-size: 30px !important;
-       
+
     }
     button:focus { outline: none !important; }
 
@@ -1899,13 +1899,7 @@ border: 1px solid white;
                                 <ul id="offers">
                                 </ul>
                             </div>
-                            <hr>
-                            <div class="groupbid-offers my-offers">
-                                <p class="fw-bold">My Winning Offers:</p>
-                                <ul id="mywinningoffers">
-                                </ul>
-                            </div>
-
+                            {{-- <hr> --}}
                         </div>
                         <div class="current-group-bid">
                             <div class="groupbid-offers my-offers">
@@ -2322,7 +2316,6 @@ border: 1px solid white;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-
                         if (response.success) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -2366,6 +2359,9 @@ border: 1px solid white;
                             var loser = response.loser_user;
                             var winneruser = response.winneruser;
                             var checkTimer = response.timerCheck;
+                            var isgroup    =response.isgroup;
+                            var groupUsers = response.groupUsers;
+
                             $('.errorMsgAutoBid' + id).html('');
                             $(".bidcollapse" + bidID).addClass(
                                 "changecolor");
@@ -2388,6 +2384,8 @@ border: 1px solid white;
                                 "loser": loser,
                                 "winneruser": winneruser,
                                 "checkTimer": checkTimer,
+                                "isgroup":isgroup,
+                                "groupUsers":groupUsers,
                             });
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -2474,9 +2472,44 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        // console.log(data);
+        console.log(data);
         $(".paddleno" + data.bidID).html(data.paddleNo);
+        //if triggered from groupbid
+       if(data.isgroup == 1)
+       {
+        // console.log('groupbid');
+            var i;
+            for (i = 0; i < data.winneruser.length; ++i)
+            {
+                if (data.winneruser[i].bidwinner == {{ Auth::user()->id }}) {
+                    $('.alertMessage'+data.bidID).html('');
+                    $(".liabilitybidcollapse" + data.bidID).show();
+                    $(".liability_your" + data.bidID).addClass('liabilty_shown');
+                    $(".finalliabilitytr").show();
+                    $(".userbid" + data.bidID).css("color", "black");
+                    $(".bidcollapse" + data.bidID).addClass("changecolor");
+                    $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
+                    $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+                    $(".autobidClass" + data.bidID).css("display", "none");
+                    $(".bidnowautobutton" + data.bidID).css("display", "none");
+                    $(".bidnowbutton" + data.bidID).css("display", "none");
+                    $(".autobidamount" + data.bidID).hide();
+                    $(".nextincrement" + data.bidID).hide();
+                    $('.errorMsgAutoBid' + data.bidID).html('');
+                    $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                    $('.errorMsgAutoBid' + data.bidID + data.bidID).html(
+                        '<p>Current autobid is $' +
+                        addCommas(data.autobidamount) +
+                        ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
+                        data.bidID + '>Remove</a>}</p>');
+                }
+            }
+       }
+       else
+       {
+        //if triggered from autobid
         if (data.user_id == {{ Auth::user()->id }} && data.winneruser == {{ Auth::user()->id }}) {
+            $('.alertMessage'+data.bidID).html('');
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
@@ -2490,66 +2523,108 @@ border: 1px solid white;
         } else {
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
-
         }
+    }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         data.nextIncrement = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
-        $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
-            $(".bidcollapse" + data.bidID).removeClass("changecolor");
-            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            setTimeout(() => {
-                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000);
-            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $(".alertMessage" + data.bidID).css('background', '#f16767');
-            $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
-            $('.nextincrement' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).show();
-            $('.autobidamount' + data.bidID).show();
-            $('.bidnowautobutton' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).attr("disabled", false);
-            $(".bidnowbutton" + data.bidID).css('background', '##143D30');
-            $('#mywinningoffers').empty();
-
-
+        if(data.isgroup == 1)
+       {
+        // console.log('groupbid');
+            var i;
+            for (i = 0; i < data.winneruser.length; ++i)
+            {
+                if (data.winneruser[i].bidwinner == {{ Auth::user()->id }})
+                {
+                    $(".liability" + data.bidID).html('$' + data.winneruser[i].weight*data.bid_amountNew.toLocaleString('en-US'));
+                }
+            }
+       }
+        else
+        {
+            $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
         }
-        if (data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}) {
-            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            setTimeout(() => {
-                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000);
-            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $(".alertMessage" + data.bidID).css('background', '#f16767');
-            $('.nextincrement' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).show();
-            $('.autobidamount' + data.bidID).show();
-            $('.bidnowautobutton' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).attr("disabled", false);
-            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-            $('#mywinningoffers').empty();
-
+        if(data.groupUsers != null)
+       {
+        console.log('groupbid');
+            var i;
+            for (i = 0; i < data.groupUsers.length; ++i)
+            {
+                if (data.outbid == 0 && data.groupUsers[i].bidwinner == {{ Auth::user()->id }}) {
+                        $(".bidcollapse" + data.bidID).removeClass("changecolor");
+                        $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+                        setTimeout(() => {
+                            $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                        }, 10000);
+                        $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                        $(".alertMessage" + data.bidID).css('background', '#f16767');
+                        $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+                        $('.nextincrement' + data.bidID).show();
+                        $('.bidnowbutton' + data.bidID).show();
+                        $('.autobidamount' + data.bidID).show();
+                        $('.bidnowautobutton' + data.bidID).show();
+                        $('.bidnowbutton' + data.bidID).attr("disabled", false);
+                        $(".bidnowbutton" + data.bidID).css('background', '##143D30');
+                        $(".liabilitybidcollapse" + data.bidID).hide();
+                        $(".liability_your" + data.bidID).removeClass('liabilty_shown');
+                    }
+                }
+            }
+        else
+        {
+            if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }})
+            {
+                $(".bidcollapse" + data.bidID).removeClass("changecolor");
+                $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+                setTimeout(() => {
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                }, 10000);
+                $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                $(".alertMessage" + data.bidID).css('background', '#f16767');
+                $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+                $('.nextincrement' + data.bidID).show();
+                $('.bidnowbutton' + data.bidID).show();
+                $('.autobidamount' + data.bidID).show();
+                $('.bidnowautobutton' + data.bidID).show();
+                $('.bidnowbutton' + data.bidID).attr("disabled", false);
+                $(".bidnowbutton" + data.bidID).css('background', '##143D30');
+                $(".liabilitybidcollapse" + data.bidID).hide();
+                $(".liability_your" + data.bidID).removeClass('liabilty_shown');
+            }
         }
-        if (data.loser == {{ Auth::user()->id }}) {
-            $(".bidcollapse" + data.bidID).removeClass("changecolor");
-            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            setTimeout(() => {
-                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            }, 10000);
-            $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            $(".alertMessage" + data.bidID).css('background', '#f16767');
-            $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
-            $('.nextincrement' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).show();
-            $('.autobidamount' + data.bidID).show();
-            $('.bidnowautobutton' + data.bidID).show();
-            $('.bidnowbutton' + data.bidID).attr("disabled", false);
-            $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-            $('#mywinningoffers').empty();
+
+        // if (data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}) {
+        //     $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+        //     setTimeout(() => {
+        //         $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+        //     }, 10000);
+        //     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+        //     $(".alertMessage" + data.bidID).css('background', '#f16767');
+        //     $('.nextincrement' + data.bidID).show();
+        //     $('.bidnowbutton' + data.bidID).show();
+        //     $('.autobidamount' + data.bidID).show();
+        //     $('.bidnowautobutton' + data.bidID).show();
+        //     $('.bidnowbutton' + data.bidID).attr("disabled", false);
+        //     $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+        // }
+        // if (data.loser == {{ Auth::user()->id }}) {
+        //     $(".bidcollapse" + data.bidID).removeClass("changecolor");
+        //     $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+        //     setTimeout(() => {
+        //         $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+        //     }, 10000);
+        //     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+        //     $(".alertMessage" + data.bidID).css('background', '#f16767');
+        //     $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+        //     $('.nextincrement' + data.bidID).show();
+        //     $('.bidnowbutton' + data.bidID).show();
+        //     $('.autobidamount' + data.bidID).show();
+        //     $('.bidnowautobutton' + data.bidID).show();
+        //     $('.bidnowbutton' + data.bidID).attr("disabled", false);
+        //     $(".bidnowbutton" + data.bidID).css('background', '#143D30');
 
 
-        }
+        // }
         var total_bid = 0;
 
         setTimeout(() => {
@@ -2709,8 +2784,6 @@ border: 1px solid white;
             $(".alertMessage" + data.bidID).css('background', '#f16767');
             $('.alertMessage' + data.bidID).html('You have been outbid.');
             $(".alertMessage" + data.bidID).hide('');
-
-
         }
         if (data.winningBidder == {{ Auth::user()->id }}) {
             total = total;
@@ -2956,15 +3029,15 @@ border: 1px solid white;
         return x1 + x2;
     }
     function cancelOffer(id){
-        swal({   
-          title: "Are you sure?",   
-          text: "",   
-          type: "warning",   
-          showCancelButton: true,   
-          confirmButtonColor: "#DD6B55",   
-          confirmButtonText: "Yes, delete it!",   
-          closeOnConfirm: false 
-      }).then(isConfirmed => { 
+        swal({
+          title: "Are you sure?",
+          text: "",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false
+      }).then(isConfirmed => {
         if(isConfirmed) {
             $.ajax({
                     url: "{{ route('updateUserOfferStatus') }}",
@@ -2974,10 +3047,10 @@ border: 1px solid white;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        console.log(response);
-                  
+                        // console.log(response);
+
                         var offersdata  = response.offersdata;
-                       
+
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                         });
@@ -2987,10 +3060,10 @@ border: 1px solid white;
                     }
                 });
           $(".file").addClass("isDeleted");
-          swal("Deleted!", "Your offer has been deleted.", "success"); 
+          swal("Deleted!", "Your offer has been deleted.", "success");
 }
         });
-       
+
     }
 </script>
 
