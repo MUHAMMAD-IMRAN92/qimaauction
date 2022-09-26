@@ -2690,9 +2690,16 @@ border: 1px solid white;
         // console.log(my);
         var lotid = $('.lotproductid').html();
         // alert(my.auction_product_id);
+        const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
+
+// Clear any timeout/interval up to that id
+        for (let i = 1; i < interval_id; i++) {
+             window.clearInterval(i);
+            }
         if (my.length != 0) {
             var strValue=$('#offers').empty();
             $('#other-offers').empty();
+            $('.some_div').empty();
             var isActive = my[0].is_active;
             var amount = my[0].amount;
             var user_id = my[0].user_id;
