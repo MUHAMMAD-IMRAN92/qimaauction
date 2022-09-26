@@ -1031,13 +1031,16 @@ class AuctionController extends Controller {
         $otherOfffers->auction_product_id    =  Offers::where('id',$request->offerid)->value('auction_product_id');
         $otherOfffers->save();
         $total_weight                        = AuctionProduct::where('id',$request->auctionproductid)->first()->weight;
-        $offerweight                         = Offers::where('id',$request->offerid)->where('is_active',1)->first();
-        $finalweight                         =   $offerweight->weight+$request->weight;
-        if($finalweight == $total_weight)
+        $offerweight                         = Offers::where('id',$request->offerid)->where('is_active',1)->with('allOfferUsers')->first();
+        foreach($offerweight->allOfferUsers as $offerweights)
         {
-           $updateisactive =  Offers::where('id',$request->offerid)->where('is_active','1')->update([
-                'is_active' => '2'
-            ]);
+            $weight=$offerweight->allOfferUsers->sum('weight');
+            if($weight == $total_weight)
+            {
+                $updateisactive =  Offers::where('id',$request->offerid)->where('is_active','1')->update([
+                        'is_active' => '2'
+                ]);
+            }
         }
         Offers::where('id',$request->offerid)->update([
             'end_time' => Carbon::now()->addSecond(30)

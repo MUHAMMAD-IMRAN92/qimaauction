@@ -2528,7 +2528,7 @@ border: 1px solid white;
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         data.nextIncrement = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
-        if(data.isgroup == 1)
+        if(data.isgroup == 1 || data.outbid == 0)
        {
         // console.log('groupbid');
             var i;
@@ -2546,7 +2546,7 @@ border: 1px solid white;
         }
         if(data.groupUsers != null)
        {
-        console.log('groupbid');
+        // console.log('groupbid');
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
