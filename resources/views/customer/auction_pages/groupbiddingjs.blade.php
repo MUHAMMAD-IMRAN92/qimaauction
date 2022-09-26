@@ -197,6 +197,9 @@
                     },
                     success: function(response) {
                         if (response.success) {
+                            $('#offers').empty();
+                            $('#other-offers').empty();
+                            $('.some_div').empty();
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
