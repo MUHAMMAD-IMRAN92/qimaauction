@@ -9,9 +9,7 @@
         var dif = (seconds/1000)/60;
         var timeLeft = Math.round(dif*60);
         var timerId = setInterval(countdown, 1000);
-        // for (let i = 0; i < timerId; i++) {
-        //     window.clearInterval(i);
-        // }
+        
          function AddMinutesToDate(date, minutes) {
              return new Date(date.getTime() - minutes*60000);
            }
