@@ -24,7 +24,7 @@ function countdown() {
 
         // console.log(timeLeft)
         // console.log('id'+timerId)
-        document.getElementById('some_div'+id).innerHTML = timeLeft + ' seconds remaining';
+        document.getElementById('some_div'+id).innerHTML = timeLeft + ' sec';
         // $('#some_div'+id).replaceWith('<b id="some_div0">'+ timeLeft +' seconds remaining</b>')
         timeLeft--;
     }

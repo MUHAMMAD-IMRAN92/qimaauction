@@ -40,6 +40,7 @@
     .lotidparent{
         display: flex !important;
         justify-content: space-between !important;
+        align-items: center !important;
 
     }
     .lotidparent button{
@@ -49,6 +50,14 @@
 
     }
     button:focus { outline: none !important; }
+    .lotidchild{
+        display : flex !important;
+        justify-content:space-between !important;
+    }
+    .lotidchild-1{
+        display:flex !important;
+        flex-direction:column !important;
+    }
 
     .mt-15{
         margin-top: 15px
@@ -817,9 +826,9 @@
 
     .groupbid-sidebar p, .groupbid-sidebar td {
         Font-size: 16px;
-        Line-height: 22px;
+        Line-height: 15px;
         color: #000000;
-        padding: 10px 4px;
+        padding: 4px 3px;
         border: none;
         margin-bottom: 5px;
     }
@@ -844,7 +853,7 @@
 
     .groupbid-offers ul li {
         background-color: #dee2e6;
-        padding: 15px;
+        padding: 5px;
     }
 
     .groupbid-offers ul li span, .lot-toggle-btn {
@@ -2751,20 +2760,56 @@ border: 1px solid white;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
                     // console.log('my');
-                    $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button></div><p style='line-height: 30px'>Amount: $" + commify(my[i]
-                        .amount) + "<br>Bags: " + weight + "<br>Liablity: $" + commify(liability) +
-                        "<br>Remaining time: <b id='some_div" + i + "'></b> " + counter(my[i].id, i, my[i]
-                            .start_time, my[i].end_time) + "</p></li>");
+                    $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
+                        .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
+                        "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
+                            .start_time, my[i].end_time) + "</p></div></div></li>");
+
+                            if(other_check=0 || other_check!==my[i].id){
+                    $('#other-offers').append(
+                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
+                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'> <p>Amount: <span  class='offeramount" + my[i]
+                        .id + "'>" + '$' + commify(my[i].amount) +
+                        "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
+                        rem_weight + "</span></p> <p>Remaining time :<b  id='some_div" + i + "'></b></p>" +
+                        counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                        "</p></li><div id='demo" + i +
+                        "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
+                        my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
+                        "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
+                        "' value='" + my[i].id + "'> <span class='validationbags" + my[i].id +
+                        " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
+                        my[i].id +
+                        "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
+                        my[i].id + "' data-id=" + my[i].id +
+                        ">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended" +
+                        my[i].id + "'><br><p >Bid: <b class='bidamountappended" +
+                        my[i].id +
+                        "'></b></p><p>Weight: <b class='liabilityweight" +
+                        my[i].id +
+                        "'></b> </p><p>Liability: <b class='liabilityappended" +
+                        my[i].id +
+                        "'></b></p><div><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
+                        my[i].id +  "'lot-id='" + my[i].auction_product_id +
+                        "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
+                        my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
+                        other_check= my[i].id;
+                        console.log(other_check)
+
+                    }
+                    else{
+
+                    }
 
                 }
                 else{
                     if(other_check=0 || other_check!==my[i].id){
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
-                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
+                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'> <p>Amount: <span  class='offeramount" + my[i]
                         .id + "'>" + '$' + commify(my[i].amount) +
-                        "</span><br>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
-                        rem_weight + "</span><br>Remaining time :<b  id='some_div" + i + "'></b>" +
+                        "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
+                        rem_weight + "</span></p> <p>Remaining time :<b  id='some_div" + i + "'></b></p>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time) +
                         "</p></li><div id='demo" + i +
                         "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
