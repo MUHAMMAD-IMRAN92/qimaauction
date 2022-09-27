@@ -254,8 +254,7 @@ var other_check=0;
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
                                     commify(response.bid_amount) +
-                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                id + '>Remove</a>}</p>');
+                                ' /lb</p>');
                             $('.autobidamount' + id).val('');
                             $('.alertMessage' + id).html('');
                             $(".bidnowbutton" + id).css("display",
@@ -326,8 +325,7 @@ var other_check=0;
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p>Current autobid is $' +
                                 addCommas(response.bid_amount) +
-                                ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
-                                id + '>Remove</a>}</p>');
+                                ' /lb</p>');
                             $('.autobidamount' + id).val('');
                             $('.alertMessage' + id).html('');
                             $(".bidnowbutton" + id).css("display",
