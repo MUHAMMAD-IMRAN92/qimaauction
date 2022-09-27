@@ -62,7 +62,43 @@ var other_check=0;
                                 "</p><p>Remaining time: <b id='some_div" + i + "'></b></p>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time) +
                                 "</p></div></div></li>");
+                                if(other_check==0 || other_check!==my[i].id){
+                            $('#other-offers').append(
+                                "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
+                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 30px'>Amount: <span  class='offeramount" + my[i].id +
+                                "'>" + '$' + commify(my[i].amount) +
+                                "</span><br>Remaining Bags: <span class='remainingbags" + my[
+                                    i].id + "'>" + rem_weight +
+                                "</span><br>Remaining time: <b  id='some_div" + i + "'></b>" +
+                                counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                                "</p></li><div id='demo" + i +
+                                "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant" +
+                                my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i]
+                                .id +
+                                "' name='bag_quantity'><input type='hidden' class='offerhiddenid" +
+                                my[i].id + "' value='" + my[i].id +
+                                "'> <span class='validationbags" + my[i].id +
+                                " colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight" +
+                                my[i].id +
+                                "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
+                                my[i].id + "' data-id=" + my[i].id +
+                                ">Post Group Bid</button> <br><div class='bid-confirm-sec hide liabiltysecappended" +
+                                my[i].id +
+                                "'><br><p >Bid:<b class='bidamountappended" +
+                                my[i].id +
+                                "'></b></p><p>Weight:<b class='liabilityweight" +
+                                my[i].id +
+                                "'></b> </p><p>Liability:<b class='liabilityappended" +
+                                my[i].id +
+                                "'></b></p><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
+                                my[i].id + "'lot-id='" + my[i].auction_product_id +
+                                "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
+                                my[i].id + "'>Cancel</button></div> </div> </div></li>");
+                                other_check= my[i].id;
+                    }
+                    else{
 
+                    }
                         } else {
                             if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
