@@ -2778,7 +2778,7 @@ border: 1px solid white;
                         "'></b> </p><p>Liability: <b class='liabilityappended" +
                         my[i].id +
                         "'></b></p><div><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
-                        my[i].id +
+                        my[i].id +  "'lot-id='" + my[i].auction_product_id +
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
                 }
