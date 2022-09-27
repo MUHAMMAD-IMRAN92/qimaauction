@@ -3,7 +3,7 @@
         // alert(endtime)
 
         var curnet_time=new Date();
-        var curnet_time = AddMinutesToDate(curnet_time,300);
+        var curnet_time = AddMinutesToDate(curnet_time,3000);
         var end_time=new Date(endtime);
         var seconds = end_time - curnet_time;
         var dif = (seconds/1000)/60;
