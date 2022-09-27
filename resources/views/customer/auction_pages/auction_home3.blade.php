@@ -1394,11 +1394,14 @@ border: 1px solid white;
                                             <td class="">SL28</td>
                                         @endif
                                     @endforeach
-                                    @if (isset($auctionProduct->singleBidPricelatest))
+                                    @if (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 0)
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
+                                    @elseif (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 1)
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                                {{ $auctionProduct->offerComplete->paddle_number ?? '---' }}</td>
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
                                     @endif
