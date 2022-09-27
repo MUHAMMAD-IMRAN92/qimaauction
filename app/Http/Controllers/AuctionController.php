@@ -482,7 +482,6 @@ class AuctionController extends Controller {
     }
 
     public function autoBidData(Request $request) {
-        // dd(request()->all());
         $currentDate = date('Y-m-d H:i:s');
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
         $auction = Auction::where('is_active','1')->first();
@@ -538,10 +537,6 @@ class AuctionController extends Controller {
                 $singleBidData->user_id = $user;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
-                if($request->isgroup == 1)
-                {
-                    $singleBidData->is_group = $request->isgroup;
-                }
                 $singleBidData->save();
 
                 $singleBidData = new SingleBid();
@@ -550,10 +545,6 @@ class AuctionController extends Controller {
                 $singleBidData->user_id = $other_id;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
-                if($request->isgroup == 1)
-                {
-                    $singleBidData->is_group = $request->isgroup;
-                }
                 $singleBidData->save();
                 $autoBidData = $auctionProductsData->autoBidActive;
                 $winner = $other_id;
@@ -569,10 +560,6 @@ class AuctionController extends Controller {
                     $request->auctionid;
                     $singleBidData->user_id = $user;
                     $singleBidData->auction_product_id = $request->id;
-                    if($request->isgroup == 1)
-                    {
-                        $singleBidData->is_group = $request->isgroup;
-                    }
                     $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBidData->save();
 
@@ -582,10 +569,6 @@ class AuctionController extends Controller {
                     $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
-                    if($request->isgroup == 1)
-                    {
-                        $singleBidData->is_group = $request->isgroup;
-                    }
                     $singleBidData->save();
 
                     $autoBidData = new AutoBid();
@@ -613,10 +596,6 @@ class AuctionController extends Controller {
                     $singleBid->auction_id = $request->auctionid;
                     $singleBid->user_id = $loser;
                     $singleBid->auction_product_id = $request->id;
-                    if($request->isgroup == 1)
-                    {
-                        $singleBid->is_group = $request->isgroup;
-                    }
                     $singleBid->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBid->save();
 
@@ -626,10 +605,6 @@ class AuctionController extends Controller {
                     $singleBid->user_id = $user;
                     $singleBid->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBid->auction_product_id = $request->id;
-                    if($request->isgroup == 1)
-                    {
-                        $singleBid->is_group = $request->isgroup;
-                    }
                     $singleBid->save();
                     AutoBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->update([
                         'is_active' => '0'
@@ -673,10 +648,6 @@ class AuctionController extends Controller {
             $singleBid->user_id = $user;
             $singleBid->autobid_id = $autoBidData->id;
             $singleBid->auction_product_id = $request->id;
-            if($request->isgroup == 1)
-            {
-                $singleBid->is_group = $request->isgroup;
-            }
             $singleBid->save();
 
             //save timer start time
@@ -1061,15 +1032,24 @@ class AuctionController extends Controller {
     }
     public function saveOtherGroupbidOffer(Request $request)
     {
+        // return $request;
         $user                                =  Auth::user()->id;
-        $otherOfffers                        =  new UserOffers();
+        $check_user_offer=UserOffers::where('user_id',$user)->where('offer_id',$request->offerid)->first();
+        if($check_user_offer==null){
+            $otherOfffers                        =  new UserOffers();
+            $otherOfffers->weight                =  $request->weight;
+        }
+        else{
+            $otherOfffers                        =  UserOffers::find($check_user_offer->id);
+            $otherOfffers->weight                = $check_user_offer->weight+ $request->weight;
+        }
         $otherOfffers->user_id               =  $user;
         $otherOfffers->offer_id              =  $request->offerid;
-        $otherOfffers->weight                =  $request->weight;
         $otherOfffers->auction_product_id    =  Offers::where('id',$request->offerid)->value('auction_product_id');
         $otherOfffers->save();
         $total_weight                        = AuctionProduct::where('id',$request->auctionproductid)->first()->weight;
         $offerweight                         = Offers::where('id',$request->offerid)->where('is_active',1)->with('allOfferUsers')->first();
+    //    return $offerweight;
         foreach($offerweight->allOfferUsers as $offerweights)
         {
             $weight=$offerweight->allOfferUsers->sum('weight');
@@ -1124,10 +1104,7 @@ class AuctionController extends Controller {
     {
         $OffersData =  Offers::find($request->id);
         $OffersData->end_time=date('Y-m-d H:i:s');
-        if($OffersData->is_active==1)
-        {
-            $OffersData->is_active=0;
-        }
+        $OffersData->is_active=0;
         $OffersData->save();
         $id=$OffersData->auction_product_id;
         $groupbidDatas      = UserOffers::where('status',1)->get();

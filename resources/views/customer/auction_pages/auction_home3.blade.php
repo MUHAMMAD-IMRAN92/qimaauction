@@ -2742,6 +2742,7 @@ border: 1px solid white;
         //     for (let i = 0; i < timerId; i++) {
         //     window.clearInterval(i);
         // }
+                   
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;
@@ -3092,7 +3093,7 @@ border: 1px solid white;
                     }
                 });
           $(".file").addClass("isDeleted");
-          swal("Deleted!", "Your offer has been deleted.", "success");
+        //   swal("Deleted!", "Your offer has been deleted.", "success");
 }
         });
 
