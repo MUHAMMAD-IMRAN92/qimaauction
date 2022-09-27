@@ -27,6 +27,8 @@
                 const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
 
 // Clear any timeout/interval up to that id
+var other_check=0;   
+
         for (let i = 1; i < interval_id; i++) {
              window.clearInterval(i);
             }
@@ -62,6 +64,7 @@
                                 "</p></li>");
 
                         } else {
+                            if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
                                 "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 30px'>Amount: <span  class='offeramount" + my[i].id +
@@ -93,7 +96,11 @@
                                 my[i].id + "'lot-id='" + my[i].auction_product_id +
                                 "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                                 my[i].id + "'>Cancel</button></div> </div> </div></li>");
+                                other_check= my[i].id;
+                    }
+                    else{
 
+                    }
                         }
                     }
 

@@ -2742,7 +2742,7 @@ border: 1px solid white;
         //     for (let i = 0; i < timerId; i++) {
         //     window.clearInterval(i);
         // }
-                   
+                var other_check=0;   
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;
@@ -2758,6 +2758,7 @@ border: 1px solid white;
 
                 }
                 else{
+                    if(other_check=0 || other_check!==my[i].id){
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'>Amount: <span  class='offeramount" + my[i]
@@ -2785,6 +2786,13 @@ border: 1px solid white;
                         my[i].id +  "'lot-id='" + my[i].auction_product_id +
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
+                        other_check= my[i].id;
+                        console.log(other_check)
+
+                    }
+                    else{
+
+                    }
                 }
             }
         }
