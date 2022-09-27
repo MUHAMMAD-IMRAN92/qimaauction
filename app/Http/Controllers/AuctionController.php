@@ -1124,7 +1124,10 @@ class AuctionController extends Controller {
     {
         $OffersData =  Offers::find($request->id);
         $OffersData->end_time=date('Y-m-d H:i:s');
-        $OffersData->is_active=0;
+        if($OffersData->is_active==1)
+        {
+            $OffersData->is_active=0;
+        }
         $OffersData->save();
         $id=$OffersData->auction_product_id;
         $groupbidDatas      = UserOffers::where('status',1)->get();
