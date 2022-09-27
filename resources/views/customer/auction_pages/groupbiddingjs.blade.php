@@ -57,11 +57,11 @@ var other_check=0;
                         var rem_weight = my[i].remainig_weight / 20;
                         if (my[i].my_check == true) {
                             $('#offers').append("<li> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
-                                " </span> <button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button> </div><p>Amount: $" + commify(my[i].amount) + "<br>Bags:" + weight +
-                                "<br>Liablity:$" + commify(liability) +
-                                "<br>Remaining time: <b id='some_div" + i + "'></b>" +
+                                " </span> <button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button> </div> <div class='lotidchild'><div class='lotidchild-1'><p>Amount: $" + commify(my[i].amount) + "<p>Bags:" + weight +
+                                "</p></div><div class='lotidchild-1'> <p>Liablity:$" + commify(liability) +
+                                "</p><p>Remaining time: <b id='some_div" + i + "'></b></p>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time) +
-                                "</p></li>");
+                                "</p></div></div></li>");
 
                         } else {
                             if(other_check==0 || other_check!==my[i].id){
