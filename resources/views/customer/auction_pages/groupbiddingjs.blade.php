@@ -84,7 +84,7 @@
                                 "'></b> </p><p>Liability:<b class='liabilityappended" +
                                 my[i].id +
                                 "'></b></p><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
-                                my[i].id +
+                                my[i].id + "'lot-id='" + my[i].auction_product_id +
                                 "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                                 my[i].id + "'>Cancel</button></div> </div> </div></li>");
 
@@ -150,7 +150,7 @@
         });
         $(document).on('click', '.participategroupbidbutton', function() {
             var offerid        = $(this).attr('data-id');
-            var id             = $('.lotproductid').html();
+            var id             = $(this).attr('lot-id');
             var weight         = $('.appendedfinalweight'+offerid).html();
             var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
             var  bidamount = $('.offeramount'+offerid).html();

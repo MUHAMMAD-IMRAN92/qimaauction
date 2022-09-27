@@ -482,6 +482,7 @@ class AuctionController extends Controller {
     }
 
     public function autoBidData(Request $request) {
+        // dd(request()->all());
         $currentDate = date('Y-m-d H:i:s');
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
         $auction = Auction::where('is_active','1')->first();
@@ -537,6 +538,10 @@ class AuctionController extends Controller {
                 $singleBidData->user_id = $user;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
+                if($request->isgroup == 1)
+                {
+                    $singleBidData->is_group = $request->isgroup;
+                }
                 $singleBidData->save();
 
                 $singleBidData = new SingleBid();
@@ -545,6 +550,10 @@ class AuctionController extends Controller {
                 $singleBidData->user_id = $other_id;
                 $singleBidData->auction_product_id = $request->id;
                 $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
+                if($request->isgroup == 1)
+                {
+                    $singleBidData->is_group = $request->isgroup;
+                }
                 $singleBidData->save();
                 $autoBidData = $auctionProductsData->autoBidActive;
                 $winner = $other_id;
@@ -560,6 +569,10 @@ class AuctionController extends Controller {
                     $request->auctionid;
                     $singleBidData->user_id = $user;
                     $singleBidData->auction_product_id = $request->id;
+                    if($request->isgroup == 1)
+                    {
+                        $singleBidData->is_group = $request->isgroup;
+                    }
                     $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBidData->save();
 
@@ -569,6 +582,10 @@ class AuctionController extends Controller {
                     $singleBidData->user_id = $auctionProductsData->autoBidActive->user_id;
                     $singleBidData->auction_product_id = $request->id;
                     $singleBidData->autobid_id = $auctionProductsData->autoBidActive->id;
+                    if($request->isgroup == 1)
+                    {
+                        $singleBidData->is_group = $request->isgroup;
+                    }
                     $singleBidData->save();
 
                     $autoBidData = new AutoBid();
@@ -596,6 +613,10 @@ class AuctionController extends Controller {
                     $singleBid->auction_id = $request->auctionid;
                     $singleBid->user_id = $loser;
                     $singleBid->auction_product_id = $request->id;
+                    if($request->isgroup == 1)
+                    {
+                        $singleBid->is_group = $request->isgroup;
+                    }
                     $singleBid->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBid->save();
 
@@ -605,6 +626,10 @@ class AuctionController extends Controller {
                     $singleBid->user_id = $user;
                     $singleBid->autobid_id = $auctionProductsData->autoBidActive->id;
                     $singleBid->auction_product_id = $request->id;
+                    if($request->isgroup == 1)
+                    {
+                        $singleBid->is_group = $request->isgroup;
+                    }
                     $singleBid->save();
                     AutoBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->update([
                         'is_active' => '0'
@@ -648,6 +673,10 @@ class AuctionController extends Controller {
             $singleBid->user_id = $user;
             $singleBid->autobid_id = $autoBidData->id;
             $singleBid->auction_product_id = $request->id;
+            if($request->isgroup == 1)
+            {
+                $singleBid->is_group = $request->isgroup;
+            }
             $singleBid->save();
 
             //save timer start time
