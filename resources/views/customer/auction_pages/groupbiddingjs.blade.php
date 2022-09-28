@@ -59,8 +59,8 @@ var other_check=0;
                             $('#offers').append("<li> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
                                 " </span> <button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button> </div> <div class='lotidchild'><div class='lotidchild-1'><p>Amount: $" + commify(my[i].amount) + "<p>Bags:" + weight +
                                 "</p></div><div class='lotidchild-1'> <p>Liablity:$" + commify(liability) +
-                                "</p><p>Remaining time: <b id='mysome_div" + i + "'></b></p>" +
-                                counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                                "</p><p>Remaining time: <b id='some_div" + i + "'></b></p>" +
+                                counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                                 "</div></div></li>");
                                 if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
@@ -69,8 +69,8 @@ var other_check=0;
                                 "'>" + '$' + commify(my[i].amount) +
                                 "</span></p><p>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
-                                "</span></p></div><p>Remaining time: <b  id='some_div" + i + "'></b></p>" +
-                                counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                                "</span></p></div><p>Remaining time: <b  id='mysome_div" + i + "'></b></p>" +
+                                counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                                 "</li><div id='demo" + i +
                                 "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant" +
                                 my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i]
@@ -107,8 +107,8 @@ var other_check=0;
                                 "'>" + '$' + commify(my[i].amount) +
                                 "</span> </p><p>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
-                                "</span></p></div><p>Remaining time: <b  id='some_div" + i + "'></b></p>" +
-                                counter(my[i].id, i, my[i].start_time, my[i].end_time) +
+                                "</span></p></div><p>Remaining time: <b  id='other_div" + i + "'></b></p>" +
+                                counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                                 "</p></li><div id='demo" + i +
                                 "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity:</label> <input type='number' class='form-control bag_quant" +
                                 my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i]
