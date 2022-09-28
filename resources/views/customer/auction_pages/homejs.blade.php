@@ -1,6 +1,7 @@
 <script>
-    function counter(offer_id,id,time,endtime){
+    function counter(offer_id,id,time,endtime,user_id){
         // alert(endtime)
+        console.log(user_id)
 
         var curnet_time=new Date();
         var curnet_time = AddMinutesToDate(curnet_time,300);
@@ -23,9 +24,17 @@ function countdown() {
     } else {
 
         // console.log(timeLeft)
-        // console.log('id'+timerId)
-        document.getElementById('some_div'+id).innerHTML = timeLeft + ' sec';
-        document.getElementById('mysome_div'+id).innerHTML = timeLeft + ' sec';
+        // console.log('id'+timerId)   
+
+        if (user_id == {{ Auth::user()->id }}) {
+            $(document).find('#mysome_div'+id).html(timeLeft + ' sec');
+            $(document).find('#some_div'+id).html(timeLeft + ' sec');
+
+        }
+        else{
+            $(document).find('#other_div'+id).html(timeLeft + ' sec');
+
+        }
         // $('#some_div'+id).replaceWith('<b id="some_div0">'+ timeLeft +' seconds remaining</b>')
         timeLeft--;
     }
