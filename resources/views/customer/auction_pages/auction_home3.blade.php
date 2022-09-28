@@ -2893,7 +2893,7 @@ border: 1px solid white;
                         "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time,my[i].user_id) + "</div></div></li>");
 
-                            if(other_check=0 || other_check!==my[i].id){
+                            if(other_check==0 || other_check!=my[i].id){
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
@@ -2924,14 +2924,10 @@ border: 1px solid white;
                         other_check= my[i].id;
                       
                     }
-                    else{
-                        
-                  
-                    }
 
                 }
                 else{
-                    if(other_check=0 || other_check!==my[i].id){
+                    if(other_check==0 || other_check!==my[i].id){
                         
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
