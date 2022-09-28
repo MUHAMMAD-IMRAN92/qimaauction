@@ -3,7 +3,7 @@
         // alert(endtime)
 
         var curnet_time=new Date();
-        var curnet_time = AddMinutesToDate(curnet_time,300);
+        var curnet_time = AddMinutesToDate(curnet_time,3000);
         var end_time=new Date(endtime);
         var seconds = end_time - curnet_time;
         var dif = (seconds/1000)/60;
@@ -25,6 +25,7 @@ function countdown() {
         // console.log(timeLeft)
         // console.log('id'+timerId)
         document.getElementById('some_div'+id).innerHTML = timeLeft + ' sec';
+        document.getElementById('mysome_div'+id).innerHTML = timeLeft + ' sec';
         // $('#some_div'+id).replaceWith('<b id="some_div0">'+ timeLeft +' seconds remaining</b>')
         timeLeft--;
     }

@@ -58,6 +58,28 @@
         display:flex !important;
         flex-direction:column !important;
     }
+    .lotid-groupoffers{
+        display : flex !important;
+        justify-content:space-between !important;
+
+    }
+    .lotid-hr{
+        margin-bottom: 5px !important;
+        margin-top: 0px !important;
+        
+    }
+    .lotid-cancelbutton{
+        
+        color: #007bff !important;
+        font-weight: 600;
+    }
+    .lotid-cancelbutton:hover{
+        color: f1f1f1 !important;
+        box-shadow: 1px 5px 5px -2px rgba(0,0,0,0.29);
+-webkit-box-shadow: 1px 5px 5px -2px rgba(0,0,0,0.29);
+-moz-box-shadow: 1px 5px 5px -2px rgba(0,0,0,0.29);
+
+    }
 
     .mt-15{
         margin-top: 15px
@@ -2006,7 +2028,7 @@ border: 1px solid white;
                                 <ul id="other-offers">
                                 </ul>
                             </div>
-                            <hr>
+                            <hr class="lotid-hr">
 
                             {{-- <div class="groupbid-offers other-offers">
                                 <p>Other's Offers:</p>
@@ -2867,20 +2889,20 @@ border: 1px solid white;
                 // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
                     // console.log('my');
-                    $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button onclick='cancelOffer("+my[i].user_offer_id+")'>x </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
+                    $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
                         .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
-                        "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
-                            .start_time, my[i].end_time) + "</p></div></div></li>");
+                        "</p><p>Remaining time: <b id='mysome_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
+                            .start_time, my[i].end_time) + "</div></div></li>");
 
                             if(other_check=0 || other_check!==my[i].id){
                     $('#other-offers').append(
-                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
-                        i + "'> " + 'Participate' + " </button><li><p style='line-height: 31px'> <p>Amount: <span  class='offeramount" + my[i]
+                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
+                        i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
                         .id + "'>" + '$' + commify(my[i].amount) +
                         "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
-                        rem_weight + "</span></p> <p>Remaining time :<b  id='some_div" + i + "'></b></p>" +
+                        rem_weight + "</span></p></div> <p>Remaining time :<b  id='some_div" + i + "'></b></p>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time) +
-                        "</p></li><div id='demo" + i +
+                        "</li><div id='demo" + i +
                         "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
                         my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
                         "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
