@@ -27,7 +27,7 @@
                 const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
 
 // Clear any timeout/interval up to that id
-var other_check=0;   
+var other_check=0;
 
         for (let i = 1; i < interval_id; i++) {
              window.clearInterval(i);
@@ -295,6 +295,8 @@ var other_check=0;
                             var checkTimer = response.timerCheck;
                             var isgroup    =response.isgroup;
                             var groupUsers = response.groupUsers;
+                            var groupPaddleNo = response.groupPaddleNo;
+
                             $('.errorMsgAutoBid' + id).html('');
                             $(".bidcollapse" + bidID).addClass(
                                 "changecolor");
@@ -319,6 +321,8 @@ var other_check=0;
                                 "checkTimer": checkTimer,
                                 "isgroup":isgroup,
                                 "groupUsers":groupUsers,
+                                "groupPaddleNo" : groupPaddleNo,
+
                             });
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -507,6 +511,8 @@ var other_check=0;
                             var loser = response.loser_user;
                             var winneruser = response.winneruser;
                             var checkTimer = response.timerCheck;
+                            var groupPaddleNo = response.groupPaddleNo;
+
                             $('.errorMsgAutoBid' + id).html('');
                             $(".bidcollapse" + bidID).addClass(
                                 "changecolor");
@@ -529,6 +535,8 @@ var other_check=0;
                                 "loser": loser,
                                 "winneruser": winneruser,
                                 "checkTimer": checkTimer,
+                                "groupPaddleNo":groupPaddleNo,
+
                             });
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');

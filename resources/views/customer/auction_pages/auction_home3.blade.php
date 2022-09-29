@@ -66,10 +66,10 @@
     .lotid-hr{
         margin-bottom: 5px !important;
         margin-top: 0px !important;
-        
+
     }
     .lotid-cancelbutton{
-        
+
         color: #007bff !important;
         font-weight: 600;
     }
@@ -2458,6 +2458,7 @@ border: 1px solid white;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        // console.log(response);
                         if (response.success) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -2503,7 +2504,7 @@ border: 1px solid white;
                             var checkTimer = response.timerCheck;
                             var isgroup    =response.isgroup;
                             var groupUsers = response.groupUsers;
-
+                            var groupPaddleNo = response.groupPaddleNo;
                             $('.errorMsgAutoBid' + id).html('');
                             $(".bidcollapse" + bidID).addClass(
                                 "changecolor");
@@ -2528,6 +2529,7 @@ border: 1px solid white;
                                 "checkTimer": checkTimer,
                                 "isgroup":isgroup,
                                 "groupUsers":groupUsers,
+                                "groupPaddleNo":groupPaddleNo,
                             });
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -2615,7 +2617,14 @@ border: 1px solid white;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         console.log(data);
-        $(".paddleno" + data.bidID).html(data.paddleNo);
+        if(data.groupPaddleNo==null)
+        {
+            $(".paddleno" + data.bidID).html(data.paddleNo);
+        }
+        else
+        {
+            $(".paddleno" + data.bidID).html(data.groupPaddleNo);
+        }
         //if triggered from groupbid
        if(data.isgroup == 1)
        {
@@ -2652,7 +2661,6 @@ border: 1px solid white;
        {
         //if triggered from autobid
         if (data.user_id == {{ Auth::user()->id }} && data.winneruser == {{ Auth::user()->id }}) {
-
             $('.alertMessage'+data.bidID).html('');
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -2690,7 +2698,7 @@ border: 1px solid white;
         }
         if(data.groupUsers != null)
        {
-        // console.log('groupbid');
+        console.log('groupbid');
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
@@ -2781,23 +2789,24 @@ border: 1px solid white;
     //     }
     //     else
     //     {
-            // if (data.loser == {{ Auth::user()->id }})
-            //     {
-            //         $(".bidcollapse" + data.bidID).removeClass("changecolor");
-            //         $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            //         setTimeout(() => {
-            //             $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            //         }, 10000);
-            //         $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-            //         $(".alertMessage" + data.bidID).css('background', '#f16767');
-            //         $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
-            //         $('.nextincrement' + data.bidID).show();
-            //         $('.bidnowbutton' + data.bidID).show();
-            //         $('.autobidamount' + data.bidID).show();
-            //         $('.bidnowautobutton' + data.bidID).show();
-            //         $('.bidnowbutton' + data.bidID).attr("disabled", false);
-            //         $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-            //     }
+            if (data.loser == {{ Auth::user()->id }})
+                {
+
+                    $(".bidcollapse" + data.bidID).removeClass("changecolor");
+                    $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+                    setTimeout(() => {
+                        $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                    }, 10000);
+                    $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                    $(".alertMessage" + data.bidID).css('background', '#f16767');
+                    $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+                    $('.nextincrement' + data.bidID).show();
+                    $('.bidnowbutton' + data.bidID).show();
+                    $('.autobidamount' + data.bidID).show();
+                    $('.bidnowautobutton' + data.bidID).show();
+                    $('.bidnowbutton' + data.bidID).attr("disabled", false);
+                    $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+                }
         // }
         var total_bid = 0;
 
@@ -2880,7 +2889,7 @@ border: 1px solid white;
         //     for (let i = 0; i < timerId; i++) {
         //     window.clearInterval(i);
         // }
-                var other_check=0;   
+                var other_check=0;
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;
@@ -2922,13 +2931,13 @@ border: 1px solid white;
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
                         other_check= my[i].id;
-                      
+
                     }
 
                 }
                 else{
                     if(other_check==0 || other_check!==my[i].id){
-                        
+
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
