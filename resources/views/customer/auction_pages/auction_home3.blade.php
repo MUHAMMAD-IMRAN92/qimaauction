@@ -2703,7 +2703,7 @@ border: 1px solid white;
     //     }
         if(data.groupUsers != null)
        {
-        console.log('groupbid');
+        // console.log('groupbid');
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
@@ -2989,6 +2989,7 @@ border: 1px solid white;
         }
     });
     socket.on('add_bid_updates', function(data) {
+        console.log(data);
         if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.bidID).hide();
             $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
