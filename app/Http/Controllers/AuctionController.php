@@ -1041,7 +1041,13 @@ class AuctionController extends Controller {
         }
         else{
             $otherOfffers                        =  UserOffers::find($check_user_offer->id);
+            if($otherOfffers->status==0){
+                $otherOfffers->weight                = $request->weight;
+                $otherOfffers->status=1;
+            }
+            else{
             $otherOfffers->weight                = $check_user_offer->weight+ $request->weight;
+            }
         }
         $otherOfffers->user_id               =  $user;
         $otherOfffers->offer_id              =  $request->offerid;
