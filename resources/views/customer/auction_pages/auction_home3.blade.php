@@ -2633,6 +2633,7 @@ border: 1px solid white;
             for (i = 0; i < data.winneruser.length; ++i)
             {
                 if (data.winneruser[i].bidwinner == {{ Auth::user()->id }}) {
+                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
                     $('.alertMessage'+data.bidID).html('');
                     $(".liabilitybidcollapse" + data.bidID).show();
                     $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -2648,6 +2649,7 @@ border: 1px solid white;
                     $(".nextincrement" + data.bidID).hide();
                     $('.errorMsgAutoBid' + data.bidID).html('');
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html(
                         '<p>Current autobid is $' +
                         addCommas(data.autobidamount) +
@@ -2669,6 +2671,7 @@ border: 1px solid white;
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+            $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
         } else if (data.winneruser == {{ Auth::user()->id }}) {
             $(".liabilitybidcollapse" + data.bidID).show();
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -2680,22 +2683,22 @@ border: 1px solid white;
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         data.nextIncrement = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
-        if(data.isgroup == 1 || data.outbid == 0)
-       {
-        // console.log('groupbid');
-            var i;
-            for (i = 0; i < data.winneruser.length; ++i)
-            {
-                if (data.winneruser[i].bidwinner == {{ Auth::user()->id }})
-                {
-                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
-                }
-            }
-       }
-        else
-        {
-            $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
-        }
+    //     if(data.isgroup == 1)
+    //    {
+    //     // console.log('groupbid');
+    //         var i;
+    //         for (i = 0; i < data.winneruser.length; ++i)
+    //         {
+    //             if (data.winneruser[i].bidwinner == {{ Auth::user()->id }})
+    //             {
+    //                 $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
+    //             }
+    //         }
+    //    }
+    //     else
+    //     {
+    //         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
+    //     }
         if(data.groupUsers != null)
        {
         console.log('groupbid');
@@ -2703,6 +2706,7 @@ border: 1px solid white;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
                 if (data.outbid == 0 && data.groupUsers[i].bidwinner == {{ Auth::user()->id }}) {
+                         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
                         $(".bidcollapse" + data.bidID).removeClass("changecolor");
                         $(".bidcollapse" + data.bidID).addClass("changecolorLose");
                         setTimeout(() => {
@@ -2728,6 +2732,7 @@ border: 1px solid white;
         {
             if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }})
             {
+                $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
                 $(".bidcollapse" + data.bidID).removeClass("changecolor");
                 $(".bidcollapse" + data.bidID).addClass("changecolorLose");
                 setTimeout(() => {

@@ -690,6 +690,7 @@ class AuctionController extends Controller {
             foreach($offerUsersData->allOfferUsers as $offerUsers)
             {
                 $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                $offerUser[$i]['weight'] = $offerUsers->weight;
                 $i++;
             }
             $autoBidData->groupUsers = $offerUser;
