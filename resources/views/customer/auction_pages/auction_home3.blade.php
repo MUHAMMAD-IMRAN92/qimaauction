@@ -2668,6 +2668,7 @@ border: 1px solid white;
             $(".liability_your" + data.bidID).addClass('liabilty_shown');
             $(".finalliabilitytr").show();
             $(".userbid" + data.bidID).css("color", "black");
+            $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
             $(".bidcollapse" + data.bidID).addClass("changecolor");
             $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
