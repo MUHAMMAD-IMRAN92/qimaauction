@@ -1379,8 +1379,9 @@ border: 1px solid white;
                                 @endphp
 
                                 <tr
+
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
-                                    @if(isset($auctionProduct->offerComplete) && $auctionProduct->singleBidPricelatest->is_group ==1)
+                                    @if(isset($auctionProduct->offerComplete) && isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group ==1)
                                     @foreach ($groupUsers as $users)
                                         @if($users['bidwinner'] == Auth::user()->id)
                                         changecolor
