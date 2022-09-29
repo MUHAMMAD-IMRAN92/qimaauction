@@ -35,6 +35,7 @@ var other_check=0;
                 if (my.length != 0) {
                     $('#offers').empty();
                     $('#other-offers').empty();
+                    $('.some_div').empty();
                     var isActive = my[0].is_active;
                     var amount = my[0].amount;
                     var user_id = my[0].user_id;
@@ -228,6 +229,12 @@ var other_check=0;
                         $('#bid_amount').val('');
                         $('.show-bid-confirm').show();
                         $('.liabiltysec').hide();
+                        var offersdata=response.groupbid
+                            socket.emit('add_groupbid_updates', {
+                             "offersdata": offersdata,
+                            //  "adminofferData":adminofferData,
+
+                        });
                     },
                     error: function(error) {
                         console.log(error)
