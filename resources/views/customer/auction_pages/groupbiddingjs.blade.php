@@ -103,7 +103,7 @@ var other_check=0;
                             if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
                                 "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-7' data-toggle='collapse' data-target='#demo" +
-                        i + "'> " + 'Participate' + " </button><li> <div class='lotidchild'><p >Amount: <span  class='offeramount" + my[i].id +
+                        i + "'> " + 'Participate' + " </button><li> <div class='lotidchild'><p>Amount: <span  class='offeramount" + my[i].id +
                                 "'>" + '$' + commify(my[i].amount) +
                                 "</span> </p><p>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +

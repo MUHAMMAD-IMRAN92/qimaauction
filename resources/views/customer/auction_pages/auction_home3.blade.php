@@ -875,7 +875,7 @@
 
     .groupbid-offers ul li {
         background-color: #dee2e6;
-        padding: 5px;
+        padding: 15px;
     }
 
     .groupbid-offers ul li span, .lot-toggle-btn {
