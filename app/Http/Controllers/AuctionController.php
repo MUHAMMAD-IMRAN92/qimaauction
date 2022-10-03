@@ -312,7 +312,25 @@ class AuctionController extends Controller {
                     $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('created_at', 'desc')->first();
                     $isActive = $latestAutoBid->is_active;
                     $singleBid->outAutobid = $isActive;
-                    $singleBid->autoBidUser = $autoBidsData->user_id;
+                    $autoBidLatest = AutoBid::where('auction_product_id', $request->id)->where('is_group','1')->orderBy('bid_amount', 'desc')->first();
+                    if(isset($autoBidLatest))
+                    {
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                        $i=0;
+                        $offerUser=[];
+                        foreach($offerUsersData->allOfferUsers as $offerUsers)
+                        {
+                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $i++;
+                        }
+                        // $singleBid->isgroup='1';
+                        $singleBid->groupusers = $offerUser;
+                    }
+                    else
+                    {
+                        $singleBid->autoBidUser = $autoBidsData->user_id;
+                    }
                 }
             } else {
                 $singleBid->outAutobid = '1';
@@ -325,8 +343,18 @@ class AuctionController extends Controller {
             $bidIncrementNew = $bidLimit[0]->increment;
             $singleBid->bidIncrement = $bidIncrementNew;
 
-            $userPaddleNum = User::where('id', $singleBidStartPrice->user_id)->first()->paddle_number;
-            $singleBid->userPaddleNo = $userPaddleNum;
+            $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('is_active','1')->orderBy('bid_amount', 'desc')->first();
+            if(isset($latestAutoBid) && $latestAutoBid->is_group == 1)
+            {
+                $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
+                $offerpaddleNumber  = $offerComplete->paddle_number;
+                $singleBid->userPaddleNo = $offerpaddleNumber;
+            }
+            else
+            {
+                $userPaddleNum = User::where('id', $singleBidStartPrice->user_id)->first()->paddle_number;
+                $singleBid->userPaddleNo = $userPaddleNum;
+            }
 
             $auctionProduct = AuctionProduct::where('id', $request->id)->first()->weight;
             $liabilty = $bidAmount * $auctionProduct;
@@ -350,7 +378,27 @@ class AuctionController extends Controller {
             $singleBid->winningBidder = $singleBidStartPrice->user_id;
             $singleBid->checkStartTimer = "starttimer";
             $latestSingleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
-            $singleBid->latestSingleBidUser = $latestSingleBid->user_id;
+
+            $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('is_active','1')->orderBy('bid_amount', 'desc')->first();
+            if(isset($latestAutoBid) && $latestAutoBid->is_group == 1)
+            {
+                $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                $i=0;
+                $offerUser=[];
+                foreach($offerUsersData->allOfferUsers as $offerUsers)
+                {
+                    $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                    $offerUser[$i]['weight'] = $offerUsers->weight;
+                    $i++;
+                }
+                $singleBid->isgroup='1';
+                $singleBid->latestSingleBidUser = $offerUser;
+            }
+            else
+            {
+                $singleBid->isgroup='0';
+                $singleBid->latestSingleBidUser = $latestSingleBid->user_id;
+            }
             $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
                 $v = SingleBid::where('auction_product_id', $data->id)->where('user_id', auth()->user()->id)->orderBy('bid_amount', 'desc')->first();
                 return $v;
@@ -409,7 +457,25 @@ class AuctionController extends Controller {
                     $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('user_id', $autoBidsData->user_id)->orderBy('bid_amount', 'desc')->first();
                     $isActive = $latestAutoBid->is_active;
                     $singleBidData->outAutobid = $isActive;
-                    $singleBidData->autoBidUser = $autoBidsData->user_id;
+                    $autoBidLatest = AutoBid::where('auction_product_id', $request->id)->where('is_group','1')->orderBy('bid_amount', 'desc')->first();
+                    if(isset($autoBidLatest))
+                    {
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                        $i=0;
+                        $offerUser=[];
+                        foreach($offerUsersData->allOfferUsers as $offerUsers)
+                        {
+                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $i++;
+                        }
+                        // $singleBid->isgroup='1';
+                        $singleBidData->groupusers = $offerUser;
+                    }
+                    else
+                    {
+                        $singleBidData->autoBidUser = $autoBidsData->user_id;
+                    }
                 }
             } else {
                 $singleBidData->outAutobid = '1';
@@ -425,8 +491,19 @@ class AuctionController extends Controller {
                 $autoBidmaxAmount = $autoBidmax->bid_amount;
                 $singleBidData->autoBidmaxData = $autoBidmaxAmount;
             }
-            $userPaddleNum = User::where('id', $singleBidPricelatest->user_id)->first()->paddle_number;
-            $singleBidData->userPaddleNo = $userPaddleNum;
+
+            $latestAutoBid = AutoBid::where('auction_product_id', $request->id)->where('is_active','1')->orderBy('bid_amount', 'desc')->first();
+            if(isset($latestAutoBid) && $latestAutoBid->is_group == 1)
+            {
+                $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
+                $offerpaddleNumber  = $offerComplete->paddle_number;
+                $singleBidData->userPaddleNo = $offerpaddleNumber;
+            }
+            else
+            {
+                $userPaddleNum = User::where('id', $singleBidPricelatest->user_id)->first()->paddle_number;
+                $singleBidData->userPaddleNo = $userPaddleNum;
+            }
 
             $data = SingleBid::select('auction_product_id as id')->groupBy('auction_product_id')->get()->map(function($data) {
                 $v = SingleBid::where('auction_product_id', $data->id)->where('user_id', auth()->user()->id)->orderBy('bid_amount', 'desc')->first();
@@ -476,7 +553,25 @@ class AuctionController extends Controller {
                 }
             }
             $singleBidData->loser_user = $loser;
-            $singleBidData->latestSingleBidUser = $latestSingleBid->user_id;
+            if(isset($latestAutoBid) && $latestAutoBid->is_group == 1)
+            {
+                $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                $i=0;
+                $offerUser=[];
+                foreach($offerUsersData->allOfferUsers as $offerUsers)
+                {
+                    $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                    $offerUser[$i]['weight'] = $offerUsers->weight;
+                    $i++;
+                }
+                $singleBidData->isgroup='1';
+                $singleBidData->latestSingleBidUser = $offerUser;
+            }
+            else
+            {
+                $singleBidData->isgroup='0';
+                $singleBidData->latestSingleBidUser = $latestSingleBid->user_id;
+            }
             return response()->json($singleBidData);
         }
     }

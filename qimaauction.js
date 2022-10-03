@@ -27,7 +27,7 @@ socket.on('add_bid_updates', function (data) {
      "singleBidammounttesting":data.singleBidammounttesting,
      "bidID":data.bidID,"paddleNo":data.paddleNo,
      "increment":data.increment,"nextIncrement":data.nextIncrement,
-     "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,"finaltotalliability":data.finaltotalliability});
+     "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,"finaltotalliability":data.finaltotalliability,"isgroup":data.isgroup,"groupusers":data.groupusers});
  });
  socket.on('auto_bid_update_user_amount', function (data) {
     io.emit('auto_bid_update_user_amount', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id});
