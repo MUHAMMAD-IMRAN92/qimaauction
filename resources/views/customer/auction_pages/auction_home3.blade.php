@@ -1371,15 +1371,14 @@ border: 1px solid white;
                                         foreach($auctionProduct->offerComplete->allOfferUsers as $offerUsers)
                                         {
                                             $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                                            $offerUser[$i]['weight'] = $offerUsers->weight;
                                             $i++;
                                         }
                                         $groupUsers = $offerUser;
                                         // dd($groupUsers);
                                     }
                                 @endphp
-
                                 <tr
-
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
                                     @if(isset($auctionProduct->offerComplete) && isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group ==1)
                                     @foreach ($groupUsers as $users)
@@ -1420,8 +1419,19 @@ border: 1px solid white;
                                     </td>
 
                                     <td class="liability{{ $auctionProduct->id }} ">
-                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
-                                    </td>
+                                        @php $userfound = 0; @endphp
+                                        @if (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 1)
+                                            @foreach ($groupUsers as $users)
+                                                @if($users['bidwinner'] == Auth::user()->id)
+                                                @php $userfound = 1; @endphp
+                                                ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1).' weight('.$users['weight'].'/lbs)' : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                                @endif
+                                            @endforeach
+                                            @endif
+                                            @if($userfound == 0)
+                                            ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                            @endif
+                                        </td>
 
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
@@ -1525,6 +1535,7 @@ border: 1px solid white;
                                         </td>
                                     </tr>
                                 @else
+                                {{-- @dd($auctionProduct->latestAutoBidPrice) --}}
                                     <tr class="hide-table-padding bid-row">
                                         <td></td>
                                         <td colspan="12">
@@ -1532,9 +1543,11 @@ border: 1px solid white;
                                                 <div class="row ">
                                                     <div class="col-sm-4 col-lg-4">
                                                         <div class="input-group mb-3 bid-now-btn-field">
+                                                            @php $userfound = 0; @endphp
                                                             @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 1)
                                                                 @foreach ($groupUsers as $users)
                                                                     @if($users['bidwinner'] == Auth::user()->id)
+                                                                    @php $userfound = 1; @endphp
                                                                     <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}"
                                                                     style="display: none;">
                                                                     ${{ number_format($finalIncSinglebid, 1) }}
@@ -1543,20 +1556,29 @@ border: 1px solid white;
                                                                 @endforeach
                                                             @elseif (isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 0
                                                                 && $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                                @php $userfound = 1; @endphp
                                                                 <p class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}"
                                                                     style="display: none;">
                                                                     ${{ number_format($finalIncSinglebid, 1) }}
                                                                 </p>
                                                             @else
-                                                                <p
+                                                            {{-- <p
                                                                     class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
                                                                     ${{ number_format($finalIncSinglebid, 1) }}
-                                                                </p>
+                                                                </p> --}}
+                                                            @endif
+                                                            @if($userfound == 0)
+                                                                <p
+                                                                        class="mr-1 mt-2 nextincrement{{ $auctionProduct->id }}">
+                                                                        ${{ number_format($finalIncSinglebid, 1) }}
+                                                                    </p>
                                                             @endif
                                                             <div>
+                                                                @php $userfound = 0; @endphp
                                                                 @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 1)
                                                                 @foreach ($groupUsers as $users)
                                                                     @if($users['bidwinner'] == Auth::user()->id)
+                                                                    @php $userfound = 1; @endphp
                                                                     <button
                                                                         class="singlebidbtn btn singlebtnclick bidnowbutton{{ $auctionProduct->id }}"
                                                                         id="{{ $auctionProduct->id }}"
@@ -1568,6 +1590,7 @@ border: 1px solid white;
                                                                 @endforeach
                                                                 @elseif (isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 0 &&
                                                                     $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                                    @php $userfound = 1; @endphp
                                                                     <button
                                                                         class="singlebidbtn btn singlebtnclick bidnowbutton{{ $auctionProduct->id }}"
                                                                         id="{{ $auctionProduct->id }}"
@@ -1576,14 +1599,24 @@ border: 1px solid white;
                                                                         style="border-radius: 5px; display:none;">Bid
                                                                         Now</button>
                                                                 @else
-                                                                    <button
+                                                                    {{-- daffy3<button
                                                                         class="singlebidbtn btn singlebtnclick bidnowbutton{{ $auctionProduct->id }}"
                                                                         id="{{ $auctionProduct->id }}"
                                                                         href="javascript:void(0)"
                                                                         data-id="{{ $auctionProduct->id }}"
                                                                         @if (isset($auctionProduct->latestSingleBid->user_id) &&
                                                                             $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
-                                                                        style="border-radius: 5px;">Bid Now</button>
+                                                                        style="border-radius: 5px;">Bid Now</button> --}}
+                                                                @endif
+                                                                @if($userfound == 0)
+                                                                <button
+                                                                    class="singlebidbtn btn singlebtnclick bidnowbutton{{ $auctionProduct->id }}"
+                                                                    id="{{ $auctionProduct->id }}"
+                                                                    href="javascript:void(0)"
+                                                                    data-id="{{ $auctionProduct->id }}"
+                                                                    @if (isset($auctionProduct->latestSingleBid->user_id) &&
+                                                                        $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" style="background:#a6a6a6;color:ffffff" @endif
+                                                                    style="border-radius: 5px;">Bid Now</button>
                                                                 @endif
                                                                 <button
                                                                     class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}"
@@ -1596,7 +1629,6 @@ border: 1px solid white;
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="border-radius: 5px; display:none;">Cancel</button>
-
                                                             </div>
                                                         </div>
                                                         <div id="alertMessage"
@@ -1612,9 +1644,11 @@ border: 1px solid white;
                                                                 class="form-control auctionid{{ $auctionProduct->id }}"
                                                                 value="{{ $auctionProduct->auction_id }}"
                                                                 id="autobidamount">
+                                                                @php $userfound = 0; @endphp
                                                                 @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 1)
                                                                 @foreach ($groupUsers as $users)
                                                                     @if($users['bidwinner'] == Auth::user()->id)
+                                                                    @php $userfound = 1; @endphp
                                                                     &nbsp;<input type="number" min="1"
                                                                     name="autobidamount"
                                                                     class="form-control autobidamount{{ $auctionProduct->id }}"
@@ -1624,21 +1658,28 @@ border: 1px solid white;
                                                                 @endforeach
                                                             @elseif (isset($auctionProduct->latestAutoBidPrice->bid_amount)  && $auctionProduct->latestAutoBidPrice->is_group == 0 &&
                                                                 $auctionProduct->latestAutoBidPrice->user_id == auth()->user()->id)
+                                                                @php $userfound = 1; @endphp
                                                                 &nbsp;<input type="number" min="1"
                                                                     name="autobidamount"
                                                                     class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                     id="autobidamount"
                                                                     style="width: 50%; display:none;">
                                                             @else
-                                                                <input type="text"
+                                                                {{-- <input type="text"
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                                     min="1" pattern="[0-9]{10}" maxlength="10"
                                                                     name="autobidamount"
                                                                     class="form-control autobidamount{{ $auctionProduct->id }}"
-                                                                    id="autobidamount" style="width: 50%;">
+                                                                    id="autobidamount" style="width: 50%;"> --}}
                                                             @endif
-
-                                                            &nbsp;
+                                                            @if($userfound == 0)
+                                                                <input type="text"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                                min="1" pattern="[0-9]{10}" maxlength="10"
+                                                                name="autobidamount"
+                                                                class="form-control autobidamount{{ $auctionProduct->id }}"
+                                                                id="autobidamount" style="width: 50%;">
+                                                            @endif
                                                             {{-- @if (isset($auctionProduct->latestAutoBidPrice) && $auctionProduct->latestAutoBidPrice->is_group == 1)
                                                             @foreach ($groupUsers as $users)
                                                             @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
@@ -3047,12 +3088,12 @@ border: 1px solid white;
                 }, 10000);
                 $('.autobidamount' + data.bidID).show();
                 $('.nextincrement' + data.bidID).show();
-                $(".alertMessage" + data.bidID).hide('');
+                // $(".alertMessage" + data.bidID).hide('');
                 $(".autobidClass1" + data.bidID).show();
                 $('.bidnowbutton' + data.bidID).attr("disabled", false);
                 $(".alertMessage" + data.bidID).css('background', '#f16767');
                 $('.alertMessage' + data.bidID).html('You have been outbid.');
-                $(".alertMessage" + data.bidID).hide('');
+                // $(".alertMessage" + data.bidID).hide('');
         }
         }
         // if (data.outbidresponse == 0 && data.autobidUserID == {{ Auth::user()->id }}) {
