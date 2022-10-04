@@ -1680,75 +1680,42 @@ border: 1px solid white;
                                                                 class="form-control autobidamount{{ $auctionProduct->id }}"
                                                                 id="autobidamount" style="width: 50%;">
                                                             @endif
-                                                            {{-- @if (isset($auctionProduct->latestAutoBidPrice) && $auctionProduct->latestAutoBidPrice->is_group == 1)
-                                                            @foreach ($groupUsers as $users)
-                                                            @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
-                                                            $users['bidwinner'] != auth()->user()->id)
-                                                            <button
-                                                                class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                type="button"
-                                                                data-id="{{ $auctionProduct->id }}">Auto1111
-                                                                Bid</button>
-                                                            <button
-                                                                class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                type="button"
-                                                                data-id="{{ $auctionProduct->id }}"
-                                                                style="display: none;" id="confirmbtn">Confirm
-                                                            </button>
-                                                            <button
-                                                                class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
-                                                                type="button"
-                                                                data-id="{{ $auctionProduct->id }}"
-                                                                style="display: none;">Cancel
-                                                            </button>
-                                                            <div
-                                                                class="errormsgautobid  errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                            </div>
-                                                        @endif
-                                                        @endforeach --}}
-                                                            @if(isset($auctionProduct->latestAutoBidPrice) && $auctionProduct->latestAutoBidPrice->is_group == 0)
-                                                                @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
-                                                                    $auctionProduct->latestAutoBidPrice->user_id != Auth::user()->id)
-                                                                    <button
-                                                                        class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}">Auto
-                                                                        Bid</button>
-                                                                    <button
-                                                                        class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="display: none;" id="confirmbtn">Confirm
-                                                                    </button>
-                                                                    <button
-                                                                        class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
-                                                                        type="button"
-                                                                        data-id="{{ $auctionProduct->id }}"
-                                                                        style="display: none;">Cancel
-                                                                    </button>
-                                                                    <div
-                                                                        class="errormsgautobid  errorMsgAutoBid{{ $auctionProduct->id }}">
-                                                                    </div>
-                                                                @endif
+                                                            @php $userfound = 0; @endphp
+                                                            @if (isset($auctionProduct->latestAutoBidPrice) && $auctionProduct->latestAutoBidPrice->is_group == 1)
+                                                                @foreach ($groupUsers as $users)
+                                                                    @if ($auctionProduct->latestAutoBidPrice->auction_product_id == $auctionProduct->id &&
+                                                                        $users['bidwinner'] == auth()->user()->id)
+                                                                            @php $userfound = 1; @endphp
+                                                                    @endif
+                                                                @endforeach
+                                                            @elseif(isset($auctionProduct->latestAutoBidPrice) && $auctionProduct->latestAutoBidPrice->is_group == 0
+                                                                        && $auctionProduct->latestAutoBidPrice->user_id == Auth::user()->id)
+                                                                            @php $userfound = 1; @endphp
                                                             @else
-                                                                <button
-                                                                    class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
-                                                                    type="button"
-                                                                    data-id="{{ $auctionProduct->id }}">Auto
-                                                                    Bid</button>
-                                                                <button
-                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
-                                                                    type="button"
-                                                                    data-id="{{ $auctionProduct->id }}"
-                                                                    style="display: none;" id="confirmbtn">Confirm
-                                                                </button>
-                                                                <button
-                                                                    class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
-                                                                    type="button"
-                                                                    data-id="{{ $auctionProduct->id }}"
-                                                                    style="display: none;">Cancel
-                                                                </button>
+
                                                             @endif
+                                                            @if($userfound == 0)
+                                                                    <button
+                                                                            class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
+                                                                            type="button"
+                                                                            data-id="{{ $auctionProduct->id }}">Auto
+                                                                            Bid</button>
+                                                                        <button
+                                                                            class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                            type="button"
+                                                                            data-id="{{ $auctionProduct->id }}"
+                                                                            style="display: none;" id="confirmbtn">Confirm
+                                                                        </button>
+                                                                        <button
+                                                                            class="btn singlebidbtn  removeautobtn{{ $auctionProduct->id }} ml-2 removeautobid"
+                                                                            type="button"
+                                                                            data-id="{{ $auctionProduct->id }}"
+                                                                            style="display: none;">Cancel
+                                                                        </button>
+                                                                        <div
+                                                                            class="errormsgautobid  errorMsgAutoBid{{ $auctionProduct->id }}">
+                                                                        </div>
+                                                                @endif
                                                             @if(isset($auctionProduct->latestAutoBidPrice->bid_amount) && $auctionProduct->latestAutoBidPrice->is_group == 1)
                                                             @foreach ($groupUsers as $users)
                                                                 @if($users['bidwinner'] == Auth::user()->id)
