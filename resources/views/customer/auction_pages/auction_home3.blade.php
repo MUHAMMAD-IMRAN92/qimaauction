@@ -2759,21 +2759,26 @@ border: 1px solid white;
                 $('#other-offers').empty();
             }
         }
+    // if(data.isgroup ==0)
+    // {
+    //     if (data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}) {
+    //         $(".bidcollapse" + data.bidID).removeClass("changecolor");
+    //         $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+    //         setTimeout(() => {
+    //             $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+    //         }, 10000);
+    //         $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+    //         $(".alertMessage" + data.bidID).css('background', '#f16767');
+    //         $('.nextincrement' + data.bidID).show();
+    //         $('.bidnowbutton' + data.bidID).show();
+    //         $('.autobidamount' + data.bidID).show();
+    //         $('.bidnowautobutton' + data.bidID).show();
+    //         $('.bidnowbutton' + data.bidID).attr("disabled", false);
+    //         $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+    //         $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
 
-        // if (data.user_id != {{ Auth::user()->id }} && data.latestAutoBidId != {{ Auth::user()->id }}) {
-        //     $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-        //     setTimeout(() => {
-        //         $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-        //     }, 10000);
-        //     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-        //     $(".alertMessage" + data.bidID).css('background', '#f16767');
-        //     $('.nextincrement' + data.bidID).show();
-        //     $('.bidnowbutton' + data.bidID).show();
-        //     $('.autobidamount' + data.bidID).show();
-        //     $('.bidnowautobutton' + data.bidID).show();
-        //     $('.bidnowbutton' + data.bidID).attr("disabled", false);
-        //     $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-        // }
+    //     }
+    // }
     //     if(data.groupUsers != null)
     //    {
     //         var i;
@@ -3017,12 +3022,10 @@ border: 1px solid white;
                         }, 10000);
                         $('.autobidamount' + data.bidID).show();
                         $('.nextincrement' + data.bidID).show();
-                        $(".alertMessage" + data.bidID).hide('');
                         $(".autobidClass1" + data.bidID).show();
                         $('.bidnowbutton' + data.bidID).attr("disabled", false);
                         $(".alertMessage" + data.bidID).css('background', '#f16767');
                         $('.alertMessage' + data.bidID).html('You have been outbid.');
-                        $(".alertMessage" + data.bidID).hide('');
                 }
             }
         }
