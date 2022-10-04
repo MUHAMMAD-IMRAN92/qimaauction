@@ -870,12 +870,12 @@ class AuctionController extends Controller {
         $autoBidData->id = $winner;
         $autoBidData->timerCheck = $isEmpty;
 
-        // if (!$loser) {
-        //     $loser = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->skip(1)->first();
-        //     if ($loser) {
-        //         $loser = $loser->user_id;
-        //     }
-        // }
+        if (!$loser) {
+            $loser = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->skip(1)->first();
+            if ($loser) {
+                $loser = $loser->user_id;
+            }
+        }
         $autoBidData->loser_user = $loser;
         return response()->json($autoBidData);
     }
