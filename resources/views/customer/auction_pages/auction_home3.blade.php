@@ -1457,12 +1457,13 @@ border: 1px solid white;
                                             <td class="">SL28</td>
                                         @endif
                                     @endforeach
-                                    @if (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 0)
+                                    {{-- @dd($auctionProduct->groupAutobid) --}}
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
-                                    @elseif (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 1)
+                                    @elseif (isset($auctionProduct->groupAutobid))
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $auctionProduct->offerComplete->paddle_number ?? '---' }}</td>
                                     @else
