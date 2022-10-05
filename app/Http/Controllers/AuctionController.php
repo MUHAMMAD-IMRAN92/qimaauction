@@ -261,6 +261,8 @@ class AuctionController extends Controller {
                     ->orderBy('id', 'desc')
                     ->first();
             $e->offerComplete = Offers::where('auction_product_id',$e->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+            $e->groupAutobid = AutoBid::where('auction_product_id',$e->id)->where('is_active','1')->where('is_group','1')->orderBy('bid_amount', 'desc')->first();
+
             return $e;
         });
 

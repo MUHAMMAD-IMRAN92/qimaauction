@@ -43,6 +43,7 @@ class AuctionProduct extends Model {
         return $this->hasOne(SingleBid::class, 'auction_product_id', 'id')->orderBy('id','desc');
     }
 
+
     protected $guarded = [''];
 
 }
