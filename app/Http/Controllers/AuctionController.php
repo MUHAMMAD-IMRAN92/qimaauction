@@ -654,7 +654,18 @@ class AuctionController extends Controller {
                 $autoBidData = $auctionProductsData->autoBidActive;
                 $winner = $other_id;
                 $autoBidData->loser_user = $loser;
-
+                $autoBidforcheck = AutoBid::where('auction_product_id', $request->id)->where('user_id', '!=', $user)->where('is_active', '1')->orderBy('bid_amount', 'desc')->first();
+                    // dd($autoBidforcheck);
+                    if (isset($autoBidforcheck) && $autoBidforcheck->is_group == 1)
+                    {
+                        $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
+                        $offerpaddleNumber  = $offerComplete->paddle_number;
+                        $autoBidData->groupPaddleNo = $offerpaddleNumber;
+                    }
+                    else
+                    {
+                        $autoBidData->groupPaddleNo = null;
+                    }
             } else {
                 if ($request->autobidamount < $auctionProductsData->autoBidActive->bid_amount) {
                     $loser = $user;
