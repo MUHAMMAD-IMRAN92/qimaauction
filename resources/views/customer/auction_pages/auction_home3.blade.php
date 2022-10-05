@@ -2635,10 +2635,13 @@ border: 1px solid white;
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
+            $(".paddleno" + data.bidID).addClass('fw-bold');
+
         }
         else
         {
             $(".paddleno" + data.bidID).html(data.groupPaddleNo);
+            $(".paddleno" + data.bidID).addClass('fw-bold');
         }
         //if triggered from groupbid
        if(data.isgroup == 1)
