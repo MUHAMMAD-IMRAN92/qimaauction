@@ -2669,8 +2669,8 @@ border: 1px solid white;
                         '<p>Current autobid is $' +
                         addCommas(data.autobidamount) +
                         ' /lb</p>');
-                    $('#offers').empty();
-                    $('#other-offers').empty();
+                    // $('#offers').empty();
+                    // $('#other-offers').empty();
                 }
             }
        }
@@ -2738,8 +2738,8 @@ border: 1px solid white;
                         $(".bidnowbutton" + data.bidID).css('background', '##143D30');
                         $(".liabilitybidcollapse" + data.bidID).hide();
                         $(".liability_your" + data.bidID).removeClass('liabilty_shown');
-                        $('#offers').empty();
-                        $('#other-offers').empty();
+                        // $('#offers').empty();
+                        // $('#other-offers').empty();
                     }
                 }
             }
@@ -2764,8 +2764,8 @@ border: 1px solid white;
                 $(".bidnowbutton" + data.bidID).css('background', '##143D30');
                 $(".liabilitybidcollapse" + data.bidID).hide();
                 $(".liability_your" + data.bidID).removeClass('liabilty_shown');
-                $('#offers').empty();
-                $('#other-offers').empty();
+                // $('#offers').empty();
+                // $('#other-offers').empty();
             }
         }
     // if(data.isgroup ==0)
@@ -2882,13 +2882,10 @@ border: 1px solid white;
         }
     });
     socket.on('add_groupbid_updates', function(data) {
-        // alert(data.isOtheroffer);
         var my = data.offersdata;
-        // console.log(my);
+        console.log(my);
         var lotid = $('.lotproductid').html();
-        // alert(my.auction_product_id);
         const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
-
 // Clear any timeout/interval up to that id
         for (let i = 1; i < interval_id; i++) {
              window.clearInterval(i);
@@ -2911,25 +2908,21 @@ border: 1px solid white;
                 $('.confirmgroupbidbutton').prop('disabled', false);
             }
             var i;
-        //     for (let i = 0; i < timerId; i++) {
-        //     window.clearInterval(i);
-        // }
                 var other_check=0;
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;
                 var liability = my[i].accopied_wieght * amount;
                 var rem_weight = my[i].remainig_weight / 20;
-                // alert
                 if (my[i].user_id == {{ Auth::user()->id }}) {
-                $('#offers').append("<li> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
+                $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
                         .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
                         "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time,my[i].user_id) + "</div></div></li>");
 
                  if(other_check==0 || other_check!==my[i].id){
                     $('#other-offers').append(
-                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
+                        "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
                         .id + "'>" + '$' + commify(my[i].amount) +
                         "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +

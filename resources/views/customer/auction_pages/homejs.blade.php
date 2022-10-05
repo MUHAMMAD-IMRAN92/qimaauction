@@ -10,7 +10,7 @@
         var dif = (seconds/1000)/60;
         var timeLeft = Math.round(dif*60);
         var timerId = setInterval(countdown, 1000);
-        
+
          function AddMinutesToDate(date, minutes) {
              return new Date(date.getTime() - minutes*60000);
            }
@@ -24,7 +24,7 @@ function countdown() {
     } else {
 
         // console.log(timeLeft)
-        // console.log('id'+timerId)   
+        // console.log('id'+timerId)
 
         if (user_id == {{ Auth::user()->id }}) {
             $(document).find('#mysome_div'+id).html(timeLeft + ' sec');
