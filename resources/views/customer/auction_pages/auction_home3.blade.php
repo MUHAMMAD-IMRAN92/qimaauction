@@ -2631,7 +2631,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        // console.log(data);
+        console.log(data);
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
@@ -2955,7 +2955,7 @@ border: 1px solid white;
                 }
                 else{
                     if(other_check==0 || other_check!==my[i].id){
-                        console.log('sencond')
+                        // console.log('sencond')
 
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
@@ -3001,7 +3001,7 @@ border: 1px solid white;
         }
     });
     socket.on('add_bid_updates', function(data) {
-        console.log(data);
+        // console.log(data);
 
         if(data.groupusers != undefined)
        {
