@@ -57,7 +57,7 @@ var other_check=0;
                         var liability = my[i].accopied_wieght * amount;
                         var rem_weight = my[i].remainig_weight / 20;
                         if (my[i].my_check == true) {
-                            $('#offers').append("<li> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
+                            $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
                                 " </span> <button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button> </div> <div class='lotidchild'><div class='lotidchild-1'><p>Amount: $" + commify(my[i].amount) + "<p>Bags:" + weight +
                                 "</p></div><div class='lotidchild-1'> <p>Liablity:$" + commify(liability) +
                                 "</p><p>Remaining time: <b id='some_div" + i + "'></b></p>" +
@@ -65,7 +65,7 @@ var other_check=0;
                                 "</div></div></li>");
                                 if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
-                                "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
+                                "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'><p>Amount: <span  class='offeramount" + my[i].id +
                                 "'>" + '$' + commify(my[i].amount) +
                                 "</span></p><p>Remaining Bags: <span class='remainingbags" + my[
@@ -103,7 +103,7 @@ var other_check=0;
                         } else {
                             if(other_check==0 || other_check!==my[i].id){
                             $('#other-offers').append(
-                                "<li><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-7' data-toggle='collapse' data-target='#demo" +
+                                "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-7' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li> <div class='lotidchild'><p>Amount: <span  class='offeramount" + my[i].id +
                                 "'>" + '$' + commify(my[i].amount) +
                                 "</span> </p><p>Remaining Bags: <span class='remainingbags" + my[
@@ -223,13 +223,20 @@ var other_check=0;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        $('#offers').empty();
-                        $('#other-offers').empty();
+                        // console.log(response);
+                        var otheroffers = response.otheroffers;
+                        // alert($('.othersofferli'+offerID));
+                        var offerID =response.otherOfffers.offer_id;
+                        // alert(offerID);
+                        // $('#offers').empty();
+                        // $('#other-offers').empty();
+                        $('.othersofferli'+offerID).empty();
+                        $('.offersli'+offerID).empty();
                         $('#bag_quantity').val('');
                         $('#bid_amount').val('');
                         $('.show-bid-confirm').show();
                         $('.liabiltysec').hide();
-                        var offersdata=response.groupbid
+                        var offersdata=response.groupbid;
                             socket.emit('add_groupbid_updates', {
                              "offersdata": offersdata,
                             //  "adminofferData":adminofferData,
@@ -253,9 +260,9 @@ var other_check=0;
                     },
                     success: function(response) {
                         if (response.success) {
-                            $('#offers').empty();
-                            $('#other-offers').empty();
-                            $('.some_div').empty();
+                            // $('#offers').empty();
+                            // $('#other-offers').empty();
+                            // $('.some_div').empty();
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
