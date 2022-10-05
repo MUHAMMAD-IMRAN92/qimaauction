@@ -2569,15 +2569,7 @@ border: 1px solid white;
         $(document).on("click", '.removeAutoBID', function(e) {
             e.preventDefault();
             var id = $(this).attr('data-id');
-            $(".autobidamount" + id).show();
-            $(".nextincrement" + id).show();
-            $(".singlebidtable" + id).hide();
-            $(".autobidtable" + id).hide();
-            $(".bidnowautobutton" + id).show();
-            $(".autobidClass" + id).hide();
-
-            $(".bidnowbutton" + id).prop('disabled', false);
-            $(".bidnowbutton" + id).css('background', '#143D30');
+            $(".bidnowautobutton" + id).hide();
             swal({
                 title: `Remove Auto Bid ?`,
                 // text: "You will remain highest bidder until your limit reached.",
@@ -2594,6 +2586,14 @@ border: 1px solid white;
                             _token: "{{ csrf_token() }}",
                         },
                         success: function(response) {
+                            $(".autobidamount" + id).show();
+                            $(".nextincrement" + id).show();
+                            $(".singlebidtable" + id).hide();
+                            $(".autobidtable" + id).hide();
+                            $(".bidnowautobutton" + id).show();
+                            $(".autobidClass" + id).hide();
+                            $(".bidnowbutton" + id).prop('disabled', false);
+                            $(".bidnowbutton" + id).css('background', '#143D30');
                             var auction_product_id = response.auction_product_id;
                             var outbid = response.outAutobid;
                             if (outbid == 0) {
