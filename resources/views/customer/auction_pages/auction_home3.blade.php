@@ -1909,8 +1909,6 @@ border: 1px solid white;
                                 @endphp
                                 <tr id="bid_row_{{ $auctionProduct->id }}"
                                     {{-- single bid / autobid winner --}}
-                                    {{ "data-pid='".$auctionProduct->id."'"}}
-
                                     @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id )
                                         @php $userfound = 1; @endphp
@@ -1923,8 +1921,6 @@ border: 1px solid white;
                                         {{ '' }}
                                         @endif
                                     @endforeach
-                                    {{-- @else
-                                    style="display:none;" --}}
                                     @endif
                                     @if($userfound == 0)
                                     style="display:none;"
