@@ -1372,13 +1372,13 @@ border: 1px solid white;
                                         {
                                             $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
                                             $offerUser[$i]['weight'] = $offerUsers->weight;
+                                            $offerUser[$i]['productid'] = $offerUsers->auction_product_id;
                                             $i++;
                                         }
                                         $groupUsers = $offerUser;
-                                        // dd($groupUsers);
                                     }
                                 @endphp
-                                <tr
+                                    <tr
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
                                     @if(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
                                     @foreach ($groupUsers as $users)
@@ -1891,20 +1891,40 @@ border: 1px solid white;
                             @php $total_liability = 0; @endphp
                             @foreach ($auctionProducts as $auctionProduct)
                                 @php
+                                    $i=0;
+                                    if(isset($auctionProduct->offerComplete))
+                                    {
+                                        $offerUser=[];
+                                        foreach($auctionProduct->offerComplete->allOfferUsers as $offerUsers)
+                                        {
+                                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                                            $offerUser[$i]['productid'] = $offerUsers->auction_product_id;
+                                            $i++;
+                                        }
+                                        $groupUsers = $offerUser;
+                                    }
                                     $isEmpty = sizeof($singleBids);
+                                    $userfound = 0;
                                 @endphp
                                 <tr id="bid_row_{{ $auctionProduct->id }}"
-                                    @php $userfound = 0; @endphp
+                                    {{-- single bid / autobid winner --}}
+                                    {{ "data-pid='".$auctionProduct->id."'"}}
+
                                     @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
-                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id )
                                         @php $userfound = 1; @endphp
-                                     @elseif(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
+                                        {{ '' }}
+                                        {{-- group bid winner --}}
+                                    @elseif(isset($auctionProduct->groupAutobid))
                                     @foreach ($groupUsers as $users)
-                                        @if($users['bidwinner'] == Auth::user()->id)
-                                        @php $userfound = 1; @endphp
+                                        @if($users['bidwinner'] == Auth::user()->id && $users['productid']==$auctionProduct->id)
+                                        @php $userfound = $users['bidwinner']; @endphp
+                                        {{ '' }}
                                         @endif
                                     @endforeach
-                                    {{-- @else --}}
+                                    {{-- @else
+                                    style="display:none;" --}}
                                     @endif
                                     @if($userfound == 0)
                                     style="display:none;"
@@ -1918,8 +1938,6 @@ border: 1px solid white;
                                      @elseif(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
                                     @foreach ($groupUsers as $users)
                                         @if($users['bidwinner'] == Auth::user()->id)
-                                        @php $userfound = 1; @endphp
-                                        {{-- @php $userfound = 1; @endphp --}}
                                         style="background: #DBFFDA;"
                                         @endif
                                     @endforeach
@@ -1986,7 +2004,6 @@ border: 1px solid white;
                                         @elseif(isset($auctionProduct->groupAutobid))
                                             @foreach ($groupUsers as $users)
                                                 @if($users['bidwinner'] == Auth::user()->id)
-                                                {{-- @php $userfound = 1; @endphp --}}
                                                     ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1).' weight('.$users['weight'].'/lbs)' : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
                                                 @endif
                                         @endforeach
@@ -2771,6 +2788,10 @@ border: 1px solid white;
         } else {
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+                setTimeout(() => {
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                }, 10000);
         }
     }
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
@@ -2831,6 +2852,7 @@ border: 1px solid white;
                     $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                 }, 10000);
                 $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                $('.errorMsgAutoBid' + data.bidID).html('');
                 $(".alertMessage" + data.bidID).css('background', '#f16767');
                 $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
                 $('.nextincrement' + data.bidID).show();
@@ -2893,13 +2915,13 @@ border: 1px solid white;
     //     {
             if (data.loser == {{ Auth::user()->id }})
                 {
-
                     $(".bidcollapse" + data.bidID).removeClass("changecolor");
                     $(".bidcollapse" + data.bidID).addClass("changecolorLose");
                     setTimeout(() => {
                         $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                     }, 10000);
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                    $('.errorMsgAutoBid' + data.bidID).html('');
                     $(".alertMessage" + data.bidID).css('background', '#f16767');
                     $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
                     $('.nextincrement' + data.bidID).show();
@@ -3032,7 +3054,7 @@ border: 1px solid white;
                 }
                 else{
                     if(other_check==0 || other_check!==my[i].id){
-                        // console.log('sencond')
+                        console.log('sencond')
 
                     $('#other-offers').append(
                         "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
