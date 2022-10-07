@@ -1910,18 +1910,22 @@ border: 1px solid white;
                                     style="display:none;"
                                     @endif
                                     class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }} liability-data"
-
+                                    @php $userfound = 0; @endphp
                                     @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                                @php $userfound = 1; @endphp
                                      style="background: #DBFFDA;"
                                      @elseif(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
                                     @foreach ($groupUsers as $users)
                                         @if($users['bidwinner'] == Auth::user()->id)
+                                        @php $userfound = 1; @endphp
                                         {{-- @php $userfound = 1; @endphp --}}
                                         style="background: #DBFFDA;"
                                         @endif
                                     @endforeach
+                                     @endif @if($userfound == 0)
                                      @endif>
+
                                     <td class="fw-bold text-center"><i class="fa fa-star"
                                             aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
@@ -1960,16 +1964,22 @@ border: 1px solid white;
                                     @endphp
                                     <td
                                         class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }}
+                                        @php $userfound = 0; @endphp
                                          @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
                                             $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                                    @php $userfound = 1; @endphp
                                             {{ 'liabilty_shown' }}
                                         @elseif(isset($auctionProduct->groupAutobid))
                                         @foreach ($groupUsers as $users)
                                         @if($users['bidwinner'] == Auth::user()->id)
+                                        @php $userfound = 1; @endphp
                                         {{ 'liabilty_shown' }}
                                         @endif
                                         @endforeach
+                                        @endif
+                                        @if($userfound == 0)
                                         @endif ">
+
                                         @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id)  &&
                                             $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
