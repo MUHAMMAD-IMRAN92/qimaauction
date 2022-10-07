@@ -1380,14 +1380,14 @@ border: 1px solid white;
                                 @endphp
                                 <tr
                                     class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
-                                    @if(isset($auctionProduct->offerComplete) && isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group ==1)
+                                    @if(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
                                     @foreach ($groupUsers as $users)
                                         @if($users['bidwinner'] == Auth::user()->id)
                                         changecolor
                                         @endif
                                     @endforeach
                                     @endif
-                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->is_group ==0 &&
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) && $auctionProduct->singleBidPricelatest->is_group ==0 &&
                                         $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) changecolor @endif">
                                     <td class="fw-bold productrank{{ $auctionProduct->id }}">
                                         {{ $auctionProduct->rank }}</td>
@@ -1420,7 +1420,7 @@ border: 1px solid white;
 
                                     <td class="liability{{ $auctionProduct->id }} ">
                                         @php $userfound = 0; @endphp
-                                        @if (isset($auctionProduct->singleBidPricelatest) && $auctionProduct->singleBidPricelatest->is_group == 1)
+                                        @if (isset($auctionProduct->groupAutobid))
                                             @foreach ($groupUsers as $users)
                                                 @if($users['bidwinner'] == Auth::user()->id)
                                                 @php $userfound = 1; @endphp
@@ -1894,12 +1894,34 @@ border: 1px solid white;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
                                 <tr id="bid_row_{{ $auctionProduct->id }}"
-                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
-                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ '' }} @else style="display:none;" @endif
+                                    @php $userfound = 0; @endphp
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
+                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                        @php $userfound = 1; @endphp
+                                     @elseif(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
+                                    @foreach ($groupUsers as $users)
+                                        @if($users['bidwinner'] == Auth::user()->id)
+                                        @php $userfound = 1; @endphp
+                                        @endif
+                                    @endforeach
+                                    {{-- @else --}}
+                                    @endif
+                                    @if($userfound == 0)
+                                    style="display:none;"
+                                    @endif
                                     class="tr-bb text-center liabilitybidcollapse{{ $auctionProduct->id }} liability-data"
 
-                                    @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
-                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) style="background: #DBFFDA;" @endif>
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
+                                        $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                     style="background: #DBFFDA;"
+                                     @elseif(isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid))
+                                    @foreach ($groupUsers as $users)
+                                        @if($users['bidwinner'] == Auth::user()->id)
+                                        {{-- @php $userfound = 1; @endphp --}}
+                                        style="background: #DBFFDA;"
+                                        @endif
+                                    @endforeach
+                                     @endif>
                                     <td class="fw-bold text-center"><i class="fa fa-star"
                                             aria-hidden="true"></i>{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold ">{{ $auctionProduct->jury_score }}</td>
@@ -1917,17 +1939,48 @@ border: 1px solid white;
                                         </div>
                                     </td>
                                     @php
-                                        if (isset($auctionProduct->singleBidPricelatest)) {
+                                        if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest)) {
                                             if ($auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {
                                                 $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight : $auctionProduct->start_price * $auctionProduct->weight;
                                                 $total_liability = $total_liability + $datavalue;
                                             }
                                         }
+                                        if (isset($auctionProduct->groupAutobid))
+                                        {
+                                            foreach ($groupUsers as $users)
+                                            {
+                                                if($users['bidwinner'] == Auth::user()->id)
+                                                {
+                                                    $datavalue = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount * $users['weight'] : $auctionProduct->start_price * $auctionProduct->weight;
+                                                    $total_liability = $total_liability + $datavalue;
+                                                }
+                                            }
+
+                                        }
                                     @endphp
                                     <td
-                                        class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }} @if (isset($auctionProduct->singleBidPricelatest->user_id) &&
-                                            $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id) {{ 'liabilty_shown' }} @endif ">
+                                        class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }}
+                                         @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
+                                            $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
+                                            {{ 'liabilty_shown' }}
+                                        @elseif(isset($auctionProduct->groupAutobid))
+                                        @foreach ($groupUsers as $users)
+                                        @if($users['bidwinner'] == Auth::user()->id)
+                                        {{ 'liabilty_shown' }}
+                                        @endif
+                                        @endforeach
+                                        @endif ">
+                                        @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id)  &&
+                                            $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                        @elseif(isset($auctionProduct->groupAutobid))
+                                            @foreach ($groupUsers as $users)
+                                                @if($users['bidwinner'] == Auth::user()->id)
+                                                {{-- @php $userfound = 1; @endphp --}}
+                                                    ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1).' weight('.$users['weight'].'/lbs)' : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                                @endif
+                                        @endforeach
+                                        @endif
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
@@ -1953,13 +2006,24 @@ border: 1px solid white;
                                             <td class="">SL28</td>
                                         @endif
                                     @endforeach
-                                    @if (isset($auctionProduct->singleBidPricelatest))
+                                    {{-- @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} ">Awaiting Bid</td>
+                                    @endif --}}
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest))
+                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                                {{ $userData->paddle_number ?? '---' }}</td>
+                                        @endforeach
+                                    @elseif (isset($auctionProduct->groupAutobid))
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                                {{ $auctionProduct->offerComplete->paddle_number ?? '---' }}</td>
+                                    @else
+                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
                                     @endif
                                     <td class="">
                                         <div>
@@ -3106,16 +3170,16 @@ border: 1px solid white;
                 $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
 
         }
-        else if (data.winningBidder != undefined) {
+        else if (data.winningBidder != {{ Auth::user()->id }}) {
             // total = 0;
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
             $(".bidcollapse" + data.bidID).removeClass("changecolor");
             $(".userbid" + data.bidID).css("color", "#e78460");
-            // $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-            // setTimeout(() => {
-            //     $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-            // }, 10000);
+            $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            setTimeout(() => {
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            }, 10000);
             $(".bidnowbutton" + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
             $(".alertMessage" + data.bidID).css('background', '#f16767');
@@ -3141,6 +3205,8 @@ border: 1px solid white;
                     $(".bidcollapse" + data.bidID).addClass("changecolor");
                     $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
                     $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+
                 }
             }
         }
