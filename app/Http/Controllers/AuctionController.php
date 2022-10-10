@@ -1306,9 +1306,20 @@ class AuctionController extends Controller {
     }
 
     public function updateUserOfferStatus(Request $request){
-        $userBid      = UserOffers::find($request->id);
-        $userBid->status=0;
-        $userBid->save();
+        // $userBid      = UserOffers::find($request->id);
+        // $userBid->status=0;
+        // $userBid->save();
+        $user = Auth::user()->id;
+UserOffers::where('user_id',$user)->where('offer_id',$request->id)->update([
+    'status' => '0'
+]);
+$userOffers = UserOffers::where('offer_id',$request->id)->where('status',1)->get();
+if($userOffers->isEmpty())
+{
+    offers::where('id',$request->id)->update([
+        'is_active' => '0'
+    ]);
+}
         $groupbidDatas      = UserOffers::where('status',1)->get();
         $groupbid=[];
         $i=0;

@@ -3019,7 +3019,7 @@ border: 1px solid white;
                 var liability = my[i].accopied_wieght * amount;
                 var rem_weight = my[i].remainig_weight / 20;
                 if (my[i].user_id == {{ Auth::user()->id }}) {
-                $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
+                $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
                         .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
                         "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time,my[i].user_id) + "</div></div></li>");

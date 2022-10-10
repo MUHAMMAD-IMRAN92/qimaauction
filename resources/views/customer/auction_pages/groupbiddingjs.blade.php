@@ -387,6 +387,7 @@ var other_check=0;
         });
         //show bags quantity
         $(".bag_quantity").focusout(function(){
+          $('.fullweight').html('');
           var maxvalue = $('.productbags').html();
           var maximumbags = maxvalue;
           if (parseInt($(this).val()) > maximumbags)
@@ -605,6 +606,7 @@ var other_check=0;
                         }
                         else
                         {
+                            $('.fullweight').html('');
                             var isActive    = response.groupOfferData.is_active;
                             var amount      = response.groupOfferData.amount;
                             var user_id     = response.userOfffers.user_id;
