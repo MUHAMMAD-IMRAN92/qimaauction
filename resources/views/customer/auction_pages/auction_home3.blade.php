@@ -1418,21 +1418,23 @@ border: 1px solid white;
                                         @endif
                                     </td>
 
-                                    <td class="liability{{ $auctionProduct->id }} ">
+                                    <td> <p class="liability{{ $auctionProduct->id }} ">
                                         @php $userfound = 0; @endphp
                                         @if (isset($auctionProduct->groupAutobid))
                                             @foreach ($groupUsers as $users)
                                                 @if($users['bidwinner'] == Auth::user()->id)
                                                 @php $userfound = 1; @endphp
-                                                ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1).' weight('.$users['weight'].'/lbs)' : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                                ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1): number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                                <p class="groupliability{{$auctionProduct->id}}">weight{{$users['weight']}}/lbs</p>
                                                 @endif
                                             @endforeach
                                             @endif
                                             @if($userfound == 0)
                                             ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
                                             @endif
+                                        </p>
+                                        <p class="groupliability{{$auctionProduct->id}}"></p>
                                         </td>
-
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
@@ -1976,7 +1978,7 @@ border: 1px solid white;
 
                                         }
                                     @endphp
-                                    <td
+                                    <td><p
                                         class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }}
                                         @php $userfound = 0; @endphp
                                          @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id) &&
@@ -1997,13 +1999,16 @@ border: 1px solid white;
                                         @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest->user_id)  &&
                                             $auctionProduct->singleBidPricelatest->user_id == Auth::user()->id)
                                         ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+
                                         @elseif(isset($auctionProduct->groupAutobid))
                                             @foreach ($groupUsers as $users)
                                                 @if($users['bidwinner'] == Auth::user()->id)
-                                                    ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1).' weight('.$users['weight'].'/lbs)' : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
-                                                @endif
+                                                    ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $users['weight'], 1): number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                                    <p class="groupliability{{$auctionProduct->id}}">weight{{$users['weight']}}/lbs</p>
+                                                    @endif
                                         @endforeach
                                         @endif
+                                        <p class="groupliability{{$auctionProduct->id}}"></p>
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
@@ -2718,7 +2723,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        console.log(data);
+        // console.log(data);
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
@@ -2738,7 +2743,8 @@ border: 1px solid white;
             for (i = 0; i < data.winneruser.length; ++i)
             {
                 if (data.winneruser[i].bidwinner == {{ Auth::user()->id }}) {
-                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
+                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew));
+                    $(".groupliability" + data.bidID).html('weight('+data.winneruser[i].weight+'/lbs)');
                     $('.alertMessage'+data.bidID).html('');
                     $(".liabilitybidcollapse" + data.bidID).show();
                     $(".liability_your" + data.bidID).addClass('liabilty_shown');
@@ -2754,7 +2760,8 @@ border: 1px solid white;
                     $(".nextincrement" + data.bidID).hide();
                     $('.errorMsgAutoBid' + data.bidID).html('');
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-                    $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) + '&nbsp;weight('+data.winneruser[i].weight+'/lbs)');
+                    // $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew) );
+
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html(
                         '<p>Current autobid is $' +
                         addCommas(data.autobidamount) +
