@@ -2840,6 +2840,7 @@ border: 1px solid white;
                         $(".liabilitybidcollapse" + data.bidID).hide();
                         $(".liability_your" + data.bidID).removeClass('liabilty_shown');
                         $('.errorMsgAutoBid' + data.bidID).html('');
+                        $('.groupliability' + data.bidID).html('');
                         // $('#offers').empty();
                         // $('#other-offers').empty();
                     }
