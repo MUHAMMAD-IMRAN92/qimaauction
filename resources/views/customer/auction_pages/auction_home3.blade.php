@@ -2839,6 +2839,7 @@ border: 1px solid white;
                         $(".bidnowbutton" + data.bidID).css('background', '##143D30');
                         $(".liabilitybidcollapse" + data.bidID).hide();
                         $(".liability_your" + data.bidID).removeClass('liabilty_shown');
+                        $('.errorMsgAutoBid' + data.bidID).html('');
                         // $('#offers').empty();
                         // $('#other-offers').empty();
                     }
