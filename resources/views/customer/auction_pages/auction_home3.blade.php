@@ -3218,7 +3218,6 @@ border: 1px solid white;
 
         }
         else if (data.winningBidder != {{ Auth::user()->id }}) {
-            // total = 0;
             $(".liabilitybidcollapse" + data.bidID).hide();
             $(".liability_your" + data.bidID).removeClass('liabilty_shown');
             $(".bidcollapse" + data.bidID).removeClass("changecolor");

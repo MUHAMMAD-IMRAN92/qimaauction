@@ -19,10 +19,6 @@ function countdown() {
         }
         doSomething(offer_id);
     } else {
-
-        // console.log(timeLeft)
-        // console.log('id'+timerId)
-
         if (user_id == {{ Auth::user()->id }}) {
             $(document).find('#mysome_div'+id).html(timeLeft + ' sec');
             $(document).find('#some_div'+id).html(timeLeft + ' sec');
