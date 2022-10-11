@@ -2987,7 +2987,7 @@ border: 1px solid white;
     });
     socket.on('add_groupbid_updates', function(data) {
         var my = data.offersdata;
-        console.log(my);
+        // console.log(my);
         var lotid = $('.lotproductid').html();
         const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
 // Clear any timeout/interval up to that id
@@ -2998,21 +2998,22 @@ border: 1px solid white;
             var strValue=$('#offers').empty();
             $('#other-offers').empty();
             $('.some_div').empty();
-            var isActive = my[0].is_active;
-            var amount = my[0].amount;
-            var user_id = my[0].user_id;
-            var lotid = $('.lotproductid').html();
-            var auctionproductid = my[0].auction_product_id;
-            if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
-                $('#bag_quantity').val('');
-                $('#bid_amount').val('');
-                $('.show-bid-confirm').show();
-                $('.liabiltysec').hide();
-                $('.finalweight').html('');
-                $('.confirmgroupbidbutton').prop('disabled', false);
-            }
-            var i;
+            // var isActive = my[0].is_active;
+            // var amount = my[0].amount;
+            // var user_id = my[0].user_id;
+            // var lotid = $('.lotproductid').html();
+            // var auctionproductid = my[0].auction_product_id;
+            // if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
+            //     $('#bag_quantity').val('');
+            //     $('#bid_amount').val('');
+            //     $('.show-bid-confirm').show();
+            //     $('.liabiltysec').hide();
+            //     $('.finalweight').html('');
+            //     $('.confirmgroupbidbutton').prop('disabled', false);
+            // }
+                var i;
                 var other_check=0;
+                var offers_all = [];
             for (i = 0; i < my.length; ++i) {
                 var weight = my[i].accopied_wieght / 20;
                 var amount = my[i].amount;
@@ -3023,8 +3024,13 @@ border: 1px solid white;
                         .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
                         "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time,my[i].user_id) + "</div></div></li>");
+                 if(other_check==0 || other_check!=my[i].id ){
+                    if(offers_all.includes(my[i].id))
+                    {
 
-                 if(other_check==0 || other_check!==my[i].id){
+                    }
+                    else{
+                    offers_all.push(my[i].id);
                     $('#other-offers').append(
                         "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
@@ -3053,16 +3059,19 @@ border: 1px solid white;
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
                         other_check= my[i].id;
-
+                        }
                     }
-
                 }
                 else{
-                    if(other_check==0 || other_check!==my[i].id){
-                        console.log('sencond')
+                    if(other_check==0 || other_check!=my[i].id){
+                        if(offers_all.includes(my[i].id))
+                        {
 
+                        }
+                    else{
+                    offers_all.push(my[i].id);
                     $('#other-offers').append(
-                        "<li><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
+                        "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
                         .id + "'>" + '$' + commify(my[i].amount) +
                         "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
@@ -3089,6 +3098,7 @@ border: 1px solid white;
                         "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                         my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
                         other_check= my[i].id;
+                    }
 
                     }
                     else{

@@ -51,6 +51,7 @@ var other_check=0;
                     }
 
                     var i;
+                    var offers_all = [];
                     for (i = 0; i < my.length; ++i) {
                         var weight = my[i].accopied_wieght / 20;
                         var amount = my[i].amount;
@@ -64,6 +65,12 @@ var other_check=0;
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                                 "</div></div></li>");
                                 if(other_check==0 || other_check!==my[i].id){
+                                    if(offers_all.includes(my[i].id))
+                                    {
+
+                                    }
+                                    else{
+                        offers_all.push(my[i].id);
                             $('#other-offers').append(
                                 "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'><p>Amount: <span  class='offeramount" + my[i].id +
@@ -97,11 +104,19 @@ var other_check=0;
                                 my[i].id + "'>Cancel</button></div> </div> </div></li>");
                                 other_check= my[i].id;
                     }
-                    else{
+                }
+            // }
+                    // else{
 
-                    }
+                    // }
                         } else {
                             if(other_check==0 || other_check!==my[i].id){
+                        if(offers_all.includes(my[i].id))
+                        {
+
+                        }
+                    else{
+                    offers_all.push(my[i].id);
                             $('#other-offers').append(
                                 "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-7' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li> <div class='lotidchild'><p>Amount: <span  class='offeramount" + my[i].id +
@@ -135,6 +150,7 @@ var other_check=0;
                                 my[i].id + "'>Cancel</button></div> </div> </div></li>");
                                 other_check= my[i].id;
                     }
+                }
                     else{
 
                     }
