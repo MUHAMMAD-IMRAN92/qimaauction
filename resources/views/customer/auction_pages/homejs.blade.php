@@ -1,8 +1,5 @@
 <script>
     function counter(offer_id,id,time,endtime,user_id){
-        // alert(endtime)
-        // console.log(user_id)
-
         var curnet_time=new Date();
         var curnet_time = AddMinutesToDate(curnet_time,3000);
         var end_time=new Date(endtime);
