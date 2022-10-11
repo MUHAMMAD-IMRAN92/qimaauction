@@ -3040,7 +3040,7 @@ border: 1px solid white;
                         counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                         "</li><div id='demo" + i +
                         "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
-                        my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
+                        my[i].id + "' id='remaining_bag_quantity' min='1' data-id='" + my[i].id +
                         "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
                         "' value='" + my[i].id + "'> <span class='validationbags" + my[i].id +
                         " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
