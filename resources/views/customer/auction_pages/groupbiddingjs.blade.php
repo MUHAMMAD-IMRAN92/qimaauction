@@ -59,8 +59,8 @@ var other_check=0;
                         var rem_weight = my[i].remainig_weight / 20;
                         if (my[i].my_check == true) {
                             $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent' ><span class='lotid'>" + my[i].rank +
-                                " </span> <button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button> </div> <div class='lotidchild'><div class='lotidchild-1'><p>Amount: $" + commify(my[i].amount) + "<p>Bags:" + weight +
-                                "</p></div><div class='lotidchild-1'> <p>Liablity:$" + commify(liability) +
+                                " </span> <button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].user_offer_id+")'>× </button> </div> <div class='lotidchild'><div class='lotidchild-1'><p>Amount: $" + addCommas(my[i].amount) + "<p>Bags:" + weight +
+                                "</p></div><div class='lotidchild-1'> <p>Liablity:$" + addCommas(liability) +
                                 "</p><p>Remaining time: <b id='some_div" + i + "'></b></p>" +
                                 counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
                                 "</div></div></li>");
@@ -74,7 +74,7 @@ var other_check=0;
                             $('#other-offers').append(
                                 "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'><p>Amount: <span  class='offeramount" + my[i].id +
-                                "'>" + '$' + commify(my[i].amount) +
+                                "'>" + '$' + addCommas(my[i].amount) +
                                 "</span></p><p>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
                                 "</span></p></div><p>Remaining time: <b  id='mysome_div" + i + "'></b></p>" +
@@ -120,7 +120,7 @@ var other_check=0;
                             $('#other-offers').append(
                                 "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-7' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li> <div class='lotidchild'><p>Amount: <span  class='offeramount" + my[i].id +
-                                "'>" + '$' + commify(my[i].amount) +
+                                "'>" + '$' + addCommas(my[i].amount) +
                                 "</span> </p><p>Remaining Bags: <span class='remainingbags" + my[
                                     i].id + "'>" + rem_weight +
                                 "</span></p></div><p>Remaining time: <b  id='other_div" + i + "'></b></p>" +
@@ -204,9 +204,9 @@ var other_check=0;
                 var weight         = $('.appendedfinalweight'+id).html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 var liability      = finalweight*finalgroupbidamount;
-                $('.bidamountappended'+id).html(commify(groupbidamount));
+                $('.bidamountappended'+id).html(addCommas(groupbidamount));
                 $('.liabilityweight'+id).html(weight);
-                $('.liabilityappended'+id).html('$'+commify(liability));
+                $('.liabilityappended'+id).html('$'+addCommas(liability));
             }
         });
         $(document).on('click', '.cancelappendedgroupbtn', function() {
@@ -275,6 +275,7 @@ var other_check=0;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        // console.log(response);
                         if (response.success) {
                             // $('#offers').empty();
                             // $('#other-offers').empty();
@@ -283,7 +284,7 @@ var other_check=0;
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
-                                    commify(response.bid_amount) +
+                                    addCommas(response.bid_amount) +
                                 ' /lb</p>');
                             $('.autobidamount' + id).val('');
                             $('.alertMessage' + id).html('');
@@ -455,9 +456,9 @@ var other_check=0;
                 var weight         = $('.finalweight').html();
                 var finalweight    = parseFloat(weight.replace(/[^0-9.]/g, ''));
                 var liability      = finalweight*groupbidamount;
-                $('.bidamount').html('$'+ commify(groupbidamount));
+                $('.bidamount').html('$'+ addCommas(groupbidamount));
                 $('.liabilityweight').html(weight);
-                $('.finalliability').html('$'+commify(liability));
+                $('.finalliability').html('$'+addCommas(liability));
                 $('.confirmgroupbidbutton').prop('disabled', false);
             }
         });

@@ -594,7 +594,7 @@ class AuctionController extends Controller {
             return response()->json(['message' => 'Enter amount greater than product price']);
         }
         $singleBid = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first();
-        if ($singleBid && $singleBid->user_id == $user) {
+        if ($singleBid && $request->isgroup!=1 && $singleBid->user_id == $user) {
             $autoBidData = new AutoBid();
             $autoBidData->auction_id = $request->auctionid;
             $autoBidData->user_id = $user;
@@ -609,6 +609,22 @@ class AuctionController extends Controller {
             return response()->json(['success' => 'Bid Added Successfully']);
         }
         $loser = '';
+        if ($singleBid && $request->isgroup == 1 ) {
+            $autoBidData = new AutoBid();
+            $autoBidData->auction_id = $request->auctionid;
+            $autoBidData->user_id = $user;
+            $autoBidData->auction_product_id = $request->id;
+            $autoBidData->is_active = '1';
+            $autoBidData->bid_amount = $request->autobidamount;
+            if($request->isgroup == 1)
+            {
+                $autoBidData->is_group = $request->isgroup;
+            }
+            $autoBidData->save();
+            // return response()->json(['success' => 'Bid Added Successfully']);
+            $autoBidData->loser_user = $loser;
+        }
+        // dd($autoBidData->loser_user);
 
         //If Already have another Autobid on this product
         if (isset($auctionProductsData->autoBidActive)) {
@@ -732,7 +748,16 @@ class AuctionController extends Controller {
                     $singleBid = new SingleBid();
                     $singleBid->bid_amount = $auctionProductsData->autoBidActive->bid_amount;
                     $singleBid->auction_id = $request->auctionid;
-                    $singleBid->user_id = $loser;
+                    $autobidlosercheck = Autobid::where('auction_product_id', $request->id)->where('is_active', '1')->where('is_group', '0')->orderBy('bid_amount', 'desc')->first();
+                    if (isset($autobidlosercheck) && $request->isgroup==1 )
+                    {
+                        $loser = '';
+                        $autoBidData->loser_user = $loser;
+                    }
+                    else
+                    {
+                        $singleBid->user_id = $loser;
+                    }
                     $singleBid->auction_product_id = $request->id;
                     $singleBid->autobid_id = $auctionProductsData->autoBidActive->id;
                     if($request->isgroup == 1)
@@ -883,12 +908,13 @@ class AuctionController extends Controller {
         $autoBidData->id = $winner;
         $autoBidData->timerCheck = $isEmpty;
 
-        if (!$loser) {
+        if (!isset($loser)) {
             $loser = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->skip(1)->first();
             if ($loser) {
                 $loser = $loser->user_id;
             }
         }
+        // dd($autoBidData->loser_user);
         $autoBidData->loser_user = $loser;
         return response()->json($autoBidData);
     }

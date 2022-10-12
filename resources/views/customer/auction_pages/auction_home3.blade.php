@@ -2395,7 +2395,7 @@ border: 1px solid white;
                     var weightautobid = $(".weightautobid" + id).html();
                     var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
                     $(".autobiddermaxbid" + id).html('$' + autobidamount);
-                    $(".maximumliability" + id).html('$' + commify(parseFloat(weight * autobidamount)
+                    $(".maximumliability" + id).html('$' + addCommas(parseFloat(weight * autobidamount)
                         .toFixed(2)));
                 } else {
                     $('.showMessageForAmount' + id).show();
@@ -2723,7 +2723,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        // console.log(data);
+        console.log(data);
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
@@ -2750,6 +2750,7 @@ border: 1px solid white;
                     $(".liability_your" + data.bidID).addClass('liabilty_shown');
                     $(".finalliabilitytr").show();
                     $(".userbid" + data.bidID).css("color", "black");
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                     $(".bidcollapse" + data.bidID).addClass("changecolor");
                     $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
                     $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
@@ -3020,8 +3021,8 @@ border: 1px solid white;
                 var liability = my[i].accopied_wieght * amount;
                 var rem_weight = my[i].remainig_weight / 20;
                 if (my[i].user_id == {{ Auth::user()->id }}) {
-                $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + commify(my[i]
-                        .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + commify(liability) +
+                $('#offers').append("<li class='offersli"+my[i].id+"'> <div class='lotidparent'><span class='lotid'>" + my[i].rank + "</span><button class='lotid-cancelbutton' onclick='cancelOffer("+my[i].id+")'>× </button></div> <div class='lotidchild'> <div class='lotidchild-1'><p >Amount: $" + addCommas(my[i]
+                        .amount) + "<p> Bags: " + weight + "</p> </div> <div class='lotidchild-1'><p>Liablity: $" + addCommas(liability) +
                         "</p><p>Remaining time: <b id='some_div" + i + "'></b></p> " + counter(my[i].id, i, my[i]
                             .start_time, my[i].end_time,my[i].user_id) + "</div></div></li>");
                  if(other_check==0 || other_check!=my[i].id ){
@@ -3034,7 +3035,7 @@ border: 1px solid white;
                     $('#other-offers').append(
                         "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15 mb-1' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
-                        .id + "'>" + '$' + commify(my[i].amount) +
+                        .id + "'>" + '$' + addCommas(my[i].amount) +
                         "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
                         rem_weight + "</span></p></div> <p>Remaining time :<b  id='mysome_div" + i + "'></b></p>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
@@ -3073,7 +3074,7 @@ border: 1px solid white;
                     $('#other-offers').append(
                         "<li class='othersofferli"+my[i].id+"'><span class='lot-toggle-btn'" + i + "'> " + my[i].rank + " </span><button type='button' class='singlebidbtn btn mt-15' data-toggle='collapse' data-target='#demo" +
                         i + "'> " + 'Participate' + " </button><li><div class='lotid-groupoffers'> <p>Amount: <span  class='offeramount" + my[i]
-                        .id + "'>" + '$' + commify(my[i].amount) +
+                        .id + "'>" + '$' + addCommas(my[i].amount) +
                         "</span></p><p>Remaining Bags: <span class=' remainingbags" + my[i].id + "'>" +
                         rem_weight + "</span></p></div> <p>Remaining time :<b  id='other_div" + i + "'></b></p>" +
                         counter(my[i].id, i, my[i].start_time, my[i].end_time,my[i].user_id) +
@@ -3471,7 +3472,7 @@ border: 1px solid white;
         resetTimer();
     })
 
-    function commify(n) {
+    function addCommas(n) {
         var parts = n.toString().split(".");
         const numberPart = parts[0];
         const decimalPart = parts[1];
