@@ -748,8 +748,8 @@ class AuctionController extends Controller {
                     $singleBid = new SingleBid();
                     $singleBid->bid_amount = $auctionProductsData->autoBidActive->bid_amount;
                     $singleBid->auction_id = $request->auctionid;
-                    $autobidlosercheck = Autobid::where('auction_product_id', $request->id)->where('is_active', '1')->where('is_group', '0')->orderBy('bid_amount', 'desc')->first();
-                    if (isset($autobidlosercheck) && $request->isgroup==1 )
+                    $autobidlosercheck = Autobid::where('auction_product_id', $request->id)->where('is_active', '1')->orderBy('bid_amount', 'desc')->first();
+                    if (isset($autobidlosercheck)  && $request->isgroup==1 )
                     {
                         $loser = '';
                         $autoBidData->loser_user = $loser;
@@ -845,7 +845,7 @@ class AuctionController extends Controller {
         $autoBidData->message = null;
         if(isset($latestAutoBid) && $latestAutoBid->is_group == 1)
         {
-            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
             $i=0;
             $offerUser=[];
             foreach($offerUsersData->allOfferUsers as $offerUsers)
@@ -1150,6 +1150,15 @@ class AuctionController extends Controller {
     }
     public function saveGroupBidOffer(Request $request)
     {
+        $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['autoBidActive'])->first();
+        if(isset($auctionProductsData->autoBidActive))
+        {
+            if ($request->amount <= $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'Please enter greater amount than current amount.']);
+            }
+        }
+
         $offerActive = Offers::where('auction_product_id', $request->id)->where('is_active','=',1)->first();
         if($offerActive != null && $offerActive->amount == $request->amount)
         {
