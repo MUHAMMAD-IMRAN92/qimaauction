@@ -2723,7 +2723,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        console.log(data);
+        // console.log(data);
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
@@ -2743,6 +2743,7 @@ border: 1px solid white;
             for (i = 0; i < data.winneruser.length; ++i)
             {
                 if (data.winneruser[i].bidwinner == {{ Auth::user()->id }}) {
+                    $('.groupliability' + data.bidID).html('');
                     $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew));
                     $(".groupliability" + data.bidID).html('weight('+data.winneruser[i].weight+'/lbs)');
                     $('.alertMessage'+data.bidID).html('');
@@ -2819,6 +2820,23 @@ border: 1px solid white;
     //     }
         if(data.groupUsers != null)
        {
+            // console.log('loserrr-------',data.groupUsers);
+            // console.log('winnner-------',data.winneruser);
+            if(data.groupUsers != null && data.winneruser !=null)
+            {
+                var i;
+                for (i = 0; i < data.winneruser.length; ++i)
+                {
+                    var j;
+                    for (j = 0; j < data.groupUsers.length; ++j)
+                    {
+                        if(data.winneruser[i].bidwinner == data.groupUsers[j].bidwinner){
+                            data.groupUsers.splice(j , 1);
+                        }
+                    }
+                }
+                    // console.log('NEW LOST USERS-- ',data.groupUsers);
+            }
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
