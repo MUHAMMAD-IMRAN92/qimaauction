@@ -20,8 +20,8 @@ function countdown() {
         doSomething(offer_id);
     } else {
         if (user_id == {{ Auth::user()->id }}) {
-            $(document).find('#mysome_div'+id).html(timeLeft.toString() + ' sec');
-            $(document).find('#some_div'+id).html(timeLeft.toString() + ' sec');
+            $(document).find('#mysome_div'+id).html(parseInt(timeLeft) + ' sec');
+            $(document).find('#some_div'+id).html(parseInt(timeLeft) + ' sec');
 
         }
         else{
