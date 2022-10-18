@@ -7,7 +7,7 @@
         var dif = (seconds/1000)/60;
         var timeLeft = Math.round(dif*60);
         var timerId = setInterval(countdown, 1000);
-
+        // console.log(timeLeft.toString());
          function AddMinutesToDate(date, minutes) {
              return new Date(date.getTime() - minutes*60000);
            }
@@ -20,8 +20,8 @@ function countdown() {
         doSomething(offer_id);
     } else {
         if (user_id == {{ Auth::user()->id }}) {
-            $(document).find('#mysome_div'+id).html(timeLeft + ' sec');
-            $(document).find('#some_div'+id).html(timeLeft + ' sec');
+            $(document).find('#mysome_div'+id).html(timeLeft.toString() + ' sec');
+            $(document).find('#some_div'+id).html(timeLeft.toString() + ' sec');
 
         }
         else{
