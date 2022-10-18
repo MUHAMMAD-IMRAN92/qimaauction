@@ -2723,6 +2723,7 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
+        // alert('hello');
         // console.log(data);
         if(data.groupPaddleNo==null)
         {
@@ -2743,7 +2744,8 @@ border: 1px solid white;
             for (i = 0; i < data.winneruser.length; ++i)
             {
                 if (data.winneruser[i].bidwinner == {{ Auth::user()->id }}) {
-                    $('.groupliability' + data.bidID).html('');
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                    $('.groupliability' + data.bidID).empty();
                     $(".liability" + data.bidID).html('$' + addCommas(data.winneruser[i].weight*data.bid_amountNew));
                     $(".groupliability" + data.bidID).html('weight('+data.winneruser[i].weight+'/lbs)');
                     $('.alertMessage'+data.bidID).html('');
@@ -2751,7 +2753,7 @@ border: 1px solid white;
                     $(".liability_your" + data.bidID).addClass('liabilty_shown');
                     $(".finalliabilitytr").show();
                     $(".userbid" + data.bidID).css("color", "black");
-                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                    // $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                     $(".bidcollapse" + data.bidID).addClass("changecolor");
                     $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
                     $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
@@ -2818,7 +2820,7 @@ border: 1px solid white;
     //     {
     //         $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
     //     }
-        if(data.groupUsers != null)
+        if(data.groupUsers != null )
        {
             // console.log('loserrr-------',data.groupUsers);
             // console.log('winnner-------',data.winneruser);
@@ -2840,7 +2842,7 @@ border: 1px solid white;
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
-                if (data.outbid == 0 && data.groupUsers[i].bidwinner == {{ Auth::user()->id }}) {
+                if (data.groupUsers[i].bidwinner == {{ Auth::user()->id }}) {
                          $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
                         $(".bidcollapse" + data.bidID).removeClass("changecolor");
                         $(".bidcollapse" + data.bidID).addClass("changecolorLose");
@@ -3221,6 +3223,7 @@ border: 1px solid white;
             // $(".bidcollapse" + data.bidID).addClass("changecolor");
             // $(".liabilitybidcollapse" + data.bidID).addClass("changecolor");
             // $(".auctionpaddleno" + data.bidID).html(data.paddleNo);
+                $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                $(".bidnowbutton" + data.bidID).attr("disabled", true);
                 $(".bidnowbutton" + data.bidID).css('background', '#a6a6a6');
                 $(".bidnowbutton" + data.bidID).css('color', '#ffffff');
@@ -3257,6 +3260,7 @@ border: 1px solid white;
             {
                 if (data.latestSingleBidUser[i].bidwinner == {{ Auth::user()->id }})
                 {
+                    $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                     $(".bidnowbutton" + data.bidID).attr("disabled", true);
                     $(".bidnowbutton" + data.bidID).css('background', '#a6a6a6');
                     $(".bidnowbutton" + data.bidID).css('color', '#ffffff');
