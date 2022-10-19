@@ -687,7 +687,7 @@ class AuctionController extends Controller {
                     // {
                     //     $autoBidData->groupPaddleNo = null;
                     // }
-                    if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) )
+                    if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==0 && $request->autobidamount == $auctionProductsData->autoBidActive->bid_amount)
                     {
                         // $autoBidData->winneruser = null;
                         $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
@@ -704,6 +704,40 @@ class AuctionController extends Controller {
                         $autoBidData->loser_user = $loser;
                         $userPaddleNum = User::where('id', $auctionProductsData->autoBidActive->user_id )->first()->paddle_number;
                         $autoBidData->userPaddleNo = $userPaddleNum;
+
+                    }
+                    elseif($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==1 && $request->autobidamount == $auctionProductsData->autoBidActive->bid_amount)
+                    {
+
+                        // losers
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
+                        $i=0;
+                        $offerUser=[];
+                        foreach($offerUsersData->allOfferUsers as $offerUsers)
+                        {
+                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $i++;
+                        }
+                        $autoBidData->groupUsers = $offerUser;
+                        //winners
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                        $i=0;
+                        $offerWinner=[];
+                        foreach($offerUsersData->allOfferUsers as $offerUsers)
+                        {
+                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $i++;
+                        }
+                        $autoBidData->isgroup    = '1';
+                        $autoBidData->winneruser = $offerWinner;
+                        $loser = '';
+                        $autoBidData->loser_user = $loser;
+                        //paddlenumber
+                        $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
+                        $offerpaddleNumber  = $offerComplete->paddle_number;
+                        $autoBidData->userPaddleNo = $offerpaddleNumber;
 
                     }
             } else {
@@ -748,7 +782,7 @@ class AuctionController extends Controller {
                     {
                         $autoBidData->is_group = $request->isgroup;
                     }
-                    if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==0)
+                    if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==0 && $request->autobidamount < $auctionProductsData->autoBidActive->bid_amount)
                     {
                         // $autoBidData->winneruser = null;
                         $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
@@ -767,8 +801,9 @@ class AuctionController extends Controller {
                         $autoBidData->userPaddleNo = $userPaddleNum;
 
                     }
-                    elseif($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==1)
+                    elseif($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==1 && $request->autobidamount < $auctionProductsData->autoBidActive->bid_amount)
                     {
+
                         // losers
                         $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
                         $i=0;
@@ -943,6 +978,7 @@ class AuctionController extends Controller {
         }
         if($request->isgroup == 1 && !isset($auctionProductsData->autoBidActive))
         {
+
             $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
             $i=0;
             $offerUser=[];
@@ -955,8 +991,9 @@ class AuctionController extends Controller {
             $autoBidData->isgroup    = '1';
             $autoBidData->winneruser = $offerUser;
         }
-        else if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive)&& $auctionProductsData->autoBidActive->is_group == 0)
+        else if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive)&& $auctionProductsData->autoBidActive->is_group == 0  && $request->autobidamount > $auctionProductsData->autoBidActive->bid_amount)
         {
+
             $loser = '';
             $autoBidData->loser_user = $loser;
             $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
@@ -977,6 +1014,7 @@ class AuctionController extends Controller {
         }
         else if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive)&& $auctionProductsData->autoBidActive->is_group == 1 && $request->autobidamount > $auctionProductsData->autoBidActive->bid_amount)
         {
+
             $loser = '';
             $autoBidData->loser_user = $loser;
             //losers
@@ -1007,7 +1045,7 @@ class AuctionController extends Controller {
             $autoBidData->winneruser = $offerUser;
 
         }
-        else
+        else if(!isset($autoBidData->winneruser))
         {
             $autoBidData->isgroup    = '0';
             $autoBidData->winneruser = $singleBidPricelatest->user_id;

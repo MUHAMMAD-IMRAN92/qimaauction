@@ -2724,7 +2724,7 @@ border: 1px solid white;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         // alert('hello');
-        // console.log(data);
+        console.log(data);
         if(data.groupPaddleNo==null)
         {
             $(".paddleno" + data.bidID).html(data.paddleNo);
