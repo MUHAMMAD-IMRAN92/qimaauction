@@ -579,6 +579,15 @@ class AuctionController extends Controller {
     }
 
     public function autoBidData(Request $request) {
+        // dd($request);
+        $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['autoBidActive'])->first();
+        if($request->ischeck== 2 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->user_id==Auth::user()->id)
+        {
+            if ($request->autobidamount <= $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'Please enter greater amount than Your current Autobid amount.']);
+            }
+        }
         $currentDate = date('Y-m-d H:i:s');
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
         $auction = Auction::where('is_active','1')->first();
@@ -687,6 +696,7 @@ class AuctionController extends Controller {
                     // {
                     //     $autoBidData->groupPaddleNo = null;
                     // }
+
                     if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->is_group==0 && $request->autobidamount == $auctionProductsData->autoBidActive->bid_amount)
                     {
                         // $autoBidData->winneruser = null;
@@ -1304,14 +1314,14 @@ class AuctionController extends Controller {
     }
     public function saveGroupBidOffer(Request $request)
     {
-        // $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['autoBidActive'])->first();
-        // if(isset($auctionProductsData->autoBidActive))
-        // {
-        //     if ($request->amount <= $auctionProductsData->autoBidActive->bid_amount)
-        //     {
-        //         return response()->json(['message' => 'Please enter greater amount than current amount.']);
-        //     }
-        // }
+        $auctionProductsData = AuctionProduct::where('id', $request->id)->with(['autoBidActive'])->first();
+        if(isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->user_id==Auth::user()->id)
+        {
+            if ($request->amount <= $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'Please enter greater amount than Your current Autobid amount.']);
+            }
+        }
 
         $offerActive = Offers::where('auction_product_id', $request->id)->where('is_active','=',1)->first();
         if($offerActive != null && $offerActive->amount == $request->amount)
@@ -1372,7 +1382,14 @@ class AuctionController extends Controller {
     }
     public function saveOtherGroupbidOffer(Request $request)
     {
-        // return $request;
+        $auctionProductsData = AuctionProduct::where('id', $request->auctionproductid)->with(['autoBidActive'])->first();
+        if(isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->user_id==Auth::user()->id)
+        {
+            if ($request->amount <= $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'You cannot Particpate in this offer You are winner with greter amount.']);
+            }
+        }
         $user                                =  Auth::user()->id;
         $check_user_offer=UserOffers::where('user_id',$user)->where('offer_id',$request->offerid)->first();
         if($check_user_offer==null){

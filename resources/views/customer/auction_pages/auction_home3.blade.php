@@ -2839,9 +2839,18 @@ border: 1px solid white;
                 }
                     // console.log('NEW LOST USERS-- ',data.groupUsers);
             }
+            // esleif(data.groupUsers != null )
+            // {
+
+            // }
             var i;
             for (i = 0; i < data.groupUsers.length; ++i)
             {
+                // if(data.groupUsers[i].bidwinner == data.winneruser)
+
+                // {
+                //     data.groupUsers.splice(i , 1);
+                // }
                 if (data.groupUsers[i].bidwinner == {{ Auth::user()->id }}) {
                          $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
                         $(".bidcollapse" + data.bidID).removeClass("changecolor");
@@ -3063,8 +3072,9 @@ border: 1px solid white;
                         "' class='groupbid-offers collapse'><div class='col-8'>  <label>Bags Quantity: </label> <input type='number' class='form-control bag_quant" +
                         my[i].id + "' id='remaining_bag_quantity' min='1' data-id='" + my[i].id +
                         "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
-                        "' value='" + my[i].id + "'> <span class='validationbags" + my[i].id +
-                        " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
+                        "' value='" + my[i].id + "'> <span class='validationbags " + my[i].id +
+                        " colorered'></span><span class='validationbagsnew" + my[i].id +
+                                " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
                         my[i].id +
                         "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
                         my[i].id + "' data-id=" + my[i].id +
@@ -3103,7 +3113,8 @@ border: 1px solid white;
                         my[i].id + "' id='remaining_bag_quantity' data-id='" + my[i].id +
                         "' name='bag_quantity'><input type='hidden' class='offerhiddenid" + my[i].id +
                         "' value='" + my[i].id + "'> <span class='validationbags" + my[i].id +
-                        " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
+                        " colorered'></span><span class='validationbagsnew" + my[i].id +
+                                " colorered'></span><p style='font-weight: bold'>Weight: <span class='appendedfinalweight" +
                         my[i].id +
                         "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
                         my[i].id + "' data-id=" + my[i].id +

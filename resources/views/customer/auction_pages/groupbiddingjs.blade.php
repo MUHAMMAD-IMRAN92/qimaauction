@@ -86,7 +86,8 @@ var other_check=0;
                                 "' name='bag_quantity'><input type='hidden' class='offerhiddenid" +
                                 my[i].id + "' value='" + my[i].id +
                                 "'> <span class='validationbags" + my[i].id +
-                                " colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight" +
+                                " colorered'></span><span class='validationbagsnew" + my[i].id +
+                                " colorered'><p style='font-weight: bold'>Weight:<span class='appendedfinalweight" +
                                 my[i].id +
                                 "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
                                 my[i].id + "' data-id=" + my[i].id +
@@ -132,7 +133,8 @@ var other_check=0;
                                 "' name='bag_quantity'><input type='hidden' class='offerhiddenid" +
                                 my[i].id + "' value='" + my[i].id +
                                 "'> <span class='validationbags" + my[i].id +
-                                " colorered'></span><p style='font-weight: bold'>Weight:<span class='appendedfinalweight" +
+                                " colorered'></span><span class='validationbagsnew" + my[i].id +
+                                " colorered'><p style='font-weight: bold'>Weight:<span class='appendedfinalweight" +
                                 my[i].id +
                                 "'>--</span></p> <br> <button type='button' class='singlebidbtn btn appended-bid-confirm confirmgrpbid" +
                                 my[i].id + "' data-id=" + my[i].id +
@@ -225,8 +227,10 @@ var other_check=0;
             var bagssdded   =   $('.bag_quant'+offerid).val();
             var auctionid = $('.auctionid' + id).val();
             var isgroup = '1';
+
             if(bagssdded == rembags)
             {
+                var ischeck='2';
                 //save data in user offers table
                 $.ajax({
                     url: "{{ route('saveothergroupbidoffer') }}",
@@ -240,6 +244,7 @@ var other_check=0;
                     },
                     success: function(response) {
                         // console.log(response);
+
                         var otheroffers = response.otheroffers;
                         // alert($('.othersofferli'+offerID));
                         var offerID =response.otherOfffers.offer_id;
@@ -272,6 +277,7 @@ var other_check=0;
                         autobidamount:groupbidamount,
                         auctionid:auctionid,
                         isgroup:isgroup,
+                        ischeck:ischeck,
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
@@ -295,14 +301,19 @@ var other_check=0;
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
                         } else if (response.message !== null) {
-                            $('.errorMsgAutoBid' + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html(response.message);
-                            $('.autobidamount' + id).show();
-                            $('.autobidamount' + id).val('');
-                            $('.bidnowautobutton' + id).show();
-                            $('.autobidClass' + id).hide();
-                            $('.nextincrement' + id).show();
+                            $('.validationbagsnew'+offerid).html('');
+                            $('.validationbagsnew'+offerid).html(response.message);
+                            $('.bag_quant'+offerid).val('');
+                            $('.confirmgrpbid'+offerid).show();
+                            $('.liabiltysecappended'+offerid).hide();
+                            // $('.errorMsgAutoBid' + id).html('');
+                            // $('.errorMsgAutoBid' + id + id).html('');
+                            // $('.errorMsgAutoBid' + id + id).html(response.message);
+                            // $('.autobidamount' + id).show();
+                            // $('.autobidamount' + id).val('');
+                            // $('.bidnowautobutton' + id).show();
+                            // $('.autobidClass' + id).hide();
+                            // $('.nextincrement' + id).show();
                         } else {
                             var latestAutoBidId = response.id;
                             var bidPrice = response.bid_amountNew;
@@ -389,6 +400,14 @@ var other_check=0;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        // console.log(response)
+                        if (response.message !== null) {
+                            $('.validationbagsnew'+offerid).html('');
+                            $('.validationbagsnew'+offerid).html(response.message);
+                            $('.bag_quant'+offerid).val('');
+                            $('.confirmgrpbid'+offerid).show();
+                            $('.liabiltysecappended'+offerid).hide();
+                        }
                         var offersdata  = response.groupbid;
                         var adminofferData = response.adminOffers;
                             socket.emit('add_groupbid_updates', {
@@ -486,6 +505,7 @@ var other_check=0;
             var auctionid = $('.auctionid' + id).val();
             if(finalweight == finallotweight)
             {
+                var ischeck='2';
                 //save data in autobid table if offer is on all weight
                 $.ajax({
                     url: "{{ route('autobiddata') }}",
@@ -494,9 +514,11 @@ var other_check=0;
                         id: id,
                         autobidamount:groupbidamount,
                         auctionid:auctionid,
+                        ischeck:ischeck,
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
+                        // console.log(response);
                         if (response.success) {
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
@@ -514,14 +536,19 @@ var other_check=0;
                             $(".autobidamount" + id).hide();
                             $(".nextincrement" + id).hide();
                         } else if (response.message !== null) {
-                            $('.errorMsgAutoBid' + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html('');
-                            $('.errorMsgAutoBid' + id + id).html(response.message);
-                            $('.autobidamount' + id).show();
-                            $('.autobidamount' + id).val('');
-                            $('.bidnowautobutton' + id).show();
-                            $('.autobidClass' + id).hide();
-                            $('.nextincrement' + id).show();
+                            $('.fullweight').html(response.message);
+                            $('.show-bid-confirm').show();
+                            $('.liabiltysec').hide();
+                            $('.bag_quantity').val('');
+                            $('.groupbidamount').val('');
+                            // $('.errorMsgAutoBid' + id).html('');
+                            // $('.errorMsgAutoBid' + id + id).html('');
+                            // $('.errorMsgAutoBid' + id + id).html(response.message);
+                            // $('.autobidamount' + id).show();
+                            // $('.autobidamount' + id).val('');
+                            // $('.bidnowautobutton' + id).show();
+                            // $('.autobidClass' + id).hide();
+                            // $('.nextincrement' + id).show();
                         } else {
                             var latestAutoBidId = response.id;
                             var bidPrice = response.bid_amountNew;
