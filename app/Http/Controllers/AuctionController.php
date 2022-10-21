@@ -592,6 +592,13 @@ class AuctionController extends Controller {
                 return response()->json(['message' => 'You are winner on autobid Please Remove autobid to purcahes all bags.']);
             }
         }
+        if($request->ischeck== 3 && isset($auctionProductsData->autoBidActive) && $auctionProductsData->autoBidActive->user_id==Auth::user()->id)
+        {
+            if ($request->autobidamount <= $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'Please enter greater amount than Your current Autobid amount.']);
+            }
+        }
         $currentDate = date('Y-m-d H:i:s');
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
         $auction = Auction::where('is_active','1')->first();
@@ -619,7 +626,7 @@ class AuctionController extends Controller {
                 $autoBidData->is_group = $request->isgroup;
             }
             $autoBidData->save();
-            if($request->isgroup != 1 &&  $request->ischeck!= 2)
+            if($request->isgroup != 1 &&  $request->ischeck!= 2 && $request->ischeck!= 3)
             {
                 return response()->json(['success' => 'Bid Added Successfully']);
             }
