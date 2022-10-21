@@ -2197,7 +2197,7 @@ border: 1px solid white;
                                             <th style="border-top: 1px solid #dee2e6;">
                                                 Liability:
                                             </th>
-                                            <td class="finalliability">
+                                            <td class="finalliabilitygroupbid">
 
                                             </td>
                                         </tr>

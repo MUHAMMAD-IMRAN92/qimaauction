@@ -478,7 +478,7 @@ var other_check=0;
                 var liability      = finalweight*groupbidamount;
                 $('.bidamount').html('$'+ addCommas(groupbidamount));
                 $('.liabilityweight').html(weight);
-                $('.finalliability').html('$'+addCommas(liability));
+                $('.finalliabilitygroupbid').html('$'+addCommas(liability));
                 $('.confirmgroupbidbutton').prop('disabled', false);
             }
         });
@@ -495,7 +495,6 @@ var other_check=0;
         //save group bid offer
         $('.confirmgroupbidbutton').click(function(){
             $('.confirmgroupbidbutton').prop('disabled', true);
-            // $('.finalliability').html();
             var id          = $('.lotproductid').html();
             //group offer weight
             var weight         = $('.finalweight').html();
@@ -653,6 +652,7 @@ var other_check=0;
                         else
                         {
                             $('.fullweight').html('');
+                            // $('.finalliability').html('');
                             var isActive    = response.groupOfferData.is_active;
                             var amount      = response.groupOfferData.amount;
                             var user_id     = response.userOfffers.user_id;
