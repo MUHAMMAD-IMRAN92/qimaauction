@@ -27,7 +27,7 @@ class AuctionProduct extends Model {
         return $this->hasMany(SingleBid::class, 'auction_product_id', 'id');
     }
     public function images() {
-        return $this->hasMany(Image::class, 'product_id', 'id');
+        return $this->hasMany(Image::class, 'product_id', 'product_id');
     }
     public function winningImages() {
         return $this->hasMany(WinningCofeeImages::class, 'user_id', 'id');
