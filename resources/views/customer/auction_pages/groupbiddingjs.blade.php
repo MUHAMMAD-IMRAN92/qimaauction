@@ -230,7 +230,7 @@ var other_check=0;
 
             if(bagssdded == rembags)
             {
-                var ischeck='2';
+                var ischeck='3';
                 //save data in user offers table
                 $.ajax({
                     url: "{{ route('saveothergroupbidoffer') }}",
@@ -266,6 +266,7 @@ var other_check=0;
                     },
                     error: function(error) {
                         console.log(error)
+
                     }
                 });
                 //save data in autobid table if offer is on all weight
