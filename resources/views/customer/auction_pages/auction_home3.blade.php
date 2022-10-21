@@ -1354,6 +1354,7 @@ border: 1px solid white;
                         <tbody>
 
                             @foreach ($auctionProducts as $auctionProduct)
+                            {{-- @dd(); --}}
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
@@ -1438,7 +1439,7 @@ border: 1px solid white;
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
-                                                data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">{{ $products->product_title }}
+                                                data-image="{{ isset($auctionProduct->images) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)

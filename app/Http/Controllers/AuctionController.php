@@ -240,7 +240,7 @@ class AuctionController extends Controller {
             $auction->save();
             return redirect('auction-winners');
         }
-        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
+        $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('images','products', 'singleBids', 'winningImages')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function($e) {
