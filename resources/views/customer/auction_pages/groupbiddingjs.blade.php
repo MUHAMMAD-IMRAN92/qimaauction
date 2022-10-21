@@ -495,6 +495,7 @@ var other_check=0;
         //save group bid offer
         $('.confirmgroupbidbutton').click(function(){
             $('.confirmgroupbidbutton').prop('disabled', true);
+            $('.finalliability').html('');
             var id          = $('.lotproductid').html();
             //group offer weight
             var weight         = $('.finalweight').html();

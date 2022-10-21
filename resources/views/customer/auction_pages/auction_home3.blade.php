@@ -1744,7 +1744,7 @@ border: 1px solid white;
                                                                 class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
                                                                 <p
                                                                     class="newautobidamount{{ $auctionProduct->id }}">
-                                                                    CURRENT AUTOBID IS
+                                                                    Current autobid is
                                                                     ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
                                                                     {{-- <a href="javascript:void(0)"
                                                                         class="removeAutoBID"
@@ -1779,7 +1779,7 @@ border: 1px solid white;
                                                                     class="errormsgautobid  errormsgautobid{{ $auctionProduct->id }}">
                                                                     <p
                                                                         class="newautobidamount{{ $auctionProduct->id }}">
-                                                                        CURRENT AUTOBID IS
+                                                                        Current autobid is
                                                                         ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
@@ -2723,7 +2723,6 @@ border: 1px solid white;
     var interval;
     var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
-        // alert('hello');
         console.log(data);
         if(data.groupPaddleNo==null)
         {
