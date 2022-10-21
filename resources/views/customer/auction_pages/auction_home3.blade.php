@@ -1354,7 +1354,7 @@ border: 1px solid white;
                         <tbody>
 
                             @foreach ($auctionProducts as $auctionProduct)
-                            {{-- @dd(); --}}
+                            @dump($auctionProduct->images);
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
