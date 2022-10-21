@@ -587,6 +587,10 @@ class AuctionController extends Controller {
             {
                 return response()->json(['message' => 'Please enter greater amount than Your current Autobid amount.']);
             }
+            else if ($request->autobidamount > $auctionProductsData->autoBidActive->bid_amount)
+            {
+                return response()->json(['message' => 'You are winner on autobid Please Remove autobid to purcahes all bags.']);
+            }
         }
         $currentDate = date('Y-m-d H:i:s');
         $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
@@ -615,7 +619,7 @@ class AuctionController extends Controller {
                 $autoBidData->is_group = $request->isgroup;
             }
             $autoBidData->save();
-            if($request->isgroup != 1)
+            if($request->isgroup != 1 &&  $request->ischeck!= 2)
             {
                 return response()->json(['success' => 'Bid Added Successfully']);
             }
