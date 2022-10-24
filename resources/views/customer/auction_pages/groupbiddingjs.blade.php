@@ -282,7 +282,7 @@ var other_check=0;
                         _token: "{{ csrf_token() }}",
                     },
                     success: function(response) {
-                        // console.log(response);
+                        console.log(response);
                         if (response.success) {
                             // $('#offers').empty();
                             // $('#other-offers').empty();
