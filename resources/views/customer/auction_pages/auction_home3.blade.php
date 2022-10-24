@@ -1354,7 +1354,7 @@ border: 1px solid white;
                         <tbody>
 
                             @foreach ($auctionProducts as $auctionProduct)
-                           
+
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
@@ -2878,7 +2878,7 @@ border: 1px solid white;
             }
         else
         {
-            if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }})
+            if (data.outbid == 0 && data.autobidUserID == {{ Auth::user()->id }} && data.isgroup!=1)
             {
                 $(".liability" + data.bidID).html('$' + data.liability.toLocaleString('en-US'));
                 $(".bidcollapse" + data.bidID).removeClass("changecolor");
