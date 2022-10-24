@@ -1039,7 +1039,7 @@ class AuctionController extends Controller {
             $loser = '';
             $autoBidData->loser_user = $loser;
             //losers
-            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
+            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->skip(1)->first();
             $i=0;
             $offerUser=[];
             foreach($offerUsersData->allOfferUsers as $offerUsers)
