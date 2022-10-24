@@ -2736,6 +2736,24 @@ border: 1px solid white;
             $(".paddleno" + data.bidID).html(data.groupPaddleNo);
             $(".paddleno" + data.bidID).addClass('fw-bold');
         }
+        if (data.loser == {{ Auth::user()->id }})
+                {
+                    $(".bidcollapse" + data.bidID).removeClass("changecolor");
+                    $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+                    setTimeout(() => {
+                        $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+                    }, 10000);
+                    $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+                    $('.errorMsgAutoBid' + data.bidID).html('');
+                    $(".alertMessage" + data.bidID).css('background', '#f16767');
+                    $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+                    $('.nextincrement' + data.bidID).show();
+                    $('.bidnowbutton' + data.bidID).show();
+                    $('.autobidamount' + data.bidID).show();
+                    $('.bidnowautobutton' + data.bidID).show();
+                    $('.bidnowbutton' + data.bidID).attr("disabled", false);
+                    $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+                }
         //if triggered from groupbid
        if(data.isgroup == 1)
        {
@@ -2948,24 +2966,24 @@ border: 1px solid white;
     //     }
     //     else
     //     {
-            if (data.loser == {{ Auth::user()->id }})
-                {
-                    $(".bidcollapse" + data.bidID).removeClass("changecolor");
-                    $(".bidcollapse" + data.bidID).addClass("changecolorLose");
-                    setTimeout(() => {
-                        $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
-                    }, 10000);
-                    $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
-                    $('.errorMsgAutoBid' + data.bidID).html('');
-                    $(".alertMessage" + data.bidID).css('background', '#f16767');
-                    $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
-                    $('.nextincrement' + data.bidID).show();
-                    $('.bidnowbutton' + data.bidID).show();
-                    $('.autobidamount' + data.bidID).show();
-                    $('.bidnowautobutton' + data.bidID).show();
-                    $('.bidnowbutton' + data.bidID).attr("disabled", false);
-                    $(".bidnowbutton" + data.bidID).css('background', '#143D30');
-                }
+            // if (data.loser == {{ Auth::user()->id }})
+            //     {
+            //         $(".bidcollapse" + data.bidID).removeClass("changecolor");
+            //         $(".bidcollapse" + data.bidID).addClass("changecolorLose");
+            //         setTimeout(() => {
+            //             $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
+            //         }, 10000);
+            //         $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
+            //         $('.errorMsgAutoBid' + data.bidID).html('');
+            //         $(".alertMessage" + data.bidID).css('background', '#f16767');
+            //         $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
+            //         $('.nextincrement' + data.bidID).show();
+            //         $('.bidnowbutton' + data.bidID).show();
+            //         $('.autobidamount' + data.bidID).show();
+            //         $('.bidnowautobutton' + data.bidID).show();
+            //         $('.bidnowbutton' + data.bidID).attr("disabled", false);
+            //         $(".bidnowbutton" + data.bidID).css('background', '#143D30');
+            //     }
         // }
         var total_bid = 0;
 
