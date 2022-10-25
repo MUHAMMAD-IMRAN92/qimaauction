@@ -450,6 +450,9 @@
                             <p style="">AUGUST 18<sup>th</sup></p>
 
                         </div>-->
+                        @php
+                            $auction=App\Models\Auction::where('is_active','1')->first();
+                        @endphp
                         <div class="my-3 banner-btn">
                             {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
@@ -460,9 +463,11 @@
                             <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='/auction-winners' ">RESULTS
                             </button>
-<!--                            <button type="button" class="btn btn-primary banner-btns mb-1"
+                            @if(isset($auction))
+                          <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                            </button>-->
+                            </button>
+                            @endif
                         </div>
                     </div>
                 </div>
