@@ -1210,9 +1210,8 @@ class AuctionController extends Controller {
     }
 
     public function auctionWinners(Request $request) {
-        $auction = Auction::where('is_active','1')->first();
+        $auction = Auction::where('is_hidden','1')->first();
         if ($request->ended == 1) {
-
             $auction->save();
             return redirect('auction-winners');
         }
@@ -1271,7 +1270,8 @@ class AuctionController extends Controller {
                 return $e;
             });
             return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'auction', 'singleBids'));
-        } else {
+        }
+        else {
             return redirect('auction');
         }
     }
