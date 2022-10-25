@@ -101,9 +101,7 @@
                                         class="ficon feather icon-menu"></i></a></li>
                         </ul>
                         <ul style="display:none" class="nav navbar-nav bookmark-icons">
-                            <!-- li.nav-item.mobile-menu.d-xl-none.mr-auto-->
-                            <!--   a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')-->
-                            <!--     i.ficon.feather.icon-menu-->
+                            
                             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html"
                                     data-toggle="tooltip" data-placement="top" title="Todo"><i
                                         class="ficon feather icon-check-square"></i></a></li>
@@ -285,7 +283,7 @@
                                 <li @if (request()->is('winninglots')) class='active' @endif><a
                                     href="{{ url('/winninglots') }}">
                                     <span class="menu-item " data-i18n="eCommerce">Winning Lots</span></a>
-                                </li>
+                                <!-- </li>
                                 <li @if (request()->is('highestbids')) class='active' @endif><a
                                         href="{{ url('/highestbids') }}">
                                         <span class="menu-item " data-i18n="eCommerce">Highest Bids per Lot</span></a>
@@ -293,7 +291,7 @@
                                 <li @if (request()->is('allbids')) class='active' @endif><a
                                     href="{{ url('/allbids') }}">
                                     <span class="menu-item " data-i18n="eCommerce">All Bids</span></a>
-                                </li>
+                                </li> -->
                                 <li @if (request()->is('user-profile')) class='active' @endif><a
                                     href="{{ url('/user-profile') }}">
                                     <span class="menu-item" data-i18n="Analytics">Profile</span></a>

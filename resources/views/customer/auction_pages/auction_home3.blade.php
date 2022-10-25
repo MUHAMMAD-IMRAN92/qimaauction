@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="icon" type="image/jpeg" href="{{ asset('public/images/favicon.jpeg') }}">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Fonts Start  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1211,6 +1212,39 @@ border: 1px solid white;
         color: #143D30;
         background: #DBFFDA;
     }
+    .dropdown a{
+        background:white;
+        border:none;
+        padding:0px;
+    }
+    .dropdown a:hover{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+    }
+    .btn.show{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+    }
+    .btn-secondary.focus, .btn-secondary:focus{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+        box-shadow: none !important;
+    }
+    .navbar-list{
+        display:flex;
+        align-items:center;
+    }
+    .dropdown-menu{
+        padding: 5px;
+    min-width: 100px;
+}
+   .dropdown-menu a:hover{
+        color:goldenrod !important;
+        
+    }
 
     /* hamza starts ends */
 </style>
@@ -1236,8 +1270,21 @@ border: 1px solid white;
 
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i
                         title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
-                <a href="{{ url('/user-dashboard') }}"><i title="Profile" class="fa fa-user" aria-hidden="true"></i>
-                </a>
+                <!-- <a href="{{ url('/user-dashboard') }}"> -->
+                     <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a></li>
+    <li><a class="dropdown-item"href="{{ route('user_logout') }}">Logout</a></li>
+  
+  </ul>
+</div>
+                <!-- </a> -->
+               
+                
 
 
             </ul>

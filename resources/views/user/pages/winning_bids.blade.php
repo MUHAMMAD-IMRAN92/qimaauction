@@ -2,11 +2,39 @@
     .table-heading{
     font-size: 5rem !important;
   }
+  .auction-heading{
+    text-align: center;
+    font-family: 'Montserrat';
+  }
+  .auction-heading h2{
+    font-size:2rem !important;
+    margin-bottom:20px ;
+  }
+  .auctiontable thead {
+        background: #E5E5E5;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
+
+    .auctiontable thead th {
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        padding: 10px 8px;
+    }
+    html body{
+        background:white !important
+    }
+
 </style>
 @extends('user.layout.default')
 @section('title', 'All Transection')
 @section('content')
     <!-- BEGIN: Content-->
+    
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -28,7 +56,7 @@
 
                     </div>
                 </div>
-                    <form method="get">
+                    <!-- <form method="get">
                         <div class="flex-align-center">
                         <div class="col-sm-6 col-12">
                         <select name="auction_id" class="form-control">
@@ -47,13 +75,16 @@
                         </div>
                     @endif --}}
                          </div>
-                    </form>
+                    </form> -->
 
 
             </div>
+            <div class="auction-heading">
+                <h2>AUCTION 2022</h2>
+            </div>
+
             <div class="content-body">
 
-                <!-- Zero configuration table -->
                 <section id="basic-datatable">
                     <div class="row">
                         <div class="col-12">
@@ -63,12 +94,11 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table" data-page-length='50'>
-                                                <thead>
-                                                    <tr class="table-heading">
-                                                        {{-- <th>Sr</th> --}}
-                                                        <th>Rank</th>
+                                    <div class="table-responsive">
+                    <table class="table auctiontable">
+                        <thead>
+                            <tr class="text-center">
+                            <th>Rank</th>
                                                         <th>Score</th>
                                                         <th>Farmer</th>
                                                         <th>Weight (lbs)</th>
@@ -76,81 +106,23 @@
                                                         <th>Total Value</th>
                                                         <th>Company</th>
                                                         <th>Delivery Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{-- @dd($auctionWinners) --}}
-                                                    @if (isset($auctionWinners))
-                                                    @foreach ($auctionWinners as $winners)
-                                                    <tr>
-                                                        <td>{{ $winners->aproducts->rank }}</td>
-                                                        <td>{{ $winners->aproducts->jury_score }}</td>
-                                                        <td>{{ $winners->products->product_title }}</td>
-                                                        <td>{{ $winners->aproducts->weight }}</td>
-                                                        <td>${{ number_format($winners->bid_amount, 2) }}</td>
-                                                        <td>${{ number_format($winners->total_value, 2) }}</td>
-                                                        <td>{{ $winners->users->company ?? '---' }}</td>
-                                                        <td class="flex-space-between">{{$winners->delivery_status}}
-                                                            <a class="btn btn-primary waves-effect waves-light accordion-toggle collapsed p-10"  id="accordion1"
-                                                            data-toggle="collapse" data-parent="#accordion1"
-                                                            href="#collapseOne{{$winners->id}}">History<a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hide-table-padding bid-row">
-                                                        <td colspan="13">
-                                                            <div id="collapseOne{{$winners->id}}" class="collapse">
-                                                                <div class="card">
-                                                                    <div class="card-header">
-                                                                        <table class="table zero-configuration" id="customer-table" data-page-length='20'>
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Sr No</th>
-                                                                                    <th>Status</th>
-                                                                                    <th>Date Time</th>
-                                                                                    {{-- <th>URL</th>
-                                                                                    <th>Tracking Number</th> --}}
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                {{-- @dd($winners->shipmentStatus); --}}
-                                                                                @foreach ($winners->shipmentStatus as $status)
-                                                                                <tr>
-                                                                                    <td>{{$loop->iteration}}</td>
-                                                                                    <td>{{$status->delivery_status}}</td>
-                                                                                    <td>{{$status->created_at->format('d-m-Y H:i:s')}}</td>
-                                                                                    {{-- <td></td>
-                                                                                    <td></td> --}}
-                                                                                </tr>
-
-                                                                                @endforeach
-
-                                                                            </tbody>
-                                                                        </table>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                @endif
-                                                </tbody>
-                                                <tfoot>
-
-                                                </tfoot>
-                                            </table>
-                                        </div>
+                            </tr>
+                        </thead>
+                       
+                    </table>
+                                      
+                </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!--/ Zero configuration table -->
 
             </div>
         </div>
     </div>
+   
     <!-- END: Content-->
 @endsection
 
