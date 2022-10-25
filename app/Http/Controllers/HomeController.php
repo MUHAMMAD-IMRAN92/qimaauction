@@ -31,10 +31,10 @@ class HomeController extends Controller
         if($user == 0) {
             return redirect('dashboard');
         }
-        else if($user == 1)
-        {
-            return redirect('/user-dashboard');
-        }
+        // else if($user == 1)
+        // {
+        //     return redirect('//auction');
+        // }
 
         else{
             return redirect('/auction');

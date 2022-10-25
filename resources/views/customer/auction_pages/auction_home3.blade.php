@@ -1243,7 +1243,7 @@ border: 1px solid white;
 }
    .dropdown-menu a:hover{
         color:goldenrod !important;
-        
+
     }
 
     /* hamza starts ends */
@@ -1279,12 +1279,12 @@ border: 1px solid white;
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a></li>
     <li><a class="dropdown-item"href="{{ route('user_logout') }}">Logout</a></li>
-  
+
   </ul>
 </div>
                 <!-- </a> -->
-               
-                
+
+
 
 
             </ul>
@@ -1486,7 +1486,7 @@ border: 1px solid white;
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
-                                                data-image="{{ isset($auctionProduct->images) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
+                                                data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
@@ -2061,7 +2061,7 @@ border: 1px solid white;
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
-                                                data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
+                                                data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : ''  }}">
                                                 {{ $products->product_title }} </a></td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
