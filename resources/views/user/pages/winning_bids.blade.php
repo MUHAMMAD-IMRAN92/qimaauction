@@ -10,6 +10,7 @@
     font-size:2rem !important;
     margin-bottom:20px ;
   }
+  /* auction table css  */
   .auctiontable thead {
         background: #E5E5E5;
         border-width: 1px 0px;

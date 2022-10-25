@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="icon" type="image/jpeg" href="{{ asset('public/images/favicon.jpeg') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+   
     <!-- Fonts Start  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1245,7 +1244,16 @@ border: 1px solid white;
         color:goldenrod !important;
 
     }
-
+.button-background{
+    background:white;
+    color:black;
+    border:none;
+}
+.button-background:hover{
+    background:white;
+    color:black;
+    border:none;
+}
     /* hamza starts ends */
 </style>
 
@@ -1271,7 +1279,7 @@ border: 1px solid white;
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i
                         title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
                 <!-- <a href="{{ url('/user-dashboard') }}"> -->
-                     <div class="dropdown">
+                     <!-- <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
   <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
   </a>
@@ -1281,6 +1289,16 @@ border: 1px solid white;
     <li><a class="dropdown-item"href="{{ route('user_logout') }}">Logout</a></li>
 
   </ul>
+</div> -->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
+    <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
+
+  </div>
 </div>
                 <!-- </a> -->
 
