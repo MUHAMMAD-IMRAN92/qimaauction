@@ -1041,7 +1041,7 @@ class AuctionController extends Controller {
             $loser = '';
             $autoBidData->loser_user = $loser;
             //losers
-            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->skip(1)->first();
+            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'desc')->skip(1)->first();
             $i=0;
             $offerUser=[];
             foreach($offerUsersData->allOfferUsers as $offerUsers)
@@ -1055,7 +1055,7 @@ class AuctionController extends Controller {
             $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
             $offerpaddleNumber  = $offerComplete->paddle_number;
             $autoBidData->userPaddleNo = $offerpaddleNumber;
-            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+            $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'desc')->first();
             $i=0;
             $offerUser=[];
             foreach($offerUsersData->allOfferUsers as $offerUsers)
