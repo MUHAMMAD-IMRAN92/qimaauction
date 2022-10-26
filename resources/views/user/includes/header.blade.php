@@ -78,7 +78,16 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
-
+<style>
+     .main-menu.menu-light .navigation > li ul .active{
+        background:white !important;
+        box-shadow:none !important;
+        color:goldenrod !important;
+    }
+    .main-menu.menu-light .navigation > li ul .active > a{
+        color: goldenrod !important;
+    }
+</style>
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
@@ -259,7 +268,7 @@
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="{{ url('/user-dashboard') }}" style="margin-top:0;">
                         <div class="brand-logo">
-                            <img src="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
+                            <img class="mt-2" width="200px" src="https://bestofyemenauction.com/public/images/logo.land.png">
                             {{-- <img src="{{ asset('public/app-assets/images/ico/logo_admin.png.png') }}"> --}}
                         </div>
                         {{-- <h4 class="brand-text">QIMA Auction</h4> --}}

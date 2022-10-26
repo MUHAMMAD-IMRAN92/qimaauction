@@ -29,6 +29,28 @@
     html body{
         background:white !important
     }
+    .header-navbar.navbar-shadow{
+        box-shadow:none !important;
+    }
+    .card{
+        box-shadow:none !important;
+    }
+    .main-menu.menu-shadow{
+        box-shadow:none !important;
+    }
+    .navbar-floating .header-navbar-shadow{
+        background:white !important;
+    }
+   
+    /* .main-menu.menu-light .navigation > li ul .active{
+        background:white !important;
+        box-shadow:none !important;
+        color:goldenrod !important;
+    }
+    .main-menu.menu-light .navigation > li ul .active > a{
+        color: goldenrod !important;
+    } */
+    
 
 </style>
 @extends('user.layout.default')
@@ -38,7 +60,7 @@
     
     <div class="app-content content">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div ></div>
         <div class="content-wrapper">
             <div class="content-header row" style="display:block !important ">
                 <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
@@ -49,7 +71,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/user-dashboard') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Winning Lots
+                                    <li class="breadcrumb-item active ">Winning Lots
                                     </li>
                                 </ol>
                             </div>
