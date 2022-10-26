@@ -996,6 +996,21 @@
             font-size: 18px;
         }
     }
+    .header-heading{
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+    }
+    .header-heading-left{
+        display:flex;
+        align-items:center;
+        gap:15px;
+       color:black;
+       text-decoration:none;
+    }
+    .header-heading-h5{
+        text-align: center;margin-bottom:0px;font-family:'Montserrat'; 
+    }
 
     /* hamza starts ends */
 </style>
@@ -1124,7 +1139,19 @@
         </div>
     </div> --}}
     <section>
-        <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
+        <div class="header-heading">
+            <div ><a class="header-heading-left" href="" > <i class="fa fa-angle-left" style="font-size:50px"></i><h5 href="#"  class="header-heading-h5" >Previous Auction </h5></a></div>
+            <div>
+                <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
+               
+            </div>
+            <div ><a class="header-heading-left" href="" ><h5 href="#" class="header-heading-h5" >Next Auction </h5><i class="fa fa-angle-right" style="font-size:50px"></i> </a> </div>
+   </div>
+        <div class="header-heading-time mt-5">
+        <p style="text-align: center;font-family:'Montserrat';"> Auction Name <span> Auction 2022</span></p>
+                <p style="text-align: center;font-family:'Montserrat';">Auction Date <span>12-2-2022</span></p>
+        </div>
+        
         <!--<h3 style="text-align: center;font-family:'Montserrat';">Auction starting soon.</h3>-->
         <div class="table-container">
             <div class="tab-content" id="nav-tabContent">

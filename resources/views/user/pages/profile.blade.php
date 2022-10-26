@@ -1,3 +1,24 @@
+<style>
+      html body{
+        background:white !important
+    }
+    .header-navbar.navbar-shadow{
+        box-shadow:none !important;
+    }
+    .card{
+        box-shadow:none !important;
+    }
+    .main-menu.menu-shadow{
+        box-shadow:none !important;
+    }.navbar-floating .header-navbar-shadow{
+        background:white !important;
+    }
+    /* .btn-save-color{
+        background:goldenrod !important;
+    } */
+   
+</style>
+
 @extends('user.layout.default')
 @section('title', 'All Transection')
 @section('content')
@@ -81,7 +102,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                                                <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
+                                                <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1 btn-save-color">Save
                                                     Changes</button>
                                             </div>
                                         </div>
