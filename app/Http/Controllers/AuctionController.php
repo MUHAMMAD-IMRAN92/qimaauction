@@ -731,7 +731,7 @@ class AuctionController extends Controller {
                     {
 
                         // losers
-                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
                         $i=0;
                         $offerUser=[];
                         foreach($offerUsersData->allOfferUsers as $offerUsers)
@@ -742,16 +742,18 @@ class AuctionController extends Controller {
                         }
                         $autoBidData->groupUsers = $offerUser;
                         //winners
-                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'asc')->first();
+
                         $i=0;
                         $offerWinner=[];
                         foreach($offerUsersData->allOfferUsers as $offerUsers)
                         {
-                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
-                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $offerWinner[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerWinner[$i]['weight'] = $offerUsers->weight;
                             $i++;
                         }
                         $autoBidData->isgroup    = '1';
+                        // dump($offerWinner);
                         $autoBidData->winneruser = $offerWinner;
                         $loser = '';
                         $autoBidData->loser_user = $loser;
@@ -826,7 +828,7 @@ class AuctionController extends Controller {
                     {
 
                         // losers
-                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'asc')->first();
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'desc')->skip(1)->first();
                         $i=0;
                         $offerUser=[];
                         foreach($offerUsersData->allOfferUsers as $offerUsers)
@@ -837,13 +839,13 @@ class AuctionController extends Controller {
                         }
                         $autoBidData->groupUsers = $offerUser;
                         //winners
-                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+                        $offerUsersData = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'desc')->first();
                         $i=0;
                         $offerWinner=[];
                         foreach($offerUsersData->allOfferUsers as $offerUsers)
                         {
-                            $offerUser[$i]['bidwinner'] = $offerUsers->user_id;
-                            $offerUser[$i]['weight'] = $offerUsers->weight;
+                            $offerWinner[$i]['bidwinner'] = $offerUsers->user_id;
+                            $offerWinner[$i]['weight'] = $offerUsers->weight;
                             $i++;
                         }
                         $autoBidData->isgroup    = '1';
