@@ -1017,7 +1017,7 @@ class AuctionController extends Controller {
         else if($request->isgroup == 1 && isset($auctionProductsData->autoBidActive)&& $auctionProductsData->autoBidActive->is_group == 0  && $request->autobidamount > $auctionProductsData->autoBidActive->bid_amount)
         {
 
-            $loser = '';
+            $loser = $auctionProductsData->autoBidActive->user_id;
             $autoBidData->loser_user = $loser;
             $offerComplete = Offers::where('auction_product_id',$request->id)->where('is_active','=',2)->with('useroffers')->orderBy('created_at', 'desc')->first();
             $offerpaddleNumber  = $offerComplete->paddle_number;
