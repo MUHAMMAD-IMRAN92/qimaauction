@@ -1278,68 +1278,18 @@ border: 1px solid white;
 
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i
                         title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
-                <!-- <a href="{{ url('/user-dashboard') }}"> -->
-                     <!-- <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-  <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
-  </a>
-
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a></li>
-    <li><a class="dropdown-item"href="{{ route('user_logout') }}">Logout</a></li>
-
-  </ul>
-</div> -->
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
-    <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
-
-  </div>
-</div>
-                <!-- </a> -->
-
-
-
-
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
+                    <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
+                </div>
+                </div>
             </ul>
         </div>
-        {{-- <div class="menu" id="toggle-button">
-                <div class="menu-item"></div>
-                <div class="menu-item"></div>
-                <div class="menu-item"></div>
-            </div> --}}
-
-
-
     </nav>
-
-    {{-- <div class="navbar">
-            <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
-
-            <a href="{{ route('user_logout') }}">
-                <p>LOG OUT</p>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-            <a href="#"><i class="fa fa-instagram"></i> </a>
-            <a href="#"><i class="fa fa-facebook-f"></i></a>
-            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
-
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
-        </div> --}}
-    {{-- </section> --}}
-    {{-- <section>
-        <div id="background">
-            <div class="imglogo">
-                <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
-            </div>
-        </div>
-    </section> --}}
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}

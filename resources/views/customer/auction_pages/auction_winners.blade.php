@@ -997,6 +997,7 @@
         }
     }
     .header-heading{
+        margin-top: 20px;
         display:flex;
         justify-content:space-around;
         align-items:center;
@@ -1009,15 +1010,63 @@
        text-decoration:none;
     }
     .header-heading-h5{
-        text-align: center;margin-bottom:0px;font-family:'Montserrat'; 
+        text-align: center;margin-bottom:0px;font-family:'Montserrat';
     }
+    .header-heading-left:hover
+    {
+        text-decoration: none;
+        color: #D1AF69;
+    }
+    .dropdown a{
+        background:white;
+        border:none;
+        padding:0px;
+    }
+    .dropdown a:hover{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+    }
+    .btn.show{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+    }
+    .btn-secondary.focus, .btn-secondary:focus{
+        background-color:white !important;
+        color : black !important;
+        border:none !important;
+        box-shadow: none !important;
+    }
+    .navbar-list{
+        display:flex;
+        align-items:center;
+    }
+    .dropdown-menu{
+        padding: 5px;
+    min-width: 100px;
+}
+   .dropdown-menu a:hover{
+        color:goldenrod !important;
+
+    }
+.button-background{
+    background:white;
+    color:black;
+    border:none;
+}
+.button-background:hover{
+    background:white;
+    color:black;
+    border:none;
+}
 
     /* hamza starts ends */
 </style>
 
 <body>
     <nav class="navbar navbar-fix">
-        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+        <div id="width"><a href="{{url('/')}}"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
         <div>
@@ -1028,131 +1077,43 @@
                 <a target="_blank" href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
                 <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
                 <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
-
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
-                <a href="{{ url('/user-dashboard') }}"><i title="Profile" class="fa fa-user" aria-hidden="true"></i> </a>
-
-
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
+                        <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
+                    </div>
+                </div>
             </ul>
         </div>
-        {{-- <div class="menu" id="toggle-button">
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-        </div> --}}
-
-
-
     </nav>
-    {{-- <section>
-        <div class="navbar">
-            <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
-            @if(Auth::user())
-            <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-             document.getElementById('logout-form').submit();">
-            <p>LOG OUT</p>
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-            @else
-            <a href="{{ route('customer.login') }}">
-                <p>LOG IN</p>
-            </a>
-            @endif
-            <a href="https://www.instagram.com/qimacoffee/"><i class="fa fa-instagram"></i> </a>
-            <a href="https://www.facebook.com/qimacoffee/"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
-
-            <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i class="fa fa-youtube" aria-hidden="true"></i> </a>
-        </div>
-    </section>
-    <section>
-        <div id="background">
-            <div class="imglogo">
-                <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
-            </div>
-        </div>
-    </section> --}}
-    <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
-        <div class="row boxrow">
-            {{ $auction->startDate }}
-            {{ date('Y-m-d H:i:s') }}
-            <p class="timer_text"></p>
-        </div>
-        <div class="row boxrow ">
-            <div class="col-2">
-                <h2 class="days">-</h2>
-                <p>Days</p>
-            </div>
-            <div>
-                <h2>:</h2>
-            </div>
-            <div class="col-2">
-                <h2 class="hours">-</h2>
-                <p>Hours</p>
-            </div>
-            <div>
-                <h2>:</h2>
-            </div>
-            <div class="col-2">
-                <h2 class="minutes">-</h2>
-                <p>Minutes</p>
-            </div>
-            <div>
-                <h2>:</h2>
-            </div>
-            <div class="col-2">
-                <h2 class="seconds">-</h2>
-                <p>Seconds </p>
-            </div>
-        </div>
-        <div class="row boxrow">
-            <div class="col-8 ">
-                <p id="countdown" style="color: red;font-size: small;"></p>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="container box text-center section-4-text-1 auction_started" style="display: none;">
-        <div class="row boxrow">
-            <p class="timer_text"></p>
-        </div>
-        <div class="row boxrow">
-
-            <div class="col-3">
-                <h2 class="minutes">-</h2>
-                <p>Minutes</p>
-            </div>
-            <div>
-                <h2>:</h2>
-            </div>
-            <div class="col-3">
-                <h2 class="seconds">-</h2>
-                <p>Seconds </p>
-            </div>
-        </div>
-        <div class="row boxrow">
-            <div class="col-8 ">
-                <p id="countdown" style="color: red;font-size: small;"></p>
-            </div>
-        </div>
-    </div> --}}
+    @php
+        $id=request()->route()->id;
+        $auction=App\Models\Auction::where('id',$id)->first();
+        if($auction->getPreviousAttribute() != 'null' && $auction->getNextAttribute() != 'null')
+        {
+            $previous = $auction->getPreviousAttribute();
+            $next=$auction->getNextAttribute();
+        }
+        $old_date = $auction->startDate;
+        $old_date_timestamp = strtotime($old_date);
+        $new_date = date('d-m-Y', $old_date_timestamp);
+    @endphp
     <section>
         <div class="header-heading">
-            <div ><a class="header-heading-left" href="" > <i class="fa fa-angle-left" style="font-size:50px"></i><h5 href="#"  class="header-heading-h5" >Previous Auction </h5></a></div>
+            <div ><a class="header-heading-left"  @if (isset($previous)) href="{{route('auction-winners',$previous->id)}}" @endif > <i class="fa fa-angle-left" style="font-size:50px"></i><h5  class="header-heading-h5" >Previous Auction </h5></a></div>
             <div>
                 <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
-               
             </div>
-            <div ><a class="header-heading-left" href="" ><h5 href="#" class="header-heading-h5" >Next Auction </h5><i class="fa fa-angle-right" style="font-size:50px"></i> </a> </div>
-   </div>
-        <div class="header-heading-time mt-5">
-        <p style="text-align: center;font-family:'Montserrat';"> Auction Name <span> Auction 2022</span></p>
-                <p style="text-align: center;font-family:'Montserrat';">Auction Date <span>12-2-2022</span></p>
+            <div ><a class="header-heading-left"@if (isset($next)) href="{{route('auction-winners',$next->id)}}"@endif ><h5  class="header-heading-h5" >Next Auction </h5><i class="fa fa-angle-right" style="font-size:50px"></i> </a> </div>
         </div>
-        
-        <!--<h3 style="text-align: center;font-family:'Montserrat';">Auction starting soon.</h3>-->
+        <div class="header-heading-time mt-5">
+        <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
+                <p style="text-align: center;font-family:'Montserrat';">Date: <span>{{$new_date}}</span></p>
+        </div>
         <div class="table-container">
             <div class="tab-content" id="nav-tabContent">
                 <nav class="tablenav">
@@ -1176,22 +1137,10 @@
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
                                 <th scope="col">High Bidder</th>
-                                {{-- <th scope="col">Time Left</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($auctionProducts as $auctionProduct)
-                                @php
-                                    //increment in singlebid price
-                                    $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
-                                    $bidLimitSinglebid = App\Models\Bidlimit::where('min', '<', $incPriceSinglebid)
-                                        ->orderBy('min', 'desc')
-                                        ->limit(1)
-                                        ->get();
-                                    $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = $incPriceSinglebid + $bidIncrementSinglebid;
-                                    $isEmpty = sizeof($singleBids);
-                                @endphp
                                 <tr
                                 class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
@@ -1235,21 +1184,6 @@
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
-                                    {{-- <td class="td-res-pl">
-                                        <div>
-                                            <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
-                                                @if ($auction->auctionStatus() != 'active')
-                                                    -
-                                                @else
-                                                    <div class="tdtimer">
-                                                        <p class="minutes">-</p>
-                                                        <p>:</p>
-                                                        <p class="seconds">-</p>
-                                                    </div>
-                                                @endif
-                                            </span>
-                                        </div>
-                                    </td> --}}
                                 </tr>
                                     <tr class="hide-table-padding bid-row">
                                         <td colspan="13">
@@ -1280,7 +1214,6 @@
                     <div class="lot-description">
                         <p>LOT SIZE: <span class="size"></span></p>
                         <p>CURRENT BID: <span class="currentbid"></span></p>
-                        {{-- <p>TOTAL VALUE: <span class="totalvalue"></span></p> --}}
                         <hr>
                         <p >WINNING BIDDER: <br> <span class="paddleno"></span></p>
                     </div>
@@ -1294,9 +1227,7 @@
                     </div>
                     <div class="lot-genetis">
                         <h3>GENETICS <span class="genetics"></span></h3>
-
                     </div>
-
                     <div class="moreBtn"></div>
                 </div>
             </div>
@@ -1310,50 +1241,6 @@
             </div>
         </div>
     </section>
-    {{-- <section>
-        <div class="footer-container">
-            <div class="row footer-head">
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
-                    <h2>LEGAL</h2>
-                    <a href="#">Term and Conditions</a>
-                    <a href="#"> Term of Use</a>
-                    <a href="#"> Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-search">
-                    <h2>SEARCH</h2>
-                    <div class="searchbar-container--footer">
-
-                        <input type="text" placeholder="Search" class="search-bar">
-                        <i class="fa fa-search search-icon"></i>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-links">
-                    <h2>QUICK LINKS</h2>
-                    <a href="#">Contact Us</a>
-                    <a href="#"> Blog</a>
-                    <a href="#"> FAQ</a>
-                    <a href="#">Our Sponsers</a>
-
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-contact">
-                    <h2>QIMA COFFEE AUCTION</h2>
-                    <p> <img src="{{ asset('public/images/home-icon1.png') }}" alt=""> 2250
-                        NW 22nd Ave #612
-                        Portland OR 97210</p>
-                    <p><img src="{{ asset('public/images/call-icon1.png') }}" alt="">(503)
-                        208-2872</p>
-                    <p> <img src="{{ asset('public/images/message-icon1.png') }}"
-                            alt="">support@qimacoffeeauction.com</p>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
-            </div>
-        </div>
-    </section> --}}
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -1364,20 +1251,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-
-
 <script>
-    $("#signup-for-newsletter").on("click", function() {
-        $("#newsltterModel").modal("show");
-    });
-
-    // /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    // function openNav() {
-    //     document.getElementById("mySidebar").style.width = "500px";
-    //     document.getElementById("main").style.marginLeft = "500px";
-    // }
-
-    // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeNav() {
 
         $("#mySidebar").removeClass('sidebaropen-width');
@@ -1390,7 +1264,6 @@
             window.location.reload();
         }, 300000)
         $(".openSidebar").click(function() {
-
            $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             $('.img-status').attr('src', "");
@@ -1400,7 +1273,6 @@
             $('.img-status').attr('src', res);
             var currentbid = $(".bidData1" + id).html();
             var totalvalue = $(".liability" + id).html();
-
             $.ajax({
                 url: "{{ route('opensidebar') }}",
                 method: 'POST',
@@ -1426,7 +1298,6 @@
                     $(".code").html(code);
                     $(".size").html(size + 'LBS');
                     $(".currentbid").html(currentbid.toLocaleString('en-US'));
-                    // $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
                     if (genetics == 1) {
                         $(".genetics").html('Yemenia');
@@ -1462,132 +1333,4 @@
 
     });
 </script>
-<script>
-    var total = 0;
-    var interval;
-    var empty = '{{ $isEmpty }}';
-    function resetTimer(data) {
-        var timer_text = "";
-        var hours = 0;
-        var days = 0;
-        @php
-            $isEmpty = sizeof($singleBids);
-        @endphp
-
-        if ("{{ $auction->auctionStatus() }}" == "active") {
-            @php
-                $date_a = new DateTime($auction->endTime);
-                $date_b = new DateTime(date('Y-m-d H:i:s'));
-                $date_c = new DateTime($auction->startDate);
-
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
-            @endphp
-            if (data && data.checkTimer == 0) {
-                $('.auction_pending').hide();
-                $('.auction_started').show();
-                var timer_text = "Auction Ending in";
-                var timer2 = "03:00";
-                var timer = timer2.split(':');
-
-            } else if (window.empty != 0) {
-                $('.auction_pending').hide();
-                $('.auction_started').show();
-                var timer_text = "Auction Ending in";
-                var timer2 = "03:00";
-                var timer = timer2.split(':');
-
-            } else {
-                $('.auction_started').show();
-                $('.auction_pending').hide();
-                var timer_text = "Auction Ending in";
-                var timer2 = "{{ $interval2 }}";
-                var timer = timer2.split(':');
-
-            }
-        } else if ("{{ $auction->auctionStatus() }}" == "ended") {
-
-        }
-        // else if("{{ $auction->auctionStatus() }}" == "running")
-        // {
-
-        // }
-        else {
-            $('.auction_started').hide();
-            $('.auction_pending').show();
-            var timer_text = "Auction Starting in";
-            var timer2 = "{{ $interval3 }}";
-            var timer = timer2.split(':');
-
-        }
-        $('.timer_text').html(timer_text);
-        clearInterval(interval);
-        if (timer.length > 2) {
-            days = parseInt(timer[0], 10);
-            hours = parseInt(timer[1], 10);
-            var minutes = parseInt(timer[2], 10);
-            var seconds = parseInt(timer[3], 10);
-        } else {
-            var minutes = parseInt(timer[0], 10);
-            var seconds = parseInt(timer[1], 10);
-        }
-        $('.days').html(days.toString().padStart(2, "0"));
-        $('.hours').html(hours.toString().padStart(2, "0"));
-        $('.minutes').html(minutes.toString().padStart(2, "0"));
-        $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
-            return;
-        }
-        window.interval = setInterval(function() {
-            var timer = timer2.split(':');
-            //by parsing integer, I avoid all extra string processing
-            if (timer.length > 2) {
-                days = parseInt(timer[0], 10);
-                hours = parseInt(timer[1], 10);
-                var minutes = parseInt(timer[2], 10);
-                var seconds = parseInt(timer[3], 10);
-            } else {
-                var minutes = parseInt(timer[0], 10);
-                var seconds = parseInt(timer[1], 10);
-            }
-
-            --seconds;
-            minutes = (seconds < 0) ? --minutes : minutes;
-            seconds = (seconds < 0) ? 59 : seconds;
-            seconds = seconds.toString().padStart(2, "0");
-            //minutes = (minutes < 10) ?  minutes : minutes;
-            $('.days').html(days.toString().padStart(2, "0"));
-            $('.hours').html(hours.toString().padStart(2, "0"));
-            $('.minutes').html(minutes.toString().padStart(2, "0"));
-            $('.seconds').html(seconds);
-            if (minutes < 0) clearInterval(interval);
-            //check if both minutes and seconds are 0
-            if ((seconds <= 0) && (minutes <= 0)) {
-                clearInterval(interval);
-                // set is_hidden of auction = 1
-                window.location = window.location.href + "?ended=1"; //location.reload();
-            }
-            if (timer.length > 2) {
-                timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
-            } else {
-                timer2 = minutes + ':' + seconds;
-            }
-        }, 1000);
-    }
-    $(function() {
-        resetTimer();
-    })
-
-    function commify(n) {
-        var parts = n.toString().split(".");
-        const numberPart = parts[0];
-        const decimalPart = parts[1];
-        const thousands = /\B(?=(\d{3})+(?!\d))/g;
-        return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
-    }
-</script>
-
 </html>

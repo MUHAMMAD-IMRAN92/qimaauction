@@ -231,17 +231,16 @@ class AuctionController extends Controller {
         $user = Auth::user()->id;
         $auction = Auction::where('is_active','1')->first();
         if ($auction->is_hidden == 1) {
-            return redirect('auction-winners');
+            return redirect('auction-winners/'.$auction->id);
         }
         if ($request->ended == 1) {
            $auction->is_hidden = 1;
             $auction->endDate = date('Y-m-d H:i:s');
-
             $auction->save();
-            return redirect('auction-winners');
+            return redirect('auction-winners/'.$auction->id);
         }
         $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('images','products', 'singleBids', 'winningImages')->get();
-        $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+        $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function($e) {
 
@@ -1150,11 +1149,11 @@ class AuctionController extends Controller {
     public function auctionHome(Request $request) {
         $auction = Auction::where('is_active','1')->first();
         if ($request->ended == 1) {
-            $auction->save();
+            // $auction->save();
             return redirect('auction');
         }
         if ($auction->is_hidden == 1) {
-            return redirect('auction-winners');
+            return redirect('auction-winners/'.$auction->id);
         }
         $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
@@ -1211,19 +1210,19 @@ class AuctionController extends Controller {
         return response()->json($userScore);
     }
 
-    public function auctionWinners(Request $request) {
-        $auction = Auction::where('is_hidden','1')->first();
+    public function auctionWinners(Request $request,$auction) {
+        // $auction = Auction::where('is_hidden','1')->first();
         if ($request->ended == 1) {
-            $auction->save();
-            return redirect('auction-winners');
+            // $auction->save();
+            return redirect('auction-winners/'.$auction);
         }
-        if ($auction && $auction->is_hidden == 1) {
+        if ($auction) {
             //save data in auction winners
-            $auctionWinners = AuctionWinners::where('auction_id', $auction->id)->get();
+            $auctionWinners = AuctionWinners::where('auction_id', $auction)->get();
                 if($auctionWinners->isEmpty())
                 {
                 $auctions=Auction::all();
-                $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('products', 'singleBids', 'winningImages')->get();
+                $auctionProducts = AuctionProduct::where('auction_id', $auction)->with('products', 'singleBids', 'winningImages')->get();
                 $results = $auctionProducts->map(function ($e) {
                     $e->highestbid = SingleBid::where('auction_product_id', $e->id)
                         ->orderBy('bid_amount', 'desc')
@@ -1252,14 +1251,9 @@ class AuctionController extends Controller {
 
                 }
 
-            $auctionProducts = AuctionProduct::where('auction_id',$auction->id)->with('products', 'singleBids', 'winningImages')->get();
+            $auctionProducts = AuctionProduct::where('auction_id',$auction)->with('products', 'singleBids', 'winningImages')->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function($e) {
-
-                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
-
-                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
-                $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
                 $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
                         ->orderBy('bid_amount', 'desc')
                         ->first();
@@ -1271,7 +1265,7 @@ class AuctionController extends Controller {
                         ->first();
                 return $e;
             });
-            return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'auction', 'singleBids'));
+            return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'singleBids'));
         }
         else {
             return redirect('auction');
