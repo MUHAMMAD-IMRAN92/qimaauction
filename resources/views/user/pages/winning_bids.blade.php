@@ -64,7 +64,7 @@
                         <div class="col-11">
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ url('/user-dashboard') }}">Home</a>
+                                    <li class="breadcrumb-item"><a href="{{ url('/user-profile') }}">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active ">Winning Lots
                                     </li>
