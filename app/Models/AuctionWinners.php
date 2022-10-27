@@ -13,4 +13,5 @@ class AuctionWinners extends Model
     {
         return $this->hasMany(ShipmentTrackingStatus::class, 'auction_winner_id', 'id');
     }
+
 }

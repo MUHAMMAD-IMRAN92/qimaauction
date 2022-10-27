@@ -452,6 +452,7 @@
                         </div>-->
                         @php
                             $auction=App\Models\Auction::where('is_active','1')->first();
+                            $auctionwiners=App\Models\Auction::where('is_hidden','1')->first();
                         @endphp
                         <div class="my-3 banner-btn">
                             {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
@@ -460,9 +461,11 @@
 <!--                            <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">REGISTER FOR AUCTION
                             </button>-->
+                            @if(isset($auctionwiners))
                             <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='/auction-winners' ">RESULTS
+                                OnClick=" location.href='/auction-winners/{{$auctionwiners->id}}' ">RESULTS
                             </button>
+                            @endif
                             @if(isset($auction))
                           <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
