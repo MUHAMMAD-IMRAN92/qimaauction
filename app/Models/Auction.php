@@ -35,7 +35,7 @@ class Auction extends Model
         }
     }
     public function getNextAttribute(){
-        return static::where('id', '>', $this->id)->orderBy('id','asc')->first();
+        return static::where('id', '>', $this->id)->where('is_hidden','1')->orderBy('id','asc')->first();
     }
 
     /**
@@ -44,6 +44,6 @@ class Auction extends Model
      * @return response()
      */
     public  function getPreviousAttribute(){
-        return static::where('id', '<', $this->id)->orderBy('id','desc')->first();
+        return static::where('id', '<', $this->id)->where('is_hidden','1')->orderBy('id','desc')->first();
     }
 }
