@@ -266,7 +266,7 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto">
-                    <a class="navbar-brand" href="{{ url('/user-dashboard') }}" style="margin-top:0;">
+                    <a class="navbar-brand" href="{{ url('/user-profile') }}" style="margin-top:0;">
                         <div class="brand-logo">
                             <img class="mt-2" width="200px" src="https://bestofyemenauction.com/public/images/logo.land.png">
                             {{-- <img src="{{ asset('public/app-assets/images/ico/logo_admin.png.png') }}"> --}}
