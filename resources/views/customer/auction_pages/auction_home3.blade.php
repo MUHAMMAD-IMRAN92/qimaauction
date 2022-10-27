@@ -1260,7 +1260,7 @@ border: 1px solid white;
 <body>
     {{-- <section> --}}
     <nav class="navbar navbar-fix">
-        <div><a href="https://bestofyemenauction.com"><img
+        <div><a href="{{url('/')}}"><img
                     src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
@@ -1283,7 +1283,7 @@ border: 1px solid white;
                 <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
+                    <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
                     <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
                 </div>
                 </div>
