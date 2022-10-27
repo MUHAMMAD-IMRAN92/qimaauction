@@ -1245,7 +1245,7 @@ class AuctionController extends Controller {
 
                 }
 
-            $auctionProducts = AuctionProduct::where('auction_id',$auction)->with('products', 'singleBids', 'winningImages')->get();
+            $auctionProducts = AuctionProduct::where('auction_id',$auction)->with('images','products', 'singleBids', 'winningImages')->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function($e) {
                 $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
