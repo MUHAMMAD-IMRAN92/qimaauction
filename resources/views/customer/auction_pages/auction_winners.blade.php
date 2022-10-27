@@ -1078,15 +1078,17 @@
                 <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
                 <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
                 <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                @auth
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ url('/winninglots') }}">My Profile</a>
+                        <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
                         <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
                     </div>
                 </div>
+                @endauth
             </ul>
         </div>
     </nav>

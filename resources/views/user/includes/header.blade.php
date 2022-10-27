@@ -110,7 +110,7 @@
                                         class="ficon feather icon-menu"></i></a></li>
                         </ul>
                         <ul style="display:none" class="nav navbar-nav bookmark-icons">
-                            
+
                             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html"
                                     data-toggle="tooltip" data-placement="top" title="Todo"><i
                                         class="ficon feather icon-check-square"></i></a></li>
@@ -289,21 +289,13 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                                <li @if (request()->is('winninglots')) class='active' @endif><a
-                                    href="{{ url('/winninglots') }}">
-                                    <span class="menu-item " data-i18n="eCommerce">Winning Lots</span></a>
-                                <!-- </li>
-                                <li @if (request()->is('highestbids')) class='active' @endif><a
-                                        href="{{ url('/highestbids') }}">
-                                        <span class="menu-item " data-i18n="eCommerce">Highest Bids per Lot</span></a>
-                                </li>
-                                <li @if (request()->is('allbids')) class='active' @endif><a
-                                    href="{{ url('/allbids') }}">
-                                    <span class="menu-item " data-i18n="eCommerce">All Bids</span></a>
-                                </li> -->
                                 <li @if (request()->is('user-profile')) class='active' @endif><a
                                     href="{{ url('/user-profile') }}">
                                     <span class="menu-item" data-i18n="Analytics">Profile</span></a>
+                                </li>
+                                <li @if (request()->is('winninglots')) class='active' @endif><a
+                                    href="{{ url('/winninglots') }}">
+                                    <span class="menu-item " data-i18n="eCommerce">Winning Lots</span></a>
                                 </li>
                                 <li><a
                                     href="{{ route('auction') }}">

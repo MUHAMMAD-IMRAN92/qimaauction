@@ -1059,7 +1059,7 @@
 
 <body>
     <nav class="navbar navbar-fix">
-        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+        <div id="width"><a href="{{url('/')}}"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
         <div>
