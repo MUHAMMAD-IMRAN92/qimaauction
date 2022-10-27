@@ -1156,7 +1156,7 @@
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
-                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-productid="{{ $products->id }}"
                                                 data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
@@ -1268,6 +1268,7 @@
         $(".openSidebar").click(function() {
            $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
+            var productid=$(this).attr('data-productid');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
@@ -1292,7 +1293,7 @@
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
                     var url = '{{ route('productsidebar', ':id') }}';
-                    url = url.replace(':id', rank);
+                    url = url.replace(':id', productid);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
