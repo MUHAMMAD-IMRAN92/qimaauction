@@ -243,10 +243,8 @@ class AuctionController extends Controller {
         $singleBids = AuctionProduct::where('auction_id',$auction->id)->doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function($e) {
-
             $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
             $e->userscore = UserScore::where('auction_product_id', $e->id)->where('user_id', Auth::user()->id)->first();
-
             $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
             $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
             $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
@@ -261,10 +259,8 @@ class AuctionController extends Controller {
                     ->first();
             $e->offerComplete = Offers::where('auction_product_id',$e->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
             $e->groupAutobid = AutoBid::where('auction_product_id',$e->id)->where('is_active','1')->where('is_group','1')->orderBy('bid_amount', 'desc')->first();
-
             return $e;
         });
-
         return view('customer.auction_pages.auction_home3', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
 
@@ -289,10 +285,8 @@ class AuctionController extends Controller {
             $singleBid->user_id = Auth::user()->id;
             $singleBid->auction_product_id = $request->id;
             $singleBid->save();
-
             // if autobid
             $autoBidsData = AutoBid::where('auction_product_id', $request->id)->where('is_active', '1')->first();
-
             if (isset($autoBidsData)) {
                 $singleBidStartPrice = SingleBid::where('auction_product_id', $request->id)->orderBy('bid_amount', 'desc')->first()->bid_amount;
                 $bidLimit = Bidlimit::where('min', '<', $singleBidStartPrice)->orderBy('min', 'desc')->limit(1)->get();
