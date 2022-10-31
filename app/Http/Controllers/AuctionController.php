@@ -257,7 +257,7 @@ class AuctionController extends Controller {
             $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
                     ->orderBy('id', 'desc')
                     ->first();
-            $e->offerComplete = Offers::where('auction_product_id',$e->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('created_at', 'desc')->first();
+            $e->offerComplete = Offers::where('auction_product_id',$e->id)->where('is_active','=',2)->with('allOfferUsers')->orderBy('amount', 'desc')->first();
             $e->groupAutobid = AutoBid::where('auction_product_id',$e->id)->where('is_active','1')->where('is_group','1')->orderBy('bid_amount', 'desc')->first();
             return $e;
         });
@@ -1178,7 +1178,6 @@ class AuctionController extends Controller {
         $winningCoffeesData = WinningCofees::where('code', $id)->with('images')->first();
         return view('customer.dashboard.products-landing', compact('winningCoffeesData'));
     }
-
     public function newslettersignup(Request $request) {
         $news = new Newsletter();
         $news->name = $request->name;
@@ -1186,7 +1185,6 @@ class AuctionController extends Controller {
         $news->save();
         return redirect('/');
     }
-
     public function openSideBar(Request $request) {
         $auctionProducts = AuctionProduct::where('id', $request->id)->with('products')->first();
         return response()->json($auctionProducts);
