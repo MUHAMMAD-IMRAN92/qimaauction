@@ -39,9 +39,7 @@
                     <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
                         Product<a>
                 </div>
-
             </div>
-
             <div class="content-body" style="margin-top: 30px">
                 <div class="col-lg-12">
                     <div class="modal" tabindex="-1" role="dialog" id="auction_model">
@@ -49,13 +47,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" style="display: block">Create Auction Product</h5>
-                                    {{-- <button class="close" data-dismiss="modal"
-                                        aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button> --}}
                                 </div>
                                 <form id="auctionproduct">
-
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -91,7 +84,6 @@
                                                     <p class="form-control" id="region"></p>
                                                 </div>
                                             </div>
-
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="">Weight</label>
@@ -134,7 +126,6 @@
                                                         name="packing_cost" id="packing_cost" value="" required>
                                                 </div>
                                             </div>
-
                                             <div class="modal-footer float-right">
                                                 <button type="submit" name="button"
                                                     style="background-color: #d1af69; color:white"
@@ -142,33 +133,15 @@
                                                 <button type="button" data-dismiss="modal"
                                                     class="btn btn-outline-warning cancel" aria-label="Close"
                                                     style="color:black">Cancel</button>
-
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    {{-- Auction Product Detail --}}
-                    {{-- <div class="modal" tabindex="-1" role="dialog" id="auction_product_detail">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Auction Product Detail</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                         Enim itaque nulla facilis beatae nemo. Ipsa eaque eveniet cupiditate sint ducimus ab voluptate
-                                         laborum et ex. Quos ipsa ratione perspiciatis praesentium!</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-                    {{-- End  Auction Product Detail --}}
                 </div>
                 <div class="col-lg-12">
                     <div class="card">
@@ -180,14 +153,12 @@
                                     <table class="table zero-configuration" id="auction-table">
                                         <thead>
                                             <tr>
-                                                {{-- <th>Id</th> --}}
                                                 <th>Title</th>
                                                 <th>Start Price</th>
                                                 <th>Reserve Price</th>
                                                 <th>Weight</th>
                                                 <th>Size</th>
                                                 <th>Rank</th>
-                                                {{-- <th>Jury Score</th> --}}
                                                 <th>Action(s)</th>
                                                 <th></th>
                                             </tr>
@@ -233,7 +204,6 @@
                                                                         <span class="product-link-a" id="edit" data-auctionId="{{ $auction->id }}">Edit</span>
                                                                         <span class="product-link-a" id="delete" data-auctionId="{{ $auction->id }}">Delete</span>
                                                                 </td>
-
                                                             </div>
                                                         </tr>
                                                     @endforeach
@@ -244,9 +214,7 @@
                                                     <td >No Auction Product yet</td>
                                                 </tr> --}}
                                             @endif
-
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>
@@ -254,7 +222,6 @@
                     </div>
                 </div>
             </div>
-
         @endsection
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
@@ -269,8 +236,6 @@
             // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
         // alert(data.singleBidammounttesting);
         })
-
-
                 $(".cancel").on("click", function() {
                     $("#auction_model").modal("hide");
                 });
@@ -340,7 +305,6 @@
                 //////////////////////////// End Edit Functionality  ////////////////////////////
                 $('#auctionproduct').on('submit', function(e) {
                     e.preventDefault();
-
                     var productId = $('#product_id').val();
                     var auction_product_id = $('#auction_product_id').val();
                     var weight = $('#weight').val();
