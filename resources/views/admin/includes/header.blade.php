@@ -84,9 +84,10 @@
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     @if (session('success'))
-    <div class="col-md-12 alert alert-success">
-{{ session('success') }}
-@endif
+        <div class="col-md-12 alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
@@ -234,20 +235,22 @@
                         </li> --}}
                         <li class="dropdown dropdown-user nav-item">
 
-                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#"
+                                data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                      </span></div><span><img class="round"
+                                    </span></div><span><img class="round"
                                         src="../../../public/app-assets/images/portrait/small/avatar-s-11.jpg"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
-                                    href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"><i class="feather icon-power"></i>
+                                    href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i
+                                        class="feather icon-power"></i>
                                     Logout</a>
                             </div>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>
@@ -311,7 +314,8 @@
                 class="d-flex align-items-center justify-content-between py-50 w-100" href="#">
                 <div class="d-flex align-items-center">
                     <div class="avatar mr-50"><img
-                            src="../../../public/app-assets/images/portrait/small/avatar-s-8.jpg" alt="png" height="32">
+                            src="../../../public/app-assets/images/portrait/small/avatar-s-8.jpg" alt="png"
+                            height="32">
                     </div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">John Doe</p><small class="text-muted">UI
@@ -323,7 +327,8 @@
                 class="d-flex align-items-center justify-content-between py-50 w-100" href="#">
                 <div class="d-flex align-items-center">
                     <div class="avatar mr-50"><img
-                            src="../../../public/app-assets/images/portrait/small/avatar-s-1.jpg" alt="png" height="32">
+                            src="../../../public/app-assets/images/portrait/small/avatar-s-1.jpg" alt="png"
+                            height="32">
                     </div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Michal Clark</p><small class="text-muted">FontEnd
@@ -347,7 +352,8 @@
                 class="d-flex align-items-center justify-content-between py-50 w-100" href="#">
                 <div class="d-flex align-items-center">
                     <div class="avatar mr-50"><img
-                            src="../../../public/app-assets/images/portrait/small/avatar-s-6.jpg" alt="png" height="32">
+                            src="../../../public/app-assets/images/portrait/small/avatar-s-6.jpg" alt="png"
+                            height="32">
                     </div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Anna Strong</p><small class="text-muted">Web
@@ -394,39 +400,38 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                                <li @if (request()->is('categories/*')) class='active' @endif><a
-                                        href="{{ url('/categories/index') }}">
-                                        {{-- <i class="feather icon-circle"></i> --}}
-                                        <span class="menu-item" data-i18n="Analytics">Category</span></a>
-                                </li>
-                                <li @if (request()->is('flavour/*')) class='active' @endif><a
-                                        href="{{ url('/flavour/index') }}">
-                                        {{-- <i class="feather icon-circle"></i> --}}
-                                        <span class="menu-item " data-i18n="eCommerce">Flavour</span></a>
-                                </li>
-                                <li @if (request()->is('process/*')) class='active' @endif><a
-                                        href="{{ url('/process/index') }}">
-                                        {{-- <i class="feather icon-circle"></i> --}}
-                                        <span class="menu-item @if (request()->is('process/*')) 'active' @endif"
-                                            data-i18n="eCommerce">Process</span></a>
-                                </li>
-                                <li @if (request()->is('genetic/*')) class='active' @endif><a
-                                        href="{{ url('/genetic/index') }}">
-                                        {{-- <i class="feather icon-circle"></i> --}}
-                                        <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
-                                            data-i18n="eCommerce">Genetic</span></a>
-                                </li>
-                                <li @if (request()->is('agreement')) class='active' @endif><a
-                                    href="{{ url('/agreement') }}">
-                                    {{-- <i class="feather icon-circle"></i> --}}
-                                    <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
-                                        data-i18n="eCommerce">Agreement</span></a>
-                                 </li>
-                                <li @if (request()->is('bidlimit/*')) class='active' @endif><a
-                                    href="{{ url('/bidlimit/index') }}">
-                                    {{-- <i class="feather icon-circle"></i> --}}
-                                    <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
-                                        data-i18n="eCommerce">Bid Limit</span></a>
+                        <li @if (request()->is('categories/*')) class='active' @endif><a
+                                href="{{ url('/categories/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item" data-i18n="Analytics">Category</span></a>
+                        </li>
+                        <li @if (request()->is('flavour/*')) class='active' @endif><a
+                                href="{{ url('/flavour/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item " data-i18n="eCommerce">Flavour</span></a>
+                        </li>
+                        <li @if (request()->is('process/*')) class='active' @endif><a
+                                href="{{ url('/process/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item @if (request()->is('process/*')) 'active' @endif"
+                                    data-i18n="eCommerce">Process</span></a>
+                        </li>
+                        <li @if (request()->is('genetic/*')) class='active' @endif><a
+                                href="{{ url('/genetic/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
+                                    data-i18n="eCommerce">Genetic</span></a>
+                        </li>
+                        <li @if (request()->is('agreement')) class='active' @endif><a href="{{ url('/agreement') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
+                                    data-i18n="eCommerce">Agreement</span></a>
+                        </li>
+                        <li @if (request()->is('bidlimit/*')) class='active' @endif><a
+                                href="{{ url('/bidlimit/index') }}">
+                                {{-- <i class="feather icon-circle"></i> --}}
+                                <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
+                                    data-i18n="eCommerce">Bid Limit</span></a>
 
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
@@ -452,7 +457,7 @@
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Reports</span></a>
                             <ul>
                                 <li @if (request()->is('report_overview/*')) class='active' @endif><a
-                                        href="{{ route('ReportOverview',2022) }}">
+                                        href="{{ route('ReportOverview', 2022) }}">
                                         <span class="menu-item " data-i18n="eCommerce">Overview</span></a>
                                 </li>
                                 <li @if (request()->is('report_lotwinners')) class='active' @endif><a
@@ -467,10 +472,10 @@
                                     href="{{ url('/village/index') }}">
                                     <span class="menu-item " data-i18n="eCommerce">Buyer Distribution</span></a>
                             </li> --}}
-                            <li @if (request()->is('report_fullbid')) class='active' @endif><a
-                                href="{{ route('ReportFullBid') }}">
-                                <span class="menu-item " data-i18n="eCommerce">Full Bid</span></a>
-                        </li>
+                                <li @if (request()->is('report_fullbid')) class='active' @endif><a
+                                        href="{{ route('ReportFullBid') }}">
+                                        <span class="menu-item " data-i18n="eCommerce">Full Bid</span></a>
+                                </li>
                             </ul>
                         </li>
 
@@ -493,9 +498,9 @@
                                     data-i18n="eCommerce">Manage Customer</span></a>
                         </li>
                         <li @if (request()->is('auction/index')) class='active' @endif><a
-                            href="{{ url('/auction/index') }}">
-                            <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
-                                data-i18n="eCommerce">Manage Auction</span></a>
+                                href="{{ url('/auction/index') }}">
+                                <span class="menu-item @if (request()->is('/auction/index')) 'active' @endif"
+                                    data-i18n="eCommerce">Manage Auction</span></a>
                         </li>
 
                         {{-- <li class="nav-item">
@@ -516,25 +521,25 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Open Cupping</span></a>
-                        <ul>
-                            <li @if (request()->is('cupping/create')) class='active' @endif><a
-                                    href="{{ url('/cupping/create') }}">
-                                    {{-- <i class="feather icon-circle"></i> --}}
-                                    <span class="menu-item @if (request()->is('openCupping/*')) 'active' @endif"
-                                        data-i18n="eCommerce">Create Cupping</span></a>
-                            </li>
-                            <li @if (request()->is('cupping/openCuppingFeedback')) class='active' @endif><a
-                                    href="{{ url('/cupping/openCuppingFeedback') }}">
-                                    {{-- <i class="feather icon-circle"></i> --}}
-                                    <span class="menu-item @if (request()->is('/cupping/openCuppingFeedback')) 'active' @endif"
-                                        data-i18n="eCommerce">Cupping Feedback</span></a>
-                            </li>
-                            <li @if (request()->is('cupping/openCuppingSummary')) class='active' @endif><a
-                                href="{{ url('cupping/openCuppingSummary') }}">
-                                <span class="menu-item @if (request()->is('cupping/openCuppingSummary')) 'active' @endif"
-                                    data-i18n="eCommerce">Feedback Summary</span></a>
-                            </li>
-                        </ul>
+                            <ul>
+                                <li @if (request()->is('cupping/create')) class='active' @endif><a
+                                        href="{{ url('/cupping/create') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item @if (request()->is('openCupping/*')) 'active' @endif"
+                                            data-i18n="eCommerce">Create Cupping</span></a>
+                                </li>
+                                <li @if (request()->is('cupping/openCuppingFeedback')) class='active' @endif><a
+                                        href="{{ url('/cupping/openCuppingFeedback') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item @if (request()->is('/cupping/openCuppingFeedback')) 'active' @endif"
+                                            data-i18n="eCommerce">Cupping Feedback</span></a>
+                                </li>
+                                <li @if (request()->is('cupping/openCuppingSummary')) class='active' @endif><a
+                                        href="{{ url('cupping/openCuppingSummary') }}">
+                                        <span class="menu-item @if (request()->is('cupping/openCuppingSummary')) 'active' @endif"
+                                            data-i18n="eCommerce">Feedback Summary</span></a>
+                                </li>
+                            </ul>
                         </li>
 
 
@@ -564,4 +569,3 @@
         </div>
     </div>
     <!-- END: Main Menu-->
-
