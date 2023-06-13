@@ -522,8 +522,8 @@
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Open Cupping</span></a>
                             <ul>
-                                <li @if (request()->is('cupping/create')) class='active' @endif><a
-                                        href="{{ url('/cupping/create') }}">
+                                <li @if (request()->is('cupping/create*')) class='active' @endif><a
+                                        href="{{ url('/cupping/create/new') }}">
                                         {{-- <i class="feather icon-circle"></i> --}}
                                         <span class="menu-item @if (request()->is('openCupping/*')) 'active' @endif"
                                             data-i18n="eCommerce">Create Cupping</span></a>

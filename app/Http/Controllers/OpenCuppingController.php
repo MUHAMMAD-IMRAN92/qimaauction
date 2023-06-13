@@ -6,6 +6,7 @@ use App\Models\OpenCupping;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Auction;
+use App\Models\OpenCuppingProduct;
 use App\Models\Review;
 use App\Models\OpenCuppingReview;
 use App\Models\OpenCuppingUser;
@@ -28,27 +29,25 @@ class OpenCuppingController extends Controller
 
     public function openCuppingUser(Request $request, Faker $faker)
     {
-        $user = OpenCuppingUser::where('email',$request->email)->first();
-         if(isset($user))
-         {
+        $user = OpenCuppingUser::where('email', $request->email)->first();
+        if (isset($user)) {
             return redirect()->route('show_cupping', $user->id);
-         }
-        else
-        {    $user = OpenCuppingUser::create([
+        } else {
+            $user = OpenCuppingUser::create([
                 'name' => isset($request->name) ? $request->name : $faker->name,
                 'email' => isset($request->email) ? $request->email : $faker->unique()->email,
-                ]);
-                $opencuppings = OpenCupping::where('user_id', 0)->get();
-                foreach ($opencuppings as $key => $value) {
-                    $sampleSent = new OpenCupping();
-                    $sampleSent->table = $value->table;
-                    $sampleSent->user_id = $user->id;
-                    $sampleSent->product_id =  $value->product_id;
-                    $sampleSent->postion = $value->postion;
-                    $sampleSent->auction_id = $value->auction_id;
-                    $sampleSent->samples = $value->samples;
-                    $sampleSent->save();
-                }
+            ]);
+            $opencuppings = OpenCupping::where('user_id', 0)->get();
+            foreach ($opencuppings as $key => $value) {
+                $sampleSent = new OpenCupping();
+                $sampleSent->table = $value->table;
+                $sampleSent->user_id = $user->id;
+                $sampleSent->product_id =  $value->product_id;
+                $sampleSent->postion = $value->postion;
+                $sampleSent->auction_id = $value->auction_id;
+                $sampleSent->samples = $value->samples;
+                $sampleSent->save();
+            }
         }
         return redirect()->route('show_cupping', $user->id);
     }
@@ -57,14 +56,61 @@ class OpenCuppingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
+    {
+        $auctions = Auction::all();
+
+        $openCuppingProduct = OpenCuppingProduct::find($id);
+        $products = Product::whereIn('id', explode(',', $openCuppingProduct->products))->orderBy('postion', 'asc')->get();
+        return view('admin.jury.open_cupping', [
+            'products' => $products,
+            'auctions' => $auctions,
+            'openCupping' => $openCuppingProduct
+        ]);
+    }
+    public function createWithProduct()
     {
         $products = Product::orderBy('postion', 'asc')->get();
         $auctions = Auction::all();
-        return view('admin.jury.open_cupping', [
+        return view('admin.jury.new_open_cupping', [
             'products' => $products,
             'auctions' => $auctions
         ]);
+    }
+    public function postCuppingProduct(Request $request)
+    {
+        $cuppingProducts =  OpenCuppingProduct::where('auction_id',  $request->auction_id)->first();
+        if ($cuppingProducts) {
+            $cuppingProducts->update([
+                'products' => implode(',', $request->selected_product)
+            ]);
+        } else {
+            $cuppingProducts = OpenCuppingProduct::create([
+                'auction_id' => $request->auction_id,
+                'products' => implode(',', $request->selected_product),
+            ]);
+        }
+        return redirect()->to('/cupping/create/' . $cuppingProducts->id);
+    }
+    public function auctionProduct(Request $request)
+    {
+        $productArr = [];
+        $cuppingProducts =  OpenCuppingProduct::where('auction_id',  $request->auction_id)->first();
+        if ($cuppingProducts) {
+            $productArr =  explode(',', $cuppingProducts->products);
+        }
+        $products = Product::orderBy('postion', 'asc')->get();
+        if ($request->cuppingScreen == 1) {
+            return view('admin.jury.cupping_product_ajax', [
+                'products' => $products,
+                'cuppingProduct' => $productArr
+            ]);
+        } else {
+            $auctionProduct = Product::whereIn('id',  @$productArr)->get();
+            return view('admin.jury.jury_cupping_product_ajax', [
+                'products' => $auctionProduct,
+            ]);
+        }
     }
 
     /**

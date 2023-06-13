@@ -30,7 +30,7 @@ Route::get('/auction-winners', [App\Http\Controllers\AuctionController::class, '
 
 Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
-Route::group(['middleware' => ['auth', 'isCustomer']], function() {
+Route::group(['middleware' => ['auth', 'isCustomer']], function () {
 
     Route::get('/auction', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auction');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
@@ -42,7 +42,7 @@ Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
 Route::post('/auction/getAuctionProduct', [App\Http\Controllers\AuctionController::class, 'getAuctionProduct'])->name('getAuctionProduct');
 Route::post('/auction/getUser', [App\Http\Controllers\AuctionController::class, 'getUser'])->name('getUser');
-Route::group(['middleware' => ['auth', 'isAdminDashboard']], function() {
+Route::group(['middleware' => ['auth', 'isAdminDashboard']], function () {
 
     Route::get('/auction/adminDashboard', [App\Http\Controllers\AuctionController::class, 'prductBiddingDashboard'])->name('prductBiddingDashboard');
 });
@@ -52,9 +52,9 @@ Route::get('user_logout', function () {
     }
     return Redirect::to('/auction-home');
 })->name('user_logout');
-Route::group(['middleware' => ['auth', 'isAdmin']], function() {
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
-    Route::get('dashboard', function() {
+    Route::get('dashboard', function () {
         return view('admin.dashboard.index');
     });
 
@@ -210,7 +210,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function() {
     //Full bid report
     Route::get('/report_fullbid', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReport'])->name('ReportFullBid');
     Route::get('/report_fullbid/csv', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
-
 });
 
 Auth::routes();
@@ -223,10 +222,18 @@ Route::middleware(['auth'])->group(function () {
     //Dashboard Route
     // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 });
+
+//new open cuppping
+Route::get('/cupping/create/new', [App\Http\Controllers\OpenCuppingController::class, 'createWithProduct']);
+Route::post('/cupping/product', [App\Http\Controllers\OpenCuppingController::class, 'postCuppingProduct']);
+Route::get('/cupping/create/products/{id}', [App\Http\Controllers\OpenCuppingController::class, 'cupping']);
+Route::get('getProducts', [App\Http\Controllers\OpenCuppingController::class, 'auctionProduct']);
+
+
 //Open Cupping
 Route::get('/cupping/index', [App\Http\Controllers\OpenCuppingController::class, 'index']);
 Route::post('/cupping/openCuppingUser', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingUser'])->name('openCuppingUser');
-Route::get('/cupping/create', [App\Http\Controllers\OpenCuppingController::class, 'create']);
+Route::get('/cupping/create/{id}', [App\Http\Controllers\OpenCuppingController::class, 'create']);
 Route::post('/cupping/save', [App\Http\Controllers\OpenCuppingController::class, 'store'])->name('open_cupping');
 Route::get('/cupping/show/{userId?}', [App\Http\Controllers\OpenCuppingController::class, 'show'])->name('show_cupping');
 Route::get('/jury/link/give_cupping_review/{userId}/{table}/{sampleId?}', [App\Http\Controllers\OpenCuppingController::class, 'review2'])->name('give_cupping_review');
@@ -258,7 +265,7 @@ Route::get('/customer-login', [App\Http\Controllers\CustomerController::class, '
 //
 Route::view('/terms_conditions', 'customer/pages/terms_conditions');
 Route::view('/privacy_policy', 'customer/pages/privacy_policy');
-Route::get('/bid_agreement', function(){
+Route::get('/bid_agreement', function () {
     return redirect('public/bidding_agreement.pdf');
-});//'customer/pages/bid_agreement');
+}); //'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);

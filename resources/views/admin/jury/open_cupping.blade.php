@@ -21,6 +21,7 @@
             border-left: 1px solid black;
             height: 500px;
         }
+
         .checkboxtext {
             font-size: 110%;
             display: inline;
@@ -31,6 +32,7 @@
             top: -6px;
             left: -1px;
         }
+
         .checkbox-pad {
             margin-bottom: 10px;
         }
@@ -75,8 +77,7 @@
 
                                         <div class="table-responsive col-lg-12">
 
-                                            <form action="{{ route('open_cupping')}}" method="POST"
-                                                autocomplete="off">
+                                            <form action="{{ route('open_cupping') }}" method="POST" autocomplete="off">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="text-bold-600 font-medium-2 pb-1">
@@ -84,8 +85,12 @@
                                                     </div>
                                                     <select class="form-control  @error('auction') is-invalid @enderror"
                                                         name="auction_id" id="auction_id">
+                                                        <option value="">Please Select Auction
+                                                        </option>
                                                         @foreach ($auctions as $key => $jury)
-                                                            <option value="{{ $jury->id }}">{{ $jury->title }}
+                                                            <option value="{{ $jury->id }}"
+                                                                {{ $jury->id == $openCupping->auction_id ? 'selected' : '' }}>
+                                                                {{ $jury->title }}
                                                             </option>
                                                         @endforeach
                                                     </select>
