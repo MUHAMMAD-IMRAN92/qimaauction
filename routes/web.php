@@ -20,10 +20,10 @@ Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslette
 Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
-Route::get('/product/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
+Route::get('/winningproduct/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
-Route::get('/auction-winners', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
+Route::get('/auction-winners/{id}', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
 
 
 // Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
@@ -32,11 +32,30 @@ Route::view('/auction-home3', 'customer.auction_pages.auction_home3');
 
 Route::group(['middleware' => ['auth', 'isCustomer']], function () {
 
+    // Route::get('userdashboard', function() {
+    //     return view('user.dashboard.index');
+    // });
+    Route::get('/user-dashboard', [App\Http\Controllers\UserProfileController::class, 'userDashboard']);
+    Route::get('/user-profile', [App\Http\Controllers\UserProfileController::class, 'userProfile']);
+    Route::post('/userprofile/update', [App\Http\Controllers\UserProfileController::class, 'updateUser']);
+    Route::post('/removeimage', [App\Http\Controllers\UserProfileController::class, 'removeUserImage'])->name('removeuserimage');
+    Route::get('/winninglots', [App\Http\Controllers\UserProfileController::class, 'winningLots']);
+
+    Route::get('/highestbids', [App\Http\Controllers\UserProfileController::class, 'highestBids']);
+    Route::get('/allbids', [App\Http\Controllers\UserProfileController::class, 'allBidsData']);
+
     Route::get('/auction', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auction');
     Route::post('/singlebiddata', [App\Http\Controllers\AuctionController::class, 'singleBidData'])->name('singlebiddata');
     Route::post('/autobiddata', [App\Http\Controllers\AuctionController::class, 'autoBidData'])->name('autobiddata');
     Route::post('/removeautobid', [App\Http\Controllers\AuctionController::class, 'removeAutoBid'])->name('removeautobid');
     Route::post('/saveyourscore', [App\Http\Controllers\AuctionController::class, 'saveYourScore'])->name('saveyourscore');
+    //group bidding routes
+    Route::post('/savegroupbid', [App\Http\Controllers\AuctionController::class, 'saveGroupBidOffer'])->name('savegroupbidoffer');
+    Route::post('/groupbidsidebar', [App\Http\Controllers\AuctionController::class, 'groupBidSideBar'])->name('groupbiddingsidebar');
+    Route::post('/groupbidupdateStatus', [App\Http\Controllers\AuctionController::class, 'groupbidupdateStatus'])->name('groupbidupdateStatus');
+    Route::post('/othergroupbidoffer', [App\Http\Controllers\AuctionController::class, 'saveOtherGroupbidOffer'])->name('saveothergroupbidoffer');
+    Route::post('/updateUserOfferStatus', [App\Http\Controllers\AuctionController::class, 'updateUserOfferStatus'])->name('updateUserOfferStatus');
+
 });
 Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
@@ -172,6 +191,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/AuctionProducts', [App\Http\Controllers\AuctionController::class, 'auctionFrontend'])->name('auctionProducts');
     Route::get('/auction/autobids', [App\Http\Controllers\AuctionController::class, 'autoBids'])->name('autobids');
     Route::get('/auction/updateAutoBids/{id}', [App\Http\Controllers\AuctionController::class, 'updateAutoBids'])->name('updateAutoBids');
+    Route::post('/auction/auctionend', [App\Http\Controllers\AuctionController::class, 'auctionEnd'])->name('auctionEnd');
+    Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'auctionReset'])->name('auctionReset');
+    Route::post('/groupbidsidebaradmin', [App\Http\Controllers\AuctionController::class, 'groupbidAdminSidebar'])->name('groupbidadminsidebar');
+
+
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
     Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);
@@ -197,19 +221,22 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     //Auction reports routes
     //Overview report
     Route::get('/report_overview/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'overViewReport'])->name('ReportOverview');
-    Route::get('/report_overview/csv/{year?}', [App\Http\Controllers\AuctionReportsController::class, 'auctionReportCSV'])->name('auctionreport_csv');
+    Route::get('/report_overview/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'auctionReportCSV'])->name('auctionreport_csv');
 
     //Lot winners report
     Route::get('/report_lotwinners', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReport'])->name('ReportLotWinners');
-    Route::get('/report_lotwinners/csv', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
+    Route::get('/report_lotwinners/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'lotWinnersReportCSV'])->name('lotwinners_report_csv');
+    //save delivery status
+    Route::post('/save_deliverystatus', [App\Http\Controllers\AuctionReportsController::class, 'saveDeliveryStatus'])->name('savedeliverystatus');
 
     //Bidder summary report
     Route::get('/report_bidder_summary', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReport'])->name('ReportBidderSummary');
-    Route::get('/report_bidder_summary/csv', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReportCSV'])->name('bidder_summary_csv');
+    Route::get('/report_bidder_summary/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'bidderSummaryReportCSV'])->name('bidder_summary_csv');
 
     //Full bid report
     Route::get('/report_fullbid', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReport'])->name('ReportFullBid');
-    Route::get('/report_fullbid/csv', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
+    Route::get('/report_fullbid/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
+
 });
 
 Auth::routes();

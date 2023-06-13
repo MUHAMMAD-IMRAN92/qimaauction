@@ -1059,7 +1059,7 @@
 
 <body>
     <nav class="navbar navbar-fix">
-        <div id="width"><a href="https://bestofyemenauction.com"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+        <div id="width"><a href="{{url('/')}}"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
         <div>
@@ -1262,8 +1262,8 @@
                                     </td> --}}
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
-                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
-                                                data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">{{ $products->product_title }}
+                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-productid="{{$products->id}}"
+                                                data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
@@ -1454,6 +1454,7 @@
 
            $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
+            var productid=$(this).attr('data-productid');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
@@ -1479,7 +1480,7 @@
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
                     var url = '{{ route('productsidebar', ':id') }}';
-                    url = url.replace(':id', rank);
+                    url = url.replace(':id', productid);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
@@ -1590,8 +1591,23 @@
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
     });
+    socket.on('add_auction_status', function(data) {
+        alert(data.auctionstatus);
+        if(data.auctionstatus == 1)
+        {
+            window.location = window.location.href + "?ended=1";
+        }
+    });
+    socket.on('add_timer_reset', function(data) {
+        if(data.timerreset == 1)
+        {
+            data.checkTimer = 0;
+            resetTimer(data);
+        }
+    });
 
     function resetTimer(data) {
+        console.log('Its Coming To Data');
         var timer_text = "";
         var hours = 0;
         var days = 0;

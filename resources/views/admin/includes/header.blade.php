@@ -52,7 +52,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('public/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <!-- END: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
@@ -400,38 +400,45 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                        <li @if (request()->is('categories/*')) class='active' @endif><a
-                                href="{{ url('/categories/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item" data-i18n="Analytics">Category</span></a>
-                        </li>
-                        <li @if (request()->is('flavour/*')) class='active' @endif><a
-                                href="{{ url('/flavour/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item " data-i18n="eCommerce">Flavour</span></a>
-                        </li>
-                        <li @if (request()->is('process/*')) class='active' @endif><a
-                                href="{{ url('/process/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item @if (request()->is('process/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Process</span></a>
-                        </li>
-                        <li @if (request()->is('genetic/*')) class='active' @endif><a
-                                href="{{ url('/genetic/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Genetic</span></a>
-                        </li>
-                        <li @if (request()->is('agreement')) class='active' @endif><a href="{{ url('/agreement') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Agreement</span></a>
-                        </li>
-                        <li @if (request()->is('bidlimit/*')) class='active' @endif><a
-                                href="{{ url('/bidlimit/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
-                                <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Bid Limit</span></a>
+                                <li @if (request()->is('categories/*')) class='active' @endif><a
+                                        href="{{ url('/categories/index') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item" data-i18n="Analytics">Category</span></a>
+                                </li>
+                                <li @if (request()->is('flavour/*')) class='active' @endif><a
+                                        href="{{ url('/flavour/index') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item " data-i18n="eCommerce">Flavour</span></a>
+                                </li>
+                                <li @if (request()->is('process/*')) class='active' @endif><a
+                                        href="{{ url('/process/index') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item @if (request()->is('process/*')) 'active' @endif"
+                                            data-i18n="eCommerce">Process</span></a>
+                                </li>
+                                <li @if (request()->is('genetic/*')) class='active' @endif><a
+                                        href="{{ url('/genetic/index') }}">
+                                        {{-- <i class="feather icon-circle"></i> --}}
+                                        <span class="menu-item @if (request()->is('genetic/*')) 'active' @endif"
+                                            data-i18n="eCommerce">Genetic</span></a>
+                                </li>
+                                <li @if (request()->is('agreement')) class='active' @endif><a
+                                    href="{{ url('/agreement') }}">
+                                    {{-- <i class="feather icon-circle"></i> --}}
+                                    <span class="menu-item @if (request()->is('agreement/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Agreement</span></a>
+                                 </li>
+                                <li @if (request()->is('bidlimit/*')) class='active' @endif><a
+                                    href="{{ url('/bidlimit/index') }}">
+                                    {{-- <i class="feather icon-circle"></i> --}}
+                                    <span class="menu-item @if (request()->is('bidlimit/*')) 'active' @endif"
+                                        data-i18n="eCommerce">Bid Limit</span></a>
+                                </li>
+                                <li @if (request()->is('product/index')) class='active' @endif><a
+                                    href="{{ url('/product/index') }}">
+                                    <span class="menu-item @if (request()->is('product/index')) 'active' @endif"
+                                        data-i18n="eCommerce">Products</span></a>
+                            </li>
 
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
@@ -453,6 +460,7 @@
                                 </li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Reports</span></a>
                             <ul>
@@ -485,11 +493,7 @@
                                 <span class="menu-item @if (request()->is('origin/*')) 'active' @endif"
                                     data-i18n="eCommerce">Origin</span></a>
                         </li> --}}
-                        <li @if (request()->is('product/*')) class='active' @endif><a
-                                href="{{ url('/product/index') }}">
-                                <span class="menu-item @if (request()->is('product/*')) 'active' @endif"
-                                    data-i18n="eCommerce">Product</span></a>
-                        </li>
+
 
 
                         <li @if (request()->is('customer/index')) class='active nav-item' @endif><a

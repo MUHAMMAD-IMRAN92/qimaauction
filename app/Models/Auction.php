@@ -34,4 +34,16 @@ class Auction extends Model
             return "ended";
         }
     }
+    public function getNextAttribute(){
+        return static::where('id', '>', $this->id)->where('is_hidden','1')->orderBy('id','asc')->first();
+    }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public  function getPreviousAttribute(){
+        return static::where('id', '<', $this->id)->where('is_hidden','1')->orderBy('id','desc')->first();
+    }
 }

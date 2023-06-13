@@ -30,7 +30,13 @@ class HomeController extends Controller
         $user =Auth::user()->is_admin;
         if($user == 0) {
             return redirect('dashboard');
-        } else {
+        }
+        // else if($user == 1)
+        // {
+        //     return redirect('//auction');
+        // }
+
+        else{
             return redirect('/auction');
         }
 

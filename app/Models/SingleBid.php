@@ -18,4 +18,10 @@ class SingleBid extends Model
     {
         return $this->belongsTo(AuctionProduct::class);
     }
+    function aproduct(){
+        return $this->hasOne(AuctionProduct::class,'id','auction_product_id');
+    }
+    function auction(){
+        return $this->hasOne(Auction::class,'id','auction_id');
+    }
 }

@@ -1,7 +1,7 @@
 <style>
-    .table-heading{
-    font-size: 5rem !important;
-  }
+    .table-heading {
+        font-size: 5rem !important;
+    }
 </style>
 
 @extends('admin.layout.default')
@@ -12,7 +12,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
+            <div class="content-header row " style="display:block !important ">
                 <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
@@ -31,9 +31,32 @@
 
                     </div>
                 </div>
-                <div class="col-6 custom_btn_align">
-                    <a href="{{route('bidder_summary_csv')}}" class="btn btn-primary waves-effect waves-light" target="_blank" id="export" onclick="exportReport(event.target);">Export<a>
-                </div>
+
+                <form method="get">
+                    <div class="flex-align-center">
+                        <div class="col-sm-6 col-12">
+                            <select name="auction_id" class="form-control">
+                                <option value="">Select Aution</option>
+                                @foreach ($auctions as $auction)
+                                    <option value="{{ $auction->id }}">{{ $auction->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-4">
+                            <input type="submit" value="Get Data" class="btn btn-primary waves-effect waves-light p-0 ">
+                        </div>
+                        @if (request()->auction_id != '')
+                            <div class="col-sm-3 col-4 custom_btn_align">
+                                <a href="{{ route('bidder_summary_csv', request()->auction_id) }}"
+                                    class="btn btn-primary waves-effect waves-light " target="_blank" id="export"
+                                    onclick="exportReport(event.target);">Export<a>
+                            </div>
+                        @endif
+
+                    </div>
+
+                </form>
+
             </div>
             <div class="content-body">
 
@@ -49,7 +72,8 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="customer-table"   data-page-length='50'>
+                                            <table class="table zero-configuration" id="customer-table"
+                                                data-page-length='50'>
                                                 <thead>
                                                     <tr class="table-heading">
                                                         <th>Sr</th>
@@ -60,18 +84,18 @@
                                                 </thead>
                                                 <tbody>
                                                     @php $i=0; @endphp
-                                                    @foreach($userMaxBids as $userMaxBid)
-                                                    <?php
+                                                    @foreach ($userMaxBids as $userMaxBid)
+                                                        <?php
                                                       foreach ($userMaxBid->products->groupBy('id') as $product){
                                                           $i++;
                                                     ?>
-                                                    <tr>
-                                                        <td>{{$i}}</td>
-                                                        <td>{{$userMaxBid->company}}</td>
-                                                        <td>{{$product[0]->product_title}}</td>
-                                                        <td>${{$product[0]->bid_amount}}</td>
-                                                    </tr>
-                                                      <?php } ?>
+                                                        <tr>
+                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $userMaxBid->company }}</td>
+                                                            <td>{{ $product[0]->product_title }}</td>
+                                                            <td>${{ $product[0]->bid_amount }}</td>
+                                                        </tr>
+                                                        <?php } ?>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
@@ -94,8 +118,7 @@
 @endsection
 <script>
     function exportReport(_this) {
-       let _url =`{{ route('bidder_summary_csv')}}`;
-       window.location.href = _url;
+        let _url = `{{ route('bidder_summary_csv', request()->auction_id) }}`;
+        window.location.href = _url;
     }
-
- </script>
+</script>

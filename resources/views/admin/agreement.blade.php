@@ -14,30 +14,19 @@
             <div class="col-md-12 alert alert-success">
                 {{ session('success') }}
         @endif
-        <div class="content-wrapper container">
-            {{-- <form action="{{route('agreement')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @foreach ($agreement as $key => $arg)
-            <div class="mb-3 row-md-12">
-                <div class="form-group">
-                    <label for="" class="form-label"><b>Title: </b></label>
-                    <input type="text" name="title[{{$key}}]" id="title" class="form-control col-lg-5"
-                        value="{{ $arg->title }}">
-                </div>
-                <div class="form-group">
-                    <label for="" class="form-label"><b>Slug:</b></label>
-                    <input type="text" name="slug[{{$key}}]" id="slug" class="form-control col-lg-5"
-                        value="{{ $arg->slug }}">
-                </div>
-                <div class="form-group">
-                    <label for="" class="form-label"><b>Description:</b></label>
-                    <textarea type="file" name="detail[{{$key}}]" id="detail" class="form-control col-lg-5"
-                        value="{{ $arg->detail }}"> {{ Storage::disk('public')->get('agreement'.$key);  }}</textarea>
+        <div class="content-wrapper">
+             <div class="content-header row mb-2">
+                    <div class="breadcrumbs-top">
+                            <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">Agreement
+                                    </li>
+                                </ol>
+                            </div>
                 </div>
             </div>
-        @endforeach
-            <button type="submit" name="submit" value="submit" class="btn btn-success">Update Agreement</button>
-          </form> --}}
           <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard col-lg-12">

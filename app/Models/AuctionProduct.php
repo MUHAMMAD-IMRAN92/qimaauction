@@ -12,7 +12,9 @@ class AuctionProduct extends Model {
     public function products() {
         return $this->hasMany(Product::class, 'id', 'product_id');
     }
-
+    public function product() {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
     public function latestBidPrice() {
         return $this->hasOne(SingleBid::class, 'auction_product_id', 'id')->orderBy('id','desc');
     }
@@ -24,7 +26,9 @@ class AuctionProduct extends Model {
     public function singleBids() {
         return $this->hasMany(SingleBid::class, 'auction_product_id', 'id');
     }
-
+    public function images() {
+        return $this->hasMany(Image::class, 'product_id', 'product_id');
+    }
     public function winningImages() {
         return $this->hasMany(WinningCofeeImages::class, 'user_id', 'id');
     }
@@ -40,6 +44,7 @@ class AuctionProduct extends Model {
     public function latestBidPriceAmount() {
         return $this->hasOne(SingleBid::class, 'auction_product_id', 'id')->orderBy('id','desc');
     }
+
 
     protected $guarded = [''];
 

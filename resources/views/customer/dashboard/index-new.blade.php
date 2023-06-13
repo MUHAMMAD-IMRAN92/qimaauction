@@ -406,13 +406,7 @@
         font-weight: 600;
         /* font-family: 'Montserrat' */
     }
-    @media only screen and (max-width:1300px){
-        .custom_table_reponsive{
-            width: 100%;
-            display:block;
-            overflow-x:auto !important;
-        }
-    }
+
     a.btn-outline-dark {
     font-family: 'Montserrat';
     font-size: 17px;
@@ -456,6 +450,10 @@
                             <p style="">AUGUST 18<sup>th</sup></p>
 
                         </div>-->
+                        @php
+                            $auction=App\Models\Auction::where('is_active','1')->first();
+                            $auctionwiners=App\Models\Auction::where('is_hidden','1')->first();
+                        @endphp
                         <div class="my-3 banner-btn">
                             {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/best-yemen-pca-sample-set-2022/' ">PURCHASE
@@ -463,12 +461,16 @@
 <!--                            <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/' ">REGISTER FOR AUCTION
                             </button>-->
+                            @if(isset($auctionwiners))
                             <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='/auction-winners' ">RESULTS
+                                OnClick=" location.href='/auction-winners/{{$auctionwiners->id}}' ">RESULTS
                             </button>
-<!--                            <button type="button" class="btn btn-primary banner-btns mb-1"
+                            @endif
+                            @if(isset($auction))
+                          <button type="button" class="btn btn-primary banner-btns mb-1"
                                 OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                            </button>-->
+                            </button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -532,7 +534,7 @@
             </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom_table_reponsive">
+                        <div class="table-responsive">
                             <table class="" style="width:100%">
                                 <tr class="table-row">
                                     <th style="border-bottom:1px solid black;">RANK</th>
@@ -577,7 +579,7 @@
 
                                     <td class="style-td-6">{{$winningCoffee->genetics}}</td>
 
-                                    <td class="button"><button><a href="{{url ('/product',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
+                                    <td class="button"><button><a href="{{url ('/winningproduct',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
                                 </tr>
                                 @endforeach
                             </table>

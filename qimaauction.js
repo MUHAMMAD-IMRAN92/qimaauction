@@ -15,7 +15,7 @@ io.on('connection', function (socket) {
 // });
 
 socket.on('auto_bid_updates', function (data) {
-    io.emit('auto_bid_updates', { "loser":data.loser,"paddleNo": data.paddleNo,"latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"totalAutoBidLiability":data.totalAutoBidLiability,"outbid":data.outbid,"autobidUserID":data.autobidUserID,"bid_amountNew":data.bid_amountNew,"nextIncrement":data.nextIncrement,"liability":data.liability,"winneruser":data.winneruser});
+    io.emit('auto_bid_updates', { "loser":data.loser,"paddleNo": data.paddleNo,"latestAutoBidId":data.latestAutoBidId,"bidID":data.bidID,"autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id,"totalAutoBidLiability":data.totalAutoBidLiability,"outbid":data.outbid,"autobidUserID":data.autobidUserID,"bid_amountNew":data.bid_amountNew,"nextIncrement":data.nextIncrement,"liability":data.liability,"winneruser":data.winneruser,"checkTimer":data.checkTimer,"isgroup":data.isgroup,"groupUsers":data.groupUsers,"groupPaddleNo":data.groupPaddleNo});
  });
  socket.on('auto_bid_delete', function (data) {
     io.emit('auto_bid_delete', { "autobidamount":data.autobidamount,"auction_product_id":data.auction_product_id});
@@ -27,10 +27,19 @@ socket.on('add_bid_updates', function (data) {
      "singleBidammounttesting":data.singleBidammounttesting,
      "bidID":data.bidID,"paddleNo":data.paddleNo,
      "increment":data.increment,"nextIncrement":data.nextIncrement,
-     "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,"finaltotalliability":data.finaltotalliability});
+     "outbidresponse":data.outbidresponse,"userID":data.userID,"userBidAmount":data.userBidAmount,"winningBidder":data.winningBidder,"latestSingleBidUser":data.latestSingleBidUser,"bidAmountUser":data.bidAmountUser,"liabiltyUser":data.liabiltyUser,"checkTimer":data.checkTimer,"liability":data.liability,"checkStartTimer":data.checkStartTimer,"finaltotalliability":data.finaltotalliability,"isgroup":data.isgroup,"groupusers":data.groupusers});
  });
  socket.on('auto_bid_update_user_amount', function (data) {
     io.emit('auto_bid_update_user_amount', { "autobidamount":data.autobidamount,"id":data.id,"user_id":data.user_id});
+ });
+ socket.on('add_auction_status', function (data) {
+    io.emit('add_auction_status', { "auctionstatus":data.auctionstatus});
+ });
+ socket.on('add_timer_reset', function (data) {
+    io.emit('add_timer_reset', { "timerreset":data.timerreset});
+ });
+ socket.on('add_groupbid_updates', function (data) {
+    io.emit('add_groupbid_updates', { "offersdata":data.offersdata,"adminofferData":data.adminofferData});
  });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {

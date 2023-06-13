@@ -13,7 +13,6 @@
     min-height: 100vh;
 }
 
-
 .container-all video {
     position: relative;
     z-index: 0;
@@ -334,26 +333,119 @@ a.banner{
     opacity: 0.5;
 }
 
-@media only screen and (max-width: 425px) {
+@media (min-width:1440px) {
+    a.banner{
+        padding: 28px 29px !important;
+        font-size: 28px !important;
+        margin-top: 100px !important;
+    }
+}
+@media (max-width: 1440px) and (min-width: 1024px) {
+    a.banner{
+        padding: 28px 29px !important;
+        font-size: 28px !important;
+        margin-top: 30px !important;
+    }
+
+    .video-img img {
+        height: 300px !important;
+        width: auto !important;
+    }
+
+    .video-text-1 span {
+        font-size: 75px !important;
+        line-height: 65px !important;
+        /* font-weight: 800; */
+        color: #fff;
+    }
+
+    .video-text-2 p {
+        font-size: 35px !important;
+    }
+    .banner-btn button{
+        font-size: 24px !important;
+    }
+}
+@media (max-width: 786px) and (min-width: 426px){
+    .banner-btn button{
+        font-size: 20px !important;
+    }
+}
+@media (max-width: 1023px) and (min-width: 787px){
+    .banner-btn button{
+        font-size: 22px !important;
+    }
+}
+@media (max-width: 2560px) and (min-width: 1440px) {
+
+    .video-img img {
+        height: 270px !important;
+        width: auto !important;
+    }
+
+    .video-text-1 span {
+        font-size: 75px !important;
+        line-height: 95px !important;
+        /* font-weight: 400; */
+        color: #fff;
+    }
+    .main-img-logo img{
+        width: 400px !important;
+    }
+
+    .video-text-2 p {
+        font-size: 40px !important;
+        line-height: 30px !important;
+    }
+    .banner-btn button{
+        font-size: 26px !important;
+    }
+}
+
+@media (min-width: 768px){
+    .lot-description p br{
+        display: none;
+    }
+
+}
+
+@media (max-width: 767.98px){
+            .bio-name{
+          font-size: 40px !important;
+        }
+        .lot-header h3 {
+    font-size: 45px !important;
+    line-height: 60px !important;
+}
+.lot-header h5 {
+    font-size: 24px !important;
+    line-height: 36px !important;
+}
+/* .lot-featured-img img{
+width: 65% !important;
+} */
+.sidebar-container{
+    width: 300px  !important;
+}
+.lot-genetis h3 {
+    font-size: 22px !important;
+    line-height: 34px !important;
+}
+}
+
+@media (max-width: 425px) {
     a.banner {
-        /* padding: 5px !important; */
         font-size: 16px !important;
         margin-top: 20px !important;
     }
-    /* .video-text-1 span */
     .video-img img {
         height: 120px !important;
-        /* width: auto !important; */
     }
 
     .video-text-1 span {
         font-size: 30px !important;
         line-height: 20px !important;
     }
-
-    /* .overlay {
-        top: 10px !important;
-    } */
 
     .video-text-2 p {
         font-size: 22px !important;
@@ -392,72 +484,3 @@ a.banner{
     }
 
 }
-@media only screen and (min-width:1440px) {
-    a.banner{
-        padding: 28px 29px !important;
-        font-size: 28px !important;
-        margin-top: 100px !important;
-    }
-}
-@media only screen and (max-width: 1440px) and (min-width: 1024px) {
-    a.banner{
-        padding: 28px 29px !important;
-        font-size: 28px !important;
-        margin-top: 30px !important;
-    }
-
-    .video-img img {
-        height: 300px !important;
-        width: auto !important;
-    }
-
-    .video-text-1 span {
-        font-size: 75px !important;
-        line-height: 65px !important;
-        /* font-weight: 800; */
-        color: #fff;
-    }
-
-    .video-text-2 p {
-        font-size: 35px !important;
-    }
-    .banner-btn button{
-        font-size: 24px !important;
-    }
-}
-@media only screen and (max-width: 786px) and (min-width: 426px){
-    .banner-btn button{
-        font-size: 20px !important;
-    }
-}
-@media only screen and (max-width: 1023px) and (min-width: 787px){
-    .banner-btn button{
-        font-size: 22px !important;
-    }
-}
-@media only screen and (max-width: 2560px) and (min-width: 1440px) {
-
-    .video-img img {
-        height: 270px !important;
-        width: auto !important;
-    }
-
-    .video-text-1 span {
-        font-size: 75px !important;
-        line-height: 95px !important;
-        /* font-weight: 400; */
-        color: #fff;
-    }
-    .main-img-logo img{
-        width: 400px !important;
-    }
-
-    .video-text-2 p {
-        font-size: 40px !important;
-        line-height: 30px !important;
-    }
-    .banner-btn button{
-        font-size: 26px !important;
-    }
-}
-

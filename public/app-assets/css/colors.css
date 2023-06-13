@@ -1231,7 +1231,8 @@ input:focus ~ .bg-primary {
   .btn-primary:hover {
     border-color: #5e50ee !important;
     color: #fff !important;
-    box-shadow: 0 8px 25px -8px #d1af69; }
+    /* box-shadow: 0 8px 25px -8px #d1af69;  */
+  }
   .btn-primary:focus, .btn-primary:active {
     color: #fff !important; }
 
