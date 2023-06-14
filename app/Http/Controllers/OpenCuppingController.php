@@ -82,6 +82,7 @@ class OpenCuppingController extends Controller
     }
     public function postCuppingProduct(Request $request)
     {
+
         $request->validate([
             'selected_product' => 'required|array',
             'auction_id' => 'required'
