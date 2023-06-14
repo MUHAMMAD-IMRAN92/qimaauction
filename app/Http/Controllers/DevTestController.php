@@ -8,9 +8,10 @@ class DevTestController extends Controller
 {
     public function index()
     {
+        return php_info();
         // return view('admin.dashboard.index');
-       $en = encrypt(1);
+        $en = encrypt(1);
 
-       return decrypt($en);
+        return decrypt($en);
     }
 }
