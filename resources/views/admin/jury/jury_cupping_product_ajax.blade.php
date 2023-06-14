@@ -20,35 +20,35 @@
                         <b>T1</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="1" class="chk1 pt-5"
-                        {{ $product->table == 1 ? 'checked' : '' }}>
+                        {{ $table[$key] == 1 ? 'checked' : '' }}>
                 </div>
                 <div class="chk">
                     <label class="check-label" for="male">
                         <b>T2</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="2" class="chk2 pt-5"
-                        {{ $product->table == 2 ? 'checked' : '' }}>
+                        {{ $table[$key] == 2 ? 'checked' : '' }}>
                 </div>
                 <div class="chk">
                     <label class="check-label" for="male">
                         <b>T3</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="3" class="chk3 pt-5"
-                        {{ $product->table == 3 ? 'checked' : '' }}>
+                        {{ $table[$key] == 3 ? 'checked' : '' }}>
                 </div>
                 <div class="chk">
                     <label class="check-label" for="male">
                         <b>T4</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="4" class="chk4 pt-5"
-                        {{ $product->table == 4 ? 'checked' : '' }}>
+                        {{ $table[$key] == 4 ? 'checked' : '' }}>
                 </div>
                 <div class="chk">
                     <label class="check-label" for="male">
                         <b>T5</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="5" class="chk4 pt-5"
-                        {{ $product->table == 5 ? 'checked' : '' }}>
+                        {{ $table[$key] == 5 ? 'checked' : '' }}>
                 </div>
             </div>
         </div>

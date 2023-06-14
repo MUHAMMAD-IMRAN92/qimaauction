@@ -62,10 +62,13 @@ class OpenCuppingController extends Controller
 
         $openCuppingProduct = OpenCuppingProduct::find($id);
         $products = Product::whereIn('id', explode(',', $openCuppingProduct->products))->orderBy('postion', 'asc')->get();
+        $cuppingProducts =  OpenCupping::where('auction_id',  $openCuppingProduct->auction_id)->get();
+
         return view('admin.jury.open_cupping', [
             'products' => $products,
             'auctions' => $auctions,
-            'openCupping' => $openCuppingProduct
+            'openCupping' => $openCuppingProduct,
+            'cuppingProducts' => $cuppingProducts
         ]);
     }
     public function createWithProduct()
@@ -79,6 +82,11 @@ class OpenCuppingController extends Controller
     }
     public function postCuppingProduct(Request $request)
     {
+        $request->validate([
+            'selected_product' => 'required|array',
+            'auction_id' => 'required'
+        ]);
+
         $cuppingProducts =  OpenCuppingProduct::where('auction_id',  $request->auction_id)->first();
         if ($cuppingProducts) {
             $cuppingProducts->update([
@@ -95,10 +103,13 @@ class OpenCuppingController extends Controller
     public function auctionProduct(Request $request)
     {
         $productArr = [];
-        $cuppingProducts =  OpenCuppingProduct::where('auction_id',  $request->auction_id)->first();
-        if ($cuppingProducts) {
-            $productArr =  explode(',', $cuppingProducts->products);
+        $table = [];
+        $cuppingProducts =  OpenCupping::where('auction_id',  $request->auction_id)->get();
+        foreach ($cuppingProducts as $cProduct) {
+            array_push($productArr, $cProduct['product_id']);
+            array_push($table,  $cProduct['table']);
         }
+
         $products = Product::orderBy('postion', 'asc')->get();
         if ($request->cuppingScreen == 1) {
             return view('admin.jury.cupping_product_ajax', [
@@ -109,6 +120,7 @@ class OpenCuppingController extends Controller
             $auctionProduct = Product::whereIn('id',  @$productArr)->get();
             return view('admin.jury.jury_cupping_product_ajax', [
                 'products' => $auctionProduct,
+                'table' => $table
             ]);
         }
     }
@@ -156,7 +168,7 @@ class OpenCuppingController extends Controller
             }
         }
 
-        return redirect()->route('show_cupping', ['userId' => 0]);
+        return redirect()->back()->with('success', 'Cupping Has Been Created!');
     }
 
     /**

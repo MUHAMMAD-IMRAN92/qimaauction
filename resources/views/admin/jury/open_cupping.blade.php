@@ -125,34 +125,39 @@
                                                             <div class="col-md-4">
                                                                 <div class="row checkbox-pad">
                                                                     <div class="chk">
-                                                                        <label class="check-label" for="male"> <b>T1</b>
+                                                                        <label class="check-label" for="male">
+                                                                            <b>T1</b>
                                                                         </label>
-                                                                        <input type="radio" name="{{ $key }}"
-                                                                            value="1" class="chk1 pt-5" checked>
+                                                                        <input type="radio" name="{{ $key }}" value="1" class="chk1 pt-5"
+                                                                            {{ $cuppingProducts[$key]['table'] == 1 ? 'checked' : '' }}>
                                                                     </div>
                                                                     <div class="chk">
-                                                                        <label class="check-label" for="male"> <b>T2</b>
+                                                                        <label class="check-label" for="male">
+                                                                            <b>T2</b>
                                                                         </label>
-                                                                        <input type="radio" name="{{ $key }}"
-                                                                            value="2" class="chk2 pt-5">
+                                                                        <input type="radio" name="{{ $key }}" value="2" class="chk2 pt-5"
+                                                                            {{ $cuppingProducts[$key]['table'] == 2 ? 'checked' : '' }}>
                                                                     </div>
                                                                     <div class="chk">
-                                                                        <label class="check-label" for="male"> <b>T3</b>
+                                                                        <label class="check-label" for="male">
+                                                                            <b>T3</b>
                                                                         </label>
-                                                                        <input type="radio" name="{{ $key }}"
-                                                                            value="3" class="chk3 pt-5">
+                                                                        <input type="radio" name="{{ $key }}" value="3" class="chk3 pt-5"
+                                                                            {{ $cuppingProducts[$key]['table'] == 3 ? 'checked' : '' }}>
                                                                     </div>
                                                                     <div class="chk">
-                                                                        <label class="check-label" for="male"> <b>T4</b>
+                                                                        <label class="check-label" for="male">
+                                                                            <b>T4</b>
                                                                         </label>
-                                                                        <input type="radio" name="{{ $key }}"
-                                                                            value="4" class="chk4 pt-5">
+                                                                        <input type="radio" name="{{ $key }}" value="4" class="chk4 pt-5"
+                                                                            {{ $cuppingProducts[$key]['table'] == 4 ? 'checked' : '' }}>
                                                                     </div>
                                                                     <div class="chk">
-                                                                        <label class="check-label" for="male"> <b>T5</b>
+                                                                        <label class="check-label" for="male">
+                                                                            <b>T5</b>
                                                                         </label>
-                                                                        <input type="radio" name="{{ $key }}"
-                                                                            value="5" class="chk4 pt-5">
+                                                                        <input type="radio" name="{{ $key }}" value="5" class="chk4 pt-5"
+                                                                            {{ $cuppingProducts[$key]['table'] == 5 ? 'checked' : '' }}>
                                                                     </div>
                                                                 </div>
                                                             </div>
