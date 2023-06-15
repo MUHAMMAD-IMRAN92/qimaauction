@@ -210,8 +210,8 @@ class ReviewController extends Controller
         }
         if (isset($request->sample_submit_prev)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
-                ->where('sample_sent_to_jury.tables', $request->table_value)
-                ->where('postion', $request->current_position - 1)
+                ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)
+                ->where('id', '<',  $request->sent_sample_id)->orderBy('id' , 'desc')
                 ->first();
 
             //  dd($request);
@@ -221,11 +221,16 @@ class ReviewController extends Controller
         }
         if (isset($request->sample_submit)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
-                ->where('sample_sent_to_jury.tables', $request->table_value)
-                ->where('postion', $request->current_position + 1)
+                ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)->where('id', '>',  $request->sent_sample_id)
                 ->first();
             if ($sample2Sent) {
+
                 $sampleSent = $sample2Sent;
+            } else {
+                $alltablesamples = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
+                    ->where('sample_sent_to_jury.tables', $request->table_value)
+                    ->where('sample_sent_to_jury.is_hidden', '1')
+                    ->update(array("is_hidden" => "0"));
             }
         }
         if ($request->to_go_sample) {

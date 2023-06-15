@@ -257,7 +257,6 @@ class ProductController extends Controller
 
     public function review(Request $request)
     {
-
         $tags = Tag::where('jury_id', $request->juryId)->get();
         $juery = Jury::where('ID', $request->juryId)->first();
         $name = $juery->name;

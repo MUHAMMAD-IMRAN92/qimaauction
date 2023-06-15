@@ -977,8 +977,8 @@ $previous_position = $productdata->postion - 1;
                                                                     {{-- <a type="submit" name=""
                                                                         class="submit-form-btn">SAVE
                                                                         TABLE</a> --}}
-                                                                    <button type="submit" value="1"
-                                                                        name="sample_submit"
+                                                                    <button type="submit"
+                                                                        name=""
                                                                         class="submit-form-btn">Save Table</button>
                                                                 @endif
 
