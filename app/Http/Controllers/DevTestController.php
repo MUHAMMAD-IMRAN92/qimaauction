@@ -10,7 +10,7 @@ class DevTestController extends Controller
     public function index()
     {
 
-  return      Product::where('product_title' , 'Hifthallah Alhaymi')->where('sample_id' , 1206)->first();
+  return      Product::where('product_title' , 'Hifthallah Alhaymi')->orderBy('created_at' , 'desc')->delete();
 
         return phpinfo();
         // return view('admin.dashboard.index');
