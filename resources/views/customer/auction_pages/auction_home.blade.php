@@ -29,33 +29,36 @@
     }
 
     .navbar {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font: 20px;
-}
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: 20px;
+    }
 
-.navbar-list {
-  list-style: none;
-}
+    .navbar-list {
+        list-style: none;
+    }
 
-.navbar-list .list-items {
-  display: inline-block;
-  padding: 10px 10px;
-  font-weight: 400;
-}
-#width a img{
-  margin-left: 108px;
-  margin-top:20px;
-  margin-bottom: 15px;
-}
-.navbar a {
-  text-decoration: none;
-  color: black;
-  margin-left: 5px;
-  margin-right: 5px;
-}
+    .navbar-list .list-items {
+        display: inline-block;
+        padding: 10px 10px;
+        font-weight: 400;
+    }
+
+    #width a img {
+        margin-left: 108px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: black;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
     /* .navbar {
         width: 100%;
         background-color: #D1AF69;
@@ -555,7 +558,8 @@
         color: white;
     }
 
-    .startbidbtn, .startbidbtn:hover {
+    .startbidbtn,
+    .startbidbtn:hover {
         background-color: #143D30 !important;
         color: white;
     }
@@ -740,32 +744,35 @@
     .moreBtn {
         display: block;
     }
+
     .bid-now-btn-field {
         justify-content: end;
     }
-.lh-zero{
-    line-height: 0;
-}
-.bid-row .form-inline{
-    justify-content: end;
-}
 
-.sidebaropen-width{
-    width: 450px;
-}
-.changecolor
-{
-    background: #FFFEA2;
-    border-width: 1px 0px;
-    border-style: solid;
-    border-color: #9C9C9C;
-}
+    .lh-zero {
+        line-height: 0;
+    }
 
-.card-header{
-            display: flex;
-    justify-content: center;
-    align-items: center;
-        }
+    .bid-row .form-inline {
+        justify-content: end;
+    }
+
+    .sidebaropen-width {
+        width: 450px;
+    }
+
+    .changecolor {
+        background: #FFFEA2;
+        border-width: 1px 0px;
+        border-style: solid;
+        border-color: #9C9C9C;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     @media (max-width: 1199px) {
         .tablenav a {
@@ -1029,9 +1036,10 @@
         .finalliabilitytr td.finalliability {
             display: block;
         }
-    .tdtimer {
-        justify-content: start;
-    }
+
+        .tdtimer {
+            justify-content: start;
+        }
 
     }
 
@@ -1039,9 +1047,10 @@
         .tablenav a {
             font-size: 10px;
         }
-        .sidebaropen-width{
-    width: 300px;
-}
+
+        .sidebaropen-width {
+            width: 300px;
+        }
     }
 
     @media screen and (max-height: 450px) {
@@ -1059,25 +1068,30 @@
 
 <body>
     <nav class="navbar navbar-fix">
-        <div id="width"><a href="{{url('/')}}"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+        <div id="width"><a href="{{ url('/') }}"><img
+                    src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
         <div>
             <ul class="navbar-list" style="margin-right: 15px; " id="nav-list">
-                @if(Auth::user())
-                <a href="{{ route('user_logout') }}">
-                    <i class="fa fa-sign-out" title="Logout"></i>
-                </a>
+                @if (Auth::user())
+                    <a href="{{ route('user_logout') }}">
+                        <i class="fa fa-sign-out" title="Logout"></i>
+                    </a>
                 @else
-                <a href="{{ route('login') }}">
-                    <i class="fa fa-sign-in" title="Sign in"></i>
-                </a>
+                    <a href="{{ route('login') }}">
+                        <i class="fa fa-sign-in" title="Sign in"></i>
+                    </a>
                 @endif
-                <a target="_blank" href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
-                <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
-                <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
+                <a target="_blank" href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram"
+                        class="fa fa-instagram"></i> </a>
+                <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook"
+                        class="fa fa-facebook"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i
+                        title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
 
-                <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i
+                        title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
 
 
             </ul>
@@ -1095,7 +1109,7 @@
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
-            @if(Auth::user())
+            @if (Auth::user())
             <a href="{{ route('user_logout') }}" >
             <p>LOG OUT</p>
         </a>
@@ -1200,7 +1214,8 @@
                         </div>
                     </div>
                 </nav>
-                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-home-tab">
                     <table class="table auctiontable">
                         <thead>
                             <tr class="text-center">
@@ -1229,11 +1244,10 @@
                                         ->limit(1)
                                         ->get();
                                     $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = (float)$incPriceSinglebid + (float)$bidIncrementSinglebid;
+                                    $finalIncSinglebid = (float) $incPriceSinglebid + (float) $bidIncrementSinglebid;
                                     $isEmpty = sizeof($singleBids);
                                 @endphp
-                                <tr
-                                class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
                                     {{-- <td contenteditable='true' class="text-underline yourscore td-res-pl"
@@ -1241,7 +1255,7 @@
                                         {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format((float)$bidIncrementSinglebid, 1) }}</td>
+                                        ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
@@ -1262,7 +1276,8 @@
                                     </td> --}}
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl"><a
-                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-productid="{{$products->id}}"
+                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                                data-productid="{{ $products->id }}"
                                                 data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
@@ -1308,65 +1323,68 @@
                                         </div>
                                     </td>
                                 </tr>
-                                    <tr class="hide-table-padding bid-row">
-                                        <td colspan="13">
-                                            <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h5 style="margin: 0 20px">You need to login to Bid.</h5>
-                                                        <a style="padding: 5px; border-radius: 4px;"  href="{{ route('customer.login') }}" class="startbidbtn">Login</a>
+                                <tr class="hide-table-padding bid-row">
+                                    <td colspan="13">
+                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 style="margin: 0 20px">You need to login to Bid.</h5>
+                                                    <a style="padding: 5px; border-radius: 4px;"
+                                                        href="{{ route('customer.login') }}"
+                                                        class="startbidbtn">Login</a>
 
-                                                    </div>
-                                                    {{-- <div class="card-body">
+                                                </div>
+                                                {{-- <div class="card-body">
                                                            <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
                                                     </div> --}}
-                                                </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                        @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                        </table>
-            </div>
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div class="sidebar-container">
-                    <div class="lot-header">
-                        <h3 class="rank"></h3>
-                        <h3 class="juryscore"></h3>
-                        <h5 class="name"></h5>
-                        <h5 class="code"></h5>
-                    </div>
-                    <hr>
-                    <div class="lot-description">
-                        <p>LOT SIZE: <span class="size"></span></p>
-                        <p>CURRENT BID: <span class="currentbid"></span></p>
-                        {{-- <p>TOTAL VALUE: <span class="totalvalue"></span></p> --}}
-                        <hr>
-                        <p>WINNING BIDDER: <span class="paddleno"></span></p>
-                    </div>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <div class="lot-description">
-                        <p>PROCESS: <span class="proprocess"></span></p>
-                    </div>
-                    <div class="lot-genetis">
-                        <h3>GENETICS <span class="genetics"></span></h3>
-
-                    </div>
-
-                    <div class="moreBtn"></div>
+                    </table>
                 </div>
-            </div>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="sidebar-container">
+                        <div class="lot-header">
+                            <h3 class="rank"></h3>
+                            <h3 class="juryscore"></h3>
+                            <h5 class="name"></h5>
+                            <h5 class="code"></h5>
+                        </div>
+                        <hr>
+                        <div class="lot-description">
+                            <p>LOT SIZE: <span class="size"></span></p>
+                            <p>CURRENT BID: <span class="currentbid"></span></p>
+                            {{-- <p>TOTAL VALUE: <span class="totalvalue"></span></p> --}}
+                            <hr>
+                            <p>WINNING BIDDER: <span class="paddleno"></span></p>
+                        </div>
+                        <div class="lot-featured-img">
+                            <img class="img-status">
+                            <input type="hidden" name="image-source"
+                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                        </div>
+                        <div class="lot-description">
+                            <p>PROCESS: <span class="proprocess"></span></p>
+                        </div>
+                        <div class="lot-genetis">
+                            <h3>GENETICS <span class="genetics"></span></h3>
+
+                        </div>
+
+                        <div class="moreBtn"></div>
+                    </div>
+                </div>
     </section>
     <section class="section-4">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png"
+                        alt="">
                 </div>
             </div>
         </div>
@@ -1452,9 +1470,9 @@
         }, 300000)
         $(".openSidebar").click(function() {
 
-           $("#mySidebar").toggleClass('sidebaropen-width');
+            $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
-            var productid=$(this).attr('data-productid');
+            var productid = $(this).attr('data-productid');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
@@ -1552,6 +1570,9 @@
     });
 </script>
 <script>
+    @php
+        $isEmpty = sizeof($singleBids);
+    @endphp
     var total = 0;
     var interval;
     var empty = '{{ $isEmpty }}';
@@ -1593,18 +1614,17 @@
     });
     socket.on('add_auction_status', function(data) {
         alert(data.auctionstatus);
-        if(data.auctionstatus == 1)
-        {
+        if (data.auctionstatus == 1) {
             window.location = window.location.href + "?ended=1";
         }
     });
     socket.on('add_timer_reset', function(data) {
-        if(data.timerreset == 1)
-        {
+        if (data.timerreset == 1) {
             data.checkTimer = 0;
             resetTimer(data);
         }
     });
+
 
     function resetTimer(data) {
         console.log('Its Coming To Data');
@@ -1620,10 +1640,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
+                
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-
+                
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
