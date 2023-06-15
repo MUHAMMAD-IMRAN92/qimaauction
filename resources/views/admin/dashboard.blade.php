@@ -13,7 +13,7 @@
     }
 
     .landing-page-bg {
-        background-image: url("{{asset('public/app-assets/images/banner/new-bg.png')}}");
+        background-image: url("{{ asset('public/app-assets/images/banner/new-bg.png') }}");
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
@@ -102,7 +102,7 @@
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #575555;
     }
@@ -126,7 +126,7 @@
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #9F9B9B;
     }
@@ -185,8 +185,8 @@
     <div class="bg-theme-color">
         <div class="landing-page-bg">
             <div class="boy-image">
-                <img src="{{asset('public/app-assets/images/banner/bestofyemen.png')}}" alt="">
-                <img src="{{asset('public/app-assets/images/banner/midbanner.png')}}" alt="">
+                <img src="{{ asset('public/app-assets/images/banner/bestofyemen.png') }}" alt="">
+                <img src="{{ asset('public/app-assets/images/banner/midbanner.png') }}" alt="">
             </div>
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
@@ -251,7 +251,8 @@
             const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-            document.getElementById('timer').innerHTML = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timer').innerHTML =
+                `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
             if (timeRemaining <= 0) {
                 clearInterval(timer);
