@@ -185,66 +185,80 @@
     h3.entity-text {
         width: 100%;
         text-align: center;
+        font-weight: 800;
+        font-size: 24px !important;
     }
 
     .entity-label {
         font-family: 'Montserrat';
-        font-size: 20px;
-        color: #A4A3A3;
+        font-size: 18px;
+        color: white;
         text-align: center;
         padding-top: 10px;
         padding-bottom: 20px;
     }
 
     .aroma-bg {
-        background-color: #6A2AF1;
+        background-color: transparent !important;
     }
 
     .defects-bg {
-        background-color: #B22AF1;
-        margin-top: 82px;
+        background-color: transparent !important;
+        
     }
 
     .cleancup-bg {
-        background-color: #2AE5F1;
+        background-color: transparent !important;
     }
 
     .total-bg {
-        background-color: #000;
+        background:transparent !important;
+       justify-content: center;
+        font-weight: 800;
+font-size: 36px;
+line-height: 44px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+font-feature-settings: 'kern' off;
+
+color: #000000 !important;
     }
 
     .roast-bg {
         background-color: transparent;
-        border: 1px solid #000;
-        color: #000;
+    
+    color: white;
     }
 
     .overall-bg {
-        background-color: #95E2AF;
+        background-color: transparent !important
     }
 
     .balance-bg {
-        background-color: #29672C;
+        background-color: transparent !important
     }
 
     .flavor-bg {
-        background-color: #F32C38;
+        background-color: transparent !important
     }
 
     .aftertaste-bg {
-        background-color: #E7936E;
+        background-color: transparent !important;
     }
 
     .sweetness-bg {
-        background-color: #E2959A;
+        background-color: transparent !important;
     }
 
     .acidity-bg {
-        background-color: #FDBF86;
+        background-color: transparent !important;
     }
 
     .mouthfeel-bg {
-        background-color: #38DFB7;
+        background-color: transparent !important;
     }
 
     .multiply,
@@ -258,6 +272,7 @@
     .score_first_number,
     .score_second_number {
         width: 40px;
+        background: transparent;
     }
 
     .entity_note {
@@ -276,21 +291,28 @@
     }
 
     h2.totalScore {
-        text-align: center;
-        font-size: 100px;
-        font-family: 'EB Garamond';
+        font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 90px;
+line-height: 110px;
+text-align: center;
+color: black !important;
     }
 
     .submit-form-btn {
-        background: transparent;
-        color: #A4A3A3 !important;
-        border: 1px solid #A4A3A3 !important;
-        padding: 22px;
-        width: 200px;
-        height: auto;
-        display: block;
-        margin: auto;
-        margin-top: 40px;
+        text-align: center;
+    background: white;
+    color: black;
+    border: 1px solid #A4A3A3 !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 12px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 54px;
     }
 
     .scrollable {
@@ -303,6 +325,7 @@
         width: 121px;
         font-size: 24px;
         background-color: #C4C4C4;
+        border-radius: 30px;
     }
 
     .pager.btn-success {
@@ -311,8 +334,8 @@
     }
 
     .ui-slider-pips .ui-slider-line {
-        background: #999;
-        width: 2px;
+        background: white;
+        width: 3px;
         height: 50px !important;
         position: absolute;
         left: 50%;
@@ -345,13 +368,16 @@
     .ui-widget-content .ui-state-default,
     .ui-widget-header .ui-state-default {
         border: 1px solid black;
-        background: black url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
+        background: white url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
         font-weight: bold;
         color: black;
     }
 
     .customslider.ui-slider-horizontal {
-        height: 1px;
+        height: 3px;
+    }
+    .radio_container input ~ .checkmark {
+    background-color: white ;
     }
 
     .customslider.ui-slider-horizontal .ui-slider-handle {
@@ -364,7 +390,7 @@
     }
 
     .aromaslider.ui-slider-horizontal {
-        height: 1px;
+        height: 3px;
     }
 
     .aromaslider.ui-slider-horizontal .ui-slider-handle {
@@ -375,11 +401,14 @@
     .aromaslider.ui-slider-pips .ui-slider-pip {
         top: 14px;
     }
+    h5{
+        margin-top: 0px !important;
+    }
 
     .roastslider.ui-slider-horizontal {
         height: 50px;
         border-radius: 0;
-        background-image: linear-gradient(to right, #fff, #88592D) !important;
+        background-image: linear-gradient(90deg, #D9B594 23.96%, #765418 100%)
     }
 
     .roastslider .ui-slider-handle {
@@ -408,9 +437,13 @@
         display: inline;
     }
 
-    ul.breadcrumb li+li:before {
+    /* ul.breadcrumb li+li:before {
         content: "/\00a0";
         font-size: 26px;
+    } */
+    .breadcrumb>li+li:before{
+        content: "" !important;
+        display: block;
     }
 
     ul.breadcrumb li a {
@@ -419,31 +452,46 @@
     }
 
     .id-text {
-        font-size: 65px;
-        color: #A4A3A3;
-        font-family: 'Garamond Premier Pro';
+        font-size: 20px !important;
+        color: #575555;
+        font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 20px;
+line-height: 24px;
     }
 
     .sample-area {
+        align-items: center;
         text-align: center;
+      
+    color: black;
+
     }
 
     .sample_number {
-        font-family: 'Garamond Premier Pro';
-        font-style: normal;
+        font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+
+       
         font-weight: 400;
-        font-size: 140px;
-        line-height: 168px;
+        font-size: 70px;
+        line-height: 70px;
         /* identical to box height */
         color: #040404;
     }
 
     .custom_hr {
         border-top: 2px solid #A4A3A3;
+        margin-bottom: 0px;
     }
 
     .entity_note {
         width: 100%;
+        width: 100%;
+    background: transparent;
+    border: 1px solid white;
     }
 
     .design-slider {
@@ -451,21 +499,45 @@
     }
 
     input {
-        border: 1px solid #000000;
+        border: 1px solid white;
     }
-
+    .ui-slider-pips .ui-slider-pip-label .ui-slider-label{
+        color: white !important;
+    }
+    .multiply, .score_first_number, .score_second_number, .multiply4 {
+    color: white !important;}
+    @media only screen and (max-width:1200px){
+        /* .bg-overall--theme{
+            height: auto !important;
+        } */
+    }
     @media only screen and (max-width:767px) {
         .id-text {
             font-size: 40px;
+        }
+        .list-crumb .list-1{
+            border-top: 1px solid white !important;
+        }
+        ul.breadcrumb{
+            flex-wrap: nowrap;
+            flex-direction: row;
+            border-top: 1px solid white;
+        }
+        .list-crumb .list-1{
+            border: none !important;
+            border-right: 1px solid white !important;
+        }
+        .parent-btn{
+            width: auto !important;
         }
 
         .sample_number {
             font-size: 80px;
         }
 
-        .breadcrumb-section {
+        /* .breadcrumb-section {
             display: none;
-        }
+        } */
 
         .breadcrumb-content {
             font-size: 20px !important;
@@ -491,10 +563,192 @@
     .isdone.btn-success {
         color: #FFF !important;
     }
+    .list-crumb{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+    .sample-heading{
+        border-right: 1px solid white;
+    }
+    .list-crumb .list-1{
+        width: 100%;
+        font-weight: 800;
+    border: 1px solid white;
+    padding: 15px;
+   
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    }
+    .list-crumb p{
+        font-weight: 800;
+        color: #575555 !important;
+        font-size: 20px !important;
+    }
+    .list-crumb .list-2{
+        width: 100%;
+        font-weight: 800;
+    padding: 15px;
+ 
+    }
+    .bg-roast--theme{
+        background: #DBCDB7;
+        padding: 30px;
+        margin: 0px;
+        width: auto  !important;
+    }
+    .bg-aroma--theme-1{
+        background: linear-gradient(264deg, #C488D9 0%, #C4D3FA 100%);
+        padding: 30px;
+        width: auto !important;
+    }
+    .bg-aroma--theme-2{
+        background: linear-gradient(264deg, #C176DC 0%, #B9CDFF 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-aroma--theme-3{
+        background: linear-gradient(264deg, #BE6DDB 0%, #B4C7F9 100%);;
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-defects--theme{
+        background:linear-gradient(290deg, #FF5757 0%, #F19393 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-clean--theme{
+        background:linear-gradient(290deg, #93DBF1 0%, #5786FF 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-sweet--theme{
+        background:linear-gradient(290deg, #FBBAAC 0%, #EC9185 100%);;
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-acid--theme{
+        background:linear-gradient(290deg, #DEF193 0%, #FF9B3F 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-mouth--theme{
+        background:linear-gradient(290deg, #FF563F 0%, #E493F1 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-flavor--theme{
+        background:linear-gradient(290deg, #55BBA9 45.31%, #ACFBF6 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-taste--theme{
+        background:linear-gradient(290deg, #DEA857 45.31%, #FBACAC 100%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-balance--theme{
+        background:linear-gradient(290deg, #68BC4A 0%, #44BA6C 46.88%);
+        padding: 30px;
+        width: auto !important;
+
+    }
+    .bg-overall--theme{
+        background:linear-gradient(290deg, #716EE4 0%, #62CBDA 100%);
+        padding: 30px;
+        height: 427px;
+        width: auto !important;
+
+    }
+    input::placeholder{
+        color: white !important;
+    }
+    .anchor-ovveride{
+        width: 100%;
+    font-weight: 600;
+    text-align: center;
+    color: #575555 !important;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+
+
+color: #575555;
+    }
+    .btn-next-prev{
+        display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+    }
+    .parent-btn{
+        width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .wrapper-btn{
+        display: flex;
+        justify-content: center;
+    }
+    .button-group{
+        margin-top: 30px;
+        text-align: center;
+    }
+    .footer-end{
+        width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    }
+    .image-section{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    }
+    .image-section img{
+        padding: 20px;
+        width: 300px;
+    }
+    .text-section{
+        text-align: center;
+    }
+    .text-section h2{
+        font-weight: 800;
+    color: #575555;
+    font-size: 20px;
+    }
+
+    .hr{
+        margin-bottom: 0px !important;
+        border: 1px solid white !important;
+    }
+   
+.new-bg{
+    background-color: #EFEBE5;
+        overflow-x: hidden;
+}
+.new-bg-color{
+    background-color:#EFEBE5 ;
+}
 </style>
 
 <body
-    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
+    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static new-bg-color   blank-page blank-page"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
     <div class="app-content content h-100">
@@ -508,10 +762,10 @@
             <div class="content-body">
                 <section class="row flexbox-container">
                     <div class="col-lg-12 d-flex justify-content-center">
-                        <div class="card bg-authentication rounded-0 mb-0">
+                        <div class="card  bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
                                 <div class="col-lg-12  p-0">
-                                    <div class="card rounded-0 mb-0 p-2">
+                                    <div class="card new-bg rounded-0 mb-0 p-2">
                                         <div class="card-header pt-50 pb-1">
                                             @if (session('success'))
                                                 <div class="col-md-12 alert alert-success">
@@ -519,12 +773,12 @@
                                                 </div>
                                             @endif
                                             <div class="col-lg-12">
-                                                <div class="site-logo">
+                                                <!-- <div class="site-logo">
                                                     <img src="{{ asset('/public/app-assets/images/logo/newlogo.png') }}"
                                                         style="width: 100%;max-width:100%;">
-                                                </div>
+                                                </div> -->
                                                 <!--Breadcrumb Section-->
-                                                <div class="breadcrumb-section">
+                                                <!-- <div class="breadcrumb-section">
                                                     <ul class="breadcrumb">
                                                         <li><a href="#">
                                                                 <p class="breadcrumb-content"
@@ -552,8 +806,8 @@
                                                                     {{ $juryCompany }}</p>
                                                             </a></li>
                                                     </ul>
-                                                </div>
-                                                <div class="mobile-breadcrumb-section">
+                                                </div> -->
+                                                <!-- <div class="mobile-breadcrumb-section">
                                                     <ul class="breadcrumb">
                                                         <li><a href="#">
                                                                 <p class="breadcrumb-content pt-1"
@@ -578,13 +832,21 @@
                                                                     {{ $juryCompany }}</p>
                                                             </a></li>
                                                     </ul>
-                                                </div>
-                                                <hr class="custom_hr">
-                                                <!--Breadcrumb Section-->
-                                                {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
-                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
-                                                <!--Sample ID Section-->
-                                                <div class="sample-area">
+                                                </div> -->
+                                                <!-- <hr class="custom_hr"> -->
+                                                <div class="image-section">
+            <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" alt="">
+            <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
+
+        </div>
+        <hr class="hr">
+        <div class="text-section">
+            <h2>{{$juryName}}</h2>
+        </div>
+        <hr class="hr">
+        <div class="container-fluid">
+<div class="sample-area row">
+                                                    <div class="sample-heading col-lg-6">
                                                     <h2 class="id-text">SAMPLE ID</h2>
                                                     <p class="sample_number">
                                                         @foreach ($alltablesamples as $samp)
@@ -593,7 +855,42 @@
                                                             @endif
                                                         @endforeach
                                                     </p>
+                                                    </div>
                                                     <!--Breadcrumb Section-->
+                                                    <div class="breadcrumb-section col-lg-6  ">
+                                                        <ul class="breadcrumb list-crumb">
+                                                        <li class="list-1"><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px;color: black;">
+                                                                        POSITION-{{ $productdata->postion }}</p>
+                                                                </a></li>
+                                                            <li class="list-2"><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: black;">
+                                                                        TABLE-{{ $productdata->table }}</p>
+                                                                </a>
+                                                            </li>
+                                                          
+
+                                                        </ul>
+                                                    </div>
+                                                    <!--Breadcrumb Section-->
+                                                </div>
+</div>
+                                                <!--Breadcrumb Section-->
+                                                {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
+                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
+                                                <!--Sample ID Section-->
+                                                <!-- <div class="sample-area">
+                                                    <h2 class="id-text">SAMPLE ID</h2>
+                                                    <p class="sample_number">
+                                                        @foreach ($alltablesamples as $samp)
+                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                {{ $samp->samples }}
+                                                            @endif
+                                                        @endforeach
+                                                    </p>
+                                                    
                                                     <div class="breadcrumb-section">
                                                         <ul class="breadcrumb">
                                                             <li><a href="#">
@@ -610,8 +907,8 @@
 
                                                         </ul>
                                                     </div>
-                                                    <!--Breadcrumb Section-->
-                                                </div>
+                                                   
+                                                </div> -->
                                                 <!--Sample ID Section-->
 
                                             </div>
@@ -644,57 +941,29 @@ $previous_position = $productdata->postion - 1;
                                                         value="{{ $sampleReview->id ?? null }}">
                                                     <input type="hidden" name="sent_sample_id"
                                                         value="{{ $sentSampleId }}">
-                                                    <div class="row">
+                                                        <div class="container-fluid">
+                                                        <div class="row">
+                                                           
+                                                        <div class="col-lg-6 p-0">
+                                                        <div class="row bg-roast--theme">
                                                         <div class="col-12">
-                                                            <h3 class="entity-text roast-bg">ROAST</h3>
+                                                            <h3 class="entity-text roast-bg">ROAST COLOUR</h3>
                                                         </div>
 
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="roastslider"><input type="hidden"
-                                                                        name="roast" id="roast" value="50">
-                                                                </div>
+                                                                        name="roast" id="roast" value="50"></div>
                                                             </div>
                                                         </div>
+                                                        <div class="entity_input col-12">
+                                                                        <input type="text" 
+                                                                             placeholder="NOTES"
+                                                                            class="entity_note">
+                                                                    </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <h3 class="entity-text aroma-bg">AROMA</h3>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-12">
-                                                        <h5>DRY</h5>
-                                                    </div>
-                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromadry"><input type="hidden"
-                                                                name="aroma_dry" id="aroma_dry" value="0"></div>
-
-
-
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <h5>CRUST</h5>
-                                                    </div>
-                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromacrust"><input type="hidden"
-                                                                name="aroma_crust" id="aroma_crust" value="0">
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <div class="col-lg-12">
-                                                        <h5>BREAK</h5>
-                                                    </div>
-                                                    <div class="design-slider mt-5 mb-5" style="height:58px">
-                                                        <div class="aromaslider aromabreak"><input type="hidden"
-                                                                name="aroma_break" id="aroma_break" value="0">
-                                                        </div>
-                                                    </div>
-
-
-
+                                                      
+                                                    <div class="bg-defects--theme">
                                                     <h3 class="entity-text defects-bg">DEFECTS</h3>
                                                     <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
                                                     <div class="row">
@@ -713,97 +982,30 @@ $previous_position = $productdata->postion - 1;
                                                             <span class="multiply">=</span>
                                                             <span class="multiply4">?</span>
                                                             <div class="entity_input">
-                                                                <input type="text" name="defect_note"
-                                                                    id="defect_note" placeholder="NOTES"
-                                                                    class="entity_note">
+                                                                <input type="text" name="defect_note" id="defect_note"
+                                                                    placeholder="NOTES" class="entity_note">
                                                             </div>
                                                         </div>
 
                                                     </div>
-
-                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
-
-                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider cleancup"><input
-                                                                        type="hidden" name="clean_up" id="clean_up"
-                                                                        value="6"></div>
-                                                            </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="cleanup_note"
-                                                                    id="cleanup_note" placeholder="NOTES"
-                                                                    class="entity_note">
-                                                            </div>
-                                                        </div>
-
                                                     </div>
+                                                    <div class="bg-sweet--theme">
                                                     <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider sweetness"><input
-                                                                        type="hidden" name="sweetness"
-                                                                        id="sweetness"></div>
+                                                                <div class="customslider sweetness"><input type="hidden"
+                                                                        name="sweetness" id="sweetness"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="sweetness_note"
-                                                                    id="sweetness_note" placeholder="NOTES"
-                                                                    value="6" class="entity_note">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
-                                                    <div class="row">
-                                                        <div class="col-lg-12" style="text-align:center">
-                                                            <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider acidity"><input
-                                                                        type="hidden" name="acidity" id="acidity"
-                                                                        value="6"></div>
-                                                            </div>
-                                                            <div class="radio_button">
-                                                                <div>
-                                                                    <label class="radio_container">
-
-                                                                        <input type="radio" name="acidity_chk"
-                                                                            value="H" class="acidity_H">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>H</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-                                                                        <input type="radio" name="acidity_chk"
-                                                                            value="M" class="acidity_M">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>M</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                                <div>
-                                                                    <label class="radio_container">
-                                                                        <input type="radio" checked="checked"
-                                                                            name="acidity_chk" value="L"
-                                                                            class="acidity_L">
-                                                                        <div class="checkmark">
-                                                                        </div>
-                                                                        <h5>L</h5>
-
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="entity_input">
-                                                                <input type="text" name="acidity_note"
-                                                                    id="acidity_note" placeholder="NOTES"
+                                                                    id="sweetness_note" placeholder="NOTES" value="6"
                                                                     class="entity_note">
                                                             </div>
                                                         </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="bg-mouth--theme">
                                                     <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
@@ -836,9 +1038,8 @@ $previous_position = $productdata->postion - 1;
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" value="L"
-                                                                            checked="checked" class="mouthfeel_L"
-                                                                            name="fm_chk">
+                                                                        <input type="radio" value="L" checked="checked"
+                                                                            class="mouthfeel_L" name="fm_chk">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
@@ -850,21 +1051,10 @@ $previous_position = $productdata->postion - 1;
                                                                     id="mouthfeel_note" placeholder="NOTES"
                                                                     class="entity_note">
                                                             </div>
-                                                            <h3 class="entity-text flavor-bg">FLAVOR</h3>
-                                                            <div class="row">
-                                                                <div class="col-lg-12" style="text-align:center">
-                                                                    <div class="design-slider mt-5 mb-5">
-                                                                        <div class="customslider flavor"><input
-                                                                                type="hidden" name="flavour"
-                                                                                id="flavour" value="6"></div>
-                                                                    </div>
-                                                                    <div class="entity_input">
-                                                                        <input type="text" name="flavor_note"
-                                                                            id="flavor_note" placeholder="NOTES"
-                                                                            class="entity_note">
-                                                                    </div>
-                                                                </div>
                                                             </div>
+                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                    <div class="bg-taste--theme" >
                                                             <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
                                                             <div class="row">
                                                                 <div class="col-lg-12" style="text-align:center">
@@ -880,21 +1070,8 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <h3 class="entity-text balance-bg">BALANCE</h3>
-                                                            <div class="row">
-                                                                <div class="col-lg-12" style="text-align:center">
-                                                                    <div class="design-slider mt-5 mb-5">
-                                                                        <div class="customslider balance"><input
-                                                                                type="hidden" name="balance"
-                                                                                id="balance" value="8"></div>
-                                                                    </div>
-                                                                    <div class="entity_input">
-                                                                        <input type="text" name="balance_note"
-                                                                            id="balance_note" placeholder="NOTES"
-                                                                            class="entity_note">
-                                                                    </div>
-                                                                </div>
                                                             </div>
+                                                            <div class="bg-overall--theme">
                                                             <h3 class="entity-text overall-bg">OVERALL</h3>
                                                             <div class="row">
                                                                 <div class="col-lg-12" style="text-align:center">
@@ -910,8 +1087,165 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 p-0">
+                                                        <div>
+                                                            <div class="bg-aroma--theme-1 ">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12">
+                                                        <h5>DRY</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:75px">
+                                                        <div class="aromaslider aromadry"><input type="hidden"
+                                                                name="aroma_dry" id="aroma_dry" value="0"></div>
+
+
+
+                                                    </div>
+                                                    </div>
+                                                    <div class="bg-aroma--theme-2 ">
+                                                    <div class="col-lg-12">
+                                                        <h5>CRUST</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:75px">
+                                                        <div class="aromaslider aromacrust"><input type="hidden"
+                                                                name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                    </div>
+
+                                                    </div>
+                                                    <div class="bg-aroma--theme-3 ">
+                                                    <div class="col-lg-12">
+                                                        <h5>BREAK</h5>
+                                                    </div>
+                                                    <div class="design-slider mt-5 mb-5" style="height:75px">
+                                                        <div class="aromaslider aromabreak"><input type="hidden"
+                                                                name="aroma_break" id="aroma_break" value="0"></div>
+                                                    </div>
+                                                    <div class="entity_input col-12">
+                                                                        <input type="text"
+                                                                            placeholder="NOTES"
+                                                                            class="entity_note">
+                                                                    </div>
+                                                    </div>
+                                                    
+                                                    </div>
+                                                    <div class="bg-clean--theme">
+                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider cleancup"><input type="hidden"
+                                                                        name="clean_up" id="clean_up" value="6"></div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="cleanup_note" id="cleanup_note"
+                                                                    placeholder="NOTES" class="entity_note">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    </div>
+                                                    <div class="bg-acid--theme">
+                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-12" style="text-align:center">
+                                                            <div class="design-slider mt-5 mb-5">
+                                                                <div class="customslider acidity"><input type="hidden"
+                                                                        name="acidity" id="acidity" value="6"></div>
+                                                            </div>
+                                                            <div class="radio_button">
+                                                                <div>
+                                                                    <label class="radio_container">
+
+                                                                        <input type="radio" name="acidity_chk" value="H"
+                                                                            class="acidity_H">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>H</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" name="acidity_chk" value="M"
+                                                                            class="acidity_M">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>M</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="radio_container">
+                                                                        <input type="radio" checked="checked"
+                                                                            name="acidity_chk" value="L"
+                                                                            class="acidity_L">
+                                                                        <div class="checkmark">
+                                                                        </div>
+                                                                        <h5>L</h5>
+
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="entity_input">
+                                                                <input type="text" name="acidity_note" id="acidity_note"
+                                                                    placeholder="NOTES" class="entity_note">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    <div class="bg-flavor--theme">
+                                                            <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                            <div class="row">
+                                                                <div class="col-lg-12" style="text-align:center">
+                                                                    <div class="design-slider mt-5 mb-5">
+                                                                        <div class="customslider flavor"><input
+                                                                                type="hidden" name="flavour"
+                                                                                id="flavour" value="6"></div>
+                                                                    </div>
+                                                                    <div class="entity_input">
+                                                                        <input type="text" name="flavor_note"
+                                                                            id="flavor_note" placeholder="NOTES"
+                                                                            class="entity_note">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="bg-balance--theme">
+                                                            <h3 class="entity-text balance-bg">BALANCE</h3>
+                                                            <div class="row">
+                                                                <div class="col-lg-12" style="text-align:center">
+                                                                    <div class="design-slider mt-5 mb-5">
+                                                                        <div class="customslider balance"><input
+                                                                                type="hidden" name="balance"
+                                                                                id="balance" value="8"></div>
+                                                                    </div>
+                                                                    <div class="entity_input">
+                                                                        <input type="text" name="balance_note"
+                                                                            id="balance_note" placeholder="NOTES"
+                                                                            class="entity_note">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                                   
+                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
+
+                                              
+                                           
+                                                      <div class="container-fluid">
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
-                                                            <p class="entity-label">(+36)</p>
+                                                            <p class="entity-label" style="color: #000;">(+36)</p>
                                                             <p id="input_total_score"
                                                                 style="max-width:100%;width: 267px;margin: auto;">
                                                                 <input onkeyup="if (this.value > 100){ calcTotal()};"
@@ -921,7 +1255,7 @@ $previous_position = $productdata->postion - 1;
                                                                     value="84">
                                                             </p>
                                                             <h2 class="totalScore" id="div_total_score">0</h2>
-                                                            <a onclick="toggleDivs()">Manually Override Score</a>
+                                                            <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
                                                             <input type="hidden" value="0"
                                                                 name="manual_override">
                                                             <script>
@@ -931,6 +1265,42 @@ $previous_position = $productdata->postion - 1;
                                                                     $('input[name=manual_override]').val(1);
                                                                 }
                                                             </script>
+
+<div class="wrapper-btn">
+                                                            <div class="row parent-btn">
+                                                            <div class="btn-next-prev">
+                                                                <input type="hidden" id="to_go_sample"
+                                                                    name="to_go_sample" value="">
+
+                                                                <button type="submit" value="1"
+                                                                    name="sample_submit_prev" class="submit-form-btn"
+                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
+                                                                </button>
+                                                                <button type="submit" value="0"
+                                                                    name="sample_submit" class="submit-form-btn"
+                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
+                                                                </button>
+                                                            </div>
+                                                                {{-- <a class="submit-form-btn" type="button"
+                                                                    value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a> --}}
+
+                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
+                                                                    <a class="submit-form-btn" type="button"
+                                                                        value="" onclick="showmodal()">SUBMIT
+                                                                        TABLE</a>
+                                                                @else
+                                                                    {{-- <a type="submit" name=""
+                                                                        class="submit-form-btn">SAVE
+                                                                        TABLE</a> --}}
+                                                                    <button type="submit" name=""
+                                                                        class="submit-form-btn">Save Table</button>
+                                                                @endif
+
+                                                                
+                                                            </div>
+                                                                    </div>
+                                                                    <hr class="hr">
                                                             <div class="row">
                                                                 <div class="scrollable" style="overflow:auto;">
                                                                     <div class="button-group"
@@ -956,34 +1326,9 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <input type="hidden" id="to_go_sample"
-                                                                    name="to_go_sample" value="">
+                                                            <div class="footer-end"><p>BEST OF YEMEN 2023</p></div>
 
-                                                                <button type="submit" value="1"
-                                                                    name="sample_submit_prev" class="submit-form-btn"
-                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS</button>
-
-
-                                                                {{-- <a class="submit-form-btn" type="button"
-                                                                    value="" onclick="showmodal()">SUBMIT
-                                                                    TABLE</a> --}}
-
-                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
-                                                                    <a class="submit-form-btn" type="button"
-                                                                        value="" onclick="showmodal()">SUBMIT
-                                                                        TABLE</a>
-                                                                @else
-                                                                    {{-- <a type="submit" name=""
-                                                                        class="submit-form-btn">SAVE
-                                                                        TABLE</a> --}}
-                                                                    <button type="submit" name=""
-                                                                        class="submit-form-btn">Save Table</button>
-                                                                @endif
-
-                                                                <button type="submit" value="0"
-                                                                    name="sample_submit" class="submit-form-btn"
-                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT</button>
+                                                            
                                                             </div>
                                                             <div id="myModal" class="modal" tabindex="-1">
                                                                 <div class="modal-dialog">
