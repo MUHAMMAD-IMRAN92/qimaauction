@@ -83,11 +83,11 @@
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
-    @if (session('success'))
+    {{-- @if (session('success'))
         <div class="col-md-12 alert alert-success">
             {{ session('success') }}
         </div>
-    @endif
+    @endif --}}
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
