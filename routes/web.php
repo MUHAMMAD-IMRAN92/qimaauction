@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
  */
 // Route::view('/', 'customer.dashboard.index');
 
+
 Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslettersignup']);
 Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');

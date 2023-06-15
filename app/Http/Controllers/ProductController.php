@@ -50,7 +50,7 @@ class ProductController extends Controller
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
-        })->with('category', 'origin','flavor')->whereHas('category');
+        })->with('category', 'origin', 'flavor')->whereHas('category');
 
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
@@ -210,7 +210,7 @@ class ProductController extends Controller
     {
         $jury = Jury::where('is_hidden', '0')->get();
         $product = product::where('id', base64_decode($id))
-        ->where('is_hidden', '0')->with('category', 'origin')->first();
+            ->where('is_hidden', '0')->with('category', 'origin')->first();
         return view('admin.product.view_product', [
             'product' =>  $product,
             'juries' => $jury
@@ -257,75 +257,80 @@ class ProductController extends Controller
 
     public function review(Request $request)
     {
-        $tags = Tag::where('jury_id',$request->juryId)->get();
-           $juery = Jury::where('ID',$request->juryId)->first();
-           $name = $juery->name;
-           $company = $juery->company;
+        $tags = Tag::where('jury_id', $request->juryId)->get();
+        $juery = Jury::where('ID', $request->juryId)->first();
+        $name = $juery->name;
+        $company = $juery->company;
 
-        $alltablesamples = SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
-        ->join('juries','juries.id','sample_sent_to_jury.jury_id')
-        ->select('products.id as productId','products.product_title as productTitle',
-        'sample_sent_to_jury.id as sampleId','sample_sent_to_jury.jury_id as juryId',
-        'sample_sent_to_jury.samples as samples','sample_sent_to_jury.tables as sampleTable',
-        'juries.name as juryName','sample_sent_to_jury.is_hidden')
-        ->where('sample_sent_to_jury.jury_id', $request->juryId)
-        ->where('sample_sent_to_jury.tables', $request->table)
-        // ->where('sample_sent_to_jury.is_hidden', '0')
-        ->get();
-        if(isset($request->sampleId))
-        {
-            $firstsample=SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
-            ->first();
-            $review=Review::where('sample_id', $request->sampleId)
-            ->first();
-        }
-        else
-        {
-            $review = null;
-            $firstsample=$alltablesamples->first();
-
-            if(!isset($firstsample))
-            {
-                $firstsample=SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
+        $alltablesamples = SentToJury::join('products', 'products.id', 'sample_sent_to_jury.product_id')
+            ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
+            ->select(
+                'products.id as productId',
+                'products.product_title as productTitle',
+                'sample_sent_to_jury.id as sampleId',
+                'sample_sent_to_jury.jury_id as juryId',
+                'sample_sent_to_jury.samples as samples',
+                'sample_sent_to_jury.tables as sampleTable',
+                'juries.name as juryName',
+                'sample_sent_to_jury.is_hidden'
+            )
+            ->where('sample_sent_to_jury.jury_id', $request->juryId)
+            ->where('sample_sent_to_jury.tables', $request->table)
+            // ->where('sample_sent_to_jury.is_hidden', '0')
+            ->get();
+        if (isset($request->sampleId)) {
+            $firstsample = SentToJury::where('sample_sent_to_jury.id', $request->sampleId)
                 ->first();
+            $review = Review::where('sample_id', $request->sampleId)
+                ->first();
+        } else {
+            $review = null;
+            $firstsample = $alltablesamples->first();
 
-                return redirect()->route('juryLinks',['id'=>encrypt($firstsample->jury_id)]);
+            if (!isset($firstsample)) {
+                $firstsample = SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
+                    ->first();
+
+                return redirect()->route('juryLinks', ['id' => encrypt($firstsample->jury_id)]);
             }
         }
-        $sampleReview1 = Review::where('sample_id',$firstsample->id)->first();
+        $sampleReview1 = Review::where('sample_id', $firstsample->id)->first();
 
-        if(isset($sampleReview1))
-        {
+        if (isset($sampleReview1)) {
             $sampleReview = $sampleReview1;
-        }
-        else
-        {
+        } else {
             $sampleReview = null;
         }
         if ($firstsample) {
-            $productdata=Product::where('id',$firstsample->product_id)->first();
+            $productdata = Product::where('id', $firstsample->product_id)->first();
             // if ($firstsample->is_hidden == '1') {
             //     return view('admin.jury.alredy_submit');
             // } else
             // {
-                $samplesArr = explode(',', $firstsample->samples);
-                return view('admin.jury.form2', [
-                    'productId' => $firstsample->product_id ?? $firstsample->productId,
-                    'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
-                    'juryName' => $name,
-                    'juryCompany' => $company,
-                    'table' => $request->table ?? $firstsample->sampleTable,
-                    'firstsample' => $firstsample,
-                    'tags' => $tags,
-                    'reviewdata' => $review,
-                    'productdata'=>$productdata,
-                    'alltablesamples'=> $alltablesamples,
-                    'link' => $firstsample->temporary_link,
-                    'sampleName' => $firstsample->samples,
-                    'sentSampleId' => $firstsample->id,
-                    'samples' => $samplesArr,
-                    'sampleReview'=>$sampleReview
-                ]);
+            $lastSampleId = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'desc')->first();
+            $previous = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'asc')->first();
+            $next = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'desc')->first();
+            $samplesArr = explode(',', $firstsample->samples);
+            return view('admin.jury.form2', [
+                'productId' => $firstsample->product_id ?? $firstsample->productId,
+                'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
+                'juryName' => $name,
+                'juryCompany' => $company,
+                'table' => $request->table ?? $firstsample->sampleTable,
+                'firstsample' => $firstsample,
+                'tags' => $tags,
+                'reviewdata' => $review,
+                'productdata' => $productdata,
+                'alltablesamples' => $alltablesamples,
+                'link' => $firstsample->temporary_link,
+                'sampleName' => $firstsample->samples,
+                'sentSampleId' => $firstsample->id,
+                'samples' => $samplesArr,
+                'sampleReview' => $sampleReview,
+                'lastSample' => $lastSampleId,
+                'previous' =>  $previous,
+                'next' => $next
+            ]);
             // }
         }
     }
