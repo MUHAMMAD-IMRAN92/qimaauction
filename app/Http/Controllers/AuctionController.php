@@ -1125,6 +1125,7 @@ class AuctionController extends Controller {
     }
 
     public function auctionHome(Request $request) {
+        return 'testing';
         $auction = Auction::where('is_active','1')->first();
         if ($request->ended == 1) {
             // $auction->save();
