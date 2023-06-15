@@ -3,10 +3,10 @@
 <table class="table table-striped" style="background-color: rgb(255, 255, 255)">
     <thead style="color: #d8940d; border:#d8940d" class="table-bordered">
         <tr>
-            <th>Sr</th>
+            {{-- <th>Sr</th> --}}
             <!-- <th>Product Title</th> -->
-            <th>Sample ID</th>
             <th>Position</th>
+            <th>Sample ID</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -14,10 +14,10 @@
         {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
         @foreach ($samples as $sample)
             <tr>
-                <td data-title="Sr No">{{ $loop->iteration }}</td>
+                {{-- <td data-title="Sr No">{{ $loop->iteration }}</td> --}}
                 <!-- <td>{{ $sample->product_title }}</td> -->
-                <td data-title="Sample ID">{{ $sample->samples }}</td>
                 <td data-title="Position">{{ $sample->postion }}</td>
+                <td data-title="Sample ID">{{ $sample->samples }}</td>
                 <td data-title="Action">
                     @if (count($samplesHidden) > 0)
                         <a class="btn btn-success" target="_blank"

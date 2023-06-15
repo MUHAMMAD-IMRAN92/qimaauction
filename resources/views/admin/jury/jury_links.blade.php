@@ -44,8 +44,62 @@
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 <style>
-    .tab {overflow: hidden; border: 1px solid #ccc;
-        background-color: #f1f1f1;
+    .tab {overflow: hidden; border: 1px solid white;
+        background-color: transparent !important;
+    }
+    .tab{
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+       
+    }
+    .btn-success:focus, .btn-success:active{
+        color: #575555 !important;
+    }
+    .table{
+        background-color: transparent !important;
+    }
+    .table-bordered{
+        background-color: transparent !important;
+    }
+    .table-striped tbody tr:nth-of-type(odd){
+        background-color: transparent !important;
+    }
+    tr:nth-child(even){
+        background-color: transparent !important;
+    }
+    tr{
+        color: #575555 !important ;
+    }
+    .table thead th{
+        font-size: 16px !important;
+        font-weight: 700 ;
+    }
+    .table th, .table td{
+        border: 1px solid white;
+    }
+    .btn-success{
+        background: #FFFFFF !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: #575555;
+    font-weight: bold;
+
+    }
+    .btn-success:hover{
+        color: #575555 !important; 
+
+    }
+    .tab button{
+        
+    float: left;
+    border: none;
+    outline: none;
+    color:#575555 ;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-weight: 700;
     }
 
     .tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc;
@@ -57,9 +111,12 @@
         transition: 0.3s;
     }
 
-    .tab button:hover {background-color: #ddd;}
+    .tab button:hover {
+        background: #575555 !important;
+        color: white;
+    }
 
-    .tab .active {background-color: #ccc;}
+    col-lg-6 .active {background-color: #ccc;}
 
     .tabcontent {display: none; padding: 6px 12px;
 
@@ -152,9 +209,45 @@
             font-family: 'Montserrat';
             font-size: 15px;
         }
+        .image-section{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    }
+    .image-section img{
+        padding: 20px;
+        width: 300px;
+    }
+ 
+    .content-wrapper{
+        background-color: #EFEBE5 !important;
+        overflow-x: hidden;
+    }
+    .hr{
+        display: block;
+        margin-bottom: 0px;
+        border: 1px solid white !important;
+    }
+    .text-section{
+        text-align: center;
+    }
+    .text-section h2{
+        font-weight: 800;
+        margin-top: 10px ;
+    color: #575555;
+    padding: 10px;
+    font-size: 20px;
+    }
+    .table th, .table td{
+        color: #575555;
+        font-size: 18px;
+
+    }
     </style>
     <body
-    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
+    class="vertical-layout vertical-menu-modern 1-column full-background  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
     {{-- <div><iframe src="https://giphy.com/embed/xT9IgMgdur6larNA1a" width="100%" height="100%" style="position:absolute"
@@ -174,8 +267,11 @@
                                 <div class="card-content">
                                     <div class="card-header">
                                     <div class="newlogo">
-                                        <img src="{{asset('public/app-assets/images/logo/newlogo.png')}}" style="max-width: 100%;">
-                                        <p class="heder_text">
+                                    <div class="image-section">
+            <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" alt="">
+            <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
+
+        </div>                                        <p class="heder_text">
                                             Welcome to the Best of Yemen 2022 International jury Cupping.
                                         </p>
                                         <p class="heder_text">
@@ -185,14 +281,20 @@
                                             Once you have cupped all the samples on a given table please click on the submit button to confirm submission.
                                         </p>
                                     </div>
+                        
                                         @if (session('success'))
                                         <div class="col-md-12 alert alert-success">
                                             {{ session('success') }}
                                         </div>
                                         @endif
                                     </div>
+                                    <hr class="hr">
+        <div class="text-section">
+            <h2>ADEEL QURESHI</h2>
+        </div>
+        <hr class="hr">
                                     @if(count($samples) > 0)
-                                    <div class="card-body mt-5">
+                                    <div class="card-body mt-1">
                                         <div class="table-responsive" id="no-more-tables">
                                             <div class="container w3-animate-opacity">
                                                 <div class="tab">
