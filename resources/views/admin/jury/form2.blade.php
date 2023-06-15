@@ -620,22 +620,26 @@
                                                 <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
+                                                    <input type="hidden" name="submit_id" id="submit_id"
+                                                        value="0">
                                                     <input type="hidden" name="table_value"
                                                         value="{{ $productdata->table }}">
                                                     <input type="hidden" name="current_position"
                                                         value="{{ $productdata->postion }}">
-                                                    <input type="hidden" name="next_position" value="@php
-                                                        $next_position = $productdata->postion + 1;
-                                                        echo $next_position;
-                                                    @endphp">
+                                                    <input type="hidden" name="next_position"
+                                                        value="@php
+$next_position = $productdata->postion + 1;
+                                                        echo $next_position; @endphp">
                                                     <input type="hidden" name="previous_position"
                                                         value="@php
-                                                            $previous_position = $productdata->postion - 1;
-                                                            echo $previous_position;
-                                                        @endphp">
-                                                    <input type="hidden" name="link" value="{{ $link }}">
-                                                    <input type="hidden" name="product_id" value="{{ $productId }}">
-                                                    <input type="hidden" name="jury_id" value="{{ $juryId }}">
+$previous_position = $productdata->postion - 1;
+                                                            echo $previous_position; @endphp">
+                                                    <input type="hidden" name="link"
+                                                        value="{{ $link }}">
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $productId }}">
+                                                    <input type="hidden" name="jury_id"
+                                                        value="{{ $juryId }}">
                                                     <input type="hidden" name="review_id"
                                                         value="{{ $sampleReview->id ?? null }}">
                                                     <input type="hidden" name="sent_sample_id"
@@ -648,7 +652,8 @@
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
                                                                 <div class="roastslider"><input type="hidden"
-                                                                        name="roast" id="roast" value="50"></div>
+                                                                        name="roast" id="roast" value="50">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -673,7 +678,8 @@
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromacrust"><input type="hidden"
-                                                                name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                                name="aroma_crust" id="aroma_crust" value="0">
+                                                        </div>
                                                     </div>
 
 
@@ -683,7 +689,8 @@
                                                     </div>
                                                     <div class="design-slider mt-5 mb-5" style="height:58px">
                                                         <div class="aromaslider aromabreak"><input type="hidden"
-                                                                name="aroma_break" id="aroma_break" value="0"></div>
+                                                                name="aroma_break" id="aroma_break" value="0">
+                                                        </div>
                                                     </div>
 
 
@@ -706,8 +713,9 @@
                                                             <span class="multiply">=</span>
                                                             <span class="multiply4">?</span>
                                                             <div class="entity_input">
-                                                                <input type="text" name="defect_note" id="defect_note"
-                                                                    placeholder="NOTES" class="entity_note">
+                                                                <input type="text" name="defect_note"
+                                                                    id="defect_note" placeholder="NOTES"
+                                                                    class="entity_note">
                                                             </div>
                                                         </div>
 
@@ -719,12 +727,14 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider cleancup"><input type="hidden"
-                                                                        name="clean_up" id="clean_up" value="6"></div>
+                                                                <div class="customslider cleancup"><input
+                                                                        type="hidden" name="clean_up" id="clean_up"
+                                                                        value="6"></div>
                                                             </div>
                                                             <div class="entity_input">
-                                                                <input type="text" name="cleanup_note" id="cleanup_note"
-                                                                    placeholder="NOTES" class="entity_note">
+                                                                <input type="text" name="cleanup_note"
+                                                                    id="cleanup_note" placeholder="NOTES"
+                                                                    class="entity_note">
                                                             </div>
                                                         </div>
 
@@ -733,13 +743,14 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider sweetness"><input type="hidden"
-                                                                        name="sweetness" id="sweetness"></div>
+                                                                <div class="customslider sweetness"><input
+                                                                        type="hidden" name="sweetness"
+                                                                        id="sweetness"></div>
                                                             </div>
                                                             <div class="entity_input">
                                                                 <input type="text" name="sweetness_note"
-                                                                    id="sweetness_note" placeholder="NOTES" value="6"
-                                                                    class="entity_note">
+                                                                    id="sweetness_note" placeholder="NOTES"
+                                                                    value="6" class="entity_note">
                                                             </div>
                                                         </div>
 
@@ -748,15 +759,16 @@
                                                     <div class="row">
                                                         <div class="col-lg-12" style="text-align:center">
                                                             <div class="design-slider mt-5 mb-5">
-                                                                <div class="customslider acidity"><input type="hidden"
-                                                                        name="acidity" id="acidity" value="6"></div>
+                                                                <div class="customslider acidity"><input
+                                                                        type="hidden" name="acidity" id="acidity"
+                                                                        value="6"></div>
                                                             </div>
                                                             <div class="radio_button">
                                                                 <div>
                                                                     <label class="radio_container">
 
-                                                                        <input type="radio" name="acidity_chk" value="H"
-                                                                            class="acidity_H">
+                                                                        <input type="radio" name="acidity_chk"
+                                                                            value="H" class="acidity_H">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>H</h5>
@@ -765,8 +777,8 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" name="acidity_chk" value="M"
-                                                                            class="acidity_M">
+                                                                        <input type="radio" name="acidity_chk"
+                                                                            value="M" class="acidity_M">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>M</h5>
@@ -786,8 +798,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="entity_input">
-                                                                <input type="text" name="acidity_note" id="acidity_note"
-                                                                    placeholder="NOTES" class="entity_note">
+                                                                <input type="text" name="acidity_note"
+                                                                    id="acidity_note" placeholder="NOTES"
+                                                                    class="entity_note">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -823,8 +836,9 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="radio_container">
-                                                                        <input type="radio" value="L" checked="checked"
-                                                                            class="mouthfeel_L" name="fm_chk">
+                                                                        <input type="radio" value="L"
+                                                                            checked="checked" class="mouthfeel_L"
+                                                                            name="fm_chk">
                                                                         <div class="checkmark">
                                                                         </div>
                                                                         <h5>L</h5>
@@ -899,14 +913,17 @@
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
                                                             <p class="entity-label">(+36)</p>
                                                             <p id="input_total_score"
-                                                                style="max-width:100%;width: 267px;margin: auto;display: none">
+                                                                style="max-width:100%;width: 267px;margin: auto;">
                                                                 <input onkeyup="if (this.value > 100){ calcTotal()};"
                                                                     style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
-                                                                    type="number" class="totalScore"
-                                                                    name="total_score" id="total_score" value="84"></p>
+                                                                    type="hidden" class="totalScore"
+                                                                    name="total_score" id="total_score"
+                                                                    value="84">
+                                                            </p>
                                                             <h2 class="totalScore" id="div_total_score">0</h2>
                                                             <a onclick="toggleDivs()">Manually Override Score</a>
-                                                            <input type="hidden" value="0" name="manual_override">
+                                                            <input type="hidden" value="0"
+                                                                name="manual_override">
                                                             <script>
                                                                 function toggleDivs() {
                                                                     $('#div_total_score').hide();
@@ -942,16 +959,25 @@
                                                             <div class="row">
                                                                 <input type="hidden" id="to_go_sample"
                                                                     name="to_go_sample" value="">
-                                                                @if ($previous_position != 0)
+
+                                                                <button type="submit" value="1"
+                                                                    name="sample_submit_prev" class="submit-form-btn"
+                                                                    @if ($previous_position == 0) disabled @endif>PREVIOUS</button>
+
+
+                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
+                                                                    <a class="submit-form-btn" type="button"
+                                                                        value="" onclick="showmodal()">SUBMIT
+                                                                        TABLE</a>
+                                                                @else
                                                                     <button type="submit" value="1"
-                                                                        name="sample_submit_prev"
-                                                                        class="submit-form-btn">PREVIOUS</button>
+                                                                        name="sample_submit"
+                                                                        class="submit-form-btn">SAVE
+                                                                        TABLE</button>
                                                                 @endif
 
-                                                                <a class="submit-form-btn" type="button" value=""
-                                                                    onclick="showmodal()">SUBMIT TABLE</a>
-
-                                                                <button type="submit" value="1" name="sample_submit"
+                                                                <button type="submit" value="1"
+                                                                    name="sample_submit"
                                                                     class="submit-form-btn">NEXT</button>
                                                             </div>
                                                             <div id="myModal" class="modal" tabindex="-1">
@@ -960,8 +986,7 @@
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title">Submit Cupping
                                                                             </h5>
-                                                                            <button type="button"
-                                                                                class="close"
+                                                                            <button type="button" class="close"
                                                                                 data-dismiss="modal">&times;</button>
                                                                         </div>
                                                                         <div class="modal-body">
@@ -970,7 +995,8 @@
                                                                                     @if ($samp->sampleTable == $table)
                                                                                         &nbsp<b>{{ $samp->samples }}</b>,
                                                                                     @endif
-                                                                                @endforeach.</p>
+                                                                                @endforeach.
+                                                                            </p>
                                                                             <br><br>
                                                                             <p>Are you sure you want to do this? You
                                                                                 cannot edit fields once submitted.</p>
@@ -981,7 +1007,7 @@
                                                                                 data-dismiss="modal">Cancel</button>
                                                                             <button type="submit"
                                                                                 value="{{ $table }}"
-                                                                                name="table_submit"
+                                                                                name="" id="final_submit"
                                                                                 class="btn btn-primary">Save</button>
                                                                         </div>
                                                                     </div>
@@ -2000,6 +2026,10 @@
             $('#to_go_sample').val(valz);
             $('#myForm').submit();
         }
+        $('#final_submit').on('click', function() {
+            $('#submit_id').val(1);
+            $('#myForm').submit();
+        })
     </script>
 </body>
 <!-- END: Body-->
