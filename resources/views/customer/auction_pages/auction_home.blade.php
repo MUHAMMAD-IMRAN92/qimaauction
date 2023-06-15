@@ -1570,12 +1570,9 @@
     });
 </script>
 <script>
-    @php
-        $isEmpty = sizeof($singleBids);
-    @endphp
+    
     var total = 0;
     var interval;
-    var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
