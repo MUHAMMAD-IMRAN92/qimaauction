@@ -179,6 +179,11 @@
         border-radius: 50%;
         width: 29px;
     }
+
+    .white-anchor {
+        text-decoration: none;
+        color:  #9F9B9B !important;
+    }
 </style>
 
 <body>
@@ -226,7 +231,7 @@
             </div>
             <hr class="hr">
             <div class="footer-qima">
-                <p>best of yemen 2022 results</p>
+                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
                 <p>qima coffee</p>
                 <p>Alliance for coffee excellence</p>
                 <p>qima foundation</p>
