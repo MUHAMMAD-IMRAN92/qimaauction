@@ -149,11 +149,6 @@
             table-layout: fixed !important;
         }
 
-        /*
- @tab Page
- @section Heading 1
- @style heading 1
- */
         h1 {
             /*@editable*/
             color: #222222;
@@ -173,11 +168,6 @@
             text-align: center;
         }
 
-        /*
- @tab Page
- @section Heading 2
- @style heading 2
- */
         h2 {
             /*@editable*/
             color: #222222;
@@ -197,11 +187,6 @@
             text-align: left;
         }
 
-        /*
- @tab Page
- @section Heading 3
- @style heading 3
- */
         h3 {
             /*@editable*/
             color: #444444;
@@ -221,11 +206,6 @@
             text-align: left;
         }
 
-        /*
- @tab Page
- @section Heading 4
- @style heading 4
- */
         h4 {
             /*@editable*/
             color: #949494;
@@ -245,10 +225,6 @@
             text-align: center;
         }
 
-        /*
- @tab Header
- @section Header Container Style
- */
         #templateHeader {
             /*@editable*/
             background-color: #222222;
@@ -270,10 +246,6 @@
             padding-bottom: 167px;
         }
 
-        /*
- @tab Header
- @section Header Interior Style
- */
         .headerContainer {
             /*@editable*/
             background-color: #transparent;
@@ -295,10 +267,6 @@
             padding-bottom: 0;
         }
 
-        /*
- @tab Header
- @section Header Text
- */
         .headerContainer .mcnTextContent,
         .headerContainer .mcnTextContent p {
             /*@editable*/
@@ -313,10 +281,6 @@
             text-align: left;
         }
 
-        /*
- @tab Header
- @section Header Link
- */
         .headerContainer .mcnTextContent a,
         .headerContainer .mcnTextContent p a {
             /*@editable*/
@@ -327,10 +291,6 @@
             text-decoration: underline;
         }
 
-        /*
- @tab Body
- @section Body Container Style
- */
         #templateBody {
             /*@editable*/
             background-color: #efebe5;
@@ -352,10 +312,6 @@
             padding-bottom: 54px;
         }
 
-        /*
- @tab Body
- @section Body Interior Style
- */
         .bodyContainer {
             /*@editable*/
             background-color: #transparent;
@@ -377,10 +333,6 @@
             padding-bottom: 0;
         }
 
-        /*
- @tab Body
- @section Body Text
- */
         .bodyContainer .mcnTextContent,
         .bodyContainer .mcnTextContent p {
             /*@editable*/
@@ -395,10 +347,6 @@
             text-align: left;
         }
 
-        /*
- @tab Body
- @section Body Link
- */
         .bodyContainer .mcnTextContent a,
         .bodyContainer .mcnTextContent p a {
             /*@editable*/
@@ -409,10 +357,6 @@
             text-decoration: underline;
         }
 
-        /*
- @tab Footer
- @section Footer Style
- */
         #templateFooter {
             /*@editable*/
             background-color: #ddb279;
@@ -434,10 +378,6 @@
             padding-bottom: 63px;
         }
 
-        /*
- @tab Footer
- @section Footer Interior Style
- */
         .footerContainer {
             /*@editable*/
             background-color: transparent;
@@ -459,10 +399,6 @@
             padding-bottom: 0;
         }
 
-        /*
- @tab Footer
- @section Footer Text
- */
         .footerContainer .mcnTextContent,
         .footerContainer .mcnTextContent p {
             /*@editable*/
@@ -477,10 +413,6 @@
             text-align: center;
         }
 
-        /*
- @tab Footer
- @section Footer Link
- */
         .footerContainer .mcnTextContent a,
         .footerContainer .mcnTextContent p a {
             /*@editable*/
@@ -644,11 +576,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Heading 1
- @tip Make the first-level headings larger in size for better readability on small screens.
- */
             h1 {
                 /*@editable*/
                 font-size: 24px !important;
@@ -660,11 +587,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Heading 2
- @tip Make the second-level headings larger in size for better readability on small screens.
- */
             h2 {
                 /*@editable*/
                 font-size: 60px !important;
@@ -676,11 +598,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Heading 3
- @tip Make the third-level headings larger in size for better readability on small screens.
- */
             h3 {
                 /*@editable*/
                 font-size: 60px !important;
@@ -692,11 +609,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Heading 4
- @tip Make the fourth-level headings larger in size for better readability on small screens.
- */
             h4 {
                 /*@editable*/
                 font-size: 60px !important;
@@ -708,11 +620,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Boxed Text
- @tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
- */
             .mcnBoxedTextContentContainer .mcnTextContent,
             .mcnBoxedTextContentContainer .mcnTextContent p {
                 /*@editable*/
@@ -725,11 +632,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Header Text
- @tip Make the header text larger in size for better readability on small screens.
- */
             .headerContainer .mcnTextContent,
             .headerContainer .mcnTextContent p {
                 /*@editable*/
@@ -742,11 +644,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Body Text
- @tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
- */
             .bodyContainer .mcnTextContent,
             .bodyContainer .mcnTextContent p {
                 /*@editable*/
@@ -759,11 +656,6 @@
 
         @media only screen and (max-width: 480px) {
 
-            /*
- @tab Mobile Styles
- @section Footer Text
- @tip Make the footer content text larger in size for better readability on small screens.
- */
             .footerContainer .mcnTextContent,
             .footerContainer .mcnTextContent p {
                 /*@editable*/
@@ -1117,17 +1009,18 @@
                                                             class="mcnButtonBlockInner">
                                                             <table border="0" cellpadding="0" cellspacing="0"
                                                                 class="mcnButtonContentContainer"
-                                                                style="border-collapse: separate !important;border-radius: 23px;background-color: #040404;">
+                                                                style="border-collapse: separate !important;border-radius: 4px;background-color: #DDB279;">
                                                                 <tbody>
                                                                     <tr>
                                                                         <td align="center" valign="middle"
                                                                             class="mcnButtonContent"
-                                                                            style="font-family: Verdana, Geneva, sans-serif; font-size: 13px; padding: 18px;">
+                                                                            style="font-family: &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif; font-size: 13px; padding: 18px;">
                                                                             <a class="mcnButton "
-                                                                                title="Start Cupping" href="{{ url('jury/links/' . encrypt($jury->id)) }}" 
+                                                                                title="CLICK TO BEGIN CUPPING"
+                                                                                href="{{ url('jury/links/' . encrypt($jury->id)) }}"
                                                                                 target="_blank"
-                                                                                style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Start
-                                                                                Cupping</a>
+                                                                                style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">CLICK
+                                                                                TO BEGIN CUPPING</a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
