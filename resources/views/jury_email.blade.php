@@ -1019,7 +1019,7 @@
                                                                                 title="Start Cupping"
                                                                                 href="{{ url('jury/links/' . encrypt($jury->id)) }}"
                                                                                 target="_blank"
-                                                                                style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">CLICK
+                                                                                style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">
                                                                                 Start Cupping</a>
                                                                         </td>
                                                                     </tr>

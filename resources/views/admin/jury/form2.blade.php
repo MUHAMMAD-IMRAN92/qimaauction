@@ -620,7 +620,7 @@
                                                 <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
-                                                    <input type="hidden" name="submit_id" id="submit_id"
+                                                    <input type="hidden" name="final_submit_id" id="submit_id"
                                                         value="0">
                                                     <input type="hidden" name="table_value"
                                                         value="{{ $productdata->table }}">
@@ -965,15 +965,21 @@ $previous_position = $productdata->postion - 1;
                                                                     @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS</button>
 
 
+                                                                {{-- <a class="submit-form-btn" type="button"
+                                                                    value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a> --}}
+
                                                                 @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
                                                                     <a class="submit-form-btn" type="button"
                                                                         value="" onclick="showmodal()">SUBMIT
                                                                         TABLE</a>
                                                                 @else
+                                                                    {{-- <a type="submit" name=""
+                                                                        class="submit-form-btn">SAVE
+                                                                        TABLE</a> --}}
                                                                     <button type="submit" value="1"
                                                                         name="sample_submit"
-                                                                        class="submit-form-btn">SAVE
-                                                                        TABLE</button>
+                                                                        class="submit-form-btn">Save Table</button>
                                                                 @endif
 
                                                                 <button type="submit" value="1"
@@ -1005,10 +1011,10 @@ $previous_position = $productdata->postion - 1;
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
                                                                                 data-dismiss="modal">Cancel</button>
-                                                                            <button type="submit"
-                                                                                value="{{ $table }}"
-                                                                                name="" id="final_submit"
-                                                                                class="btn btn-primary">Save</button>
+                                                                            <button name="table_submit"
+                                                                                class="btn btn-primary"
+                                                                                id="final_submit"
+                                                                                onclick="finalSubmit()">Save</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2026,10 +2032,11 @@ $previous_position = $productdata->postion - 1;
             $('#to_go_sample').val(valz);
             $('#myForm').submit();
         }
-        $('#final_submit').on('click', function() {
+
+        function finalSubmit() {
             $('#submit_id').val(1);
             $('#myForm').submit();
-        })
+        }
     </script>
 </body>
 <!-- END: Body-->

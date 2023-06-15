@@ -201,7 +201,7 @@ class ReviewController extends Controller
 
                 ->first();
         }
-        if ($request->submit_id == 1) {
+        if ($request->final_submit_id == 1) {
             $alltablesamples = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)
                 ->where('sample_sent_to_jury.is_hidden', '0')
