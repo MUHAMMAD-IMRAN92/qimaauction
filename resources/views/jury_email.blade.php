@@ -1016,11 +1016,11 @@
                                                                             class="mcnButtonContent"
                                                                             style="font-family: &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif; font-size: 13px; padding: 18px;">
                                                                             <a class="mcnButton "
-                                                                                title="CLICK TO BEGIN CUPPING"
+                                                                                title="Start Cupping
                                                                                 href="{{ url('jury/links/' . encrypt($jury->id)) }}"
                                                                                 target="_blank"
                                                                                 style="font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">CLICK
-                                                                                TO BEGIN CUPPING</a>
+                                                                                Start Cupping</a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
