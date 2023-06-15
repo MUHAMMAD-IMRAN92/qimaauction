@@ -596,55 +596,79 @@ font-weight: 400;
         background: #DBCDB7;
         padding: 30px;
         margin: 0px;
+        width: auto  !important;
     }
     .bg-aroma--theme-1{
         background: linear-gradient(264deg, #C488D9 0%, #C4D3FA 100%);
         padding: 30px;
+        width: auto !important;
     }
     .bg-aroma--theme-2{
         background: linear-gradient(264deg, #C176DC 0%, #B9CDFF 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-aroma--theme-3{
         background: linear-gradient(264deg, #BE6DDB 0%, #B4C7F9 100%);;
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-defects--theme{
         background:linear-gradient(290deg, #FF5757 0%, #F19393 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-clean--theme{
         background:linear-gradient(290deg, #93DBF1 0%, #5786FF 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-sweet--theme{
         background:linear-gradient(290deg, #FBBAAC 0%, #EC9185 100%);;
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-acid--theme{
         background:linear-gradient(290deg, #DEF193 0%, #FF9B3F 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-mouth--theme{
         background:linear-gradient(290deg, #FF563F 0%, #E493F1 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-flavor--theme{
         background:linear-gradient(290deg, #55BBA9 45.31%, #ACFBF6 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-taste--theme{
         background:linear-gradient(290deg, #DEA857 45.31%, #FBACAC 100%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-balance--theme{
         background:linear-gradient(290deg, #68BC4A 0%, #44BA6C 46.88%);
         padding: 30px;
+        width: auto !important;
+
     }
     .bg-overall--theme{
         background:linear-gradient(290deg, #716EE4 0%, #62CBDA 100%);
         padding: 30px;
         height: 427px;
+        width: auto !important;
+
     }
     input::placeholder{
         color: white !important;
@@ -681,6 +705,7 @@ color: #575555;
     }
     .button-group{
         margin-top: 30px;
+        text-align: center;
     }
     .footer-end{
         width: 100%;
@@ -709,37 +734,119 @@ color: #575555;
     }
 
     .hr{
-        margin-bottom: 0px;
-        border: 1px solid white;
+        margin-bottom: 0px !important;
+        border: 1px solid white !important;
     }
-    .full-background{
-        background-color: #EFEBE5;
+   
+.new-bg{
+    background-color: #EFEBE5;
         overflow-x: hidden;
-    }
-
+}
+.new-bg-color{
+    background-color:#EFEBE5 ;
+}
 </style>
 
 <body
-    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static   blank-page blank-page"
+    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static new-bg-color   blank-page blank-page"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
-    <div class="full-background">
+    <div class="app-content content h-100">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
 
-    <div class="top-header">
-        <div class="image-section">
+            </div>
+
+            <div class="content-body">
+                <section class="row flexbox-container">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <div class="card  bg-authentication rounded-0 mb-0">
+                            <div class="row m-0">
+                                <div class="col-lg-12  p-0">
+                                    <div class="card new-bg rounded-0 mb-0 p-2">
+                                        <div class="card-header pt-50 pb-1">
+                                            @if (session('success'))
+                                                <div class="col-md-12 alert alert-success">
+                                                    {{ session('success') }}
+                                                </div>
+                                            @endif
+                                            <div class="col-lg-12">
+                                                <!-- <div class="site-logo">
+                                                    <img src="{{ asset('/public/app-assets/images/logo/newlogo.png') }}"
+                                                        style="width: 100%;max-width:100%;">
+                                                </div> -->
+                                                <!--Breadcrumb Section-->
+                                                <!-- <div class="breadcrumb-section">
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
+                                                                    CUPPER</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryName }}</p>
+                                                            </a></li>
+                                                        <a href="#">
+                                                            <p class="breadcrumb-content"
+                                                                style="font-family: 'Montserrat';font-size:25px;color: #ccc;padding: 0 10px;">
+                                                                -</p>
+                                                        </a>
+                                                        <li><a href="#">
+                                                                <p class="pt-1 breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    COMPANY</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryCompany }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                </div> -->
+                                                <!-- <div class="mobile-breadcrumb-section">
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content pt-1"
+                                                                    style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
+                                                                    CUPPER</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryName }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                    <ul class="breadcrumb">
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content pt-1"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    COMPANY</p>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                <p class="breadcrumb-content"
+                                                                    style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                    {{ $juryCompany }}</p>
+                                                            </a></li>
+                                                    </ul>
+                                                </div> -->
+                                                <!-- <hr class="custom_hr"> -->
+                                                <div class="image-section">
             <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" alt="">
             <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
 
         </div>
         <hr class="hr">
         <div class="text-section">
-            <h2>ADEEL QURESHI</h2>
+            <h2>{{$juryName}}</h2>
         </div>
         <hr class="hr">
-
-<div class="container-fluid">
+        <div class="container-fluid">
 <div class="sample-area row">
-                                                    <div class="sample-heading col-md-6">
+                                                    <div class="sample-heading col-lg-6">
                                                     <h2 class="id-text">SAMPLE ID</h2>
                                                     <p class="sample_number">
                                                         @foreach ($alltablesamples as $samp)
@@ -750,7 +857,7 @@ color: #575555;
                                                     </p>
                                                     </div>
                                                     <!--Breadcrumb Section-->
-                                                    <div class="breadcrumb-section col-md-6  ">
+                                                    <div class="breadcrumb-section col-lg-6  ">
                                                         <ul class="breadcrumb list-crumb">
                                                         <li class="list-1"><a href="#">
                                                                     <p class=""
@@ -770,9 +877,73 @@ color: #575555;
                                                     <!--Breadcrumb Section-->
                                                 </div>
 </div>
-    </div>
-    <div class="container-fluid">
-    <div class="row">
+                                                <!--Breadcrumb Section-->
+                                                {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
+                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
+                                                <!--Sample ID Section-->
+                                                <!-- <div class="sample-area">
+                                                    <h2 class="id-text">SAMPLE ID</h2>
+                                                    <p class="sample_number">
+                                                        @foreach ($alltablesamples as $samp)
+                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                {{ $samp->samples }}
+                                                            @endif
+                                                        @endforeach
+                                                    </p>
+                                                    
+                                                    <div class="breadcrumb-section">
+                                                        <ul class="breadcrumb">
+                                                            <li><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: #A4A3A3;">
+                                                                        TABLE-{{ $productdata->table }}</p>
+                                                                </a>
+                                                            </li>
+                                                            <li><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px;color: #A4A3A3;">
+                                                                        POSITION-{{ $productdata->postion }}</p>
+                                                                </a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                   
+                                                </div> -->
+                                                <!--Sample ID Section-->
+
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
+                                                    enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <input type="hidden" name="final_submit_id" id="submit_id"
+                                                        value="0">
+                                                    <input type="hidden" name="table_value"
+                                                        value="{{ $productdata->table }}">
+                                                    <input type="hidden" name="current_position"
+                                                        value="{{ $productdata->postion }}">
+                                                    <input type="hidden" name="next_position"
+                                                        value="@php
+$next_position = $productdata->postion + 1;
+                                                        echo $next_position; @endphp">
+                                                    <input type="hidden" name="previous_position"
+                                                        value="@php
+$previous_position = $productdata->postion - 1;
+                                                            echo $previous_position; @endphp">
+                                                    <input type="hidden" name="link"
+                                                        value="{{ $link }}">
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $productId }}">
+                                                    <input type="hidden" name="jury_id"
+                                                        value="{{ $juryId }}">
+                                                    <input type="hidden" name="review_id"
+                                                        value="{{ $sampleReview->id ?? null }}">
+                                                    <input type="hidden" name="sent_sample_id"
+                                                        value="{{ $sentSampleId }}">
+                                                        <div class="container-fluid">
+                                                        <div class="row">
+                                                           
                                                         <div class="col-lg-6 p-0">
                                                         <div class="row bg-roast--theme">
                                                         <div class="col-12">
@@ -1065,111 +1236,142 @@ color: #575555;
                                                             </div>
                                                             </div>
                                                         </div>
-                                                       </div>
-</div>
+                                                        </div>
+                                                        </div>
+                                                                   
+                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
 
-<div class="total-theme">
-    <h3 class="entity-text total-bg">TOTAL</h3>
-    <p class="entity-label" style="color: #000;">(+36)</p>
-    <p id="input_total_score"
-        style="max-width:100%;width: 267px;margin: auto;display: none ;">
-        <input onkeyup="if (this.value > 100){ calcTotal()};"
-            style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
-            type="number" class="totalScore"
-            name="total_score" id="total_score" value="84"></p>
-    <h2 class="totalScore" id="div_total_score">0</h2>
-    <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
-    <input type="hidden" value="0" name="manual_override">
-    <script>
-        function toggleDivs() {
-            $('#div_total_score').hide();
-            $('#input_total_score').show();
-            $('input[name=manual_override]').val(1);
-        }
-    </script>
-    <div class="wrapper-btn">
-    <div class="row parent-btn">
-        <div class="btn-next-prev">
-        <input type="hidden" id="to_go_sample"
-            name="to_go_sample" value="">
-        
-            <button type="submit" value="1"
-                name="sample_submit_prev"
-                class="submit-form-btn">PREVIOUS</button>
-      
+                                              
+                                           
+                                                      <div class="container-fluid">
+                                                            <h3 class="entity-text total-bg">TOTAL</h3>
+                                                            <p class="entity-label" style="color: #000;">(+36)</p>
+                                                            <p id="input_total_score"
+                                                                style="max-width:100%;width: 267px;margin: auto;">
+                                                                <input onkeyup="if (this.value > 100){ calcTotal()};"
+                                                                    style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
+                                                                    type="hidden" class="totalScore"
+                                                                    name="total_score" id="total_score"
+                                                                    value="84">
+                                                            </p>
+                                                            <h2 class="totalScore" id="div_total_score">0</h2>
+                                                            <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
+                                                            <input type="hidden" value="0"
+                                                                name="manual_override">
+                                                            <script>
+                                                                function toggleDivs() {
+                                                                    $('#div_total_score').hide();
+                                                                    $('#input_total_score').show();
+                                                                    $('input[name=manual_override]').val(1);
+                                                                }
+                                                            </script>
 
+<div class="wrapper-btn">
+                                                            <div class="row parent-btn">
+                                                            <div class="btn-next-prev">
+                                                                <input type="hidden" id="to_go_sample"
+                                                                    name="to_go_sample" value="">
 
-        <button type="submit" value="1" name="sample_submit"
-            class="submit-form-btn">NEXT</button>
-    </div>
-        <a class="submit-form-btn" type="button" value=""
-            onclick="showmodal()">SAVE TABLE</a>
-    </div>
-    </div>
-    
-    <div class="row">
-        <div class="scrollable" style="overflow:auto;">
-        
-            <div class="button-group"
-                style="white-space:nowrap">
-                <hr class="hr">
-                @foreach ($alltablesamples as $samp)
-                    @php $extraclass = ""; @endphp
-                    @if ($samp->is_hidden == 1)
-                        @php $extraclass="isdone"; @endphp
-                    @endif
-                    @if ($samp->sampleId == $sentSampleId)
-                        {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
-                        <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
-                            href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                            {{ $samp->samples }}
-                        </a>
-                    @else
-                        <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
-                            href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                            {{ $samp->samples }}
-                        </a>
-                    @endif
-                @endforeach
-            </div>
-        </div>
-        <div class="footer-end"><p>BEST OF YEMEN 2023</p></div>
-    </div>
-    </div>
-</div>
+                                                                <button type="submit" value="1"
+                                                                    name="sample_submit_prev" class="submit-form-btn"
+                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
+                                                                </button>
+                                                                <button type="submit" value="0"
+                                                                    name="sample_submit" class="submit-form-btn"
+                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
+                                                                </button>
+                                                            </div>
+                                                                {{-- <a class="submit-form-btn" type="button"
+                                                                    value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a> --}}
 
+                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
+                                                                    <a class="submit-form-btn" type="button"
+                                                                        value="" onclick="showmodal()">SUBMIT
+                                                                        TABLE</a>
+                                                                @else
+                                                                    {{-- <a type="submit" name=""
+                                                                        class="submit-form-btn">SAVE
+                                                                        TABLE</a> --}}
+                                                                    <button type="submit" name=""
+                                                                        class="submit-form-btn">Save Table</button>
+                                                                @endif
 
-      
-    <div id="myModal" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Submit Cupping
-                    </h5>
-                    <button type="button"
-                        class="close"
-                        data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>You are about to submit results for
-                        @foreach ($alltablesamples as $samp)
-                            @if ($samp->sampleTable == $table)
-                                &nbsp<b>{{ $samp->samples }}</b>,
-                            @endif
-                        @endforeach.</p>
-                    <br><br>
-                    <p>Are you sure you want to do this? You
-                        cannot edit fields once submitted.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">Cancel</button>
-                    <button type="submit"
-                        value="{{ $table }}"
-                        name="table_submit"
-                        class="btn btn-primary">Save</button>
-                </div>
+                                                                
+                                                            </div>
+                                                                    </div>
+                                                                    <hr class="hr">
+                                                            <div class="row">
+                                                                <div class="scrollable" style="overflow:auto;">
+                                                                    <div class="button-group"
+                                                                        style="white-space:nowrap">
+                                                                        @foreach ($alltablesamples as $samp)
+                                                                            @php $extraclass = ""; @endphp
+                                                                            @if ($samp->is_hidden == 1)
+                                                                                @php $extraclass="isdone"; @endphp
+                                                                            @endif
+                                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                                {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
+                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    {{ $samp->samples }}
+                                                                                </a>
+                                                                            @else
+                                                                                <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    {{ $samp->samples }}
+                                                                                </a>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="footer-end"><p>BEST OF YEMEN 2023</p></div>
+
+                                                            
+                                                            </div>
+                                                            <div id="myModal" class="modal" tabindex="-1">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Submit Cupping
+                                                                            </h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>You are about to submit results for
+                                                                                @foreach ($alltablesamples as $samp)
+                                                                                    @if ($samp->sampleTable == $table)
+                                                                                        &nbsp<b>{{ $samp->samples }}</b>,
+                                                                                    @endif
+                                                                                @endforeach.
+                                                                            </p>
+                                                                            <br><br>
+                                                                            <p>Are you sure you want to do this? You
+                                                                                cannot edit fields once submitted.</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Cancel</button>
+                                                                            <button name="table_submit"
+                                                                                class="btn btn-primary"
+                                                                                id="final_submit"
+                                                                                onclick="finalSubmit()">Save</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -1863,14 +2065,14 @@ color: #575555;
             width: 100% !important;
         }
 
-        /* body {
+        body {
             height: 100vh;
             display: grid;
             place-content: space-evenly;
             place-items: center;
             gap: 10%;
             padding: 0;
-        } */
+        }
 
         @media screen and (max-width: 500px) {
             body {
@@ -2172,6 +2374,11 @@ color: #575555;
 
         function setSampleToGo(valz) {
             $('#to_go_sample').val(valz);
+            $('#myForm').submit();
+        }
+
+        function finalSubmit() {
+            $('#submit_id').val(1);
             $('#myForm').submit();
         }
     </script>
