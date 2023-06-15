@@ -34,6 +34,10 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function dashboard()
+    {
+        return view('admin.dashboard');
+    }
     public function index()
     {
         return view('admin.auction.index');

@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('signup', [App\Http\Controllers\AuctionController::class, 'newslettersignup']);
-Route::get('/', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
+Route::get('/', [App\Http\Controllers\AuctionController::class, 'dashboard']);
+Route::get('/auction/results', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 // Route::view('/index-new', 'customer.dashboard.index-new');
 Route::get('/index-new', [App\Http\Controllers\AuctionController::class, 'winningCoffee']);
 Route::get('/winningproduct/{id}', [App\Http\Controllers\AuctionController::class, 'winningCoffeeProducts']);
@@ -56,7 +57,6 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function () {
     Route::post('/groupbidupdateStatus', [App\Http\Controllers\AuctionController::class, 'groupbidupdateStatus'])->name('groupbidupdateStatus');
     Route::post('/othergroupbidoffer', [App\Http\Controllers\AuctionController::class, 'saveOtherGroupbidOffer'])->name('saveothergroupbidoffer');
     Route::post('/updateUserOfferStatus', [App\Http\Controllers\AuctionController::class, 'updateUserOfferStatus'])->name('updateUserOfferStatus');
-
 });
 Route::get('/productdetail/{id}', [App\Http\Controllers\AuctionController::class, 'winningProductsSidebar'])->name('productsidebar');
 Route::post('/auction/updateSaveAutoBids', [App\Http\Controllers\AuctionController::class, 'updateSaveAutoBids'])->name('updateSaveAutoBids');
@@ -237,7 +237,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     //Full bid report
     Route::get('/report_fullbid', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReport'])->name('ReportFullBid');
     Route::get('/report_fullbid/csv/{id?}', [App\Http\Controllers\AuctionReportsController::class, 'fullBidReportCSV'])->name('fullbid_csv');
-
 });
 
 Auth::routes();

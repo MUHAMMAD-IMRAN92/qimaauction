@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="number" class="form-control @error('postion') is-invalid @enderror" name="postion" id="postion"  oninput="if (this.value > 9) this.value = 0;">
+                                                            <input type="number" class="form-control @error('postion') is-invalid @enderror" name="postion" id="postion"  oninput="if (this.value > 10) this.value = 0;">
                                                             <label for="product-title">Position</label>
                                                             @error('postion')
                                                             <div class="alert alert-danger">{{ $message }}</div>
