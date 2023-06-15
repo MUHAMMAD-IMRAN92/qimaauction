@@ -49,7 +49,7 @@ class ProcessController extends Controller
     public function save(Request $request)
     {
         $process = new Process();
-        $process->title = 'Deep Fermentation';
+        $process->title = $request->title;
         $process->save();
         return redirect('/process/index');
     }
