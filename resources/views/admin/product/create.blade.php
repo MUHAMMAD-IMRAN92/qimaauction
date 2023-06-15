@@ -179,6 +179,7 @@
                                                                     <option value="1">Natural</option>
                                                                     <option value="2">Slow Dried</option>
                                                                     <option value="3">Alchemy</option>
+                                                                    <option value="4">Deep Fermentation</option>
                                                     
                                                                 </select>
                                                             </div>
