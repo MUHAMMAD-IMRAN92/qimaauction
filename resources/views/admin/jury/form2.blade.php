@@ -977,14 +977,13 @@ $previous_position = $productdata->postion - 1;
                                                                     {{-- <a type="submit" name=""
                                                                         class="submit-form-btn">SAVE
                                                                         TABLE</a> --}}
-                                                                    <button type="submit"
-                                                                        name=""
+                                                                    <button type="submit" name=""
                                                                         class="submit-form-btn">Save Table</button>
                                                                 @endif
 
-                                                                <button type="submit" value="1"
-                                                                    name="sample_submit"
-                                                                    class="submit-form-btn">NEXT</button>
+                                                                <button type="submit" value="0"
+                                                                    name="sample_submit" class="submit-form-btn"
+                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT</button>
                                                             </div>
                                                             <div id="myModal" class="modal" tabindex="-1">
                                                                 <div class="modal-dialog">

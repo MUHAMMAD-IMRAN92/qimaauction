@@ -198,7 +198,6 @@ class ReviewController extends Controller
                 ->where('is_hidden', '0')
                 ->orderBy('tables', 'asc')
                 ->orderBy('postion', 'asc')
-
                 ->first();
         }
         if ($request->final_submit_id == 1) {
