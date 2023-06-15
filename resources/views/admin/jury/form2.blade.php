@@ -962,7 +962,7 @@ $previous_position = $productdata->postion - 1;
 
                                                                 <button type="submit" value="1"
                                                                     name="sample_submit_prev" class="submit-form-btn"
-                                                                    @if ($previous_position == 0) disabled @endif>PREVIOUS</button>
+                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS</button>
 
 
                                                                 @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))

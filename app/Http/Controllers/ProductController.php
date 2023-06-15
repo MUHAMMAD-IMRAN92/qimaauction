@@ -309,6 +309,7 @@ class ProductController extends Controller
             // } else
             // {
             $lastSampleId = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'desc')->first();
+            $previous = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'asc')->first();
             $samplesArr = explode(',', $firstsample->samples);
             return view('admin.jury.form2', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -326,7 +327,8 @@ class ProductController extends Controller
                 'sentSampleId' => $firstsample->id,
                 'samples' => $samplesArr,
                 'sampleReview' => $sampleReview,
-                'lastSample' => $lastSampleId
+                'lastSample' => $lastSampleId,
+                'previous' =>  $previous
             ]);
             // }
         }
