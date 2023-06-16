@@ -1494,8 +1494,8 @@ $previous_position = $productdata->postion - 1;
                                                         <p id="input_total_score"
                                                             style="max-width:100%;width: 267px;margin: auto;">
                                                             <input onkeyup="if (this.value > 100){ calcTotal()};"
-                                                                style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: none;border-radius: 6px;padding: 15px;background-color:#EFEBE5"
-                                                                type="text" class="totalScore" name="total_score"
+                                                                style="font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 90px;line-height: 110px;text-align: center;color: black !important;"
+                                                                type="hidden" class="totalScore" name="total_score"
                                                                 id="total_score" value="84">
                                                         </p>
                                                         <h2 class="totalScore" id="div_total_score">0</h2>
@@ -1506,6 +1506,7 @@ $previous_position = $productdata->postion - 1;
                                                             function toggleDivs() {
                                                                 $('#div_total_score').hide();
                                                                 $('#input_total_score').show();
+                                                                $('#total_score').attr('type','text');
                                                                 $('input[name=manual_override]').val(1);
                                                             }
                                                         </script>
