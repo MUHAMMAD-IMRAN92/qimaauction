@@ -280,7 +280,7 @@ class JuryController extends Controller
                 'juryName' => $juryName->name,
                 'juryId' => $juryId,
                 'auction_id' => $auctionId,
-                'sampleProductd' =>  explode(',', @$openCuppingProduct->products)
+                'sampleProducts' =>  explode(',', @$openCuppingProduct->products)
             ]);
         } else {
             return view('admin.404');

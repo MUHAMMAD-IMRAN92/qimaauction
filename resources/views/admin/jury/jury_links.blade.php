@@ -449,7 +449,8 @@
     <!-- END: Theme JS-->
     <script type='text/javascript'>
         var juryId = {{ $juryId }};
-        var juryId = {{ $juryId }};
+        var auctionId = {{ $auction_id }};
+        var sampleProducts = "<?php= $sampleProducts ?>";
         var table = {{ isset($firstsample->tables) ? $firstsample->tables : 0 }};
 
         sampleData(table, table);
@@ -463,8 +464,7 @@
                 data: {
                     table: table,
                     juryId: juryId,
-                    auctionId: auction_id,
-                    sampleProducts: sampleProductd,
+                    auctionId: auctionId,
                     _token: "{{ csrf_token() }}"
                 },
 
