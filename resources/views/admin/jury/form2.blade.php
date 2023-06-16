@@ -1507,6 +1507,126 @@
 
                                                     {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
 
+
+
+                                                    <div class="container-fluid">
+                                                        <h3 class="entity-text total-bg">TOTAL</h3>
+                                                        <p class="entity-label" style="color: #000;">(+36)</p>
+                                                        <p id="input_total_score" style="max-width:100%;width: 267px;margin: auto;">
+                                                            <input onkeyup="if (this.value > 100){ calcTotal()};" style="max-width:100%;text-align: center;font-size: 100px;font-family: ''Montserrat'';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;" type="hidden" class="totalScore" name="total_score" id="total_score" value="84">
+                                                        </p>
+                                                        <h2 class="totalScore" id="div_total_score">0</h2>
+                                                        <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
+                                                        <input type="hidden" value="0" name="manual_override">
+                                                        <script>
+                                                            function toggleDivs() {
+                                                                $('#div_total_score').hide();
+                                                                $('#input_total_score').show();
+                                                                $('input[name=manual_override]').val(1);
+                                                            }
+                                                        </script>
+
+                                                        <div class="wrapper-btn">
+                                                            <div class="row parent-btn">
+                                                                <div class="btn-next-prev">
+                                                                    <input type="hidden" id="to_go_sample" name="to_go_sample" value="">
+
+                                                                    <button type="submit" value="1" name="sample_submit_prev" class="submit-form-btn" @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
+                                                                    </button>
+                                                                    <button type="submit" value="0" name="sample_submit" class="submit-form-btn" @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
+                                                                    </button>
+                                                                </div>
+                                                                {{-- <a class="submit-form-btn" type="button"
+                                                                    value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a> --}}
+
+                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
+                                                                <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a>
+                                                                @else
+                                                                {{-- <a type="submit" name=""
+                                                                        class="submit-form-btn">SAVE
+                                                                        TABLE</a> --}}
+                                                                <button type="submit" name="" class="submit-form-btn">Save Table</button>
+                                                                @endif
+
+
+                                                            </div>
+                                                        </div>
+                                                        <hr class="hr hr-margin">
+                                                        <div class="row">
+                                                            <div class="scrollable" style="overflow:auto;">
+                                                                <div class="button-group" style="white-space:nowrap">
+                                                                <?php /*
+                                                                    @foreach ($alltablesamples as $samp)
+                                                                    @php $extraclass = ""; @endphp
+                                                                    @if ($samp->is_hidden == 1)
+                                                                    @php $extraclass="isdone"; @endphp
+                                                                    @endif
+                                                                    @if ($samp->sampleId == $sentSampleId)
+                                                                    {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
+                                                                    <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                        {{ $samp->samples }}
+                                                                    </a>
+                                                                    @else
+                                                                    <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                        {{ $samp->samples }}
+                                                                    </a>
+                                                                    @endif
+                                                                    @endforeach
+                                                                    */ ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="hr">
+                                                        <div class="footer-end">
+                                                            <p>BEST OF YEMEN 2023</p>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div id="myModal" class="modal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Submit Cupping
+                                                                    </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>You are about to submit results for
+                                                                    <?php /*    
+                                                                    @foreach ($alltablesamples as $samp)
+                                                                        @if ($samp->sampleTable == $table)
+                                                                        &nbsp<b>{{ $samp->samples }}</b>,
+                                                                        @endif
+                                                                        @endforeach.
+                                                                        */ ?>
+                                                                    </p>
+                                                                    <br><br>
+                                                                    <p>Are you sure you want to do this? You
+                                                                        cannot edit fields once submitted.</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                    <button name="table_submit" class="btn btn-primary" id="final_submit" onclick="finalSubmit()">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
 </body>
 <!-- END: Body-->
 
