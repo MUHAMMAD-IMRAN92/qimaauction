@@ -49,8 +49,10 @@
     }
     .tab{
         display: flex;
-        justify-content: flex-start;
-        gap: 15px;
+    justify-content: flex-start;
+    
+    width: 100%;
+    margin-bottom: 16px;
 
     }
     .btn-success:focus, .btn-success:active{
@@ -91,15 +93,20 @@
 
     }
     .tab button{
-
+        color: #575555;
+        font-weight: bolder;
+    font-size: 17px;
+    height: 59px;
+    /* border: 1px solid white !important; */
+    width: 20%;
+    background-color: inherit;
     float: left;
     border: none;
     outline: none;
-    color:#575555 ;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-    font-weight: 700;
+    border-right: 1px solid white !important;
     }
 
     .tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc;
@@ -153,6 +160,12 @@
         /*no more table*/
 
         @media only screen and (max-width: 800px) {
+            .tab{
+                display: block !important;
+            }
+            .tab button{
+                font-size: 11px !important;
+            }
             /* Force table to not be like tables anymore */
             #no-more-tables table,
             #no-more-tables thead,
@@ -160,7 +173,7 @@
             #no-more-tables th,
             #no-more-tables td,
             #no-more-tables tr {
-                display: block;
+               
             }
 
             /* Hide table headers (but not display: none;, for accessibility) */
@@ -172,15 +185,15 @@
 
             #no-more-tables tr { border: 1px solid #ccc; }
 
-            #no-more-tables td {
-                /* Behave like a "row" */
+            /* #no-more-tables td {
+                
                 border: none;
                 border-bottom: 1px solid #eee;
                 position: relative;
                 padding-left: 50%;
                 white-space: normal;
                 text-align:left;
-            }
+            } */
 
             #no-more-tables td:before {
                 /* Now like a table header */
@@ -198,7 +211,7 @@
             /*
             Label the data
             */
-            #no-more-tables td:before { content: attr(data-title); }
+            /* #no-more-tables td:before { content: attr(data-title); } */
         }
         .app-content{
             background-color: #FFF;
@@ -208,6 +221,8 @@
             text-align: center;
             font-family: 'Montserrat';
             font-size: 15px;
+            color: #575555;
+            font-weight: 600;
         }
         .image-section{
         display: flex;
@@ -243,6 +258,7 @@
     .table th, .table td{
         color: #575555;
         font-size: 18px;
+        font-weight: 700;
 
     }
     </style>

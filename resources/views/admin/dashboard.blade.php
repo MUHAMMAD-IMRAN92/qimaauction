@@ -55,7 +55,7 @@
         font-family: 'circular';
         font-style: normal;
         font-weight: 400;
-        font-size: 60px;
+        font-size: 50px;
         /* line-height: 98px; */
         margin-top: 0px;
         color: #FFFFFF;
@@ -63,19 +63,26 @@
     }
 
     .timer-section button {
+        margin-top: 25px;
         background: #FFFFFF;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 35px;
-        color: #575555;
-        width: 518px;
-        padding: 20px;
-        font-size: 23px;
-        text-transform: uppercase;
-        font-weight: 700;
-        border-color: white !important;
-        border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    color: #575555;
+    width: 542px;
+    padding: 15px;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-color: white !important;
+    border: none;
     }
-
+    .icons-tab i{
+        cursor: pointer;
+    }
+.card-display-3{
+    margin-top: 20px;
+    line-height: 20px;
+}
     .bg-theme-color {
         background-color: #EFEBE5;
     }
@@ -162,7 +169,7 @@
     }
 
     .icons-tab {
-        margin-top: 25px;
+        margin-top: 45px;
         display: flex;
         justify-content: center;
         gap: 30px;
@@ -205,7 +212,7 @@
                 <div class="icons-tab">
                     <i class="fa fa-facebook-f"></i>
                     <i class="fa fa-instagram"></i>
-                    <i class="fa fa-youtube"></i>
+                    <i class="fa fa-youtube-play"></i>
 
 
                 </div>
