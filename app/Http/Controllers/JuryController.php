@@ -179,7 +179,7 @@ class JuryController extends Controller
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
 
-                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->first();
+                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id',  $request->auction_id)->first();
                 Product::where('id', $product)->update([
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
