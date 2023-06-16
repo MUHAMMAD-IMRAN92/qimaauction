@@ -331,6 +331,7 @@
         font-size: 24px;
         background-color: #C4C4C4;
         border-radius: 30px;
+        font-weight:700;
     }
 
     .pager.btn-success {
@@ -754,8 +755,9 @@
     }
 
     .button-group {
-        margin-top: 30px;
+        margin-top: 10px;
         text-align: center;
+        margin-bottom: 10px;
     }
 
     .footer-end {
@@ -1568,6 +1570,7 @@ $previous_position = $productdata->postion - 1;
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <hr class="hr">
                                                         <div class="footer-end">
                                                             <p>BEST OF YEMEN 2023</p>
                                                         </div>
