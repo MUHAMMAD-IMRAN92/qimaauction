@@ -270,7 +270,7 @@ class JuryController extends Controller
             // ->where('sample_sent_to_jury.is_hidden','=','0')
             ->where('sample_sent_to_jury.jury_id',$juryId)
             ->where('sample_sent_to_jury.tables','!=',null)
-            // ->orderBy('created_at','desc')
+            ->orderBy('tables','asc')
              ->get();
 
                 $juryName = Jury::where('id', $juryId)->first();

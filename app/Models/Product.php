@@ -5,48 +5,63 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model {
+class Product extends Model
+{
 
     use HasFactory;
 
-    public function category() {
+    public function category()
+    {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
-    public function origin() {
+    public function origin()
+    {
         return $this->hasOne(Origin::class, 'id', 'origin_id');
     }
 
-    public function village() {
+    public function village()
+    {
         return $this->hasOne(Village::class, 'id', 'village_id');
     }
 
-    public function reviews() {
+    public function reviews()
+    {
         return $this->hasOne(Review::class, 'product_id', 'id');
     }
 
-    public function region() {
+    public function region()
+    {
         return $this->hasOne(Region::class, 'id', 'region_id');
     }
 
-    public function governorate() {
+    public function governorate()
+    {
         return $this->hasOne(Governorate::class, 'id', 'governorate_id');
     }
 
-    public function flavor() {
+    public function flavor()
+    {
         return $this->hasOne(Flavour::class, 'id', 'flavour_id');
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->hasMany(Image::class, 'product_id', 'id');
     }
 
-    public function auctionProducts() {
+    public function auctionProducts()
+    {
         return $this->belongsTo(AuctionProduct::class);
     }
 
-    function getSingleBid() {
+    function getSingleBid()
+    {
         return $this->hasMany(SingleBid::class, 'auction_product_id');
     }
 
+    public function tableUserForCupping($auctionId)
+    {
+         return OpenCupping::where('auction_id',  $auctionId)->where('product_id', $this->id)->first();
+    }
 }

@@ -90,7 +90,7 @@
                                                         Select Auction
                                                     </div>
                                                     <select class="form-control  @error('auction') is-invalid @enderror"
-                                                        name="auction_id" id="auction_id">
+                                                        name="auction_id" id="auction_id" onchange="onchangeAuction()">
                                                         <option value="">Please Select Auction
                                                         </option>
                                                         @foreach ($auctions as $key => $jury)
@@ -108,143 +108,140 @@
                                                     <div class="text-bold-600 font-medium-2 pb-1">
                                                         Select Product and Sample
                                                     </div>
-                                                    @foreach ($products as $key => $product)
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <input type="hidden" name="products[]"
-                                                                    value="{{ $product->id }}">
-                                                                <input type="text" class="form-control" id="products"
-                                                                    value="{{ $product->product_title }}">
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <input type="text" class="form-control" name="samples[]"
-                                                                    id="samples" value="{{ $product->sample }}"
-                                                                    placeholder="Enter Sample Id">
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <input type="number" class="form-control" name="postion[]"
-                                                                    id="postion" placeholder="Postion"
-                                                                    value="{{ $product->postion }}"
-                                                                    oninput="if (this.value > 9) this.value = 0;">
+                                                    <div class="products-div">
+                                                        @foreach ($products as $key => $product)
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <input type="hidden" name="products[]"
+                                                                        value="{{ $product->id }}">
+                                                                    <input type="text" class="form-control"
+                                                                        id="products"
+                                                                        value="{{ $product->product_title }}">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input type="text" class="form-control"
+                                                                        name="samples[]" id="samples"
+                                                                        value="{{ $product->sample }}"
+                                                                        placeholder="Enter Sample Id">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input type="number" class="form-control"
+                                                                        name="postion[]" id="postion"
+                                                                        placeholder="Postion"
+                                                                        value="{{ $product->postion }}"
+                                                                        oninput="if (this.value > 9) this.value = 0;">
 
+                                                                </div>
+                                                                @if (count($cuppingProducts) > 0)
+                                                                    <div class="col-md-4">
+                                                                        <div class="row checkbox-pad">
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T1</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="1" class="chk1 pt-5"
+                                                                                    {{ @$product->tableUserForCupping($openCupping->auction_id)->table == 1 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T2</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="2" class="chk2 pt-5"
+                                                                                    {{ @$product->tableUserForCupping($openCupping->auction_id)->table == 2 ? 'checked' : '' }}>
+
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T3</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="3" class="chk3 pt-5"
+                                                                                    {{ @$product->tableUserForCupping($openCupping->auction_id)->table == 3 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T4</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="4" class="chk4 pt-5"
+                                                                                    {{ @$product->tableUserForCupping($openCupping->auction_id)->table == 4 ? 'checked' : '' }}>
+
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T5</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="5" class="chk4 pt-5"
+                                                                                    {{ @$product->tableUserForCupping($openCupping->auction_id)->table == 5 ? 'checked' : '' }}>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @else
+                                                                    <div class="col-md-4">
+                                                                        <div class="row checkbox-pad">
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T1</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="1" class="chk1 pt-5"
+                                                                                    {{ $product->table == 1 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T2</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="2" class="chk2 pt-5"
+                                                                                    {{ $product->table == 2 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T3</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="3" class="chk3 pt-5"
+                                                                                    {{ $product->table == 3 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T4</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="4" class="chk4 pt-5"
+                                                                                    {{ $product->table == 4 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                            <div class="chk">
+                                                                                <label class="check-label" for="male">
+                                                                                    <b>T5</b>
+                                                                                </label>
+                                                                                <input type="radio"
+                                                                                    name="{{ $key }}"
+                                                                                    value="5" class="chk4 pt-5"
+                                                                                    {{ $product->table == 5 ? 'checked' : '' }}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
                                                             </div>
-                                                            @if (count($cuppingProducts) > 0)
-                                                                <div class="col-md-4">
-                                                                    <div class="row checkbox-pad">
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T1</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="1"
-                                                                                class="chk1 pt-5"
-                                                                                @if (@$cuppingProducts[$key]['table']) {{ @$cuppingProducts[$key]['table'] == 1 ? 'checked' : '' }}
-                                                                                @else
-                                                                                {{ $product->table == 1 ? 'checked' : '' }} @endif>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T2</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="2"
-                                                                                class="chk2 pt-5"
-                                                                                @if (@$cuppingProducts[$key]['table']) {{ @$cuppingProducts[$key]['table'] == 2 ? 'checked' : '' }}
-                                                                                @else
-                                                                                {{ $product->table == 2 ? 'checked' : '' }} @endif>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T3</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="3"
-                                                                                class="chk3 pt-5"
-                                                                                @if (@$cuppingProducts[$key]['table']) {{ @$cuppingProducts[$key]['table'] == 3 ? 'checked' : '' }}
-                                                                                @else
-                                                                                {{ $product->table == 3 ? 'checked' : '' }} @endif>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T4</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="4"
-                                                                                class="chk4 pt-5"
-                                                                                @if (@$cuppingProducts[$key]['table']) {{ @$cuppingProducts[$key]['table'] == 4 ? 'checked' : '' }}
-                                                                                @else
-                                                                                {{ $product->table == 4 ? 'checked' : '' }} @endif>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T5</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="5"
-                                                                                class="chk4 pt-5"
-                                                                                @if (@$cuppingProducts[$key]['table']) {{ @$cuppingProducts[$key]['table'] == 5 ? 'checked' : '' }}
-                                                                                @else
-                                                                                {{ $product->table == 5 ? 'checked' : '' }} @endif>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @else
-                                                                <div class="col-md-4">
-                                                                    <div class="row checkbox-pad">
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T1</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="1"
-                                                                                class="chk1 pt-5"
-                                                                                {{ $product->table == 1 ? 'checked' : '' }}>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T2</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="2"
-                                                                                class="chk2 pt-5"
-                                                                                {{ $product->table == 2 ? 'checked' : '' }}>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T3</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="3"
-                                                                                class="chk3 pt-5"
-                                                                                {{ $product->table == 3 ? 'checked' : '' }}>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T4</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="4"
-                                                                                class="chk4 pt-5"
-                                                                                {{ $product->table == 4 ? 'checked' : '' }}>
-                                                                        </div>
-                                                                        <div class="chk">
-                                                                            <label class="check-label" for="male">
-                                                                                <b>T5</b>
-                                                                            </label>
-                                                                            <input type="radio"
-                                                                                name="{{ $key }}" value="5"
-                                                                                class="chk4 pt-5"
-                                                                                {{ $product->table == 5 ? 'checked' : '' }}>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                                <div style="margin-left: 39%">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div style="margin-left: 39%">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
                                             </form>
                                         </div>
                                     </div>
@@ -252,11 +249,30 @@
                             </div>
                         </div>
                     </div>
-                </section>
-                <!--/ Zero configuration table -->
-
             </div>
+            </section>
+            <!--/ Zero configuration table -->
+
         </div>
+    </div>
     </div>
     <!-- END: Content-->
 @endsection
+<script>
+    function onchangeAuction() {
+        var auction_id = $('#auction_id').val();
+
+        $.ajax({
+            type: 'get',
+            url: "{{ url('getProducts') }}",
+            data: {
+                auction_id: auction_id,
+                cuppingScreen: 2,
+
+            },
+            success: function(data) {
+                $('.products-div').html(data);
+            }
+        });
+    }
+</script>

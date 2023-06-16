@@ -51,7 +51,7 @@
         display: flex;
         justify-content: flex-start;
         gap: 15px;
-       
+
     }
     .btn-success:focus, .btn-success:active{
         color: #575555 !important;
@@ -87,11 +87,11 @@
 
     }
     .btn-success:hover{
-        color: #575555 !important; 
+        color: #575555 !important;
 
     }
     .tab button{
-        
+
     float: left;
     border: none;
     outline: none;
@@ -220,7 +220,7 @@
         padding: 20px;
         width: 300px;
     }
- 
+
     .content-wrapper{
         background-color: #EFEBE5 !important;
         overflow-x: hidden;
@@ -281,7 +281,7 @@
                                             Once you have cupped all the samples on a given table please click on the submit button to confirm submission.
                                         </p>
                                     </div>
-                        
+
                                         @if (session('success'))
                                         <div class="col-md-12 alert alert-success">
                                             {{ session('success') }}
@@ -290,7 +290,7 @@
                                     </div>
                                     <hr class="hr">
         <div class="text-section">
-            <h2>ADEEL QURESHI</h2>
+            <h2>{{$juryName}}</h2>
         </div>
         <hr class="hr">
                                     @if(count($samples) > 0)
