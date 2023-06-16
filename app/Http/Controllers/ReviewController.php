@@ -245,11 +245,12 @@ class ReviewController extends Controller
     public function reviewTableData(Request $request)
     {
         $tables = $request->table;
+        $auctionId = $request->auctionId;
         $samples = SentToJury::where('auction_id', $request->auctionId)->join('products', 'products.id', 'sample_sent_to_jury.product_id')
             ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
             ->select('products.*', 'sample_sent_to_jury.*', 'juries.name')
             ->where('sample_sent_to_jury.jury_id', $request->juryId)
-            ->where('sample_sent_to_jury.tables', $request->table)
+            ->where('sample_sent_to_jury.tables', $request->table)->orderBy('sample_sent_to_jury.postion' , 'asc')
             //   ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();
         $samplesHidden = SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
@@ -257,7 +258,7 @@ class ReviewController extends Controller
             ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();
         //   return response($samples);
-        $data = view('admin.sample_table', compact('samples', 'tables', 'samplesHidden'))->render();
+        $data = view('admin.sample_table', compact('samples', 'tables', 'samplesHidden' ,'auctionId' ))->render();
         return response()->json(array('success' => true, 'html' => $data));
     }
 

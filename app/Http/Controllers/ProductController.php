@@ -261,7 +261,7 @@ class ProductController extends Controller
         $juery = Jury::where('ID', $request->juryId)->first();
         $name = $juery->name;
         $company = $juery->company;
-
+        $auctionId = $request->auctionId;
         $alltablesamples = SentToJury::join('products', 'products.id', 'sample_sent_to_jury.product_id')
             ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
             ->select(
@@ -274,7 +274,7 @@ class ProductController extends Controller
                 'juries.name as juryName',
                 'sample_sent_to_jury.is_hidden'
             )
-            ->where('sample_sent_to_jury.jury_id', $request->juryId)
+            ->where('sample_sent_to_jury.jury_id', $request->juryId)->where('auction_id', $auctionId)
             ->where('sample_sent_to_jury.tables', $request->table)
             // ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();

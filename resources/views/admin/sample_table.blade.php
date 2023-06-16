@@ -21,7 +21,7 @@
                 <td data-title="Action">
                     @if (count($samplesHidden) > 0)
                         <a class="btn btn-success" target="_blank"
-                            href="{{ route('give_review', ['juryId' => $sample->jury_id, 'table' => $sample->tables, 'sampleId' => $sample->id]) }}">CUP
+                            href="{{ route('give_review', ['juryId' => $sample->jury_id, 'table' => $sample->tables, 'sampleId' => $sample->id, 'auctionId' => $auctionId]) }}">CUP
                             SAMPLE
                         </a>
                     @else
