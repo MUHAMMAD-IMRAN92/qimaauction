@@ -2573,15 +2573,74 @@
             }
             if (chkhidden != 0) {
 
-                
+                $(".roastslider")
+                    .slider({
+                        value: "{{ isset($sampleReview->roast) ? $sampleReview->roast : 50 }}"
+                    });
+                $(".aromacrust")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust : 2 }}"
+                    });
+                $(".aromadry")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
+                    });
+                $(".aromabreak")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
+                    })
+                $('input[name=first_number]').val(
+                " {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }}"
+                );
+                $('input[name=second_number]').val(
+                   " {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }}"
+                );
+                $('input[name=second_number]').trigger('keyup');
+                $('#defect_note').val("{{ $sampleReview->defects_note ?? '' }}");
+                $(".cleancup").slider({
+                    value: parseReview("{{ $sampleReview->clean_up ?? '4' }}")
+                })
+                $('#cleanup_note').val("{{ $sampleReview->clean_sweet_note ?? '' }}");
+
+                $(".sweetness").slider({
+                    value: parseReview("{{ $sampleReview->sweetness ?? '4' }}")
+                })
+                $('#sweetness_note').val("{{ $sampleReview->sweetness_note ?? '' }}");
+
+                $(".acidity").slider({
+                    value: parseReview("{{ $sampleReview->acidity ?? '4' }}")
+                })
+                $('#acidity_note').val("{{ $sampleReview->acidity_note ?? '' }}");
+                $(".acidity_{{ $sampleReview->acidity_chk ?? 'L' }}").prop('checked', true);
+
+                $(".mouthfeel").slider({
+                    value: parseReview("{{ $sampleReview->mouth_feel ?? '4' }}")
+                });
+                $('#mouthfeel_note').val("{{ $sampleReview->mouthfeel_note ?? '' }}");
+                $(".mouthfeel_{{ $sampleReview->fm_chk ?? 'L' }}").prop('checked', true);
+
+                $(".flavor").slider({
+                    value: parseReview("{{ $sampleReview->flavour ?? '4' }}")
+                });
+                $('#flavor_note').val("{{ $sampleReview->flavor_note ?? '' }}");
+
+                $(".aftertaste").slider({
+                    value: parseReview("{{ $sampleReview->after_taste ?? '8' }}")
+                })
+                $('#aftertaste_note').val("{{ $sampleReview->aftertaste_note ?? '' }}");
+
+                $(".balance").slider({
+                    value: parseReview("{{ $sampleReview->balance ?? '8' }}")
+                })
+                $('#balance_note').val("{{ $sampleReview->balance_note ?? '' }}");
+
+                $(".overall").slider({
+                    value: parseReview("{{ $sampleReview->overall ?? '4' }}")
+                })
+                $('#overall_note').val("{{ $sampleReview->overall_note ?? '' }}");
 
                 calcTotal();
-                if (chkmanual) {
-                    toggleDivs();
-                    if ("<?php= $reviewdata ?>")
-                        $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
-
-                }
+                
             }
         });
 
