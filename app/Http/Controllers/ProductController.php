@@ -311,7 +311,7 @@ class ProductController extends Controller
             $previous = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'asc')->first();
             $next = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->orderBy('id', 'desc')->first();
             $samplesArr = explode(',', $firstsample->samples);
-
+                return 'tests';
             return view('admin.jury.form2', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
                 'juryId' =>  $firstsample->jury_id ?? $firstsample->juryId,
