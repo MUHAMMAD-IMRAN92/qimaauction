@@ -1193,11 +1193,11 @@ $previous_position = $productdata->postion - 1;
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-12" style="max-width:70%">
                                                                             <h5>DRY</h5>
                                                                         </div>
                                                                         <div class="design-slider mt-5 mb-5"
-                                                                            style="height:75px">
+                                                                            style="height:75px;max-width:70%">
                                                                             <div class="aromaslider aromadry"><input
                                                                                     type="hidden" name="aroma_dry"
                                                                                     id="aroma_dry" value="0">
