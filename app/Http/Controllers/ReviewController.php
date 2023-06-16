@@ -238,7 +238,6 @@ class ReviewController extends Controller
                     ->where('sample_sent_to_jury.is_hidden', '1')
                     ->update(array("is_hidden" => "0"));
             }
-            die();
         }
         if ($request->to_go_sample) {
             return redirect()->route('give_review', ['juryId' => $sampleSent->jury_id, 'table' => $sampleSent->tables, 'sampleId' => $request->to_go_sample, 'auctionId' => $request->auctionId])->with('success', 'Review submitted Successuflly');
