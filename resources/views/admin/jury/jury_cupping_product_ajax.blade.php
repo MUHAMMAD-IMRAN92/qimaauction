@@ -41,7 +41,7 @@
                         <b>T4</b>
                     </label>
                     <input type="radio" name="{{ $key }}" value="4" class="chk4 pt-5"
-                        {{ @$product->tableUserForCupping($auction_id)->table == 24 ? 'checked' : '' }}>
+                        {{ @$product->tableUserForCupping($auction_id)->table == 4 ? 'checked' : '' }}>
                 </div>
                 <div class="chk">
                     <label class="check-label" for="male">
