@@ -271,6 +271,7 @@
         background: transparent;
     }
 
+ 
     .entity_note {
         width: 80%;
         margin: auto;
@@ -301,14 +302,14 @@
         text-align: center;
         background: white;
         color: black;
-        border: 1px solid #A4A3A3 !important;
+      
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         padding: 12px;
         width: 100%;
         height: auto;
         display: block;
         margin: auto;
-        margin-top: 40px;
+        margin-top: 15px;
         border-radius: 54px;
     }
 
@@ -403,7 +404,9 @@
     h5 {
         margin-top: 0px !important;
     }
-
+.hr-margin{
+    margin-top: 40px;
+}
     .roastslider.ui-slider-horizontal {
         height: 50px;
         border-radius: 0;
@@ -565,6 +568,9 @@
         .mobile-layout{
             display: block;
         }
+        .list-crumb p{
+            font-size: 17px !important;
+        }
 
     }
     @media only screen and (min-width:768px) {
@@ -612,7 +618,7 @@
     .list-crumb p {
         font-weight: 800;
         color: #575555 !important;
-        font-size: 20px !important;
+        font-size: 20px ;
     }
 
     .list-crumb .list-2 {
@@ -753,7 +759,7 @@
     }
 
     .button-group {
-        margin-top: 30px;
+      
         text-align: center;
     }
 
@@ -810,6 +816,14 @@
     .margin-bottom-balance {
         margin-bottom: 161px;
     }
+    .radio_container h5{
+        font-weight: 700;
+        color: #575555;
+    }
+    .radio_container input~.checkmark{
+        border-radius: 4px !important;
+    }
+
 </style>
 
 <body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static new-bg-color   blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
@@ -921,11 +935,11 @@
                                                         <div class="breadcrumb-section col-lg-6  ">
                                                             <ul class="breadcrumb list-crumb">
                                                                 <li class="list-1"><a href="#">
-                                                                        <p class="" style="font-family: 'Montserrat';font-size:25px;color: black;">
+                                                                        <p class="" style="font-family: 'Montserrat';color: black;">
                                                                             POSITION-{{ $productdata->postion }}</p>
                                                                     </a></li>
                                                                 <li class="list-2"><a href="#">
-                                                                        <p class="" style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: black;">
+                                                                        <p class="" style="font-family: 'Montserrat'; padding-top:0.5rem; color: black;">
                                                                             TABLE-{{ $productdata->table }}</p>
                                                                     </a>
                                                                 </li>
@@ -1346,16 +1360,16 @@
                                                                                 <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity" value="6"></div>
                                                                             </div>
                                                                             <div class="radio_button">
-                                                                                <div>
+                                                                            <div>
                                                                                     <label class="radio_container">
-
-                                                                                        <input type="radio" name="acidity_chk" value="H" class="acidity_H">
+                                                                                        <input type="radio" checked="checked" name="acidity_chk" value="L" class="acidity_L">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>H</h5>
+                                                                                        <h5>L</h5>
 
                                                                                     </label>
                                                                                 </div>
+                                                                               
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio" name="acidity_chk" value="M" class="acidity_M">
@@ -1367,13 +1381,15 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio" checked="checked" name="acidity_chk" value="L" class="acidity_L">
+
+                                                                                        <input type="radio" name="acidity_chk" value="H" class="acidity_H">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>L</h5>
+                                                                                        <h5>H</h5>
 
                                                                                     </label>
                                                                                 </div>
+                                                      
                                                                             </div>
                                                                             <div class="entity_input">
                                                                                 <input type="text" name="acidity_note" id="acidity_note" placeholder="NOTES" class="entity_note">
@@ -1391,15 +1407,15 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="radio_button">
-                                                                                <div>
+                                                                            <div>
                                                                                     <label class="radio_container">
-
-                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
+                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>H</h5>
+                                                                                        <h5>L</h5>
                                                                                     </label>
                                                                                 </div>
+                                        
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
@@ -1410,10 +1426,11 @@
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
-                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
+
+                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>L</h5>
+                                                                                        <h5>H</h5>
                                                                                     </label>
                                                                                 </div>
                                                                             </div>
@@ -1531,7 +1548,7 @@
 
                                                             </div>
                                                         </div>
-                                                        <hr class="hr">
+                                                        <hr class="hr hr-margin">
                                                         <div class="row">
                                                             <div class="scrollable" style="overflow:auto;">
                                                                 <div class="button-group" style="white-space:nowrap">
@@ -1554,6 +1571,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <hr class="hr">
                                                         <div class="footer-end">
                                                             <p>BEST OF YEMEN 2023</p>
                                                         </div>
@@ -2172,7 +2190,7 @@
         .ui-state-default,
         .ui-widget-content .ui-state-default,
         .ui-widget-header .ui-state-default {
-            border: 1px solid #575555;
+            
             background: #575555 url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x !important;
             font-weight: bold;
             color: #575555;

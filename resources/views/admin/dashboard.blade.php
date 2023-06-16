@@ -65,24 +65,28 @@
     .timer-section button {
         margin-top: 25px;
         background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 35px;
-    color: #575555;
-    width: 542px;
-    padding: 15px;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-color: white !important;
-    border: none;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 35px;
+        color: #575555;
+        width: 542px;
+        padding: 15px;
+        font-size: 23px;
+        text-transform: uppercase;
+        font-weight: 700;
+        border-color: white !important;
+        border: none;
     }
-    .icons-tab i{
+
+    .icons-tab i {
         cursor: pointer;
     }
-.card-display-3{
-    margin-top: 20px;
-    line-height: 20px;
-}
+
+    .card-display-3 {
+        margin-top: 20px;
+        line-height: 20px;
+
+    }
+
     .bg-theme-color {
         background-color: #EFEBE5;
     }
@@ -102,14 +106,22 @@
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 18px;
+        line-height: 22px;
         display: flex;
         align-items: center;
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+
+
+        color: #575555;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-feature-settings: 'kern' off;
 
         color: #575555;
     }
@@ -123,17 +135,18 @@
         padding: 40px;
     }
 
-    .footer-qima p {
+    .footer-qima p a {
+        text-decoration: none;
         font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 17px;
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
         display: flex;
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+        font-feature-settings: 'kern' off;
 
         color: #9F9B9B;
     }
@@ -189,16 +202,19 @@
 
     .white-anchor {
         text-decoration: none;
-        color:  #9F9B9B !important;
+        color: #9F9B9B !important;
     }
+
     @font-face {
-  font-family: 'Montserrat';
-  src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Regular.ttf")}}') format('truetype') ;
- 
-}
-.card-display-3 p{
-    font-weight: 600;
-}
+        font-family: 'Montserrat';
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Regular.ttf")}}') format('truetype');
+
+    }
+
+    .card-display-3 p {
+        font-weight: 600;
+        font-size: 16px;
+    }
 </style>
 
 <body>
@@ -218,10 +234,11 @@
         <div class="container-fluid ">
             <div class="row row-cols-1 row-cols-md-3 g-4 date-country">
                 <div class="icons-tab">
-                    <i class="fa fa-facebook-f"></i>
-                    <i class="fa fa-instagram"></i>
-                    <i class="fa fa-youtube-play"></i>
-
+                    <a href="https://www.facebook.com/qimacoffee"><i href="" class="fa fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/qimacoffee/">  <i href="" class="fa fa-instagram"></i></a>
+                  <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href="" class="fa fa-youtube-play"></i>
+                        </a>
+                    
 
                 </div>
                 <div class="col card-display-3">
@@ -247,9 +264,9 @@
             <hr class="hr">
             <div class="footer-qima">
                 <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
-                <p>qima coffee</p>
-                <p>Alliance for coffee excellence</p>
-                <p>qima foundation</p>
+                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for coffee excellence</a></p>
+                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
 
             </div>
         </div>
