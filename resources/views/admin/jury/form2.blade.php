@@ -422,9 +422,9 @@
 
     .roastslider .ui-slider-handle {
         height: 62px;
-        border-radius: 5px;
-        background-color: gray;
-        border-color: grey;
+        border-radius: 0;
+        background-color: #575555;
+        border-color: #575555;
     }
 
     .roastslider .ui-state-focus,
