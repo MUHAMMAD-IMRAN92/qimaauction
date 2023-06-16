@@ -10,7 +10,6 @@ class DevTestController extends Controller
 {
     public function index()
     {
-        return Product::where('sample', 2610)->delete();
         return phpinfo();
 
         $en = encrypt(1);
