@@ -1494,7 +1494,7 @@ $previous_position = $productdata->postion - 1;
                                                         <p id="input_total_score"
                                                             style="max-width:100%;width: 267px;margin: auto;">
                                                             <input onkeyup="if (this.value > 100){ calcTotal()};"
-                                                                style="font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 90px;line-height: 110px;text-align: center;color: black !important;"
+                                                                style="width:266px;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 90px;line-height: 110px;text-align: center;color: black !important;"
                                                                 type="hidden" class="totalScore" name="total_score"
                                                                 id="total_score" value="84">
                                                         </p>
