@@ -416,6 +416,7 @@
     }
     .roastslider.ui-slider-horizontal {
         height: 50px;
+        border: none;
         border-radius: 0;
         background-image: linear-gradient(90deg, #D9B594 23.96%, #765418 100%)
     }
