@@ -245,7 +245,7 @@ class ReviewController extends Controller
     public function reviewTableData(Request $request)
     {
         $tables = $request->table;
-        $samples = SentToJury::where('auction_id', $request->auctionId)->whereIn('products', @$request->sampleProducts)->join('products', 'products.id', 'sample_sent_to_jury.product_id')
+        $samples = SentToJury::where('auction_id', $request->auctionId)->join('products', 'products.id', 'sample_sent_to_jury.product_id')
             ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
             ->select('products.*', 'sample_sent_to_jury.*', 'juries.name')
             ->where('sample_sent_to_jury.jury_id', $request->juryId)
