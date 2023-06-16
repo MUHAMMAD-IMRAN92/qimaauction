@@ -167,7 +167,7 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
-        // return $request->all();
+        return $request->all();
         ini_set('max_execution_time', '0');
 
         $request->validate([
@@ -179,7 +179,7 @@ class JuryController extends Controller
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
 
-                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id',  $request->auction_id)->first();
+            return    $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id',  $request->auction_id)->first();
                 Product::where('id', $product)->update([
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
