@@ -150,7 +150,7 @@
         transition: 0.3s;
     }
 
-    .tab button:hover {
+    .tab button:hover, .tab button.active {
         background: #575555 !important;
         color: white;
         -webkit-text-stroke: transparent;
