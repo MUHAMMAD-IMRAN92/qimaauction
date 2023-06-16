@@ -1103,6 +1103,7 @@ class AuctionController extends Controller
 
     public function winningCoffee()
     {
+        return 'testing';
         $winningCoffees = WinningCofees::all();
         return view('customer.dashboard.index-new', compact('winningCoffees'));
     }
