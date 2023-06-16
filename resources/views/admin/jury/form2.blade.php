@@ -812,6 +812,9 @@
         color: #575555;
         margin-top:8px !important;
     }
+    .radio_button div{
+        margin: 0 4px;
+    }
     .radio_container input~.checkmark{
         border-radius: 6px !important;
     }
