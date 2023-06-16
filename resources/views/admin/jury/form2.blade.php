@@ -1183,7 +1183,7 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                     <div class="entity_input col-12">
                                                                         <input type="text" placeholder="NOTES"
-                                                                            class="entity_note">
+                                                                            class="entity_note" name="roast_note" id="roast_note">
                                                                     </div>
                                                                 </div>
                                                                 <div id="item-right-1">
@@ -1234,7 +1234,7 @@ $previous_position = $productdata->postion - 1;
                                                                             </div>
                                                                         </div>
                                                                         <div class="entity_input col-12">
-                                                                            <input type="text" placeholder="NOTES"
+                                                                            <input type="text" placeholder="NOTES" name="aroma_note" id="aroma_note"
                                                                                 class="entity_note">
                                                                         </div>
                                                                     </div>
@@ -2588,6 +2588,8 @@ $previous_position = $productdata->postion - 1;
                     value: parseReview({{ $sampleReview->mouth_feel ?? '4' }})
                 });
                 $('#mouthfeel_note').val('{{ $sampleReview->mouthfeel_note ?? '' }}');
+                $('#aroma_note').val('{{ $sampleReview->aroma_note ?? '' }}');
+                $('#roast_note').val('{{ $sampleReview->roast_note ?? '' }}');
                 $('.mouthfeel_{{ $sampleReview->fm_chk ?? 'L' }}').prop('checked', true);
 
                 $(".flavor").slider({

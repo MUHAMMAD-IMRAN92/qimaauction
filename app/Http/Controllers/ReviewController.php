@@ -150,6 +150,7 @@ class ReviewController extends Controller
             $review->aroma_dry              = $request->aroma_dry;
             $review->aroma_crust            = $request->aroma_crust;
             $review->roast                  = $request->roast;
+            $review->roast_note             = $request->roast_note;
             $review->first_number            = $request->first_number;
             $review->second_number          = $request->second_number;
             $review->aroma_break            = $request->aroma_break;
