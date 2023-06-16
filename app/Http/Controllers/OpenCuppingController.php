@@ -118,11 +118,11 @@ class OpenCuppingController extends Controller
                 'cuppingProduct' => $productArr
             ]);
         } else {
-            $auctionProduct = Product::whereIn('id',  @$productArr)->get();
+            $auctionProduct = Product::whereIn('id',  @$productArr)->orderBy('table', 'asc')->get();
             return view('admin.jury.jury_cupping_product_ajax', [
                 'products' => $auctionProduct,
                 'table' => $table,
-                'auction_id'=>$request->auction_id
+                'auction_id' => $request->auction_id
             ]);
         }
     }
