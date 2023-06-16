@@ -220,12 +220,14 @@ class ReviewController extends Controller
                 $sampleSent = $sample2Sent;
             }
         }
+        echo "<!--FAIZAN ".print_r($request->sample_submit,true)."-->";
+
         if (isset($request->sample_submit)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)->where('id', '>',  $request->sent_sample_id)
                 ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')
                 ->first();
-                echo "<!--".print_r($sample2Sent,true)."-->";
+                echo "<!--FAIZAN ".print_r($sample2Sent,true)."-->";
             if ($sample2Sent) {
 
                 $sampleSent = $sample2Sent;
