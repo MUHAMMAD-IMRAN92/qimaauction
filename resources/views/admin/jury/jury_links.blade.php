@@ -332,11 +332,11 @@
 
     .text-section h2 {
         font-weight: 800;
-        margin-top: 10px;
-        color: #575555;
-        padding: 10px;
-        font-size: 20px;
-        -webkit-text-stroke: 1px #575555;
+        margin-top: 10px ;
+    color: #575555;
+    padding: 10px;
+    font-size: 20px;
+    -webkit-text-stroke: 1px #575555;
     }
 
     .table th,
@@ -356,19 +356,19 @@
     {{-- <div><iframe src="https://giphy.com/embed/xT9IgMgdur6larNA1a" width="100%" height="100%" style="position:absolute"
         frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div> --}}
 
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <!-- maintenance -->
-                <section class="row flexbox-container">
-                    <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
-                        <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
-                            <div class="card-content">
-                                <div class="">
+        <div class="app-content content">
+            <div class="content-overlay"></div>
+            <div class="header-navbar-shadow"></div>
+            <div class="content-wrapper">
+                <div class="content-header row">
+                </div>
+                <div class="content-body">
+                    <!-- maintenance -->
+                    <section class="row flexbox-container" >
+                        <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
+                            <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
+                                <div class="card-content">
+                                    <div class="">
                                     <div class="newlogo">
                                         <div class="image-section">
                                             <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}"
@@ -442,13 +442,12 @@
     <!-- BEGIN: Page Vendor JS-->
     <!-- END: Page Vendor JS-->
 
-    <!-- BEGIN: Theme JS-->
-    <script src="{{ asset('public/app-assets/js/core/app-menu.js') }}"></script>
-    <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
-    <script src="{{ asset('public/app-assets/js/scripts/components.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
-    <!-- END: Theme JS-->
-    <script type='text/javascript'>
+        <!-- BEGIN: Theme JS-->
+        <script src="{{ asset('public/app-assets/js/core/app-menu.js') }}"></script>
+        <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
+        <script src="{{ asset('public/app-assets/js/scripts/components.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+        <script type='text/javascript'>
         var juryId = {{ $juryId }};
         var auctionId = {{ $auction_id }};
         var sampleProducts = "<?php= $sampleProducts ?>";

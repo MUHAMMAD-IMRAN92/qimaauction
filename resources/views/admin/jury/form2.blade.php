@@ -406,7 +406,6 @@
     h5 {
         margin-top: 0px !important;
     }
-
     .roastslider.ui-slider-horizontal {
         height: 50px;
         border-radius: 0;
@@ -524,6 +523,9 @@
     @media only screen and (max-width:767px) {
         .id-text {
             font-size: 40px;
+        }
+        .margin-bottom-balance{
+            margin-bottom: 0px !important;
         }
 
         .list-crumb .list-1 {
@@ -700,7 +702,6 @@
     .bg-overall--theme {
         background: linear-gradient(290deg, #716EE4 0%, #62CBDA 100%);
         padding: 30px;
-        height: 427px;
         width: auto !important;
 
     }
@@ -791,6 +792,141 @@
     .new-bg-color {
         background-color: #EFEBE5;
     }
+
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Regular.ttf")}}') format('truetype');
+
+    }
+
+    .margin-bottom-balance {
+        margin-bottom: 161px;
+    }
+    .radio_container h5{
+        font-weight: 700;
+        color: #575555;
+    }
+    .radio_container input~.checkmark{
+        border-radius: 6px !important;
+    }
+
+    #grid-container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(12,1fr);
+        padding: 0px;
+        margin: 0px;
+    }
+    #grid-container #item-left-1 {
+        grid-row: 1 / 3;
+    }
+    #grid-container #item-left-2 {
+        grid-column: 1 / 1;
+        grid-row: 3 / 5;
+        display: grid;
+    }
+    #grid-container #item-left-3 {
+        grid-column: 1 / 1;
+        grid-row: 5 / 7;
+    }
+    #grid-container #item-left-4 {
+        grid-column: 1 / 1;
+        grid-row: 7 / 9;
+    }
+    #grid-container #item-left-5 {
+        grid-column: 1 / 1;
+        grid-row: 9 / 11;
+    }
+    #grid-container #item-left-6 {
+        grid-column: 1 / 1;
+        grid-row: 11 / 13;
+    }
+
+    #grid-container #item-right-1 {
+        display: grid;
+        grid-column: 2 / -1;
+        grid-row: 1 / 4;
+    }
+    #grid-container #item-right-2 {
+        grid-column: 2 / -1;
+        grid-row: 4 / 6;
+    }
+    #grid-container #item-right-3 {
+        grid-column: 2 / -1;
+        grid-row: 6 / 8;
+    }
+    #grid-container #item-right-4 {
+        grid-column: 2 / -1;
+        grid-row: 8 / 10;
+    }
+    #grid-container #item-right-5 {
+        grid-column: 2 / -1;
+        grid-row: 10 / 13;
+    }
+
+    @media only screen and (max-width: 800px) {
+        #grid-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        #grid-container #item-left-1 {
+        grid-row: 1 ;
+        grid-row: initial;
+         }
+    #grid-container #item-left-2 {
+        grid-column: 1 / 1;
+        grid-row: initial;
+        display: grid;
+    }
+    #grid-container #item-left-3 {
+        grid-column: 1 / 1;
+        grid-row: initial;
+    }
+    #grid-container #item-left-4 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+    #grid-container #item-left-5 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+    #grid-container #item-left-6 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+
+    #grid-container #item-right-1 {
+
+        grid-column: 1 / 1;
+
+        grid-row: span 2;
+    }
+    #grid-container #item-right-2 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+    #grid-container #item-right-3 {
+        grid-column: 1 / 1;
+
+grid-row: initial;
+    }
+    #grid-container #item-right-4 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+    #grid-container #item-right-5 {
+        grid-column: 1 / 1;
+
+        grid-row: initial;
+    }
+    }
+
 </style>
 
 <body
@@ -807,12 +943,12 @@
 
             <div class="content-body">
                 <section class="row flexbox-container">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <div class="card  bg-authentication rounded-0 mb-0">
-                            <div class="row m-0">
+                    <div class="col-lg-12 d-flex justify-content-center p-0 " style="display:block !important;">
+                        <div class="card  bg-authentication rounded-0 mb-0 p-0">
+                            <div class="row m-0 p-0">
                                 <div class="col-lg-12  p-0">
-                                    <div class="card new-bg rounded-0 mb-0 p-2">
-                                        <div class="card-header pt-50 pb-1">
+                                    <div class="card new-bg rounded-0 mb-0 p-0">
+                                        <div class="card-header pt-50 p-0">
                                             @if (session('success'))
                                                 <div class="col-md-12 alert alert-success">
                                                     {{ session('success') }}
@@ -924,7 +1060,27 @@
                                                         </div>
                                                         <!--Breadcrumb Section-->
                                                     </div>
+                                                    <!--Breadcrumb Section-->
+                                                    {{-- <div class="breadcrumb-section col-lg-6  ">
+                                                        <ul class="breadcrumb list-crumb">
+                                                        <li class="list-1"><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px;color: black;">
+                                                                        POSITION-{{ $productdata->postion }}</p>
+                                                                </a></li>
+                                                            <li class="list-2"><a href="#">
+                                                                    <p class=""
+                                                                        style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: black;">
+                                                                        TABLE-{{ $productdata->table }}</p>
+                                                                </a>
+                                                            </li>
+
+
+                                                        </ul>
+                                                    </div> --}}
+                                                    <!--Breadcrumb Section-->
                                                 </div>
+</div>
                                                 <!--Breadcrumb Section-->
                                                 {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
                                             <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
@@ -961,7 +1117,7 @@
 
                                             </div>
 
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 p-0">
                                                 <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
@@ -991,11 +1147,10 @@ $previous_position = $productdata->postion - 1;
                                                         value="{{ $sampleReview->id ?? null }}">
                                                     <input type="hidden" name="sent_sample_id"
                                                         value="{{ $sentSampleId }}">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
+                                                        <div class="container-fluid p-0 ">
 
-                                                            <div class="col-lg-6 p-0">
-                                                                <div class="row bg-roast--theme">
+                                                        <div id="grid-container">
+                                                                <div class="row bg-roast--theme" id="item-left-1">
                                                                     <div class="col-12">
                                                                         <h3 class="entity-text roast-bg">ROAST COLOUR
                                                                         </h3>
@@ -1014,169 +1169,7 @@ $previous_position = $productdata->postion - 1;
                                                                             class="entity_note">
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="bg-defects--theme">
-                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE
-                                                                    </p>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12"
-                                                                            style="text-align:center">
-                                                                            <input class="score_first_number"
-                                                                                oninput="if (this.value > 5) this.value = 0;"
-                                                                                type="number" id="quantity"
-                                                                                value="first_number"
-                                                                                name="first_number">
-                                                                            <span class="multiply">X</span>
-                                                                            <input class="score_second_number"
-                                                                                oninput="if (this.value > 3) this.value = 0"
-                                                                                type="number" id="quantity"
-                                                                                maxlength="3" value="second_number"
-                                                                                name="second_number">
-                                                                            <span class="multiply">X</span>
-                                                                            <span class="multiply">4</span>
-                                                                            <span class="multiply">=</span>
-                                                                            <span class="multiply4">?</span>
-                                                                            <div class="entity_input">
-                                                                                <input type="text"
-                                                                                    name="defect_note"
-                                                                                    id="defect_note"
-                                                                                    placeholder="NOTES"
-                                                                                    class="entity_note">
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="bg-sweet--theme">
-                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12"
-                                                                            style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider sweetness">
-                                                                                    <input type="hidden"
-                                                                                        name="sweetness"
-                                                                                        id="sweetness"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text"
-                                                                                    name="sweetness_note"
-                                                                                    id="sweetness_note"
-                                                                                    placeholder="NOTES" value="6"
-                                                                                    class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="bg-mouth--theme">
-                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12"
-                                                                            style="text-align:center">
-                                                                            <div class="custom_slider">
-                                                                                <div class="design-slider mt-5 mb-5">
-                                                                                    <div
-                                                                                        class="customslider mouthfeel">
-                                                                                        <input type="hidden"
-                                                                                            name="mouth_feel"
-                                                                                            id="mouth_feel"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="radio_button">
-                                                                                <div>
-                                                                                    <label class="radio_container">
-
-                                                                                        <input type="radio"
-                                                                                            class="mouthfeel_H"
-                                                                                            value="H"
-                                                                                            name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>H</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <label class="radio_container">
-                                                                                        <input type="radio"
-                                                                                            value="M"
-                                                                                            class="mouthfeel_M"
-                                                                                            name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>M</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <label class="radio_container">
-                                                                                        <input type="radio"
-                                                                                            value="L"
-                                                                                            checked="checked"
-                                                                                            class="mouthfeel_L"
-                                                                                            name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>L</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text"
-                                                                                    name="mouthfeel_note"
-                                                                                    id="mouthfeel_note"
-                                                                                    placeholder="NOTES"
-                                                                                    class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="bg-taste--theme">
-                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE
-                                                                    </h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12"
-                                                                            style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider aftertaste">
-                                                                                    <input type="hidden"
-                                                                                        name="after_taste"
-                                                                                        id="after_taste"
-                                                                                        value="6"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text"
-                                                                                    name="aftertaste_note"
-                                                                                    id="aftertaste_note"
-                                                                                    placeholder="NOTES"
-                                                                                    class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="bg-overall--theme">
-                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12"
-                                                                            style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider overall">
-                                                                                    <input type="hidden"
-                                                                                        name="overall" id="overall"
-                                                                                        value="6"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text"
-                                                                                    name="overall_note"
-                                                                                    id="overall_note"
-                                                                                    placeholder="NOTES"
-                                                                                    class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6 p-0">
-                                                                <div>
+                                                                <div id="item-right-1">
                                                                     <div class="bg-aroma--theme-1 ">
                                                                         <div class="row">
                                                                             <div class="col-12">
@@ -1230,7 +1223,28 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
 
                                                                 </div>
-                                                                <div class="bg-clean--theme">
+
+                                                                <div class="bg-defects--theme" id="item-left-2">
+                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <span class="multiply">4</span>
+                                                                            <span class="multiply">=</span>
+                                                                            <span class="multiply4">?</span>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="defect_note" id="defect_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-clean--theme" id="item-right-2">
                                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12"
@@ -1252,7 +1266,22 @@ $previous_position = $productdata->postion - 1;
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="bg-acid--theme">
+
+                                                                <div class="bg-sweet--theme" id="item-left-3">
+                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-acid--theme" id="item-right-3">
                                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12"
@@ -1314,7 +1343,51 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="bg-flavor--theme">
+                                                                <div class="bg-mouth--theme" id="item-left-4">
+                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="custom_slider">
+                                                                                <div class="design-slider mt-5 mb-5">
+                                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-flavor--theme" id="item-right-4">
                                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12"
@@ -1335,7 +1408,23 @@ $previous_position = $productdata->postion - 1;
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="bg-balance--theme">
+
+                                                                <div class="bg-taste--theme" id="item-left-5">
+                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="aftertaste_note" id="aftertaste_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="bg-balance--theme" id="item-right-5">
                                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12"
@@ -1356,7 +1445,25 @@ $previous_position = $productdata->postion - 1;
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+
+                                                                <div class="bg-overall--theme" id="item-left-6">
+                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="overall_note" id="overall_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+
+
                                                         </div>
                                                     </div>
 
@@ -1386,7 +1493,7 @@ $previous_position = $productdata->postion - 1;
                                                             }
                                                         </script>
 
-                                                        <div class="wrapper-btn">
+<div class="wrapper-btn">
                                                             <div class="row parent-btn">
                                                                 <div class="btn-next-prev">
                                                                     <input type="hidden" id="to_go_sample"
@@ -1481,8 +1588,6 @@ $previous_position = $productdata->postion - 1;
                                                                         onclick="finalSubmit()">Save</button>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -2185,15 +2290,17 @@ $previous_position = $productdata->postion - 1;
             width: 100% !important;
         }
 
-        body {
+        /* body {
             height: 100vh;
             display: grid;
             place-content: space-evenly;
             place-items: center;
             gap: 10%;
             padding: 0;
+        } */
+        .card{
+            box-shadow: none !important;
         }
-
         @media screen and (max-width: 500px) {
             body {
                 padding-top: 2em;

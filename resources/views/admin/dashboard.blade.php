@@ -76,6 +76,10 @@
         border-color: white !important;
         border: none;
     }
+    .timer-section button a{
+        text-decoration: none;
+        color: #575555;
+    }
 
     .icons-tab i {
         cursor: pointer;
@@ -227,7 +231,7 @@ line-height: 17px;
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
-                <button>purchase a sample set</button>
+                <button ><a href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-sample-set-auction-registration-2023/">purchase a sample set</a></button>
             </div>
 
         </div>
