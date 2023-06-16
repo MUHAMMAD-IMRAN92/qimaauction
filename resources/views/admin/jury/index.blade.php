@@ -141,10 +141,11 @@
                         var ids = btoa(row.id);
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
-                            `">Edit</a><br>` +
-                            `<a class="" target="_blank" href="/jury/links/`+ row.linkurl +`">
-                                View link</a>`
-                            +
+                            `">Edit</a><br>`
+                            // +
+                            // `<a class="" target="_blank" href="/jury/links/`+ row.linkurl +`">
+                            //     View link</a>`
+                            // +
                             // `<a class="" href="/jury/delete/` + ids +
                             // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
                             '</td>'
