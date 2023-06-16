@@ -308,8 +308,8 @@ class ProductController extends Controller
             // } else
             // {
             $lastSampleId = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->where('auction_id', $auctionId)->orderByRaw('CAST(sample_sent_to_jury.postion AS unsigned) desc')->first();
-            $previous = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->where('auction_id', $auctionId)->orderBy('id', 'asc')->first();
-            $next = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->where('auction_id', $auctionId)->orderBy('id', 'desc')->first();
+            $previous = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->where('auction_id', $auctionId)->orderByRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')->first();
+            $next = SentToJury::where('jury_id', $request->juryId)->where('tables', $request->table)->where('auction_id', $auctionId)->orderByRaw('CAST(sample_sent_to_jury.postion AS unsigned) desc')->first();
             $samplesArr = explode(',', $firstsample->samples);
 
             return view('admin.jury.form2', [
