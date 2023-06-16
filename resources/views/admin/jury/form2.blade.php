@@ -988,7 +988,526 @@
 
                                             </div>
 
-                                            </body>
+                                            <div class="col-lg-12 p-0">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <input type="hidden" name="final_submit_id" id="submit_id" value="0">
+                                                    <input type="hidden" name="table_value" value="{{ $productdata->table }}">
+                                                    <input type="hidden" name="current_position" value="{{ $productdata->postion }}">
+                                                    <input type="hidden" name="next_position" value="@php $next_position = $productdata->postion + 1; echo $next_position; @endphp">
+                                                    <input type="hidden" name="previous_position" value="@php $previous_position = $productdata->postion - 1;   echo $previous_position; @endphp">
+                                                    <input type="hidden" name="link" value="{{ $link }}">
+                                                    <input type="hidden" name="product_id" value="{{ $productId }}">
+                                                    <input type="hidden" name="jury_id" value="{{ $juryId }}">
+                                                    <input type="hidden" name="review_id" value="{{ $sampleReview->id ?? null }}">
+                                                    <input type="hidden" name="sent_sample_id" value="{{ $sentSampleId }}">
+                                                    <div class="container-fluid desktop-layout">
+                                                        <div class="row">
+
+                                                            <div class="col-lg-6 p-0">
+                                                                <div class="row bg-roast--theme">
+                                                                    <div class="col-12">
+                                                                        <h3 class="entity-text roast-bg">ROAST COLOUR</h3>
+                                                                    </div>
+
+                                                                    <div class="col-lg-12" style="text-align:center">
+                                                                        <div class="design-slider mt-5 mb-5">
+                                                                            <div class="roastslider"><input type="hidden" name="roast" id="roast" value="50"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="entity_input col-12">
+                                                                        <input type="text" placeholder="NOTES" class="entity_note">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-defects--theme">
+                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <span class="multiply">4</span>
+                                                                            <span class="multiply">=</span>
+                                                                            <span class="multiply4">?</span>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="defect_note" id="defect_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-sweet--theme">
+                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-mouth--theme">
+                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="custom_slider">
+                                                                                <div class="design-slider mt-5 mb-5">
+                                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-taste--theme">
+                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="aftertaste_note" id="aftertaste_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-overall--theme">
+                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="overall_note" id="overall_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 p-0">
+                                                                <div>
+                                                                    <div class="bg-aroma--theme-1 ">
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-12">
+                                                                            <h5>DRY</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry" value="0"></div>
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="bg-aroma--theme-2 ">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>CRUST</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="bg-aroma--theme-3 ">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>BREAK</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break" value="0"></div>
+                                                                        </div>
+                                                                        <div class="entity_input col-12">
+                                                                            <input type="text" placeholder="NOTES" class="entity_note">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="bg-clean--theme">
+                                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="cleanup_note" id="cleanup_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-acid--theme">
+                                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity" value="6"></div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" checked="checked" name="acidity_chk" value="L" class="acidity_L">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+
+                                                                                    </label>
+                                                                                </div>
+
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" name="acidity_chk" value="M" class="acidity_M">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" name="acidity_chk" value="H" class="acidity_H">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="acidity_note" id="acidity_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-flavor--theme">
+                                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="flavor_note" id="flavor_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-balance--theme">
+                                                                    <h3 class="entity-text balance-bg">BALANCE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance" value="8"></div>
+                                                                            </div>
+                                                                            <div class="entity_input margin-bottom-balance">
+                                                                                <input type="text" name="balance_note" id="balance_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- // Mobile Layout // -->
+
+                                                    <div class="container-fluid mobile-layout">
+                                                        <div class="row">
+
+                                                            <div class="col-lg-6 p-0">
+                                                                <div class="row bg-roast--theme">
+                                                                    <div class="col-12">
+                                                                        <h3 class="entity-text roast-bg">ROAST COLOUR</h3>
+                                                                    </div>
+
+                                                                    <div class="col-lg-12" style="text-align:center">
+                                                                        <div class="design-slider mt-5 mb-5">
+                                                                            <div class="roastslider"><input type="hidden" name="roast" id="roast" value="50"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="entity_input col-12">
+                                                                        <input type="text" placeholder="NOTES" class="entity_note">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="">
+                                                                        <div class="row bg-aroma--theme-1">
+                                                                            <div class="col-12">
+                                                                                <h3 class="entity-text aroma-bg">AROMA</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="bg-aroma--theme-1">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>DRY</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromadry"><input type="hidden" name="aroma_dry" id="aroma_dry" value="0"></div>
+
+
+
+                                                                        </div>
+                                                                        </div>
+                                                                        <div class="bg-aroma--theme-2 ">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>CRUST</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromacrust"><input type="hidden" name="aroma_crust" id="aroma_crust" value="0"></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="bg-aroma--theme-3 ">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>BREAK</h5>
+                                                                        </div>
+                                                                        <div class="design-slider " style="height:75px">
+                                                                            <div class="aromaslider aromabreak"><input type="hidden" name="aroma_break" id="aroma_break" value="0"></div>
+                                                                        </div>
+                                                                        <div class="entity_input col-12">
+                                                                            <input type="text" placeholder="NOTES" class="entity_note">
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                <div class="bg-defects--theme">
+                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <span class="multiply">4</span>
+                                                                            <span class="multiply">=</span>
+                                                                            <span class="multiply4">?</span>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="defect_note" id="defect_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-clean--theme">
+                                                                    <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider cleancup"><input type="hidden" name="clean_up" id="clean_up" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="cleanup_note" id="cleanup_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-sweet--theme">
+                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-acid--theme">
+                                                                    <h3 class="entity-text acidity-bg">ACIDITY</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider acidity"><input type="hidden" name="acidity" id="acidity" value="6"></div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" checked="checked" name="acidity_chk" value="L" class="acidity_L">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+
+                                                                                    </label>
+                                                                                </div>
+
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" name="acidity_chk" value="M" class="acidity_M">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" name="acidity_chk" value="H" class="acidity_H">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="acidity_note" id="acidity_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-mouth--theme">
+                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="custom_slider">
+                                                                                <div class="design-slider mt-5 mb-5">
+                                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="bg-flavor--theme">
+                                                                    <h3 class="entity-text flavor-bg">FLAVOR</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider flavor"><input type="hidden" name="flavour" id="flavour" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="flavor_note" id="flavor_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-taste--theme">
+                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="aftertaste_note" id="aftertaste_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-balance--theme">
+                                                                    <h3 class="entity-text balance-bg">BALANCE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider balance"><input type="hidden" name="balance" id="balance" value="8"></div>
+                                                                            </div>
+                                                                            <div class="entity_input margin-bottom-balance">
+                                                                                <input type="text" name="balance_note" id="balance_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-overall--theme">
+                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="overall_note" id="overall_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- // mobile layout ends // -->
+
+                                                    {{-- <input type="hidden" name="defect" id="defect" value=""> --}}
+
+</body>
 <!-- END: Body-->
 
 </html>
