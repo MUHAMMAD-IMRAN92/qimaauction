@@ -6,10 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Review</title>
 
@@ -17,8 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/app-assets/images/ico/logo_new.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href={{ asset('public/app-assets/vendors/css/vendors.min.css') }}>
-    <link rel="stylesheet" type="text/css"
-        href={{ asset('public/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}>
+    <link rel="stylesheet" type="text/css" href={{ asset('public/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}>
     <!-- BEGIN: Vendor CSS-->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/vendors/css/vendors.min.css') }}"> --}}
     <!-- END: Vendor CSS-->
@@ -35,10 +32,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/themes/semi-dark-layout.css') }}">
     {{-- <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css"> --}}
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/authentication.css') }}">
     <!-- END: Page CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -409,9 +404,9 @@
     h5 {
         margin-top: 0px !important;
     }
-    .hr-margin{
-        margin-top: 40px;
-    }
+.hr-margin{
+    margin-top: 40px;
+}
     .roastslider.ui-slider-horizontal {
         height: 50px;
         border-radius: 0;
@@ -530,9 +525,6 @@
     @media only screen and (max-width:767px) {
         .id-text {
             font-size: 40px;
-        }
-        .margin-bottom-balance{
-            margin-bottom: 0px !important;
         }
 
         .list-crumb .list-1 {
@@ -832,134 +824,15 @@
         border-radius: 6px !important;
     }
 
-    #grid-container {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: repeat(12,1fr);
-    }
-    #grid-container #item-left-1 {
-        grid-row: 1 / 3;
-    }
-    #grid-container #item-left-2 {
-        grid-column: 1 / 1;
-        grid-row: 3 / 5;
-        display: grid;
-    }
-    #grid-container #item-left-3 {
-        grid-column: 1 / 1;
-        grid-row: 5 / 7;
-    }
-    #grid-container #item-left-4 {
-        grid-column: 1 / 1;
-        grid-row: 7 / 9;
-    }
-    #grid-container #item-left-5 {
-        grid-column: 1 / 1;
-        grid-row: 9 / 11;
-    }
-    #grid-container #item-left-6 {
-        grid-column: 1 / 1;
-        grid-row: 11 / 13;
-    }
-
-    #grid-container #item-right-1 {
-        display: grid;
-        grid-column: 2 / -1;
-        grid-row: 1 / 4;
-    }
-    #grid-container #item-right-2 {
-        grid-column: 2 / -1;
-        grid-row: 4 / 6;
-    }
-    #grid-container #item-right-3 {
-        grid-column: 2 / -1;
-        grid-row: 6 / 8;
-    }
-    #grid-container #item-right-4 {
-        grid-column: 2 / -1;
-        grid-row: 8 / 10;
-    }
-    #grid-container #item-right-5 {
-        grid-column: 2 / -1;
-        grid-row: 10 / 13;
-    }
-
-    @media only screen and (max-width: 800px) {
-        #grid-container {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-        }
-
-        #grid-container #item-left-1 {
-        grid-row: 1 ;
-        grid-row: initial;
-         }
-    #grid-container #item-left-2 {
-        grid-column: 1 / 1;
-        grid-row: initial;
-        display: grid;
-    }
-    #grid-container #item-left-3 {
-        grid-column: 1 / 1;
-        grid-row: initial;
-    }
-    #grid-container #item-left-4 {
-        grid-column: 1 / 1;
-     
-        grid-row: initial;
-    }
-    #grid-container #item-left-5 {
-        grid-column: 1 / 1;
-
-        grid-row: initial;
-    }
-    #grid-container #item-left-6 {
-        grid-column: 1 / 1;
-
-        grid-row: initial;
-    }
-
-    #grid-container #item-right-1 {
-
-        grid-column: 1 / 1;
-
-        grid-row: span 2;
-    }
-    #grid-container #item-right-2 {
-        grid-column: 1 / 1;
-
-        grid-row: initial;
-    }
-    #grid-container #item-right-3 {
-        grid-column: 1 / 1;
-
-grid-row: initial;
-    }
-    #grid-container #item-right-4 {
-        grid-column: 1 / 1;
-
-        grid-row: initial;
-    }
-    #grid-container #item-right-5 {
-        grid-column: 1 / 1;
-
-        grid-row: initial;
-    }
-    }
-
 </style>
 
-<body
-    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static new-bg-color   blank-page blank-page"
-    data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+<body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static new-bg-color   blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
     <div class="app-content content h-100">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
 
-            </div>
 
             <div class="content-body">
                 <section class="row flexbox-container">
@@ -970,11 +843,11 @@ grid-row: initial;
                                     <div class="card new-bg rounded-0 mb-0 p-0">
                                         <div class="card-header pt-50 p-0">
                                             @if (session('success'))
-                                                <div class="col-md-12 alert alert-success">
-                                                    {{ session('success') }}
-                                                </div>
+                                            <div class="col-md-12 alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
                                             @endif
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 p-0">
                                                 <!-- <div class="site-logo">
                                                     <img src="{{ asset('/public/app-assets/images/logo/newlogo.png') }}"
                                                         style="width: 100%;max-width:100%;">
@@ -1037,51 +910,49 @@ grid-row: initial;
                                                 </div> -->
                                                 <!-- <hr class="custom_hr"> -->
                                                 <div class="image-section">
-            <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" alt="">
-            <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
+                                                    <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" alt="">
+                                                    <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
 
-        </div>
-        <hr class="hr">
-        <div class="text-section">
-            <h2>{{$juryName}}</h2>
-        </div>
-        <hr class="hr">
-        <div class="container-fluid">
-<div class="sample-area row">
-                                                    <div class="sample-heading col-lg-6">
-                                                    <h2 class="id-text">SAMPLE ID</h2>
-                                                    <p class="sample_number">
-                                                        @foreach ($alltablesamples as $samp)
-                                                            @if ($samp->sampleId == $sentSampleId)
-                                                                {{ $samp->samples }}
-                                                            @endif
-                                                        @endforeach
-                                                    </p>
-                                                    </div>
-                                                    <!--Breadcrumb Section-->
-                                                    <div class="breadcrumb-section col-lg-6  ">
-                                                        <ul class="breadcrumb list-crumb">
-                                                        <li class="list-1"><a href="#">
-                                                                    <p class=""
-                                                                        style="font-family: 'Montserrat';font-size:25px;color: black;">
-                                                                        POSITION-{{ $productdata->postion }}</p>
-                                                                </a></li>
-                                                            <li class="list-2"><a href="#">
-                                                                    <p class=""
-                                                                        style="font-family: 'Montserrat';font-size:25px; padding-top:0.5rem; color: black;">
-                                                                        TABLE-{{ $productdata->table }}</p>
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </div>
-                                                    <!--Breadcrumb Section-->
                                                 </div>
-</div>
+                                                <hr class="hr">
+                                                <div class="text-section">
+                                                    <h2>{{$juryName}}</h2>
+                                                </div>
+                                                <hr class="hr">
+                                                <div class="">
+                                                    <div class="sample-area row">
+                                                        <div class="sample-heading col-lg-6">
+                                                            <h2 class="id-text">SAMPLE ID</h2>
+                                                            <p class="sample_number">
+                                                                @foreach ($alltablesamples as $samp)
+                                                                @if ($samp->sampleId == $sentSampleId)
+                                                                {{ $samp->samples }}
+                                                                @endif
+                                                                @endforeach
+                                                            </p>
+                                                        </div>
+                                                        <!--Breadcrumb Section-->
+                                                        <div class="breadcrumb-section col-lg-6  ">
+                                                            <ul class="breadcrumb list-crumb">
+                                                                <li class="list-1"><a href="#">
+                                                                        <p class="" style="font-family: 'Montserrat';color: black;">
+                                                                            POSITION-{{ $productdata->postion }}</p>
+                                                                    </a></li>
+                                                                <li class="list-2"><a href="#">
+                                                                        <p class="" style="font-family: 'Montserrat'; padding-top:0.5rem; color: black;">
+                                                                            TABLE-{{ $productdata->table }}</p>
+                                                                    </a>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+                                                        <!--Breadcrumb Section-->
+                                                    </div>
+                                                </div>
                                                 <!--Breadcrumb Section-->
                                                 {{-- <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">CUPPER: {{ $juryName }}</p>
-                                            <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
+                                                <p class="px-2" style="font-family: 'Montserrat';font-size:25px;">COMPANY: {{$juryCompany}}</p> --}}
                                                 <!--Sample ID Section-->
                                                 <!-- <div class="sample-area">
                                                     <h2 class="id-text">SAMPLE ID</h2>
@@ -1092,7 +963,7 @@ grid-row: initial;
                                                             @endif
                                                         @endforeach
                                                     </p>
-
+                                                    
                                                     <div class="breadcrumb-section">
                                                         <ul class="breadcrumb">
                                                             <li><a href="#">
@@ -1109,44 +980,30 @@ grid-row: initial;
 
                                                         </ul>
                                                     </div>
-
+                                                   
                                                 </div> -->
                                                 <!--Sample ID Section-->
 
                                             </div>
 
                                             <div class="col-lg-12 p-0">
-                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
-                                                    enctype="multipart/form-data" id="myForm">
+                                                <form action="{{ url('/jury/link/reviewSave') }}" method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
-                                                    <input type="hidden" name="final_submit_id" id="submit_id"
-                                                        value="0">
-                                                    <input type="hidden" name="table_value"
-                                                        value="{{ $productdata->table }}">
-                                                    <input type="hidden" name="current_position"
-                                                        value="{{ $productdata->postion }}">
-                                                    <input type="hidden" name="next_position"
-                                                        value="@php
-$next_position = $productdata->postion + 1;
-                                                        echo $next_position; @endphp">
-                                                    <input type="hidden" name="previous_position"
-                                                        value="@php
-$previous_position = $productdata->postion - 1;
-                                                            echo $previous_position; @endphp">
-                                                    <input type="hidden" name="link"
-                                                        value="{{ $link }}">
-                                                    <input type="hidden" name="product_id"
-                                                        value="{{ $productId }}">
-                                                    <input type="hidden" name="jury_id"
-                                                        value="{{ $juryId }}">
-                                                    <input type="hidden" name="review_id"
-                                                        value="{{ $sampleReview->id ?? null }}">
-                                                    <input type="hidden" name="sent_sample_id"
-                                                        value="{{ $sentSampleId }}">
-                                                        <div class="container-fluid p-0 ">
+                                                    <input type="hidden" name="final_submit_id" id="submit_id" value="0">
+                                                    <input type="hidden" name="table_value" value="{{ $productdata->table }}">
+                                                    <input type="hidden" name="current_position" value="{{ $productdata->postion }}">
+                                                    <input type="hidden" name="next_position" value="@php $next_position = $productdata->postion + 1; echo $next_position; @endphp">
+                                                    <input type="hidden" name="previous_position" value="@php $previous_position = $productdata->postion - 1;   echo $previous_position; @endphp">
+                                                    <input type="hidden" name="link" value="{{ $link }}">
+                                                    <input type="hidden" name="product_id" value="{{ $productId }}">
+                                                    <input type="hidden" name="jury_id" value="{{ $juryId }}">
+                                                    <input type="hidden" name="review_id" value="{{ $sampleReview->id ?? null }}">
+                                                    <input type="hidden" name="sent_sample_id" value="{{ $sentSampleId }}">
+                                                    <div class="container-fluid desktop-layout">
+                                                        <div class="row">
 
-                                                        <div id="grid-container">
-                                                                <div class="row bg-roast--theme" id="item-left-1">
+                                                            <div class="col-lg-6 p-0">
+                                                                <div class="row bg-roast--theme">
                                                                     <div class="col-12">
                                                                         <h3 class="entity-text roast-bg">ROAST COLOUR</h3>
                                                                     </div>
@@ -1160,7 +1017,111 @@ $previous_position = $productdata->postion - 1;
                                                                         <input type="text" placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
-                                                                <div id="item-right-1">
+
+                                                                <div class="bg-defects--theme">
+                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
+                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <span class="multiply">X</span>
+                                                                            <span class="multiply">4</span>
+                                                                            <span class="multiply">=</span>
+                                                                            <span class="multiply4">?</span>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="defect_note" id="defect_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-sweet--theme">
+                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-mouth--theme">
+                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="custom_slider">
+                                                                                <div class="design-slider mt-5 mb-5">
+                                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="radio_button">
+                                                                            <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>L</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+
+                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>H</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
+                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                               
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-taste--theme">
+                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="aftertaste_note" id="aftertaste_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-overall--theme">
+                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12" style="text-align:center">
+                                                                            <div class="design-slider mt-5 mb-5">
+                                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
+                                                                            </div>
+                                                                            <div class="entity_input">
+                                                                                <input type="text" name="overall_note" id="overall_note" placeholder="NOTES" class="entity_note">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 p-0">
+                                                                <div>
                                                                     <div class="bg-aroma--theme-1 ">
                                                                         <div class="row">
                                                                             <div class="col-12">
@@ -1200,28 +1161,7 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
 
                                                                 </div>
-
-                                                                <div class="bg-defects--theme" id="item-left-2">
-                                                                    <h3 class="entity-text defects-bg">DEFECTS</h3>
-                                                                    <p class="entity-label"># X INTENSITY X 4 = SCORE</p>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12" style="text-align:center">
-                                                                            <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
-                                                                            <span class="multiply">X</span>
-                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
-                                                                            <span class="multiply">X</span>
-                                                                            <span class="multiply">4</span>
-                                                                            <span class="multiply">=</span>
-                                                                            <span class="multiply4">?</span>
-                                                                            <div class="entity_input">
-                                                                                <input type="text" name="defect_note" id="defect_note" placeholder="NOTES" class="entity_note">
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="bg-clean--theme" id="item-right-2">
+                                                                <div class="bg-clean--theme">
                                                                     <h3 class="entity-text cleancup-bg">CLEAN CUP</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12" style="text-align:center">
@@ -1235,22 +1175,7 @@ $previous_position = $productdata->postion - 1;
 
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="bg-sweet--theme" id="item-left-3">
-                                                                    <h3 class="entity-text sweetness-bg">SWEETNESS</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12" style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="bg-acid--theme" id="item-right-3">
+                                                                <div class="bg-acid--theme">
                                                                     <h3 class="entity-text acidity-bg">ACIDITY</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12" style="text-align:center">
@@ -1296,51 +1221,7 @@ $previous_position = $productdata->postion - 1;
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="bg-mouth--theme" id="item-left-4">
-                                                                    <h3 class="entity-text mouthfeel-bg">MOUTHFEEL</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12" style="text-align:center">
-                                                                            <div class="custom_slider">
-                                                                                <div class="design-slider mt-5 mb-5">
-                                                                                    <div class="customslider mouthfeel"><input type="hidden" name="mouth_feel" id="mouth_feel"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="radio_button">
-                                                                            <div>
-                                                                                    <label class="radio_container">
-                                                                                        <input type="radio" value="L" checked="checked" class="mouthfeel_L" name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>L</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <label class="radio_container">
-
-                                                                                        <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>H</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <label class="radio_container">
-                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>M</h5>
-                                                                                    </label>
-                                                                                </div>
-                                                                               
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="bg-flavor--theme" id="item-right-4">
+                                                                <div class="bg-flavor--theme">
                                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12" style="text-align:center">
@@ -1353,23 +1234,7 @@ $previous_position = $productdata->postion - 1;
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="bg-taste--theme" id="item-left-5">
-                                                                    <h3 class="entity-text aftertaste-bg">AFTERTASTE</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12" style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider aftertaste"><input type="hidden" name="after_taste" id="after_taste" value="6"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text" name="aftertaste_note" id="aftertaste_note" placeholder="NOTES" class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                
-                                                                <div class="bg-balance--theme" id="item-right-5">
+                                                                <div class="bg-balance--theme">
                                                                     <h3 class="entity-text balance-bg">BALANCE</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-12" style="text-align:center">
@@ -1382,31 +1247,12 @@ $previous_position = $productdata->postion - 1;
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="bg-overall--theme" id="item-left-6">
-                                                                    <h3 class="entity-text overall-bg">OVERALL</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12" style="text-align:center">
-                                                                            <div class="design-slider mt-5 mb-5">
-                                                                                <div class="customslider overall"><input type="hidden" name="overall" id="overall" value="6"></div>
-                                                                            </div>
-                                                                            <div class="entity_input">
-                                                                                <input type="text" name="overall_note" id="overall_note" placeholder="NOTES" class="entity_note">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                           
-                                                         
-                                                                
-                                                             
+                                                            </div>
                                                         </div>
                                                     </div>
-
                                                     <!-- // Mobile Layout // -->
 
-                                                    <!-- <div class="container-fluid mobile-layout">
+                                                    <div class="container-fluid mobile-layout">
                                                         <div class="row">
 
                                                             <div class="col-lg-6 p-0">
@@ -1653,7 +1499,7 @@ $previous_position = $productdata->postion - 1;
                                                             </div>
                                                           
                                                         </div>
-                                                    </div> -->
+                                                    </div>
 
                                                     <!-- // mobile layout ends // -->
 
@@ -1661,127 +1507,107 @@ $previous_position = $productdata->postion - 1;
 
 
 
-                                                      <div class="container-fluid">
-                                                            <h3 class="entity-text total-bg">TOTAL</h3>
-                                                            <p class="entity-label" style="color: #000;">(+36)</p>
-                                                            <p id="input_total_score"
-                                                                style="max-width:100%;width: 267px;margin: auto;">
-                                                                <input onkeyup="if (this.value > 100){ calcTotal()};"
-                                                                    style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
-                                                                    type="hidden" class="totalScore"
-                                                                    name="total_score" id="total_score"
-                                                                    value="84">
-                                                            </p>
-                                                            <h2 class="totalScore" id="div_total_score">0</h2>
-                                                            <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
-                                                            <input type="hidden" value="0"
-                                                                name="manual_override">
-                                                            <script>
-                                                                function toggleDivs() {
-                                                                    $('#div_total_score').hide();
-                                                                    $('#input_total_score').show();
-                                                                    $('input[name=manual_override]').val(1);
-                                                                }
-                                                            </script>
+                                                    <div class="container-fluid">
+                                                        <h3 class="entity-text total-bg">TOTAL</h3>
+                                                        <p class="entity-label" style="color: #000;">(+36)</p>
+                                                        <p id="input_total_score" style="max-width:100%;width: 267px;margin: auto;">
+                                                            <input onkeyup="if (this.value > 100){ calcTotal()};" style="max-width:100%;text-align: center;font-size: 100px;font-family: ''Montserrat'';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;" type="hidden" class="totalScore" name="total_score" id="total_score" value="84">
+                                                        </p>
+                                                        <h2 class="totalScore" id="div_total_score">0</h2>
+                                                        <a class="anchor-ovveride" onclick="toggleDivs()">Manually Override Score</a>
+                                                        <input type="hidden" value="0" name="manual_override">
+                                                        <script>
+                                                            function toggleDivs() {
+                                                                $('#div_total_score').hide();
+                                                                $('#input_total_score').show();
+                                                                $('input[name=manual_override]').val(1);
+                                                            }
+                                                        </script>
 
-<div class="wrapper-btn">
+                                                        <div class="wrapper-btn">
                                                             <div class="row parent-btn">
-                                                            <div class="btn-next-prev">
-                                                                <input type="hidden" id="to_go_sample"
-                                                                    name="to_go_sample" value="">
+                                                                <div class="btn-next-prev">
+                                                                    <input type="hidden" id="to_go_sample" name="to_go_sample" value="">
 
-                                                                <button type="submit" value="1"
-                                                                    name="sample_submit_prev" class="submit-form-btn"
-                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
-                                                                </button>
-                                                                <button type="submit" value="0"
-                                                                    name="sample_submit" class="submit-form-btn"
-                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
-                                                                </button>
-                                                            </div>
+                                                                    <button type="submit" value="1" name="sample_submit_prev" class="submit-form-btn" @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
+                                                                    </button>
+                                                                    <button type="submit" value="0" name="sample_submit" class="submit-form-btn" @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
+                                                                    </button>
+                                                                </div>
                                                                 {{-- <a class="submit-form-btn" type="button"
                                                                     value="" onclick="showmodal()">SUBMIT
                                                                     TABLE</a> --}}
 
                                                                 @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
-                                                                    <a class="submit-form-btn" type="button"
-                                                                        value="" onclick="showmodal()">SUBMIT
-                                                                        TABLE</a>
+                                                                <a class="submit-form-btn" type="button" value="" onclick="showmodal()">SUBMIT
+                                                                    TABLE</a>
                                                                 @else
-                                                                    {{-- <a type="submit" name=""
+                                                                {{-- <a type="submit" name=""
                                                                         class="submit-form-btn">SAVE
                                                                         TABLE</a> --}}
-                                                                    <button type="submit" name=""
-                                                                        class="submit-form-btn">Save Table</button>
+                                                                <button type="submit" name="" class="submit-form-btn">Save Table</button>
                                                                 @endif
 
 
                                                             </div>
-                                                                    </div>
-                                                                    <hr class="hr">
-                                                            <div class="row">
-                                                                <div class="scrollable" style="overflow:auto;">
-                                                                    <div class="button-group"
-                                                                        style="white-space:nowrap">
+                                                        </div>
+                                                        <hr class="hr hr-margin">
+                                                        <div class="row">
+                                                            <div class="scrollable" style="overflow:auto;">
+                                                                <div class="button-group" style="white-space:nowrap">
+                                                                    @foreach ($alltablesamples as $samp)
+                                                                    @php $extraclass = ""; @endphp
+                                                                    @if ($samp->is_hidden == 1)
+                                                                    @php $extraclass="isdone"; @endphp
+                                                                    @endif
+                                                                    @if ($samp->sampleId == $sentSampleId)
+                                                                    {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
+                                                                    <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                        {{ $samp->samples }}
+                                                                    </a>
+                                                                    @else
+                                                                    <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                        {{ $samp->samples }}
+                                                                    </a>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="hr">
+                                                        <div class="footer-end">
+                                                            <p>BEST OF YEMEN 2023</p>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div id="myModal" class="modal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Submit Cupping
+                                                                    </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>You are about to submit results for
                                                                         @foreach ($alltablesamples as $samp)
-                                                                            @php $extraclass = ""; @endphp
-                                                                            @if ($samp->is_hidden == 1)
-                                                                                @php $extraclass="isdone"; @endphp
-                                                                            @endif
-                                                                            @if ($samp->sampleId == $sentSampleId)
-                                                                                {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
-                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
-                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                                    {{ $samp->samples }}
-                                                                                </a>
-                                                                            @else
-                                                                                <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
-                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                                    {{ $samp->samples }}
-                                                                                </a>
-                                                                            @endif
-                                                                        @endforeach
-                                                                    </div>
+                                                                        @if ($samp->sampleTable == $table)
+                                                                        &nbsp<b>{{ $samp->samples }}</b>,
+                                                                        @endif
+                                                                        @endforeach.
+                                                                    </p>
+                                                                    <br><br>
+                                                                    <p>Are you sure you want to do this? You
+                                                                        cannot edit fields once submitted.</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                    <button name="table_submit" class="btn btn-primary" id="final_submit" onclick="finalSubmit()">Save</button>
                                                                 </div>
                                                             </div>
-                                                            <hr class="hr">
-                                                            <div class="footer-end"><p>BEST OF YEMEN 2023</p></div>
-
-
-                                                            </div>
-                                                            <div id="myModal" class="modal" tabindex="-1">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title">Submit Cupping
-                                                                            </h5>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal">&times;</button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>You are about to submit results for
-                                                                                @foreach ($alltablesamples as $samp)
-                                                                                    @if ($samp->sampleTable == $table)
-                                                                                        &nbsp<b>{{ $samp->samples }}</b>,
-                                                                                    @endif
-                                                                                @endforeach.
-                                                                            </p>
-                                                                            <br><br>
-                                                                            <p>Are you sure you want to do this? You
-                                                                                cannot edit fields once submitted.</p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-secondary"
-                                                                                data-dismiss="modal">Cancel</button>
-                                                                            <button name="table_submit"
-                                                                                class="btn btn-primary"
-                                                                                id="final_submit"
-                                                                                onclick="finalSubmit()">Save</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -1813,18 +1639,20 @@ $previous_position = $productdata->postion - 1;
 
     <!-- END: Page JS-->
     <script>
-        function showmodal() {
-            $('#myModal').modal('show');
-        }
-        var subtotal = 0;
+    
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
+            function showmodal() {
+                $('#myModal').modal('show');
+            }
+            var subtotal = 0;
 
             $("#select").select2({
                 tags: true,
                 maximumInputLength: 16,
             });
+
             (function() {
                 "use strict"
 
@@ -2601,8 +2429,8 @@ $previous_position = $productdata->postion - 1;
             $(this).trigger('change');
         }
         $(document).ready(function() {
-            var chkhidden = {{ $firstsample->is_hidden == 1 ? '1' : '0' }};
-            var chkmanual = {{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }};
+            var chkhidden = "{{ $firstsample->is_hidden == 1 ? '1' : '0' }}";
+            var chkmanual = "{{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }}";
             $(".score_second_number,.score_first_number").keyup(function() {
                 var first = $('.score_first_number').val();
                 var second = $('.score_second_number').val();
@@ -2739,74 +2567,76 @@ $previous_position = $productdata->postion - 1;
 
                 $(".roastslider")
                     .slider({
-                        value: {{ isset($sampleReview->roast) ? $sampleReview->roast : 50 }}
+                        value: "{{ isset($sampleReview->roast) ? $sampleReview->roast : 50 }}"
                     });
                 $(".aromacrust")
                     .slider({
-                        value: {{ isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust : 2 }}
+                        value: "{{ isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust : 2 }}"
                     });
                 $(".aromadry")
                     .slider({
-                        value: {{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
                     });
                 $(".aromabreak")
                     .slider({
-                        value: {{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
                     })
                 $('input[name=first_number]').val(
-                    {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }});
+                "    {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }}"
+                );
                 $('input[name=second_number]').val(
-                    {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }});
+                   " {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }}"
+                );
                 $('input[name=second_number]').trigger('keyup');
-                $('#defect_note').val('{{ $sampleReview->defects_note ?? '' }}');
+                $('#defect_note').val("{{ $sampleReview->defects_note ?? '' }}");
                 $(".cleancup").slider({
-                    value: parseReview({{ $sampleReview->clean_up ?? '4' }})
+                    value: parseReview("{{ $sampleReview->clean_up ?? '4' }}")
                 })
-                $('#cleanup_note').val('{{ $sampleReview->clean_sweet_note ?? '' }}');
+                $('#cleanup_note').val("{{ $sampleReview->clean_sweet_note ?? '' }}");
 
                 $(".sweetness").slider({
-                    value: parseReview({{ $sampleReview->sweetness ?? '4' }})
+                    value: parseReview("{{ $sampleReview->sweetness ?? '4' }}")
                 })
-                $('#sweetness_note').val('{{ $sampleReview->sweetness_note ?? '' }}');
+                $('#sweetness_note').val("{{ $sampleReview->sweetness_note ?? '' }}");
 
                 $(".acidity").slider({
-                    value: parseReview({{ $sampleReview->acidity ?? '4' }})
+                    value: parseReview("{{ $sampleReview->acidity ?? '4' }}")
                 })
-                $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
-                $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
+                $('#acidity_note').val("{{ $sampleReview->acidity_note ?? '' }}");
+                $(".acidity_{{ $sampleReview->acidity_chk ?? 'L' }}").prop('checked', true);
 
                 $(".mouthfeel").slider({
-                    value: parseReview({{ $sampleReview->mouth_feel ?? '4' }})
+                    value: parseReview("{{ $sampleReview->mouth_feel ?? '4' }}")
                 });
-                $('#mouthfeel_note').val('{{ $sampleReview->mouthfeel_note ?? '' }}');
-                $('.mouthfeel_{{ $sampleReview->fm_chk ?? 'L' }}').prop('checked', true);
+                $('#mouthfeel_note').val("{{ $sampleReview->mouthfeel_note ?? '' }}");
+                $(".mouthfeel_{{ $sampleReview->fm_chk ?? 'L' }}").prop('checked', true);
 
                 $(".flavor").slider({
-                    value: parseReview({{ $sampleReview->flavour ?? '4' }})
+                    value: parseReview("{{ $sampleReview->flavour ?? '4' }}")
                 });
-                $('#flavor_note').val('{{ $sampleReview->flavor_note ?? '' }}');
+                $('#flavor_note').val("{{ $sampleReview->flavor_note ?? '' }}");
 
                 $(".aftertaste").slider({
-                    value: parseReview({{ $sampleReview->after_taste ?? '8' }})
+                    value: parseReview("{{ $sampleReview->after_taste ?? '8' }}")
                 })
-                $('#aftertaste_note').val('{{ $sampleReview->aftertaste_note ?? '' }}');
+                $('#aftertaste_note').val("{{ $sampleReview->aftertaste_note ?? '' }}");
 
                 $(".balance").slider({
-                    value: parseReview({{ $sampleReview->balance ?? '8' }})
+                    value: parseReview("{{ $sampleReview->balance ?? '8' }}")
                 })
-                $('#balance_note').val('{{ $sampleReview->balance_note ?? '' }}');
+                $('#balance_note').val("{{ $sampleReview->balance_note ?? '' }}");
 
                 $(".overall").slider({
-                    value: parseReview({{ $sampleReview->overall ?? '4' }})
+                    value: parseReview("{{ $sampleReview->overall ?? '4' }}")
                 })
-                $('#overall_note').val('{{ $sampleReview->overall_note ?? '' }}');
+                $('#overall_note').val("{{ $sampleReview->overall_note ?? '' }}");
 
                 calcTotal();
                 if (chkmanual) {
                     toggleDivs();
-                    @if ($reviewdata)
-                        $('input[name=total_score]').val({{ $reviewdata->total_score }});
-                    @endif
+                    if ('<?= $reviewdata ?>')
+                        $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
+                    
                 }
             }
         });
@@ -2825,4 +2655,3 @@ $previous_position = $productdata->postion - 1;
 <!-- END: Body-->
 
 </html>
-
