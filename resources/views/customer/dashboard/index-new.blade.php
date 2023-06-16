@@ -423,9 +423,9 @@
                                 </button>
                             @endif
                             @if (isset($auction))
-                                <button type="button" class="btn btn-primary banner-btns mb-1"
+                                <!-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                     OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                                </button>
+                                </button> -->
                             @endif
                         </div>
                     </div>
@@ -468,7 +468,7 @@
     </section>
 
     <section>
-        <div class="container">
+        <div class="container-fluid" style="padding: 10px 40px;">
             <div class="row">
                 <div class="col-12">
                     <h2 id="winc">WINNING COFFEES</h2>
@@ -476,7 +476,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive">
+                    <div class="">
                         <table class="" style="width:100%">
                             <tr class="table-row">
                                 <th style="border-bottom:1px solid black;">RANK</th>
