@@ -464,7 +464,7 @@
                     table: table,
                     juryId: juryId,
                     auctionId: auction_id,
-                    sampleProducts: sampleProductd
+                    sampleProducts: sampleProductd,
                     _token: "{{ csrf_token() }}"
                 },
                 success: function(data) {
