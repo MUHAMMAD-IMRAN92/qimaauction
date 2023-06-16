@@ -1570,7 +1570,7 @@ $previous_position = $productdata->postion - 1;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <hr class="hr">
+                                                        <hr class="hr" style="margin-top:0px;">
                                                         <div class="footer-end">
                                                             <p>BEST OF YEMEN 2023</p>
                                                         </div>
