@@ -1298,19 +1298,20 @@ $previous_position = $productdata->postion - 1;
                                                                                         value="6"></div>
                                                                             </div>
                                                                             <div class="radio_button">
-                                                                                <div>
+                                                                            <div>
                                                                                     <label class="radio_container">
-
                                                                                         <input type="radio"
+                                                                                            checked="checked"
                                                                                             name="acidity_chk"
-                                                                                            value="H"
-                                                                                            class="acidity_H">
+                                                                                            value="L"
+                                                                                            class="acidity_L">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>H</h5>
+                                                                                        <h5>L</h5>
 
                                                                                     </label>
                                                                                 </div>
+                                                                                
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio"
@@ -1325,14 +1326,14 @@ $previous_position = $productdata->postion - 1;
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
+
                                                                                         <input type="radio"
-                                                                                            checked="checked"
                                                                                             name="acidity_chk"
-                                                                                            value="L"
-                                                                                            class="acidity_L">
+                                                                                            value="H"
+                                                                                            class="acidity_H">
                                                                                         <div class="checkmark">
                                                                                         </div>
-                                                                                        <h5>L</h5>
+                                                                                        <h5>H</h5>
 
                                                                                     </label>
                                                                                 </div>
@@ -1368,6 +1369,14 @@ $previous_position = $productdata->postion - 1;
                                                                                 </div>
                                                                                 <div>
                                                                                     <label class="radio_container">
+                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
+                                                                                        <div class="checkmark">
+                                                                                        </div>
+                                                                                        <h5>M</h5>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label class="radio_container">
 
                                                                                         <input type="radio" class="mouthfeel_H" value="H" name="fm_chk">
                                                                                         <div class="checkmark">
@@ -1375,14 +1384,7 @@ $previous_position = $productdata->postion - 1;
                                                                                         <h5>H</h5>
                                                                                     </label>
                                                                                 </div>
-                                                                                <div>
-                                                                                    <label class="radio_container">
-                                                                                        <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
-                                                                                        <div class="checkmark">
-                                                                                        </div>
-                                                                                        <h5>M</h5>
-                                                                                    </label>
-                                                                                </div>
+                                                                                
 
                                                                             </div>
                                                                             <div class="entity_input">
