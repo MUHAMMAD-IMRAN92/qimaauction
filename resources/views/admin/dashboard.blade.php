@@ -202,7 +202,7 @@
             </div>
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
-                <h3>AUGUST 9TH</h3>
+                <h3>AUGUST 8TH</h3>
                 <button>purchase a sample set</button>
             </div>
 
@@ -232,7 +232,7 @@
                 </div>
                 <div class="auction-time">
                     <h2>best of yemen 2023 <br>
-                        AUGUST 9TH</h2>
+                        AUGUST 8TH</h2>
                 </div>
 
             </div>
@@ -249,7 +249,7 @@
 
     </div>
     <script>
-        const targetDate = new Date('August 9, 2023 00:00:00').getTime();
+        const targetDate = new Date('August 8, 2023 00:00:00').getTime();
 
         const timer = setInterval(function() {
 
