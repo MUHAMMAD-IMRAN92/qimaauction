@@ -9,7 +9,7 @@ class DevTestController extends Controller
 {
     public function index()
     {
-        return Product::whereDate('created_at', date("l jS \of F Y h:i:s A"))->get();
+        return Product::whereDate('created_at', date(''))->get();
         return phpinfo();
 
         $en = encrypt(1);
