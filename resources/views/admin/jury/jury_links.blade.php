@@ -368,30 +368,33 @@
         <script src="{{ asset('public/app-assets/js/core/app.js') }}"></script>
         <script src="{{ asset('public/app-assets/js/scripts/components.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
-        <!-- END: Theme JS-->
-        <script  type='text/javascript'>
-            var juryId = {{$juryId}};
-            var table ={{isset($firstsample->tables) ? $firstsample->tables : 0}};
+        <script type='text/javascript'>
+        var juryId = {{ $juryId }};
+        var auctionId = {{ $auction_id }};
+        var sampleProducts = "<?php= $sampleProducts ?>";
+        var table = {{ isset($firstsample->tables) ? $firstsample->tables : 0 }};
 
-            sampleData(table,table);
-            function  sampleData(element,table) {
-                jQuery(".tablinks").removeClass("active");
-                jQuery(".tablinks-custom-"+element).addClass("active");
-                jQuery.ajax({
-                    type:'POST',
-                    url:`{{route('sampletable')}}`,
-                    data:{
-                        table:table,
-                        juryId:juryId,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function( data ) {
-                        jQuery('.content_data').html(data.html);
-                    }
-                });
-            }
-        </script>
+        sampleData(table, table);
 
+        function sampleData(element, table) {
+            jQuery(".tablinks").removeClass("active");
+            jQuery(".tablinks-custom-" + element).addClass("active");
+            jQuery.ajax({
+                type: 'POST',
+                url: `{{ route('sampletable') }}`,
+                data: {
+                    table: table,
+                    juryId: juryId,
+                    auctionId: auctionId,
+                    _token: "{{ csrf_token() }}"
+                },
+
+                success: function(data) {
+                    jQuery('.content_data').html(data.html);
+                }
+            });
+        }
+    </script>
     </body>
 
     </html>

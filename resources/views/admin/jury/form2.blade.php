@@ -1119,6 +1119,8 @@ grid-row: initial;
                                                 <form action="{{ url('/jury/link/reviewSave') }}" method="POST"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
+                                                    <input type="hidden" name="auctionId" id=""
+                                                        value="{{$auctionId}}">
                                                     <input type="hidden" name="final_submit_id" id="submit_id"
                                                         value="0">
                                                     <input type="hidden" name="table_value"
@@ -1686,24 +1688,25 @@ $previous_position = $productdata->postion - 1;
 
 <div class="wrapper-btn">
                                                             <div class="row parent-btn">
-                                                            <div class="btn-next-prev">
-                                                                <input type="hidden" id="to_go_sample"
-                                                                    name="to_go_sample" value="">
+                                                                <div class="btn-next-prev">
+                                                                    <input type="hidden" id="to_go_sample"
+                                                                        name="to_go_sample" value="">
 
-                                                                <button type="submit" value="1"
-                                                                    name="sample_submit_prev" class="submit-form-btn"
-                                                                    @if ($previous->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>PREVIOUS
-                                                                </button>
-                                                                <button type="submit" value="0"
-                                                                    name="sample_submit" class="submit-form-btn"
-                                                                    @if ($next->id == \Str::afterLast(request()->url(), '/')) disabled="disabled" @endif>NEXT
-                                                                </button>
-                                                            </div>
+                                                                    <button type="submit" value="1"
+                                                                        name="sample_submit_prev"
+                                                                        class="submit-form-btn"
+                                                                        @if ($previous->id ==  request()->sampleId) disabled="disabled" @endif>PREVIOUS
+                                                                    </button>
+                                                                    <button type="submit" value="0"
+                                                                        name="sample_submit" class="submit-form-btn"
+                                                                        @if ($next->id == request()->sampleId) disabled="disabled" @endif>NEXT
+                                                                    </button>
+                                                                </div>
                                                                 {{-- <a class="submit-form-btn" type="button"
                                                                     value="" onclick="showmodal()">SUBMIT
                                                                     TABLE</a> --}}
 
-                                                                @if ($lastSample->id == \Str::afterLast(request()->url(), '/'))
+                                                                @if ($lastSample->id ==  request()->sampleId)
                                                                     <a class="submit-form-btn" type="button"
                                                                         value="" onclick="showmodal()">SUBMIT
                                                                         TABLE</a>
@@ -1717,7 +1720,7 @@ $previous_position = $productdata->postion - 1;
 
 
                                                             </div>
-                                                                    </div>
+                                                        </div>
                                                                     <hr class="hr">
                                                             <div class="row">
                                                                 <div class="scrollable" style="overflow:auto;">
