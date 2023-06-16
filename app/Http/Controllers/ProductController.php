@@ -275,7 +275,7 @@ class ProductController extends Controller
                 'sample_sent_to_jury.is_hidden'
             )
             ->where('sample_sent_to_jury.jury_id', $request->juryId)->where('auction_id', $auctionId)
-            ->where('sample_sent_to_jury.tables', $request->table)->orderByRaw('CAST(postion AS unsigned)')
+            ->where('sample_sent_to_jury.tables', $request->table)->orderByRaw('CAST(sample_sent_to_jury.postion AS unsigned)')
             // ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();
         if (isset($request->sampleId)) {
