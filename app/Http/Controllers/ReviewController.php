@@ -205,7 +205,7 @@ class ReviewController extends Controller
                 ->where('sample_sent_to_jury.tables', $request->table_value)
                 ->where('sample_sent_to_jury.is_hidden', '0')
                 ->update(array("is_hidden" => "1"));
-            return redirect()->route('juryLinks', ['id' => encrypt($request->jury_id)]);
+            return redirect()->url('/jury/links/' . encrypt($request->jury_id) . '/' . $request->auctionId);
         }
         if (isset($request->sample_submit_prev)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
@@ -233,9 +233,9 @@ class ReviewController extends Controller
             }
         }
         if ($request->to_go_sample) {
-            return redirect()->route('give_review', ['juryId' => $sampleSent->jury_id, 'table' => $sampleSent->tables, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted Successuflly');
+            return redirect()->route('give_review', ['juryId' => $sampleSent->jury_id, 'table' => $sampleSent->tables, 'sampleId' => $request->to_go_sample, 'auctionId' => $request->auctionId])->with('success', 'Review submitted Successuflly');
         } else {
-            return redirect()->route('give_review', ['juryId' => $sampleSent->jury_id, 'table' => $sampleSent->tables, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted Successfully');
+            return redirect()->route('give_review', ['juryId' => $sampleSent->jury_id, 'table' => $sampleSent->tables, 'sampleId' => $sampleSent->id, 'auctionId' => $request->auctionId])->with('success', 'Review submitted Successfully');
         }
     }
     public function form()
@@ -250,7 +250,7 @@ class ReviewController extends Controller
             ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
             ->select('products.*', 'sample_sent_to_jury.*', 'juries.name')
             ->where('sample_sent_to_jury.jury_id', $request->juryId)
-            ->where('sample_sent_to_jury.tables', $request->table)->orderBy('sample_sent_to_jury.postion' , 'asc')
+            ->where('sample_sent_to_jury.tables', $request->table)->orderBy('sample_sent_to_jury.postion', 'asc')
             //   ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();
         $samplesHidden = SentToJury::where('sample_sent_to_jury.jury_id', $request->juryId)
@@ -258,7 +258,7 @@ class ReviewController extends Controller
             ->where('sample_sent_to_jury.is_hidden', '0')
             ->get();
         //   return response($samples);
-        $data = view('admin.sample_table', compact('samples', 'tables', 'samplesHidden' ,'auctionId' ))->render();
+        $data = view('admin.sample_table', compact('samples', 'tables', 'samplesHidden', 'auctionId'))->render();
         return response()->json(array('success' => true, 'html' => $data));
     }
 
