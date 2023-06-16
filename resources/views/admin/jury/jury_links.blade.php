@@ -44,6 +44,12 @@
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 <style>
+    @font-face {
+  font-family: 'Montserrat';
+  src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Black.ttf")}}') format('truetype')
+      ;
+  /* Add additional font weights and styles as necessary */
+}
     .tab {overflow: hidden; border: 1px solid white;
         background-color: transparent !important;
     }
@@ -86,6 +92,7 @@
     border-radius: 20px;
     color: #575555;
     font-weight: bold;
+    width: 240px;
 
     }
     .btn-success:hover{
@@ -94,7 +101,8 @@
     }
     .tab button{
         color: #575555;
-        font-weight: bolder;
+    font-weight: 800;
+    -webkit-text-stroke: 1px #575555;
     font-size: 17px;
     height: 59px;
     /* border: 1px solid white !important; */
@@ -121,6 +129,7 @@
     .tab button:hover {
         background: #575555 !important;
         color: white;
+        -webkit-text-stroke: transparent;
     }
 
     col-lg-6 .active {background-color: #ccc;}
@@ -165,6 +174,10 @@
             }
             .tab button{
                 font-size: 11px !important;
+
+            }
+            .btn-success{
+                width: auto;
             }
             /* Force table to not be like tables anymore */
             #no-more-tables table,
@@ -217,7 +230,7 @@
             background-color: #FFF;
         }
         .heder_text{
-            text-transform: uppercase;
+            
             text-align: center;
             font-family: 'Montserrat';
             font-size: 15px;
@@ -258,7 +271,8 @@
     .table th, .table td{
         color: #575555;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 600;
+        font-family: 'Montserrat';
 
     }
     </style>
@@ -288,11 +302,12 @@
             <img src="{{asset('public/app-assets/images/logo/heading.png')}}" alt="">
 
         </div>                                        <p class="heder_text">
-                                            Welcome to the Best of Yemen 2022 International jury Cupping.
-                                        </p>
-                                        <p class="heder_text">
+                                            Welcome to the Best of Yemen 2022 International jury Cupping.<br>
                                             Below you can find the links to the cupping forms for each sample. They have been arranged across 5 tables.
+
                                         </p>
+                                        <!-- <p class="heder_text">
+                                        </p> -->
                                         <p class="heder_text">
                                             Once you have cupped all the samples on a given table please click on the submit button to confirm submission.
                                         </p>
