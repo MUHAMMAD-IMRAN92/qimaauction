@@ -1292,7 +1292,7 @@ $previous_position = $productdata->postion - 1;
                                                                                 <div class="customslider sweetness"><input type="hidden" name="sweetness" id="sweetness"></div>
                                                                             </div>
                                                                             <div class="entity_input">
-                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES" value="6" class="entity_note">
+                                                                                <input type="text" name="sweetness_note" id="sweetness_note" placeholder="NOTES"  class="entity_note">
                                                                             </div>
                                                                         </div>
                                                                     </div>
