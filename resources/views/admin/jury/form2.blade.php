@@ -506,7 +506,9 @@
     }
 
     .design-slider {
-        padding: 2rem 0.4rem;
+        padding: 0.5rem 0.4rem;
+        max-width: 70%;
+        margin: auto;
     }
 
     input {
@@ -1193,7 +1195,7 @@ $previous_position = $productdata->postion - 1;
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="col-lg-12" style="max-width:70%;margin:auto;">
+                                                                        <div class="col-lg-12" style="max-width:73%;margin:auto;float:none;">
                                                                             <h5>DRY</h5>
                                                                         </div>
                                                                         <div class="design-slider mt-5 mb-5"
@@ -1208,7 +1210,7 @@ $previous_position = $productdata->postion - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="bg-aroma--theme-2 ">
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-12" style="max-width:73%;margin:auto;float:none;">
                                                                             <h5>CRUST</h5>
                                                                         </div>
                                                                         <div class="design-slider mt-5 mb-5"
@@ -1221,7 +1223,7 @@ $previous_position = $productdata->postion - 1;
 
                                                                     </div>
                                                                     <div class="bg-aroma--theme-3 ">
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-12" style="max-width:73%;margin:auto;float:none;">
                                                                             <h5>BREAK</h5>
                                                                         </div>
                                                                         <div class="design-slider mt-5 mb-5"
