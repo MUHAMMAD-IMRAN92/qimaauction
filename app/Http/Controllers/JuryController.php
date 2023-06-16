@@ -6,6 +6,7 @@ use App\Mail\JuryMail;
 use App\Models\Jury;
 use App\Models\Product;
 use App\Models\Auction;
+use App\Models\OpenCuppingProduct;
 use App\Models\SentToJury;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
@@ -167,7 +168,7 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
-        return $request->all();
+        // return $request->all();
         ini_set('max_execution_time', '0');
 
         $request->validate([
@@ -179,7 +180,7 @@ class JuryController extends Controller
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
 
-            return    $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id',  $request->auction_id)->first();
+                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id',  $request->auction_id)->first();
                 Product::where('id', $product)->update([
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
@@ -261,11 +262,12 @@ class JuryController extends Controller
             $juryId = decrypt($id);
             $jury = Jury::find($juryId);
         }
+        $openCuppingProduct = OpenCuppingProduct::where('auction_id', $auctionId)->first();
         if ($jury) {
             $samples = SentToJury::groupBy('tables')
                 ->select('tables', DB::raw('count(*) as total'))
                 // ->where('sample_sent_to_jury.is_hidden','=','0')
-                ->where('sample_sent_to_jury.jury_id', $juryId)->where('auction_id', $auctionId)
+                ->where('sample_sent_to_jury.jury_id', $juryId)->where('auction_id', $auctionId)->whereIn('product_id', explode(',', @$openCuppingProduct->products))
                 ->where('sample_sent_to_jury.tables', '!=', null)
                 ->orderBy('tables', 'asc')
                 ->get();
