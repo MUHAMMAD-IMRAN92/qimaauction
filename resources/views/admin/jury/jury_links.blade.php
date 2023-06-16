@@ -378,17 +378,15 @@
 
                                         </div>
                                         <p class="heder_text">
-                                            Welcome to the Best of Yemen 2022 International jury Cupping.<br>
+                                            Welcome to the Best of Yemen 2023 International jury Cupping.<br>
                                             Below you can find the links to the cupping forms for each sample. They have
-                                            been arranged across 5 tables.
-
-                                        </p>
-                                        <!-- <p class="heder_text">
-                                        </p> -->
-                                        <p class="heder_text">
+                                            been arranged across 5 tables.<br>
                                             Once you have cupped all the samples on a given table please click on the
                                             submit button to confirm submission.
                                         </p>
+                                        <!-- <p class="heder_text">
+                                        </p> -->
+                                        
                                     </div>
 
                                     @if (session('success'))
