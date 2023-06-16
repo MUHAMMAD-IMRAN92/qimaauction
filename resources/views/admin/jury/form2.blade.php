@@ -62,7 +62,9 @@
         overflow-x: hidden;
         font-family: 'Montserrat';
     }
-
+    .pager{
+        padding-right:0;
+    }
     .bootstrap-touchspin .bootstrap-touchspin-injected {}
 
     .tags-input-wrapper {
