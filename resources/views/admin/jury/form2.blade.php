@@ -2634,7 +2634,7 @@
                 calcTotal();
                 if (chkmanual) {
                     toggleDivs();
-                    if ("{{$reviewdata}}")
+                    if ("<?php= $reviewdata ?>")
                         $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
 
                 }
