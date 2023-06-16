@@ -52,15 +52,6 @@
         font-family: 'Montserrat';
         padding: 10px;
         line-height: normal;
-
-
-
-
-
-
-
-
-
     }
 
     .style-td-2 {
@@ -69,10 +60,8 @@
         font-size: 47px;
 
         font-family: 'Montserrat';
-      padding: 0px;
+        padding: 0px;
         border-bottom: 1px solid black;
-
-
     }
 
     .style-td-3 {
@@ -85,10 +74,7 @@
         font-size: 14px;
         color: #232B38;
         padding: 10px;
-
         border-bottom: 1px solid black;
-
-
     }
 
     .style-td-4 {
@@ -99,9 +85,6 @@
         padding: 10px;
         padding: 3px;
         border-bottom: 1px solid black;
-
-
-
     }
 
     .style-td-5 {
@@ -109,7 +92,6 @@
         line-height: 20px;
         color: #232B38;
         padding: 10px;
-
         font-size: 20px;
         border-bottom: 1px solid black;
         font-weight: 600;
@@ -126,9 +108,6 @@
 
         border-bottom: 1px solid black;
         font-weight: 700;
-
-
-
     }
 
     .style-td-6 button {
@@ -138,25 +117,19 @@
 
         padding: 3px;
         border-bottom: 1px solid black;
-
     }
 
     #winc {
         text-align: center;
         color: #232B38;
-
         margin-bottom: 10px;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         font-size: 50px;
-        line-height: 78px;
-
-
-
+       line-height: 78px;
         color: #232B38;
     }
-
 
     table {
         margin-top: 60px;
@@ -169,12 +142,7 @@
         font-weight: 700;
         font-size: 62px;
         line-height: 80px;
-        border-bottom: 1px solid black;
-
-
-
-
-
+        border-bottom: 1px solid black
 
         color: #E78460;
         padding: 10px;
@@ -243,7 +211,8 @@
         border-radius: 5px;
         padding: 10px;
     }
-    .button button a{
+
+    .button button a {
         text-decoration: none;
         color: #fff;
     }
@@ -257,24 +226,22 @@
         align-items: center;
         padding: 10px;
     }
-    .border-vl{
+
+    .border-vl {
         border-right: 1px solid black;
         height: 100px;
-        display:flex;
+        display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
-   .border-vl .para{
+    .border-vl .para {}
 
+    .table-row {
+        font-family: 'Montserrat';
+        font-size: 13px;
 
-   }
-   .table-row
-   {
-    font-family: 'Montserrat';
-    font-size: 13px;
-
-   }
+    }
 
     @media all and (max-width : 1050px) {
         .table-row {
@@ -357,16 +324,17 @@
         .button button {
             font-size: 8px;
         }
-        .banner-btn button{
-            font-size:11px;
+
+        .banner-btn button {
+            font-size: 11px;
         }
     }
-    @media only screen and (max-width: 1440px) and (min-width: 1024px)
-        {
-            .banner-btn button {
+
+    @media only screen and (max-width: 1440px) and (min-width: 1024px) {
+        .banner-btn button {
             font-size: 20px !important;
-            }
         }
+    }
 
 
     @media all and (max-width : 500px) {
@@ -376,8 +344,8 @@
             padding: 5px;
             line-height: 10px;
         }
-        .button button a
-        {
+
+        .button button a {
             font-weight: 600;
         }
 
@@ -406,19 +374,20 @@
     }
 
     a.btn-outline-dark {
-    font-family: 'Montserrat';
-    font-size: 17px;
-    font-weight: 600;
-    border: 3px solid #232B38;
-    border-radius: 5px;
-    padding: 16px;
-    margin-top: 10px;
-}
-.fourth_col{
-    border-right: 1px solid black;
-    height: 100px;
-    padding:inherit;
-}
+        font-family: 'Montserrat';
+        font-size: 17px;
+        font-weight: 600;
+        border: 3px solid #232B38;
+        border-radius: 5px;
+        padding: 16px;
+        margin-top: 10px;
+    }
+
+    .fourth_col {
+        border-right: 1px solid black;
+        height: 100px;
+        padding: inherit;
+    }
 </style>
 
 <body>
@@ -443,20 +412,20 @@
                         </div>
 
                         @php
-                            $auction=App\Models\Auction::where('is_active','1')->first();
-                            $auctionwiners=App\Models\Auction::where('is_hidden','1')->first();
+                            $auction = App\Models\Auction::where('is_active', '1')->first();
+                            $auctionwiners = App\Models\Auction::where('is_hidden', '1')->first();
                         @endphp
                         <div class="my-3 banner-btn">
 
-                            @if(isset($auctionwiners))
-                            <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='/auction-winners/{{$auctionwiners->id}}' ">RESULTS
-                            </button>
+                            @if (isset($auctionwiners))
+                                <button type="button" class="btn btn-primary banner-btns mb-1"
+                                    OnClick=" location.href='/auction-winners/{{ $auctionwiners->id }}' ">RESULTS
+                                </button>
                             @endif
-                            @if(isset($auction))
-                          <button type="button" class="btn btn-primary banner-btns mb-1"
-                                OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                            </button>
+                            @if (isset($auction))
+                                <button type="button" class="btn btn-primary banner-btns mb-1"
+                                    OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                                </button>
                             @endif
                         </div>
                     </div>
@@ -505,60 +474,67 @@
                     <h2 id="winc">WINNING COFFEES</h2>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="" style="width:100%">
-                                <tr class="table-row">
-                                    <th style="border-bottom:1px solid black;">RANK</th>
-                                    <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
-                                    <th style="border-bottom:1px solid black;">JURY SCORE</th>
-                                    <th style="border-bottom:1px solid black ;">REGION & ALTITUDE</th>
-                                    <th style="border-bottom:1px solid black;">LOT SIZE (LBS)</th>
-                                    <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
-                                    <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
-                                    <th></th>
-                                </tr>
-                                @foreach ($winningCoffees as $winningCoffee)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="" style="width:100%">
+                            <tr class="table-row">
+                                <th style="border-bottom:1px solid black;">RANK</th>
+                                <th style="border-bottom:1px solid black;">LOT NAME AND CODE</th>
+                                <th style="border-bottom:1px solid black;">JURY SCORE</th>
+                                <th style="border-bottom:1px solid black ;">REGION & ALTITUDE</th>
+                                <th style="border-bottom:1px solid black;">LOT SIZE (LBS)</th>
+                                <th style="border-bottom:1px solid black;" class="process">PROCESS</th>
+                                <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
+                                <th></th>
+                            </tr>
+                            @foreach ($winningCoffees as $winningCoffee)
                                 <tr>
                                     <td class="rank">
-                                        <div class="vl">#{{$winningCoffee->rank}}</div>
+                                        <div class="vl">#{{ $winningCoffee->rank }}</div>
                                     </td>
 
                                     <td class="style-td-1 ">
-                                        <div class="vl">{{$winningCoffee->name}}<br>{{$winningCoffee->code}}</div>
+                                        <div class="vl">{{ $winningCoffee->name }}<br>{{ $winningCoffee->code }}
+                                        </div>
                                     </td>
 
                                     <td class="style-td-2">
-                                        <div class="vl">{{$winningCoffee->score}}</div>
+                                        <div class="vl">{{ $winningCoffee->score }}</div>
                                     </td>
 
                                     <td class="style-td-3">
                                         <div class="fourth_col">
-                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->village}}</p>
-                                           <p style="margin-bottom: 0; min-width: max-content;"> {{$winningCoffee->region}}</p>
-                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->governorate}}</p>
-                                           <p style="margin-bottom: 0; min-width: max-content;">{{$winningCoffee->altitude}}</p>
+                                            <p style="margin-bottom: 0; min-width: max-content;">
+                                                {{ $winningCoffee->village }}</p>
+                                            <p style="margin-bottom: 0; min-width: max-content;">
+                                                {{ $winningCoffee->region }}</p>
+                                            <p style="margin-bottom: 0; min-width: max-content;">
+                                                {{ $winningCoffee->governorate }}</p>
+                                            <p style="margin-bottom: 0; min-width: max-content;">
+                                                {{ $winningCoffee->altitude }}</p>
                                         </div>
                                     </td>
 
                                     <td class="style-td-4">
-                                        <div class="vl">{{$winningCoffee->quantity}}</div>
+                                        <div class="vl">{{ $winningCoffee->quantity }}</div>
                                     </td>
 
                                     <td class="style-td-5">
-                                        <div class="vl" style="">{{$winningCoffee->process}}</div>
+                                        <div class="vl" style="">{{ $winningCoffee->process }}</div>
                                     </td>
 
-                                    <td class="style-td-6">{{$winningCoffee->genetics}}</td>
+                                    <td class="style-td-6">{{ $winningCoffee->genetics }}</td>
 
-                                    <td class="button"><button><a href="{{url ('/winningproduct',$winningCoffee->code)}}">MORE INFORMATION</a></button></td>
+                                    <td class="button"><button><a
+                                                href="{{ url('/winningproduct', $winningCoffee->code) }}">MORE
+                                                INFORMATION</a></button></td>
                                 </tr>
-                                @endforeach
-                            </table>
-                        </div>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
-        </div>
+            </div>
         </div>
     </section>
 
@@ -633,7 +609,8 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/14.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/15.png') }}" alt="">
+                    </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/16.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/17.png') }}" alt="">
@@ -647,7 +624,8 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/20.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/21.png') }}" alt="">
+                    </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/22.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/23.png') }}" alt="">
@@ -661,7 +639,8 @@
                     <div class="col-2 img-size">
                         <img src="{{ asset('public/images/26.png') }}" alt="">
                     </div>
-                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt=""></div>
+                    <div class="col-2 img-size"> <img src="{{ asset('public/images/27.png') }}" alt="">
+                    </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/28.png') }}" alt="">
                     </div>
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/29.png') }}" alt="">
@@ -730,7 +709,7 @@
             </div>
         </div>
     </section>
-    <section class="section-4" >
+    <section class="section-4">
         <div class="container py-5">
             <!-- <div class=""> -->
             <div class="row">
@@ -780,46 +759,43 @@
     </section>
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
-            <form action="{{url('/signup')}}" method="post">
-                <input type="hideen" name="_token" value="{{csrf_token()}}" >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
+            <form action="{{ url('/signup') }}" method="post">
+                <input type="hideen" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">SIGN UP FOR NEWSLETTER</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" placeholder="Enter Your Name" name="name"
+                                            class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Email</label>
-                                    <input type="text" placeholder="Enter Your Email" name="email" class="form-control">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="text" placeholder="Enter Your Email" name="email"
+                                            class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-dark">Submit</button>
-                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     </section>
 </body>
-
-
-
-
-
 
 </html>
