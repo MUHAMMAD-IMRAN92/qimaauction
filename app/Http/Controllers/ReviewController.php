@@ -212,6 +212,7 @@ class ReviewController extends Controller
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)
                 ->where('id', '<',  $request->sent_sample_id)->orderBy('id', 'desc')
+                ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) desc')
                 ->first();
 
             //  dd($request);
