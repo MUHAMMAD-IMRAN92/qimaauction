@@ -65,6 +65,9 @@
     .pager{
         padding-right:0;
     }
+    .ui-slider-pips [class*=ui-slider-pip-selected] .ui-slider-line, .ui-slider-pips .ui-slider-pip-inrange .ui-slider-line{
+        background: #575555;
+    }
     .bootstrap-touchspin .bootstrap-touchspin-injected {}
 
     .tags-input-wrapper {
@@ -369,8 +372,8 @@
     .ui-state-default,
     .ui-widget-content .ui-state-default,
     .ui-widget-header .ui-state-default {
-        border: 1px solid black;
-        background: white url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
+        border: 1px solid #575555;
+        background: #575555 url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
         font-weight: bold;
         color: black;
     }
