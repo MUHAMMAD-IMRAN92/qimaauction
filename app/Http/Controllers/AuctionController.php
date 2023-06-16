@@ -1105,7 +1105,7 @@ class AuctionController extends Controller
     {
         ini_set('max_execution_time', '0');
         $winningCoffees = WinningCofees::all();
-        return view('customer.dashboard.user-dashboard-index', ['winningCoffees' => $winningCoffees]);
+        return view('customer.dashboard.index-new', ['winningCoffees' => $winningCoffees]);
     }
 
     public function winningCoffeeProducts($id)
