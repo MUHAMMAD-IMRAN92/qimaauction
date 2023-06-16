@@ -167,6 +167,8 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
+        ini_set('max_execution_time', '0');
+
         $request->validate([
             'juries' => 'required|array',
             'products' => 'required|array',
