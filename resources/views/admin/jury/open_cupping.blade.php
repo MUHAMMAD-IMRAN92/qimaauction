@@ -242,6 +242,7 @@
                                                     <div style="margin-left: 39%">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -249,12 +250,11 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            </section>
-            <!--/ Zero configuration table -->
+                </section>
+                <!--/ Zero configuration table -->
 
+            </div>
         </div>
-    </div>
     </div>
     <!-- END: Content-->
 @endsection
