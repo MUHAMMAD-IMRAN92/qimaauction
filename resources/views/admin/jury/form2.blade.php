@@ -271,7 +271,7 @@
         background: transparent;
     }
 
- 
+
     .entity_note {
         width: 80%;
         margin: auto;
@@ -302,7 +302,7 @@
         text-align: center;
         background: white;
         color: black;
-      
+
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         padding: 12px;
         width: 100%;
@@ -759,7 +759,7 @@
     }
 
     .button-group {
-      
+
         text-align: center;
     }
 
@@ -963,7 +963,7 @@
                                                             @endif
                                                         @endforeach
                                                     </p>
-                                                    
+
                                                     <div class="breadcrumb-section">
                                                         <ul class="breadcrumb">
                                                             <li><a href="#">
@@ -980,7 +980,7 @@
 
                                                         </ul>
                                                     </div>
-                                                   
+
                                                 </div> -->
                                                 <!--Sample ID Section-->
 
@@ -1085,7 +1085,7 @@
                                                                                         <h5>M</h5>
                                                                                     </label>
                                                                                 </div>
-                                                                               
+
                                                                             </div>
                                                                             <div class="entity_input">
                                                                                 <input type="text" name="mouthfeel_note" id="mouthfeel_note" placeholder="NOTES" class="entity_note">
@@ -1192,7 +1192,7 @@
 
                                                                                     </label>
                                                                                 </div>
-                                                                                
+
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio" name="acidity_chk" value="M" class="acidity_M">
@@ -1212,7 +1212,7 @@
 
                                                                                     </label>
                                                                                 </div>
-                                                                                
+
                                                                             </div>
                                                                             <div class="entity_input">
                                                                                 <input type="text" name="acidity_note" id="acidity_note" placeholder="NOTES" class="entity_note">
@@ -1316,7 +1316,7 @@
                                                                         <div class="col-lg-12" style="text-align:center">
                                                                             <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
                                                                             <span class="multiply">X</span>
-                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0;" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
                                                                             <span class="multiply">X</span>
                                                                             <span class="multiply">4</span>
                                                                             <span class="multiply">=</span>
@@ -1372,7 +1372,7 @@
 
                                                                                     </label>
                                                                                 </div>
-                                                                               
+
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio" name="acidity_chk" value="M" class="acidity_M">
@@ -1392,7 +1392,7 @@
 
                                                                                     </label>
                                                                                 </div>
-                                                      
+
                                                                             </div>
                                                                             <div class="entity_input">
                                                                                 <input type="text" name="acidity_note" id="acidity_note" placeholder="NOTES" class="entity_note">
@@ -1418,7 +1418,7 @@
                                                                                         <h5>L</h5>
                                                                                     </label>
                                                                                 </div>
-                                        
+
                                                                                 <div>
                                                                                     <label class="radio_container">
                                                                                         <input type="radio" value="M" class="mouthfeel_M" name="fm_chk">
@@ -1443,7 +1443,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                
+
                                                                 <div class="bg-flavor--theme">
                                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                                     <div class="row">
@@ -1497,7 +1497,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                          
+
                                                         </div>
                                                     </div>
 
@@ -1555,22 +1555,7 @@
                                                         <div class="row">
                                                             <div class="scrollable" style="overflow:auto;">
                                                                 <div class="button-group" style="white-space:nowrap">
-                                                                    @foreach ($alltablesamples as $samp)
-                                                                    @php $extraclass = ""; @endphp
-                                                                    @if ($samp->is_hidden == 1)
-                                                                    @php $extraclass="isdone"; @endphp
-                                                                    @endif
-                                                                    @if ($samp->sampleId == $sentSampleId)
-                                                                    {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
-                                                                    <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                        {{ $samp->samples }}
-                                                                    </a>
-                                                                    @else
-                                                                    <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                        {{ $samp->samples }}
-                                                                    </a>
-                                                                    @endif
-                                                                    @endforeach
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1639,7 +1624,7 @@
 
     <!-- END: Page JS-->
     <script>
-    
+
         //  var a=0,b=0,c=0,d=0;
 
         $('document').ready(function() {
@@ -2193,7 +2178,7 @@
         .ui-state-default,
         .ui-widget-content .ui-state-default,
         .ui-widget-header .ui-state-default {
-            
+
             background: #575555 url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x !important;
             font-weight: bold;
             color: #575555;
@@ -2636,7 +2621,7 @@
                     toggleDivs();
                     if ('<?= $reviewdata ?>')
                         $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
-                    
+
                 }
             }
         });
