@@ -924,13 +924,11 @@
                                                         <div class="sample-heading col-lg-6">
                                                             <h2 class="id-text">SAMPLE ID</h2>
                                                             <p class="sample_number">
-                                                            <?php /*    
-                                                            @foreach ($alltablesamples as $samp)
+                                                                @foreach ($alltablesamples as $samp)
                                                                 @if ($samp->sampleId == $sentSampleId)
                                                                 {{ $samp->samples }}
                                                                 @endif
                                                                 @endforeach
-                                                               */ ?>
                                                             </p>
                                                         </div>
                                                         <!--Breadcrumb Section-->
@@ -945,6 +943,8 @@
                                                                             TABLE-{{ $productdata->table }}</p>
                                                                     </a>
                                                                 </li>
+
+
                                                             </ul>
                                                         </div>
                                                         <!--Breadcrumb Section-->
@@ -957,13 +957,11 @@
                                                 <!-- <div class="sample-area">
                                                     <h2 class="id-text">SAMPLE ID</h2>
                                                     <p class="sample_number">
-                                                        <?php /*
                                                         @foreach ($alltablesamples as $samp)
                                                             @if ($samp->sampleId == $sentSampleId)
                                                                 {{ $samp->samples }}
                                                             @endif
                                                         @endforeach
-                                                        */ ?>
                                                     </p>
 
                                                     <div class="breadcrumb-section">
@@ -1557,7 +1555,6 @@
                                                         <div class="row">
                                                             <div class="scrollable" style="overflow:auto;">
                                                                 <div class="button-group" style="white-space:nowrap">
-                                                                <?php /*
                                                                     @foreach ($alltablesamples as $samp)
                                                                     @php $extraclass = ""; @endphp
                                                                     @if ($samp->is_hidden == 1)
@@ -1574,7 +1571,6 @@
                                                                     </a>
                                                                     @endif
                                                                     @endforeach
-                                                                    */ ?>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1595,13 +1591,11 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <p>You are about to submit results for
-                                                                    <?php /*    
-                                                                    @foreach ($alltablesamples as $samp)
+                                                                        @foreach ($alltablesamples as $samp)
                                                                         @if ($samp->sampleTable == $table)
                                                                         &nbsp<b>{{ $samp->samples }}</b>,
                                                                         @endif
                                                                         @endforeach.
-                                                                        */ ?>
                                                                     </p>
                                                                     <br><br>
                                                                     <p>Are you sure you want to do this? You
@@ -1644,7 +1638,7 @@
     <script src="{{ asset('public/js/jquery.ui.touch-punch.min.js') }}"></script>
 
     <!-- END: Page JS-->
-     <script>
+    <script>
 
         //  var a=0,b=0,c=0,d=0;
 
@@ -2382,8 +2376,6 @@
     </style>
     <!-- Range slider end -->
     <script>
-
-
         function subtotaldata() {
             // var d=e=f=g=h=i=j=k=0;
             // var a = $('#aroma_dry').val();
