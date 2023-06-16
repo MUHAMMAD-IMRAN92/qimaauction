@@ -41,7 +41,7 @@
     }
 
     .timer-section h2 {
-        font-family: 'circular';
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 80px;
@@ -52,7 +52,7 @@
     }
 
     .timer-section h3 {
-        font-family: 'circular';
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 50px;
@@ -94,12 +94,12 @@
         align-items: center;
         text-align: center;
         color: #575555;
-        font-family: 'circular';
+        font-family: 'Montserrat';
         flex-direction: column;
     }
 
     .auction-time h2 {
-        font-family: 'circular';
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         font-size: 30px;
@@ -124,7 +124,7 @@
     }
 
     .footer-qima p {
-        font-family: 'circular';
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
@@ -191,6 +191,14 @@
         text-decoration: none;
         color:  #9F9B9B !important;
     }
+    @font-face {
+  font-family: 'Montserrat';
+  src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Regular.ttf")}}') format('truetype') ;
+ 
+}
+.card-display-3 p{
+    font-weight: 600;
+}
 </style>
 
 <body>
