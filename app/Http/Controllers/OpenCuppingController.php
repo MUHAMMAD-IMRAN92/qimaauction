@@ -111,7 +111,7 @@ class OpenCuppingController extends Controller
             array_push($table,  $cProduct['table']);
         }
 
-        $products = Product::orderBy('postion', 'asc')->get();
+        $products = Product::orderBy('table', 'asc')->get();
         if ($request->cuppingScreen == 1) {
             return view('admin.jury.cupping_product_ajax', [
                 'products' => $products,
