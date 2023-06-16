@@ -1316,7 +1316,7 @@
                                                                         <div class="col-lg-12" style="text-align:center">
                                                                             <input class="score_first_number" oninput="if (this.value > 5) this.value = 0;" type="number" id="quantity" value="first_number" name="first_number">
                                                                             <span class="multiply">X</span>
-                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0;" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
+                                                                            <input class="score_second_number" oninput="if (this.value > 3) this.value = 0" type="number" id="quantity" maxlength="3" value="second_number" name="second_number">
                                                                             <span class="multiply">X</span>
                                                                             <span class="multiply">4</span>
                                                                             <span class="multiply">=</span>
@@ -1638,6 +1638,743 @@
     <script src="{{ asset('public/js/jquery.ui.touch-punch.min.js') }}"></script>
 
     <!-- END: Page JS-->
+    <script>
+
+        //  var a=0,b=0,c=0,d=0;
+
+        $('document').ready(function() {
+            function showmodal() {
+                $('#myModal').modal('show');
+            }
+            var subtotal = 0;
+
+            $("#select").select2({
+                tags: true,
+                maximumInputLength: 16,
+            });
+
+            (function() {
+                "use strict"
+
+                $('input[type=range]').on('input', function() {});
+
+
+
+                // Plugin Constructor
+                var TagsInput = function(opts) {
+                    this.options = Object.assign(TagsInput.defaults, opts);
+                    this.init();
+                }
+
+                // Initialize the plugin
+                TagsInput.prototype.init = function(opts) {
+                    this.options = opts ? Object.assign(this.options, opts) : this.options;
+
+                    if (this.initialized)
+                        this.destroy();
+
+                    if (!(this.orignal_input = document.getElementById(this.options.selector))) {
+                        console.error("tags-input couldn't find an element with the specified ID");
+                        return this;
+                    }
+
+                    this.arr = [];
+                    this.wrapper = document.createElement('div');
+                    this.input = document.createElement('input');
+                    init(this);
+                    initEvents(this);
+
+                    this.initialized = true;
+                    return this;
+                }
+
+                // Add Tags
+                TagsInput.prototype.addTag = function(string) {
+
+                    if (this.anyErrors(string))
+                        return;
+
+                    this.arr.push(string);
+                    var tagInput = this;
+
+                    var tag = document.createElement('span');
+                    tag.className = this.options.tagClass;
+                    tag.innerText = string;
+
+                    var closeIcon = document.createElement('a');
+                    closeIcon.innerHTML = '&times;';
+
+                    // delete the tag when icon is clicked
+                    closeIcon.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var tag = this.parentNode;
+
+                        for (var i = 0; i < tagInput.wrapper.childNodes.length; i++) {
+                            if (tagInput.wrapper.childNodes[i] == tag)
+                                tagInput.deleteTag(tag, i);
+                        }
+                    })
+
+
+                    tag.appendChild(closeIcon);
+                    this.wrapper.insertBefore(tag, this.input);
+                    this.orignal_input.value = this.arr.join(',');
+
+                    return this;
+                }
+
+                // Delete Tags
+                TagsInput.prototype.deleteTag = function(tag, i) {
+                    tag.remove();
+                    this.arr.splice(i, 1);
+                    this.orignal_input.value = this.arr.join(',');
+                    return this;
+                }
+
+                // Make sure input string have no error with the plugin
+                TagsInput.prototype.anyErrors = function(string) {
+                    if (this.options.max != null && this.arr.length >= this.options.max) {
+                        console.log('max tags limit reached');
+                        return true;
+                    }
+
+                    if (!this.options.duplicate && this.arr.indexOf(string) != -1) {
+                        console.log('duplicate found " ' + string + ' " ')
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                // Add tags programmatically
+                TagsInput.prototype.addData = function(array) {
+                    var plugin = this;
+
+                    array.forEach(function(string) {
+                        plugin.addTag(string);
+                    })
+                    return this;
+                }
+
+                // Get the Input String
+                TagsInput.prototype.getInputString = function() {
+                    return this.arr.join(',');
+                }
+
+
+                // destroy the plugin
+                TagsInput.prototype.destroy = function() {
+                    this.orignal_input.removeAttribute('hidden');
+
+                    delete this.orignal_input;
+                    var self = this;
+
+                    Object.keys(this).forEach(function(key) {
+                        if (self[key] instanceof HTMLElement)
+                            self[key].remove();
+
+                        if (key != 'options')
+                            delete self[key];
+                    });
+
+                    this.initialized = false;
+                }
+
+                // Private function to initialize the tag input plugin
+                function init(tags) {
+                    tags.wrapper.append(tags.input);
+                    tags.wrapper.classList.add(tags.options.wrapperClass);
+                    tags.orignal_input.setAttribute('hidden', 'true');
+                    tags.orignal_input.parentNode.insertBefore(tags.wrapper, tags.orignal_input);
+                }
+
+                //---------- initialize the Events--------
+                function initEvents(tags) {
+                    tags.wrapper.addEventListener('click', function() {
+                        tags.input.focus();
+                    });
+
+
+                    tags.input.addEventListener('keydown', function(e) {
+                        var str = tags.input.value.trim();
+
+                        if (!!(~[9, 13, 188].indexOf(e.keyCode))) {
+                            e.preventDefault();
+                            tags.input.value = "";
+                            if (str != "")
+                                tags.addTag(str);
+                        }
+
+                    });
+                }
+
+
+                // ------Set All the Default Values------------
+                TagsInput.defaults = {
+                    selector: '',
+                    wrapperClass: 'tags-input-wrapper',
+                    tagClass: 'tag',
+                    max: null,
+                    duplicate: false
+                }
+
+                window.TagsInput = TagsInput;
+
+            })();
+
+            // var tagInput1 = new TagsInput({
+            //     selector: 'tag-input1',
+            //     duplicate: false,
+            //     max: 10
+            // });
+            // tagInput1.addData([])
+
+            $('.uniformity').on('click', function() {
+                $('#uniformity').html($('.uniformity:checked').length * 2);
+                $('#uniformityvalue').val($('.uniformity:checked').length * 2);
+                total().trigger();
+            });
+            $('.cleancup').on('click', function() {
+
+                $('#cleancup').html($('.cleancup:checked').length * 2);
+                $('#cleancupvalue').val($('.cleancup:checked').length * 2);
+                total().trigger();
+            });
+            $('.sweetness').on('click', function() {
+
+                $('#sweetness').html($('.sweetness:checked').length * 2);
+                $('#sweetnessvalue').val($('.sweetness:checked').length * 2);
+                total().trigger();
+            });
+            $('#defect1').on('change', function() {
+
+                var defect1 = $(this).val();
+                var defect2 = $('#defect2').val();
+                $('#defect').html(defect1 * defect2);
+                $('#defectvalue').val(defect1 * defect2);
+                total().trigger();
+            });
+            $('#defect2').on('change', function() {
+                var defect2 = $(this).val();
+                var defect1 = $('#defect1').val();
+                $('#defect').html(defect1 * defect2);
+                $('#defectvalue').val(defect1 * defect2);
+                total().trigger();
+            });
+
+            function total() {
+                $('#total').html(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) + parseInt($(
+                        '#sweetness').html()) -
+                    parseInt($('#defect').html()));
+                // console.log(total);
+                $('#totalvalue').val(parseInt($('#uniformity').html()) + parseInt($('#cleancup').html()) +
+                    parseInt($('#sweetness').html()) -
+                    parseInt($('#defect').html()));
+            }
+            $('#vol').on('click', function() {
+                $('#volspan').html($(this).val() + '%');
+                $('#roastvalue').val($(this).val());
+            })
+        });
+    </script>
+
+    <!-- Range slider Start -->
+    <style class="INLINE_PEN_STYLESHEET_ID">
+        .range-slider {
+            width: clamp(250px, 80vw, 1250px) !important;
+            min-width: 250px;
+        }
+
+
+        .range-slider.grad {
+            --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
+            --progress-flll-shadow: var(--progress-shadow);
+            --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
+            --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
+                -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
+                -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
+                0 0 0 99px var(--primary-color) inset;
+        }
+
+        .range-slider.grad input:hover {
+            --thumb-transform: scale(1.2);
+        }
+
+        .range-slider.grad input:active {
+            --thumb-shadow: inherit;
+            --thumb-transform: scale(1);
+        }
+
+        .range-slider.flat {
+            --thumb-size: 25px;
+            --track-height: calc(var(--thumb-size) / 3);
+            --progress-shadow: none;
+            --progress-flll-shadow: none;
+            --thumb-shadow: 0 0 0 7px var(--primary-color) inset, 0 0 0 99px white inset;
+            --thumb-shadow-hover: 0 0 0 9px var(--primary-color) inset,
+                0 0 0 99px white inset;
+            --thumb-shadow-active: 0 0 0 13px var(--primary-color) inset;
+        }
+
+        .range-slider.overlay {
+            --primary-color: #d6e9ff;
+            --track-height: 50px;
+            --thumb-size: var(--track-height);
+            --thumb-color: var(--primary-color);
+            --thumb-shadow: none;
+            --progress-flll-shadow: none;
+            --progress-shadow: none;
+            --progress-background: none;
+            --progress-radius: 0px;
+            --ticks-color: var(--primary-color);
+            --ticks-height: 0;
+            --ticks-thickness: 0;
+            --ticks-gap: 0px;
+            --min-max-font: 700 18px Arial;
+            --min-max-opacity: 1;
+            --show-min-max: none;
+            color: #d1af69;
+        }
+
+        .range-slider.overlay input:hover {
+            --thumb-shadow: calc(25px - (50px * var(--is-left-most))) 0 0 -15px #d1af69 inset;
+        }
+
+        .range-slider.overlay input:active {
+            --thumb-color: inherit;
+        }
+
+        .range-slider.overlay .range-slider__values {
+            width: calc(100% - 50% / (var(--max) - var(--min)));
+        }
+
+        .custom_slider {
+            padding: 2rem 0.4rem;
+        }
+
+        .range-slider {
+            --primary-color: #5D5D5D;
+            --value-offset-y: var(--ticks-gap);
+            --value-active-color: white;
+            --value-background: transparent;
+            --value-background-hover: var(--primary-color);
+            --value-font: 700 12px/1 Arial;
+            --fill-color: transparent;
+            --progress-background: #e4e4e4;
+            --progress-radius: 20px;
+            --track-height: calc(var(--thumb-size) / 2);
+            --min-max-font: 12px Arial;
+            --min-max-opacity: 0.5;
+            --min-max-x-offset: 10%;
+            --thumb-size: 15px;
+            --thumb-color: #5D5D5D;
+            --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
+                0 0 0 99px var(--thumb-color) inset;
+            --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+                0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+            --thumb-shadow-hover: var(--thumb-shadow);
+            --ticks-thickness: 2px;
+            --ticks-height: 15px;
+            --ticks-gap: var(--ticks-height,
+                    0);
+            --ticks-color: silver;
+            --step: 1;
+            --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
+            --maxTicksAllowed: 30;
+            --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
+            --x-step: Max(var(--step),
+                    var(--too-many-ticks) * (var(--max) - var(--min)));
+            --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
+            --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+            --value-a: Clamp(var(--min),
+                    var(--value, 0),
+                    var(--max));
+            --value-b: var(--value, 0);
+            --text-value-a: var(--text-value, "");
+            --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --ca: Min(var(--completed-a), var(--completed-b));
+            --cb: Max(var(--completed-a), var(--completed-b));
+            --thumbs-too-close: Clamp(-1,
+                    1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+                    1);
+            --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
+            --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
+            display: inline-block;
+            height: max(var(--track-height), var(--thumb-size));
+            background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
+            background-size: var(--tickIntervalPerc) var(--ticks-height);
+            background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+            background-position-y: var(--flip-y, bottom);
+            padding-bottom: var(--flip-y, var(--ticks-gap));
+            padding-top: calc(var(--flip-y) * var(--ticks-gap));
+            position: relative;
+            z-index: 1;
+        }
+
+        .user_name {
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .user_name .range-slider {
+            background-image: linear-gradient(to right, #fff, #88592D) !important;
+            --primary-color: #5D5D5D;
+            --value-offset-y: var(--ticks-gap);
+            --value-active-color: white;
+            --value-background: transparent;
+            --value-background-hover: var(--primary-color);
+            --value-font: 700 12px/1 Arial;
+            --fill-color: var(--primary-color);
+            --progress-background: #fff !important;
+            --progress-radius: 20px;
+            --track-height: calc(var(--thumb-size) / 2);
+            --min-max-font: 12px Arial;
+            --min-max-opacity: 0.5;
+            --min-max-x-offset: 10%;
+            --thumb-size: 10px;
+            --thumb-color: #5D5D5D;
+            --thumb-radius: 0 !important;
+            --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
+                0 0 0 99px var(--thumb-color) inset;
+            --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+                0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+            --thumb-shadow-hover: var(--thumb-shadow);
+            --step: 1;
+            --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
+            --maxTicksAllowed: 30;
+            --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
+            --x-step: Max(var(--step),
+                    var(--too-many-ticks) * (var(--max) - var(--min)));
+            --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
+            --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+            --value-a: Clamp(var(--min),
+                    var(--value, 0),
+                    var(--max));
+            --value-b: var(--value, 0);
+            --text-value-a: var(--text-value, "");
+            --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+            --ca: Min(var(--completed-a), var(--completed-b));
+            --cb: Max(var(--completed-a), var(--completed-b));
+            --thumbs-too-close: Clamp(-1,
+                    1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+                    1);
+            --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0));
+            --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0));
+            display: inline-block;
+            height: max(var(--track-height), var(--thumb-size));
+            background: linear-gradient(to right, var(--ticks-color) var(--ticks-thickness), transparent 1px) repeat-x;
+            background-size: var(--tickIntervalPerc) var(--ticks-height);
+            background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+            background-position-y: var(--flip-y, bottom);
+            padding-bottom: var(--flip-y, var(--ticks-gap));
+            padding-top: calc(var(--flip-y) * var(--ticks-gap));
+            position: relative;
+            z-index: 1;
+            width: 100% !important;
+        }
+
+        .user_name .range-slider input {
+            background-image: linear-gradient(to right, #fff, #88592D) !important;
+            height: 50px;
+            border: 1px solid #5D5D5D;
+        }
+
+        .range-slider[data-ticks-position=top] {
+            --flip-y: 1;
+        }
+
+        .range-slider::before,
+        .range-slider::after {
+            --offset: calc(var(--thumb-size) / 2);
+            content: counter(x);
+            display: var(--show-min-max, block);
+            font: var(--min-max-font);
+            position: absolute;
+            bottom: var(--flip-y, -2.5ch);
+            top: calc(-2.5ch * var(--flip-y));
+            opacity: clamp(0, var(--at-edge), var(--min-max-opacity));
+            transform: translateX(calc(var(--min-max-x-offset) * var(--before, -1) * -1)) scale(var(--at-edge));
+            pointer-events: none;
+        }
+
+        .range-slider::before {
+            --before: 1;
+            --at-edge: var(--thumb-close-to-min);
+            counter-reset: x var(--min);
+            left: var(--offset);
+        }
+
+        .range-slider::after {
+            --at-edge: var(--thumb-close-to-max);
+            counter-reset: x var(--max);
+            right: var(--offset);
+        }
+
+        .range-slider__values {
+            position: relative;
+            top: 50%;
+            line-height: 0;
+            text-align: justify;
+            width: 100%;
+            pointer-events: none;
+            margin: 0 auto;
+            z-index: 5;
+        }
+
+        .range-slider__values::after {
+            content: "";
+            width: 100%;
+            display: inline-block;
+            height: 0;
+            background: red;
+        }
+
+        .range-slider__progress {
+            --start-end: calc(var(--thumb-size) / 2);
+            --clip-end: calc(100% - (var(--cb)) * 1%);
+            --clip-start: calc(var(--ca) * 1%);
+            --clip: inset(-20px var(--clip-end) -20px var(--clip-start));
+            position: absolute;
+            left: var(--start-end);
+            right: var(--start-end);
+            top: calc(var(--ticks-gap) * var(--flip-y, 0) + var(--thumb-size) / 2 - var(--track-height) / 2);
+            height: calc(var(--track-height));
+            background: var(--progress-background, #eee);
+            pointer-events: none;
+            z-index: -1;
+            border-radius: var(--progress-radius);
+        }
+
+        .range-slider__progress::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            -webkit-clip-path: var(--clip);
+            clip-path: var(--clip);
+            top: 0;
+            bottom: 0;
+            background: var(--fill-color, black);
+            box-shadow: var(--progress-flll-shadow);
+            z-index: 1;
+            border-radius: inherit;
+        }
+
+        .range-slider__progress::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-shadow: var(--progress-shadow);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .range-slider>input {
+            -webkit-appearance: none;
+            width: 100%;
+            height: var(--thumb-size);
+            margin: 0;
+            position: absolute;
+            left: 0;
+            top: calc(50% - Max(var(--track-height), var(--thumb-size)) / 2 + calc(var(--ticks-gap) / 2 * var(--flip-y, -1)));
+            cursor: -webkit-grab;
+            cursor: grab;
+            outline: none;
+            background: none;
+            height: 21px;
+
+        }
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default {
+
+            background: #575555 url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x !important;
+            font-weight: bold;
+            color: #575555;
+            border-radius: 50%;
+        }
+
+        .ui-slider-pips [class*=ui-slider-pip-selected] .ui-slider-line,
+        .ui-slider-pips .ui-slider-pip-inrange .ui-slider-line {
+            background: #575555;
+        }
+
+        .range-slider>input:not(:only-of-type) {
+            pointer-events: none;
+        }
+
+        .radio_button {
+            gap: 10px;
+        }
+
+        .range-slider>input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -webkit-transition: 0.1s;
+            transition: 0.1s;
+        }
+
+        .range-slider>input::-moz-range-thumb {
+            -moz-appearance: none;
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -moz-transition: 0.1s;
+            transition: 0.1s;
+        }
+
+        .range-slider>input::-ms-thumb {
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            transform: var(--thumb-transform);
+            border-radius: var(--thumb-radius, 50%);
+            background: var(--thumb-color);
+            box-shadow: var(--thumb-shadow);
+            border: none;
+            pointer-events: auto;
+            -ms-transition: 0.1s;
+            transition: 0.1s;
+        }
+
+        .range-slider>input:hover {
+            --thumb-shadow: var(--thumb-shadow-hover);
+        }
+
+        .range-slider>input:hover+output {
+            --value-background: var(--value-background-hover);
+            --y-offset: -5px;
+            color: var(--value-active-color);
+            box-shadow: 0 0 0 3px var(--value-background);
+        }
+
+        .range-slider>input:active {
+            --thumb-shadow: var(--thumb-shadow-active);
+            cursor: -webkit-grabbing;
+            cursor: grabbing;
+            z-index: 2;
+        }
+
+        .range-slider>input:active+output {
+            transition: 0s;
+        }
+
+        .range-slider>input:nth-of-type(1) {
+            --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
+        }
+
+        .range-slider>input:nth-of-type(1)+output {
+            --value: var(--value-a);
+            --x-offset: calc(var(--completed-a) * -1%);
+        }
+
+        .range-slider>input:nth-of-type(1)+output:not(:only-of-type) {
+            --flip: calc(var(--thumbs-too-close) * -1);
+        }
+
+        .range-slider>input:nth-of-type(1)+output::after {
+            content: var(--prefix, "") var(--text-value-a) var(--suffix, "");
+        }
+
+        .range-slider>input:nth-of-type(2) {
+            --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
+        }
+
+        .range-slider>input:nth-of-type(2)+output {
+            --value: var(--value-b);
+        }
+
+        .range-slider>input:only-of-type~.range-slider__progress {
+            --clip-start: 0;
+        }
+
+        .range-slider>input+output {
+            --flip: -1;
+            --x-offset: calc(var(--completed-b) * -1%);
+            --pos: calc(((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%);
+            pointer-events: none;
+            position: absolute;
+            z-index: 5;
+            background: var(--value-background);
+            border-radius: 10px;
+            padding: 2px 4px;
+            left: var(--pos);
+            transform: translate(var(--x-offset), calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
+            transition: all 0.12s ease-out, left 0s;
+        }
+
+        .range-slider>input+output::after {
+            content: var(--prefix, "") var(--text-value-b) var(--suffix, "");
+            font: var(--value-font);
+        }
+
+        .select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-content: space-evenly;
+            place-items: center;
+            gap: 10%;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 500px) {
+            body {
+                padding-top: 2em;
+                gap: 8%;
+            }
+        }
+
+        a {
+            /* position: fixed;
+            top: 1em;
+            left: 1em; */
+            display: inline-block;
+            height: 2em;
+        }
+
+        @media screen and (max-width: 500px) {
+            a {
+                position: static;
+                order: -1;
+            }
+        }
+
+        a>img {
+            display: inherit;
+            height: 100%;
+        }
+
+        body>.range-slider,
+        label[dir=rtl] .range-slider {
+            width: clamp(300px, 50vw, 800px);
+            min-width: 200px;
+        }
+    </style>
+    <!-- Range slider end -->
 
 </body>
 <!-- END: Body-->
