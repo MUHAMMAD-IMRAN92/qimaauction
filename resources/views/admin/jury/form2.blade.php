@@ -367,7 +367,7 @@
     }
 
     .ui-corner-all {
-        border-radius: 50%;
+        border-radius: 0;
     }
 
     .ui-state-default,
@@ -390,6 +390,7 @@
     .customslider.ui-slider-horizontal .ui-slider-handle {
         top: -9px;
         margin-left: -8px;
+        border-radius:50%;
     }
 
     .customslider.ui-slider-pips .ui-slider-pip {
@@ -403,6 +404,7 @@
     .aromaslider.ui-slider-horizontal .ui-slider-handle {
         top: -9px;
         margin-left: -8px;
+        border-radius:50%;
     }
 
     .aromaslider.ui-slider-pips .ui-slider-pip {
