@@ -10,7 +10,7 @@ class DevTestController extends Controller
 {
     public function index()
     {
-        return Product::whereDate('created_at', Carbon::now())->pluck('id');
+        return Product::where('sample_id', 2610)->first();
         return phpinfo();
 
         $en = encrypt(1);
