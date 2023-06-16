@@ -1644,7 +1644,7 @@
     <script src="{{ asset('public/js/jquery.ui.touch-punch.min.js') }}"></script>
 
     <!-- END: Page JS-->
-    {{-- <script>
+     <script>
 
         //  var a=0,b=0,c=0,d=0;
 
