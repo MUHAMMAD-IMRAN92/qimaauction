@@ -225,6 +225,7 @@ class ReviewController extends Controller
                 ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)->where('id', '>',  $request->sent_sample_id)
                 ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')
                 ->first();
+                echo "<!--".print_r($sample2Sent,true)."-->";
             if ($sample2Sent) {
 
                 $sampleSent = $sample2Sent;
