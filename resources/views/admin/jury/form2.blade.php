@@ -2582,7 +2582,7 @@
                         value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
                     })
                 $('input[name=first_number]').val(
-                "    {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }}"
+                " {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }}"
                 );
                 $('input[name=second_number]').val(
                    " {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }}"
@@ -2634,7 +2634,7 @@
                 calcTotal();
                 if (chkmanual) {
                     toggleDivs();
-                    if ('<?= $reviewdata ?>')
+                    if ("{{$reviewdata}}")
                         $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
 
                 }
