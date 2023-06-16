@@ -17,9 +17,11 @@ class JuryMail extends Mailable
      * @return void
      */
     public $jury;
-    public function __construct($jury)
+    public $auctionId;
+    public function __construct($jury, $auctionId)
     {
         $this->jury = $jury;
+        $this->auctionId = $auctionId;
     }
 
     /**
@@ -29,8 +31,9 @@ class JuryMail extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@mg.bestofyemenauction.com','QIMA Coffee')->subject('Best of Yemen 2022 International Jury Cupping')->markdown('jury_email',[
+        return $this->from('noreply@mg.bestofyemenauction.com', 'QIMA Coffee')->subject('Best of Yemen 2022 International Jury Cupping')->markdown('jury_email', [
             'jury' => $this->jury,
+            'auction_id' => $this->auctionId
         ]);
     }
 }

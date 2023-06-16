@@ -167,6 +167,7 @@ class JuryController extends Controller
     }
     public function sendToJuryPost(Request $request)
     {
+        // return $request->all();
         ini_set('max_execution_time', '0');
 
         $request->validate([
@@ -178,7 +179,7 @@ class JuryController extends Controller
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
 
-                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id', $request->auction_id)->first();
+                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->first();
                 Product::where('id', $product)->update([
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
@@ -207,7 +208,7 @@ class JuryController extends Controller
                 }
             }
             $jury =    Jury::find($sampleSent->jury_id);
-            Mail::to($jury->email)->send(new JuryMail($jury));
+            Mail::to($jury->email)->send(new JuryMail($jury, $request->auction_id));
         }
         return redirect('/jury/index')->with('success', 'Samples Email Successfully sent to Jury Members.');
     }
@@ -251,7 +252,7 @@ class JuryController extends Controller
         return redirect('/jury/index')->with('success', 'Samples Successfully Emailed  to Jury Members');
     }
 
-    public function juryLinks(Request $request, $id)
+    public function juryLinks($id, $auctionId)
     {
         //chnages
         $juryId = base64_decode($id);
@@ -264,7 +265,7 @@ class JuryController extends Controller
             $samples = SentToJury::groupBy('tables')
                 ->select('tables', DB::raw('count(*) as total'))
                 // ->where('sample_sent_to_jury.is_hidden','=','0')
-                ->where('sample_sent_to_jury.jury_id', $juryId)
+                ->where('sample_sent_to_jury.jury_id', $juryId)->where('auction_id', $auctionId)
                 ->where('sample_sent_to_jury.tables', '!=', null)
                 ->orderBy('tables', 'asc')
                 ->get();

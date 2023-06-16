@@ -269,7 +269,7 @@ Route::get('/cupping/openCuppingFeedback', [App\Http\Controllers\OpenCuppingCont
 Route::get('/cupping/openCuppingSummary', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingSummary'])->name('openCuppingSummary');
 Route::get('/cupping/openCuppingReviewDetail/{sample?}', [App\Http\Controllers\OpenCuppingController::class, 'openCuppingReviewDetail'])->name('openCuppingReviewDetail');
 //End Cupping
-Route::get('/jury/links/{id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
+Route::get('/jury/links/{id}/{auction_id}', [App\Http\Controllers\JuryController::class, 'juryLinks'])->name('juryLinks');
 Route::get('/jury/link/give_review/{table?}/{juryId?}/{sampleId?}', [App\Http\Controllers\ProductController::class, 'review'])->name('give_review');
 Route::post('/jury/link/reviewSave', [App\Http\Controllers\ReviewController::class, 'saveReview']);
 
