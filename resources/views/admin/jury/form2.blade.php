@@ -336,6 +336,7 @@
     .pager.btn-success {
         background-color: #000 !important;
         color: #FFF;
+        border-color: #000 !important;
     }
 
     .ui-slider-pips .ui-slider-line {
