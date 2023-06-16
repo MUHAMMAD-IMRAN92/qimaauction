@@ -210,7 +210,7 @@ class ReviewController extends Controller
         if (isset($request->sample_submit_prev)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)
-                ->where('id', '<',  $request->sent_sample_id)->orderBy('id' , 'desc')
+                ->where('id', '<',  $request->sent_sample_id)->orderBy('id', 'desc')
                 ->first();
 
             //  dd($request);
@@ -245,7 +245,7 @@ class ReviewController extends Controller
     public function reviewTableData(Request $request)
     {
         $tables = $request->table;
-        $samples = SentToJury::join('products', 'products.id', 'sample_sent_to_jury.product_id')
+        $samples = SentToJury::where('auction_id', $request->auctionId)->whereIn('products', @$request->sampleProducts)->join('products', 'products.id', 'sample_sent_to_jury.product_id')
             ->join('juries', 'juries.id', 'sample_sent_to_jury.jury_id')
             ->select('products.*', 'sample_sent_to_jury.*', 'juries.name')
             ->where('sample_sent_to_jury.jury_id', $request->juryId)

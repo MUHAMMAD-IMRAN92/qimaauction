@@ -264,7 +264,6 @@ class JuryController extends Controller
         }
         $openCuppingProduct = OpenCuppingProduct::where('auction_id', $auctionId)->first();
         if ($jury) {
-            return explode(',', @$openCuppingProduct->products);
             $samples = SentToJury::where('auction_id', $auctionId)->whereIn('product_id', explode(',', @$openCuppingProduct->products))->groupBy('tables')
                 ->select('tables', DB::raw('count(*) as total'))
                 // ->where('sample_sent_to_jury.is_hidden','=','0')
@@ -280,6 +279,8 @@ class JuryController extends Controller
                 'firstsample' => $firstsample,
                 'juryName' => $juryName->name,
                 'juryId' => $juryId,
+                'auction_id' => $auctionId,
+                'sampleProductd' =>  explode(',', @$openCuppingProduct->products)
             ]);
         } else {
             return view('admin.404');
