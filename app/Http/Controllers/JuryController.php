@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use DB;
+
 class JuryController extends Controller
 {
     private $user;
@@ -41,8 +42,8 @@ class JuryController extends Controller
             $q->where('name', 'LIKE', "%$search%");
         });
 
-        $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at','desc')->get();
-        foreach($juries as $jury){
+        $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at', 'desc')->get();
+        foreach ($juries as $jury) {
             $jury->linkurl = encrypt($jury->id);
         }
         $data = array(
@@ -59,12 +60,12 @@ class JuryController extends Controller
     }
     public function sampleSearch(Request $request)
     {
-            $isExists = SentToJury::where('samples',$request->sample)->first();
-            if($isExists){
-                return response()->json(array("exists" => true));
-            }else{
-                return response()->json(array("exists" => false));
-            }
+        $isExists = SentToJury::where('samples', $request->sample)->first();
+        if ($isExists) {
+            return response()->json(array("exists" => true));
+        } else {
+            return response()->json(array("exists" => false));
+        }
     }
     public function save(Request $request)
     {
@@ -92,7 +93,7 @@ class JuryController extends Controller
     public function editjury(Request $request, $id)
     {
         $jury = Jury::find(base64_decode($id));
-         $data=SentToJury::where('jury_id',base64_decode($id))->get();
+        $data = SentToJury::where('jury_id', base64_decode($id))->get();
         return view('admin.jury.edit', [
             'jury' =>  $jury,
         ]);
@@ -103,12 +104,12 @@ class JuryController extends Controller
         $juries = Jury::all();
         $products = Product::all();
         $auctions = Auction::all();
-         $senttojury=SentToJury::join('products','products.id','sample_sent_to_jury.product_id')
-                               ->select('products.*','sample_sent_to_jury.*')
-                              ->where('jury_id',base64_decode($id))
-                              ->get();
+        $senttojury = SentToJury::join('products', 'products.id', 'sample_sent_to_jury.product_id')
+            ->select('products.*', 'sample_sent_to_jury.*')
+            ->where('jury_id', base64_decode($id))
+            ->get();
 
-         return view('admin.jury.edit_sent_to_jury', [
+        return view('admin.jury.edit_sent_to_jury', [
             'senttojury' =>  $senttojury,
             'juries' =>  $juries,
             'selectedjury' =>  $selectedjury,
@@ -139,7 +140,6 @@ class JuryController extends Controller
             'products' => $products,
             'auctions' => $auctions
         ]);
-
     }
 
     public function ajaxSendToJuryPost(Request $request)
@@ -150,7 +150,7 @@ class JuryController extends Controller
             'productId' => 'required',
         ]);
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
-       foreach ($request->juries as $key => $jury) {
+        foreach ($request->juries as $key => $jury) {
             $sampleSent = new SentToJury();
             $sampleSent->jury_id = $jury;
             $sampleSent->tables = $request->table;
@@ -163,7 +163,7 @@ class JuryController extends Controller
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
 
-            return response()->json(array("exists" => true));
+        return response()->json(array("exists" => true));
     }
     public function sendToJuryPost(Request $request)
     {
@@ -176,43 +176,41 @@ class JuryController extends Controller
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
 
-                $sampleSent=SentToJury::where('product_id',$product)->where('jury_id',$jury1)->where('samples',$request->samples[$key])->first();
-                   Product::where('id',$product)->update([
-                       'postion' =>  $request->postion[$key],
-                       'table'  =>    $request->$key,
-                       'sample'  => $request->samples[$key],
-                   ]);
+                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->where('auction_id', $request->auction_id)->first();
+                Product::where('id', $product)->update([
+                    'postion' =>  $request->postion[$key],
+                    'table'  =>    $request->$key,
+                    'sample'  => $request->samples[$key],
+                ]);
 
-                if(isset($sampleSent))
-                {
-                   $sampleSent->jury_id = $jury1;
-                   $sampleSent->tables = $request->$key;
-                   $sampleSent->product_id = $product;
-                   $sampleSent->postion = $request->postion[$key];
-                   $sampleSent->auction_id = $request->auction_id;
-                   $sampleSent->temporary_link = $tempLink;
-                   $sampleSent->samples = $request->samples[$key];
-                   $sampleSent->save();
+                if (isset($sampleSent)) {
+                    $sampleSent->jury_id = $jury1;
+                    $sampleSent->tables = $request->$key;
+                    $sampleSent->product_id = $product;
+                    $sampleSent->postion = $request->postion[$key];
+                    $sampleSent->auction_id = $request->auction_id;
+                    $sampleSent->temporary_link = $tempLink;
+                    $sampleSent->samples = $request->samples[$key];
+                    $sampleSent->save();
+                } else {
+                    $sampleSent = new SentToJury();
+                    $sampleSent->jury_id = $jury1;
+                    $sampleSent->tables = $request->$key;
+                    $sampleSent->product_id = $product;
+                    $sampleSent->postion = $request->postion[$key];
+                    $sampleSent->auction_id = $request->auction_id;
+                    $sampleSent->temporary_link = $tempLink;
+                    $sampleSent->samples = $request->samples[$key];
+                    $sampleSent->save();
                 }
-               else
-               {
-                   $sampleSent = new SentToJury();
-                   $sampleSent->jury_id = $jury1;
-                   $sampleSent->tables = $request->$key;
-                   $sampleSent->product_id = $product;
-                   $sampleSent->postion = $request->postion[$key];
-                   $sampleSent->auction_id = $request->auction_id;
-                   $sampleSent->temporary_link = $tempLink;
-                   $sampleSent->samples = $request->samples[$key];
-                   $sampleSent->save();
-               }
             }
             $jury =    Jury::find($sampleSent->jury_id);
             Mail::to($jury->email)->send(new JuryMail($jury));
         }
-        return redirect('/jury/index')->with('success','Samples Email Successfully sent to Jury Members.');
+        return redirect('/jury/index')->with('success', 'Samples Email Successfully sent to Jury Members.');
     }
-    public function updateSentToJury(Request $request){
+    public function updateSentToJury(Request $request)
+    {
         // dd($request->all());
         $request->validate([
             'juries' => 'required|array',
@@ -222,14 +220,13 @@ class JuryController extends Controller
         $tempLink = base64_encode(url('jury/link/give_review/' . rand()));
         foreach ($request->juries as $jury1) {
             foreach ($request->products as $key => $product) {
-                $sampleSent=SentToJury::where('product_id',$product)->where('jury_id',$jury1)->where('samples',$request->samples[$key])->first();
-                Product::where('id',$product)->update([
+                $sampleSent = SentToJury::where('product_id', $product)->where('jury_id', $jury1)->where('samples', $request->samples[$key])->first();
+                Product::where('id', $product)->update([
                     'postion' =>  $request->postion[$key],
                     'table'  =>    $request->$key,
                     'sample'  => $request->samples[$key],
                 ]);
-                 if(isset($sampleSent))
-                 {
+                if (isset($sampleSent)) {
                     $sampleSent->jury_id = $jury1;
                     $sampleSent->tables = $request->$key;
                     $sampleSent->product_id = $product;
@@ -237,9 +234,7 @@ class JuryController extends Controller
                     $sampleSent->temporary_link = $tempLink;
                     $sampleSent->samples = $request->samples[$key];
                     $sampleSent->save();
-                 }
-                else
-                {
+                } else {
                     $sampleSent = new SentToJury();
                     $sampleSent->jury_id = $jury1;
                     $sampleSent->tables = $request->$key;
@@ -251,38 +246,35 @@ class JuryController extends Controller
                 }
             }
         }
-        return redirect('/jury/index')->with('success','Samples Successfully Emailed  to Jury Members');
- }
+        return redirect('/jury/index')->with('success', 'Samples Successfully Emailed  to Jury Members');
+    }
 
     public function juryLinks(Request $request, $id)
     {
         //chnages
         $juryId = base64_decode($id);
         $jury = Jury::find($juryId);
-        if(!isset($jury))
-        {
+        if (!isset($jury)) {
             $juryId = decrypt($id);
             $jury = Jury::find($juryId);
         }
         if ($jury) {
-            $samples= SentToJury::groupBy('tables')
-            ->select('tables', DB::raw('count(*) as total'))
-            // ->where('sample_sent_to_jury.is_hidden','=','0')
-            ->where('sample_sent_to_jury.jury_id',$juryId)
-            ->where('sample_sent_to_jury.tables','!=',null)
-            ->orderBy('tables','asc')
-             ->get();
+            $samples = SentToJury::groupBy('tables')
+                ->select('tables', DB::raw('count(*) as total'))
+                // ->where('sample_sent_to_jury.is_hidden','=','0')
+                ->where('sample_sent_to_jury.jury_id', $juryId)
+                ->where('sample_sent_to_jury.tables', '!=', null)
+                ->orderBy('tables', 'asc')
+                ->get();
 
-                $juryName = Jury::where('id', $juryId)->first();
-                $firstsample =   $samples->first();
-               return view('admin.jury.jury_links', [
-                   'samples' => $samples,
-                   'firstsample' => $firstsample,
-                   'juryName' => $juryName->name,
-                   'juryId' => $juryId,
-               ]);
-
-
+            $juryName = Jury::where('id', $juryId)->first();
+            $firstsample =   $samples->first();
+            return view('admin.jury.jury_links', [
+                'samples' => $samples,
+                'firstsample' => $firstsample,
+                'juryName' => $juryName->name,
+                'juryId' => $juryId,
+            ]);
         } else {
             return view('admin.404');
         }
