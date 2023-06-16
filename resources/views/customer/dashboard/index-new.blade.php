@@ -867,7 +867,7 @@
 
 
 
-<script>
+{{-- <script>
     // Set the date we're counting down to
     var countDownDate = new Date("Aug 18, 2022 14:00:00").getTime();
 
@@ -913,6 +913,6 @@
     $("#signup-for-newsletter").on("click", function() {
         $("#newsltterModel").modal("show");
     });
-</script>
+</script> --}}
 
 </html>
