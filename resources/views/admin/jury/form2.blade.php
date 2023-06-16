@@ -2375,7 +2375,282 @@
         }
     </style>
     <!-- Range slider end -->
+    <script>
+        function subtotaldata() {
+            // var d=e=f=g=h=i=j=k=0;
+            // var a = $('#aroma_dry').val();
+            // var b = $('#aroma_crust').val();
+            // var d = $('#aroma_break').val();
+            var c = $('#clean_up').val();
+            var e = $('#sweetness').val();
+            var f = $('#acidity').val();
+            var g = $('#mouth_feel').val();
+            var h = $('#flavour').val();
+            var i = $('#balance').val();
+            var j = $('#overall').val();
+            var k = $('#after_taste').val();
 
+            subtotal = +c + +e + +f + +g + +h + +i + +j + +k;
+
+            return subtotal;
+        }
+
+        function calcTotal() {
+            // var step=0;
+            // if ($(this).val() >= 0 && $(this).val() <= 6) {
+            //     step = 1;
+            // }else {
+            //     step = 0.5;
+            // }
+            // $(this).attr('step', step);
+            subtotal = subtotaldata();
+            var first = $('.score_first_number').val();
+            var second = $('.score_second_number').val();
+            if (second && first) {
+                var defect = first * second * 4;
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            } else {
+                $('.score_first_number').val(0);
+                $('.score_second_number').val(0);
+                $('.multiply4').html(0);
+                var defect = 0;
+                var raw = subtotal - defect;
+                if (raw == 0) {
+                    var total = 0;
+                } else {
+                    var total = 36 + raw;
+                }
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+            }
+            $(this).trigger('change');
+        }
+        $(document).ready(function() {
+            var chkhidden = "{{ $firstsample->is_hidden == 1 ? '1' : '0' }}";
+            var chkmanual = "{{ $reviewdata ? ($reviewdata->manual == 1 ? '1' : '0') : '0' }}";
+            $(".score_second_number,.score_first_number").keyup(function() {
+                var first = $('.score_first_number').val();
+                var second = $('.score_second_number').val();
+                var defect = first * second * 4;
+                $('#defect').val(defect);
+                $('.multiply4').html(defect);
+                subtotal = subtotaldata();
+                var raw = subtotal - defect;
+                var total = 36 + raw;
+
+                $('#total_score').val(total);
+                $('.totalScore').html(total);
+
+                //   $("input").css("background-color", "pink");
+            });
+            $('.js-example-basic-multiple').select2();
+            var hanzi = ["0", "1", "2", "3", "4", "4.5", "5", "5.5", "6", "6.25", "6.5", "6.75", "7", "7.25", "7.5",
+                "7.75", "8"
+            ];
+            $(".roastslider")
+                .slider({
+                    max: 100,
+                    value: 50
+                }).slider("float", {
+                    rest: "label"
+                }).on("slidechange", function(e, ui) {
+                    $(ui.handle).parent().find('input').val(ui.value);
+
+                });
+            $(".aromaslider")
+                .slider({
+                    max: 3,
+                    step: 1,
+                    value: 0
+                })
+                .slider("pips", {
+                    rest: "label",
+                    step: 1,
+                }).on("slidechange", function(e, ui) {
+                    $(ui.handle).parent().find('input').val(ui.value);
+
+                });;
+            $(".customslider")
+                .slider({
+                    max: 8,
+                    step: 0.5,
+                    value: 4
+                })
+                .slider("pips", {
+                    rest: "label",
+                    step: 2,
+                    labels: hanzi
+                })
+                .on("slidechange", function(e, ui) {
+                    inputvalue = ui.value;
+                    if (inputvalue == 0.5)
+                        inputvalue = 1;
+                    else if (inputvalue == 1)
+                        inputvalue = 2;
+                    else if (inputvalue == 1.5)
+                        inputvalue = 3;
+                    else if (inputvalue == 2)
+                        inputvalue = 4;
+                    else if (inputvalue == 2.5)
+                        inputvalue = 4.5;
+                    else if (inputvalue == 3)
+                        inputvalue = 5;
+                    else if (inputvalue == 3.5)
+                        inputvalue = 5.5;
+                    else if (inputvalue == 4)
+                        inputvalue = 6;
+                    else if (inputvalue == 4.5)
+                        inputvalue = 6.25;
+                    else if (inputvalue == 5)
+                        inputvalue = 6.5;
+                    else if (inputvalue == 5.5)
+                        inputvalue = 6.75;
+                    else if (inputvalue == 6)
+                        inputvalue = 7;
+                    else if (inputvalue == 6.5)
+                        inputvalue = 7.25;
+                    else if (inputvalue == 7.5)
+                        inputvalue = 7.75;
+                    $(ui.handle).parent().find('input').val(inputvalue);
+                    // ui.value;
+                    calcTotal();
+
+                    // $('input[type=range]').first().trigger('input');
+
+                })
+                .slider("float", {
+                    labels: hanzi
+                });
+            $(".customslider")
+                .slider("value", 4)
+                .slider("pips", "refresh");
+            // $('.customslider .ui-slider-handle').draggable();
+
+            calcTotal();
+            $('.scrollable').css('width', window.innerWidth - 100);
+
+            function parseReview(inputvalue) {
+                if (inputvalue == 1)
+                    inputvalue = 0.5;
+                else if (inputvalue == 2)
+                    inputvalue = 1;
+                else if (inputvalue == 3)
+                    inputvalue = 1.5;
+                else if (inputvalue == 4)
+                    inputvalue = 2;
+                else if (inputvalue == 4.5)
+                    inputvalue = 2.5;
+                else if (inputvalue == 5)
+                    inputvalue = 3;
+                else if (inputvalue == 5.5)
+                    inputvalue = 3.5;
+                else if (inputvalue == 6)
+                    inputvalue = 4;
+                else if (inputvalue == 6.25)
+                    inputvalue = 4.5;
+                else if (inputvalue == 6.5)
+                    inputvalue = 5;
+                else if (inputvalue == 6.75)
+                    inputvalue = 5.5;
+                else if (inputvalue == 7)
+                    inputvalue = 6;
+                else if (inputvalue == 7.25)
+                    inputvalue = 6.5;
+                else if (inputvalue == 7.75)
+                    inputvalue = 7.5;
+                return inputvalue;
+            }
+            if (chkhidden != 0) {
+
+                $(".roastslider")
+                    .slider({
+                        value: "{{ isset($sampleReview->roast) ? $sampleReview->roast : 50 }}"
+                    });
+                $(".aromacrust")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_crust) ? $sampleReview->aroma_crust : 2 }}"
+                    });
+                $(".aromadry")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
+                    });
+                $(".aromabreak")
+                    .slider({
+                        value: "{{ isset($sampleReview->aroma_dry) ? $sampleReview->aroma_dry : 2 }}"
+                    })
+                $('input[name=first_number]').val(
+                "    {{ isset($sampleReview->first_number) ? $sampleReview->first_number : 0 }}"
+                );
+                $('input[name=second_number]').val(
+                   " {{ isset($sampleReview->second_number) ? $sampleReview->second_number : 0 }}"
+                );
+                $('input[name=second_number]').trigger('keyup');
+                $('#defect_note').val("{{ $sampleReview->defects_note ?? '' }}");
+                $(".cleancup").slider({
+                    value: parseReview("{{ $sampleReview->clean_up ?? '4' }}")
+                })
+                $('#cleanup_note').val("{{ $sampleReview->clean_sweet_note ?? '' }}");
+
+                $(".sweetness").slider({
+                    value: parseReview("{{ $sampleReview->sweetness ?? '4' }}")
+                })
+                $('#sweetness_note').val("{{ $sampleReview->sweetness_note ?? '' }}");
+
+                $(".acidity").slider({
+                    value: parseReview("{{ $sampleReview->acidity ?? '4' }}")
+                })
+                $('#acidity_note').val("{{ $sampleReview->acidity_note ?? '' }}");
+                $(".acidity_{{ $sampleReview->acidity_chk ?? 'L' }}").prop('checked', true);
+
+                $(".mouthfeel").slider({
+                    value: parseReview("{{ $sampleReview->mouth_feel ?? '4' }}")
+                });
+                $('#mouthfeel_note').val("{{ $sampleReview->mouthfeel_note ?? '' }}");
+                $(".mouthfeel_{{ $sampleReview->fm_chk ?? 'L' }}").prop('checked', true);
+
+                $(".flavor").slider({
+                    value: parseReview("{{ $sampleReview->flavour ?? '4' }}")
+                });
+                $('#flavor_note').val("{{ $sampleReview->flavor_note ?? '' }}");
+
+                $(".aftertaste").slider({
+                    value: parseReview("{{ $sampleReview->after_taste ?? '8' }}")
+                })
+                $('#aftertaste_note').val("{{ $sampleReview->aftertaste_note ?? '' }}");
+
+                $(".balance").slider({
+                    value: parseReview("{{ $sampleReview->balance ?? '8' }}")
+                })
+                $('#balance_note').val("{{ $sampleReview->balance_note ?? '' }}");
+
+                $(".overall").slider({
+                    value: parseReview("{{ $sampleReview->overall ?? '4' }}")
+                })
+                $('#overall_note').val("{{ $sampleReview->overall_note ?? '' }}");
+
+                calcTotal();
+                if (chkmanual) {
+                    toggleDivs();
+                    if ('<?= $reviewdata ?>')
+                        $('input[name=total_score]').val("{{ $reviewdata->total_score }}");
+
+                }
+            }
+        });
+
+        function setSampleToGo(valz) {
+            $('#to_go_sample').val(valz);
+            $('#myForm').submit();
+        }
+
+        function finalSubmit() {
+            $('#submit_id').val(1);
+            $('#myForm').submit();
+        }
+    </script>
 </body>
 <!-- END: Body-->
 
