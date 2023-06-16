@@ -336,6 +336,7 @@
         color: #575555;
         padding: 10px;
         font-size: 20px;
+        -webkit-text-stroke: 1px #575555;
     }
 
     .table th,
@@ -367,7 +368,7 @@
                     <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
                         <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
                             <div class="card-content">
-                                <div class="card-header">
+                                <div class="">
                                     <div class="newlogo">
                                         <div class="image-section">
                                             <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}"
