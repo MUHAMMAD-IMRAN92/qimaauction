@@ -1539,7 +1539,7 @@ $previous_position = $productdata->postion - 1;
                                                                         class="submit-form-btn">SAVE
                                                                         TABLE</a> --}}
                                                                     <button type="submit" name=""
-                                                                        class="submit-form-btn">Save Table</button>
+                                                                        class="submit-form-btn">SAVE TABLE</button>
                                                                 @endif
 
 
