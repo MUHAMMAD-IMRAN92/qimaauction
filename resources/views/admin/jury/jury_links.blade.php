@@ -467,6 +467,7 @@
                     sampleProducts: sampleProductd,
                     _token: "{{ csrf_token() }}"
                 },
+
                 success: function(data) {
                     jQuery('.content_data').html(data.html);
                 }
