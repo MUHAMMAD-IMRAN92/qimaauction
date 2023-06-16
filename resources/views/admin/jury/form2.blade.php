@@ -2375,7 +2375,7 @@
         }
     </style>
     <!-- Range slider end -->
-    <script>
+    {{-- <script>
         function subtotaldata() {
             // var d=e=f=g=h=i=j=k=0;
             // var a = $('#aroma_dry').val();
@@ -2650,7 +2650,7 @@
             $('#submit_id').val(1);
             $('#myForm').submit();
         }
-    </script>
+    </script> --}}
 </body>
 <!-- END: Body-->
 
