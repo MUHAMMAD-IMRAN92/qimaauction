@@ -395,7 +395,7 @@
         <div style="position: relative;">
             <div class="overlays"></div>
 
-            <video autoplay loop muted playsinline src="{{ asset('public/videos/boy - teaser5 - clean.mp4.mp4') }}"
+            <video autoplay loop muted playsinline src="{{ asset('public/videos/boy-teaser5-clean.mp4.mp4') }}"
                 style="width: 100%; height: 100vh; object-fit: cover;">
             </video>
             <div class="land-overlay"
@@ -488,7 +488,7 @@
                                 <th style="border-bottom:1px solid black;" class="genetics">GENETICS</th>
                                 <th></th>
                             </tr>
-                            @foreach ($winningCoffees as $winningCoffee)
+                            {{-- @foreach ($winningCoffees as $winningCoffee)
                                 <tr>
                                     <td class="rank">
                                         <div class="vl">#{{ $winningCoffee->rank }}</div>
@@ -530,7 +530,7 @@
                                                 href="{{ url('/winningproduct', $winningCoffee->code) }}">MORE
                                                 INFORMATION</a></button></td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </table>
                     </div>
                 </div>
@@ -582,7 +582,7 @@
                     <img src="{{ asset('public/images/bestofyemen.png') }}">
                     <h2>INTERNATIONAL JURY</h2>
                 </div>
-                <div class="row" style="margin-right:0;margin-left:0">
+                {{-- <div class="row" style="margin-right:0;margin-left:0">
                     <div class="col-2  img-size">
                         <img src="{{ asset('public/images/1.png') }}" alt="">
                     </div>
@@ -650,7 +650,7 @@
                     <div class="col-2 img-size"> <img src="{{ asset('public/images/31.png') }}" alt="">
                     </div>
 
-                </div>
+                </div> --}}
 
             </div>
 
