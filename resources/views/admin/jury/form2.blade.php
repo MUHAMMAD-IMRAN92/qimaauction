@@ -2495,6 +2495,8 @@ $previous_position = $productdata->postion - 1;
                         inputvalue = 7;
                     else if (inputvalue == 6.5)
                         inputvalue = 7.25;
+                    else if (inputvalue == 7)
+                        inputvalue = 7.5;
                     else if (inputvalue == 7.5)
                         inputvalue = 7.75;
                     console.log("after asd "+inputvalue)
