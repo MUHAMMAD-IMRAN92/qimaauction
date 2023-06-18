@@ -147,7 +147,7 @@ class ReviewController extends Controller
                 $sampleSent->is_hidden = '1';
                 $sampleSent->save();
             }
-            \Log::info($request);
+            // \Log::info($request);
             $review->aroma_dry              = $request->aroma_dry;
             $review->aroma_crust            = $request->aroma_crust;
             $review->roast                  = $request->roast;
