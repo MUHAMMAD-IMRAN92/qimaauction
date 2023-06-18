@@ -2519,6 +2519,7 @@ $previous_position = $productdata->postion - 1;
             $('.scrollable').css('width', window.innerWidth - 100);
 
             function parseReview(inputvalue) {
+                console.log('setting'+inputvalue)
                 if (inputvalue == 1)
                     inputvalue = 0.5;
                 else if (inputvalue == 2)
@@ -2549,6 +2550,8 @@ $previous_position = $productdata->postion - 1;
                     inputvalue = 7;
                 else if (inputvalue == 7.75)
                     inputvalue = 7.5;
+                console.log('now'+inputvalue)
+
                 return inputvalue;
             }
             if (chkhidden != 0) {
@@ -2613,7 +2616,7 @@ $previous_position = $productdata->postion - 1;
                     value: parseReview({{ $sampleReview->balance ?? '8' }})
                 })
                 $('#balance_note').val('{{ $sampleReview->balance_note ?? '' }}');
-
+                console.log('now its overall');
                 $(".overall").slider({
                     value: parseReview({{ $sampleReview->overall ?? '4' }})
                 })
