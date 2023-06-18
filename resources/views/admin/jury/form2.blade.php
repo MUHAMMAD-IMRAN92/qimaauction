@@ -2545,6 +2545,8 @@ $previous_position = $productdata->postion - 1;
                     inputvalue = 6;
                 else if (inputvalue == 7.25)
                     inputvalue = 6.5;
+                else if (inputvalue == 7.5)
+                    inputvalue = 7;
                 else if (inputvalue == 7.75)
                     inputvalue = 7.5;
                 return inputvalue;
