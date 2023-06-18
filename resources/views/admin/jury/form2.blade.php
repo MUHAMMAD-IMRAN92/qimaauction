@@ -2495,6 +2495,7 @@ $previous_position = $productdata->postion - 1;
                         inputvalue = 7.25;
                     else if (inputvalue == 7.5)
                         inputvalue = 7.75;
+                    console.log("asd "+inputvalue)
                     $(ui.handle).parent().find('input').val(inputvalue);
                     // ui.value;
                     calcTotal();
