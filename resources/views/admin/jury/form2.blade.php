@@ -2467,6 +2467,8 @@ $previous_position = $productdata->postion - 1;
                 })
                 .on("slidechange", function(e, ui) {
                     inputvalue = ui.value;
+                    console.log("before asd "+inputvalue)
+
                     if (inputvalue == 0.5)
                         inputvalue = 1;
                     else if (inputvalue == 1)
@@ -2495,7 +2497,7 @@ $previous_position = $productdata->postion - 1;
                         inputvalue = 7.25;
                     else if (inputvalue == 7.5)
                         inputvalue = 7.75;
-                    console.log("asd "+inputvalue)
+                    console.log("after asd "+inputvalue)
                     $(ui.handle).parent().find('input').val(inputvalue);
                     // ui.value;
                     calcTotal();
