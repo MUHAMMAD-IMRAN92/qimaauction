@@ -1142,7 +1142,40 @@ class AuctionController extends Controller
         return response()->json($userScore);
     }
 
-    public function auctionWinners(Request $request, $auction)
+    public function auctionWinners(Request $request)
+    {
+        $auction = Auction::first();
+        if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
+            //            $auction->is_hidden = 1;
+            $auction->save();
+            return redirect('auction-winners');
+        }
+        if ($auction && $auction->is_hidden == 1) {
+            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+            $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+            $results = $auctionProducts->map(function ($e) {
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+                $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+                $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+                $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                return $e;
+            });
+            return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'auction', 'singleBids'));
+        } else {
+            return redirect('auction');
+        }
+    }
+    public function auctionWinnersOld(Request $request, $auction)
     {
         // $auction = Auction::where('is_hidden','1')->first();
         if ($request->ended == 1) {

@@ -410,23 +410,23 @@
                             <img style="width: 270px;"
                                 src="{{ asset('public/images/LOGO_0002_Vector-Smart-Object 1.png') }}" alt="">
                         </div>
-
+{{--
                         @php
                             $auction = App\Models\Auction::where('is_active', '1')->first();
                             $auctionwiners = App\Models\Auction::where('is_hidden', '1')->first();
-                        @endphp
+                        @endphp --}}
                         <div class="my-3 banner-btn">
 
-                            @if (isset($auctionwiners))
+                            {{-- @if (isset($auctionwiners)) --}}
                                 <button type="button" class="btn btn-primary banner-btns mb-1"
-                                    OnClick=" location.href='/auction-winners/{{ $auctionwiners->id }}' ">RESULTS
+                                    OnClick=" location.href='/auction-winners' ">RESULTS
                                 </button>
-                            @endif
+                            {{-- @endif
                             @if (isset($auction))
                                 <!-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                     OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
                                 </button> -->
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>

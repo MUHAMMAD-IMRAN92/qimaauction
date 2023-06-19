@@ -1092,7 +1092,7 @@
             </ul>
         </div>
     </nav>
-    @php
+    {{-- @php
         $id=request()->route()->id;
         $auction=App\Models\Auction::where('id',$id)->first();
         if($auction->getPreviousAttribute() != 'null' && $auction->getNextAttribute() != 'null')
@@ -1103,7 +1103,7 @@
         $old_date = $auction->startDate;
         $old_date_timestamp = strtotime($old_date);
         $new_date = date('d-m-Y', $old_date_timestamp);
-    @endphp
+    @endphp --}}
     <section>
         <div class="header-heading">
             <div ><a class="header-heading-left"  @if (isset($previous)) href="{{route('auction-winners',$previous->id)}}" @endif > <i class="fa fa-angle-left" style="font-size:50px"></i><h5  class="header-heading-h5" >Previous Auction </h5></a></div>
@@ -1113,8 +1113,8 @@
             <div ><a class="header-heading-left"@if (isset($next)) href="{{route('auction-winners',$next->id)}}"@endif ><h5  class="header-heading-h5" >Next Auction </h5><i class="fa fa-angle-right" style="font-size:50px"></i> </a> </div>
         </div>
         <div class="header-heading-time mt-5">
-        <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
-                <p style="text-align: center;font-family:'Montserrat';">Date: <span>{{$new_date}}</span></p>
+        {{-- <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
+                <p style="text-align: center;font-family:'Montserrat';">Date: <span>{{$new_date}}</span></p> --}}
         </div>
         <div class="table-container">
             <div class="tab-content" id="nav-tabContent">
