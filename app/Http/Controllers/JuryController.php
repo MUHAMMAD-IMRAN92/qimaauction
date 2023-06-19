@@ -28,6 +28,8 @@ class JuryController extends Controller
     public function index()
     {
         // return $this->user;
+
+        // return Jury::all();
         return view('admin.jury.index');
     }
     public function alljury(Request $request)

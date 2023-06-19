@@ -14,8 +14,18 @@ class Jury extends Model
     // {
     //     return Crypt::encryptString($value);
     // }
+
+    protected $appends = ['recent_auction'];
+
     public function samples()
     {
         return $this->belongsToMany(SentToJury::class);
+    }
+
+    function getRecentAuctionAttribute()
+    {
+        $sentToJury =   SentToJury::where('jury_id', $this->id)->orderBy('id', 'desc')->first();
+
+        return  @$sentToJury->auction_id;
     }
 }
