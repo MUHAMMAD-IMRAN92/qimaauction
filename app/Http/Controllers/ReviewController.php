@@ -213,7 +213,7 @@ class ReviewController extends Controller
         if (isset($request->sample_submit_prev)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)->where('id', '!=',  $request->sent_sample_id)
-                ->where('auction_id',$sampleSent->auction_id)
+                ->where('auction_id', $sampleSent->auction_id)
                 ->where('postion', '<',  $sampleSent->postion)
                 ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) desc')
                 ->first();
@@ -223,18 +223,18 @@ class ReviewController extends Controller
                 $sampleSent = $sample2Sent;
             }
         }
-        echo "<!--FAIZAN ".print_r($request->sample_submit,true)."-->";
+        echo "<!--FAIZAN " . print_r($request->sample_submit, true) . "-->";
 
         if (isset($request->sample_submit)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
                 ->where('sample_sent_to_jury.tables', $request->table_value)
                 ->where('id', '!=',  $request->sent_sample_id)
-                ->where('auction_id',$sampleSent->auction_id)
+                ->where('auction_id', $sampleSent->auction_id)
                 ->where('postion', '>',  $sampleSent->postion)
                 //->where('id', '>',  $request->sent_sample_id)
                 ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')
                 ->first();
-                echo "<!--FAIZAN2 ".print_r($sample2Sent,true)."-->";
+            echo "<!--FAIZAN2 " . print_r($sample2Sent, true) . "-->";
             if ($sample2Sent) {
 
                 $sampleSent = $sample2Sent;
@@ -275,11 +275,13 @@ class ReviewController extends Controller
         return response()->json(array('success' => true, 'html' => $data));
     }
 
-    public function reviewedSamples()
+    public function reviewedSamples($id)
     {
-        $samples = SentToJury::groupBy('samples')
+        $samples = SentToJury::where('auction_id', $id)->orderbyRaw('CAST(sample_sent_to_jury.tables AS unsigned) asc')
+            ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')->groupBy('samples')
             ->select('samples', DB::raw('count(*) as total'))
             // ->where('sample_sent_to_jury.is_hidden','=','0')
+
             ->get();
 
         if (count($samples) > 0) {
@@ -299,19 +301,24 @@ class ReviewController extends Controller
         $opencupping = false;
         return view('admin.reviewed_samples', compact('samples', 'reviewed', 'dateArr', 'opencupping'));
     }
-    public function reviewSummary()
+    public function reviewSummary($id)
     {
+
         $reviews = Review::join('juries', 'reviews.jury_id', 'juries.id')
             ->join('products', 'reviews.product_id', 'products.id')
             ->join('sample_sent_to_jury', 'reviews.sample_id', 'sample_sent_to_jury.id')
             ->select(
                 'sample_sent_to_jury.samples as sampleId',
                 'sample_sent_to_jury.jury_id as jury_id',
+                'sample_sent_to_jury.auction_id as auction',
+                'sample_sent_to_jury.tables as table',
+                'sample_sent_to_jury.postion as position',
                 'juries.name as name',
                 'products.product_title as product',
                 'reviews.total_score as total'
             )
-            ->where('sample_sent_to_jury.is_hidden', '1')
+            ->where('sample_sent_to_jury.is_hidden', '1')->orderbyRaw('CAST(sample_sent_to_jury.tables AS unsigned) asc')
+            ->orderbyRaw('CAST(sample_sent_to_jury.postion AS unsigned) asc')->where('sample_sent_to_jury.auction_id', $id)
             ->get();
         return view('admin.reviewed_summary', compact('reviews'));
     }
