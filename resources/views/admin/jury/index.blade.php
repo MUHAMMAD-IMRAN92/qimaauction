@@ -8,8 +8,8 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
             @endif
             <div class="content-header row">
@@ -30,10 +30,11 @@
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
-                    <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light custom_btn">Send To
+                    <a href="{{ url('/jury/send_to_jury') }}"
+                        class="btn btn-primary waves-effect waves-light custom_btn">Send To
                         Jury</a>
-                            <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light custom_btn">Create
-                                Jury</a>
+                    <a href="{{ url('/jury/create') }}" class="btn btn-primary waves-effect waves-light custom_btn">Create
+                        Jury</a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -136,15 +137,25 @@
                     }
                 },
                 {
-            //   changes
+                    //   changes
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
+                        var link = '';
+                        if (row.recent_auction == null) {
+
+                            link =  `<a class="" disable href="#" >
+                                Not Sent</a>`
+                        }else{
+                            link =  `<a class="" target="_blank" href="/jury/links/` + row.linkurl +
+                                `/` + row.recent_auction + `">
+                                View link</a>`
+
+                        }
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
-                            `">Edit</a><br>`
+                            `">Edit</a><br>` +
+                            link
                             +
-                            `<a class="" target="_blank" href="/jury/links/`+ row.linkurl + `/`+row.recent_auction+`">
-                                View link</a>`
                             // +
                             // `<a class="" href="/jury/delete/` + ids +
                             // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
