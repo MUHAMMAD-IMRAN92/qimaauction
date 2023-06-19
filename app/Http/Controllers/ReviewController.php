@@ -207,7 +207,8 @@ class ReviewController extends Controller
                 ->where('sample_sent_to_jury.tables', $request->table_value)
                 ->where('sample_sent_to_jury.is_hidden', '0')
                 ->update(array("is_hidden" => "1"));
-            return redirect()->url('/jury/links/' . encrypt($request->jury_id) . '/' . $request->auctionId);
+            return redirect()->to('/jury/links/' . encrypt($request->jury_id) . '/' . $request->auctionId);
+            // return redirect()->url('/jury/links/' . encrypt($request->jury_id) . '/' . $request->auctionId);
         }
         if (isset($request->sample_submit_prev)) {
             $sample2Sent = SentToJury::where('sample_sent_to_jury.jury_id', $request->jury_id)
