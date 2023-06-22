@@ -323,10 +323,7 @@
                     else
                         $('#village').val('--');
 
-                    if (value.genetic != null)
-                        $('#genetic').val(value.genetic.title);
-                    else
-                        $('#genetic').val('--');
+
                     if (value.product_title != null)
                         $('#name').val(value.product_title);
                     else
@@ -336,14 +333,7 @@
                     else
                         $('#code').val('--');
 
-                    if (value.pro_process == 1)
-                        $('#process').val('Natural');
-                    else if (value.pro_process == 2)
-                        $('#process').val('Slow Dried');
-                    else if (value.pro_process == 3)
-                        $('#process').val('Alchemy');
-                    else if (value.pro_process == 4)
-                        $('#process').val('Deep Fermentation');
+
                     return;
                 }
             });
