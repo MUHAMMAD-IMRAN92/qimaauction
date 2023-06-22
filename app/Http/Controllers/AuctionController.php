@@ -150,7 +150,7 @@ class AuctionController extends Controller
                 ->with('products')
                 ->first();
         }
-
+        return view('admin.auction.index');
 
         return response()->json($auction_products);
     }
