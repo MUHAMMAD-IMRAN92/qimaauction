@@ -312,7 +312,7 @@ class AuctionController extends Controller
     {
         $user = Auth::user()->id;
         $auction = Auction::where('is_active', '1')->first();
-        if ($auction->is_hidden == 1) {
+        if (@$auction->is_hidden == 1) {
             return redirect('auction-winners/' . $auction->id);
         }
         if ($request->ended == 1) {
