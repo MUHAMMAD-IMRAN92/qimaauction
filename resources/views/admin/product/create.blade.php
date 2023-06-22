@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown">
@@ -135,7 +135,7 @@
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->flavour_title }}</option>
                                                                     @endforeach
-                                                                 
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -151,7 +151,7 @@
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->title }}</option>
                                                                     @endforeach
-                                                                 
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -180,7 +180,7 @@
                                                                     <option value="2">Slow Dried</option>
                                                                     <option value="3">Alchemy</option>
                                                                     <option value="4">Deep Fermentation</option>
-                                                    
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -283,18 +283,18 @@
         </div>
     </div>
     <script>
-          $(document).ready(function (e) {        
+          $(document).ready(function (e) {
                     $('#image').change(function(){
-                            
+
                     let reader = new FileReader();
 
-                    reader.onload = (e) => { 
+                    reader.onload = (e) => {
 
-                        $('#preview-image-before-upload').attr('src', e.target.result); 
+                        $('#preview-image-before-upload').attr('src', e.target.result);
                     }
 
-                    reader.readAsDataURL(this.files[0]); 
-                    
+                    reader.readAsDataURL(this.files[0]);
+
                     });
         });
     </script>

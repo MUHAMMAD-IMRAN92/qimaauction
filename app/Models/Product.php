@@ -44,7 +44,10 @@ class Product extends Model
     {
         return $this->hasOne(Flavour::class, 'id', 'flavour_id');
     }
-
+    public function genetic()
+    {
+        return $this->hasOne(Genetic::class, 'id', 'genetic_id');
+    }
     public function images()
     {
         return $this->hasMany(Image::class, 'product_id', 'id');
@@ -62,6 +65,6 @@ class Product extends Model
 
     public function tableUserForCupping($auctionId)
     {
-         return OpenCupping::where('auction_id',  $auctionId)->where('product_id', $this->id)->first();
+        return OpenCupping::where('auction_id',  $auctionId)->where('product_id', $this->id)->first();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AcceptAgreement;
 use App\Models\Auction;
 use App\Models\AuctionProduct;
+use App\Models\AuctionProductImages;
 use App\Models\AuctionWinners;
 use App\Models\AutoBid;
 use App\Models\Bidlimit;
@@ -45,7 +46,6 @@ class AuctionController extends Controller
 
     public function auctionProducts($id)
     {
-
         $auctionId = base64_decode($id);
         $auction_products = AuctionProduct::where('auction_id', $auctionId)
             ->with('products')
@@ -56,35 +56,96 @@ class AuctionController extends Controller
 
     public function saveAuctionProduct(Request $request)
     {
-        if (isset($request->auction_product_id)) {
-            $auctionproduct = AuctionProduct::where('id', $request->auction_product_id)->update(
+        $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
+        if ($auctionProduct) {
+            $auctionproduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
                 [
-                    'product_id' => $request->productId,
-                    'auction_id' => $request->auctionId,
+                    'product_id' => $request->product_id,
+                    'auction_id' => $request->auction_id,
                     'weight' => $request->weight,
                     'size' => $request->size,
                     'rank' => $request->rank,
                     'start_price' => $request->start_price,
                     'reserve_price' => $request->reserve_price,
                     'packing_cost' => $request->packing_cost,
+                    'village' => $request->village,
+                    'region' => $request->region,
+                    'governorate' => $request->governorate,
+                    'genetic' => $request->genetic,
+                    'process' => $request->process,
+                    'heading_1' => $request->heading_one,
+                    'heading_2' => $request->heading_two,
+                    'description_1' => $request->description_one,
+                    'description_2' => $request->description_two,
+                    'qoute' => $request->qoute,
+                    'cup_profile' => $request->cupping_profile,
+                    'name' => $request->name,
+                    'code' => $request->code,
+                    'altitude' =>  $request->altitude
                 ]
             );
+
+            if ($request->images) {
+                foreach ($request->images as $key => $img) {
+                    $fileName = $img->getClientOriginalName();
+                    $img->storeAs(
+                        'auction',
+                        $fileName,
+                        'public'
+                    );
+                    $productImage = new AuctionProductImages();
+                    $productImage->auction_product_id = $auctionproduct->id;
+                    $productImage->order_no = $key;
+                    $productImage->image = $fileName;
+                    $productImage->save();
+                }
+            }
+            // AuctionProductImages::create
             $auction_products = AuctionProduct::where('id', $request->auction_product_id)
                 ->with('products')
                 ->first();
         } else {
             $auctionproduct = AuctionProduct::create(
                 [
-                    'product_id' => $request->productId,
-                    'auction_id' => $request->auctionId,
+                    'product_id' => $request->product_id,
+                    'auction_id' => $request->auction_id,
                     'weight' => $request->weight,
                     'size' => $request->size,
                     'rank' => $request->rank,
                     'start_price' => $request->start_price,
                     'reserve_price' => $request->reserve_price,
                     'packing_cost' => $request->packing_cost,
+                    'village' => $request->village,
+                    'region' => $request->region,
+                    'governorate' => $request->governorate,
+                    'genetic' => $request->genetic,
+                    'process' => $request->process,
+                    'heading_1' => $request->heading_one,
+                    'heading_2' => $request->heading_two,
+                    'description_1' => $request->description_one,
+                    'description_2' => $request->description_two,
+                    'qoute' => $request->qoute,
+                    'cup_profile' => $request->cupping_profile,
+                    'name' => $request->name,
+                    'code' => $request->code,
+                    'altitude' =>  $request->altitude
                 ]
             );
+            if ($request->images) {
+                foreach ($request->images as $key => $img) {
+                    $fileName = $img->getClientOriginalName();
+                    $img->storeAs(
+                        'auction',
+                        $fileName,
+                        'public'
+                    );
+                    $productImage = new AuctionProductImages();
+                    $productImage->auction_product_id = $auctionproduct->id;
+                    $productImage->order_no = $key;
+                    $productImage->image = $fileName;
+                    $productImage->save();
+                }
+            }
             $auction_products = AuctionProduct::where('id', $auctionproduct->id)
                 ->with('products')
                 ->first();
@@ -1499,5 +1560,32 @@ class AuctionController extends Controller
             }
         }
         return response()->json(['success' => 'Auction expired.', 'offersdata' => $groupbid]);
+    }
+
+    public function addAuctionProducts($id)
+    {
+        $auctionId = base64_decode($id);
+        $auction_products = AuctionProduct::where('auction_id', $auctionId)
+            ->with('products')
+            ->get();
+        $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
+        return view('admin.auction.create_auction_product', [
+            'auction_products' => $auction_products,
+            'products' => $products,
+            'auction_id' =>  $auctionId
+        ]);
+    }
+    public function storeAuctionProducts(Request $request)
+    {
+        return $request->all();
+        // $auctionId = base64_decode($id);
+        $auction_products = AuctionProduct::where('auction_id', $auctionId)
+            ->with('products')
+            ->get();
+        $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
+        return view('admin.auction.create_auction_product', [
+            'auction_products' => $auction_products,
+            'products' => $products
+        ]);
     }
 }

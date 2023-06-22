@@ -198,6 +198,10 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/groupbidsidebaradmin', [App\Http\Controllers\AuctionController::class, 'groupbidAdminSidebar'])->name('groupbidadminsidebar');
 
 
+    //Auction Products
+    Route::get('add_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'addAuctionProducts']);
+    Route::post('auction/product/store', [App\Http\Controllers\AuctionController::class, 'storeAuctionProducts']);
+
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
     Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);
