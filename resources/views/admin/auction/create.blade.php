@@ -14,7 +14,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{url('jury/index') }}">Auction</a>
+                                <li class="breadcrumb-item"><a href="{{url('auction/index') }}">Auction</a>
                                 </li>
                                 <li class="breadcrumb-item active"><a href="#">Create Auction</a>
                                 </li>

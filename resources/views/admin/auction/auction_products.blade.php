@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-        display: contents;
-      } */
+                    display: contents;
+                  } */
         /* .content-header.row{
-        margin-right: -15px;
-        margin-left: 30px;
-        align-items: center;
-      } */
+                    margin-right: -15px;
+                    margin-left: 30px;
+                    align-items: center;
+                  } */
 
         .row {
             margin-left: 0;
@@ -27,7 +27,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ url('jury/index') }}">Auction</a>
+                                <li class="breadcrumb-item"><a href="{{ url('auction/index') }}">Auction</a>
                                 </li>
                                 <li class="breadcrumb-item active"><a href="#">Create Auction</a>
                                 </li>
@@ -205,8 +205,9 @@
                                                                         class="fa fa-trash-o"></i> --}}
                                                                     {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-eye"></a> --}}
-                                                                    <span class="product-link-a" id="edit"
-                                                                        data-auctionId="{{ $auction->id }}">Edit</span>
+                                                                    <a
+                                                                        href="{{ url('edit_product_to_auction/' . $auction->id) }}">
+                                                                        <span class="product-link-a">Edit</span></a>
                                                                     <span class="product-link-a" id="delete"
                                                                         data-auctionId="{{ $auction->id }}">Delete</span>
                                                                 </td>

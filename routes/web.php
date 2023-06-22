@@ -200,6 +200,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
     //Auction Products
     Route::get('add_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'addAuctionProducts']);
+    Route::get('edit_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'editAuctionProducts']);
     Route::post('auction/product/store', [App\Http\Controllers\AuctionController::class, 'storeAuctionProducts']);
 
     //Customer CRUD

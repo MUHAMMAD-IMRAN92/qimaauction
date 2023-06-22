@@ -56,9 +56,10 @@ class AuctionController extends Controller
 
     public function saveAuctionProduct(Request $request)
     {
+        // return $request->all();
         $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
         if ($auctionProduct) {
-            $auctionproduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
+            $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
                 [
                     'product_id' => $request->product_id,
                     'auction_id' => $request->auction_id,
@@ -94,8 +95,8 @@ class AuctionController extends Controller
                         'public'
                     );
                     $productImage = new AuctionProductImages();
-                    $productImage->auction_product_id = $auctionproduct->id;
-                    $productImage->order_no = $key;
+                    $productImage->auction_product_id = $auctionProduct->id;
+                    $productImage->order_no = $request->sequence[$key];
                     $productImage->image = $fileName;
                     $productImage->save();
                 }
@@ -141,7 +142,7 @@ class AuctionController extends Controller
                     );
                     $productImage = new AuctionProductImages();
                     $productImage->auction_product_id = $auctionproduct->id;
-                    $productImage->order_no = $key;
+                    $productImage->order_no = $request->sequence[$key];
                     $productImage->image = $fileName;
                     $productImage->save();
                 }
@@ -150,9 +151,9 @@ class AuctionController extends Controller
                 ->with('products')
                 ->first();
         }
-        return view('admin.auction.index');
+        return redirect('/auction/index')->with('success',  'Product Added To Auction successfully.');
 
-        return response()->json($auction_products);
+
     }
 
     public function getAuctionProduct(Request $request)
@@ -1573,6 +1574,17 @@ class AuctionController extends Controller
             'auction_products' => $auction_products,
             'products' => $products,
             'auction_id' =>  $auctionId
+        ]);
+    }
+    public function editAuctionProducts($id)
+    {
+        $auction_products = AuctionProduct::where('id', $id)
+            ->first();
+        $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
+        return view('admin.auction.edit_auction_product', [
+            'auction_products' => $auction_products,
+            'products' => $products,
+            'auction_id' =>  $auction_products->auction_id
         ]);
     }
     public function storeAuctionProducts(Request $request)

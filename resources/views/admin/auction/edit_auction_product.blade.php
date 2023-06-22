@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                display: contents;
-                                                                                                                                              } */
+                                                                                                                                                                        display: contents;
+                                                                                                                                                                      } */
         /* .content-header.row{
-                                                                                                                                                margin-right: -15px;
-                                                                                                                                                margin-left: 30px;
-                                                                                                                                                align-items: center;
-                                                                                                                                              } */
+                                                                                                                                                                        margin-right: -15px;
+                                                                                                                                                                        margin-left: 30px;
+                                                                                                                                                                        align-items: center;
+                                                                                                                                                                      } */
 
         .row {
             margin-left: 0;
@@ -102,7 +102,8 @@
                         <div class="card-content">
                             <div class="card-body card-dashboard">
                                 <div class="table-responsive">
-                                    <form action="{{ url('/auction/saveAuctionProduct') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ url('/auction/saveAuctionProduct') }}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="row">
@@ -115,7 +116,7 @@
 
                                                             <option selected disabled>Please Select product</option>
                                                             @foreach ($products as $key => $prod)
-                                                                <option value="{{ $prod->id }}">
+                                                                <option value="{{ $prod->id }}" {{$auction_products->product_id ==$prod->id ? 'selected' : '' }}>
                                                                     {{ $prod->product_title }}
                                                                 </option>
                                                             @endforeach
@@ -123,12 +124,14 @@
                                                     </div>
                                                 </div>
                                                 <input type="hidden" id="rownumber" value="">
-                                                <input type="hidden" name="auction_product_id" id="auction_product_id">
+                                                <input type="hidden" name="auction_product_id"
+                                                    value={{ $auction_products->auction_id }}>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="">Governorate</label>
                                                         <input type="text" class="form-control" name="governorate"
-                                                            id="governorate" value="" required>
+                                                            id="governorate" value="{{ $auction_products->governorate }}"
+                                                            required>
 
                                                     </div>
                                                 </div>
@@ -136,7 +139,7 @@
                                                     <div class="form-group">
                                                         <label for="">Village</label> <input type="text"
                                                             class="form-control" name="village" id="village"
-                                                            value="" required>
+                                                            value="{{ $auction_products->village }}" required>
 
                                                     </div>
                                                 </div>
@@ -144,7 +147,7 @@
                                                     <div class="form-group">
                                                         <label for="">Region</label> <input type="text"
                                                             class="form-control" name="region" id="region"
-                                                            value="" required>
+                                                            value="{{ $auction_products->region }}" required>
 
                                                     </div>
                                                 </div>
@@ -153,7 +156,7 @@
                                                     <div class="form-group">
                                                         <label for="">Name</label><input type="text"
                                                             class="form-control" name="name" id="name"
-                                                            value="" required>
+                                                            value="{{ $auction_products->name }}" required>
 
                                                     </div>
                                                 </div>
@@ -161,7 +164,7 @@
                                                     <div class="form-group">
                                                         <label for="">Code</label><input type="text"
                                                             class="form-control" name="code" id="code"
-                                                            value="" required>
+                                                            value="{{ $auction_products->code }}" required>
 
                                                     </div>
                                                 </div>
@@ -169,44 +172,48 @@
                                                     <div class="form-group">
                                                         <label for="">Weight</label>
                                                         <input type="number" step="any" class="form-control"
-                                                            name="weight" id="weight" value="" required>
+                                                            name="weight" id="weight"
+                                                            value="{{ $auction_products->weight }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Size</label>
                                                         <input type="number" step="any" class="form-control"
-                                                            name="size" id="size" value="" required>
+                                                            name="size" id="size"
+                                                            value="{{ $auction_products->size }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Rank</label>
                                                         <input type="text" class="form-control" name="rank"
-                                                            id="rank" value="" required>
+                                                            id="rank" value="{{ $auction_products->rank }}"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Start Bid</label>
                                                         <input type="number" step="any" class="form-control"
-                                                            name="start_price" id="start_price" value="" required>
+                                                            name="start_price" id="start_price"
+                                                            value="{{ $auction_products->start_price }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Reserve Price</label>
                                                         <input type="number" step="any" class="form-control"
-                                                            name="reserve_price" id="reserve_price" value=""
-                                                            required>
+                                                            name="reserve_price" id="reserve_price"
+                                                            value="{{ $auction_products->reserve_price }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Packing Price</label>
                                                         <input type="number" step="any" class="form-control"
-                                                            name="packing_cost" id="packing_cost" value=""
-                                                            required>
+                                                            name="packing_cost" id="packing_cost"
+                                                            value="{{ $auction_products->packing_cost }}" required>
                                                     </div>
                                                 </div>
 
@@ -214,47 +221,52 @@
                                                     <div class="form-group">
                                                         <label for="">Heading One</label>
                                                         <input type="text" class="form-control" name="heading_one"
-                                                            id="" value="" required>
+                                                            id="" value="{{ $auction_products->heading_1 }}"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Heading Two</label>
                                                         <input type="text" class="form-control" name="heading_two"
-                                                            id="" value="" required>
+                                                            id="" value="{{ $auction_products->heading_2 }}"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Description One</label>
-                                                        <textarea class="form-control" name="description_one" id="" value="" required> </textarea>
+                                                        <textarea class="form-control" name="description_one" id="" value="" required> {{ $auction_products->description_1 }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Description Two</label>
-                                                        <textarea class="form-control" name="description_two" id="" value="" required> </textarea>
+                                                        <textarea class="form-control" name="description_two" id="" value="" required>{{ $auction_products->description_2 }} </textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Altitude</label>
                                                         <input type="text" class="form-control" name="altitude"
-                                                            id="" value="" required>
+                                                            id="" value="{{ $auction_products->altitude }}"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Qoute</label>
                                                         <input type="text" class="form-control" name="qoute"
-                                                            id="" value="" required>
+                                                            id="" value="{{ $auction_products->qoute }}"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Cupping Profile</label>
                                                         <input type="text" class="form-control" name="cupping_profile"
-                                                            id="" value="" required>
+
+                                                            value="{{ $auction_products->cup_profile }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -377,7 +389,8 @@
                         // Create preview image
                         var img = $('<img class="image-preview" src="' + e.target.result +
                             '">');
-                        var input = $('<input class="text-field" type="text" name="sequence[]" >');
+                        var input = $(
+                            '<input class="text-field" type="text" name="sequence[]" >');
                         // Create deselect button
                         var deselectBtn = $('<i class="deselectBtn fa fa-trash"></i>');
 
