@@ -130,22 +130,22 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                {{-- <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Genetic</label><input type="text"
                                                             class="form-control" name="genetic" id="genetic"
                                                             value="" required>
 
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
+                                                </div> --}}
+                                                {{-- <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Process</label><input type="text"
                                                             class="form-control" name="process" id="process"
                                                             value="" required>
 
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Name</label><input type="text"

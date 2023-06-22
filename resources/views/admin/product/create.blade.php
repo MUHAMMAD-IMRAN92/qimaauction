@@ -124,7 +124,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
@@ -139,8 +139,8 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Genetics</label>
                                                             <div class="form-group">
@@ -155,7 +155,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>--}}
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
@@ -169,7 +169,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-process">Select Process</label>
                                                             <div class="form-group">
@@ -184,7 +184,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <!-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Origin</label>
