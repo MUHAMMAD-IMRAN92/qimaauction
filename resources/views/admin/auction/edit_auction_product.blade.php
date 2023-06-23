@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                        display: contents;
-                                                                                                                                                                      } */
+                                                                                                                                                                                                                                                    display: contents;
+                                                                                                                                                                                                                                                  } */
         /* .content-header.row{
-                                                                                                                                                                        margin-right: -15px;
-                                                                                                                                                                        margin-left: 30px;
-                                                                                                                                                                        align-items: center;
-                                                                                                                                                                      } */
+                                                                                                                                                                                                                                                    margin-right: -15px;
+                                                                                                                                                                                                                                                    margin-left: 30px;
+                                                                                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                                                                                  } */
 
         .row {
             margin-left: 0;
@@ -67,6 +67,69 @@
             margin-left: 10px;
 
         }
+
+        .image-upload-wrap {
+            margin-top: 20px;
+            border: 2px solid #141414;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .image-dropping,
+        .image-upload-wrap:hover {
+            background-color: #dadada90;
+            border: 4px solid #141414;
+        }
+
+        .image-title-wrap {
+            padding: 0 15px 15px 15px;
+            color: #222;
+        }
+
+        .drag-text {
+            text-align: center;
+        }
+
+        .drag-text h3 {
+            font-weight: 100;
+            text-transform: uppercase;
+            color: #141414;
+            padding: 60px 0;
+        }
+
+        .file-upload-image {
+            max-height: 200px;
+            max-width: 200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .remove-image {
+            width: 200px;
+            margin: 0;
+            color: #fff;
+            background: #cd4535;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            border-bottom: 4px solid #b02818;
+            transition: all .2s ease;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .remove-image:hover {
+            background: #c13b2a;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .remove-image:active {
+            border: 0;
+            transition: all .2s ease;
+        }
     </style>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -91,214 +154,381 @@
                 </div>
 
             </div>
-            <div class="content-body" style="margin-top: 30px">
+            <br>
+            <div class="content-body">
 
-                <div class="col-lg-12">
-                </div>
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body card-dashboard">
-                                <div class="table-responsive">
-                                    <form action="{{ url('/auction/saveAuctionProduct') }}" method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <input type="hidden" name="auction_id" value={{ $auction_id }}>
-                                                        <label for="">Select Product</label>
-                                                        <select class="select2 form-control" name="product_id"
-                                                            id="product_id">
+                <!-- Basic Vertical form layout section start -->
+                <section id="basic-vertical-layouts">
+                    <div class="row match-height">
 
-                                                            <option selected disabled>Please Select product</option>
-                                                            @foreach ($products as $key => $prod)
-                                                                <option value="{{ $prod->id }}" {{$auction_products->product_id ==$prod->id ? 'selected' : '' }}>
-                                                                    {{ $prod->product_title }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" id="rownumber" value="">
-                                                <input type="hidden" name="auction_product_id"
-                                                    value={{ $auction_products->auction_id }}>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="">Governorate</label>
-                                                        <input type="text" class="form-control" name="governorate"
-                                                            id="governorate" value="{{ $auction_products->governorate }}"
-                                                            required>
+                        <div class="col-md-12 col-12">
+                            <div class="card">
 
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="">Village</label> <input type="text"
-                                                            class="form-control" name="village" id="village"
-                                                            value="{{ $auction_products->village }}" required>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form action="{{ url('/auction/saveAuctionProduct') }}" method="post"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <!-- Filled Pills Start -->
+                                            <section id="filled-pills">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="card">
 
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="">Region</label> <input type="text"
-                                                            class="form-control" name="region" id="region"
-                                                            value="{{ $auction_products->region }}" required>
+                                                            <div class="card-content">
+                                                                <div class="card-body">
 
-                                                    </div>
-                                                </div>
+                                                                    <ul class="nav nav-pills nav-fill">
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link active" id="home-tab-fill"
+                                                                                data-toggle="pill" href="#home-fill"
+                                                                                aria-expanded="true">Product Information</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link " id="profile-tab-fill"
+                                                                                data-toggle="pill" href="#profile-fill"
+                                                                                aria-expanded="false">Auction
+                                                                                Information</a>
+                                                                        </li>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Name</label><input type="text"
-                                                            class="form-control" name="name" id="name"
-                                                            value="{{ $auction_products->name }}" required>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" id="about-tab-fill"
+                                                                                data-toggle="pill" href="#about-fill"
+                                                                                aria-expanded="false">Images</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="tab-content ">
+                                                                        <div role="tabpanel" class="tab-pane active"
+                                                                            id="home-fill" aria-labelledby="home-tab-fill"
+                                                                            aria-expanded="true">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <input type="hidden" name="auction_id"
+                                                                                        value={{ $auction_id }}>
+                                                                                    <label for="">Select
+                                                                                        Product</label>
+                                                                                    <select class="select2 form-control"
+                                                                                        name="product_id" id="product_id">
 
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Code</label><input type="text"
-                                                            class="form-control" name="code" id="code"
-                                                            value="{{ $auction_products->code }}" required>
+                                                                                        <option selected disabled>Please
+                                                                                            Select product</option>
+                                                                                        @foreach ($products as $key => $prod)
+                                                                                            <option
+                                                                                                {{ $auction_products->product_id == $prod->id ? 'selected' : '' }}
+                                                                                                value="{{ $prod->id }}">
+                                                                                                {{ $prod->product_title }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <input type="hidden" id="rownumber"
+                                                                                value="">
+                                                                            <input type="hidden" name="auction_product_id"
+                                                                                value={{ $auction_products->auction_id }}>
+                                                                            <div class="d-flex">
+                                                                                <div class="col-md-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Governorate</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="governorate"
+                                                                                            id="governorate"
+                                                                                            value="{{ $auction_products->governorate }}"
+                                                                                            required>
 
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Weight</label>
-                                                        <input type="number" step="any" class="form-control"
-                                                            name="weight" id="weight"
-                                                            value="{{ $auction_products->weight }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Size</label>
-                                                        <input type="number" step="any" class="form-control"
-                                                            name="size" id="size"
-                                                            value="{{ $auction_products->size }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Rank</label>
-                                                        <input type="text" class="form-control" name="rank"
-                                                            id="rank" value="{{ $auction_products->rank }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Start Bid</label>
-                                                        <input type="number" step="any" class="form-control"
-                                                            name="start_price" id="start_price"
-                                                            value="{{ $auction_products->start_price }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Reserve Price</label>
-                                                        <input type="number" step="any" class="form-control"
-                                                            name="reserve_price" id="reserve_price"
-                                                            value="{{ $auction_products->reserve_price }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Packing Price</label>
-                                                        <input type="number" step="any" class="form-control"
-                                                            name="packing_cost" id="packing_cost"
-                                                            value="{{ $auction_products->packing_cost }}" required>
-                                                    </div>
-                                                </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Village</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="village" id="village"
+                                                                                            value="{{ $auction_products->village }}"
+                                                                                            required>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Heading One</label>
-                                                        <input type="text" class="form-control" name="heading_one"
-                                                            id="" value="{{ $auction_products->heading_1 }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Heading Two</label>
-                                                        <input type="text" class="form-control" name="heading_two"
-                                                            id="" value="{{ $auction_products->heading_2 }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Description One</label>
-                                                        <textarea class="form-control" name="description_one" id="" value="" required> {{ $auction_products->description_1 }}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Description Two</label>
-                                                        <textarea class="form-control" name="description_two" id="" value="" required>{{ $auction_products->description_2 }} </textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Altitude</label>
-                                                        <input type="text" class="form-control" name="altitude"
-                                                            id="" value="{{ $auction_products->altitude }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Qoute</label>
-                                                        <input type="text" class="form-control" name="qoute"
-                                                            id="" value="{{ $auction_products->qoute }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Cupping Profile</label>
-                                                        <input type="text" class="form-control" name="cupping_profile"
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Region</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="region" id="region"
+                                                                                            value="{{ $auction_products->region }}"
+                                                                                            required>
 
-                                                            value="{{ $auction_products->cup_profile }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Name</label><input
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            name="name" id="name"
+                                                                                            value="{{ $auction_products->name }}"
+                                                                                            required>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Code</label><input
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            name="code" id="code"
+                                                                                            value="{{ $auction_products->code }}"
+                                                                                            required>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="tab-pane" id="profile-fill"
+                                                                            role="tabpanel"
+                                                                            aria-labelledby="about-tab-fill"
+                                                                            aria-expanded="false">
+                                                                            <div class="col-12 d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Weight</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="weight" id="weight"
+                                                                                            value="{{ $auction_products->weight }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Size</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="size" id="size"
+                                                                                            value="{{ $auction_products->size }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Rank</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="rank" id="rank"
+                                                                                            value="{{ $auction_products->rank }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Start
+                                                                                            Bid</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="start_price"
+                                                                                            id="start_price"
+                                                                                            value="{{ $auction_products->start_price }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Reserve
+                                                                                            Price</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="reserve_price"
+                                                                                            id="reserve_price"
+                                                                                            value="{{ $auction_products->reserve_price }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Packing
+                                                                                            Price</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="packing_cost"
+                                                                                            id="packing_cost"
+                                                                                            value="{{ $auction_products->packing_cost }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Heading
+                                                                                            One</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="heading_one"
+                                                                                            id=""
+                                                                                            value="{{ $auction_products->heading_1 }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Heading
+                                                                                            Two</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="heading_two"
+                                                                                            id=""
+                                                                                            value="{{ $auction_products->heading_2 }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Description
+                                                                                            One</label>
+                                                                                        <textarea class="form-control" name="description_one" id="" value="" required>{{ $auction_products->description_1 }} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Description
+                                                                                            Two</label>
+                                                                                        <textarea class="form-control" name="description_two" id="" value="" required>{{ $auction_products->description_2 }} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Altitude</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="altitude" id=""
+                                                                                            value="{{ $auction_products->altitude }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-12 d-flex">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                for="">Qoute</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                name="qoute"
+                                                                                                id=""
+                                                                                                value="{{ $auction_products->qoute }}"
+                                                                                                required>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-12 d-flex">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="">Cupping
+                                                                                                Profile</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                name="cupping_profile"
+                                                                                                id=""
+                                                                                                value="{{ $auction_products->cup_profile }}"
+                                                                                                required>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="tab-pane" id="about-fill"
+                                                                            role="tabpanel"
+                                                                            aria-labelledby="about-tab-fill"
+                                                                            aria-expanded="false">
+                                                                            <div class="col-12 m-0 p-0">
+
+                                                                                <div class="col-lg-12 col-md-12 m-0 p-0">
+                                                                                    <fieldset class="form-group">
+                                                                                        <label
+                                                                                            for="basicInputFile">Images</label>
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file"
+                                                                                                class="custom-file-input"
+                                                                                                id="fileInput"
+                                                                                                name="images[]" multiple>
+                                                                                            <label
+                                                                                                class="custom-file-label"
+                                                                                                for="inputGroupFile01">Choose
+                                                                                                file</label>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-md-12 m-0 p-0">
+                                                                                    <div id="previewContainer"></div>
+                                                                                </div>
+                                                                                <h5>Selected Images:</h5>
+                                                                                <div class="col-md-12 d-flex">
+                                                                                    @foreach (@$auction_products->productImages as $image)
+                                                                                        <div class="col-md-2">
+
+
+                                                                                            <img src="{{ url('storage/app/public/auction/' . $image->image) }}"
+                                                                                                alt=""
+                                                                                                class="m-1"
+                                                                                                style="width:100px; height:100px">
+                                                                                                <br><span
+                                                                                                class="badge badge-primary  ml-5">{{$image->order_no}}</span>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Image</label>
-                                                        <input type="file" id="fileInput" class="form-control"
-                                                            name="images[]" multiple>
-                                                    </div>
-                                                </div>
-                                                {{-- <input type="file" id="fileInput" multiple> --}}
-                                                <div class="col-md-12">
-                                                    <div id="previewContainer"></div>
-                                                </div>
-                                                <div class="col-md-10">
+                                            </section>
+                                            <!-- Filled Pills End -->
 
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
 
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="submit" name="button"
-                                                        style="background-color: #d1af69; color:white"
-                                                        class="btn save">Submit</button>
-
-                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                <!-- // Basic Vertical form layout section end -->
+
             </div>
         </div>
     </div>

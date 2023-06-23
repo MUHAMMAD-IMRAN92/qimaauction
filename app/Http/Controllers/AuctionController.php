@@ -152,8 +152,6 @@ class AuctionController extends Controller
                 ->first();
         }
         return redirect('/auction/index')->with('success',  'Product Added To Auction successfully.');
-
-
     }
 
     public function getAuctionProduct(Request $request)
@@ -1578,8 +1576,10 @@ class AuctionController extends Controller
     }
     public function editAuctionProducts($id)
     {
-        $auction_products = AuctionProduct::where('id', $id)
-            ->first();
+        $auction_products = AuctionProduct::where('id', $id)->with(['productImages' => function ($q) {
+            $q->orderBy('order_no' , 'asc');
+        }])->first();
+
         $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
         return view('admin.auction.edit_auction_product', [
             'auction_products' => $auction_products,
