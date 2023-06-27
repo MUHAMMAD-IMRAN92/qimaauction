@@ -57,7 +57,7 @@ class AuctionController extends Controller
     public function saveAuctionProduct(Request $request)
     {
         // return $request->all();
-        return $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
+         $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
         if ($auctionProduct) {
             $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
                 [
