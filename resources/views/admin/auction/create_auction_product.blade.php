@@ -288,7 +288,89 @@
                                                                         <div class="tab-pane" id="profile-fill"
                                                                             role="tabpanel"
                                                                             aria-labelledby="about-tab-fill"
-                                                                            aria-expanded="false">
+                                                                            aria-expanded="false"><div class="col-12 d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Public
+                                                                                            Cupping Score</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="puclic_jury_score"
+                                                                                            id="puclic_jury_score"
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Jury
+                                                                                            Score</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="jury_score"
+                                                                                            id="jury_score"
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-12 d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Table</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="table" id="table"
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Position</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="position" id="position"
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Jury
+                                                                                            Code</label>
+                                                                                        <input type="text"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="jury_code"
+                                                                                            id="jury_code"
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Cupping
+                                                                                            Profile</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="cupping_profile"
+                                                                                            id=""
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-12 d-flex">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
