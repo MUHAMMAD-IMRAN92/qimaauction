@@ -343,34 +343,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-12 d-flex">
 
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Jury
-                                                                                            Code</label>
-                                                                                        <input type="text"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="jury_code"
-                                                                                            id="jury_code"
-                                                                                            value=""
-                                                                                            required>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Cupping
-                                                                                            Profile</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            name="cupping_profile"
-                                                                                            id=""
-                                                                                            value=""
-                                                                                            required>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                             <div class="col-12 d-flex">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
@@ -454,7 +427,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_one"
                                                                                             id="" value=""
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -465,7 +438,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_two"
                                                                                             id="" value=""
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -475,14 +448,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="" required> </textarea>
+                                                                                        <textarea class="form-control" name="description_one" id="" value="" > </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="" required> </textarea>
+                                                                                        <textarea class="form-control" name="description_two" id="" value="" > </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -495,7 +468,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="altitude" id=""
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-12 d-flex">
@@ -508,11 +481,26 @@
                                                                                                 class="form-control"
                                                                                                 name="qoute"
                                                                                                 id=""
-                                                                                                value="" required>
+                                                                                                value="" >
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
 
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Cupping
+                                                                                            Profile</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="cupping_profile"
+                                                                                            id=""
+                                                                                            value=""
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tab-pane" id="about-fill"

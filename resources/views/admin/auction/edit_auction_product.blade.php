@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                        display: contents;
-                                                                                                                                                                                                                                                                      } */
+                                                                                                                                                                                                                                                                            display: contents;
+                                                                                                                                                                                                                                                                          } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                        margin-right: -15px;
-                                                                                                                                                                                                                                                                        margin-left: 30px;
-                                                                                                                                                                                                                                                                        align-items: center;
-                                                                                                                                                                                                                                                                      } */
+                                                                                                                                                                                                                                                                            margin-right: -15px;
+                                                                                                                                                                                                                                                                            margin-left: 30px;
+                                                                                                                                                                                                                                                                            align-items: center;
+                                                                                                                                                                                                                                                                          } */
 
         .row {
             margin-left: 0;
@@ -350,34 +350,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-12 d-flex">
 
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Jury
-                                                                                            Code</label>
-                                                                                        <input type="text"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="jury_code"
-                                                                                            id="jury_code"
-                                                                                            value="{{ $auction_products->jury_code }}"
-                                                                                            required>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Cupping
-                                                                                            Profile</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            name="cupping_profile"
-                                                                                            id=""
-                                                                                            value="{{ $auction_products->cup_profile }}"
-                                                                                            required>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                             <div class="col-12 d-flex">
 
                                                                                 <div class="col-md-6">
@@ -468,8 +441,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_one"
                                                                                             id=""
-                                                                                            value="{{ $auction_products->heading_1 }}"
-                                                                                            required>
+                                                                                            value="{{ $auction_products->heading_1 }}">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -480,8 +452,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_two"
                                                                                             id=""
-                                                                                            value="{{ $auction_products->heading_2 }}"
-                                                                                            required>
+                                                                                            value="{{ $auction_products->heading_2 }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -491,14 +462,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="" required>{{ $auction_products->description_1 }} </textarea>
+                                                                                        <textarea class="form-control" name="description_one" id="" value="">{{ $auction_products->description_1 }} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="" required>{{ $auction_products->description_2 }} </textarea>
+                                                                                        <textarea class="form-control" name="description_two" id="" value="">{{ $auction_products->description_2 }} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -523,12 +494,39 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="qoute" id=""
-                                                                                            value="{{ $auction_products->qoute }}"
-                                                                                            required>
+                                                                                            value="{{ $auction_products->qoute }}">
                                                                                     </div>
                                                                                 </div>
 
 
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                {{-- <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Jury
+                                                                                            Code</label>
+                                                                                        <input type="text"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="jury_code"
+                                                                                            id="jury_code"
+                                                                                            value="{{ $auction_products->jury_code }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div> --}}
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Cupping
+                                                                                            Profile</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="cupping_profile"
+                                                                                            id=""
+                                                                                            value="{{ $auction_products->cup_profile }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tab-pane" id="about-fill"
