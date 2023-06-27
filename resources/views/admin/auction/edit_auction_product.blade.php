@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                display: contents;
-                                                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                                                        display: contents;
+                                                                                                                                                                                                                                                                      } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                margin-right: -15px;
-                                                                                                                                                                                                                                                                margin-left: 30px;
-                                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                                                        margin-right: -15px;
+                                                                                                                                                                                                                                                                        margin-left: 30px;
+                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                      } */
 
         .row {
             margin-left: 0;
@@ -365,6 +365,18 @@
                                                                                             required>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Cupping
+                                                                                            Profile</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="cupping_profile"
+                                                                                            id=""
+                                                                                            value="{{ $auction_products->cup_profile }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-12 d-flex">
 
@@ -503,36 +515,20 @@
                                                                                             required>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-12 d-flex">
 
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label
-                                                                                                for="">Qoute</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                name="qoute"
-                                                                                                id=""
-                                                                                                value="{{ $auction_products->qoute }}"
-                                                                                                required>
-                                                                                        </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Qoute</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="qoute" id=""
+                                                                                            value="{{ $auction_products->qoute }}"
+                                                                                            required>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-12 d-flex">
 
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="">Cupping
-                                                                                                Profile</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                name="cupping_profile"
-                                                                                                id=""
-                                                                                                value="{{ $auction_products->cup_profile }}"
-                                                                                                required>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="tab-pane" id="about-fill"
