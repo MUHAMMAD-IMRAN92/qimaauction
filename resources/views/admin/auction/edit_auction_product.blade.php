@@ -303,9 +303,9 @@
                                                                                         <input type="number"
                                                                                             step="any"
                                                                                             class="form-control"
-                                                                                            name="puclic_cuppping_score"
-                                                                                            id="puclic_cuppping_score"
-                                                                                            value="{{ $auction_products->puclic_cuppping_score }}"
+                                                                                            name="puclic_jury_score"
+                                                                                            id="puclic_jury_score"
+                                                                                            value="{{ $auction_products->puclic_jury_score }}"
                                                                                             required>
                                                                                     </div>
                                                                                 </div>
