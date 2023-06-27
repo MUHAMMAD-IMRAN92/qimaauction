@@ -398,7 +398,7 @@
                                                                                             class="form-control"
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -410,7 +410,7 @@
                                                                                             class="form-control"
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

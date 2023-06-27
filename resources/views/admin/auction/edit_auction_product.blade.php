@@ -414,7 +414,7 @@
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
                                                                                             value="{{ $auction_products->reserve_price }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -427,7 +427,7 @@
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
                                                                                             value="{{ $auction_products->packing_cost }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
