@@ -87,7 +87,7 @@ class AuctionController extends Controller
                     'position' => $request->position,
                     'table' => $request->table,
                     'jury_score' => $request->jury_score,
-                    'public_jury_score' => $request->puclic_jury_score,
+                    'public_jury_score' => $request->public_jury_score,
 
                 ]
             );
@@ -140,7 +140,7 @@ class AuctionController extends Controller
                     'jury_score' => $request->jury_score,
                     'position' => $request->position,
                     'table' => $request->table,
-                    'public_jury_score' => $request->puclic_jury_score,
+                    'public_jury_score' => $request->public_jury_score,
                 ]
             );
             if ($request->images) {

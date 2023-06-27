@@ -296,8 +296,8 @@
                                                                                         <input type="number"
                                                                                             step="any"
                                                                                             class="form-control"
-                                                                                            name="puclic_jury_score"
-                                                                                            id="puclic_jury_score"
+                                                                                            name="public_jury_score"
+                                                                                            id="public_jury_score"
                                                                                             value=""
                                                                                             required>
                                                                                     </div>
