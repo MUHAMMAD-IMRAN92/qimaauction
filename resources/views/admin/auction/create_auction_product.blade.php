@@ -512,20 +512,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-12 d-flex">
 
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="">Cupping
-                                                                                                Profile</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                name="cupping_profile"
-                                                                                                id=""
-                                                                                                value="" required>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tab-pane" id="about-fill"
