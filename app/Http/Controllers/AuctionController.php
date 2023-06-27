@@ -56,7 +56,7 @@ class AuctionController extends Controller
 
     public function saveAuctionProduct(Request $request)
     {
-        // return $request->all();
+        return $request->all();
         $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
         if ($auctionProduct) {
             $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
@@ -86,8 +86,8 @@ class AuctionController extends Controller
                     'jury_code' => $request->jury_code,
                     'position' => $request->position,
                     'table' => $request->table,
-                    'public_jury_score' => $request->public_jury_score,
                     'jury_score' => $request->jury_score,
+                    'public_jury_score' => $request->puclic_jury_score,
 
                 ]
             );
@@ -140,7 +140,7 @@ class AuctionController extends Controller
                     'jury_score' => $request->jury_score,
                     'position' => $request->position,
                     'table' => $request->table,
-                    'public_jury_score' => $request->public_jury_score,
+                    'public_jury_score' => $request->puclic_jury_score,
                 ]
             );
             if ($request->images) {
