@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                    display: contents;
-                                                                                                                                                                                                                                                  } */
+                                                                                                                                                                                                                                                                display: contents;
+                                                                                                                                                                                                                                                              } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                    margin-right: -15px;
-                                                                                                                                                                                                                                                    margin-left: 30px;
-                                                                                                                                                                                                                                                    align-items: center;
-                                                                                                                                                                                                                                                  } */
+                                                                                                                                                                                                                                                                margin-right: -15px;
+                                                                                                                                                                                                                                                                margin-left: 30px;
+                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                              } */
 
         .row {
             margin-left: 0;
@@ -298,6 +298,78 @@
                                                                             <div class="col-12 d-flex">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
+                                                                                        <label for="">Public
+                                                                                            Cupping Score</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="puclic_cuppping_score"
+                                                                                            id="puclic_cuppping_score"
+                                                                                            value="{{ $auction_products->puclic_cuppping_score }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Jury
+                                                                                            Score</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="jury_score"
+                                                                                            id="jury_score"
+                                                                                            value="{{ $auction_products->jury_score }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-12 d-flex">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Table</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="table" id="table"
+                                                                                            value="{{ $auction_products->table }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="">Position</label>
+                                                                                        <input type="number"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="position" id="position"
+                                                                                            value="{{ $auction_products->position }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Jury
+                                                                                            Code</label>
+                                                                                        <input type="text"
+                                                                                            step="any"
+                                                                                            class="form-control"
+                                                                                            name="jury_code"
+                                                                                            id="jury_code"
+                                                                                            value="{{ $auction_products->jury_code }}"
+                                                                                            required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 d-flex">
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
                                                                                         <label
                                                                                             for="">Weight</label>
                                                                                         <input type="number"
@@ -498,8 +570,8 @@
                                                                                                 alt=""
                                                                                                 class="m-1"
                                                                                                 style="width:100px; height:100px">
-                                                                                                <br><span
-                                                                                                class="badge badge-primary  ml-5">{{$image->order_no}}</span>
+                                                                                            <br><span
+                                                                                                class="badge badge-primary  ml-5">{{ $image->order_no }}</span>
                                                                                         </div>
                                                                                     @endforeach
                                                                                 </div>
