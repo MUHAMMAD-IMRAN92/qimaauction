@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                            display: contents;
-                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                display: contents;
+                                                                                                                                                                                                                              } */
         /* .content-header.row{
-                                                                                                                                                                                                                            margin-right: -15px;
-                                                                                                                                                                                                                            margin-left: 30px;
-                                                                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                margin-right: -15px;
+                                                                                                                                                                                                                                margin-left: 30px;
+                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                              } */
 
         .row {
             margin-left: 0;
@@ -288,7 +288,8 @@
                                                                         <div class="tab-pane" id="profile-fill"
                                                                             role="tabpanel"
                                                                             aria-labelledby="about-tab-fill"
-                                                                            aria-expanded="false"><div class="col-12 d-flex">
+                                                                            aria-expanded="false">
+                                                                            <div class="col-12 d-flex">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Public
@@ -298,8 +299,7 @@
                                                                                             class="form-control"
                                                                                             name="public_jury_score"
                                                                                             id="public_jury_score"
-                                                                                            value=""
-                                                                                            required>
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -310,8 +310,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="jury_score"
-                                                                                            id="jury_score"
-                                                                                            value=""
+                                                                                            id="jury_score" value=""
                                                                                             required>
                                                                                     </div>
                                                                                 </div>
@@ -325,8 +324,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="table" id="table"
-                                                                                            value=""
-                                                                                            required>
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -337,8 +335,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="position" id="position"
-                                                                                            value=""
-                                                                                            required>
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -386,7 +383,7 @@
                                                                                             class="form-control"
                                                                                             name="start_price"
                                                                                             id="start_price"
-                                                                                            value="" required>
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -426,8 +423,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_one"
-                                                                                            id="" value=""
-                                                                                            >
+                                                                                            id="" value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -437,8 +433,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_two"
-                                                                                            id="" value=""
-                                                                                            >
+                                                                                            id="" value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -448,14 +443,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="" > </textarea>
+                                                                                        <textarea class="form-control" name="description_one" id="" value=""> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="" > </textarea>
+                                                                                        <textarea class="form-control" name="description_two" id="" value=""> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -468,7 +463,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="altitude" id=""
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-12 d-flex">
@@ -481,7 +476,7 @@
                                                                                                 class="form-control"
                                                                                                 name="qoute"
                                                                                                 id=""
-                                                                                                value="" >
+                                                                                                value="">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -496,9 +491,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="cupping_profile"
-                                                                                            id=""
-                                                                                            value=""
-                                                                                            required>
+                                                                                            id="" value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

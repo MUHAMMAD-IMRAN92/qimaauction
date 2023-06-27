@@ -398,7 +398,7 @@
                                                                                             name="start_price"
                                                                                             id="start_price"
                                                                                             value="{{ $auction_products->start_price }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -524,7 +524,7 @@
                                                                                             name="cupping_profile"
                                                                                             id=""
                                                                                             value="{{ $auction_products->cup_profile }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
