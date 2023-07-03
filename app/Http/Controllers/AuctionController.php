@@ -37,7 +37,13 @@ class AuctionController extends Controller
      */
     function dashboard()
     {
-        return view('admin.dashboard');
+        $auction = Auction::where('is_active', '1')->first();
+        $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried'])->where('home_page', 1)->orderBy('rank', 'asc')->get();
+        $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->orderBy('rank', 'asc')->where('home_page', 1)->get();
+        return view('admin.dashboard', [
+            'natural' => $auctionNaturalWinning,
+            'alchmey' =>  $auctionAlchemyWinning
+        ]);
     }
     public function index()
     {
@@ -57,7 +63,7 @@ class AuctionController extends Controller
     public function saveAuctionProduct(Request $request)
     {
         // return $request->all();
-         $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
+        $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
         if ($auctionProduct) {
             $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
                 [
@@ -1578,11 +1584,13 @@ class AuctionController extends Controller
         $auction_products = AuctionProduct::where('auction_id', $auctionId)
             ->with('products')
             ->get();
+        $genetics = Genetic::where('is_hidden', '0')->get();
         $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
         return view('admin.auction.create_auction_product', [
             'auction_products' => $auction_products,
             'products' => $products,
-            'auction_id' =>  $auctionId
+            'auction_id' =>  $auctionId,
+            'genetics' =>  $genetics
         ]);
     }
     public function editAuctionProducts($id)
@@ -1590,14 +1598,32 @@ class AuctionController extends Controller
         $auction_products = AuctionProduct::where('id', $id)->with(['productImages' => function ($q) {
             $q->orderBy('order_no', 'asc');
         }])->first();
+        $genetics = Genetic::where('is_hidden', '0')->get();
 
         $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
         return view('admin.auction.edit_auction_product', [
             'auction_products' => $auction_products,
             'products' => $products,
-            'auction_id' =>  $auction_products->auction_id
+            'auction_id' =>  $auction_products->auction_id,
+            'genetics' =>  $genetics
         ]);
     }
+
+    public function homePageProducts(Request $request)
+    {
+        // return $request->all();
+        AuctionProduct::where('auction_id', $request->auction_id)->update([
+            'home_page' => 0
+        ]);
+        if ($request->auction_products) {
+
+            AuctionProduct::whereIn('id', $request->auction_products)->update([
+                'home_page' => 1
+            ]);
+        }
+        return redirect()->back()->with('success', 'Product has been added to home page!');
+    }
+
     public function storeAuctionProducts(Request $request)
     {
         return $request->all();

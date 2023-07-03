@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                display: contents;
-                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                            display: contents;
+                                                                                                                                                                                                                          } */
         /* .content-header.row{
-                                                                                                                                                                                                                                margin-right: -15px;
-                                                                                                                                                                                                                                margin-left: 30px;
-                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                            margin-right: -15px;
+                                                                                                                                                                                                                            margin-left: 30px;
+                                                                                                                                                                                                                            align-items: center;
+                                                                                                                                                                                                                          } */
 
         .row {
             margin-left: 0;
@@ -284,63 +284,63 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                            <div class="d-flex">
+
+                                                                                <div class="col-md-6 col-6">
+                                                                                    <label for="product-category">Select
+                                                                                        Genetics</label>
+                                                                                    <div class="form-label-group">
+                                                                                        <div class="form-group">
+                                                                                            <select
+                                                                                                class="select2 form-control"
+                                                                                                name="genetic"
+                                                                                                id="genetic">
+                                                                                                <option selected disabled>
+                                                                                                    Please Select genetics
+                                                                                                </option>
+                                                                                                @foreach ($genetics as $key => $prod)
+                                                                                                    <option
+                                                                                                        value="{{ $prod->title }}">
+                                                                                                        {{ $prod->title }}
+                                                                                                    </option>
+                                                                                                @endforeach
+
+                                                                                            </select>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-6">
+                                                                                    <label for="product-process">Select
+                                                                                        Process</label>
+                                                                                    <div class="form-label-group">
+                                                                                        <div class="form-group">
+                                                                                            <select
+                                                                                                class="select2 form-control"
+                                                                                                name="process"
+                                                                                                id="product-process"
+                                                                                                required>
+                                                                                                <option value=""
+                                                                                                    selected>Please Select
+                                                                                                    Process</option>
+                                                                                                <option value="Natural">
+                                                                                                    Natural</option>
+                                                                                                <option value="Slow Dried">Slow
+                                                                                                    Dried</option>
+                                                                                                <option value="Alchemy">
+                                                                                                    Alchemy</option>
+                                                                                                <option value="Deep Fermentation">Deep
+                                                                                                    Fermentation</option>
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>                                                  </div>
                                                                         <div class="tab-pane" id="profile-fill"
                                                                             role="tabpanel"
                                                                             aria-labelledby="about-tab-fill"
                                                                             aria-expanded="false">
-                                                                            <div class="col-12 d-flex">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Public
-                                                                                            Cupping Score</label>
-                                                                                        <input type="number"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="public_jury_score"
-                                                                                            id="public_jury_score"
-                                                                                            value="" required>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Jury
-                                                                                            Score</label>
-                                                                                        <input type="number"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="jury_score"
-                                                                                            id="jury_score" value=""
-                                                                                            required>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-12 d-flex">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Table</label>
-                                                                                        <input type="number"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="table" id="table"
-                                                                                            value="" required>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label
-                                                                                            for="">Position</label>
-                                                                                        <input type="number"
-                                                                                            step="any"
-                                                                                            class="form-control"
-                                                                                            name="position" id="position"
-                                                                                            value="" required>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-
                                                                             <div class="col-12 d-flex">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
@@ -383,7 +383,7 @@
                                                                                             class="form-control"
                                                                                             name="start_price"
                                                                                             id="start_price"
-                                                                                            value="">
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -398,7 +398,7 @@
                                                                                             class="form-control"
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
-                                                                                            value="" >
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -410,7 +410,7 @@
                                                                                             class="form-control"
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
-                                                                                            value="" >
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -423,7 +423,8 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_one"
-                                                                                            id="" value="">
+                                                                                            id="" value=""
+                                                                                            required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -433,7 +434,8 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_two"
-                                                                                            id="" value="">
+                                                                                            id="" value=""
+                                                                                            required>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -443,14 +445,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value=""> </textarea>
+                                                                                        <textarea class="form-control" name="description_one" id="" value="" required> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value=""> </textarea>
+                                                                                        <textarea class="form-control" name="description_two" id="" value="" required> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -463,7 +465,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="altitude" id=""
-                                                                                            value="">
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-12 d-flex">
@@ -476,22 +478,22 @@
                                                                                                 class="form-control"
                                                                                                 name="qoute"
                                                                                                 id=""
-                                                                                                value="">
+                                                                                                value="" required>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="col-12 d-flex">
 
-                                                                            </div>
-                                                                            <div class="col-12 d-flex">
-
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Cupping
-                                                                                            Profile</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            name="cupping_profile"
-                                                                                            id="" value="">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="">Cupping
+                                                                                                Profile</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                name="cupping_profile"
+                                                                                                id=""
+                                                                                                value="" required>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                    display: contents;
-                  } */
+                                                                                    display: contents;
+                                                                                  } */
         /* .content-header.row{
-                    margin-right: -15px;
-                    margin-left: 30px;
-                    align-items: center;
-                  } */
+                                                                                    margin-right: -15px;
+                                                                                    margin-left: 30px;
+                                                                                    align-items: center;
+                                                                                  } */
 
         .row {
             margin-left: 0;
@@ -151,85 +151,102 @@
                     <div class="card">
                         <div class="card-header">
                         </div>
-                        <div class="card-content">
-                            <div class="card-body card-dashboard">
-                                <div class="table-responsive">
-                                    <table class="table zero-configuration" id="auction-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Code</th>
-                                                <th>Jruy Score</th>
-                                                <th>Process</th>
-                                                <th>Genetic</th>
-                                                <th>Altitude</th>
-                                                <th>Rank</th>
-                                                <th>Action(s)</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $i = 0;
-                                            @endphp
-                                            @if (isset($auction_products))
-                                                @foreach ($auction_products as $auction)
-                                                    @foreach ($auction->products as $key => $pro)
-                                                        <tr id="{{ ++$i }}">
-                                                            <td>
-                                                                {{ $pro->product_title }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->code }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->jury_score }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->process }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->genetic }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->altitude }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->rank }}
-                                                            </td>
-                                                            {{-- <td>
+                        <form action="{{ url('/auction/home_page/products') }}" method="POST">
+                            @csrf
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration" id="auction-table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Title</th>
+                                                    <th>Code</th>
+                                                    <th>Jruy Score</th>
+                                                    <th>Process</th>
+                                                    <th>Genetic</th>
+                                                    <th>Altitude</th>
+                                                    <th>Rank</th>
+                                                    <th>Action(s)</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 0;
+                                                @endphp
+                                                @if (isset($auction_products))
+                                                    @foreach ($auction_products as $auction)
+                                                        @foreach ($auction->products as $key => $pro)
+                                                            <tr id="{{ ++$i }}">
+                                                                <td>
+                                                                    <input type="hidden" name="auction_id"
+                                                                        value="{{ $auction->auction_id }}">
+                                                                    <input type="checkbox" value="{{ $auction->id }}"
+                                                                        {{ $auction->home_page == 1 ? 'checked' : '' }}
+                                                                        name="auction_products[]" id="">
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->home_page }} {{ $pro->product_title }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->code }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->jury_score }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->process }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->genetic }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->altitude }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->rank }}
+                                                                </td>
+                                                                {{-- <td>
                                                                 {{ $auction->jury_score }}
                                                             </td> --}}
-                                                            <div>
-                                                                <td>
-                                                                    {{-- <i id="edit"
+                                                                <div>
+                                                                    <td>
+                                                                        {{-- <i id="edit"
                                                                         data-auctionId="{{ $auction->id }}"
                                                                         class="fas fa-edit"></i>
                                                                     <i id="delete"  data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-trash-o"></i> --}}
-                                                                    {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
+                                                                        {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-eye"></a> --}}
-                                                                    <a
-                                                                        href="{{ url('edit_product_to_auction/' . $auction->id) }}">
-                                                                        <span class="product-link-a">Edit</span></a>
-                                                                    <span class="product-link-a" id="delete"
-                                                                        data-auctionId="{{ $auction->id }}">Delete</span>
-                                                                </td>
-                                                            </div>
-                                                        </tr>
+                                                                        <a
+                                                                            href="{{ url('edit_product_to_auction/' . $auction->id) }}">
+                                                                            <span class="product-link-a">Edit</span></a>
+                                                                        <span class="product-link-a" id="delete"
+                                                                            data-auctionId="{{ $auction->id }}">Delete</span>
+
+                                                                    </td>
+                                                                </div>
+                                                            </tr>
+                                                        @endforeach
                                                     @endforeach
-                                                @endforeach
-                                            @else
-                                                {{-- <tr id="nodata">
+                                                @else
+                                                    {{-- <tr id="nodata">
                                                     <td></td>
                                                     <td >No Auction Product yet</td>
                                                 </tr> --}}
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-12 ">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">Submit</button>
+                                {{-- <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
+                                    Product<a> --}}
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

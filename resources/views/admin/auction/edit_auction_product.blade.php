@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                            display: contents;
-                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                            display: contents;
+                                                                                                                                                                                                                                                                                          } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                            margin-right: -15px;
-                                                                                                                                                                                                                                                                            margin-left: 30px;
-                                                                                                                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                            margin-right: -15px;
+                                                                                                                                                                                                                                                                                            margin-left: 30px;
+                                                                                                                                                                                                                                                                                            align-items: center;
+                                                                                                                                                                                                                                                                                          } */
 
         .row {
             margin-left: 0;
@@ -289,6 +289,69 @@
 
                                                                                     </div>
                                                                                 </div>
+
+
+
+                                                                            </div>
+                                                                            <div class="d-flex">
+
+                                                                                <div class="col-md-6 col-6">
+                                                                                    <label for="product-category">Select
+                                                                                        Genetics</label>
+                                                                                    <div class="form-label-group">
+                                                                                        <div class="form-group">
+                                                                                            <select
+                                                                                                class="select2 form-control"
+                                                                                                name="genetic"
+                                                                                                id="genetic">
+                                                                                                <option selected disabled>
+                                                                                                    Please Select genetics
+                                                                                                </option>
+                                                                                                @foreach ($genetics as $key => $prod)
+                                                                                                    <option
+                                                                                                        {{ $prod->title == $auction_products->genetic ? 'selected' : '' }}
+                                                                                                        value="{{ $prod->title }}">
+                                                                                                        {{ $prod->title }}
+                                                                                                    </option>
+                                                                                                @endforeach
+
+                                                                                            </select>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-6">
+                                                                                    <label for="product-process">Select
+                                                                                        Process</label>
+                                                                                    <div class="form-label-group">
+                                                                                        <div class="form-group">
+                                                                                            <select
+                                                                                                class="select2 form-control"
+                                                                                                name="process"
+                                                                                                id="product-process"
+                                                                                                required>
+                                                                                                <option value=""
+                                                                                                    selected>Please Select
+                                                                                                    Process</option>
+                                                                                                <option value="Natural"
+                                                                                                    {{ $auction_products->process == 'Natural' ? 'selected' : '' }}>
+                                                                                                    Natural</option>
+                                                                                                <option value="Slow Dried"
+                                                                                                    {{ $auction_products->process == 'Slow Dried' ? 'selected' : '' }}>
+                                                                                                    Slow
+                                                                                                    Dried</option>
+                                                                                                <option value="Alchemy"
+                                                                                                    {{ $auction_products->process == 'Alchemy' ? 'selected' : '' }}>
+                                                                                                    Alchemy</option>
+                                                                                                <option
+                                                                                                    value="Deep Fermentation"{{ $auction_products->process == 'Deep Fermentation' ? 'selected' : '' }}>
+                                                                                                    Deep
+                                                                                                    Fermentation</option>
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tab-pane" id="profile-fill"
@@ -397,8 +460,7 @@
                                                                                             class="form-control"
                                                                                             name="start_price"
                                                                                             id="start_price"
-                                                                                            value="{{ $auction_products->start_price }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->start_price }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -413,8 +475,7 @@
                                                                                             class="form-control"
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
-                                                                                            value="{{ $auction_products->reserve_price }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->reserve_price }}">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -426,8 +487,7 @@
                                                                                             class="form-control"
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
-                                                                                            value="{{ $auction_products->packing_cost }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->packing_cost }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -523,8 +583,7 @@
                                                                                             class="form-control"
                                                                                             name="cupping_profile"
                                                                                             id=""
-                                                                                            value="{{ $auction_products->cup_profile }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->cup_profile }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

@@ -126,7 +126,7 @@
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #575555;
     }
@@ -151,7 +151,7 @@
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #9F9B9B;
     }
@@ -212,7 +212,7 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
 
@@ -320,7 +320,7 @@
         text-align: left;
         border-right: 3px solid rgb(244, 243, 243);
         border-bottom: 3px solid rgb(244, 243, 243);
-       
+
         font-size: 10px;
         font-weight: 500;
         line-height: 12px;
@@ -329,13 +329,14 @@
 
     }
 
-    #lname {  text-transform: uppercase;
+    #lname {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
-            line-height: 12px;
-            letter-spacing: 0.1em;
-            text-align: center;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 0.1em;
+        text-align: center;
 
         border-right: 3px solid rgb(244, 243, 243);
         display: flex;
@@ -346,11 +347,12 @@
 
     }
 
-    #cscore {  text-transform: uppercase;
+    #cscore {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
-           
+        font-size: 10px;
+        font-weight: 500;
+
         border-right: 3px solid rgb(244, 243, 243);
         border-bottom: 3px solid rgb(244, 243, 243);
         text-align: center;
@@ -362,10 +364,11 @@
 
     }
 
-    #lsize {  text-transform: uppercase;
+    #lsize {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
+        font-size: 10px;
+        font-weight: 500;
         border-bottom: 3px solid rgb(244, 243, 243);
         display: flex;
         align-items: center;
@@ -373,28 +376,31 @@
 
     }
 
-    #process {  text-transform: uppercase;
+    #process {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
+        font-size: 10px;
+        font-weight: 500;
         border-right: 3px solid rgb(244, 243, 243);
         border-left: 3px solid rgb(244, 243, 243);
         border-bottom: 3px solid rgb(244, 243, 243);
 
     }
 
-    #genetics {  text-transform: uppercase;
+    #genetics {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
+        font-size: 10px;
+        font-weight: 500;
         border-right: 3px solid rgb(244, 243, 243);
         border-bottom: 3px solid rgb(244, 243, 243);
     }
 
-    #traceability {  text-transform: uppercase;
+    #traceability {
+        text-transform: uppercase;
         font-family: 'Montserrat';
-            font-size: 10px;
-            font-weight: 500;
+        font-size: 10px;
+        font-weight: 500;
         border-bottom: 3px solid rgb(244, 243, 243);
         display: flex;
         justify-content: center;
@@ -417,7 +423,8 @@
 
     }
 
-    .lname {  text-transform: uppercase;
+    .lname {
+        text-transform: uppercase;
         border-right: 3px solid rgb(244, 243, 243);
         font-size: 0.9rem;
         font-weight: 800;
@@ -526,9 +533,9 @@
 
     .traceability-content {
         border: 8px solid transparent;
-        font-size: 11px ;
+        font-size: 11px;
         text-transform: uppercase;
-        font-family: 'Montserrat-Medium' ;
+        font-family: 'Montserrat-Medium';
     }
 
     .headings {
@@ -579,28 +586,28 @@
         font-family: 'Montserrat-Medium' !important;
     }
 
-    .btn-info  {
-    padding: 0.6rem 0.4rem;
-    font-family: 'Montserrat';
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 12px;
-    color: #303030;
-    text-transform: uppercase;
-    background-color: white;
-    letter-spacing: 0.1em;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 24px;
-    margin: 0 1rem;
-    width: 180px;
-}
+    .btn-info {
+        padding: 0.6rem 0.4rem;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #303030;
+        text-transform: uppercase;
+        background-color: white;
+        letter-spacing: 0.1em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        margin: 0 1rem;
+        width: 180px;
+    }
 
     @media (max-width: 880px) {
-        .international-jury-section img{
-        width: 90% !important;
-    }
+        .international-jury-section img {
+            width: 90% !important;
+        }
 
         .h-1 {
             width: 90vw;
@@ -844,38 +851,49 @@
         .btn-info {
             margin: 0 0.6rem;
         }
-        #rank{
-            font-size: 9px;
-        }#lname{
-            font-size: 9px;
-        }
-        #cscore{
+
+        #rank {
             font-size: 9px;
         }
-        #lsize{
+
+        #lname {
             font-size: 9px;
         }
-        #process{
+
+        #cscore {
             font-size: 9px;
         }
-        #genetics{
+
+        #lsize {
             font-size: 9px;
         }
-        #traceability{
+
+        #process {
             font-size: 9px;
         }
-        .international-jury-section h2{
+
+        #genetics {
+            font-size: 9px;
+        }
+
+        #traceability {
+            font-size: 9px;
+        }
+
+        .international-jury-section h2 {
             font-size: 20px !important;
         }
     }
-        .wrapper-jury{
-            background-color: white;
-        
-        }
+
+    .wrapper-jury {
+        background-color: white;
+
+    }
+
     .international-jury-section {
         text-align: center;
-       
-       
+
+
     }
 
     .international-jury-section h2 {
@@ -886,25 +904,27 @@
         letter-spacing: 0.2em;
         text-align: center;
         padding: 50px 10px;
-      
+
 
     }
-    
+
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
+
     @font-face {
         font-family: 'Montserrat-Medium';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf")}}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
-   
-    .international-jury-section img{
+
+    .international-jury-section img {
         width: 600px;
     }
-    .wrapper-top-section{
+
+    .wrapper-top-section {
         padding: 0px 15px;
     }
 </style>
@@ -919,7 +939,9 @@
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
-                <button><a href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-sample-set-auction-registration-2023/">purchase a sample set</a></button>
+                <button><a
+                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-sample-set-auction-registration-2023/">purchase
+                        a sample set</a></button>
             </div>
 
         </div>
@@ -946,117 +968,45 @@
                     </div>
                 </div>
             </div>
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">01.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>Hayma dakhiliya</h2>
-                            <p>jury code: 9589</p>
+            @foreach ($natural as $key => $nat)
+                <div class="content">
+                    <div class="c-1">
+                        <div class="rank">{{ $nat->rank }}.</div>
+                        <div class="lname">
+                            <div class="">
+                                <h2>{{ $nat->name }}</h2>
+                                <p>jury code: {{ $nat->code }}</p>
+                            </div>
+                        </div>
+                        <div class="cscore">
+                            {{ $nat->jury_score }}
+                        </div>
+                        <div class="lsize">
+                            <div class="">
+                                <p>{{ $nat->size }}</p>
+                                <p>lbs</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="cscore">
-                        92.5
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>163</p>
-                            <p>lbs</p>
+                    <div class="c-2">
+                        <div class="process">
+                            <p>{{ $nat->process }}</p>
+                        </div>
+                        <div class="genetics">{{ $nat->genetic }}</div>
+                        <div class="traceability">
+                            <div class="traceability-content">
+                                <p class="p">Village:<span>{{ $nat->village }}</span> </p>
+                                <p class="p">Region: <span>{{ $nat->region }}</p>
+                                <p class="p">governorate:<span>{{ $nat->governorate }}</span> </p>
+                                <p class="p">altitude: <span>{{ $nat->altitude }}masl</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>Deep Fermentation</p>
-                    </div>
-                    <div class="genetics">BOURBON</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Village:<span>Bani OFair</span> </p>
-                            <p class="p">Region: <span>ANS</p>
-                            <p class="p">governorate:<span>DHAmar</span> </p>
-                            <p class="p">altitude: <span>2000masl</span></p>
-                        </div>
+                    <div class="c-3">
+                        <button class="btn-info">More information</button>
                     </div>
                 </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">02.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>yahya al ofairi</h2>
-                            <p>jury code: 2345</p>
-                        </div>
-                    </div>
-                    <div class="cscore">
-                        91
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>300</p>
-                            <p>lbs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>natural</p>
-                    </div>
-                    <div class="genetics">sl34</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Village:<span> Bait alal</span> </p>
-                            <p class="p">Region: <span> hayma khardiya</p>
-                            <p class="p">governorate:<span> sanaa</span> </p>
-                            <p class="p">altitude: <span> 2350masl</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">03.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>hameed subaih</h2>
-                            <p>jury code: 2322</p>
-                        </div>
-                    </div>
-                    <div class="cscore">
-                        90
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>45</p>
-                            <p>lbs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>natural</p>
-                    </div>
-                    <div class="genetics">yemenia</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Vilage:<span> Bait alal</span> </p>
-                            <p class="p">Region: <span> hayman khardiya</p>
-                            <p class="p">governorate:<span> sanaa</span> </p>
-                            <p class="p">altitude: <span> 2350masl</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
+            @endforeach
             <!-- <div class="h-3">
                     <div id="button">
                     </div>
@@ -1082,131 +1032,60 @@
                 </div>
             </div>
 
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">01.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>Hayma dakhiliya</h2>
-                            <p>jury code: 9589</p>
+            @foreach ($alchmey as $key => $alc)
+                <div class="content">
+                    <div class="c-1">
+                        <div class="rank">{{ $alc->rank }}.</div>
+                        <div class="lname">
+                            <div class="">
+                                <h2>{{ $alc->name }}</h2>
+                                <p>jury code: {{ $alc->code }}</p>
+                            </div>
+                        </div>
+                        <div class="cscore">
+                            {{ $alc->jury_score }}
+                        </div>
+                        <div class="lsize">
+                            <div class="">
+                                <p>{{ $alc->size }}</p>
+                                <p>lbs</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="cscore">
-                        92.5
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>163</p>
-                            <p>lbs</p>
+                    <div class="c-2">
+                        <div class="process">
+                            <p>{{ $alc->process }}</p>
+                        </div>
+                        <div class="genetics">{{ $alc->genetic }}</div>
+                        <div class="traceability">
+                            <div class="traceability-content">
+                                <p class="p">Village:<span>{{ $alc->village }}</span> </p>
+                                <p class="p">Region: <span>{{ $alc->region }}</p>
+                                <p class="p">governorate:<span>{{ $alc->governorate }}</span> </p>
+                                <p class="p">altitude: <span>{{ $alc->altitude }}masl</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>Deep Fermentation</p>
-                    </div>
-                    <div class="genetics">BOURBON</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Village:<span> Bani OFair</span> </p>
-                            <p class="p">Region: <span> ANS</p>
-                            <p class="p">governorate:<span> DHAmar</span> </p>
-                            <p class="p">altitude: <span> 2000masl</span></p>
-                        </div>
+                    <div class="c-3">
+                        <button class="btn-info">More information</button>
                     </div>
                 </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">02.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>yahya al ofairi</h2>
-                            <p>jury code: 2345</p>
-                        </div>
-                    </div>
-                    <div class="cscore">
-                        91
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>300</p>
-                            <p>lbs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>natural</p>
-                    </div>
-                    <div class="genetics">sl34</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Village:<span> Bait alal</span> </p>
-                            <p class="p">Region: <span> hayma khardiya</p>
-                            <p class="p">governorate:<span> sanaa</span> </p>
-                            <p class="p">altitude: <span> 2350masl</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
-            <div class="content">
-                <div class="c-1">
-                    <div class="rank">03.</div>
-                    <div class="lname">
-                        <div class="">
-                            <h2>hameed subaih</h2>
-                            <p>jury code: 2322</p>
-                        </div>
-                    </div>
-                    <div class="cscore">
-                        90
-                    </div>
-                    <div class="lsize">
-                        <div class="">
-                            <p>45</p>
-                            <p>lbs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-2">
-                    <div class="process">
-                        <p>natural</p>
-                    </div>
-                    <div class="genetics">yemenia</div>
-                    <div class="traceability">
-                        <div class="traceability-content">
-                            <p class="p">Vilage:<span> Bait alal</span> </p>
-                            <p class="p">Region: <span> hayman khardiya</p>
-                            <p class="p">governorate:<span> sanaa</span> </p>
-                            <p class="p">altitude: <span> 2350masl</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-3">
-                    <button class="btn-info">More information</button>
-                </div>
-            </div>
-            </div>
-<div class="wrapper-jury">
+            @endforeach
+        </div>
+        <div class="wrapper-jury">
             <div class="international-jury-section">
                 <h2>INTERNATIONAL JURY</h2>
-                <img  src="{{ asset('public/images/jury.png') }}" alt="">
+                <img src="{{ asset('public/images/jury.png') }}" alt="">
             </div>
-            </div>
-       
+        </div>
+
         <div class="container-fluid ">
             <div class="row row-cols-1 row-cols-md-3 g-4 date-country">
                 <div class="icons-tab">
                     <a href="https://www.facebook.com/qimacoffee"><i href="" class="fa fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/qimacoffee/"> <i href="" class="fa fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href="" class="fa fa-youtube-play"></i>
+                    <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href=""
+                            class="fa fa-youtube-play"></i>
                     </a>
 
 
@@ -1235,7 +1114,8 @@
             <div class="footer-qima">
                 <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
                 <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
-                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for coffee excellence</a></p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                        coffee excellence</a></p>
                 <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
 
             </div>
