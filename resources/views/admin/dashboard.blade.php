@@ -212,7 +212,7 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-bold.ttf")}}') format('truetype');
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
 
     }
 
@@ -892,7 +892,7 @@
     
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-bold.ttf")}}') format('truetype');
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
 
     }
     @font-face {
