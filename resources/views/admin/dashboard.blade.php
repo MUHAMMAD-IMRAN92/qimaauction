@@ -41,7 +41,7 @@
     }
 
     .timer-section h2 {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         font-style: normal;
         font-weight: 400;
         font-size: 80px;
@@ -52,7 +52,7 @@
     }
 
     .timer-section h3 {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         font-style: normal;
         font-weight: 400;
         font-size: 50px;
@@ -212,7 +212,7 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Regular.ttf")}}') format('truetype');
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-bold.ttf")}}') format('truetype');
 
     }
 
@@ -231,7 +231,7 @@
         color: #575555;
         width: auto;
         text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
     }
 
     .section2 {
@@ -248,7 +248,7 @@
     }
 
     .heading-top {
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
         font-size: 23px;
         font-weight: 800;
         line-height: 2rem;
@@ -271,7 +271,7 @@
         display: grid;
         margin: 0;
         grid-template-columns: 1fr 2.6fr 1fr 0.9fr;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
     }
 
@@ -279,7 +279,7 @@
         display: grid;
         width: 40vw;
         grid-template-columns: 1.4fr 1fr 1.4fr;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
     }
 
@@ -291,7 +291,7 @@
         justify-content: center;
         align-items: center;
         height: 3rem;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
     }
 
@@ -313,7 +313,7 @@
 
 
     #rank {
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
         text-transform: uppercase;
         display: flex;
         align-items: center;
@@ -330,7 +330,7 @@
     }
 
     #lname {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
             line-height: 12px;
@@ -347,7 +347,7 @@
     }
 
     #cscore {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
            
@@ -363,7 +363,7 @@
     }
 
     #lsize {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
         border-bottom: 3px solid rgb(244, 243, 243);
@@ -374,7 +374,7 @@
     }
 
     #process {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
         border-right: 3px solid rgb(244, 243, 243);
@@ -384,7 +384,7 @@
     }
 
     #genetics {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
         border-right: 3px solid rgb(244, 243, 243);
@@ -392,7 +392,7 @@
     }
 
     #traceability {  text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
             font-size: 10px;
             font-weight: 500;
         border-bottom: 3px solid rgb(244, 243, 243);
@@ -413,7 +413,7 @@
         text-align: left;
         align-items: center;
         display: flex;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
     }
 
@@ -428,7 +428,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
 
     }
@@ -450,7 +450,7 @@
         font-weight: 800;
         line-height: 2.3rem;
         letter-spacing: 0em;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
     }
 
     .lsize {
@@ -464,7 +464,7 @@
         text-align: center;
         align-items: center;
         justify-content: center;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
         text-transform: uppercase;
     }
 
@@ -481,7 +481,7 @@
         align-items: center;
         display: flex;
         text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
 
     }
 
@@ -498,8 +498,8 @@
         align-items: center;
         display: flex;
         text-transform: uppercase;
-        font-family: 'Montserrat-Bold';
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
+        font-family: 'Montserrat';
 
     }
 
@@ -512,7 +512,7 @@
         letter-spacing: 0em;
         align-items: center;
         color: #6a6a6a;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
     }
 
     .traceability span {
@@ -521,7 +521,7 @@
         line-height: 12px;
         letter-spacing: 0em;
         color: black !important;
-        font-family: 'Montserrat-Bold' !important;
+        font-family: 'Montserrat' !important;
     }
 
     .traceability-content {
@@ -879,7 +879,7 @@
     }
 
     .international-jury-section h2 {
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
         font-size: 24px;
         font-weight: 800;
         line-height: 32px;
@@ -891,7 +891,7 @@
     }
     
     @font-face {
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat';
         src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-bold.ttf")}}') format('truetype');
 
     }
@@ -903,6 +903,9 @@
    
     .international-jury-section img{
         width: 600px;
+    }
+    .wrapper-top-section{
+        padding: 0px 15px;
     }
 </style>
 
@@ -921,7 +924,7 @@
 
         </div>
 
-        <div class="container-fluid table-grid">
+        <div class="container-fluid table-grid wrapper-top-section">
             <h3 id="w-c">Winnging Coffees</h3>
             <div class="heading-top">
                 <h2>Naturals & Deep Fermentation</h2>
