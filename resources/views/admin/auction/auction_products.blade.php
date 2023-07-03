@@ -187,7 +187,7 @@
                                                                         name="auction_products[]" id="">
                                                                 </td>
                                                                 <td>
-                                                                    {{ $auction->home_page }} {{ $pro->product_title }}
+                                                                   {{ $pro->product_title }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $auction->code }}
