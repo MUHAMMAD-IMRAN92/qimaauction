@@ -5,7 +5,6 @@
         .cross {
             margin-bottom: 134px;
         }
-
     </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -57,17 +56,15 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <input type="hidden" id="product-title" class="form-control"
-                                                            name="id"
-                                                            value={{ $product->id }} >
+                                                            name="id" value={{ $product->id }}>
                                                         <div class="form-label-group">
 
                                                             <input type="text" id="product-title" class="form-control"
-                                                                name="title"
-                                                                value="{{ $product->product_title }}">
+                                                                name="title" value="{{ $product->product_title }}">
                                                             <label for="product-title">Product Title</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
                                                                 name="sample" value="{{$product->sample}}">
@@ -94,7 +91,7 @@
                                                              </textarea>
                                                             <label for="product-description">Product Description</label>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-category">Select Category</label>
@@ -129,7 +126,7 @@
                                                             </div>
                                                         </div>
                                                     </div> --}}
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
                                                             <div class="form-group">
@@ -141,7 +138,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-process">Select Process</label>
@@ -158,22 +155,22 @@
                                                         </div>
                                                     </div> --}}
                                                     <!-- <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <label for="product-origin">Select Origin</label>
-                                                            <div class="form-group">
-                                                                <select class="select2 form-control" name="pro_origin"
-                                                                    id="product-origin">
-                                                                    @foreach ($origin as $key => $org)
-                                                                        <option selected>Please Select Origin</option>
-                                                                        <option value="{{ $org->id }}"
-                                                                            {{ $org->id == $product->origin_id ? 'selected' : '' }}>
-                                                                            {{ $org->region_name }}</option>
-                                                                    @endforeach
+                                                                        <div class="form-label-group">
+                                                                            <label for="product-origin">Select Origin</label>
+                                                                            <div class="form-group">
+                                                                                <select class="select2 form-control" name="pro_origin"
+                                                                                    id="product-origin">
+                                                                                    @foreach ($origin as $key => $org)
+    <option selected>Please Select Origin</option>
+                                                                                        <option value="{{ $org->id }}"
+                                                                                            {{ $org->id == $product->origin_id ? 'selected' : '' }}>
+                                                                                            {{ $org->region_name }}</option>
+    @endforeach
 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> -->
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Region</label>
@@ -183,7 +180,7 @@
                                                                     <option selected>Please Select Region</option>
                                                                     @foreach ($region as $key => $org)
                                                                         <option value="{{ $org->id }}"
-                                                                        {{ $org->id == $product->region_id ? 'selected' : '' }}>
+                                                                            {{ $org->id == $product->region_id ? 'selected' : '' }}>
                                                                             {{ $org->title }}</option>
                                                                     @endforeach
 
@@ -200,7 +197,7 @@
                                                                     <option selected>Please Select Village</option>
                                                                     @foreach ($village as $key => $org)
                                                                         <option value="{{ $org->id }}"
-                                                                        {{ $org->id == $product->village_id ? 'selected' : '' }}>
+                                                                            {{ $org->id == $product->village_id ? 'selected' : '' }}>
                                                                             {{ $org->title }}</option>
                                                                     @endforeach
 
@@ -217,7 +214,7 @@
                                                                     <option selected>Please Select Governorate</option>
                                                                     @foreach ($governorator as $key => $org)
                                                                         <option value="{{ $org->id }}"
-                                                                        {{ $org->id == $product->governorate_id ? 'selected' : '' }}>
+                                                                            {{ $org->id == $product->governorate_id ? 'selected' : '' }}>
                                                                             {{ $org->title }}</option>
                                                                     @endforeach
 
@@ -225,14 +222,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="file" id="image" class="form-control"
                                                                 name="image[]" multiple>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <span>Select Image:</span> <br>
                                                             <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
@@ -248,8 +245,29 @@
                                                             @endforeach
 
                                                         </div>
+                                                    </div> --}}
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-category">Select Acutions</label>
+                                                            <div class="form-group">
+                                                                <select
+                                                                    class="select2 form-control @error('category_id') is-invalid @enderror"
+                                                                    name="auction[]" multiple id="product-category"
+                                                                    required>
+                                                                    {{-- <option value="" >Please Select Category</option> --}}
+                                                                    @foreach ($auctions as $key => $auct)
+                                                                        <option value="{{ $auct->id }}" {{ count($auct->auctionProducts) > 0 ? 'selected' : '' }}>
+                                                                            {{ $auct->title }}</option
+                                                                            >
+                                                                    @endforeach
+                                                                    @error('category_id')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
                                                     <div class="col-12" style="margin-left: 39%">
                                                         <button type="submit"
                                                             class="btn btn-primary mr-1 mb-1">Submit</button>
@@ -271,20 +289,19 @@
         </div>
     </div>
     <script>
-        $(document).ready(function (e) {
-                  $('#image').change(function(){
+        $(document).ready(function(e) {
+            $('#image').change(function() {
 
-                  let reader = new FileReader();
+                let reader = new FileReader();
+                ()
+                reader.onload = (e) => {
 
-                  reader.onload = (e) => {
+                    $('#preview-image-before-upload').attr('src', e.target.result);
+                }
 
-                      $('#preview-image-before-upload').attr('src', e.target.result);
-                  }
+                reader.readAsDataURL(this.files[0]);
 
-                  reader.readAsDataURL(this.files[0]);
-
-                  });
-      });
-  </script>
+            });
+        });
+    </script>
 @endsection
-

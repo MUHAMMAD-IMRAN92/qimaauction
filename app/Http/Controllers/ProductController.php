@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\JuryMail;
+use App\Models\Auction;
+use App\Models\AuctionProduct;
 use App\Models\Category;
 use App\Models\Flavour;
 use App\Models\Genetic;
@@ -71,6 +73,7 @@ class ProductController extends Controller
         $genetics = Genetic::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
+        $auctions = Auction::all();
         return view('admin.product.create', [
             'category' => $category,
             'flavour' => $flavour,
@@ -79,23 +82,25 @@ class ProductController extends Controller
             'region' => $region,
             'origin' => $origin,
             'genetics' => $genetics,
+            'auctions' => $auctions,
         ]);
     }
     public function save(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'table' => 'required',
-            'sample' => 'required',
+            // 'table' => 'required',
+            // 'sample' => 'required',
             // 'region_id' => 'required',
             // 'category_id' => 'required',
             // 'pro_lot_type' => 'required',
             // 'pro_process' => 'required',
             // 'village_id' => 'required',
             'governorate_id' => 'required',
-            'postion' => 'required',
+            // 'postion' => 'required',
             // 'pro_origin' => 'required',
         ]);
+
         $product = new  Product();
         $product->product_title = $request->title;
         $product->sample = $request->sample;
@@ -115,19 +120,33 @@ class ProductController extends Controller
         $product->origin_id =  2;
         $product->save();
 
-        foreach ($request->image as $img) {
-            $fileName = $img->getClientOriginalName();
-            $img->storeAs(
-                'product',
-                $fileName,
-                'public'
-            );
-            $productImage = new Image();
-            $productImage->product_id =  $product->id;
-            $productImage->image_name = $fileName;
-            $productImage->save();
-        }
+        // foreach ($request->image as $img) {
+        //     $fileName = $img->getClientOriginalName();
+        //     $img->storeAs(
+        //         'product',
+        //         $fileName,
+        //         'public'
+        //     );
+        //     $productImage = new Image();
+        //     $productImage->product_id =  $product->id;
+        //     $productImage->image_name = $fileName;
+        //     $productImage->save();
+        // }
+        if ($request->auction) {
+            foreach ($request->auction as $auct) {
+                $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $auct)->updateOrCreate(
+                    [
+                        'product_id' => $product->id,
+                        'village' => $product->village->title,
+                        'auction_id' => $auct,
+                        'region' => $product->region->title,
+                        'governorate' => $product->governorate->title,
+                        'name' => $request->title,
 
+                    ]
+                );
+            }
+        }
         return redirect('/product/index');
     }
     public function delete(Request $request, $id)
@@ -146,6 +165,7 @@ class ProductController extends Controller
         $region = Region::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
+        $auctions = Auction::all();
         // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
@@ -154,7 +174,8 @@ class ProductController extends Controller
             'governorator' => $governorator,
             'village' => $village,
             'region' => $region,
-            'origin' => $origin
+            'origin' => $origin,
+            'auctions' => $auctions,
         ]);
     }
     public function update(Request $request)
@@ -183,22 +204,36 @@ class ProductController extends Controller
         $product->pro_lot_type  = $request->pro_lot_type;
         $product->pro_process  = $request->pro_process;
         $product->save();
-        if ($request->image) {
-            foreach ($request->image as $img) {
-                $fileName = $img->getClientOriginalName();
-                $img->storeAs(
-                    'product',
-                    $fileName,
-                    'public'
+        // if ($request->image) {
+        //     foreach ($request->image as $img) {
+        //         $fileName = $img->getClientOriginalName();
+        //         $img->storeAs(
+        //             'product',
+        //             $fileName,
+        //             'public'
+        //         );
+        //         $productImage = new Image();
+        //         $productImage->product_id =  $product->id;
+        //         $productImage->image_name = $fileName;
+        //         $productImage->save();
+        //     }
+        // }
+
+        if ($request->auction) {
+            foreach ($request->auction as $auct) {
+                $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $auct)->updateOrCreate(
+                    [
+                        'product_id' => $product->id,
+                        'village' => $product->village->title,
+                        'auction_id' => $auct,
+                        'region' => $product->region->title,
+                        'governorate' => $product->governorate->title,
+                        'name' => $request->title,
+
+                    ]
                 );
-                $productImage = new Image();
-                $productImage->product_id =  $product->id;
-                $productImage->image_name = $fileName;
-                $productImage->save();
             }
         }
-
-
         return redirect('/product/index');
     }
     public function deleteImage($id)

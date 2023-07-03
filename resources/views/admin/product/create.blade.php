@@ -70,7 +70,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
                                                                 name="sample">
@@ -123,7 +123,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
@@ -156,7 +156,7 @@
                                                             </div>
                                                         </div>
                                                     </div>--}}
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
                                                             <div class="form-group">
@@ -168,7 +168,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-process">Select Process</label>
@@ -249,14 +249,31 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-category">Select Acutions</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control @error('category_id') is-invalid @enderror" name="auction[]" multiple
+                                                                    id="product-category" required>
+                                                                    {{-- <option value="" >Please Select Category</option> --}}
+                                                                    @foreach ($auctions as $key => $auct)
+                                                                        <option value="{{ $auct->id }}">
+                                                                            {{ $auct->title }}</option>
+                                                                    @endforeach
+                                                                    @error('category_id')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input  type="file" id="image" class="form-control"
                                                             accept="image/png, image/jpeg" name="image[]" multiple required>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12 mb-2">
                                                         <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                             alt="" style="max-height: 100px;max-width: 100px;">

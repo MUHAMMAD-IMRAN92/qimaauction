@@ -82,7 +82,13 @@ class AuctionController extends Controller
                     'cup_profile' => $request->cupping_profile,
                     'name' => $request->name,
                     'code' => $request->code,
-                    'altitude' =>  $request->altitude
+                    'altitude' =>  $request->altitude,
+                    'jury_code' => $request->jury_code,
+                    'position' => $request->position,
+                    'table' => $request->table,
+                    'public_jury_score' => $request->public_jury_score,
+                    'jury_score' => $request->jury_score,
+
                 ]
             );
 
@@ -129,7 +135,12 @@ class AuctionController extends Controller
                     'cup_profile' => $request->cupping_profile,
                     'name' => $request->name,
                     'code' => $request->code,
-                    'altitude' =>  $request->altitude
+                    'altitude' =>  $request->altitude,
+                    'jury_code' => $request->jury_code,
+                    'jury_score' => $request->jury_score,
+                    'position' => $request->position,
+                    'table' => $request->table,
+                    'public_jury_score' => $request->public_jury_score,
                 ]
             );
             if ($request->images) {
@@ -1577,7 +1588,7 @@ class AuctionController extends Controller
     public function editAuctionProducts($id)
     {
         $auction_products = AuctionProduct::where('id', $id)->with(['productImages' => function ($q) {
-            $q->orderBy('order_no' , 'asc');
+            $q->orderBy('order_no', 'asc');
         }])->first();
 
         $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
