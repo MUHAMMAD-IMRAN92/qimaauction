@@ -52,7 +52,7 @@ class ProductController extends Controller
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
-        })->with('category', 'origin', 'flavor')->whereHas('category');
+        })->with('category', 'origin', 'flavor' , 'governorate' , 'region' , 'village')->whereHas('category');
 
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 

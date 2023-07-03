@@ -158,10 +158,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Start Price</th>
-                                                <th>Reserve Price</th>
-                                                <th>Weight</th>
-                                                <th>Size</th>
+                                                <th>Code</th>
+                                                <th>Jruy Score</th>
+                                                <th>Process</th>
+                                                <th>Genetic</th>
+                                                <th>Altitude</th>
                                                 <th>Rank</th>
                                                 <th>Action(s)</th>
                                                 <th></th>
@@ -179,16 +180,19 @@
                                                                 {{ $pro->product_title }}
                                                             </td>
                                                             <td>
-                                                                {{ $auction->start_price }}
+                                                                {{ $auction->code }}
                                                             </td>
                                                             <td>
-                                                                {{ $auction->reserve_price }}
+                                                                {{ $auction->jury_score }}
                                                             </td>
                                                             <td>
-                                                                {{ $auction->weight }}
+                                                                {{ $auction->process }}
                                                             </td>
                                                             <td>
-                                                                {{ $auction->size }}
+                                                                {{ $auction->genetic }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $auction->altitude }}
                                                             </td>
                                                             <td>
                                                                 {{ $auction->rank }}

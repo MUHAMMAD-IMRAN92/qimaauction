@@ -55,11 +55,11 @@
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
-                                                        <th>Description</th>
-                                                        {{-- <th>Image</th> --}}
-                                                        <th>Category</th>
+                                                        <th>Governorate</th>
+                                                        <th>Region</th>
+                                                        <th>Village</th>
                                                         <!-- <th>Origin</th> -->
-                                                        <th>Flavour</th>
+                                                        {{-- <th>Flavour</th> --}}
                                                         <th>Action(s)</th>
 
                                                     </tr>
@@ -67,7 +67,7 @@
                                                 <tbody>
 
                                                 </tbody>
-                                           
+
                                             </table>
                                         </div>
                                     </div>
@@ -113,9 +113,30 @@
 
                     "mRender": function(data, type, row) {
                         return '<td>' +
-                            row.product_description + '</td> ';
+                            row.governorate.title + '</td>';
                     }
                 },
+                {
+
+                    "mRender": function(data, type, row) {
+                        return '<td>' +
+                            row.region.title + '</td>';
+                    }
+                },
+                {
+
+                    "mRender": function(data, type, row) {
+                        return '<td>' +
+                            row.village.title + '</td>';
+                    }
+                },
+                // {
+
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
+                //             row.product_description + '</td> ';
+                //     }
+                // },
                 // {
 
                 //     "mRender": function(data, type, row) {
@@ -125,40 +146,40 @@
 
                 //     }
                 // },
-                {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                                row.category.category_title+
-                            
-                            `</td>`
-                          
-                    }
-                },
                 // {
 
                 //     "mRender": function(data, type, row) {
                 //         return '<td>' +
-                            
-                //                 row.origin.region_name+
-                           
-                //             `</td>` 
-                           
+                //                 row.category.category_title+
+
+                //             `</td>`
 
                 //     }
                 // },
-                {
+                // {
 
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                            
-                                row.flavor.flavour_title+
-                        
-                            `</td>` 
-                        
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
 
-                    }
-                    },
+                //                 row.origin.region_name+
+
+                //             `</td>`
+
+
+                //     }
+                // },
+                // {
+
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
+
+                //                 row.flavor.flavour_title+
+
+                //             `</td>`
+
+
+                //     }
+                //     },
                 {
 
                     "mRender": function(data, type, row) {
