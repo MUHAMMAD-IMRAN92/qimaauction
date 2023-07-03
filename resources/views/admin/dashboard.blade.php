@@ -41,7 +41,7 @@
     }
 
     .timer-section h2 {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         font-style: normal;
         font-weight: 400;
         font-size: 80px;
@@ -52,7 +52,7 @@
     }
 
     .timer-section h3 {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         font-style: normal;
         font-weight: 400;
         font-size: 50px;
