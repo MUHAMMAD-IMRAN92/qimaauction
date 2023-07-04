@@ -468,8 +468,8 @@
         letter-spacing: 0.1em;
         border-bottom: 3px solid rgb(244, 243, 243);
         font-weight: 900;
-        color:  rgba(35, 43, 56, 1);
-;
+        color: rgba(35, 43, 56, 1);
+        ;
         display: flex;
         text-align: center;
         align-items: center;
@@ -802,7 +802,7 @@
 
         .lname {
             font-size: 13px !important;
-            
+
         }
 
         .cscore {
@@ -817,10 +817,11 @@
 
         .lname p {
             font-size: 9px;
-            margin-top:5px;        }
+            margin-top: 5px;
+        }
 
         .rank {
-              padding: 0px;
+            padding: 0px;
             font-size: 32px;
         }
 
@@ -1001,10 +1002,10 @@
                         <div class="genetics">{{ $nat->genetic }}</div>
                         <div class="traceability">
                             <div class="traceability-content">
-                                <p class="p">Village:<span >{{ $nat->village }}</span> </p>
-                                <p class="p">Region: <span>{{ $nat->region }}</p>
-                                <p class="p">governorate:<span>{{ $nat->governorate }}</span> </p>
-                                <p class="p">altitude: <span>{{ $nat->altitude }}masl</span></p>
+                                <p class="p">Village :<span>{{ $nat->village }}</span> </p>
+                                <p class="p">Region : <span>{{ $nat->region }}</p>
+                                <p class="p">governorate :<span>{{ $nat->governorate }}</span> </p>
+                                <p class="p">altitude : <span>{{ $nat->altitude }}masl</span></p>
                             </div>
                         </div>
                     </div>
@@ -1065,10 +1066,10 @@
                         <div class="genetics">{{ $alc->genetic }}</div>
                         <div class="traceability">
                             <div class="traceability-content">
-                                <p class="p mr-1">Village: <span> {{ $alc->village }}</span> </p>
-                                <p class="p">Region: <span> {{ $alc->region }}</p>
-                                <p class="p">governorate: <span> {{ $alc->governorate }}</span> </p>
-                                <p class="p">altitude: <span> {{ $alc->altitude }}masl</span></p>
+                                <p class="p mr-1">Village  : <span> {{ $alc->village }}</span> </p>
+                                <p class="p">Region : <span> {{ $alc->region }}</p>
+                                <p class="p">governorate  : <span> {{ $alc->governorate }}</span> </p>
+                                <p class="p">altitude : <span> {{ $alc->altitude }}masl</span></p>
                             </div>
                         </div>
                     </div>
