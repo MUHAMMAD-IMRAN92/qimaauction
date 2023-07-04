@@ -1293,7 +1293,7 @@
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
                     var url = '{{ route('productsidebar', ':id') }}';
-                    url = url.replace(':id', productid);
+                    url = url.replace(':id', code);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
