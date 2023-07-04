@@ -140,7 +140,7 @@
     .hr {
 
     margin-bottom: 0px;
-    border: 1px solid rgb(244, 243, 243);
+    border: 2px solid rgb(244, 243, 243);
     }
     .footer-qima {
         padding: 40px;
@@ -1192,8 +1192,9 @@
                 </div>
 
             </div>
-            <hr class="hr">
+           
             <div class="footer-qima">
+            <hr class="hr">
                 <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
                 <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
                 <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
