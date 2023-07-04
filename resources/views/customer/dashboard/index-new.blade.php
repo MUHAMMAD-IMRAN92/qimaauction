@@ -815,9 +815,9 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-    $(function(){
-      $("#signup-for-newsletter").on("click", function() {
-          $("#newsltterModel").modal("show");
-      });
+    $(function() {
+        $("#signup-for-newsletter").on("click", function() {
+            $("#newsltterModel").modal("show");
+        });
     })
-    </script>
+</script>

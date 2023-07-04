@@ -1001,136 +1001,137 @@
             </div>
 
         </div>
-        <div class="table-wrapper">
-            <div class=" table-grid wrapper-top-section">
-                <div class="table-items">
-                    <h3 id="w-c">Winnging Coffees</h3>
-                    <div class="heading-top first-head">
-                        <h2>Naturals & Deep Fermentation</h2>
-                    </div>
-                    <div class="headings">
-                        <div class="h-1">
-                            <div id="rank">Rank</div>
-                            <div id="lname">Lot Name</div>
-                            <div id="cscore">Cupping Score</div>
-                            <div id="lsize">lot size</div>
+        @if (count($natural) > 0 && count($alchmey) > 0)
+            <div class="table-wrapper">
+                <div class=" table-grid wrapper-top-section">
+                    <div class="table-items">
+                        <h3 id="w-c">Winnging Coffees</h3>
+                        <div class="heading-top first-head">
+                            <h2>Naturals & Deep Fermentation</h2>
                         </div>
-                        <div class="h-2">
-                            <div id="process">Process</div>
-                            <div id="genetics">genetic</div>
-                            <div id="traceability">traceability</div>
-                        </div>
-                        <div class="h-3">
-                            <div id="button">
+                        <div class="headings">
+                            <div class="h-1">
+                                <div id="rank">Rank</div>
+                                <div id="lname">Lot Name</div>
+                                <div id="cscore">Cupping Score</div>
+                                <div id="lsize">lot size</div>
+                            </div>
+                            <div class="h-2">
+                                <div id="process">Process</div>
+                                <div id="genetics">genetic</div>
+                                <div id="traceability">traceability</div>
+                            </div>
+                            <div class="h-3">
+                                <div id="button">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @foreach ($natural as $key => $nat)
-                        <div class="content">
-                            <div class="c-1">
-                                <div class="rank">{{ $nat->rank }}.</div>
-                                <div class="lname">
-                                    <div class="">
-                                        <h2>{{ $nat->name }}</h2>
-                                        <p>jury code: {{ $nat->code }}</p>
+                        @foreach ($natural as $key => $nat)
+                            <div class="content">
+                                <div class="c-1">
+                                    <div class="rank">{{ $nat->rank }}.</div>
+                                    <div class="lname">
+                                        <div class="">
+                                            <h2>{{ $nat->name }}</h2>
+                                            <p>jury code: {{ $nat->code }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="cscore">
+                                        {{ $nat->jury_score }}
+                                    </div>
+                                    <div class="lsize">
+                                        <div class="">
+                                            <p>{{ $nat->size }}</p>
+                                            <p>lbs</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="cscore">
-                                    {{ $nat->jury_score }}
-                                </div>
-                                <div class="lsize">
-                                    <div class="">
-                                        <p>{{ $nat->size }}</p>
-                                        <p>lbs</p>
+                                <div class="c-2">
+                                    <div class="process">
+                                        <p>{{ $nat->process }}</p>
+                                    </div>
+                                    <div class="genetics">{{ $nat->genetic }}</div>
+                                    <div class="traceability">
+                                        <div class="traceability-content">
+                                            <p class="p">Village :<span>{{ $nat->village }}</span> </p>
+                                            <p class="p">Region : <span>{{ $nat->region }}</p>
+                                            <p class="p">governorate :<span>{{ $nat->governorate }}</span> </p>
+                                            <p class="p">altitude : <span>{{ $nat->altitude }}masl</span></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="c-2">
-                                <div class="process">
-                                    <p>{{ $nat->process }}</p>
-                                </div>
-                                <div class="genetics">{{ $nat->genetic }}</div>
-                                <div class="traceability">
-                                    <div class="traceability-content">
-                                        <p class="p">Village :<span>{{ $nat->village }}</span> </p>
-                                        <p class="p">Region : <span>{{ $nat->region }}</p>
-                                        <p class="p">governorate :<span>{{ $nat->governorate }}</span> </p>
-                                        <p class="p">altitude : <span>{{ $nat->altitude }}masl</span></p>
-                                    </div>
+                                <div class="c-3">
+                                    <button class="btn-info">More information</button>
                                 </div>
                             </div>
-                            <div class="c-3">
-                                <button class="btn-info">More information</button>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="hr-tag">
+                        @endforeach
+                        <div class="hr-tag">
 
-                    </div>
-                    <div class="heading-top">
-                        <h2>Alchemy</h2>
-                    </div>
-                    <div class="headings">
-                        <div class="h-1">
-                            <div id="rank">Rank</div>
-                            <div id="lname">Lot Name</div>
-                            <div id="cscore">Cupping Score</div>
-                            <div id="lsize">lot size</div>
                         </div>
-                        <div class="h-2">
-                            <div id="process">Process</div>
-                            <div id="genetics">genetic</div>
-                            <div id="traceability">traceability</div>
+                        <div class="heading-top">
+                            <h2>Alchemy</h2>
                         </div>
-                        <div class="h-3">
-                            <div id="button">
+                        <div class="headings">
+                            <div class="h-1">
+                                <div id="rank">Rank</div>
+                                <div id="lname">Lot Name</div>
+                                <div id="cscore">Cupping Score</div>
+                                <div id="lsize">lot size</div>
+                            </div>
+                            <div class="h-2">
+                                <div id="process">Process</div>
+                                <div id="genetics">genetic</div>
+                                <div id="traceability">traceability</div>
+                            </div>
+                            <div class="h-3">
+                                <div id="button">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    @foreach ($alchmey as $key => $alc)
-                        <div class="content">
-                            <div class="c-1">
-                                <div class="rank">{{ $alc->rank }}.</div>
-                                <div class="lname">
-                                    <div class="">
-                                        <h2>{{ $alc->name }}</h2>
-                                        <p>jury code: {{ $alc->code }}</p>
+                        @foreach ($alchmey as $key => $alc)
+                            <div class="content">
+                                <div class="c-1">
+                                    <div class="rank">{{ $alc->rank }}.</div>
+                                    <div class="lname">
+                                        <div class="">
+                                            <h2>{{ $alc->name }}</h2>
+                                            <p>jury code: {{ $alc->code }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="cscore">
+                                        {{ $alc->jury_score }}
+                                    </div>
+                                    <div class="lsize">
+                                        <div class="">
+                                            <p>{{ $alc->size }}</p>
+                                            <p>lbs</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="cscore">
-                                    {{ $alc->jury_score }}
-                                </div>
-                                <div class="lsize">
-                                    <div class="">
-                                        <p>{{ $alc->size }}</p>
-                                        <p>lbs</p>
+                                <div class="c-2">
+                                    <div class="process">
+                                        <p>{{ $alc->process }}</p>
+                                    </div>
+                                    <div class="genetics">{{ $alc->genetic }}</div>
+                                    <div class="traceability">
+                                        <div class="traceability-content">
+                                            <p class="p mr-1">Village : <span> {{ $alc->village }}</span> </p>
+                                            <p class="p">Region : <span> {{ $alc->region }}</p>
+                                            <p class="p">governorate : <span> {{ $alc->governorate }}</span> </p>
+                                            <p class="p">altitude : <span> {{ $alc->altitude }}masl</span></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="c-2">
-                                <div class="process">
-                                    <p>{{ $alc->process }}</p>
-                                </div>
-                                <div class="genetics">{{ $alc->genetic }}</div>
-                                <div class="traceability">
-                                    <div class="traceability-content">
-                                        <p class="p mr-1">Village : <span> {{ $alc->village }}</span> </p>
-                                        <p class="p">Region : <span> {{ $alc->region }}</p>
-                                        <p class="p">governorate : <span> {{ $alc->governorate }}</span> </p>
-                                        <p class="p">altitude : <span> {{ $alc->altitude }}masl</span></p>
-                                    </div>
+                                <div class="c-3">
+                                    <button class="btn-info">More information</button>
                                 </div>
                             </div>
-                            <div class="c-3">
-                                <button class="btn-info">More information</button>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-
+        @endif
         <div class="wrapper-jury">
             <div class="international-jury-section">
                 <h2>INTERNATIONAL JURY</h2>
