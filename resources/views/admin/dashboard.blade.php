@@ -249,13 +249,13 @@
 
     .heading-top {
         font-family: 'Montserrat';
-        font-size: 23px;
+        font-size: 27px;
         font-weight: 800;
         line-height: 2rem;
         letter-spacing: 0.3rem;
         border-bottom: 3px solid rgb(244, 243, 243);
         border-top: 3px solid rgb(244, 243, 243);
-        padding: 0.7rem 0;
+        padding: 1.5rem 0;
         margin: 0;
         /* margin-top: 1.6rem; */
         color: #E78460;
@@ -326,6 +326,7 @@
         line-height: 12px;
         letter-spacing: 0.1em;
         text-align: left;
+        padding: 15px;
 
     }
 
@@ -409,6 +410,7 @@
 
 
     .rank {
+        padding: 15px;
         text-transform: uppercase;
         border-right: 3px solid rgb(244, 243, 243);
         border-bottom: 3px solid rgb(244, 243, 243);
@@ -466,7 +468,8 @@
         letter-spacing: 0.1em;
         border-bottom: 3px solid rgb(244, 243, 243);
         font-weight: 900;
-        color: #303030;
+        color:  rgba(35, 43, 56, 1);
+;
         display: flex;
         text-align: center;
         align-items: center;
@@ -529,6 +532,8 @@
         letter-spacing: 0em;
         color: black !important;
         font-family: 'Montserrat' !important;
+        margin-left: 3px;
+        line-height: 18px;
     }
 
     .traceability-content {
@@ -796,8 +801,8 @@
 
 
         .lname {
-            font-size: 0.52rem;
-            line-height: 0.9rem;
+            font-size: 13px !important;
+            
         }
 
         .cscore {
@@ -811,11 +816,11 @@
         }
 
         .lname p {
-            font-size: 0.5rem;
-        }
+            font-size: 9px;
+            margin-top:5px;        }
 
         .rank {
-
+              padding: 0px;
             font-size: 32px;
         }
 
@@ -833,7 +838,7 @@
         }
 
         .genetics {
-            font-size: 0.6rem;
+            font-size: 11px;
         }
 
         .btn-info {
@@ -853,31 +858,32 @@
         }
 
         #rank {
-            font-size: 9px;
+            font-size: 8px;
+            padding: 0px;
         }
 
         #lname {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         #cscore {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         #lsize {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         #process {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         #genetics {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         #traceability {
-            font-size: 9px;
+            font-size: 8px;
         }
 
         .international-jury-section h2 {
@@ -995,7 +1001,7 @@
                         <div class="genetics">{{ $nat->genetic }}</div>
                         <div class="traceability">
                             <div class="traceability-content">
-                                <p class="p">Village:<span>{{ $nat->village }}</span> </p>
+                                <p class="p">Village:<span >{{ $nat->village }}</span> </p>
                                 <p class="p">Region: <span>{{ $nat->region }}</p>
                                 <p class="p">governorate:<span>{{ $nat->governorate }}</span> </p>
                                 <p class="p">altitude: <span>{{ $nat->altitude }}masl</span></p>
@@ -1059,10 +1065,10 @@
                         <div class="genetics">{{ $alc->genetic }}</div>
                         <div class="traceability">
                             <div class="traceability-content">
-                                <p class="p">Village:<span>{{ $alc->village }}</span> </p>
-                                <p class="p">Region: <span>{{ $alc->region }}</p>
-                                <p class="p">governorate:<span>{{ $alc->governorate }}</span> </p>
-                                <p class="p">altitude: <span>{{ $alc->altitude }}masl</span></p>
+                                <p class="p mr-1">Village: <span> {{ $alc->village }}</span> </p>
+                                <p class="p">Region: <span> {{ $alc->region }}</p>
+                                <p class="p">governorate: <span> {{ $alc->governorate }}</span> </p>
+                                <p class="p">altitude: <span> {{ $alc->altitude }}masl</span></p>
                             </div>
                         </div>
                     </div>
