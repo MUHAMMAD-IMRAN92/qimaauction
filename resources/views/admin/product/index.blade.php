@@ -134,7 +134,13 @@
 
                         $.each(row.product_auctions, function(index, value) {
                             if (value.auction) {
-                                auctions += value.auction.title + ',';
+                                var sep = ',';
+                                if (index == 0) {
+                                    sep = ''
+                                }
+
+                                auctions +=
+                                    `<span class="badge badge-primary mt-1">${value.auction.title}</span>`;
                             }
                         });
                         return '<td>' +
