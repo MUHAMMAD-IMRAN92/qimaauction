@@ -127,7 +127,7 @@
         font-style: normal;
         font-weight: 700;
         font-size: 50px;
-       line-height: 78px;
+        line-height: 78px;
         color: #232B38;
     }
 
@@ -142,9 +142,7 @@
         font-weight: 700;
         font-size: 62px;
         line-height: 80px;
-        border-bottom: 1px solid black
-
-        color: #E78460;
+        border-bottom: 1px solid black color: #E78460;
         padding: 10px;
 
     }
@@ -410,7 +408,7 @@
                             <img style="width: 270px;"
                                 src="{{ asset('public/images/LOGO_0002_Vector-Smart-Object 1.png') }}" alt="">
                         </div>
-{{--
+                        {{--
                         @php
                             $auction = App\Models\Auction::where('is_active', '1')->first();
                             $auctionwiners = App\Models\Auction::where('is_hidden', '1')->first();
@@ -418,9 +416,17 @@
                         <div class="my-3 banner-btn">
 
                             {{-- @if (isset($auctionwiners)) --}}
-                                <button type="button" class="btn btn-primary banner-btns mb-1"
+                            {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                     OnClick=" location.href='/auction-winners' ">RESULTS
+                                </button> --}}
+                            <a href="{{ url('/auction-winners/1') }}"
+                                style=" color: inherit;
+                                text-decoration: none;">
+
+                                <button class="btn btn-primary banner-btns mb-1">
+                                    RESULTS
                                 </button>
+                            </a>
                             {{-- @endif
                             @if (isset($auction))
                                 <!-- <button type="button" class="btn btn-primary banner-btns mb-1"
