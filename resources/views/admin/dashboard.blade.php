@@ -131,13 +131,17 @@
         color: #575555;
     }
 
-    .hr {
+    .hr-tag {
         margin-top: 10px;
     padding: 8px;
     margin-bottom: 0px;
     border-bottom: 3px solid rgb(244, 243, 243);
     }
+    .hr {
 
+    margin-bottom: 0px;
+    border: 1px solid rgb(244, 243, 243);
+    }
     .footer-qima {
         padding: 40px;
     }
@@ -1048,7 +1052,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="hr">
+            <div class="hr-tag">
                     
                 </div>
             <div class="heading-top">
