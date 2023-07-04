@@ -1223,16 +1223,16 @@ class AuctionController extends Controller
         return response()->json($userScore);
     }
 
-    public function auctionWinners(Request $request)
+    public function auctionWinners(Request $request, $id)
     {
-        $auction = Auction::first();
+        $auction = Auction::where('id', $id)->where('is_hidden', 1)->first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
             //            $auction->is_hidden = 1;
             $auction->save();
             return redirect('auction-winners');
         }
         if ($auction && $auction->is_hidden == 1) {
-            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->get();
+            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->where('auction_id', $auction->id)->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function ($e) {
 
