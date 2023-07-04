@@ -59,5 +59,10 @@ class AuctionProduct extends Model
     {
         return $this->hasMany(AuctionProductImages::class, 'auction_product_id', 'id');
     }
+
+    public function auction()
+    {
+        return $this->hasOne(Auction::class, 'id', 'auction_id');
+    }
     protected $guarded = [''];
 }

@@ -256,7 +256,7 @@
                                                                     required>
                                                                     {{-- <option value="" >Please Select Category</option> --}}
                                                                     @foreach ($auctions as $key => $auct)
-                                                                        <option value="{{ $auct->id }}" {{ count($auct->auctionProducts) > 0 ? 'selected' : '' }}>
+                                                                        <option value="{{ $auct->id }}" {{ in_array($auct->id  , $auction_products) > 0 ? 'selected' : '' }}>
                                                                             {{ $auct->title }}</option
                                                                             >
                                                                     @endforeach

@@ -52,7 +52,7 @@ class ProductController extends Controller
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
-        })->with('category', 'origin', 'flavor' , 'governorate' , 'region' , 'village')->whereHas('category');
+        })->with('category', 'origin', 'flavor', 'governorate', 'region', 'village', 'productAuctions.auction')->whereHas('category');
 
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
@@ -166,6 +166,7 @@ class ProductController extends Controller
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
         $auctions = Auction::all();
+        $auctionProduct = AuctionProduct::where('product_id', base64_decode($id))->pluck('auction_id')->toArray();
         // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
@@ -176,6 +177,7 @@ class ProductController extends Controller
             'region' => $region,
             'origin' => $origin,
             'auctions' => $auctions,
+            'auction_products' => $auctionProduct
         ]);
     }
     public function update(Request $request)

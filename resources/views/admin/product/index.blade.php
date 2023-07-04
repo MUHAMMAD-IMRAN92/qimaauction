@@ -57,7 +57,7 @@
                                                         <th>Title</th>
                                                         <th>Governorate</th>
                                                         <th>Region</th>
-                                                        <th>Village</th>
+                                                        <th>Auctions</th>
                                                         <!-- <th>Origin</th> -->
                                                         {{-- <th>Flavour</th> --}}
                                                         <th>Action(s)</th>
@@ -126,8 +126,20 @@
                 {
 
                     "mRender": function(data, type, row) {
+                        var auctions = '';
+                        // row.auction_products.each(function(e) {
+                        //     // auctions += `,${e.auction.title}`
+                        //     console.log(e)
+                        // })
+
+                        $.each(row.product_auctions, function(index, value) {
+                            if (value.auction) {
+                                auctions += value.auction.title + ',';
+                            }
+                        });
                         return '<td>' +
-                            row.village.title + '</td>';
+                            auctions +
+                            '</td>';
                     }
                 },
                 // {

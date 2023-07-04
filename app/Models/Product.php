@@ -67,4 +67,8 @@ class Product extends Model
     {
         return OpenCupping::where('auction_id',  $auctionId)->where('product_id', $this->id)->first();
     }
+    public function productAuctions()
+    {
+        return $this->hasMany(AuctionProduct::class, 'product_id', 'id');
+    }
 }
