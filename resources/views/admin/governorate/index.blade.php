@@ -94,7 +94,7 @@
                 url: '<?= asset('/governorate/allgovernorator') ?>'
             },
             "columns": [{
-                    "data": null  
+                    "data": null
                 },
                 {
 
