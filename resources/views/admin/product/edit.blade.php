@@ -336,7 +336,7 @@
                         $('#governorate_id').empty();
 
                         let html =
-                            ' <option value="0" selected disabled>Select Region</option>';
+                            ' <option value="0" selected disabled>Select Governorate</option>';
                         data.forEach(region => {
                             html += '<option value="' + region.id + '">' + region
                                 .title + '</option>';
