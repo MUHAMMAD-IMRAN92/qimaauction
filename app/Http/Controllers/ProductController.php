@@ -373,4 +373,14 @@ class ProductController extends Controller
             // }
         }
     }
+
+    public function filterBygovernrate(Request $request)
+    {
+        return $request->all();
+    }
+
+    public function  filterByregions(Request $request)
+    {
+        return $request->all();
+    }
 }

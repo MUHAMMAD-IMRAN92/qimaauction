@@ -161,6 +161,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/product/delete/{id}', [App\Http\Controllers\ProductController::class, 'delete']);
     Route::get('/product/delete_product_image/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
+    //filters by location
+    Route::get('filterBygovernrate',  [App\Http\Controllers\ProductController::class, 'filterBygovernrate']);
+    Route::get('filterByregions', [App\Http\Controllers\ProductController::class, 'filterByregions']);
     //Product & Jury
     Route::post('/product/sent_to_jury', [App\Http\Controllers\ProductController::class, 'sentToJury']);
     //jury CRUD
