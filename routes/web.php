@@ -164,6 +164,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     //filters by location
     Route::get('filterBygovernrate',  [App\Http\Controllers\ProductController::class, 'filterBygovernrate']);
     Route::get('filterByregions', [App\Http\Controllers\ProductController::class, 'filterByregions']);
+    Route::get('filterBycountry', [App\Http\Controllers\ProductController::class, 'filterBycountry']);
     //Product & Jury
     Route::post('/product/sent_to_jury', [App\Http\Controllers\ProductController::class, 'sentToJury']);
     //jury CRUD

@@ -6,6 +6,7 @@ use App\Mail\JuryMail;
 use App\Models\Auction;
 use App\Models\AuctionProduct;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Flavour;
 use App\Models\Genetic;
 use App\Models\Governorate;
@@ -70,6 +71,7 @@ class ProductController extends Controller
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
         $region = Region::where('is_hidden', '0')->get();
+        $country = Country::get();
         $genetics = Genetic::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
@@ -83,6 +85,7 @@ class ProductController extends Controller
             'origin' => $origin,
             'genetics' => $genetics,
             'auctions' => $auctions,
+            'country' => $country
         ]);
     }
     public function save(Request $request)
@@ -167,6 +170,7 @@ class ProductController extends Controller
         $governorator = Governorate::where('is_hidden', '0')->get();
         $auctions = Auction::all();
         $auctionProduct = AuctionProduct::where('product_id', base64_decode($id))->pluck('auction_id')->toArray();
+        $country = Country::get();
         // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
@@ -177,7 +181,8 @@ class ProductController extends Controller
             'region' => $region,
             'origin' => $origin,
             'auctions' => $auctions,
-            'auction_products' => $auctionProduct
+            'auction_products' => $auctionProduct,
+            'country' => $country
         ]);
     }
     public function update(Request $request)
@@ -373,14 +378,17 @@ class ProductController extends Controller
             // }
         }
     }
-
+    public function filterBycountry(Request $request)
+    {
+        return Governorate::where('count_id', $request->id)->get();
+    }
     public function filterBygovernrate(Request $request)
     {
-        return $request->all();
+        return Region::where('gov_id', $request->id)->get();
     }
 
     public function  filterByregions(Request $request)
     {
-        return $request->all();
+        return Village::where('reg_id', $request->id)->get();
     }
 }
