@@ -345,7 +345,7 @@
 
                 let id = $('#country_id').val();
                 $.ajax({
-                    url: "{{ url('/filterBygovernrate') }}",
+                    url: "{{ url('/filterBycountry') }}",
                     type: "GET",
                     data: {
                         'id': id,
