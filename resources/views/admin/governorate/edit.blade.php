@@ -70,7 +70,7 @@
                                                                         Country</option>
                                                                     @foreach ($country as $key => $cont)
                                                                         <option value="{{ $cont->id }}"
-                                                                            {{ $cont->id == $product->count_id ? 'selected' : '' }}>
+                                                                            {{ $cont->id == $governorate->count_id ? 'selected' : '' }}>
                                                                             {{ $cont->title }}</option>
                                                                     @endforeach
 
