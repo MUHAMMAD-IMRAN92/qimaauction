@@ -336,7 +336,7 @@
                         $('#governorate_id').empty();
 
                         let html =
-                            ' <option value="0" selected disabled>Select Governorate</option>';
+                            ' <option value="0" selected disabled>Please Select Governorate</option>';
                         data.forEach(region => {
                             html += '<option value="' + region.id + '">' + region
                                 .title + '</option>';
@@ -365,7 +365,7 @@
                         $('#product-origin').empty();
 
                         let html =
-                            ' <option value="0" selected disabled>Select Region</option>';
+                            ' <option value="0" selected disabled>Please Select Region</option>';
                         data.forEach(region => {
                             html += '<option value="' + region.id + '">' + region
                                 .title + '</option>';
@@ -392,7 +392,7 @@
                     success: function(data) {
                         $('#village_id').empty();
                         let html =
-                            ' <option value="0" selected disabled>Select Village</option>';
+                            ' <option value="0" selected disabled>Please Select Village</option>';
                         data.forEach(village => {
                             html += '<option value="' + village.id + '">' +
                                 village
