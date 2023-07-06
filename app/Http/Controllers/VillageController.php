@@ -56,7 +56,7 @@ class VillageController extends Controller
 
         $village = new  Village();
         $village->title = $request->title;
-        $village->reg_id = $request->region_id;
+        $village->reg_id = $request->reg_id;
         $village->save();
         return redirect('/village/index');
     }
@@ -83,7 +83,7 @@ class VillageController extends Controller
     {
         $village = Village::find($request->id);
         $village->title = $request->title;
-        $village->reg_id = $request->region_id;
+        $village->reg_id = $request->reg_id;
         $village->save();
         return redirect('/village/index');
     }

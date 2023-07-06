@@ -64,7 +64,7 @@
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Country</label>
                                                             <div class="form-group">
-                                                                <select class="select2 form-control" name="governorate_id"
+                                                                <select class="select2 form-control" name="count_id"
                                                                     id="country_id" required>
                                                                     <option value="" selected>Please Select
                                                                         Country</option>

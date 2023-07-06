@@ -59,7 +59,7 @@
                                                     <div class="form-label-group">
                                                         <label for="product-origin">Select Region</label>
                                                         <div class="form-group">
-                                                            <select class="select2 form-control" name="region_id"
+                                                            <select class="select2 form-control" name="reg_id"
                                                                 id="product-origin" required>
                                                                 <option selected>Please Select Region</option>
                                                                 @foreach ($region as $key => $org)
