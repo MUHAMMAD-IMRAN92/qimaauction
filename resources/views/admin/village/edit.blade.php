@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         <div class="content-body">
-         
+
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -55,9 +55,26 @@
                                                         <label for="village-title">Village Title</label>
                                                     </div>
                                                 </div>
-                                    
-                                                
-                                                
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-label-group">
+                                                        <label for="product-origin">Select Region</label>
+                                                        <div class="form-group">
+                                                            <select class="select2 form-control" name="region_id"
+                                                                id="product-origin" required>
+                                                                <option selected>Please Select Region</option>
+                                                                @foreach ($region as $key => $org)
+                                                                    <option value="{{ $org->id }}"
+                                                                        {{ $org->id == $village->reg_id ? 'selected' : '' }}>
+                                                                        {{ $org->title }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                     <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>

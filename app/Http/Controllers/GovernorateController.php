@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Governorate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class GovernorateController extends Controller
 {
     private $user;
@@ -27,7 +29,7 @@ class GovernorateController extends Controller
         $flavour_count = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         })->count();
-    // })->where('is_hidden', '0')->count();
+        // })->where('is_hidden', '0')->count();
         $governorate = Governorate::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
@@ -44,13 +46,17 @@ class GovernorateController extends Controller
     }
     public function create(Request $request)
     {
-        return view('admin.governorate.create');
+        $country = Country::get();
+        return view('admin.governorate.create', [
+            'country' => $country
+        ]);
     }
     public function save(Request $request)
     {
 
         $governorate = new  Governorate();
         $governorate->title = $request->title;
+        $governorate->count_id = $request->country;
         $governorate->save();
         return redirect('/governorate/index');
     }
@@ -68,9 +74,9 @@ class GovernorateController extends Controller
     public function edit(Request $request, $id)
     {
         $governorate = Governorate::find(base64_decode($id));
-
+        $country = Country::get();
         return view('admin.governorate.edit', [
-            'governorate' =>  $governorate,
+            'governorate' =>  $governorate, 'country' => $country
         ]);
     }
     public function update(Request $request)
