@@ -310,7 +310,7 @@ Route::get('/bid_agreement', function () {
     return redirect('public/bidding_agreement.pdf');
 }); //'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
-Route::post('/del', function () {
+Route::get('/del', function () {
     AuctionProductImages::get()->delete();
 
     return 'done';
