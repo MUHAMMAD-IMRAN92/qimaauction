@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ForgotPasswordController;
+use App\Models\AuctionProductImages;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::get('/winningproduct/{id}', [App\Http\Controllers\AuctionController::clas
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
 Route::get('/auction-winners-old/{id}', [App\Http\Controllers\AuctionController::class, 'auctionWinnersOld'])->name('auction-winners');
-Route::get('/auction-winners', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
+Route::get('/auction-winners/{id}', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
 
 
 // Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
@@ -161,6 +162,12 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/product/delete/{id}', [App\Http\Controllers\ProductController::class, 'delete']);
     Route::get('/product/delete_product_image/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
     Route::get('/product/view/{id}', [App\Http\Controllers\ProductController::class, 'view']);
+
+    Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail']);
+    //filters by location
+    Route::get('filterBygovernrate',  [App\Http\Controllers\ProductController::class, 'filterBygovernrate']);
+    Route::get('filterByregions', [App\Http\Controllers\ProductController::class, 'filterByregions']);
+    Route::get('filterBycountry', [App\Http\Controllers\ProductController::class, 'filterBycountry']);
     //Product & Jury
     Route::post('/product/sent_to_jury', [App\Http\Controllers\ProductController::class, 'sentToJury']);
     //jury CRUD
@@ -197,6 +204,12 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'auctionReset'])->name('auctionReset');
     Route::post('/groupbidsidebaradmin', [App\Http\Controllers\AuctionController::class, 'groupbidAdminSidebar'])->name('groupbidadminsidebar');
 
+
+    //Auction Products
+    Route::get('add_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'addAuctionProducts']);
+    Route::get('edit_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'editAuctionProducts']);
+    Route::post('auction/product/store', [App\Http\Controllers\AuctionController::class, 'storeAuctionProducts']);
+    Route::post('auction/home_page/products', [App\Http\Controllers\AuctionController::class, 'homePageProducts']);
 
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);

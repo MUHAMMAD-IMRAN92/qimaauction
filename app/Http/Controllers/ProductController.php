@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\JuryMail;
+use App\Models\Auction;
+use App\Models\AuctionProduct;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Flavour;
 use App\Models\Genetic;
 use App\Models\Governorate;
@@ -50,7 +53,7 @@ class ProductController extends Controller
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
-        })->with('category', 'origin', 'flavor')->whereHas('category');
+        })->with('category', 'origin', 'flavor', 'governorate', 'region', 'village', 'productAuctions.auction')->whereHas('category');
 
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
 
@@ -68,9 +71,11 @@ class ProductController extends Controller
         $flavour = Flavour::where('is_hidden', '0')->get();
         $origin = Origin::where('is_hidden', '0')->get();
         $region = Region::where('is_hidden', '0')->get();
+        $country = Country::get();
         $genetics = Genetic::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
+        $auctions = Auction::all();
         return view('admin.product.create', [
             'category' => $category,
             'flavour' => $flavour,
@@ -79,23 +84,26 @@ class ProductController extends Controller
             'region' => $region,
             'origin' => $origin,
             'genetics' => $genetics,
+            'auctions' => $auctions,
+            'country' => $country
         ]);
     }
     public function save(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'table' => 'required',
-            'sample' => 'required',
+            // 'table' => 'required',
+            // 'sample' => 'required',
             // 'region_id' => 'required',
             // 'category_id' => 'required',
             // 'pro_lot_type' => 'required',
             // 'pro_process' => 'required',
             // 'village_id' => 'required',
             'governorate_id' => 'required',
-            'postion' => 'required',
+            // 'postion' => 'required',
             // 'pro_origin' => 'required',
         ]);
+
         $product = new  Product();
         $product->product_title = $request->title;
         $product->sample = $request->sample;
@@ -115,19 +123,33 @@ class ProductController extends Controller
         $product->origin_id =  2;
         $product->save();
 
-        foreach ($request->image as $img) {
-            $fileName = $img->getClientOriginalName();
-            $img->storeAs(
-                'product',
-                $fileName,
-                'public'
-            );
-            $productImage = new Image();
-            $productImage->product_id =  $product->id;
-            $productImage->image_name = $fileName;
-            $productImage->save();
-        }
+        // foreach ($request->image as $img) {
+        //     $fileName = $img->getClientOriginalName();
+        //     $img->storeAs(
+        //         'product',
+        //         $fileName,
+        //         'public'
+        //     );
+        //     $productImage = new Image();
+        //     $productImage->product_id =  $product->id;
+        //     $productImage->image_name = $fileName;
+        //     $productImage->save();
+        // }
+        if ($request->auction) {
+            foreach ($request->auction as $auct) {
+                $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $auct)->updateOrCreate(
+                    [
+                        'product_id' => $product->id,
+                        'village' => $product->village->title,
+                        'auction_id' => $auct,
+                        'region' => $product->region->title,
+                        'governorate' => $product->governorate->title,
+                        'name' => $request->title,
 
+                    ]
+                );
+            }
+        }
         return redirect('/product/index');
     }
     public function delete(Request $request, $id)
@@ -146,6 +168,9 @@ class ProductController extends Controller
         $region = Region::where('is_hidden', '0')->get();
         $village = Village::where('is_hidden', '0')->get();
         $governorator = Governorate::where('is_hidden', '0')->get();
+        $auctions = Auction::all();
+        $auctionProduct = AuctionProduct::where('product_id', base64_decode($id))->pluck('auction_id')->toArray();
+        $country = Country::get();
         // return $product;
         return view('admin.product.edit', [
             'product' =>  $product,
@@ -154,7 +179,10 @@ class ProductController extends Controller
             'governorator' => $governorator,
             'village' => $village,
             'region' => $region,
-            'origin' => $origin
+            'origin' => $origin,
+            'auctions' => $auctions,
+            'auction_products' => $auctionProduct,
+            'country' => $country
         ]);
     }
     public function update(Request $request)
@@ -183,22 +211,36 @@ class ProductController extends Controller
         $product->pro_lot_type  = $request->pro_lot_type;
         $product->pro_process  = $request->pro_process;
         $product->save();
-        if ($request->image) {
-            foreach ($request->image as $img) {
-                $fileName = $img->getClientOriginalName();
-                $img->storeAs(
-                    'product',
-                    $fileName,
-                    'public'
+        // if ($request->image) {
+        //     foreach ($request->image as $img) {
+        //         $fileName = $img->getClientOriginalName();
+        //         $img->storeAs(
+        //             'product',
+        //             $fileName,
+        //             'public'
+        //         );
+        //         $productImage = new Image();
+        //         $productImage->product_id =  $product->id;
+        //         $productImage->image_name = $fileName;
+        //         $productImage->save();
+        //     }
+        // }
+
+        if ($request->auction) {
+            foreach ($request->auction as $auct) {
+                $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $auct)->updateOrCreate(
+                    [
+                        'product_id' => $product->id,
+                        'village' => $product->village->title,
+                        'auction_id' => $auct,
+                        'region' => $product->region->title,
+                        'governorate' => $product->governorate->title,
+                        'name' => $request->title,
+
+                    ]
                 );
-                $productImage = new Image();
-                $productImage->product_id =  $product->id;
-                $productImage->image_name = $fileName;
-                $productImage->save();
             }
         }
-
-
         return redirect('/product/index');
     }
     public function deleteImage($id)
@@ -335,5 +377,27 @@ class ProductController extends Controller
             ]);
             // }
         }
+    }
+    public function filterBycountry(Request $request)
+    {
+        return Governorate::where('count_id', $request->id)->get();
+    }
+    public function filterBygovernrate(Request $request)
+    {
+        return Region::where('gov_id', $request->id)->get();
+    }
+
+    public function  filterByregions(Request $request)
+    {
+        return Village::where('reg_id', $request->id)->get();
+    }
+
+    public function productDetail($id)
+    {
+        $product = AuctionProduct::where('id', $id)->with('auctionProductImages')->first();
+
+        return view('admin.auction.auction_product_detail', [
+            'product' => $product
+        ]);
     }
 }
