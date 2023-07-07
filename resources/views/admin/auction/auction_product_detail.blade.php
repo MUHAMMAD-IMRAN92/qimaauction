@@ -1691,7 +1691,7 @@
             var scroll = window.pageYOffset || document.documentElement.scrollTop;
             var heroImg2 = document.querySelector(".background-image-3");
             heroImg2.style.backgroundSize = (30 + scroll / 20) + "%";
-            heroImg2.style.top = -(scroll / 40) + "%";
+            heroImg2.style.top = -(scroll / 10) + "%";
         });
         window.addEventListener("scroll", function() {
             var scroll = window.pageYOffset || document.documentElement.scrollTop;
