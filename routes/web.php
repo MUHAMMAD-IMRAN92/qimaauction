@@ -311,7 +311,7 @@ Route::get('/bid_agreement', function () {
 }); //'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
 Route::get('/del', function () {
-    AuctionProductImages::get()->delete();
+    AuctionProductImages::truncate();
 
     return 'done';
 });
