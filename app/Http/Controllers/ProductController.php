@@ -391,4 +391,13 @@ class ProductController extends Controller
     {
         return Village::where('reg_id', $request->id)->get();
     }
+
+    public function productDetail($id)
+    {
+        $product = AuctionProduct::where('product_id', $id)->with('auctionProductImages')->first();
+
+        return view('admin.auction.auction_product_detail', [
+            'product' => $product
+        ]);
+    }
 }

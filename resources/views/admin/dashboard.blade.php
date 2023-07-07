@@ -1061,7 +1061,9 @@
                                     </div>
                                 </div>
                                 <div class="c-3">
-                                    <button class="btn-info">More information</button>
+                                    <button class="btn-info"><a style="color: inherit;text-decoration:none;"
+                                            href="{{ url('product/detail/' . $nat->product_id) }}">More
+                                            information</a></button>
                                 </div>
                             </div>
                         @endforeach
@@ -1124,7 +1126,9 @@
                                     </div>
                                 </div>
                                 <div class="c-3">
-                                    <button class="btn-info">More information</button>
+                                    <button class="btn-info"><a style="color: inherit;text-decoration:none;"
+                                            href="{{ url('product/detail/' . $alc->product_id) }}">More
+                                            information</a></button>
                                 </div>
                             </div>
                         @endforeach
