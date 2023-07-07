@@ -37,7 +37,7 @@
         background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}");
         overflow: hidden;
         height: 600px;
-        background-size: 100% 100%;
+        background-size: 98% 100%;
         background-position: top center;
         background-repeat: no-repeat;
     }
@@ -46,7 +46,7 @@
         background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}");
         overflow: hidden;
         height: 600px;
-        background-size: 100% 100%;
+        background-size: 98% 100%;
         background-position: top center;
         background-repeat: no-repeat;
     }
@@ -243,8 +243,8 @@
     }
 
     .badge-section img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         padding: 10px;
     }
 
@@ -1474,6 +1474,7 @@
                     </div>
                     <div class="mt-4 row">
                         <div class="background-image-3 col-md-6">
+
                         </div>
                         <div class="background-image-2 col-md-6">
                         </div>
@@ -1684,21 +1685,10 @@
         window.addEventListener("scroll", function() {
             var scroll = window.pageYOffset || document.documentElement.scrollTop;
             var heroImg = document.querySelector(".background-image-1");
-            heroImg.style.backgroundSize = (100 + scroll / 15) + "%";
+            heroImg.style.backgroundSize = (100 + scroll / 55) + "%";
             heroImg.style.top = -(scroll / 10) + "%";
         });
-        window.addEventListener("scroll", function() {
-            var scroll = window.pageYOffset || document.documentElement.scrollTop;
-            var heroImg2 = document.querySelector(".background-image-3");
-            heroImg2.style.backgroundSize = (30 + scroll / 20) + "%";
-            heroImg2.style.top = -(scroll / 10) + "%";
-        });
-        window.addEventListener("scroll", function() {
-            var scroll = window.pageYOffset || document.documentElement.scrollTop;
-            var heroImg3 = document.querySelector(".background-image-2");
-            heroImg3.style.backgroundSize = (30 + scroll / 20) + "%";
-            heroImg3.style.top = -(scroll / 10) + "%";
-        });
+
     </script>
 
 </body>
