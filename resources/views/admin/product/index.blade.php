@@ -55,11 +55,11 @@
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
-                                                        <th>Description</th>
-                                                        {{-- <th>Image</th> --}}
-                                                        <th>Category</th>
+                                                        <th>Governorate</th>
+                                                        <th>Region</th>
+                                                        <th>Auctions</th>
                                                         <!-- <th>Origin</th> -->
-                                                        <th>Flavour</th>
+                                                        {{-- <th>Flavour</th> --}}
                                                         <th>Action(s)</th>
 
                                                     </tr>
@@ -67,7 +67,7 @@
                                                 <tbody>
 
                                                 </tbody>
-                                           
+
                                             </table>
                                         </div>
                                     </div>
@@ -113,9 +113,48 @@
 
                     "mRender": function(data, type, row) {
                         return '<td>' +
-                            row.product_description + '</td> ';
+                            row.governorate.title + '</td>';
                     }
                 },
+                {
+
+                    "mRender": function(data, type, row) {
+                        return '<td>' +
+                            row.region.title + '</td>';
+                    }
+                },
+                {
+
+                    "mRender": function(data, type, row) {
+                        var auctions = '';
+                        // row.auction_products.each(function(e) {
+                        //     // auctions += `,${e.auction.title}`
+                        //     console.log(e)
+                        // })
+
+                        $.each(row.product_auctions, function(index, value) {
+                            if (value.auction) {
+                                var sep = ',';
+                                if (index == 0) {
+                                    sep = ''
+                                }
+
+                                auctions +=
+                                    `<span class="badge badge-primary mt-1">${value.auction.title}</span>`;
+                            }
+                        });
+                        return '<td>' +
+                            auctions +
+                            '</td>';
+                    }
+                },
+                // {
+
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
+                //             row.product_description + '</td> ';
+                //     }
+                // },
                 // {
 
                 //     "mRender": function(data, type, row) {
@@ -125,40 +164,40 @@
 
                 //     }
                 // },
-                {
-
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                                row.category.category_title+
-                            
-                            `</td>`
-                          
-                    }
-                },
                 // {
 
                 //     "mRender": function(data, type, row) {
                 //         return '<td>' +
-                            
-                //                 row.origin.region_name+
-                           
-                //             `</td>` 
-                           
+                //                 row.category.category_title+
+
+                //             `</td>`
 
                 //     }
                 // },
-                {
+                // {
 
-                    "mRender": function(data, type, row) {
-                        return '<td>' +
-                            
-                                row.flavor.flavour_title+
-                        
-                            `</td>` 
-                        
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
 
-                    }
-                    },
+                //                 row.origin.region_name+
+
+                //             `</td>`
+
+
+                //     }
+                // },
+                // {
+
+                //     "mRender": function(data, type, row) {
+                //         return '<td>' +
+
+                //                 row.flavor.flavour_title+
+
+                //             `</td>`
+
+
+                //     }
+                //     },
                 {
 
                     "mRender": function(data, type, row) {

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\Region;
 use Illuminate\Http\Request;
+use App\Models\Governorate;
 
 class RegionController extends Controller
 {
@@ -27,7 +29,7 @@ class RegionController extends Controller
         $flavour_count = Region::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         })->count();
-    // })->where('is_hidden', '0')->count();
+        // })->where('is_hidden', '0')->count();
         $region = Region::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
         });
@@ -44,13 +46,17 @@ class RegionController extends Controller
     }
     public function create(Request $request)
     {
-        return view('admin.region.create');
+        $governorator = Governorate::where('is_hidden', '0')->get();
+        return view('admin.region.create', [
+            'governorator' => $governorator,
+        ]);
     }
     public function save(Request $request)
     {
 
         $region = new  Region();
         $region->title = $request->title;
+        $region->gov_id = $request->gov_id;
         $region->save();
         return redirect('/region/index');
     }
@@ -68,15 +74,16 @@ class RegionController extends Controller
     public function edit(Request $request, $id)
     {
         $region = Region::find(base64_decode($id));
-
+        $governorator = Governorate::where('is_hidden', '0')->get();
         return view('admin.region.edit', [
-            'region' =>  $region,
+            'region' =>  $region, 'governorator' => $governorator,
         ]);
     }
     public function update(Request $request)
     {
         $region = Region::find($request->id);
         $region->title = $request->title;
+        $region->gov_id = $request->gov_id;
         $region->save();
         return redirect('/region/index');
     }

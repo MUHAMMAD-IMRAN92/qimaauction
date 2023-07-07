@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown">
@@ -62,15 +62,16 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="product-title " class="form-control  @error('title') is-invalid @enderror"
+                                                            <input type="text" id="product-title "
+                                                                class="form-control  @error('title') is-invalid @enderror"
                                                                 name="title">
                                                             <label for="product-title">Product Title</label>
                                                             @error('title')
-                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                                <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample" class="form-control @error('sample') is-invalid @enderror"
                                                                 name="sample">
@@ -123,8 +124,8 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Flavour</label>
                                                             <div class="form-group">
@@ -135,12 +136,12 @@
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->flavour_title }}</option>
                                                                     @endforeach
-                                                                 
+
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-flavour">Select Genetics</label>
                                                             <div class="form-group">
@@ -151,12 +152,12 @@
                                                                         <option value="{{ $flv->id }}">
                                                                             {{ $flv->title }}</option>
                                                                     @endforeach
-                                                                 
+
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-lot-type">Lot Type</label>
                                                             <div class="form-group">
@@ -168,8 +169,8 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-process">Select Process</label>
                                                             <div class="form-group">
@@ -180,34 +181,70 @@
                                                                     <option value="2">Slow Dried</option>
                                                                     <option value="3">Alchemy</option>
                                                                     <option value="4">Deep Fermentation</option>
-                                                    
+
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <!-- <div class="col-md-12 col-12">
+                                                                                                                                        <div class="form-label-group">
+                                                                                                                                            <label for="product-origin">Select Origin</label>
+                                                                                                                                            <div class="form-group">
+                                                                                                                                                <select class="select2 form-control" name="pro_origin"
+                                                                                                                                                    id="product-origin" required>
+                                                                                                                                                    <option selected>Please Select Origin</option>
+                                                                                                                                                    @foreach ($origin as $key => $org)
+    <option value="{{ $org->id }}">
+                                                                                                                                                            {{ $org->region_name }}</option>
+    @endforeach
+
+                                                                                                                                                </select>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                    </div> -->
+
+                                                    <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <label for="product-origin">Select Origin</label>
+                                                            <label for="product-origin">Select Country</label>
                                                             <div class="form-group">
-                                                                <select class="select2 form-control" name="pro_origin"
-                                                                    id="product-origin" required>
-                                                                    <option selected>Please Select Origin</option>
-                                                                    @foreach ($origin as $key => $org)
-                                                                        <option value="{{ $org->id }}">
-                                                                            {{ $org->region_name }}</option>
+                                                                <select class="select2 form-control" name="governorate_id"
+                                                                    id="country_id" required>
+                                                                    <option value="" selected>Please Select
+                                                                        Country</option>
+                                                                    @foreach ($country as $key => $cont)
+                                                                        <option value="{{ $cont->id }}">
+                                                                            {{ $cont->title }}</option>
                                                                     @endforeach
 
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div> -->
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <label for="product-origin">Select Governorate</label>
+                                                            <div class="form-group">
+                                                                <select class="select2 form-control" name="governorate_id"
+                                                                    id="governorate_id" required>
+                                                                    <option value="" selected>Please Select
+                                                                        Governorate</option>
+                                                                    @foreach ($governorator as $key => $org)
+                                                                        <option value="{{ $org->id }}">
+                                                                            {{ $org->title }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <label for="product-origin">Select Region</label>
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="region_id"
                                                                     id="product-origin" required>
-                                                                    <option value="" selected>Please Select Region</option>
+                                                                    <option value="" selected>Please Select Region
+                                                                    </option>
                                                                     @foreach ($region as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
@@ -223,7 +260,8 @@
                                                             <div class="form-group">
                                                                 <select class="select2 form-control" name="village_id"
                                                                     id="village_id" required>
-                                                                    <option value="" selected>Please Select Village</option>
+                                                                    <option value="" selected>Please Select Village
+                                                                    </option>
                                                                     @foreach ($village as $key => $org)
                                                                         <option value="{{ $org->id }}">
                                                                             {{ $org->title }}</option>
@@ -233,32 +271,38 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <label for="product-origin">Select Governorate</label>
+                                                            <label for="product-category">Select Acutions</label>
                                                             <div class="form-group">
-                                                                <select class="select2 form-control" name="governorate_id"
-                                                                    id="governorate_id" required>
-                                                                    <option value="" selected>Please Select Governorate</option>
-                                                                    @foreach ($governorator as $key => $org)
-                                                                        <option value="{{ $org->id }}">
-                                                                            {{ $org->title }}</option>
+                                                                <select
+                                                                    class="select2 form-control @error('category_id') is-invalid @enderror"
+                                                                    name="auction[]" multiple id="product-category"
+                                                                    required>
+                                                                    {{-- <option value="" >Please Select Category</option> --}}
+                                                                    @foreach ($auctions as $key => $auct)
+                                                                        <option value="{{ $auct->id }}">
+                                                                            {{ $auct->title }}</option>
                                                                     @endforeach
-
+                                                                    @error('category_id')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                    @enderror
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-md-12 col-12">
+                                                    {{-- <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input  type="file" id="image" class="form-control"
                                                             accept="image/png, image/jpeg" name="image[]" multiple required>
                                                             <label for="city-column">Product Image</label>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12 mb-2">
-                                                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                                        <img id="preview-image-before-upload"
+                                                            src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                             alt="" style="max-height: 100px;max-width: 100px;">
                                                     </div>
 
@@ -283,19 +327,107 @@
         </div>
     </div>
     <script>
-          $(document).ready(function (e) {        
-                    $('#image').change(function(){
-                            
-                    let reader = new FileReader();
+        $(document).ready(function(e) {
+            $('#image').change(function() {
 
-                    reader.onload = (e) => { 
+                let reader = new FileReader();
 
-                        $('#preview-image-before-upload').attr('src', e.target.result); 
+                reader.onload = (e) => {
+
+                    $('#preview-image-before-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+            });
+            $('#country_id').on('change', function(e) {
+                // let from = $('#governorate_dropdown').val();
+
+                let id = $('#country_id').val();
+                $.ajax({
+                    url: "{{ url('/filterBycountry') }}",
+                    type: "GET",
+                    data: {
+                        'id': id,
+
+                    },
+                    success: function(data) {
+                        console.log(data.view);
+                        $('#governorate_id').empty();
+
+                        let html =
+                            ' <option value="0" selected disabled>Please Select Governorate</option>';
+                        data.forEach(region => {
+                            html += '<option value="' + region.id + '">' + region
+                                .title + '</option>';
+                        });
+
+
+                        $('#governorate_id').append(html);
+                        // $('#tables').html(data.view);
+
                     }
+                });
+            });
+            $('#governorate_id').on('change', function(e) {
+                // let from = $('#governorate_dropdown').val();
 
-                    reader.readAsDataURL(this.files[0]); 
-                    
-                    });
+                let id = $('#governorate_id').val();
+                $.ajax({
+                    url: "{{ url('/filterBygovernrate') }}",
+                    type: "GET",
+                    data: {
+                        'id': id,
+
+                    },
+                    success: function(data) {
+                        console.log(data.view);
+                        $('#product-origin').empty();
+
+                        let html =
+                            ' <option value="0" selected disabled>Please Select Region</option>';
+                        data.forEach(region => {
+                            html += '<option value="' + region.id + '">' + region
+                                .title + '</option>';
+                        });
+
+
+                        $('#product-origin').append(html);
+                        // $('#tables').html(data.view);
+
+                    }
+                });
+            });
+            $('#product-origin').on('change', function(e) {
+
+                let id = $('#product-origin').val();
+                // let from = e.target.value;
+
+                $.ajax({
+                    url: "{{ url('/filterByregions') }}",
+                    type: "GET",
+                    data: {
+                        'id': id,
+                    },
+                    success: function(data) {
+                        $('#village_id').empty();
+                        let html =
+                            ' <option value="0" selected disabled>Please Select Village</option>';
+                        data.forEach(village => {
+                            html += '<option value="' + village.id + '">' +
+                                village
+                                .title + '</option>';
+                        });
+
+
+                        $('#village_id').append(html);
+                        // $('#tables').html(data.view);
+                        console.log(data);
+
+
+                    }
+                });
+            });
         });
     </script>
 @endsection

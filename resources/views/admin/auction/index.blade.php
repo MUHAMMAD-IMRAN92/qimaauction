@@ -22,9 +22,10 @@
 
                     </div>
                 </div>
+
                 <div class="col-3 custom_btn_align">
-                            <a href="{{ url('/auction/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                                Auction<a>
+                    <a href="{{ url('/auction/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                        Auction<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -35,6 +36,10 @@
                 </div>
             </div> --}}
             </div>
+            @if (session('success'))
+                <div class="col-md-12 alert alert-success">
+                    {{ session('success') }}</div>
+            @endif
             <div class="content-body">
 
                 <!-- Zero configuration table -->
@@ -80,7 +85,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        var base_path='<?= asset('/')?>';
+        var base_path = '<?= asset('/') ?>';
         var t = $('#auction-table').DataTable({
             "processing": true,
             "serverSide": true,
@@ -114,11 +119,11 @@
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
-                            `<a class="" href="`+base_path+`auction/edit/` + ids +
+                            `<a class="" href="` + base_path + `auction/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            `<a class="" href="`+base_path+`auction/products/` + ids +
+                            `<a class="" href="` + base_path + `auction/products/` + ids +
                             `">Products&nbsp</a>` +
-                            `<a class="" href="`+base_path+`auction/dashboard/` + ids +
+                            `<a class="" href="` + base_path + `auction/dashboard/` + ids +
                             `">Dashboard</a>` +
                             '</td>'
                     }

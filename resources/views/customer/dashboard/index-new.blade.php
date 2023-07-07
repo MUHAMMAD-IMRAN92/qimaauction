@@ -127,7 +127,7 @@
         font-style: normal;
         font-weight: 700;
         font-size: 50px;
-       line-height: 78px;
+        line-height: 78px;
         color: #232B38;
     }
 
@@ -142,9 +142,7 @@
         font-weight: 700;
         font-size: 62px;
         line-height: 80px;
-        border-bottom: 1px solid black
-
-        color: #E78460;
+        border-bottom: 1px solid black color: #E78460;
         padding: 10px;
 
     }
@@ -410,7 +408,7 @@
                             <img style="width: 270px;"
                                 src="{{ asset('public/images/LOGO_0002_Vector-Smart-Object 1.png') }}" alt="">
                         </div>
-{{--
+                        {{--
                         @php
                             $auction = App\Models\Auction::where('is_active', '1')->first();
                             $auctionwiners = App\Models\Auction::where('is_hidden', '1')->first();
@@ -418,9 +416,17 @@
                         <div class="my-3 banner-btn">
 
                             {{-- @if (isset($auctionwiners)) --}}
-                                <button type="button" class="btn btn-primary banner-btns mb-1"
+                            {{-- <button type="button" class="btn btn-primary banner-btns mb-1"
                                     OnClick=" location.href='/auction-winners' ">RESULTS
+                                </button> --}}
+                            <a href="{{ url('/auction-winners/1') }}"
+                                style=" color: inherit;
+                                text-decoration: none;">
+
+                                <button class="btn btn-primary banner-btns mb-1">
+                                    RESULTS
                                 </button>
+                            </a>
                             {{-- @endif
                             @if (isset($auction))
                                 <!-- <button type="button" class="btn btn-primary banner-btns mb-1"
@@ -760,7 +766,7 @@
     <section>
         <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
             <form action="{{ url('/signup') }}" method="post">
-                <input type="hideen" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -799,3 +805,19 @@
 </body>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    $(function() {
+        $("#signup-for-newsletter").on("click", function() {
+            $("#newsltterModel").modal("show");
+        });
+    })
+</script>

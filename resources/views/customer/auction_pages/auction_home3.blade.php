@@ -2587,7 +2587,7 @@ border: 1px solid white;
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
-                                '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
+                                '<p class="newautobidamount{{ @$auctionProduct->id }}">Current autobid is $' +
                                 addCommas(autobidamount) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');
@@ -2738,7 +2738,6 @@ border: 1px solid white;
 <script>
     var total = 0;
     var interval;
-    var empty = '{{ $isEmpty }}';
     socket.on('auto_bid_updates', function(data) {
         console.log(data);
         if(data.groupPaddleNo==null)

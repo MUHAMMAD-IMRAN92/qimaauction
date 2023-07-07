@@ -290,7 +290,7 @@ var other_check=0;
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
-                                '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
+                                '<p class="newautobidamount{{ @$auctionProduct->id }}">Current autobid is $' +
                                     addCommas(response.bid_amount) +
                                 ' /lb</p>');
                             $('.autobidamount' + id).val('');
@@ -524,7 +524,7 @@ var other_check=0;
                             $('.errorMsgAutoBid' + id).html('');
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
-                                '<p class="newautobidamount{{ $auctionProduct->id }}">Current autobid is $' +
+                                '<p class="newautobidamount{{ @$auctionProduct->id }}">Current autobid is $' +
                                 addCommas(response.bid_amount) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');

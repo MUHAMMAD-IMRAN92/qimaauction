@@ -1,21 +1,21 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
-  <style>
-  /* .custom_btn_align{
-    display: contents;
-  } */
-  /* .content-header.row{
-    margin-right: -15px;
-    margin-left: 30px;
-    align-items: center;
-  } */
+    <style>
+        /* .custom_btn_align{
+                                                                                    display: contents;
+                                                                                  } */
+        /* .content-header.row{
+                                                                                    margin-right: -15px;
+                                                                                    margin-left: 30px;
+                                                                                    align-items: center;
+                                                                                  } */
 
-  .row{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  </style>
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
     <div class="app-content content">
         {{-- <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div> --}}
@@ -23,21 +23,25 @@
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12">
                     <div class="row breadcrumbs-top">
-                            <div class="breadcrumb-wrapper col-12">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="{{ url('jury/index') }}">Auction</a>
-                                    </li>
-                                    <li class="breadcrumb-item active"><a href="#">Create Auction</a>
-                                    </li>
-                                </ol>
-                            </div>
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="{{ url('auction/index') }}">Auction</a>
+                                </li>
+                                <li class="breadcrumb-item active"><a href="#">Create Auction Products</a>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-3 custom_btn_align">
-                    <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
+                    <a class="btn btn-primary waves-effect waves-light"
+                        href="{{ url('add_product_to_auction/' . request()->id) }}" style="color: white;"
+                        id="">Create Auction
                         Product<a>
+                            {{-- <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
+                        Product<a> --}}
                 </div>
             </div>
             <div class="content-body" style="margin-top: 30px">
@@ -147,78 +151,102 @@
                     <div class="card">
                         <div class="card-header">
                         </div>
-                        <div class="card-content">
-                            <div class="card-body card-dashboard">
-                                <div class="table-responsive">
-                                    <table class="table zero-configuration" id="auction-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Start Price</th>
-                                                <th>Reserve Price</th>
-                                                <th>Weight</th>
-                                                <th>Size</th>
-                                                <th>Rank</th>
-                                                <th>Action(s)</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $i = 0;
-                                            @endphp
-                                            @if (isset($auction_products))
-                                                @foreach ($auction_products as $auction)
-                                                    @foreach ($auction->products as $key => $pro)
-                                                        <tr id="{{ ++$i }}">
-                                                            <td>
-                                                                {{ $pro->product_title }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->start_price }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->reserve_price }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->weight }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->size }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $auction->rank }}
-                                                            </td>
-                                                            {{-- <td>
+                        <form action="{{ url('/auction/home_page/products') }}" method="POST">
+                            @csrf
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration" id="auction-table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Title</th>
+                                                    <th>Code</th>
+                                                    <th>Jruy Score</th>
+                                                    <th>Process</th>
+                                                    <th>Genetic</th>
+                                                    <th>Altitude</th>
+                                                    <th>Rank</th>
+                                                    <th>Action(s)</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 0;
+                                                @endphp
+                                                @if (isset($auction_products))
+                                                    @foreach ($auction_products as $auction)
+                                                        @foreach ($auction->products as $key => $pro)
+                                                            <tr id="{{ ++$i }}">
+                                                                <td>
+                                                                    <input type="hidden" name="auction_id"
+                                                                        value="{{ $auction->auction_id }}">
+                                                                    <input type="checkbox" value="{{ $auction->id }}"
+                                                                        {{ $auction->home_page == 1 ? 'checked' : '' }}
+                                                                        name="auction_products[]" id="">
+                                                                </td>
+                                                                <td>
+                                                                   {{ $pro->product_title }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->code }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->jury_score }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->process }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->genetic }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->altitude }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $auction->rank }}
+                                                                </td>
+                                                                {{-- <td>
                                                                 {{ $auction->jury_score }}
                                                             </td> --}}
-                                                            <div>
-                                                                <td>
-                                                                    {{-- <i id="edit"
+                                                                <div>
+                                                                    <td>
+                                                                        {{-- <i id="edit"
                                                                         data-auctionId="{{ $auction->id }}"
                                                                         class="fas fa-edit"></i>
                                                                     <i id="delete"  data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-trash-o"></i> --}}
-                                                                    {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
+                                                                        {{-- <a href="{{route('prductBiddingDetail',['id' => $auction->id])}}" id="view" data-auctionId="{{ $auction->id }}"
                                                                         class="fa fa-eye"></a> --}}
-                                                                        <span class="product-link-a" id="edit" data-auctionId="{{ $auction->id }}">Edit</span>
-                                                                        <span class="product-link-a" id="delete" data-auctionId="{{ $auction->id }}">Delete</span>
-                                                                </td>
-                                                            </div>
-                                                        </tr>
+                                                                        <a
+                                                                            href="{{ url('edit_product_to_auction/' . $auction->id) }}">
+                                                                            <span class="product-link-a">Edit</span></a>
+                                                                        <span class="product-link-a" id="delete"
+                                                                            data-auctionId="{{ $auction->id }}">Delete</span>
+
+                                                                    </td>
+                                                                </div>
+                                                            </tr>
+                                                        @endforeach
                                                     @endforeach
-                                                @endforeach
-                                            @else
-                                                {{-- <tr id="nodata">
+                                                @else
+                                                    {{-- <tr id="nodata">
                                                     <td></td>
                                                     <td >No Auction Product yet</td>
                                                 </tr> --}}
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-12 ">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">Submit</button>
+                                {{-- <a class="btn btn-primary waves-effect waves-light" style="color: white;" id="product">Create Auction
+                                    Product<a> --}}
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -230,12 +258,12 @@
                 // var socket = io('http://localhost:5002');
                 var socket = io('<?= env('SOCKETS') ?>');
                 ////// save AuctionProduct /////
-                 socket.on('add_bid_updates', function (data) {
-            // $("#price").html('$'+data.singleBidammounttesting);
-            $("#price"+data.bidID).html('$'+data.singleBidammounttesting);
-            // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
-        // alert(data.singleBidammounttesting);
-        })
+                socket.on('add_bid_updates', function(data) {
+                    // $("#price").html('$'+data.singleBidammounttesting);
+                    $("#price" + data.bidID).html('$' + data.singleBidammounttesting);
+                    // $(".bidData3"+data.bidID).html('$'+data.singleBidammounttesting);
+                    // alert(data.singleBidammounttesting);
+                })
                 $(".cancel").on("click", function() {
                     $("#auction_model").modal("hide");
                 });
@@ -336,24 +364,22 @@
                             // $('#nodata').modal('hide');
                             var title = data.products[0].product_title;
                             if (rownumber) {
-                                        var id = rownumber;
-                                    }
-                             else
-                             {
-                                     var id = data.id;
-                             }
+                                var id = rownumber;
+                            } else {
+                                var id = data.id;
+                            }
                             var markup = "<tr id=" + id + "><td>" + title + "</td><td>" + data
                                 .start_price + "</td><td>" + data
                                 .reserve_price + "</td><td>" + data
                                 .weight + "</td><td>" + data.size + "</td><td>" + data.rank +
                                 "</td><td><span id='edit' data-auctionId=" + data.id +
-                                " class='product-link-a'>Edit</span> <span id='delete' data-auctionId=" + data
+                                " class='product-link-a'>Edit</span> <span id='delete' data-auctionId=" +
+                                data
                                 .id + " class='product-link-a'>Delete</span></td></tr>";
-                                if (rownumber) {
-                                  $('#' + id).replaceWith(markup);
-                                }
-                                else
-                              $("table tbody").append(markup);
+                            if (rownumber) {
+                                $('#' + id).replaceWith(markup);
+                            } else
+                                $("table tbody").append(markup);
                         }
                     });
                 });

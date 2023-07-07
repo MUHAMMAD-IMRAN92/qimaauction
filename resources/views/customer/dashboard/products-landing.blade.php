@@ -433,7 +433,7 @@
           <div class="cup-profile2">
             @if(isset($winningCoffeesData->images))
             <img style="width:100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_5)}} alt="">
-            @endif  
+            @endif
           </div>
          </div>
        </div>
@@ -445,7 +445,7 @@
           @if(isset($winningCoffeesData->images))
           <img style="width: 100%;" src={{ asset('/public/images/product_images/'.$winningCoffeesData->images->image_6)}}  alt="">
           @endif
-        
+
         </div>
        </div>
        <div class="col-md-6">
@@ -511,7 +511,7 @@
 <section>
   <div class="modal" tabindex="-1" role="dialog" id="newsltterModel">
       <form action="{{url('/signup')}}" method="post">
-          <input type="hideen" name="_token" value="{{csrf_token()}}" >
+          <input type="hidden" name="_token" value="{{csrf_token()}}" >
       <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
