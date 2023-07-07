@@ -495,7 +495,7 @@
                         <p>Jury code : {{ $product->code }}</p>
                         <hr>
                         <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[0]->image) }}" width="100%"
-                            alt="">
+                            alt="Product Image">
 
                         <p>jury score :</p>
                         <h2> {{ $product->jury_score }}</h2>
@@ -520,7 +520,7 @@
                         </div>
                         <img class="mt-2 mb-2"
                             src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[1]->image) }}"
-                            width="100%" alt="">
+                            width="100%" alt="Product Image">
 
                     </div>
                     <div class="banner-text-section-2">
@@ -530,7 +530,7 @@
                         <h5>{{ $product->heading_1 }}</h5>
                         <span>{{ $product->description_1 }}</span>
                         <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[2]->image) }}"
-                            width="100%" alt="">
+                            width="100%" alt="Product Image">
                         <div class="badge-section">
 
                             <img src="{{ url('/public/images/detail-page-img1.png') }}" alt="">
