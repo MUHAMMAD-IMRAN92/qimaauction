@@ -23,7 +23,7 @@
     }
 
     .background-image-1 {
-        background: url("{{ url('/storage/app/public/auction/' . $product->auctionProductImages[0]->image) }}");
+        background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}");
         overflow: hidden;
         height: 100vh;
         background-size: 100% 100%;
@@ -34,7 +34,7 @@
     }
 
     .background-image-3 {
-        background: url("{{ url('/storage/app/public/auction/' . $product->auctionProductImages[1]->image) }}");
+        background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}");
         overflow: hidden;
         height: 600px;
         background-size: 100% 100%;
@@ -43,7 +43,7 @@
     }
 
     .background-image-2 {
-        background: url("{{ url('/storage/app/public/auction/' . $product->auctionProductImages[2]->image) }}");
+        background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}");
         overflow: hidden;
         height: 600px;
         background-size: 100% 100%;
@@ -1485,7 +1485,7 @@
                         <h3>{{ $product->name }}</h3>
                         <p>Jury code : {{ $product->code }}</p>
                         <hr>
-                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[0]->image) }}" width="100%"
+                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" width="100%"
                             alt="Product Image">
 
                         <p>jury score :</p>
@@ -1510,7 +1510,7 @@
                             <p>ALTITUDE :{{ $product->altitude }}masl</p>
                         </div>
                         <img class="mt-2 mb-2"
-                            src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[1]->image) }}"
+                            src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}"
                             width="100%" alt="Product Image">
 
                     </div>
@@ -1520,7 +1520,7 @@
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
                         <span>{{ $product->description_1 }}</span>
-                        <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . $product->auctionProductImages[2]->image) }}"
+                        <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
                             width="100%" alt="Product Image">
                         <div class="badge-section">
 
