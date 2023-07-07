@@ -19,6 +19,7 @@
         #previewContainer {
             display: flex;
             flex-wrap: wrap;
+            gap: 25px;
         }
 
         .previewItem {

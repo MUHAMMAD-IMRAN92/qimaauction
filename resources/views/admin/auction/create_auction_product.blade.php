@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                display: contents;
-                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                    display: contents;
+                                                                                                                                                                                                                                  } */
         /* .content-header.row{
-                                                                                                                                                                                                                                margin-right: -15px;
-                                                                                                                                                                                                                                margin-left: 30px;
-                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                    margin-right: -15px;
+                                                                                                                                                                                                                                    margin-left: 30px;
+                                                                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                                                                  } */
 
         .row {
             margin-left: 0;
@@ -19,6 +19,7 @@
         #previewContainer {
             display: flex;
             flex-wrap: wrap;
+            gap: 25px;
         }
 
         .previewItem {
@@ -525,7 +526,7 @@
                                                                                 </div>
 
 
-                                                                                 <div class="col-md-6">
+                                                                                <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Qoute</label>
                                                                                         <input type="text"
@@ -712,9 +713,9 @@
                         var img = $('<img class="image-preview" src="' + e.target.result +
                             '">');
                         var input = $(
-                            '<input class="text-field" type="text" name="sequence[]" >');
+                            '');
                         // Create deselect button
-                        var deselectBtn = $('<i class="deselectBtn fa fa-trash"></i>');
+                        var deselectBtn = $('<i class="deselectBtn fa fa-trash" ></i>');
 
                         // Append image and deselect button to preview item
                         previewItem.append(img);
