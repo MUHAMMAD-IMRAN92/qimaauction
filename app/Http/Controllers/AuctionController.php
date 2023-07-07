@@ -103,6 +103,19 @@ class AuctionController extends Controller
             );
 
             if ($request->images) {
+                // foreach ($request->sequence as $key => $seq) {
+                //     $fileName = $request->images[$key]->getClientOriginalName();
+                //     $request->images[$key]->storeAs(
+                //         'auction',
+                //         $fileName,
+                //         'public'
+                //     );
+                //     $productImage = new AuctionProductImages();
+                //     $productImage->auction_product_id = $auctionProduct->id;
+                //     $productImage->order_no = $seq;
+                //     $productImage->image = $fileName;
+                //     $productImage->save();
+                // }
                 foreach ($request->images as $key => $img) {
                     $fileName = $img->getClientOriginalName();
                     $img->storeAs(
@@ -112,7 +125,7 @@ class AuctionController extends Controller
                     );
                     $productImage = new AuctionProductImages();
                     $productImage->auction_product_id = $auctionProduct->id;
-                    $productImage->order_no = $request->sequence[$key];
+                    $productImage->order_no = $key;
                     $productImage->image = $fileName;
                     $productImage->save();
                 }

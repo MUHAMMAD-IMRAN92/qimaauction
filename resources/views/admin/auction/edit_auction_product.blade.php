@@ -745,7 +745,7 @@
                         var img = $('<img class="image-preview" src="' + e.target.result +
                             '">');
                         var input = $(
-                            '<input class="text-field" type="text" name="sequence[]" >');
+                            '');
                         // Create deselect button
                         var deselectBtn = $('<i class="deselectBtn fa fa-trash"></i>');
 
