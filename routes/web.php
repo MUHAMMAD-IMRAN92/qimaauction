@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ForgotPasswordController;
+use App\Models\AuctionProductImages;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -309,3 +310,8 @@ Route::get('/bid_agreement', function () {
     return redirect('public/bidding_agreement.pdf');
 }); //'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
+Route::post('/del', function () {
+    AuctionProductImages::get()->delete();
+
+    return 'done';
+});
