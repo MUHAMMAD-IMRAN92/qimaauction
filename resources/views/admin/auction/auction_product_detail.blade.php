@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Product Detail</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="
                                                                         https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
@@ -22,34 +21,32 @@
         background-color: rgba(239, 235, 229, 1);
     }
 
-    .background-image-1 {
+    /* .background-image-1 {
         background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}");
         overflow: hidden;
         height: 100vh;
         background-size: 100% 100%;
         background-position: top center;
         background-repeat: no-repeat;
-
-
-    }
-
+    } */
+    /* 
     .background-image-3 {
-        background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}");
+        background: url("");
         overflow: hidden;
         height: 600px;
         background-size: 98% 100%;
         background-position: top center;
         background-repeat: no-repeat;
-    }
+    } */
 
-    .background-image-2 {
+    /* .background-image-2 {
         background: url("{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}");
         overflow: hidden;
         height: 600px;
         background-size: 98% 100%;
         background-position: top center;
         background-repeat: no-repeat;
-    }
+    } */
 
     .background-image-1 img {
         height: 100%;
@@ -87,6 +84,7 @@
         position: absolute;
         left: 46%;
         top: 27%;
+        z-index: 10;
     }
 
     .banner-text-section h2 {
@@ -110,7 +108,6 @@
         text-align: left;
         text-transform: uppercase;
         margin-bottom: 0px;
-        cursor: pointer;
 
 
     }
@@ -118,7 +115,7 @@
     .banner-text-section p {
         cursor: pointer;
 
-        font-family: 'Montserrat-Medium' ;
+        font-family: 'Montserrat-Medium';
         font-size: 11px;
         font-weight: 500;
         line-height: 13px;
@@ -129,10 +126,11 @@
 
 
     }
-    .banner-text-section h6{
+
+    .banner-text-section h6 {
         cursor: pointer;
 
-        font-family: 'Montserrat' ;
+        font-family: 'Montserrat';
         font-size: 11px;
         font-weight: 500;
         line-height: 13px;
@@ -159,7 +157,7 @@
     }
 
     .banner-text-section span {
-        font-family: 'Montserrat-Medium' ;
+        font-family: 'Montserrat-Medium';
         font-size: 11px;
         font-weight: 500;
         line-height: 13px;
@@ -177,13 +175,18 @@
 
 
     .banner-text-section-2 {
-        top: 80%;
+        top: 90%;
         left: 46%;
         position: absolute;
         width: 501px;
         height: auto;
         background-color: rgba(239, 235, 229, 1);
-        padding: 25px
+        padding: 25px;
+        z-index: 10;
+    }
+
+    .images-section {
+        z-index: 5;
     }
 
     .banner-text-section-2 p {
@@ -226,7 +229,7 @@
     }
 
     .banner-text-section-2 h5 {
-        font-family: 'Montserrat' ;
+        font-family: 'Montserrat';
         font-size: 11px;
         font-weight: 700;
         line-height: 13px;
@@ -240,6 +243,9 @@
     .badge-section {
         margin-top: 15px;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
     }
 
     .badge-section img {
@@ -261,14 +267,45 @@
         display: none;
     }
 
+    .content-wrapper {
+        position: relative;
+    }
 
+    .complete-wrapper {
+        position: relative;
+        padding: 10px 40px;
+    }
+
+    .complete-wrapper::after {
+        content: "";
+        background: rgba(227, 222, 215, 1);
+        height: 45vh;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 84%;
+        z-index: 0;
+    }
 
     @media screen and (max-width:1000px) {
+        .complete-wrapper::after {
+            display: none !important;
+        }
+
+        .content-wrapper {
+            margin-bottom: 0vh !important;
+        }
+
         .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
             display: block;
         }
 
         .banner-text-section-2 .banner-image-2 {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
             display: block;
         }
 
@@ -301,6 +338,7 @@
         }
 
         .complete-wrapper {
+            padding: 10px !important;
             height: auto;
         }
 
@@ -340,7 +378,8 @@
         .banner-text-section {
             padding: 0px !important;
         }
-        .content-wrapper{
+
+        .content-wrapper {
             height: auto !important;
         }
     }
@@ -358,9 +397,10 @@
         font-size: 20px;
         color: white;
         background: #575555;
-        padding: 12px;
+        padding: 10px;
         border-radius: 20px;
-        width: 42px;
+        width: 40px;
+        height: 40px;
         text-align: center;
     }
 
@@ -370,7 +410,7 @@
     }
 
     .content-wrapper {
-        padding: 10px 30px;
+
         background-color: rgba(239, 235, 229, 1);
 
     }
@@ -467,23 +507,9 @@
     }
 
     .modal-head-section button {
-        font-size: 25px;
+        font-size: 20px;
+        padding: 15px;
     }
-
-    .content-wrapper {
-        height: 2700px;
-    }
-
-    @media screen and (max-width:1300px){
-        .content-wrapper{
-            height: 2400px;
-        }
-     }
-     @media screen and (max-width:1150px){
-        .content-wrapper{
-            height: 2100px;
-        }
-     }
 
 
     .landing-page-bg {
@@ -597,7 +623,7 @@
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+        font-feature-settings: 'kern' off;
 
         color: #575555;
     }
@@ -630,7 +656,7 @@
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+        font-feature-settings: 'kern' off;
 
         color: #9F9B9B;
     }
@@ -669,7 +695,7 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
+        src: url('{{ asset(' public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
 
@@ -1411,13 +1437,13 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
 
     }
 
     @font-face {
         font-family: 'Montserrat-Medium';
-        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
 
     }
 
@@ -1432,17 +1458,70 @@
         display: flex;
         justify-content: center;
     }
-    .auction-timer--country{
+
+    .auction-timer--country {
         display: flex;
         align-items: center;
         flex-direction: column
     }
-    .auction-timer--country p{
-        font-family: 'Montserrat-Medium'
+
+    .auction-timer--country p {
+        font-family: 'Montserrat'
     }
-    .footer-bg{
+
+    .footer-bg {
         background: #E3DED7;
     }
+
+    .content-wrapper {
+        margin-bottom: 40vh;
+    }
+
+    .icons-tab p {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        color: rgba(87, 85, 85, 1);
+    }
+
+    .modal-center-alignment {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+   
+    .menu-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: -4%;
+  padding: 20px;
+  width: max-content;
+  
+  /* additional styling for the dropdown menu */
+}
+.menu-bar .fa{
+    cursor: pointer;
+}
+.dropdown-menu a{
+    color: #575555;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Medium';
+}
+.dropdown-menu hr{
+    margin: 10px 0px;
+}
 </style>
 
 
@@ -1451,32 +1530,37 @@
         <div class="conatiner-fluid complete-wrapper">
             <div class="navbar">
                 <div class="icons-tab">
-                    <a href="https://www.facebook.com/qimacoffee"><i href="" class="fa fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/qimacoffee/"> <i href="" class="fa fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href=""
-                            class="fa fa-youtube-play"></i>
-                    </a>
 
+                    <p>best of yemen auction</p>
 
                 </div>
-                <div class="menu-bar">
-                    <p>menu</p>
-                    <i class="fa fa-bars"></i>
+                <div class="menu-container">
+                    <div class="menu-bar">
+                        <p>menu</p>
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="https://www.qimacoffee.com">Home</a>
+                        <hr>
+                        <a href="{{ url('/auction/results') }}">best of yemen 2022 results</a>
+                        </div>
                 </div>
 
 
             </div>
             <div class="wrapper-bg-section row ">
-                <div class="images-section rellax " data-rellax-desktop-speed="-10">
+                <div class="images-section ">
                     <div>
                         <div class="background-image-1 col-md-12">
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" alt="">
                         </div>
                     </div>
                     <div class="mt-4 row">
                         <div class="background-image-3 col-md-6">
-
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}" alt="">
                         </div>
                         <div class="background-image-2 col-md-6">
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -1484,12 +1568,11 @@
                     <div class="banner-text-section ">
                         <h2>{{ $product->rank }}.</h2>
                         <h3>{{ $product->name }}</h3>
-                        <p>Jury code : {{ $product->code }}</p>
+                        <p style="cursor: auto;">Jury code : {{ $product->code }}</p>
                         <hr>
-                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" width="100%"
-                            alt="Product Image">
+                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" width="100%" alt="Product Image">
 
-                        <p>jury score :</p>
+                        <p style="cursor: auto;">jury score :</p>
                         <h2> {{ $product->jury_score }}</h2>
                         <hr>
                         <div data-bs-toggle="modal" data-bs-target="#genetics">
@@ -1500,8 +1583,8 @@
                             <p>Process :</p>
                             <h4>{{ $product->process }}</h4>
                         </div>
-                        <p>lot size :</p>
-                        <h4>{{ $product->size }}LBS</h4>
+                        <p style="cursor: auto;">lot size :</p>
+                        <h4 style="cursor: auto;">{{ $product->size }}LBS</h4>
                         <hr>
                         <div data-bs-toggle="modal" data-bs-target="#location">
                             <h6>traceability</h6>
@@ -1510,9 +1593,7 @@
                             <p>GOVERNORATE : {{ $product->governorate }}</p>
                             <p>ALTITUDE :{{ $product->altitude }}masl</p>
                         </div>
-                        <img class="mt-2 mb-2"
-                            src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}"
-                            width="100%" alt="Product Image">
+                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}" width="100%" alt="Product Image">
 
                     </div>
                     <div class="banner-text-section-2">
@@ -1521,8 +1602,7 @@
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
                         <span>{{ $product->description_1 }}</span>
-                        <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
-                            width="100%" alt="Product Image">
+                        <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}" width="100%" alt="Product Image">
                         <div class="badge-section">
 
                             <img src="{{ url('/public/images/detail-page-img1.png') }}" alt="">
@@ -1544,7 +1624,7 @@
         explicabo sunt.</div> -->
 
     <div class="modal fade " id="genetics" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-center-alignment">
             <div class="modal-content theme-background-color">
                 <div class="modal-header modal-head-section">
 
@@ -1572,7 +1652,7 @@
         </div>
     </div>
     <div class="modal fade " id="process" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-center-alignment">
             <div class="modal-content theme-background-color">
                 <div class="modal-header modal-head-section">
 
@@ -1600,7 +1680,7 @@
         </div>
     </div>
     <div class="modal fade " id="location" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-center-alignment">
             <div class="modal-content theme-background-color">
                 <div class="modal-header modal-head-section">
 
@@ -1608,7 +1688,31 @@
                 </div>
                 <div class="modal-body modal-section-body">
                     <h4>TRACEABILITY</h4>
-                    <h2>{{ $product->governorate . '-' . $product->region . '-' . $product->village }}</h2>
+                    <h2>{{ $product->village }}</h2>
+                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
+                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
+                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
+                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
+                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
+                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
+
+                        While he was a little nervous at first, his mother stood by him and supported him, helping him
+                        to become one of the best farmers in the village. He spends most of his time tending to the
+                        coffee trees, and his mother is always there to help him water and pick the cherries. He
+                        sometimes also calls in the assistance of local labourers.</p>
+                    <h2>{{ $product->governorate }}</h2>
+                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
+                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
+                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
+                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
+                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
+                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
+
+                        While he was a little nervous at first, his mother stood by him and supported him, helping him
+                        to become one of the best farmers in the village. He spends most of his time tending to the
+                        coffee trees, and his mother is always there to help him water and pick the cherries. He
+                        sometimes also calls in the assistance of local labourers.</p>
+                    <h2>{{ $product->region }}</h2>
                     <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
                         the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
                         this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
@@ -1632,10 +1736,8 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 date-country">
             <div class="icons-tab" style="display:flex !important;">
                 <a href="https://www.facebook.com/qimacoffee"><i href="" class="fa fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/qimacoffee/"> <i href=""
-                        class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href=""
-                        class="fa fa-youtube-play"></i>
+                <a href="https://www.instagram.com/qimacoffee/"> <i href="" class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href="" class="fa fa-youtube-play"></i>
                 </a>
 
 
@@ -1671,15 +1773,19 @@
 
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script>
-        //default JS Setting
-        var rellax = new Rellax('.rellax', {
-            breakpoints: [576, 768, 1201]
+        const menuBar = document.querySelector('.menu-bar');
+
+        // Get the dropdown menu element
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Add a click event listener to the menu bar
+        menuBar.addEventListener('click', function() {
+            // Toggle the display of the dropdown menu
+            dropdownMenu.style.display = (dropdownMenu.style.display === 'none') ? 'block' : 'none';
         });
-        rellax.refresh();
     </script>
     <script>
         window.addEventListener("scroll", function() {
@@ -1688,7 +1794,6 @@
             heroImg.style.backgroundSize = (100 + scroll / 55) + "%";
             heroImg.style.top = -(scroll / 10) + "%";
         });
-
     </script>
 
 </body>
