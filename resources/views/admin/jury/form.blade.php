@@ -559,7 +559,7 @@ color: rgba(87, 85, 85, 1);
     .isdone.btn-success {
         color: #FFF !important;
     }
-    
+
     .aroma-bg {
         background-color: transparent !important;
         font-family: 'Montserrat';
@@ -1121,7 +1121,7 @@ text-align: center;
         background:
 linear-gradient(270deg, #B557FF 0%, #F19393 100%);
 
-      
+
         padding: 30px;
         width: auto !important;
 
@@ -1268,7 +1268,7 @@ linear-gradient(270deg, #B557FF 0%, #F19393 100%);
     #grid-container #item-left-2 {
         grid-column: 1 / 1;
         grid-row: 3 / 5;
-        
+
     }
     #grid-container #item-left-3 {
         grid-column: 1 / 1;
@@ -1406,7 +1406,7 @@ color: white;
 
 }
 .bg-golden--theme{
-    background: 
+    background:
 linear-gradient(270deg, #DEA857 45.31%, #FBACAC 100%);
 
 }
@@ -1603,7 +1603,7 @@ text-transform: uppercase !important;
                                                             </a></li> --}}
 
                                                             <h5 class="entity-text  theme-color">
-                                                                WELCOME TO THE PEOPLE'S CHOICE 
+                                                                WELCOME TO THE PEOPLE'S CHOICE
                                                             </h5>
                                                     </ul>
                                                 </div>
@@ -1660,7 +1660,7 @@ text-transform: uppercase !important;
                                                 </div>
                                                 <hr>
                                                 <div class="name-section">
-                                                    <h2>ADEEL QURESHI</h2>
+                                                    <h2>{{$user->name}}</h2>
                                                 </div>
                                                 <hr>
                                                 <div class="category">
@@ -1672,7 +1672,7 @@ text-transform: uppercase !important;
                                                 <div class="container-fluid">
                                                     <div class="sample-area row">
                                                         <div class="sample-heading col-lg-6">
-                                                            
+
                                                             <p class="name-text">
                                                             01. Hayma Dakhiliya
                                                             </p>
@@ -1747,7 +1747,7 @@ text-transform: uppercase !important;
                                                     <input type="hidden" name="sent_sample_id"
                                                         value="{{ $sentSampleId }}">
                                                         <div id="grid-container">
-                                                           
+
                                                     <div class="row bg-roast--theme" id="item-left-1">
                                                         <div class="col-12">
                                                             <h3 class="entity-text roast-bg">ROAST COLOUR</h3>
@@ -1781,11 +1781,11 @@ text-transform: uppercase !important;
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    
-                                                   
+
+
                                                     <!-- <div>
 
-                                                   
+
                                                     {{-- <div class="col-lg-12">
                                                         <h5 style="margin-top:-6px">CRUST</h5>
                                                     </div>
@@ -1802,7 +1802,7 @@ text-transform: uppercase !important;
                                                         <div class="aromaslider aromadry"><input type="hidden"
                                                                 name="aroma_dry" id="aroma_dry" value="0"></div>
                                                     </div>
-                                                 
+
                                                     </div>
                                                     <div class="bg-aroma--theme-3 ">
                                                     <div class="col-lg-12">
@@ -1896,7 +1896,7 @@ text-transform: uppercase !important;
                                                     </div>
                                                       </div>
                                                     <!-- acidity end -->
-                                                    
+
                                                     <div class=" bg-flavor--theme" id="item-right-2">
                                                     <h3 class="entity-text flavor-bg">FLAVOR</h3>
                                                     <div class="row">
@@ -2340,7 +2340,7 @@ text-transform: uppercase !important;
                                                     </div>
                                                         </div>
                                                     <!-- defects end -->
-                                                   
+
                                                     <!-- over all ends -->
                                                     </div>
                                          <div class="bg-over--theme" >
@@ -2397,7 +2397,7 @@ text-transform: uppercase !important;
                                                                     onclick="showmodal()">SUBMIT TABLE</a>
                                                                     </div>
 
-                                                           
+
                                                             </div>
                                                             <div class="row">
                                                                 <div class="scrollable" style="overflow:auto;">
@@ -2424,7 +2424,7 @@ text-transform: uppercase !important;
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div id="myModal" class="modal" tabindex="-1">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">

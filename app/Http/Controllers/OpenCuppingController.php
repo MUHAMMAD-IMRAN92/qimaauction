@@ -10,6 +10,7 @@ use App\Models\OpenCuppingProduct;
 use App\Models\Review;
 use App\Models\OpenCuppingReview;
 use App\Models\OpenCuppingUser;
+use App\Models\User;
 use Illuminate\Support\Str;
 use DB;
 use Faker\Generator as Faker;
@@ -267,7 +268,7 @@ class OpenCuppingController extends Controller
             //     return view('admin.jury.alredy_submit');
             // } else
             // {
-
+            $user = User::where('id', $userId)->first();
             $samplesArr = explode(',', $firstsample->samples);
             return view('admin.jury.form', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -279,7 +280,8 @@ class OpenCuppingController extends Controller
                 'sampleName' => $firstsample->samples,
                 'sentSampleId' => $firstsample->id,
                 'samples' => $samplesArr,
-                'sampleReview' => $review
+                'sampleReview' => $review,
+                'user' => $user
             ]);
             // }
         }
