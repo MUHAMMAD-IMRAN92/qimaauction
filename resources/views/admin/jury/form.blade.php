@@ -1660,7 +1660,7 @@ text-transform: uppercase !important;
                                                 </div>
                                                 <hr>
                                                 <div class="name-section">
-                                                    <h2>{{$user->name}}</h2>
+                                                    <h2>ADEEL QURESHI</h2>
                                                 </div>
                                                 <hr>
                                                 <div class="category">
@@ -1674,7 +1674,7 @@ text-transform: uppercase !important;
                                                         <div class="sample-heading col-lg-6">
 
                                                             <p class="name-text">
-                                                            01. Hayma Dakhiliya
+                                                            {{@$product->rank}}. {{@$product->village->title}}
                                                             </p>
                                                             <h2 class="id-text-2">Jury code : 9589</h2>
                                                         </div>

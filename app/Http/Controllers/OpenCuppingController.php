@@ -270,6 +270,8 @@ class OpenCuppingController extends Controller
             // {
             $user = User::where('id', $userId)->first();
             $samplesArr = explode(',', $firstsample->samples);
+            // return  $firstsample->product_id;
+            $product = Product::where('id', $firstsample->product_id)->first();
             return view('admin.jury.form', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
                 'table' => $request->table ?? $firstsample->sampleTable,
@@ -281,7 +283,8 @@ class OpenCuppingController extends Controller
                 'sentSampleId' => $firstsample->id,
                 'samples' => $samplesArr,
                 'sampleReview' => $review,
-                'user' => $user
+                'user' => $user,
+                'product' => $product
             ]);
             // }
         }
