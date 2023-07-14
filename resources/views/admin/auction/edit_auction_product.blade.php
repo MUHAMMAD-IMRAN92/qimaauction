@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                                                                                                                                                                            display: contents;
-                                                                                                                                                                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                display: contents;
+                                                                                                                                                                                                                                                                                                                                                                                                                              } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                                                                                                                                                                            margin-right: -15px;
-                                                                                                                                                                                                                                                                                                                                                                                                                            margin-left: 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                margin-right: -15px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                margin-left: 30px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                              } */
 
         .row {
             margin-left: 0;
@@ -619,9 +619,7 @@
                                                                                             id="auct-img-key-{{ $key }}">
                                                                                             <span
                                                                                                 id="saved-span-{{ $key }}"
-                                                                                                style="display:none;">Order
-                                                                                                Has
-                                                                                                Benn Updated!</span>
+                                                                                                style="display:none;color:green">Saved!</span>
                                                                                             <img src="{{ url('storage/app/public/auction/' . $image->image) }}"
                                                                                                 alt=""
                                                                                                 class="m-1"
@@ -698,22 +696,23 @@
     }
 
     function imageOrder(key, href) {
-        console.log(key);
+        $('#saved-span-' + key).css('display', 'block');
         var orderNo = $('#auct-img-input-key-' + key).val();
         $.ajax({
             type: "GET",
             url: href,
             data: {
-                'orderNo': orderNo
+                'orderNo': orderNo,
             },
             dataType: "json",
             success: function(response) {
-                $('#saved-span-' + key).css('display:block');
-                setTimeout(() => {
-                    $('#saved-span-' + key).css('display:none');
-                }, 3000);
+                console.log(key);
+
             },
         });
+        setTimeout(() => {
+            $('#saved-span-' + key).css('display', 'none');
+        }, 3000);
     }
     $(document).ready(function() {
         // var socket = io('http://localhost:5002');
