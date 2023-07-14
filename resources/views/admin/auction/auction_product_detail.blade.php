@@ -29,7 +29,7 @@
         background-position: top center;
         background-repeat: no-repeat;
     } */
-    /* 
+    /*
     .background-image-3 {
         background: url("");
         overflow: hidden;
@@ -1494,7 +1494,7 @@
         align-items: center;
     }
 
-   
+
     .menu-container {
   position: relative;
 }
@@ -1506,7 +1506,7 @@
   right: -4%;
   padding: 20px;
   width: max-content;
-  
+
   /* additional styling for the dropdown menu */
 }
 .menu-bar .fa{
@@ -1540,7 +1540,7 @@
                         <i class="fa fa-bars"></i>
                     </div>
                     <div class="dropdown-menu">
-                        <a href="https://www.qimacoffee.com">Home</a>
+                        <a href="https://stage.bestofyemenauction.com">Home</a>
                         <hr>
                         <a href="{{ url('/auction/results') }}">best of yemen 2022 results</a>
                         </div>
