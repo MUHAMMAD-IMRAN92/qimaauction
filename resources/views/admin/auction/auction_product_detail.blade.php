@@ -175,7 +175,7 @@
 
 
     .banner-text-section-2 {
-        top: 90%;
+        top: 75%;
         left: 46%;
         position: absolute;
         width: 501px;
