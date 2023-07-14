@@ -370,7 +370,7 @@
                                                                                             name="public_jury_score"
                                                                                             id="public_jury_score"
                                                                                             value="{{ $auction_products->public_jury_score }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -426,7 +426,7 @@
                                                                                             class="form-control"
                                                                                             name="weight" id="weight"
                                                                                             value="{{ $auction_products->weight }}"
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
