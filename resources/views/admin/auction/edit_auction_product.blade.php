@@ -3,13 +3,13 @@
 @section('content')
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                                            display: contents;
-                                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                                                                                                                                                            display: contents;
+                                                                                                                                                                                                                                                                                                                                                                                                                          } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                                            margin-right: -15px;
-                                                                                                                                                                                                                                                                                            margin-left: 30px;
-                                                                                                                                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                                                                                                                                                                            margin-right: -15px;
+                                                                                                                                                                                                                                                                                                                                                                                                                            margin-left: 30px;
+                                                                                                                                                                                                                                                                                                                                                                                                                            align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                          } */
 
         .row {
             margin-left: 0;
@@ -369,8 +369,7 @@
                                                                                             class="form-control"
                                                                                             name="public_jury_score"
                                                                                             id="public_jury_score"
-                                                                                            value="{{ $auction_products->public_jury_score }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->public_jury_score }}">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -425,8 +424,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="weight" id="weight"
-                                                                                            value="{{ $auction_products->weight }}"
-                                                                                            >
+                                                                                            value="{{ $auction_products->weight }}">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -616,16 +614,36 @@
                                                                                 </div>
                                                                                 <h5>Selected Images:</h5>
                                                                                 <div class="col-md-12 d-flex">
-                                                                                    @foreach (@$auction_products->productImages as $image)
-                                                                                        <div class="col-md-2">
-
-
+                                                                                    @foreach (@$auction_products->productImages as $key => $image)
+                                                                                        <div class="col-md-2 m-1"
+                                                                                            id="auct-img-key-{{ $key }}">
+                                                                                            <span
+                                                                                                id="saved-span-{{ $key }}"
+                                                                                                style="display:none;">Order
+                                                                                                Has
+                                                                                                Benn Updated!</span>
                                                                                             <img src="{{ url('storage/app/public/auction/' . $image->image) }}"
                                                                                                 alt=""
                                                                                                 class="m-1"
-                                                                                                style="width:100px; height:100px">
-                                                                                            <br><span
-                                                                                                class="badge badge-primary  ml-5">{{ $image->order_no }}</span>
+                                                                                                style="width:150px; height:150px">
+                                                                                            <br>
+                                                                                            <input type="number"
+                                                                                                name=""
+                                                                                                id="auct-img-input-key-{{ $key }}"
+                                                                                                value={{ $image->order_no }}>
+                                                                                            <br>
+                                                                                            <div class="d-flex"
+                                                                                                style=" margin-left:10%">
+                                                                                                <i class="fa fa-check"
+                                                                                                    style="cursor:pointer ;margin-left:30% ; margin-top:10%; color:green"
+                                                                                                    data-href="{{ url('auction/images/order/' . $image->id) }}"
+                                                                                                    onclick="imageOrder({{ $key }} , this.getAttribute('data-href'))"></i>
+                                                                                                <i class="fa fa-trash-o"
+                                                                                                    style="cursor:pointer ;margin-left:30% ; margin-top:10%; color:red"
+                                                                                                    data-href="{{ url('auction/del/images/' . $image->id) }}"
+                                                                                                    onclick="deleteImage({{ $key }} , this.getAttribute('data-href'))"></i>
+
+                                                                                            </div>
                                                                                         </div>
                                                                                     @endforeach
                                                                                 </div>
@@ -663,6 +681,40 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
 <script>
+    function deleteImage(key, href) {
+        console.log(key);
+        $('#auct-img-key-' + key).remove();
+        $.ajax({
+            type: "GET",
+            url: href,
+            data: {
+
+            },
+            dataType: "json",
+            success: function(response) {
+
+            },
+        });
+    }
+
+    function imageOrder(key, href) {
+        console.log(key);
+        var orderNo = $('#auct-img-input-key-' + key).val();
+        $.ajax({
+            type: "GET",
+            url: href,
+            data: {
+                'orderNo': orderNo
+            },
+            dataType: "json",
+            success: function(response) {
+                $('#saved-span-' + key).css('display:block');
+                setTimeout(() => {
+                    $('#saved-span-' + key).css('display:none');
+                }, 3000);
+            },
+        });
+    }
     $(document).ready(function() {
         // var socket = io('http://localhost:5002');
 

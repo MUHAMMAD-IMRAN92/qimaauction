@@ -1654,4 +1654,24 @@ class AuctionController extends Controller
             'products' => $products
         ]);
     }
+    public function delAuctionImage($id)
+    {
+
+        $auctionImage =   AuctionProductImages::where('id', $id)->first();
+        if ($auctionImage) {
+            $auctionImage->delete();
+        }
+
+        return 'done';
+    }
+
+    public function orderAuctionImage(Request $request, $id)
+    {
+        $auctionImage =   AuctionProductImages::where('id', $id)->first();
+        if ($auctionImage) {
+            $auctionImage->order_no = $request->orderNo;
+            $auctionImage->save();
+        }
+        return 'done';
+    }
 }

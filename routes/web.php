@@ -210,7 +210,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('edit_product_to_auction/{id}', [App\Http\Controllers\AuctionController::class, 'editAuctionProducts']);
     Route::post('auction/product/store', [App\Http\Controllers\AuctionController::class, 'storeAuctionProducts']);
     Route::post('auction/home_page/products', [App\Http\Controllers\AuctionController::class, 'homePageProducts']);
-
+    Route::get('auction/del/images/{id}', [App\Http\Controllers\AuctionController::class, 'delAuctionImage']);
+    Route::get('auction/images/order/{id}', [App\Http\Controllers\AuctionController::class, 'orderAuctionImage']);
     //Customer CRUD
     Route::get('/customer/index', [App\Http\Controllers\CustomerController::class, 'index']);
     Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create']);
