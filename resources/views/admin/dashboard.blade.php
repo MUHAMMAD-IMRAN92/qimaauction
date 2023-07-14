@@ -225,7 +225,7 @@
     }
 
     .card-display-3 p {
-        font-family: 'Montserrat-Medium';
+        font-family: 'Montserrat';
         font-weight: 500;
         font-size: 16px;
     }

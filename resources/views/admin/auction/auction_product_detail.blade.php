@@ -588,7 +588,7 @@
 
     .card-display-3 {
         margin-top: 20px;
-        line-height: 20px;
+        line-height: 32px;
 
     }
 
