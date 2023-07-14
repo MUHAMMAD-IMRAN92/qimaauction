@@ -280,7 +280,7 @@
     .complete-wrapper::after {
         content: "";
         background: rgba(227, 222, 215, 1);
-        height: 60vh;
+        height: 45vh;
         width: 100%;
         position: absolute;
         left: 0;
@@ -1475,7 +1475,7 @@
     }
 
     .content-wrapper {
-        margin-bottom: 70vh;
+        margin-bottom: 60vh;
     }
 
     .icons-tab p {
