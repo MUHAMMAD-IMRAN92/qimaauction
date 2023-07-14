@@ -176,7 +176,7 @@
 
 
     .banner-text-section-2 {
-        top: 90%;
+        top: 75%;
         left: 46%;
         position: absolute;
         width: 501px;
@@ -589,7 +589,7 @@
 
     .card-display-3 {
         margin-top: 20px;
-        line-height: 20px;
+        line-height: 32px;
 
     }
 
