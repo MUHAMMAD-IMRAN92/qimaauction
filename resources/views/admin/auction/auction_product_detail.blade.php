@@ -1715,7 +1715,7 @@
                         to become one of the best farmers in the village. He spends most of his time tending to the
                         coffee trees, and his mother is always there to help him water and pick the cherries. He
                         sometimes also calls in the assistance of local labourers.</p>
-                    <h2>{{ $product->governorate }}</h2>
+                    <h2>{{ $product->region }}</h2>
                     <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
                         the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
                         this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
@@ -1727,7 +1727,7 @@
                         to become one of the best farmers in the village. He spends most of his time tending to the
                         coffee trees, and his mother is always there to help him water and pick the cherries. He
                         sometimes also calls in the assistance of local labourers.</p>
-                    <h2>{{ $product->region }}</h2>
+                    <h2>{{ $product->governorate }}</h2>
                     <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
                         the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
                         this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
