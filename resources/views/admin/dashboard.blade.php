@@ -1002,7 +1002,7 @@
             </div>
 
         </div>
-        @if (count($natural) > 0 && count($alchmey) > 0)
+        @if (count($natural) > 0 || count($alchmey) > 0)
             <div class="table-wrapper">
                 <div class=" table-grid wrapper-top-section">
                     <div class="table-items">
