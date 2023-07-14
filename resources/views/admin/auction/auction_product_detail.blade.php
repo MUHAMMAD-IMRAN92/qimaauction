@@ -5,11 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Product Detail</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="
-                                                                        https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
-                                                                        "></script>
+                                                                            https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
+                                                                            "></script>
 </head>
 <style>
     .row {
@@ -623,7 +624,7 @@
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #575555;
     }
@@ -656,7 +657,7 @@
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+        font-feature-settings: 'kern'off;
 
         color: #9F9B9B;
     }
@@ -1437,13 +1438,13 @@
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
 
     @font-face {
         font-family: 'Montserrat-Medium';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
 
@@ -1496,32 +1497,35 @@
 
 
     .menu-container {
-  position: relative;
-}
+        position: relative;
+    }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: -4%;
-  padding: 20px;
-  width: max-content;
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: -4%;
+        padding: 20px;
+        width: max-content;
 
-  /* additional styling for the dropdown menu */
-}
-.menu-bar .fa{
-    cursor: pointer;
-}
-.dropdown-menu a{
-    color: #575555;
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-family: 'Montserrat-Medium';
-}
-.dropdown-menu hr{
-    margin: 10px 0px;
-}
+        /* additional styling for the dropdown menu */
+    }
+
+    .menu-bar .fa {
+        cursor: pointer;
+    }
+
+    .dropdown-menu a {
+        color: #575555;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: 'Montserrat-Medium';
+    }
+
+    .dropdown-menu hr {
+        margin: 10px 0px;
+    }
 </style>
 
 
@@ -1531,7 +1535,9 @@
             <div class="navbar">
                 <div class="icons-tab">
 
-                    <p>best of yemen auction</p>
+                    <a href="https://stage.bestofyemenauction.com">
+                        <p>best of yemen auction</p>
+                    </a>
 
                 </div>
                 <div class="menu-container">
@@ -1543,7 +1549,7 @@
                         <a href="https://stage.bestofyemenauction.com">Home</a>
                         <hr>
                         <a href="{{ url('/auction/results') }}">best of yemen 2022 results</a>
-                        </div>
+                    </div>
                 </div>
 
 
@@ -1552,15 +1558,18 @@
                 <div class="images-section ">
                     <div>
                         <div class="background-image-1 col-md-12">
-                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" alt="">
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}"
+                                alt="">
                         </div>
                     </div>
                     <div class="mt-4 row">
                         <div class="background-image-3 col-md-6">
-                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}" alt="">
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}"
+                                alt="">
                         </div>
                         <div class="background-image-2 col-md-6">
-                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}" alt="">
+                            <img src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -1570,7 +1579,9 @@
                         <h3>{{ $product->name }}</h3>
                         <p style="cursor: auto;">Jury code : {{ $product->code }}</p>
                         <hr>
-                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}" width="100%" alt="Product Image">
+                        <img class="mt-2 mb-2"
+                            src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[0]->image) }}"
+                            width="100%" alt="Product Image">
 
                         <p style="cursor: auto;">jury score :</p>
                         <h2> {{ $product->jury_score }}</h2>
@@ -1593,7 +1604,9 @@
                             <p>GOVERNORATE : {{ $product->governorate }}</p>
                             <p>ALTITUDE :{{ $product->altitude }}masl</p>
                         </div>
-                        <img class="mt-2 mb-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}" width="100%" alt="Product Image">
+                        <img class="mt-2 mb-2"
+                            src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[1]->image) }}"
+                            width="100%" alt="Product Image">
 
                     </div>
                     <div class="banner-text-section-2">
@@ -1602,7 +1615,9 @@
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
                         <span>{{ $product->description_1 }}</span>
-                        <img class="mt-2 mb-2 banner-image-2" src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}" width="100%" alt="Product Image">
+                        <img class="mt-2 mb-2 banner-image-2"
+                            src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
+                            width="100%" alt="Product Image">
                         <div class="badge-section">
 
                             <img src="{{ url('/public/images/detail-page-img1.png') }}" alt="">
@@ -1737,7 +1752,8 @@
             <div class="icons-tab" style="display:flex !important;">
                 <a href="https://www.facebook.com/qimacoffee"><i href="" class="fa fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/qimacoffee/"> <i href="" class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href="" class="fa fa-youtube-play"></i>
+                <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href=""
+                        class="fa fa-youtube-play"></i>
                 </a>
 
 
@@ -1773,7 +1789,8 @@
 
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script>
         const menuBar = document.querySelector('.menu-bar');
