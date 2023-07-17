@@ -124,7 +124,7 @@ class AuctionController extends Controller
                         'public'
                     );
                     $productImage = new AuctionProductImages();
-                    $productImage->auction_product_id = $auctionproductUpdate->id;
+                    $productImage->auction_product_id = $request->auction_product_id;
                     $productImage->order_no = $key;
                     $productImage->image = $fileName;
                     $productImage->save();
