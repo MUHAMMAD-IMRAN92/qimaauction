@@ -73,12 +73,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 d-flex">
+                                                    <div class="col-12 ">
 
 
                                                         <div class="form-group">
                                                             <label for="">Description</label>
-                                                            <textarea class="form-control" name="description" cols="152" id="" value=""> </textarea>
+                                                            <textarea class="form-control" name="description"id="" value=""> </textarea>
                                                         </div>
 
                                                     </div>

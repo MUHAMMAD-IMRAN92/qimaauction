@@ -77,13 +77,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 d-flex">
+                                                    <div class="col-12 ">
 
 
-                                                            <div class="form-group">
-                                                                <label for="">Description</label>
-                                                                <textarea class="form-control" name="description" cols="152" id="" value="">{{ $region->description }} </textarea>
-                                                            </div>
+                                                        <div class="form-group">
+                                                            <label for="">Description</label>
+                                                            <textarea class="form-control" name="description" id="" value="">{{ $region->description }} </textarea>
+                                                        </div>
 
                                                     </div>
                                                     <div class="col-12" style="margin-left: 39%">

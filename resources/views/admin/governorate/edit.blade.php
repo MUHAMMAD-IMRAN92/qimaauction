@@ -83,7 +83,7 @@
 
                                                         <div class="form-group">
                                                             <label for="">Description</label>
-                                                            <textarea class="form-control" name="description" cols="152" id="" value="">{{ $governorate->description }} </textarea>
+                                                            <textarea class="form-control" name="description"  id="" value="">{{ $governorate->description }} </textarea>
                                                         </div>
 
                                                     </div>

@@ -55,12 +55,12 @@
                                                         <label for="process-title">Process Title</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 d-flex">
+                                                <div class="col-12 ">
 
 
                                                     <div class="form-group">
                                                         <label for="">Description</label>
-                                                        <textarea class="form-control" name="description" cols="152" id="" value=""> {{ $process->description }}</textarea>
+                                                        <textarea class="form-control" name="description" id="" value=""> {{ $process->description }}</textarea>
                                                     </div>
 
                                                 </div>
