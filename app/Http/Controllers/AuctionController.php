@@ -98,7 +98,7 @@ class AuctionController extends Controller
                     'table' => $request->table,
                     'jury_score' => $request->jury_score,
                     'public_jury_score' => $request->public_jury_score,
-
+                    'home_page' => $auctionProduct->home_page
                 ]
             );
 
