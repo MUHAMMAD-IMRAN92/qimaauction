@@ -9,8 +9,8 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="
-                                                                            https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
-                                                                            "></script>
+                                                                                https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
+                                                                                "></script>
 </head>
 <style>
     .row {
@@ -1647,18 +1647,8 @@
                 </div>
                 <div class="modal-body modal-section-body">
                     <h4>Genetics</h4>
-                    <h2>{{ $product->genetic }}</h2>
-                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
-                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
-                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
-                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
-                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
-                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
-
-                        While he was a little nervous at first, his mother stood by him and supported him, helping him
-                        to become one of the best farmers in the village. He spends most of his time tending to the
-                        coffee trees, and his mother is always there to help him water and pick the cherries. He
-                        sometimes also calls in the assistance of local labourers.</p>
+                    <h2>{{ @$product->genetics->title }}</h2>
+                    <p>{{ @$product->genetics->description }}</p>
 
 
                 </div>
@@ -1675,18 +1665,8 @@
                 </div>
                 <div class="modal-body modal-section-body">
                     <h4>Process</h4>
-                    <h2>{{ $product->process }}</h2>
-                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
-                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
-                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
-                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
-                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
-                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
-
-                        While he was a little nervous at first, his mother stood by him and supported him, helping him
-                        to become one of the best farmers in the village. He spends most of his time tending to the
-                        coffee trees, and his mother is always there to help him water and pick the cherries. He
-                        sometimes also calls in the assistance of local labourers.</p>
+                    <h2>{{ @$product->processes->title }}</h2>
+                    <p>{{ @$product->processes->description }}</p>
 
 
                 </div>
@@ -1703,42 +1683,12 @@
                 </div>
                 <div class="modal-body modal-section-body">
                     <h4>TRACEABILITY</h4>
-                    <h2>{{ $product->village }}</h2>
-                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
-                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
-                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
-                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
-                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
-                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
-
-                        While he was a little nervous at first, his mother stood by him and supported him, helping him
-                        to become one of the best farmers in the village. He spends most of his time tending to the
-                        coffee trees, and his mother is always there to help him water and pick the cherries. He
-                        sometimes also calls in the assistance of local labourers.</p>
-                    <h2>{{ $product->region }}</h2>
-                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
-                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
-                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
-                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
-                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
-                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
-
-                        While he was a little nervous at first, his mother stood by him and supported him, helping him
-                        to become one of the best farmers in the village. He spends most of his time tending to the
-                        coffee trees, and his mother is always there to help him water and pick the cherries. He
-                        sometimes also calls in the assistance of local labourers.</p>
-                    <h2>{{ $product->governorate }}</h2>
-                    <p>Coffee farmer Hifthallah Alhaymi is just 20 years of age and owns a farm in Hayma Kharijiya, on
-                        the west side of Sana’a City. Hifthallah’s most important crop is coffee, however, alongside
-                        this he also grows qat and corn. When he was just a young boy, Hifthallah worked on the farm
-                        with his father and brothers, however, a few years ago they left him to work on a farm in Sana’a
-                        City, growing vegetables.With a wife and two children, Hifthallah knew it was up to him to take
-                        over the day-to-day running of the farm and ensure he grew the best coffee he could.
-
-                        While he was a little nervous at first, his mother stood by him and supported him, helping him
-                        to become one of the best farmers in the village. He spends most of his time tending to the
-                        coffee trees, and his mother is always there to help him water and pick the cherries. He
-                        sometimes also calls in the assistance of local labourers.</p>
+                    <h2>{{ @$product->villages->title}}</h2>
+                    <p>{{ @$product->villages->description }}</p>
+                    <h2>{{ @$product->regions->title}}</h2>
+                    <p>{{ @$product->regions->description }}</p>
+                    <h2>{{ @$product->governorates->title }}</h2>
+                    <p>{{ @$product->governorates->description }}</p>
 
 
                 </div>

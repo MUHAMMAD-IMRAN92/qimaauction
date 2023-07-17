@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Process;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class ProcessController extends Controller
 {
     private $user;
@@ -50,6 +51,8 @@ class ProcessController extends Controller
     {
         $process = new Process();
         $process->title = $request->title;
+        $process->description = $request->description;
+
         $process->save();
         return redirect('/process/index');
     }
@@ -76,6 +79,8 @@ class ProcessController extends Controller
     {
         $process = Process::find($request->id);
         $process->title = $request->title;
+        $process->description = $request->description;
+
         $process->save();
         return redirect('/process/index');
     }

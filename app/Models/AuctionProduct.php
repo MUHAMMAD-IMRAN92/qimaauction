@@ -70,4 +70,24 @@ class AuctionProduct extends Model
         return $this->hasMany(AuctionProductImages::class, 'auction_product_id', 'id')->orderBy('order_no', 'asc');
     }
     protected $guarded = [''];
+    public function villages()
+    {
+        return $this->hasOne(Village::class, 'title', 'village');
+    }
+    public function regions()
+    {
+        return $this->hasOne(Region::class, 'title', 'region');
+    }
+    public function governorates()
+    {
+        return $this->hasOne(Governorate::class, 'title', 'governorate');
+    }
+    public function genetics()
+    {
+        return $this->hasOne(Genetic::class, 'title', 'genetic');
+    }
+    public function processes()
+    {
+        return $this->hasOne(Process::class, 'title', 'process');
+    }
 }

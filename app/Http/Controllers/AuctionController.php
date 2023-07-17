@@ -41,6 +41,7 @@ class AuctionController extends Controller
         $auctionAlchemyWinning = collect();
         $auction = Auction::where('is_active', '1')->first();
         if ($auction) {
+
             $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried'])->where('home_page', 1)->orderBy('rank', 'asc')->get();
             $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->orderBy('rank', 'asc')->where('home_page', 1)->get();
         }
@@ -66,7 +67,7 @@ class AuctionController extends Controller
 
     public function saveAuctionProduct(Request $request)
     {
-        // return $request->all();
+        return $request->all();
         $auctionProduct = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->first();
         if ($auctionProduct) {
             $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $request->auction_id)->update(
@@ -1616,13 +1617,14 @@ class AuctionController extends Controller
             $q->orderBy('order_no', 'asc');
         }])->first();
         $genetics = Genetic::where('is_hidden', '0')->get();
+        // $process = Process::where('is_hidden', '0')->get();
 
         $products = Product::with('region', 'village', 'governorate', 'reviews', 'genetic')->orderBy('product_title', 'asc')->get();
         return view('admin.auction.edit_auction_product', [
             'auction_products' => $auction_products,
             'products' => $products,
             'auction_id' =>  $auction_products->auction_id,
-            'genetics' =>  $genetics
+            'genetics' =>  $genetics,
         ]);
     }
 

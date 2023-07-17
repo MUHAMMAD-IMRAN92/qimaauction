@@ -73,7 +73,15 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-12 d-flex">
 
+
+                                                        <div class="form-group">
+                                                            <label for="">Description</label>
+                                                            <textarea class="form-control" name="description" cols="152" id="" value=""> </textarea>
+                                                        </div>
+
+                                                </div>
                                                     <div class="col-12" style="margin-left: 39%">
                                                         <button type="submit"
                                                             class="btn btn-primary mr-1 mb-1">Submit</button>

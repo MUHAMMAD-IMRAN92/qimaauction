@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genetic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class GeneticController extends Controller
 {
     private $user;
@@ -50,6 +51,8 @@ class GeneticController extends Controller
     {
         $genetic = new Genetic();
         $genetic->title = $request->title;
+        $genetic->description = $request->description;
+
         $genetic->save();
         return redirect('/genetic/index');
     }
@@ -76,6 +79,8 @@ class GeneticController extends Controller
     {
         $genetic = Genetic::find($request->id);
         $genetic->title = $request->title;
+        $genetic->description = $request->description;
+
         $genetic->save();
         return redirect('/genetic/index');
     }

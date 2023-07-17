@@ -394,7 +394,7 @@ class ProductController extends Controller
 
     public function productDetail($id)
     {
-        $product = AuctionProduct::where('id', $id)->with('auctionProductImages')->first();
+        $product = AuctionProduct::where('id', $id)->with('auctionProductImages', 'villages', 'regions', 'governorates' , 'processes' , 'genetics')->first();
 
         return view('admin.auction.auction_product_detail', [
             'product' => $product

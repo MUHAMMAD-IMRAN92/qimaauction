@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         <div class="content-body">
-         
+
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -55,9 +55,17 @@
                                                         <label for="genetic-title">Genetic Title</label>
                                                     </div>
                                                 </div>
-                                    
-                                                
-                                                
+                                                <div class="col-12 d-flex">
+
+
+                                                    <div class="form-group">
+                                                        <label for="">Description</label>
+                                                        <textarea class="form-control" name="description" cols="152" id="" value=""> {{ $genetic->description }}</textarea>
+                                                    </div>
+
+                                                </div>
+
+
                                                 <div class="col-12" style="margin-left: 39%">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                     <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>

@@ -57,6 +57,7 @@ class RegionController extends Controller
         $region = new  Region();
         $region->title = $request->title;
         $region->gov_id = $request->gov_id;
+        $region->description = $request->description;
         $region->save();
         return redirect('/region/index');
     }
@@ -84,6 +85,8 @@ class RegionController extends Controller
         $region = Region::find($request->id);
         $region->title = $request->title;
         $region->gov_id = $request->gov_id;
+        $region->description = $request->description;
+
         $region->save();
         return redirect('/region/index');
     }

@@ -57,6 +57,7 @@ class GovernorateController extends Controller
         $governorate = new  Governorate();
         $governorate->title = $request->title;
         $governorate->count_id = $request->count_id;
+        $governorate->description = $request->description;
         $governorate->save();
         return redirect('/governorate/index');
     }
@@ -84,6 +85,8 @@ class GovernorateController extends Controller
         $governorate = Governorate::find($request->id);
         $governorate->title = $request->title;
         $governorate->count_id = $request->count_id;
+        $governorate->description = $request->description;
+
         $governorate->save();
         return redirect('/governorate/index');
     }
