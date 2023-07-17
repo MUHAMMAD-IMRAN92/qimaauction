@@ -124,7 +124,7 @@ class AuctionController extends Controller
                         'public'
                     );
                     $productImage = new AuctionProductImages();
-                    $productImage->auction_product_id = $auctionProduct->id;
+                    $productImage->auction_product_id = $auctionproductUpdate->id;
                     $productImage->order_no = $key;
                     $productImage->image = $fileName;
                     $productImage->save();
@@ -135,7 +135,7 @@ class AuctionController extends Controller
                 ->with('products')
                 ->first();
         } else {
-            $auctionproduct = AuctionProduct::create(
+            $newauctionproduct = AuctionProduct::create(
                 [
                     'product_id' => $request->product_id,
                     'auction_id' => $request->auction_id,
@@ -175,13 +175,13 @@ class AuctionController extends Controller
                         'public'
                     );
                     $productImage = new AuctionProductImages();
-                    $productImage->auction_product_id = $auctionProduct->id;
+                    $productImage->auction_product_id = $newauctionproduct->id;
                     $productImage->order_no = $key;
                     $productImage->image = $fileName;
                     $productImage->save();
                 }
             }
-            $auction_products = AuctionProduct::where('id', $auctionproduct->id)
+            $auction_products = AuctionProduct::where('id', $newauctionproduct->id)
                 ->with('products')
                 ->first();
         }

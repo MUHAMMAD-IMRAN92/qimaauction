@@ -295,7 +295,7 @@
                                                                                             <select
                                                                                                 class="select2 form-control"
                                                                                                 name="genetic"
-                                                                                                id="genetic">
+                                                                                                id="genetic" required>
                                                                                                 <option selected disabled>
                                                                                                     Please Select genetics
                                                                                                 </option>
@@ -317,26 +317,21 @@
                                                                                     <div class="form-label-group">
                                                                                         <div class="form-group">
                                                                                             <select
-                                                                                                class="select2 form-control"
-                                                                                                name="process"
-                                                                                                id="product-process"
-                                                                                                required>
-                                                                                                <option value=""
-                                                                                                    selected>Please Select
-                                                                                                    Process</option>
-                                                                                                <option value="Natural">
-                                                                                                    Natural</option>
-                                                                                                <option value="Slow Dried">
-                                                                                                    Slow
-                                                                                                    Dried</option>
-                                                                                                <option value="Alchemy">
-                                                                                                    Alchemy</option>
+                                                                                            class="select2 form-control"
+                                                                                            name="process"
+                                                                                            id="process" >
+                                                                                            <option selected disabled>
+                                                                                                Please Select process
+                                                                                            </option>
+                                                                                            @foreach (App\Models\Process::all() as $key => $prod)
                                                                                                 <option
-                                                                                                    value="Deep Fermentation">
-                                                                                                    Deep
-                                                                                                    Fermentation</option>
 
-                                                                                            </select>
+                                                                                                    value="{{ $prod->title }}">
+                                                                                                    {{ $prod->title }}
+                                                                                                </option>
+                                                                                            @endforeach
+
+                                                                                        </select>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -356,7 +351,7 @@
                                                                                             class="form-control"
                                                                                             name="public_jury_score"
                                                                                             id="public_jury_score"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -406,7 +401,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="weight" id="weight"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -427,7 +422,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="rank" id="rank"
-                                                                                            value="" required>
+                                                                                            value=""  required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -439,7 +434,7 @@
                                                                                             class="form-control"
                                                                                             name="start_price"
                                                                                             id="start_price"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -454,7 +449,7 @@
                                                                                             class="form-control"
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -466,7 +461,7 @@
                                                                                             class="form-control"
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -480,7 +475,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_one"
                                                                                             id="" value=""
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -491,7 +486,7 @@
                                                                                             class="form-control"
                                                                                             name="heading_two"
                                                                                             id="" value=""
-                                                                                            required>
+                                                                                            >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -501,14 +496,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="" required> </textarea>
+                                                                                        <textarea class="form-control" name="description_one" id="" value="" > </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="" required> </textarea>
+                                                                                        <textarea class="form-control" name="description_two" id="" value="" > </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -532,7 +527,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="qoute" id=""
-                                                                                            value="" required>
+                                                                                            value="" >
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
