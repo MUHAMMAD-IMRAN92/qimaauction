@@ -41,9 +41,8 @@ class AuctionController extends Controller
         $auctionAlchemyWinning = collect();
         $auction = Auction::where('is_active', '1')->first();
         if ($auction) {
-
-            $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried'])->where('home_page', 1)->orderBy('rank', 'asc')->get();
-            $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->orderBy('rank', 'asc')->where('home_page', 1)->get();
+            $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+            $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank  AS unsigned) asc')->get();
         }
         return view('admin.dashboard', [
             'natural' => $auctionNaturalWinning,
