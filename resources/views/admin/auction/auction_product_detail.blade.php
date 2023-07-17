@@ -1546,7 +1546,7 @@
                         <i class="fa fa-bars"></i>
                     </div>
                     <div class="dropdown-menu">
-                        <a href="https://stage.bestofyemenauction.com">Home</a>
+                        <a href="{{url('/')}}">Home</a>
                         <hr>
                         <a href="{{ url('/auction/results') }}">best of yemen 2022 results</a>
                     </div>
