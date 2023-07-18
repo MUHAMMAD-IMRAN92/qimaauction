@@ -446,7 +446,7 @@
                                     @endif
                                 </div>
                                 <hr class="hr">
-                                <h2 class="heading-name">Adeel qureshi</h2>
+                                <h2 class="heading-name">{{ $user->name }}</h2>
                                 <hr class="hr">
                                 <div class="tab-section">
                                     <div class="tabbed active" onclick="openTab(event, 'tab1')">
@@ -457,7 +457,7 @@
                                     </div>
                                 </div>
 
-                                @if (count($samples) > 0)
+                                @if (count($naturalSamples) > 0)
                                     <div id="tab1" class="  first-tab tab-content ">
                                         <div class="card-body">
                                             <div class="table-responsive" id="no-more-tables">
@@ -474,7 +474,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 {{-- Loop over $samples for Tab 1 content --}}
-                                                                @foreach ($samples as $sample)
+                                                                @foreach ($naturalSamples as $sample)
                                                                     <tr>
                                                                         <td class="sr br-right" data-title="Sr No">
                                                                             {{ $loop->iteration }}</td>
@@ -500,7 +500,10 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                @else
+                                    <h3 class="ml-5">No Pending Reviews</h3>
+                                @endif
+                                @if (count($alchemySamples) > 0)
                                     <div id="tab2" class="tab-content">
                                         <table class="table">
                                             <thead style="color: #d8940d; border:white" class="table-bordered">
@@ -512,7 +515,7 @@
                                             </thead>
                                             <tbody>
                                                 {{-- Loop over $samples for Tab 1 content --}}
-                                                @foreach ($samples as $sample)
+                                                @foreach ($alchemySamples as $sample)
                                                     <tr>
                                                         <td class="sr br-right" data-title="Sr No">
                                                             {{ $loop->iteration }}</td>
