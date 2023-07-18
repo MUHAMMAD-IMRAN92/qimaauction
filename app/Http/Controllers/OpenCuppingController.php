@@ -220,7 +220,8 @@ class OpenCuppingController extends Controller
     {
 
         $userId = $request->userId;
-        $alltablesamples = OpenCupping::join('products', 'products.id', 'open_cuppings.product_id')
+        $auction =  Auction::where('is_active', '1')->first();
+        $alltablesamples = OpenCupping::where('auction_id', $auction->id)->join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
                     ->where('open_cuppings.user_id', $userId);
