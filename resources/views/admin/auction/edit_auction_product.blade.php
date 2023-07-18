@@ -226,7 +226,7 @@
                                                                             <input type="hidden" id="rownumber"
                                                                                 value="">
                                                                             <input type="hidden" name="auction_product_id"
-                                                                                value={{ $auction_products->auction_id }}>
+                                                                                value={{ $auction_products->id }}>
                                                                             <div class="d-flex">
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group">
