@@ -6,8 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description"
+        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Review</title>
     <link rel="apple-touch-icon" href="{{ asset('public/app-assets/images/ico/apple-icon-120.png') }}">
@@ -27,8 +29,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/themes/semi-dark-layout.css') }}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/authentication.css') }}">
     <!-- END: Page CSS-->
 
@@ -42,8 +46,9 @@
 <style>
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
     }
+
     .content-body {
         background: rgba(239, 235, 229, 1) !important;
     }
@@ -200,8 +205,8 @@
         }
     }
 
-    html body.bg-full-screen-image {
-        background: rgba(239, 235, 229, 1) !important;
+    .app-content {
+        background-color: #FFF;
     }
 
     .heder_text {
@@ -232,7 +237,7 @@
     .newlogo p {
         font-family: 'Montserrat';
         font-size: 19px;
-        font-weight: inherit;
+        font-weight: 900;
         line-height: 32px;
         letter-spacing: 0.2em;
         color: rgba(231, 132, 96, 1);
@@ -249,7 +254,7 @@
     .heading-name {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: inherit;
+        font-weight: 800;
         line-height: 32px;
         letter-spacing: 0.2em;
         text-align: center;
@@ -277,7 +282,7 @@
     .tabbed h2 {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: inherit;
+        font-weight: 800;
         line-height: 24px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -298,13 +303,13 @@
     .table thead th {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: inherit;
+        font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
         color:
             rgba(87, 85, 85, 1);
-            text-transform: uppercase;
+        text-transform: uppercase;
     }
 
     .btn-success {
@@ -312,7 +317,7 @@
         background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: inherit;
+        font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -321,13 +326,15 @@
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         text-transform: uppercase;
     }
-.btn-success:hover{
-    color: rgba(87, 85, 85, 1) !important;
-}
+
+    .btn-success:hover {
+        color: rgba(87, 85, 85, 1) !important;
+    }
+
     .sr {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: inherit;
+        font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -340,40 +347,70 @@
     .sample {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: inherit;
+        font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
         text-transform: uppercase;
         color: rgba(87, 85, 85, 1);
     }
+
     table {
         width: 100%;
         table-layout: fixed;
     }
 
-    td, th {
+    td,
+    th {
         width: auto;
         text-align: center;
     }
-    tr:nth-child(even) {
-    background-color: transparent;
-}
-.table th, .table td{
-    border: 1px solid white;
-    border-right: none;
-    border-left: none;
-}
-.table th{
-    padding: 20px;
-}
-.br-right{
-    border-right: 1px solid white !important;
-}
 
+    tr:nth-child(even) {
+        background-color: transparent;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid white;
+        border-right: none;
+        border-left: none;
+    }
+
+    .table th {
+        padding: 20px;
+    }
+
+    .br-right {
+        border-right: 1px solid white !important;
+    }
+
+    .tab-content {
+        display: none;
+
+    }
+
+    .first-tab {
+        display: block;
+    }
+
+    .active h2 {
+        color: white;
+    }
+
+    html body.bg-full-screen-image {
+        background: rgba(239, 235, 229, 1) !important;
+    }
+
+    html body.blank-page .content.app-content {
+        background: rgba(239, 235, 229, 1) !important;
+
+    }
 </style>
 
-<body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+<body
+    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
+    data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
     {{-- <div><iframe src="https://giphy.com/embed/xT9IgMgdur6larNA1a" width="100%" height="100%" style="position:absolute"
         frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div> --}}
@@ -392,8 +429,10 @@
                             <div class="card-content">
                                 <div class="card-header">
                                     <div class="image-section">
-                                        <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}" alt="">
-                                        <img src="{{ asset('public/app-assets/images/logo/heading.png') }}" alt="">
+                                        <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}"
+                                            alt="">
+                                        <img src="{{ asset('public/app-assets/images/logo/heading.png') }}"
+                                            alt="">
 
                                     </div>
                                     <div class="newlogo">
@@ -401,71 +440,100 @@
                                         <p>Welcome to people choice</p>
                                     </div>
                                     @if (session('success'))
-                                    <div class="col-md-12 alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
+                                        <div class="col-md-12 alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
                                     @endif
                                 </div>
                                 <hr class="hr">
                                 <h2 class="heading-name">Adeel qureshi</h2>
                                 <hr class="hr">
                                 <div class="tab-section">
-                                    <div class="tabbed ">
-                                        <h2 class="active">Natural and deep fermentation</h2>
+                                    <div class="tabbed active" onclick="openTab(event, 'tab1')">
+                                        <h2>Natural and deep fermentation</h2>
                                     </div>
-                                    <div class="tabbed">
+                                    <div class="tabbed" onclick="openTab(event, 'tab2')">
                                         <h2>Alchemy</h2>
                                     </div>
                                 </div>
 
                                 @if (count($samples) > 0)
-                                <div class="card-body ">
-                                    <div class="table-responsive" id="no-more-tables">
-                                        <div class="container w3-animate-opacity p-0">
-                                            <!-- <div class="tab">
-                                                    {{-- @foreach ($samples as $sample) --}}
-                                                    <button class="tablinks tablinks-custom-1 " id="1"
-                                                        onclick='javascript:sampleData(1,1)'>Table-1</button>
-                                                    {{-- @endforeach --}}
-                                                </div> -->
-                                            <div class="content_data">
-                                                <table class="table" style="">
-                                                    <thead style="color: #d8940d; border:white" class="table-bordered">
-                                                        <tr>
-                                                            <th class="br-right">Rank</th>
-                                                            <th class="br-right">Coffee</th>
-                                                            <th>Action</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
-                                                        @foreach ($samples as $sample)
-                                                        <tr>
-                                                            <td class="sr br-right" data-title="Sr No">{{ $loop->iteration }}</td>
-                                                            <!-- <td>{{ $sample->product_title }}</td> -->
-                                                            <td class="sample br-right" data-title="Sample ID">{{ $sample->samples }}
-                                                            </td>
-
-                                                            <td data-title="Action ">
-                                                                @if ($sample->is_hidden == 0)
-                                                                <a class="btn btn-success" target="_blank" href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
-                                                                    SAMPLE
-                                                                </a>
-                                                                @else
-                                                                Completed
-                                                                @endif
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                                    <div id="tab1" class="  first-tab tab-content ">
+                                        <div class="card-body">
+                                            <div class="table-responsive" id="no-more-tables">
+                                                <div class="container w3-animate-opacity p-0">
+                                                    <div class="content_data ">
+                                                        <table class="table">
+                                                            <thead style="color: #d8940d; border:white"
+                                                                class="table-bordered">
+                                                                <tr>
+                                                                    <th class="br-right">Rank</th>
+                                                                    <th class="br-right">Coffee</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{-- Loop over $samples for Tab 1 content --}}
+                                                                @foreach ($samples as $sample)
+                                                                    <tr>
+                                                                        <td class="sr br-right" data-title="Sr No">
+                                                                            {{ $loop->iteration }}</td>
+                                                                        <td class="sample br-right"
+                                                                            data-title="Sample ID">
+                                                                            {{ $sample->samples }}</td>
+                                                                        <td data-title="Action">
+                                                                            @if ($sample->is_hidden == 0)
+                                                                                <a class="btn btn-success"
+                                                                                    target="_blank"
+                                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
+                                                                                    SAMPLE</a>
+                                                                            @else
+                                                                                Completed
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div id="tab2" class="tab-content">
+                                        <table class="table">
+                                            <thead style="color: #d8940d; border:white" class="table-bordered">
+                                                <tr>
+                                                    <th class="br-right">Rank</th>
+                                                    <th class="br-right">Coffee</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{-- Loop over $samples for Tab 1 content --}}
+                                                @foreach ($samples as $sample)
+                                                    <tr>
+                                                        <td class="sr br-right" data-title="Sr No">
+                                                            {{ $loop->iteration }}</td>
+                                                        <td class="sample br-right" data-title="Sample ID">
+                                                            {{ $sample->samples }}</td>
+                                                        <td data-title="Action">
+                                                            @if ($sample->is_hidden == 0)
+                                                                <a class="btn btn-success" target="_blank"
+                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
+                                                                    SAMPLE</a>
+                                                            @else
+                                                                Completed
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 @else
-                                <h3 class="ml-5">No Pending Reviews</h3>
+                                    <h3 class="ml-5">No Pending Reviews</h3>
                                 @endif
 
                             </div>
@@ -519,6 +587,22 @@
             });
         }
     </script>
+    <Script>
+        function openTab(evt, tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+
+            var tabbed = document.getElementsByClassName("tabbed");
+            for (i = 0; i < tabbed.length; i++) {
+                tabbed[i].classList.remove("active");
+            }
+            evt.currentTarget.classList.add("active");
+        }
+    </Script>
 
 </body>
 
