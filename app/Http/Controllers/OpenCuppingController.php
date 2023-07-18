@@ -201,7 +201,6 @@ class OpenCuppingController extends Controller
     }
     public function review2(Request $request)
     {
-        $request->productid;
 
         $userId = $request->userId;
         $alltablesamples = OpenCupping::join('products', 'products.id', 'open_cuppings.product_id')
@@ -230,9 +229,9 @@ class OpenCuppingController extends Controller
 
 
         if (isset($request->sampleId)) {
-            $firstsample = OpenCupping::where('product_id', $request->productId)
+            $firstsample = OpenCupping::where('product_id', $request->productid)
                 ->first();
-            $review = OpenCuppingReview::where('product_id', $request->productId)
+            $review = OpenCuppingReview::where('product_id', $request->productid)
                 ->first();
         } else {
             $review = null;
@@ -276,26 +275,26 @@ class OpenCuppingController extends Controller
             $samplesArr = explode(',', $firstsample->samples);
             // return  $firstsample->product_id;
             $product = Product::where('id', $firstsample->product_id)->first();
-
-            $aucProduct = AuctionProduct::where('product_id', $request->productId)->first();
-
-            return view('admin.jury.form', [
-                'productId' => $firstsample->product_id ?? $firstsample->productId,
-                'table' => $request->table ?? $firstsample->sampleTable,
-                'firstsample' => $firstsample,
-                'reviewdata' => $review,
-                'productdata' => $productdata,
-                'alltablesamples' => $alltablesamples,
-                'sampleName' => $firstsample->samples,
-                'sentSampleId' => $firstsample->id,
-                'samples' => $samplesArr,
-                'sampleReview' => $review,
-                'user' => $user,
-                'product' => $product,
-                'auction_product' => $aucProduct
-            ]);
-            // }
         }
+        $aucProduct = AuctionProduct::where('product_id', $request->productid)->first();
+
+        return view('admin.jury.form', [
+            'productId' => $firstsample->product_id ?? $firstsample->productId,
+            'table' => $request->table ?? $firstsample->sampleTable,
+            'firstsample' => $firstsample,
+            'reviewdata' => $review,
+            'productdata' => $productdata,
+            'alltablesamples' => $alltablesamples,
+            'sampleName' => $firstsample->samples,
+            'sentSampleId' => $firstsample->id,
+            'samples' => $samplesArr,
+            'sampleReview' => $review,
+            'user' => $user,
+            'product' => $product,
+            'auction_product' => $aucProduct
+        ]);
+        // }
+
     }
 
     public function saveCuppingReview(Request $request)
