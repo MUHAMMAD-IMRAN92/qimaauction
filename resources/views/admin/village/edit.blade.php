@@ -1,6 +1,8 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
+
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -82,10 +84,10 @@
 
                                                         <div class="form-group">
                                                             <label for="">Description</label>
-                                                            <textarea class="form-control" name="description" id="" value="">{{ $village->description }} </textarea>
+                                                            <textarea class="form-control" name="description" id="summernote" value="">{!! $village->description !!} </textarea>
                                                         </div>
-
-                                                </div>
+                                                        {{-- <div id="summernote"></div> --}}
+                                                    </div>
 
                                                     <div class="col-12" style="margin-left: 39%">
                                                         <button type="submit"
@@ -107,4 +109,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+
+                ['insert', ['link']],
+
+            ]
+        });
+    </script>
 @endsection

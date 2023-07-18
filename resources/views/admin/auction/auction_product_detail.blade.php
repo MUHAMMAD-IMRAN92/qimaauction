@@ -1684,7 +1684,8 @@
                 <div class="modal-body modal-section-body">
                     <h4>TRACEABILITY</h4>
                     <h2>{{ @$product->villages->title}}</h2>
-                    <p>{{ @$product->villages->description }}</p>
+                    <p>{!! @$product->villages->description !!}</p>
+
                     <h2>{{ @$product->regions->title}}</h2>
                     <p>{{ @$product->regions->description }}</p>
                     <h2>{{ @$product->governorates->title }}</h2>

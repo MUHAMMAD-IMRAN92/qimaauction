@@ -82,6 +82,7 @@ class VillageController extends Controller
     }
     public function update(Request $request)
     {
+        // return $request->all();
         $village = Village::find($request->id);
         $village->title = $request->title;
         $village->reg_id = $request->reg_id;

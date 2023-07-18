@@ -55,12 +55,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12 d-flex">
+                                                <div class="col-12 ">
 
 
                                                     <div class="form-group">
                                                         <label for="">Description</label>
-                                                        <textarea class="form-control" name="description" cols="152" id="" value=""> </textarea>
+                                                        <textarea class="form-control" name="description" id="summernote"  value=""> </textarea>
                                                     </div>
 
                                                 </div>
@@ -82,5 +82,15 @@
 
         </div>
     </div>
-</div>
+</div>  <script>
+    $('#summernote').summernote({
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+
+            ['insert', ['link']],
+
+        ]
+    });
+</script>
 @endsection

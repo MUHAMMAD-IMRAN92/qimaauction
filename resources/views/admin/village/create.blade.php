@@ -1,6 +1,11 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
+    <style>
+        .cke_inner {
+            display: none !important;
+        }
+    </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -78,8 +83,9 @@
 
                                                         <div class="form-group">
                                                             <label for="">Description</label>
-                                                            <textarea class="form-control" name="description"id="" value=""> </textarea>
+                                                            <textarea class="form-control" name="description" id="summernote" value=""></textarea>
                                                         </div>
+                                                        <div id="editor"></div>
 
                                                     </div>
 
@@ -103,4 +109,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+
+                ['insert', ['link']],
+
+            ]
+        });
+    </script>
 @endsection
