@@ -6,6 +6,7 @@ use App\Models\OpenCupping;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Auction;
+use App\Models\AuctionProduct;
 use App\Models\OpenCuppingProduct;
 use App\Models\Review;
 use App\Models\OpenCuppingReview;
@@ -182,6 +183,7 @@ class OpenCuppingController extends Controller
      */
     public function show(Request $request)
     {
+        $auction =  Auction::where('is_active', 1)->first();
         $userId = $request->userId;
         $tables = 1;
         $samples = OpenCupping::join('products', 'products.id', 'open_cuppings.product_id')
@@ -191,7 +193,7 @@ class OpenCuppingController extends Controller
             ->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
             })
-            ->select('products.*', 'open_cuppings.*')
+            ->select('products.*', 'open_cuppings.*')->where('auction_id', $auction->id)
             ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         //   return response($samples);
@@ -199,6 +201,8 @@ class OpenCuppingController extends Controller
     }
     public function review2(Request $request)
     {
+        $request->productid;
+
         $userId = $request->userId;
         $alltablesamples = OpenCupping::join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
@@ -226,9 +230,9 @@ class OpenCuppingController extends Controller
 
 
         if (isset($request->sampleId)) {
-            $firstsample = OpenCupping::where('id', $request->sampleId)
+            $firstsample = OpenCupping::where('product_id', $request->productId)
                 ->first();
-            $review = OpenCuppingReview::where('sample_id', $request->sampleId)
+            $review = OpenCuppingReview::where('product_id', $request->productId)
                 ->first();
         } else {
             $review = null;
@@ -272,6 +276,9 @@ class OpenCuppingController extends Controller
             $samplesArr = explode(',', $firstsample->samples);
             // return  $firstsample->product_id;
             $product = Product::where('id', $firstsample->product_id)->first();
+
+            $aucProduct = AuctionProduct::where('product_id', $request->productId)->first();
+
             return view('admin.jury.form', [
                 'productId' => $firstsample->product_id ?? $firstsample->productId,
                 'table' => $request->table ?? $firstsample->sampleTable,
@@ -284,7 +291,8 @@ class OpenCuppingController extends Controller
                 'samples' => $samplesArr,
                 'sampleReview' => $review,
                 'user' => $user,
-                'product' => $product
+                'product' => $product,
+                'auction_product' => $aucProduct
             ]);
             // }
         }
