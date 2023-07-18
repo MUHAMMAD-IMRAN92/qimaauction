@@ -200,8 +200,8 @@
         }
     }
 
-    .app-content {
-        background-color: #FFF;
+    html body.bg-full-screen-image {
+        background: rgba(239, 235, 229, 1) !important;
     }
 
     .heder_text {
@@ -232,7 +232,7 @@
     .newlogo p {
         font-family: 'Montserrat';
         font-size: 19px;
-        font-weight: 900;
+        font-weight: inherit;
         line-height: 32px;
         letter-spacing: 0.2em;
         color: rgba(231, 132, 96, 1);
@@ -249,7 +249,7 @@
     .heading-name {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: 800;
+        font-weight: inherit;
         line-height: 32px;
         letter-spacing: 0.2em;
         text-align: center;
@@ -277,7 +277,7 @@
     .tabbed h2 {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: 800;
+        font-weight: inherit;
         line-height: 24px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -298,7 +298,7 @@
     .table thead th {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: 700;
+        font-weight: inherit;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -312,7 +312,7 @@
         background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: 700;
+        font-weight: inherit;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -327,7 +327,7 @@
     .sr {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: 700;
+        font-weight: inherit;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -340,7 +340,7 @@
     .sample {
         font-family: 'Montserrat';
         font-size: 16px;
-        font-weight: 700;
+        font-weight: inherit;
         line-height: 20px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -446,7 +446,7 @@
                                                             <!-- <td>{{ $sample->product_title }}</td> -->
                                                             <td class="sample br-right" data-title="Sample ID">{{ $sample->samples }}
                                                             </td>
-                                                            
+
                                                             <td data-title="Action ">
                                                                 @if ($sample->is_hidden == 0)
                                                                 <a class="btn btn-success" target="_blank" href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
