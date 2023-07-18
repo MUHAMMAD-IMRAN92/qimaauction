@@ -134,7 +134,7 @@ class AuctionController extends Controller
                     echo "<br>";
                 }
             }
-            die;
+            //die;
             // AuctionProductImages::create
             $auction_products = AuctionProduct::where('id', $request->auction_product_id)
                 ->with('products')
