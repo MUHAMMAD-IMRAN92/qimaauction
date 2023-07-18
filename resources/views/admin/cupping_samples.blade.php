@@ -401,7 +401,7 @@
         font-family: 'Montserrat';
         font-size: 30px;
         font-weight: normal;
-        line-height: 20px;
+        line-height: 32px;
         letter-spacing: 0.1em;
         text-align: center;
         text-transform: uppercase;
