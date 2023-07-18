@@ -6,10 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Review</title>
     <link rel="apple-touch-icon" href="{{ asset('public/app-assets/images/ico/apple-icon-120.png') }}">
@@ -29,10 +27,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/themes/semi-dark-layout.css') }}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/app-assets/css/pages/authentication.css') }}">
     <!-- END: Page CSS-->
 
@@ -44,6 +40,14 @@
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 <style>
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('{{asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf")}}') format('truetype');
+    }
+    .content-body {
+        background: rgba(239, 235, 229, 1) !important;
+    }
+
     .tab {
         overflow: hidden;
         border: 1px solid #ccc;
@@ -206,11 +210,170 @@
         font-family: 'Montserrat';
         font-size: 15px;
     }
+
+    .image-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .image-section img {
+        padding: 20px;
+        width: 300px;
+    }
+
+    .card .card-header {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .newlogo p {
+        font-family: 'Montserrat';
+        font-size: 19px;
+        font-weight: 900;
+        line-height: 32px;
+        letter-spacing: 0.2em;
+        color: rgba(231, 132, 96, 1);
+        text-align: center;
+        text-transform: uppercase;
+
+    }
+
+    .hr {
+        margin-bottom: 0px !important;
+        border: 1px solid white !important;
+    }
+
+    .heading-name {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: 0.2em;
+        text-align: center;
+        color: rgba(87, 85, 85, 1);
+        padding: 5px;
+        text-transform: uppercase;
+        margin-top: 15px;
+    }
+
+    .tab-section {
+        width: 100%;
+    }
+
+    .tabbed {
+        width: 50%;
+        float: left;
+        text-align: center;
+        border-bottom: 2px solid white;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border-top: 2px solid white;
+
+    }
+
+    .tabbed h2 {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 24px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color: rgba(231, 132, 96, 1);
+        text-transform: uppercase;
+        padding: 20px;
+        height: 100px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .active {
+        background: rgba(231, 132, 96, 1);
+        color: white !important;
+    }
+
+    .table thead th {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color:
+            rgba(87, 85, 85, 1);
+            text-transform: uppercase;
+    }
+
+    .btn-success {
+        width: 260px;
+        background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color: rgba(87, 85, 85, 1);
+        border-radius: 27px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        text-transform: uppercase;
+    }
+.btn-success:hover{
+    color: rgba(87, 85, 85, 1) !important;
+}
+    .sr {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color: rgba(87, 85, 85, 1);
+        text-transform: uppercase;
+
+
+    }
+
+    .sample {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        text-transform: uppercase;
+        color: rgba(87, 85, 85, 1);
+    }
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    td, th {
+        width: auto;
+        text-align: center;
+    }
+    tr:nth-child(even) {
+    background-color: transparent;
+}
+.table th, .table td{
+    border: 1px solid white;
+    border-right: none;
+    border-left: none;
+}
+.table th{
+    padding: 20px;
+}
+.br-right{
+    border-right: 1px solid white !important;
+}
+
 </style>
 
-<body
-    class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
-    data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+<body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
     {{-- <div><iframe src="https://giphy.com/embed/xT9IgMgdur6larNA1a" width="100%" height="100%" style="position:absolute"
         frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div> --}}
@@ -228,80 +391,81 @@
                         <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
                             <div class="card-content">
                                 <div class="card-header">
+                                    <div class="image-section">
+                                        <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}" alt="">
+                                        <img src="{{ asset('public/app-assets/images/logo/heading.png') }}" alt="">
+
+                                    </div>
                                     <div class="newlogo">
-                                        <img src="{{ asset('public/app-assets/images/logo/newlogo.png') }}"
-                                            style="max-width: 100%;">
-                                        <p class="heder_text">
-                                            Welcome to the Best of Yemen 2022 International jury Cupping.
-                                        </p>
-                                        <p class="heder_text">
-                                            Below you can find the links to the cupping forms for each sample. They have
-                                            been arranged across 5 tables.
-                                        </p>
-                                        <p class="heder_text">
-                                            Once you have cupped all the samples on a given table please click on the
-                                            submit button to confirm submission.
-                                        </p>
+
+                                        <p>Welcome to people choice</p>
                                     </div>
                                     @if (session('success'))
-                                        <div class="col-md-12 alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
+                                    <div class="col-md-12 alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
                                     @endif
                                 </div>
+                                <hr class="hr">
+                                <h2 class="heading-name">Adeel qureshi</h2>
+                                <hr class="hr">
+                                <div class="tab-section">
+                                    <div class="tabbed ">
+                                        <h2 class="active">Natural and deep fermentation</h2>
+                                    </div>
+                                    <div class="tabbed">
+                                        <h2>Alchemy</h2>
+                                    </div>
+                                </div>
+
                                 @if (count($samples) > 0)
-                                    <div class="card-body mt-5">
-                                        <div class="table-responsive" id="no-more-tables">
-                                            <div class="container w3-animate-opacity">
-                                                <div class="tab">
+                                <div class="card-body ">
+                                    <div class="table-responsive" id="no-more-tables">
+                                        <div class="container w3-animate-opacity p-0">
+                                            <!-- <div class="tab">
                                                     {{-- @foreach ($samples as $sample) --}}
                                                     <button class="tablinks tablinks-custom-1 " id="1"
                                                         onclick='javascript:sampleData(1,1)'>Table-1</button>
                                                     {{-- @endforeach --}}
-                                                </div>
-                                                <div class="content_data">
-                                                    <table class="table table-striped"
-                                                        style="background-color: rgb(255, 255, 255)">
-                                                        <thead style="color: #d8940d; border:#d8940d"
-                                                            class="table-bordered">
-                                                            <tr>
-                                                                <th>Sr</th>
-                                                                <!-- <th>Product Title</th> -->
-                                                                <th>Sample ID</th>
-                                                                <th>Position</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
-                                                            @foreach ($samples as $sample)
-                                                                <tr>
-                                                                    <td data-title="Sr No">{{ $loop->iteration }}</td>
-                                                                    <!-- <td>{{ $sample->product_title }}</td> -->
-                                                                    <td data-title="Sample ID">{{ $sample->samples }}
-                                                                    </td>
-                                                                    <td data-title="Position">{{ $sample->postion }}
-                                                                    </td>
-                                                                    <td data-title="Action">
-                                                                        @if ($sample->is_hidden == 0)
-                                                                            <a class="btn btn-success" target="_blank"
-                                                                                href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
-                                                                                SAMPLE
-                                                                            </a>
-                                                                        @else
-                                                                            Completed
-                                                                        @endif
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                </div> -->
+                                            <div class="content_data">
+                                                <table class="table" style="">
+                                                    <thead style="color: #d8940d; border:white" class="table-bordered">
+                                                        <tr>
+                                                            <th class="br-right">Rank</th>
+                                                            <th class="br-right">Coffee</th>
+                                                            <th>Action</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{-- {{ Str::beforeLast(base64_decode($sample->temporary_link), '/') . '/' . $sample->temporary_link . '/' . $sample->product_id . '/' . $sample->jury_id }} --}}
+                                                        @foreach ($samples as $sample)
+                                                        <tr>
+                                                            <td class="sr br-right" data-title="Sr No">{{ $loop->iteration }}</td>
+                                                            <!-- <td>{{ $sample->product_title }}</td> -->
+                                                            <td class="sample br-right" data-title="Sample ID">{{ $sample->samples }}
+                                                            </td>
+                                                            
+                                                            <td data-title="Action ">
+                                                                @if ($sample->is_hidden == 0)
+                                                                <a class="btn btn-success" target="_blank" href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
+                                                                    SAMPLE
+                                                                </a>
+                                                                @else
+                                                                Completed
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 @else
-                                    <h3 class="ml-5">No Pending Reviews</h3>
+                                <h3 class="ml-5">No Pending Reviews</h3>
                                 @endif
 
                             </div>
@@ -330,7 +494,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
     <!-- END: Theme JS-->
     <script type='text/javascript'>
-        var table = {{ isset($firstsample->table) ? $firstsample->table : 0 }};
+        var table = {
+            {
+                isset($firstsample - > table) ? $firstsample - > table : 0
+            }
+        };
 
         sampleData(table, table);
 

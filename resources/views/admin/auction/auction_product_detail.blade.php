@@ -1467,7 +1467,7 @@
     }
 
     .auction-timer--country p {
-        font-family: 'Montserrat'
+        font-family: 'Montserrat-Medium'
     }
 
     .footer-bg {

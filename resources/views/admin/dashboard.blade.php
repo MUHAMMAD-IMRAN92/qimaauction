@@ -225,7 +225,7 @@
     }
 
     .card-display-3 p {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         font-weight: 500;
         font-size: 16px;
     }
@@ -1217,17 +1217,17 @@
 
                 </div>
                 <div class="col card-display-3">
-                    <div class="card bg-none text-color h-100">
-                        <p class="m-0 text-start">2:00pm BST &nbsp;- London, United Kingdom</p>
-                        <p class="m-0 text-start">6:00am PDT &nbsp;- LA, USA</p>
-                        <p class="m-0">9:00am EDT &nbsp;&nbsp;- NY, USA</p>
-                        <p class="m-0">3:00pm CEST - Amsterdam, Netherlands</p>
-                        <p class="m-0">4:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
-                        <p class="m-0">5:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
-                        <p class="m-0">9:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
-                        <p class="m-0">10:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
-                        <p class="m-0">10:00pm KST &nbsp;- Seoul, South Korea</p>
-                        <p class="m-0">11:00pm AEST - Sydney, Australia</p>
+                    <div class="card bg-none text-color h-100" style="text-transform:uppercase;">
+                        <p class="m-0 text-start">10:00am BST &nbsp;- London, United Kingdom</p>
+                        <p class="m-0 text-start">2:00am PDT &nbsp;- LA, USA</p>
+                        <p class="m-0">5:00am EDT &nbsp;&nbsp;- NY, USA</p>
+                        <p class="m-0">11:00am CEST - Amsterdam, Netherlands</p>
+                        <p class="m-0">12:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
+                        <p class="m-0">1:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
+                        <p class="m-0">5:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
+                        <p class="m-0">6:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
+                        <p class="m-0">6:00pm KST &nbsp;- Seoul, South Korea</p>
+                        <p class="m-0">7:00pm AEST - Sydney, Australia</p>
                     </div>
                 </div>
                 <div class="auction-time">
