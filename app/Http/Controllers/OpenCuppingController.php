@@ -187,7 +187,7 @@ class OpenCuppingController extends Controller
         $naturalAuctionProduct =  AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->pluck('product_id');
         $userId = $request->userId;
         $tables = 1;
-        $naturalSamples = OpenCupping::whereIn('product_id', $naturalAuctionProduct)
+        $samples = OpenCupping::whereIn('product_id', $naturalAuctionProduct)->with('auctionProduct')
             ->join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')->where('open_cuppings.user_id', $userId);
@@ -201,7 +201,7 @@ class OpenCuppingController extends Controller
             ->get();
         //   return response($samples);
         $alchemtAuctionProduct =  AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->pluck('product_id');
-        $alchemySamples = OpenCupping::whereIn('product_id', $alchemtAuctionProduct)
+        $alchemySamples = OpenCupping::whereIn('product_id', $alchemtAuctionProduct)->with('auctionProduct')
             ->join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')->where('open_cuppings.user_id', $userId);
@@ -214,7 +214,7 @@ class OpenCuppingController extends Controller
             ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         $user =   User::where('id', $request->userId)->first();
-        return view('admin.cupping_samples', compact('userId', 'naturalSamples', 'tables', 'user', 'alchemySamples'))->render();
+        return view('admin.cupping_samples', compact('userId', 'samples', 'tables', 'user', 'alchemySamples'))->render();
     }
     public function review2(Request $request)
     {

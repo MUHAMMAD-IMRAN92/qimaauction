@@ -153,8 +153,7 @@
 
     @media only screen and (max-width: 800px) {
 
-        /* Force table to not be like tables anymore */
-        #no-more-tables table,
+        / Force table to not be like tables anymore / #no-more-tables table,
         #no-more-tables thead,
         #no-more-tables tbody,
         #no-more-tables th,
@@ -163,8 +162,7 @@
             display: block;
         }
 
-        /* Hide table headers (but not display: none;, for accessibility) */
-        #no-more-tables thead tr {
+        / Hide table headers (but not display: none; , for accessibility) / #no-more-tables thead tr {
             position: absolute;
             top: -9999px;
             left: -9999px;
@@ -175,8 +173,7 @@
         }
 
         #no-more-tables td {
-            /* Behave like a "row" */
-            border: none;
+            / Behave like a "row"/ border: none;
             border-bottom: 1px solid #eee;
             position: relative;
             padding-left: 50%;
@@ -185,10 +182,8 @@
         }
 
         #no-more-tables td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
+            / Now like a table header / position: absolute;
+            / Top/left values mimic padding / top: 6px;
             left: 6px;
             width: 45%;
             padding-right: 10px;
@@ -398,13 +393,23 @@
         color: white;
     }
 
-    html body.bg-full-screen-image {
-        background: rgba(239, 235, 229, 1) !important;
+    .table td {
+        padding: 30px
+    }
+
+    .p-name {
+        font-family: 'Montserrat';
+        font-size: 30px;
+        font-weight: normal;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        text-transform: uppercase;
+        color: black
     }
 
     html body.blank-page .content.app-content {
-        background: rgba(239, 235, 229, 1) !important;
-
+        background: rgba(239, 235, 229, 1) !important
     }
 </style>
 
@@ -457,8 +462,8 @@
                                     </div>
                                 </div>
 
-                                @if (count($naturalSamples) > 0)
-                                    <div id="tab1" class="  first-tab tab-content ">
+                                <div id="tab1" class="  first-tab tab-content ">
+                                    @if (count($samples) > 0)
                                         <div class="card-body">
                                             <div class="table-responsive" id="no-more-tables">
                                                 <div class="container w3-animate-opacity p-0">
@@ -474,13 +479,18 @@
                                                             </thead>
                                                             <tbody>
                                                                 {{-- Loop over $samples for Tab 1 content --}}
-                                                                @foreach ($naturalSamples as $sample)
+                                                                @foreach ($samples as $sample)
                                                                     <tr>
                                                                         <td class="sr br-right" data-title="Sr No">
                                                                             {{ $loop->iteration }}</td>
                                                                         <td class="sample br-right"
                                                                             data-title="Sample ID">
-                                                                            {{ $sample->samples }}</td>
+                                                                            <p class="p-name">
+                                                                                {{ @$sample->auctionProduct->name }}
+                                                                            </p>
+                                                                            JURY CODE
+                                                                            :{{ @$sample->auctionProduct->code }}
+                                                                        </td>
                                                                         <td data-title="Action">
                                                                             @if ($sample->is_hidden == 0)
                                                                                 <a class="btn btn-success"
@@ -499,12 +509,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @else
-                                    <h3 class="ml-5">No Pending Reviews</h3>
-                                @endif
-                                @if (count($alchemySamples) > 0)
-                                    <div id="tab2" class="tab-content">
+                                    @else
+                                        <h3 class="ml-5">No Pending Reviews</h3>
+                                    @endif
+                                </div>
+
+                                <div id="tab2" class="tab-content">
+                                    @if (count($alchemySamples) > 0)
+
                                         <table class="table">
                                             <thead style="color: #d8940d; border:white" class="table-bordered">
                                                 <tr>
@@ -518,9 +530,13 @@
                                                 @foreach ($alchemySamples as $sample)
                                                     <tr>
                                                         <td class="sr br-right" data-title="Sr No">
-                                                            {{ $loop->iteration }}</td>
+                                                            {{ $loop->iteration }}
+                                                        </td>
                                                         <td class="sample br-right" data-title="Sample ID">
-                                                            {{ $sample->samples }}</td>
+                                                            <p class="p-name">{{ @$sample->auctionProduct->name }}</p>
+                                                            JURY CODE :{{ @$sample->auctionProduct->code }}
+                                                        </td>
+                                                        </td>
                                                         <td data-title="Action">
                                                             @if ($sample->is_hidden == 0)
                                                                 <a class="btn btn-success" target="_blank"
@@ -534,10 +550,11 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                    </div>
-                                @else
-                                    <h3 class="ml-5">No Pending Reviews</h3>
-                                @endif
+                                    @else
+                                        <h3 class="ml-5">No Pending Reviews</h3>
+                                    @endif
+                                </div>
+
 
                             </div>
                         </div>
