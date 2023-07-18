@@ -1786,16 +1786,16 @@
                                                     <input type="hidden" name="table_value"
                                                         value="{{ @$auction_product->table }}">
                                                     <input type="hidden" name="userId"
-                                                        value="{{ $productdata->user_id }}">
+                                                        value="{{ $user->id }}">
                                                     <input type="hidden" name="current_position"
                                                         value="{{ @$auction_product->postion }}">
                                                     <input type="hidden" name="next_position"
                                                         value="@php
-$next_position = $productdata->postion + 1;
+$next_position = @$auction_product->postion + 1;
                                                         echo $next_position; @endphp">
                                                     <input type="hidden" name="previous_position"
                                                         value="@php
-$previous_position = $productdata->postion - 1;
+$previous_position = @$auction_product->postion - 1;
                                                             echo $previous_position; @endphp">
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $productId }}">
