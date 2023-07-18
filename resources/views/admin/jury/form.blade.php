@@ -1730,10 +1730,10 @@
                                                         <div class="sample-heading col-lg-6">
 
                                                             <p class="name-text">
-                                                                {{ @$product->rank }}. {{ @$product->village->title }}
+                                                                {{ @$auction_product->rank }}. {{ @$auction_product->name }}
                                                             </p>
                                                             <h2 class="id-text-2">Jury code :
-                                                                {{ @$auction_product->code }}</h2>
+                                                                {{ @$auction_product->jury_code }}</h2>
                                                         </div>
                                                         <!--Breadcrumb Section-->
                                                         <div class="breadcrumb-section col-lg-6  ">
