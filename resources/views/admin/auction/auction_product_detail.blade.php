@@ -1535,7 +1535,7 @@
             <div class="navbar">
                 <div class="icons-tab">
 
-                    <a href="https://stage.bestofyemenauction.com" style="text-decoration: none">
+                    <a href="/" style="text-decoration: none">
                         <p>best of yemen auction</p>
                     </a>
 
