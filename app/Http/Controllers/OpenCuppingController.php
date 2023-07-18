@@ -184,7 +184,7 @@ class OpenCuppingController extends Controller
     public function show(Request $request)
     {
         $auction =  Auction::where('is_active', 1)->first();
-        $auctionProduct =  AuctionProduct::where('auction_id', $auction->id)->pluck('product_id');
+     return   $auctionProduct =  AuctionProduct::where('auction_id', $auction->id)->pluck('product_id');
         $userId = $request->userId;
         $tables = 1;
         $samples = OpenCupping::whereIn('product_id', $auctionProduct)
@@ -232,9 +232,9 @@ class OpenCuppingController extends Controller
 
 
         if (isset($request->sampleId)) {
-            $firstsample = OpenCupping::where('product_id', $request->productid)
+            $firstsample = OpenCupping::where('product_id', $request->productId)
                 ->first();
-            $review = OpenCuppingReview::where('product_id', $request->productid)
+            $review = OpenCuppingReview::where('product_id', $request->productId)
                 ->first();
         } else {
             $review = null;
@@ -279,7 +279,7 @@ class OpenCuppingController extends Controller
             // return  $firstsample->product_id;
             $product = Product::where('id', $firstsample->product_id)->first();
         }
-        $aucProduct = AuctionProduct::where('product_id', $request->productid)->first();
+        $aucProduct = AuctionProduct::where('product_id', $request->productId)->first();
 
         return view('admin.jury.form', [
             'productId' => $firstsample->product_id ?? $firstsample->productId,
