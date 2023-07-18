@@ -116,6 +116,8 @@ class AuctionController extends Controller
                 //     $productImage->image = $fileName;
                 //     $productImage->save();
                 // }
+                print_r($request->images);
+                die;
                 foreach ($request->images as $key => $img) {
                     $fileName = $img->getClientOriginalName();
                     $img->storeAs(
