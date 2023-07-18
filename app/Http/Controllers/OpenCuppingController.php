@@ -183,7 +183,7 @@ class OpenCuppingController extends Controller
      */
     public function show(Request $request)
     {
-        return  $auction =  Auction::where('is_active', 1)->first();
+        return  $auction =  Auction::where('is_active', '1')->first();
         $auctionProduct =  AuctionProduct::where('auction_id', $auction->id)->pluck('product_id');
         $userId = $request->userId;
         $tables = 1;
