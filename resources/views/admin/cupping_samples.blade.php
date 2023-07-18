@@ -296,7 +296,7 @@
     }
 
     .table thead th {
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         font-size: 16px;
         font-weight: 700;
         line-height: 20px;
@@ -310,7 +310,7 @@
     .btn-success {
         width: 260px;
         background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         font-size: 16px;
         font-weight: 700;
         line-height: 20px;
@@ -325,7 +325,7 @@
     color: rgba(87, 85, 85, 1) !important;
 }
     .sr {
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         font-size: 16px;
         font-weight: 700;
         line-height: 20px;
@@ -338,7 +338,7 @@
     }
 
     .sample {
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         font-size: 16px;
         font-weight: 700;
         line-height: 20px;
