@@ -116,8 +116,7 @@ class AuctionController extends Controller
                 //     $productImage->image = $fileName;
                 //     $productImage->save();
                 // }
-                print_r($request->images);
-                die;
+                
                 foreach ($request->images as $key => $img) {
                     $fileName = $img->getClientOriginalName();
                     $img->storeAs(
@@ -127,11 +126,15 @@ class AuctionController extends Controller
                     );
                     $productImage = new AuctionProductImages();
                     $productImage->auction_product_id = $request->auction_product_id;
-                    $productImage->order_no = $key;
+                    echo $productImage->order_no = $key;
+                    echo "<br>";
                     $productImage->image = $fileName;
                     $productImage->save();
+                    print_r($productImage);
+                    echo "<br>";
                 }
             }
+            die;
             // AuctionProductImages::create
             $auction_products = AuctionProduct::where('id', $request->auction_product_id)
                 ->with('products')
