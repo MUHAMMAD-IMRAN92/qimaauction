@@ -1648,7 +1648,7 @@
                 <div class="modal-body modal-section-body">
                     <h4>Genetics</h4>
                     <h2>{{ @$product->genetics->title }}</h2>
-                    <p>{{ @$product->genetics->description }}</p>
+                    <p>{!! @$product->genetics->description !!}</p>
 
 
                 </div>
@@ -1666,7 +1666,7 @@
                 <div class="modal-body modal-section-body">
                     <h4>Process</h4>
                     <h2>{{ @$product->processes->title }}</h2>
-                    <p>{{ @$product->processes->description }}</p>
+                    <p>{!! @$product->processes->description !!}</p>
 
 
                 </div>
@@ -1687,9 +1687,9 @@
                     <p>{!! @$product->villages->description !!}</p>
 
                     <h2>{{ @$product->regions->title}}</h2>
-                    <p>{{ @$product->regions->description }}</p>
+                    <p>{!! @$product->regions->description !!}</p>
                     <h2>{{ @$product->governorates->title }}</h2>
-                    <p>{{ @$product->governorates->description }}</p>
+                    <p>{!! @$product->governorates->description !!}</p>
 
 
                 </div>
