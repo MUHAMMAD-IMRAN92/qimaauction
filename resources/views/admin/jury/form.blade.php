@@ -1784,11 +1784,11 @@
                                                     method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <input type="hidden" name="table_value"
-                                                        value="{{ $productdata->table }}">
+                                                        value="{{ @$auction_product->table }}">
                                                     <input type="hidden" name="userId"
                                                         value="{{ $productdata->user_id }}">
                                                     <input type="hidden" name="current_position"
-                                                        value="{{ $productdata->postion }}">
+                                                        value="{{ @$auction_product->postion }}">
                                                     <input type="hidden" name="next_position"
                                                         value="@php
 $next_position = $productdata->postion + 1;
