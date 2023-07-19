@@ -451,7 +451,7 @@
                                     @endif
                                 </div>
                                 <hr class="hr">
-                                <h2 class="heading-name">{{ $user->name }}</h2>
+                                <h2 class="heading-name">{{ @$user->name }}</h2>
                                 <hr class="hr">
                                 <div class="tab-section">
                                     <div class="tabbed active" onclick="openTab(event, 'tab1')">

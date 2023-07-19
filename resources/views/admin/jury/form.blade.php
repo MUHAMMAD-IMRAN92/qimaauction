@@ -1716,7 +1716,7 @@
                                                 </div>
                                                 <hr>
                                                 <div class="name-section">
-                                                    <h2>{{$user->name}}</h2>
+                                                    <h2>{{ @$user->name}}</h2>
                                                 </div>
                                                 <hr>
                                                 <div class="category">
@@ -1730,7 +1730,8 @@
                                                         <div class="sample-heading col-lg-6">
 
                                                             <p class="name-text">
-                                                                {{ @$auction_product->rank }}. {{ @$auction_product->name }}
+                                                                {{ @$auction_product->rank }}.
+                                                                {{ @$auction_product->name }}
                                                             </p>
                                                             <h2 class="id-text-2">Jury code :
                                                                 {{ @$auction_product->code }}</h2>
@@ -1785,6 +1786,8 @@
                                                     @csrf
                                                     <input type="hidden" name="table_value"
                                                         value="{{ @$auction_product->table }}">
+                                                        <input type="hidden" name="auction_id"
+                                                        value="{{ @$auction_product->auction_id }}">
                                                     <input type="hidden" name="userId"
                                                         value="{{ $user->id }}">
                                                     <input type="hidden" name="current_position"
@@ -1838,7 +1841,8 @@ $previous_position = @$auction_product->postion - 1;
                                                                                         <input type="hidden"
                                                                                             name="aroma"
                                                                                             id="aroma"
-                                                                                            value="8"></div>
+                                                                                            value="8">
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -2498,10 +2502,10 @@ $previous_position = @$auction_product->postion - 1;
                                                             <h3 class="entity-text total-bg">TOTAL</h3>
                                                             {{-- <p class="entity-label">(+36)</p> --}}
                                                             <p id="input_total_score"
-                                                                style="max-width:100%;width: 267px;margin: auto;display: none">
+                                                                style="max-width:100%;width: 267px;margin: auto;display: block">
                                                                 <input onkeyup="if (this.value > 100){ calcTotal()};"
                                                                     style="max-width:100%;text-align: center;font-size: 100px;font-family: 'EB Garamond';width: auto;border: 1px solid gainsboro;border-radius: 6px;padding: 15px;"
-                                                                    type="number" class="totalScore"
+                                                                    type="hidden" class="totalScore"
                                                                     name="total_score" id="total_score"
                                                                     value="84">
                                                             </p>

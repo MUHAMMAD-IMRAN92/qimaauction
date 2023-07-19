@@ -218,7 +218,6 @@ class OpenCuppingController extends Controller
     }
     public function review2(Request $request)
     {
-
         $userId = $request->userId;
         $auction =  Auction::where('is_active', '1')->first();
         $alltablesamples = OpenCupping::where('auction_id', $auction->id)->join('products', 'products.id', 'open_cuppings.product_id')
@@ -317,18 +316,15 @@ class OpenCuppingController extends Controller
 
     public function saveCuppingReview(Request $request)
     {
-
         $userId = $request->userId;
+        $user = User::where('id', $userId)->first();
+
         $sampleSent = OpenCupping::when($userId != 0, function ($q) use ($userId) {
             $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
                 ->where('open_cuppings.user_id', $userId)->select('open_cuppings.*');
-        })
-            ->when($userId == 0, function ($q) {
-                $q->where('open_cuppings.user_id', '0');
-            })
-            ->where('open_cuppings.product_id', $request->product_id)
-            ->where('open_cuppings.id', $request->sent_sample_id)
-            // ->where('is_hidden', '0')
+        })->when($userId == 0, function ($q) {
+            $q->where('open_cuppings.user_id', '0');
+        })->where('product_id', $request->product_id)->where('auction_id', $request->auction_id)
             ->first();
 
 
@@ -388,9 +384,9 @@ class OpenCuppingController extends Controller
                 ->when($userId == 0, function ($q) {
                     $q->where('open_cuppings.user_id', '0');
                 })->where('open_cuppings.table', $request->table_value)
-                ->where('open_cuppings.is_hidden', '0')
-                ->update(array("is_hidden" => "1"));
-            return redirect()->route('show_cupping');
+                ->where('open_cuppings.is_hidden', '0')->where('auction_id', $request->auction_id)
+                ->update(["is_hidden" => "1"]);
+            return redirect()->route('show_cupping', ['userId' => $userId]);
         }
         if (isset($request->sample_submit_prev)) {
             $v = ($request->current_position > 0) ? true : false;
@@ -439,10 +435,11 @@ class OpenCuppingController extends Controller
                     ->first();
             }
         }
+
         if ($request->to_go_sample) {
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample])->with('success', 'Review submitted successfully');
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample, 'user' => $user])->with('success', 'Review submitted successfully');
         } else {
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id])->with('success', 'Review submitted successfully');
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id, 'user' => $user])->with('success', 'Review submitted successfully');
         }
     }
     public function openCuppingFeedback()
