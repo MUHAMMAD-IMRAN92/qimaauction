@@ -436,6 +436,9 @@
             font-size: 15px;
         }
     }
+    .btn-success:focus{
+        color: rgba(87, 85, 85, 1);
+    }
 </style>
 
 <body
