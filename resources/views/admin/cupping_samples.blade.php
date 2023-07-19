@@ -520,7 +520,7 @@
                                                                             @if ($sample->is_hidden == 0)
                                                                                 <a class="btn btn-success"
                                                                                     target="_blank"
-                                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => @$sample->auctionProduct->table, 'sampleId' => $sample->id, 'productId' => @$sample->auctionProduct->product_id]) }}">CUP
+                                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => @$sample->table, 'sampleId' => $sample->id, 'productId' => @$sample->auctionProduct->product_id]) }}">CUP
                                                                                     SAMPLE</a>
                                                                             @else
                                                                                 Completed
