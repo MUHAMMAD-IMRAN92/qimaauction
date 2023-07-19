@@ -514,14 +514,14 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="">{{ $auction_products->description_1 }} </textarea>
+                                                                                        <textarea class="form-control summernote" name="description_one" id="" value="">{{ $auction_products->description_1 }} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="">{{ $auction_products->description_2 }} </textarea>
+                                                                                        <textarea class="form-control summernote" name="description_two" id="" value="">{{ $auction_products->description_2 }} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -667,6 +667,16 @@
             </div>
         </div>
     </div>
+    <script>
+        $('.summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+
+
+            ]
+        });
+    </script>
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

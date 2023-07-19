@@ -9,8 +9,8 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="
-                                                                                https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
-                                                                                "></script>
+                                                                                            https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js
+                                                                                            "></script>
 </head>
 <style>
     .row {
@@ -226,7 +226,7 @@
         line-height: 12px;
         letter-spacing: 0.1em;
         text-align: left;
-        text-transform: capitalize
+        text-transform: inherit;
     }
 
     .banner-text-section-2 h5 {
@@ -692,6 +692,14 @@
 
     }
 
+    .footer-text {
+        text-transform: uppercase;
+        background: transparent;
+        border: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
 
 
     @font-face {
@@ -703,6 +711,7 @@
     .card-display-3 p {
         font-weight: 500;
         font-size: 16px;
+        font-family: 'Montserrat-Medium'
     }
 
     #w-c {
@@ -1546,7 +1555,7 @@
                         <i class="fa fa-bars"></i>
                     </div>
                     <div class="dropdown-menu">
-                        <a href="{{url('/')}}">Home</a>
+                        <a href="{{ url('/') }}">Home</a>
                         <hr>
                         <a href="{{ url('/auction/results') }}">best of yemen 2022 results</a>
                     </div>
@@ -1614,7 +1623,7 @@
                         <h3>{{ $product->cup_profile }}</h3>
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
-                        <span>{{ $product->description_1 }}</span>
+                        <span>{!! $product->description_1 !!}</span>
                         <img class="mt-2 mb-2 banner-image-2"
                             src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
                             width="100%" alt="Product Image">
@@ -1683,10 +1692,10 @@
                 </div>
                 <div class="modal-body modal-section-body">
                     <h4>TRACEABILITY</h4>
-                    <h2>{{ @$product->villages->title}}</h2>
+                    <h2>{{ @$product->villages->title }}</h2>
                     <p>{!! @$product->villages->description !!}</p>
 
-                    <h2>{{ @$product->regions->title}}</h2>
+                    <h2>{{ @$product->regions->title }}</h2>
                     <p>{!! @$product->regions->description !!}</p>
                     <h2>{{ @$product->governorates->title }}</h2>
                     <p>{!! @$product->governorates->description !!}</p>
@@ -1710,17 +1719,17 @@
 
             </div>
             <div class="col card-display-3">
-                <div class=" bg-none text-color h-100 auction-timer--country">
-                    <p class="m-0 text-start">2:00pm BST &nbsp;- London, United Kingdom</p>
-                    <p class="m-0 text-start">6:00am PDT &nbsp;- LA, USA</p>
-                    <p class="m-0">9:00am EDT &nbsp;&nbsp;- NY, USA</p>
-                    <p class="m-0">3:00pm CEST - Amsterdam, Netherlands</p>
-                    <p class="m-0">4:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
-                    <p class="m-0">5:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
-                    <p class="m-0">9:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
-                    <p class="m-0">10:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
-                    <p class="m-0">10:00pm KST &nbsp;- Seoul, South Korea</p>
-                    <p class="m-0">11:00pm AEST - Sydney, Australia</p>
+                <div class="card bg-none text-color h-100 footer-text" style="text-transform:uppercase;">
+                    <p class="m-0 text-start">10:00am BST &nbsp;- London, United Kingdom</p>
+                    <p class="m-0 text-start">2:00am PDT &nbsp;- LA, USA</p>
+                    <p class="m-0">5:00am EDT &nbsp;&nbsp;- NY, USA</p>
+                    <p class="m-0">11:00am CEST - Amsterdam, Netherlands</p>
+                    <p class="m-0">12:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
+                    <p class="m-0">1:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
+                    <p class="m-0">5:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
+                    <p class="m-0">6:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
+                    <p class="m-0">6:00pm KST &nbsp;- Seoul, South Korea</p>
+                    <p class="m-0">7:00pm AEST - Sydney, Australia</p>
                 </div>
             </div>
             <div class="auction-time">

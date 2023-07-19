@@ -1,15 +1,16 @@
 @extends('admin.layout.default')
 @section('title', 'All Transection')
 @section('content')
+
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                    display: contents;
-                                                                                                                                                                                                                                  } */
+                                                                                                                                                                                                                                                                                display: contents;
+                                                                                                                                                                                                                                                                              } */
         /* .content-header.row{
-                                                                                                                                                                                                                                    margin-right: -15px;
-                                                                                                                                                                                                                                    margin-left: 30px;
-                                                                                                                                                                                                                                    align-items: center;
-                                                                                                                                                                                                                                  } */
+                                                                                                                                                                                                                                                                                margin-right: -15px;
+                                                                                                                                                                                                                                                                                margin-left: 30px;
+                                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                                              } */
 
         .row {
             margin-left: 0;
@@ -317,21 +318,20 @@
                                                                                     <div class="form-label-group">
                                                                                         <div class="form-group">
                                                                                             <select
-                                                                                            class="select2 form-control"
-                                                                                            name="process"
-                                                                                            id="process" >
-                                                                                            <option selected disabled>
-                                                                                                Please Select process
-                                                                                            </option>
-                                                                                            @foreach (App\Models\Process::all() as $key => $prod)
-                                                                                                <option
-
-                                                                                                    value="{{ $prod->title }}">
-                                                                                                    {{ $prod->title }}
+                                                                                                class="select2 form-control"
+                                                                                                name="process"
+                                                                                                id="process">
+                                                                                                <option selected disabled>
+                                                                                                    Please Select process
                                                                                                 </option>
-                                                                                            @endforeach
+                                                                                                @foreach (App\Models\Process::all() as $key => $prod)
+                                                                                                    <option
+                                                                                                        value="{{ $prod->title }}">
+                                                                                                        {{ $prod->title }}
+                                                                                                    </option>
+                                                                                                @endforeach
 
-                                                                                        </select>
+                                                                                            </select>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -351,7 +351,7 @@
                                                                                             class="form-control"
                                                                                             name="public_jury_score"
                                                                                             id="public_jury_score"
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -401,7 +401,7 @@
                                                                                             step="any"
                                                                                             class="form-control"
                                                                                             name="weight" id="weight"
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -422,7 +422,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="rank" id="rank"
-                                                                                            value=""  required>
+                                                                                            value="" required>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -434,7 +434,7 @@
                                                                                             class="form-control"
                                                                                             name="start_price"
                                                                                             id="start_price"
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -449,7 +449,7 @@
                                                                                             class="form-control"
                                                                                             name="reserve_price"
                                                                                             id="reserve_price"
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -461,7 +461,7 @@
                                                                                             class="form-control"
                                                                                             name="packing_cost"
                                                                                             id="packing_cost"
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -474,8 +474,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_one"
-                                                                                            id="" value=""
-                                                                                            >
+                                                                                            id="" value="">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -485,8 +484,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="heading_two"
-                                                                                            id="" value=""
-                                                                                            >
+                                                                                            id="" value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -496,14 +494,15 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             One</label>
-                                                                                        <textarea class="form-control" name="description_one" id="" value="" > </textarea>
+                                                                                        {{-- <textarea class="form-control" name="description" id="summernote" value=""> </textarea> --}}
+                                                                                        <textarea class="form-control summernote" name="description_one" value=""> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label for="">Description
                                                                                             Two</label>
-                                                                                        <textarea class="form-control" name="description_two" id="" value="" > </textarea>
+                                                                                        <textarea class="form-control summernote" name="description_two" value=""> </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -527,7 +526,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             name="qoute" id=""
-                                                                                            value="" >
+                                                                                            value="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -620,12 +619,25 @@
             </div>
         </div>
     </div>
+    <script>
+        $('.summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+
+
+            ]
+        });
+    </script>
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
+
         // var socket = io('http://localhost:5002');
 
         $("#product_id").on("change", function() {
