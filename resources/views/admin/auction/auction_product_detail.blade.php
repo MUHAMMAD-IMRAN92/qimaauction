@@ -223,7 +223,7 @@
         font-family: 'Montserrat-Medium';
         font-size: 11px;
         font-weight: 500;
-        line-height: 12px;
+        line-height: 19px;
         letter-spacing: 0.1em;
         text-align: left;
         text-transform: inherit;
@@ -231,6 +231,18 @@
         overflow-y: auto;
         display: block;
     }
+    .banner-text-section-2y::-webkit-scrollbar {
+  width: 1em;
+}
+
+.banner-text-section-2::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text-section-2::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 
     .banner-text-section-2 h5 {
         font-family: 'Montserrat';
@@ -1627,7 +1639,7 @@
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
                         <h6>{!! $product->description_1 !!}</h6>
-                        <img class="mt-2 mb-2 banner-image-2"
+                        <img class="mt-2 mb-2 banner-image-2"`
                             src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
                             width="100%" alt="Product Image">
                         <div class="badge-section">
