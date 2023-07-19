@@ -219,7 +219,7 @@
 
     }
 
-    .banner-text-section-2 span {
+    .banner-text-section-2 h6 {
         font-family: 'Montserrat-Medium';
         font-size: 11px;
         font-weight: 500;
@@ -227,6 +227,9 @@
         letter-spacing: 0.1em;
         text-align: left;
         text-transform: inherit;
+        max-height: 50vh;
+        overflow-y: auto;
+        display: block;
     }
 
     .banner-text-section-2 h5 {
@@ -1623,7 +1626,7 @@
                         <h3>{{ $product->cup_profile }}</h3>
                         <hr>
                         <h5>{{ $product->heading_1 }}</h5>
-                        <span>{!! $product->description_1 !!}</span>
+                        <h6>{!! $product->description_1 !!}</h6>
                         <img class="mt-2 mb-2 banner-image-2"
                             src="{{ url('/storage/app/public/auction/' . @$product->auctionProductImages[2]->image) }}"
                             width="100%" alt="Product Image">
