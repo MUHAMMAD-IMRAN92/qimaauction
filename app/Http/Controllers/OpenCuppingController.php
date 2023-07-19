@@ -187,30 +187,30 @@ class OpenCuppingController extends Controller
         $naturalAuctionProduct =  AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->pluck('product_id');
         $userId = $request->userId;
         $tables = 1;
-        $samples = OpenCupping::whereIn('product_id', $naturalAuctionProduct)->with('auctionProduct')
+        $samples = OpenCupping::where('auction_id', $auction->id)->with('auctionProduct')->whereHas('auctionProduct')
             ->join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')->where('open_cuppings.user_id', $userId);
-            })
+            })->whereIn('open_cuppings.product_id', $naturalAuctionProduct)
             ->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
             })
             ->select('products.*', 'open_cuppings.*')
-            ->where('auction_id', $auction->id)
+
             ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         //   return response($samples);
         $alchemtAuctionProduct =  AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->pluck('product_id');
-        $alchemySamples = OpenCupping::whereIn('product_id', $alchemtAuctionProduct)->with('auctionProduct')
+        $alchemySamples = OpenCupping::where('auction_id', $auction->id)->with('auctionProduct')->whereHas('auctionProduct')
             ->join('products', 'products.id', 'open_cuppings.product_id')
             ->when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')->where('open_cuppings.user_id', $userId);
-            })
+            })->whereIn('open_cuppings.product_id', $alchemtAuctionProduct)
             ->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
             })
             ->select('products.*', 'open_cuppings.*')
-            ->where('auction_id', $auction->id)
+
             ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         $user =   User::where('id', $request->userId)->first();
@@ -220,25 +220,24 @@ class OpenCuppingController extends Controller
     {
         $userId = $request->userId;
         $auction =  Auction::where('is_active', '1')->first();
-        $alltablesamples = OpenCupping::where('auction_id', $auction->id)->join('products', 'products.id', 'open_cuppings.product_id')
+        $alltablesamples = OpenCupping::whereHas('auctionProduct')->where('auction_id', $auction->id)
             ->when($userId != 0, function ($q) use ($userId) {
-                $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
-                    ->where('open_cuppings.user_id', $userId);
+                $q->where('open_cuppings.user_id', $userId);
             })
             ->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
             })
-            ->select(
-                'products.id as productId',
-                'products.product_title as productTitle',
-                'open_cuppings.id as sampleId',
-                'open_cuppings.samples as samples',
-                'open_cuppings.table as sampleTable',
-                'open_cuppings.postion as samplePostion',
-                'open_cuppings.is_hidden'
-            )
-            ->where('open_cuppings.table', $request->table)
-            ->orderBy('samplePostion', 'asc')
+            // ->select(
+            //     'products.id as productId',
+            //     'products.product_title as productTitle',
+            //     'open_cuppings.id as sampleId',
+            //     'open_cuppings.samples as samples',
+            //     'open_cuppings.table as sampleTable',
+            //     'open_cuppings.postion as samplePostion',
+            //     'open_cuppings.is_hidden'
+            // )
+            ->where('open_cuppings.table', $request->table)->with('auctionProduct')
+            // ->orderBy('samplePostion', 'asc')
             // ->where('open_cuppings.is_hidden', '0')
             ->get();
 
@@ -246,11 +245,15 @@ class OpenCuppingController extends Controller
 
 
         if (isset($request->sampleId)) {
+            // return $request->all();
             $firstsample = OpenCupping::where('product_id', $request->productId)
                 ->first();
-            $review = OpenCuppingReview::where('product_id', $request->productId)
-                ->first();
+            $review = OpenCuppingReview::where('auction_id', $auction->id)->where('product_id', $request->productId)->when($userId, function ($q) use ($userId) {
+                $q->where('user_id', $userId);
+            })->first();
         } else {
+
+
             $review = null;
             $firstsample = $alltablesamples->first();
 
@@ -297,7 +300,7 @@ class OpenCuppingController extends Controller
         $aucProduct = AuctionProduct::where('auction_id', $auction->id)->where('product_id', $request->productId)->first();
 
         return view('admin.jury.form', [
-            'productId' => $firstsample->product_id ?? $firstsample->productId,
+            'productId' => $firstsample->product_id ?? $firstsample->product_id,
             'table' => $request->table ?? $firstsample->sampleTable,
             'firstsample' => $firstsample,
             'reviewdata' => $review,
@@ -327,22 +330,19 @@ class OpenCuppingController extends Controller
         })->where('product_id', $request->product_id)->where('auction_id', $request->auction_id)
             ->first();
 
-
+        // return $request->auction_id;
         if (isset($sampleSent)) {
-            if ($sampleSent->is_hidden == '1') {
-                $review = OpenCuppingReview::when($userId != 0, function ($q) use ($userId) {
-                    $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cupping_reviews.user_id')
-                        ->where('open_cupping_reviews.user_id', $userId)->select('open_cupping_reviews.*');
-                })
-                    ->when($userId == 0, function ($q) {
-                        $q->where('open_cuppings.user_id', '0');
-                    })
-                    ->where('open_cupping_reviews.product_id', $request->product_id)
-                    ->where('open_cupping_reviews.sample_id', $sampleSent->id)
-                    ->first();
+            // return $sampleSent->samples;
+            $oldReview = OpenCuppingReview::where('auction_id', $sampleSent->auction_id)->where('sample_code', $sampleSent->samples)
+                ->where('user_id', $sampleSent->user_id)
+
+                ->first();
+            if ($sampleSent->is_hidden == '1' &&  $oldReview) {
+                $review =  $oldReview;
             } else {
                 $review = new OpenCuppingReview();
             }
+
             $review->aroma_dry              = $request->aroma_dry;
             $review->aroma              = $request->aroma;
             $review->aroma_crust            = $request->aroma_crust;
@@ -368,15 +368,19 @@ class OpenCuppingController extends Controller
             $review->sample_id              = $request->sent_sample_id;
             $review->product_id             = $request->product_id;
             $review->manual             = $request->manual_override;
+            $review->auction_id             = $request->auction_id;
+            $review->sample_code             = $request->sample_code;
             $review->save();
+            // return $review;
             $sampleSent->is_hidden = '1';
             $sampleSent->save();
+            // return $sampleSent;
         }
 
         $sampleSent2 = OpenCupping::where('is_hidden', '0')->orderBy('postion', 'asc')->first();
 
-
         if (isset($request->table_submit)) {
+
             $alltablesamples = OpenCupping::when($userId != 0, function ($q) use ($userId) {
                 $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
                     ->where('open_cuppings.user_id', $userId)->select('open_cuppings.*');
@@ -388,36 +392,28 @@ class OpenCuppingController extends Controller
                 ->update(["is_hidden" => "1"]);
             return redirect()->route('show_cupping', ['userId' => $userId]);
         }
+
         if (isset($request->sample_submit_prev)) {
+            // return $request->current_position;
             $v = ($request->current_position > 0) ? true : false;
-            $sample2Sent = OpenCupping::when($v, function ($q) use ($request) {
-                $q->where('postion', $request->current_position - 1)->where('table', $request->table_value);
-            })->when($userId != 0, function ($q) use ($userId) {
-                $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
-                    ->where('open_cuppings.user_id', $userId)->select('open_cuppings.*');;
+            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
+                $q->where('position', '<', $request->current_position)->where('table', $request->table_value);
+            })->with('auctionProduct')->when($userId == 0, function ($q) {
+                $q->where('open_cuppings.user_id', '0');
             })
-                ->when($userId == 0, function ($q) {
-                    $q->where('open_cuppings.user_id', '0');
-                })
                 ->first();
             //  dd($request);
             if ($sample2Sent) {
                 $sampleSent = $sample2Sent;
             }
         }
-
         if (isset($request->sample_submit)) {
 
-
-            $sample2Sent = OpenCupping::when($userId != 0, function ($q) use ($userId) {
-                $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
-                    ->where('open_cuppings.user_id', $userId)
-                    ->select('open_cuppings.*');
+            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
+                $q->where('position', '>', $request->current_position)->where('table', $request->table_value);
+            })->with('auctionProduct')->when($userId == 0, function ($q) {
+                $q->where('open_cuppings.user_id', '0');
             })
-                ->when($userId == 0, function ($q) {
-                    $q->where('open_cuppings.user_id', '0');
-                })
-                ->where('postion', $request->current_position + 1)
                 ->first();
 
             if (isset($sample2Sent)) {
@@ -431,15 +427,16 @@ class OpenCuppingController extends Controller
                     ->when($userId == 0, function ($q) {
                         $q->where('open_cuppings.user_id', '0');
                     })
-                    ->where('postion', $request->current_position)
+                    // ->where('postion', $request->current_position)
                     ->first();
             }
         }
 
         if ($request->to_go_sample) {
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample, 'user' => $user])->with('success', 'Review submitted successfully');
+            $to_go_to_product = OpenCupping::where('id', $request->to_go_sample)->first();
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample, 'user' => $user, 'product',  'productId' => $sample2Sent->product_id ?? $to_go_to_product->product_id])->with('success', 'Review submitted successfully');
         } else {
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id, 'user' => $user])->with('success', 'Review submitted successfully');
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id, 'user' => $user,  'productId' => @$sample2Sent->product_id])->with('success', 'Review submitted successfully');
         }
     }
     public function openCuppingFeedback()

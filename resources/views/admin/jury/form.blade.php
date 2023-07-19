@@ -89,6 +89,12 @@
         gap: 20px;
     }
 
+    .black {
+        background-color: black !important;
+        color: white !important;
+
+    }
+
     .button-wrapper .btn-1 {
         color: rgba(87, 85, 85, 1) !important;
         font-weight: 700;
@@ -1716,7 +1722,7 @@
                                                 </div>
                                                 <hr>
                                                 <div class="name-section">
-                                                    <h2>{{ @$user->name}}</h2>
+                                                    <h2>{{ @$user->name }}</h2>
                                                 </div>
                                                 <hr>
                                                 <div class="category">
@@ -1786,26 +1792,30 @@
                                                     @csrf
                                                     <input type="hidden" name="table_value"
                                                         value="{{ @$auction_product->table }}">
-                                                        <input type="hidden" name="auction_id"
+                                                    <input type="hidden" name="auction_id"
                                                         value="{{ @$auction_product->auction_id }}">
                                                     <input type="hidden" name="userId"
                                                         value="{{ $user->id }}">
                                                     <input type="hidden" name="current_position"
-                                                        value="{{ @$auction_product->postion }}">
+                                                        value="{{ @$auction_product->position }}">
+                                                    <input type="hidden" name="sample_code"
+                                                        value="{{ @$auction_product->code }}">
                                                     <input type="hidden" name="next_position"
                                                         value="@php
-$next_position = @$auction_product->postion + 1;
+$next_position = @$auction_product->position + 1;
                                                         echo $next_position; @endphp">
                                                     <input type="hidden" name="previous_position"
                                                         value="@php
-$previous_position = @$auction_product->postion - 1;
+$previous_position = @$auction_product->position - 1;
                                                             echo $previous_position; @endphp">
                                                     <input type="hidden" name="product_id"
-                                                        value="{{ $productId }}">
+                                                        value="{{ @$auction_product->product_id }}">
                                                     <input type="hidden" name="review_id"
                                                         value="{{ $sampleReview->id ?? null }}">
                                                     <input type="hidden" name="sent_sample_id"
                                                         value="{{ $sentSampleId }}">
+
+
                                                     <div id="grid-container">
 
                                                         <div class="row bg-roast--theme" id="item-left-1">
@@ -2551,16 +2561,24 @@ $previous_position = @$auction_product->postion - 1;
                                                                             @if ($samp->is_hidden == 1)
                                                                                 @php $extraclass="isdone"; @endphp
                                                                             @endif
-                                                                            @if ($samp->sampleId == $sentSampleId)
+                                                                            @php
+                                                                                $black = '';
+                                                                                
+                                                                                if (@$auction_product->code == $samp->samples) {
+                                                                                    $black = "style=background-color:black!important;color:white!important";
+                                                                                }
+                                                                                
+                                                                            @endphp
+                                                                            @if ($samp->id == $sentSampleId)
                                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
-                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }} {{ $black }}"
                                                                                     href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                                    {{ $samp->samples }}
+                                                                                    {{ @$samp->auctionProduct->code }}
                                                                                 </a>
                                                                             @else
-                                                                                <a class="btn btn-secondary pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
-                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
-                                                                                    {{ $samp->samples }}
+                                                                                <a class="btn btn-secondary  pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" {{ $black }}
+                                                                                    href="javascript:setSampleToGo({{ $samp->id }})">
+                                                                                    {{ @$samp->auctionProduct->code }}
                                                                                 </a>
                                                                             @endif
                                                                         @endforeach
@@ -3681,6 +3699,7 @@ $previous_position = @$auction_product->postion - 1;
         });
 
         function setSampleToGo(valz) {
+            // alert(valz);
             $('#to_go_sample').val(valz);
             $('#myForm').submit();
         }

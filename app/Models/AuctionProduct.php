@@ -92,4 +92,8 @@ class AuctionProduct extends Model
     {
         return $this->hasOne(Process::class, 'title', 'process');
     }
+    public function openCupping()
+    {
+        return $this->hasOne(OpenCupping::class, 'product_id', 'product_id');
+    }
 }

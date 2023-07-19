@@ -12,6 +12,10 @@ class OpenCupping extends Model
 
     public function auctionProduct()
     {
-        return $this->hasOne(AuctionProduct::class, 'product_id', 'product_id');
+        return $this->hasOne(AuctionProduct::class, 'code', 'samples');
+    }
+    public function CodeAuctionProduct()
+    {
+        return $this->hasOne(AuctionProduct::class, 'product_id', 'productId');
     }
 }
