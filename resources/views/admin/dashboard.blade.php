@@ -997,7 +997,7 @@
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
                 <button><a
-                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-sample-set-auction-registration-2023/">Register For The Auction</a></button>
+                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register For The Auction</a></button>
             </div>
 
         </div>

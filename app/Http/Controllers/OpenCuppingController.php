@@ -236,7 +236,8 @@ class OpenCuppingController extends Controller
             //     'open_cuppings.postion as samplePostion',
             //     'open_cuppings.is_hidden'
             // )
-            ->where('open_cuppings.table', $request->table)->with('auctionProduct')
+            // ->where('open_cuppings.table', $request->table)
+            ->with('auctionProduct')
             // ->orderBy('samplePostion', 'asc')
             // ->where('open_cuppings.is_hidden', '0')
             ->get();
