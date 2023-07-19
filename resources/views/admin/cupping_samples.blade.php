@@ -420,7 +420,20 @@
     }
     @media only screen and (max-width:768px){
         .p-name{
-            font-size:18px;
+            font-size:16px;
+            line-height: 20px;
+        }
+        .table td {
+        padding: 15px;
+        }
+        .tabbed h2{
+            font-size: 16px;
+        }
+        .heading-name{
+            font-size: 16px;
+        }
+        .table thead th{
+            font-size: 15px;
         }
     }
 </style>
@@ -498,8 +511,7 @@
                                                                         <td class="sample br-right"
                                                                             data-title="Sample ID">
                                                                             <p class="p-name">
-                                                                                ALCHEMY ALCHEMY 2
-                                                                                <!-- {{ @$sample->auctionProduct->name }} -->
+                                                                                {{ @$sample->auctionProduct->name }}
                                                                             </p>
                                                                             JURY CODE
                                                                             :{{ @$sample->auctionProduct->code }}
@@ -527,7 +539,7 @@
                                     @endif
                                 </div>
 
-                                <div id="tab2" class="tab-content">
+                                <div id="tab2" class="tab-content table-responsive">
                                     @if (count($alchemySamples) > 0)
 
                                         <table class="table">
