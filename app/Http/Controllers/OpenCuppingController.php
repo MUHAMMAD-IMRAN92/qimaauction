@@ -293,7 +293,8 @@ class OpenCuppingController extends Controller
             // return  $firstsample->product_id;
             $product = Product::where('id', $firstsample->product_id)->first();
         }
-        $aucProduct = AuctionProduct::where('product_id', $request->productId)->first();
+
+        $aucProduct = AuctionProduct::where('auction_id', $auction->id)->where('product_id', $request->productId)->first();
 
         return view('admin.jury.form', [
             'productId' => $firstsample->product_id ?? $firstsample->productId,
@@ -318,7 +319,6 @@ class OpenCuppingController extends Controller
     {
         $userId = $request->userId;
         $user = User::where('id', $userId)->first();
-
         $sampleSent = OpenCupping::when($userId != 0, function ($q) use ($userId) {
             $q->join('open_cupping_users', 'open_cupping_users.id', 'open_cuppings.user_id')
                 ->where('open_cuppings.user_id', $userId)->select('open_cuppings.*');
@@ -383,7 +383,7 @@ class OpenCuppingController extends Controller
             })
                 ->when($userId == 0, function ($q) {
                     $q->where('open_cuppings.user_id', '0');
-                })->where('open_cuppings.table', $request->table_value)
+                })
                 ->where('open_cuppings.is_hidden', '0')->where('auction_id', $request->auction_id)
                 ->update(["is_hidden" => "1"]);
             return redirect()->route('show_cupping', ['userId' => $userId]);
