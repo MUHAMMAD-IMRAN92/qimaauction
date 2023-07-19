@@ -151,7 +151,7 @@
 
     /*no more table*/
 
-    @media only screen and (max-width: 800px) {
+    /* @media only screen and (max-width: 800px) {
 
         / Force table to not be like tables anymore / #no-more-tables table,
         #no-more-tables thead,
@@ -195,10 +195,10 @@
         /*
             Label the data
             */
-        #no-more-tables td:before {
+        /* #no-more-tables td:before {
             content: attr(data-title);
-        }
-    }
+        } */
+    /* } */ */
 
     .app-content {
         background-color: #FFF;
@@ -232,7 +232,7 @@
     .newlogo p {
         font-family: 'Montserrat';
         font-size: 19px;
-        font-weight: 900;
+        font-weight: inherit;
         line-height: 32px;
         letter-spacing: 0.2em;
         color: rgba(231, 132, 96, 1);
@@ -249,7 +249,7 @@
     .heading-name {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: 800;
+        font-weight: inherit;
         line-height: 32px;
         letter-spacing: 0.2em;
         text-align: center;
@@ -277,7 +277,7 @@
     .tabbed h2 {
         font-family: 'Montserrat';
         font-size: 20px;
-        font-weight: 800;
+        font-weight: inherit;
         line-height: 24px;
         letter-spacing: 0.1em;
         text-align: center;
@@ -408,8 +408,20 @@
         color: black
     }
 
+
     html body.blank-page .content.app-content {
         background: rgba(239, 235, 229, 1) !important
+    }
+    html body.bg-full-screen-image{
+        background: rgba(239, 235, 229, 1) !important
+    }
+    html body.blank-page .content-wrapper .flexbox-container{
+        height: 100%;
+    }
+    @media only screen and (max-width:768px){
+        .p-name{
+            font-size:18px;
+        }
     }
 </style>
 
@@ -486,7 +498,8 @@
                                                                         <td class="sample br-right"
                                                                             data-title="Sample ID">
                                                                             <p class="p-name">
-                                                                                {{ @$sample->auctionProduct->name }}
+                                                                                ALCHEMY ALCHEMY 2
+                                                                                <!-- {{ @$sample->auctionProduct->name }} -->
                                                                             </p>
                                                                             JURY CODE
                                                                             :{{ @$sample->auctionProduct->code }}
