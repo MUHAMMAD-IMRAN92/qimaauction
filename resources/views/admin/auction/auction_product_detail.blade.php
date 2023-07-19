@@ -197,7 +197,6 @@
         line-height: 13px;
         letter-spacing: 0.2em;
         text-align: left;
-        text-transform: uppercase;
         margin-bottom: 0px;
 
 
