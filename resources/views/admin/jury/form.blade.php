@@ -2483,7 +2483,7 @@ $previous_position = @$auction_product->position - 1;
                                                                     <input class="score_first_number"
                                                                         oninput="if (this.value > 5) this.value = 0;"
                                                                         type="number" id="quantity"
-                                                                        value="{{@$sampleReview->first_number}}" name="first_number">
+                                                                        value="{{@$sampleReview->first_number ?? 0}}" name="first_number">
                                                                     <span class="multiply">X</span>
                                                                     <!-- {{-- <input class="score_second_number"
                                                                 oninput="if (this.value > 3) this.value = 0"
