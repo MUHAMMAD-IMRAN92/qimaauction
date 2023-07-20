@@ -2711,7 +2711,7 @@ $previous_position = @$auction_product->position - 1;
                     $('#uniformity' + i).prop('checked', true);
                 }
             }
-            if (svalue) {
+            if (cvalue) {
                 $('#cleancup').html(svalue);
                 var t = 1;
                 for (let i = svalue; i > 0; i--) {
@@ -2726,7 +2726,7 @@ $previous_position = @$auction_product->position - 1;
                 }
             }
 
-            if (cvalue) {
+            if (svalue) {
                 $('#sweetness').html(cvalue);
                 var t = 1;
                 for (let i = cvalue; i > 0; i--) {
