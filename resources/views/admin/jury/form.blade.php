@@ -3666,12 +3666,12 @@ $previous_position = @$auction_product->position - 1;
                 $(".cleancup").slider({
                     value: parseReview({{ $sampleReview->clean_up ?? '8' }})
                 })
-                $('#cleanup_note').val('{{ $sampleReview->clean_sweet_note ?? '' }}');
+                // $('#cleanup_note').val('{{ $sampleReview->clean_sweet_note ?? '' }}');
 
-                $(".sweetness").slider({
-                    value: parseReview({{ $sampleReview->sweetness ?? '8' }})
-                })
-                $('#sweetness_note').val('{{ $sampleReview->sweetness_note ?? '' }}');
+                // $(".sweetness").slider({
+                //     value: parseReview({{ $sampleReview->sweetness ?? '8' }})
+                // })
+                // $('#sweetness_note').val('{{ $sampleReview->sweetness_note ?? '' }}');
 
                 $(".acidity").slider({
                     value: parseReview({{ $sampleReview->acidity ?? '8' }})
