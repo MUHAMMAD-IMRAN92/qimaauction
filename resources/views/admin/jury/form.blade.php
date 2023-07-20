@@ -2491,7 +2491,7 @@ $previous_position = @$auction_product->position - 1;
                                                                 value="second_number" name="second_number"> --}} -->
                                                                     <select id="second_number" name="second_number"
                                                                         class="score_second_number" value="{{@$sampleReview->second_number}}">
-                                                                        <option  value="2" {{@$sampleReview->second_number  == 1 ? 'selected' : ''}}>Taint : 2
+                                                                        <option  value="2" {{@$sampleReview->second_number  == 2 ? 'selected' : ''}}>Taint : 2
                                                                         </option>
                                                                         <option value="4" {{@$sampleReview->second_number  == 4 ? 'selected' : ''}}>Fault : 4</option>
                                                                     </select>
