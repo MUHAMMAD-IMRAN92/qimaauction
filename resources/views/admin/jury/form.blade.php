@@ -3718,7 +3718,7 @@ $previous_position = @$auction_product->position - 1;
                 $('.totalScore').html({{ $reviewdata->total_score }});
             @endif
 
-            $('.score_second_number').val($reviewdata->second_number);
+            // $('.score_second_number').val($reviewdata->second_number);
         });
 
         function setSampleToGo(valz) {
