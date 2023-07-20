@@ -374,7 +374,7 @@ class OpenCuppingController extends Controller
             $review->aroma_note             = $request->aroma_text;
             $review->roast_color_note             = $request->roast_color;
             $review->flavour_note             = $request->flavour_text;
-            $review->body_note             = $request->body;
+            $review->body_note             = $request->body_note;
             $review->acidity_note             = $request->acidity_note;
             $review->save();
             $sampleSent->is_hidden = '1';
