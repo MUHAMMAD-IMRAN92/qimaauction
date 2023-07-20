@@ -2700,6 +2700,8 @@ $previous_position = @$auction_product->position - 1;
             if (uvalue) {
                 $('#uniformity').html(uvalue);
                 var t = 1;
+
+
                 for (let i = uvalue; i > 0; i--) {
                     $('#uniformity' + t).prop('checked', true);
                     t++;
@@ -2712,9 +2714,9 @@ $previous_position = @$auction_product->position - 1;
                 }
             }
             if (cvalue) {
-                $('#cleancup').html(svalue);
+                $('#cleancup').html(cvalue);
                 var t = 1;
-                for (let i = svalue; i > 0; i--) {
+                for (let i = cvalue; i > 0; i--) {
                     $('#cleancup' + t).prop('checked', true);
                     t++;
                     i--;
@@ -2727,9 +2729,10 @@ $previous_position = @$auction_product->position - 1;
             }
 
             if (svalue) {
-                $('#sweetness').html(cvalue);
+                $('#sweetness').html(svalue);
                 var t = 1;
-                for (let i = cvalue; i > 0; i--) {
+                // var id = uvalue / 2;
+                for (let i = svalue; i > 0; i--) {
                     $('#sweetness' + t).prop('checked', true);
                     t++;
                     i--;
