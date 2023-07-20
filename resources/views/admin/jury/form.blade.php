@@ -2554,11 +2554,11 @@ $previous_position = @$auction_product->position - 1;
                                                                 <div class="button-wrapper-2">
                                                                     <input type="hidden" id="to_go_sample"
                                                                         name="to_go_sample" value="">
-                                                                    @if ($previous_position != 0)
+                                                                    {{-- @if ($previous_position != 0) --}}
                                                                         <button type="submit" value="1"
                                                                             name="sample_submit_prev"
                                                                             class="submit-form-btn btn-1">PREVIOUS</button>
-                                                                    @endif
+                                                                    {{-- @endif --}}
                                                                     <button type="submit" value="1"
                                                                         name="sample_submit"
                                                                         class="submit-form-btn btn-1">NEXT</button>
@@ -2591,7 +2591,7 @@ $previous_position = @$auction_product->position - 1;
                                                                             @if ($samp->id == $sentSampleId)
                                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
                                                                                 <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }} {{ $black }}"
-                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    href="@if ($samp->id == $sentSampleId) # @else javascript:setSampleToGo({{ $samp->sampleId }}) @endif ">
                                                                                     {{ @$samp->auctionProduct->code }}
                                                                                 </a>
                                                                             @else
