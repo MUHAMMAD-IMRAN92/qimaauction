@@ -439,6 +439,9 @@
     .btn-success:active{
         color: rgba(87, 85, 85, 1) !important;
     }
+     .btn-success:focus{
+        color: rgba(87, 85, 85, 1) !important;
+    }
 </style>
 
 <body
