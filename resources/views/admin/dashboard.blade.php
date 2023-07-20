@@ -1005,7 +1005,7 @@
             <div class="table-wrapper">
                 <div class=" table-grid wrapper-top-section">
                     <div class="table-items">
-                        <h3 id="w-c">Winnging Coffees</h3>
+                        <h3 id="w-c">Winning Coffees</h3>
                         <div class="heading-top first-head">
                             <h2>Naturals & Deep Fermentation</h2>
                         </div>
