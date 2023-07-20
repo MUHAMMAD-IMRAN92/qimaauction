@@ -238,7 +238,7 @@ class OpenCuppingController extends Controller
             // )
             // ->where('open_cuppings.table', $request->table)
             ->with('auctionProduct')
-            // ->orderBy('samplePostion', 'asc')
+            ->orderBy('id', 'asc')
             // ->where('open_cuppings.is_hidden', '0')
             ->get();
 
@@ -398,10 +398,10 @@ class OpenCuppingController extends Controller
             // return $request->current_position;
             $v = ($request->current_position > 0) ? true : false;
             $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
-                $q->where('position', '<', $request->current_position)->where('table', $request->table_value);
+                // $q->where('position', '<', $request->current_position)->where('table', $request->table_value);
             })->with('auctionProduct')->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
-            })
+            })->orderBy('id' , 'desc')->where('id' ,'<',$sampleSent->id)
                 ->first();
             //  dd($request);
             if ($sample2Sent) {
@@ -411,10 +411,10 @@ class OpenCuppingController extends Controller
         if (isset($request->sample_submit)) {
 
             $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
-                $q->where('position', '>', $request->current_position)->where('table', $request->table_value);
+                // $q->where('position', '>', $request->current_position)->where('table', $request->table_value);
             })->with('auctionProduct')->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
-            })
+            })->where('id' ,'>', $sampleSent->id)
                 ->first();
 
             if (isset($sample2Sent)) {
@@ -427,7 +427,7 @@ class OpenCuppingController extends Controller
                 })
                     ->when($userId == 0, function ($q) {
                         $q->where('open_cuppings.user_id', '0');
-                    })
+                    })->where('id' ,'>', $sampleSent->id)
                     // ->where('postion', $request->current_position)
                     ->first();
             }
