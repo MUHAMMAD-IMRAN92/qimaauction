@@ -444,6 +444,9 @@
     .aromaslider.ui-slider-horizontal {
         height: 1px;
     }
+    #second_number option{
+        color: black !important;
+    }
 
     .aromaslider.ui-slider-horizontal .ui-slider-handle {
         top: -9px;
@@ -2482,13 +2485,13 @@ $previous_position = @$auction_product->position - 1;
                                                                         type="number" id="quantity"
                                                                         value="{{@$sampleReview->first_number}}" name="first_number">
                                                                     <span class="multiply">X</span>
-                                                                    {{-- <input class="score_second_number"
+                                                                    <!-- {{-- <input class="score_second_number"
                                                                 oninput="if (this.value > 3) this.value = 0"
                                                                 type="number" id="quantity" maxlength="3"
-                                                                value="second_number" name="second_number"> --}}
+                                                                value="second_number" name="second_number"> --}} -->
                                                                     <select id="second_number" name="second_number"
-                                                                        class="score_second_number" value={{@$sampleReview->second_number}}>
-                                                                        <option value="2" {{@$sampleReview->second_number  == 2 ? 'selected' : ''}}>Taint : 2
+                                                                        class="score_second_number" value="{{@$sampleReview->second_number}}">
+                                                                        <option  value="2" {{@$sampleReview->second_number  == 2 ? 'selected' : ''}}>Taint : 2
                                                                         </option>
                                                                         <option value="4" {{@$sampleReview->second_number  == 4 ? 'selected' : ''}}>Fault : 4</option>
                                                                     </select>
@@ -3715,7 +3718,7 @@ $previous_position = @$auction_product->position - 1;
                 $('.totalScore').html({{ $reviewdata->total_score }});
             @endif
 
-            // $('.score_second_number').val(2);
+            $('.score_second_number').val($reviewdata->second_number);
         });
 
         function setSampleToGo(valz) {
