@@ -1941,7 +1941,7 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                         <div>
                                                                             <label class="radio_container">
-                                                                                <input type="radio" checked=""
+                                                                                <input type="radio"
                                                                                     name="acidity_chk" value="L"
                                                                                     class="acidity_L"
                                                                                     {{ $sampleReview->acidity_chk == 'L' ? 'checked' : '' }}>
