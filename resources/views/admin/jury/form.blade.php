@@ -2572,7 +2572,7 @@ $previous_position = @$auction_product->position - 1;
                                                                             @if ($samp->id == $sentSampleId)
                                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
                                                                                 <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }} {{ $black }}"
-                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
+                                                                                    href=" @if ($samp->id == $sentSampleId)  # @else javascript:setSampleToGo({{ $samp->sampleId }}) @endif">
                                                                                     {{ @$samp->auctionProduct->code }}
                                                                                 </a>
                                                                             @else
