@@ -1932,7 +1932,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="VL"
                                                                                     class="acidity_L"
-                                                                                    {{ $sampleReview->acidity_chk == 'VL' ? 'checked' : '' }}>
+                                                                                    {{ @$sampleReview->acidity_chk == 'VL' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Very <br> Low</h5>
@@ -1944,7 +1944,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="L"
                                                                                     class="acidity_L"
-                                                                                    {{ $sampleReview->acidity_chk == 'L' ? 'checked' : '' }}>
+                                                                                    {{ @$sampleReview->acidity_chk == 'L' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Low</h5>
@@ -1956,7 +1956,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="M"
                                                                                     class="acidity_M"
-                                                                                    {{ $sampleReview->acidity_chk == 'M' ? 'checked' : '' }}>
+                                                                                    {{ @$sampleReview->acidity_chk == 'M' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Medium</h5>
@@ -1970,7 +1970,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="H"
                                                                                     class="acidity_H"
-                                                                                    {{ $sampleReview->acidity_chk == 'H' ? 'checked' : '' }}>
+                                                                                    {{ @$sampleReview->acidity_chk == 'H' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>High</h5>
@@ -1983,7 +1983,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="VH"
                                                                                     class="acidity_H"
-                                                                                    {{ $sampleReview->acidity_chk == 'VH' ? 'checked' : '' }}>
+                                                                                    {{ @$sampleReview->acidity_chk == 'VH' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Very <br> High</h5>
@@ -2036,7 +2036,7 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio"
-                                                                                    {{ $sampleReview->body_chk == 'VT' ? 'checked' : '' }}
+                                                                                    {{ @$sampleReview->body_chk == 'VT' ? 'checked' : '' }}
                                                                                     name="body_chk" value="VT"
                                                                                     class="acidity_L">
                                                                                 <div class="checkmark">
@@ -2048,7 +2048,7 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio"
-                                                                                    {{ $sampleReview->body_chk == 'T' ? 'checked' : '' }}
+                                                                                    {{ @$sampleReview->body_chk == 'T' ? 'checked' : '' }}
                                                                                     name="body_chk" value="T"
                                                                                     class="acidity_L">
                                                                                 <div class="checkmark">
@@ -2060,7 +2060,7 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio" name="body_chk"
-                                                                                    {{ $sampleReview->body_chk == 'M' ? 'checked' : '' }}
+                                                                                    {{ @$sampleReview->body_chk == 'M' ? 'checked' : '' }}
                                                                                     value="M" class="acidity_M">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -2073,7 +2073,7 @@ $previous_position = @$auction_product->position - 1;
                                                                             <label class="radio_container ">
 
                                                                                 <input type="radio" name="body_chk"
-                                                                                    {{ $sampleReview->body_chk == 'H' ? 'checked' : '' }}
+                                                                                    {{ @$sampleReview->body_chk == 'H' ? 'checked' : '' }}
                                                                                     value="H" class="acidity_H">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -2086,7 +2086,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 style="text-align: justify">
 
                                                                                 <input type="radio" name="body_chk"
-                                                                                    {{ $sampleReview->body_chk == 'VH' ? 'checked' : '' }}
+                                                                                    {{ @$sampleReview->body_chk == 'VH' ? 'checked' : '' }}
                                                                                     value="VH" class="acidity_H">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -3669,7 +3669,7 @@ $previous_position = @$auction_product->position - 1;
                 })
 
                 // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
-                // $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
+                // $('.acidity_{{ @$sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
 
                 // $(".mouthfeel").slider({
                 //     value: parseReview({{ $sampleReview->mouth_feel ?? '8' }})
