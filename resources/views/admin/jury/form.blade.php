@@ -1104,6 +1104,16 @@
         width: auto !important;
 
     }
+    .bg-sweet--theme h2{
+        font-family: 'Montserrat';
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    padding-top: 30px;
+    color: white;
+    }
 
     .bg-acid--theme {
         background: linear-gradient(290deg, #DEF193 0%, #FF9B3F 100%);
@@ -1829,9 +1839,9 @@ $previous_position = @$auction_product->position - 1;
                                                                             value="50"></div>
                                                                 </div>
                                                                 <div class="entity_input mb-5">
-                                                                    <input type="text" name="roast_color"
+                                                                    <input type="text" name="quality_notes"
                                                                         id="quality_notes"
-                                                                        value="{{ $sampleReview->roast_color_note ?? '' }}"
+                                                                        value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                         placeholder="NOTES" class="entity_note">
                                                                 </div>
                                                             </div>
@@ -1898,9 +1908,9 @@ $previous_position = @$auction_product->position - 1;
                                                         <h5 style="margin-top:-6px">Descriptors</h5>
                                                     </div> -->
                                                                 <div class="entity_input mb-5">
-                                                                    <input type="text" name="aroma_text"
+                                                                    <input type="text" name="quality_notes"
                                                                         id="quality_notes"
-                                                                        value="{{ $sampleReview->aroma_note ?? '' }}"
+                                                                        value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                         placeholder="NOTES" class="entity_note">
                                                                 </div>
                                                             </div>
@@ -1920,9 +1930,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container">
                                                                                 <input type="radio"
-                                                                                    checked="checked"
                                                                                     name="acidity_chk" value="VL"
-                                                                                    class="acidity_L">
+                                                                                    class="acidity_L"
+                                                                                    {{ $sampleReview->acidity_chk == 'VL' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Very <br> Low</h5>
@@ -1931,10 +1941,10 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                         <div>
                                                                             <label class="radio_container">
-                                                                                <input type="radio"
-                                                                                    checked="checked"
+                                                                                <input type="radio" checked=""
                                                                                     name="acidity_chk" value="L"
-                                                                                    class="acidity_L">
+                                                                                    class="acidity_L"
+                                                                                    {{ $sampleReview->acidity_chk == 'L' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Low</h5>
@@ -1945,7 +1955,8 @@ $previous_position = @$auction_product->position - 1;
                                                                             <label class="radio_container">
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="M"
-                                                                                    class="acidity_M">
+                                                                                    class="acidity_M"
+                                                                                    {{ $sampleReview->acidity_chk == 'M' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Medium</h5>
@@ -1958,7 +1969,8 @@ $previous_position = @$auction_product->position - 1;
 
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="H"
-                                                                                    class="acidity_H">
+                                                                                    class="acidity_H"
+                                                                                    {{ $sampleReview->acidity_chk == 'H' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>High</h5>
@@ -1970,7 +1982,8 @@ $previous_position = @$auction_product->position - 1;
 
                                                                                 <input type="radio"
                                                                                     name="acidity_chk" value="VH"
-                                                                                    class="acidity_H">
+                                                                                    class="acidity_H"
+                                                                                    {{ $sampleReview->acidity_chk == 'VH' ? 'checked' : '' }}>
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Very <br> High</h5>
@@ -1979,9 +1992,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="acidity"
+                                                                        <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->acidity_note ?? '' }}"
+                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -1999,9 +2012,9 @@ $previous_position = @$auction_product->position - 1;
                                                                                 id="flavour" value="8"></div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="flavour_text"
+                                                                        <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->flavour_note ?? '' }}"
+                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2018,12 +2031,14 @@ $previous_position = @$auction_product->position - 1;
                                                                                 type="hidden" name="body"
                                                                                 id="body" value="8"></div>
                                                                     </div>
+                                                                    <h2>INTENSITY</h2>
                                                                     <div class="radio_button p-5">
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio"
-                                                                                    checked="checked" name="body_chk"
-                                                                                    value="VT" class="acidity_L">
+                                                                                    {{ $sampleReview->body_chk == 'VT' ? 'checked' : '' }}
+                                                                                    name="body_chk" value="VT"
+                                                                                    class="acidity_L">
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Very <br> Thin</h5>
@@ -2033,8 +2048,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio"
-                                                                                    checked="checked" name="body_chk"
-                                                                                    value="T" class="acidity_L">
+                                                                                    {{ $sampleReview->body_chk == 'T' ? 'checked' : '' }}
+                                                                                    name="body_chk" value="T"
+                                                                                    class="acidity_L">
                                                                                 <div class="checkmark">
                                                                                 </div>
                                                                                 <h5>Thin</h5>
@@ -2044,6 +2060,7 @@ $previous_position = @$auction_product->position - 1;
                                                                         <div>
                                                                             <label class="radio_container  ">
                                                                                 <input type="radio" name="body_chk"
+                                                                                    {{ $sampleReview->body_chk == 'M' ? 'checked' : '' }}
                                                                                     value="M" class="acidity_M">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -2056,6 +2073,7 @@ $previous_position = @$auction_product->position - 1;
                                                                             <label class="radio_container ">
 
                                                                                 <input type="radio" name="body_chk"
+                                                                                    {{ $sampleReview->body_chk == 'H' ? 'checked' : '' }}
                                                                                     value="H" class="acidity_H">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -2068,6 +2086,7 @@ $previous_position = @$auction_product->position - 1;
                                                                                 style="text-align: justify">
 
                                                                                 <input type="radio" name="body_chk"
+                                                                                    {{ $sampleReview->body_chk == 'VH' ? 'checked' : '' }}
                                                                                     value="VH" class="acidity_H">
                                                                                 <div class="checkmark">
                                                                                 </div>
@@ -2077,9 +2096,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="body"
+                                                                        <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->body_note ?? '' }}"
+                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2097,9 +2116,9 @@ $previous_position = @$auction_product->position - 1;
                                                                                 id="after_taste" value="8"></div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="after_taste_text"
+                                                                        <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->afetr_taste ?? '' }}"
+                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2120,9 +2139,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="balance_text"
+                                                                        <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->balance_note ?? '' }}"
+                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2535,11 +2554,11 @@ $previous_position = @$auction_product->position - 1;
                                                                 <div class="button-wrapper-2">
                                                                     <input type="hidden" id="to_go_sample"
                                                                         name="to_go_sample" value="">
-                                                                    {{-- @if ($previous_position != 0) --}}
+                                                                    @if ($previous_position != 0)
                                                                         <button type="submit" value="1"
                                                                             name="sample_submit_prev"
                                                                             class="submit-form-btn btn-1">PREVIOUS</button>
-                                                                    {{-- @endif --}}
+                                                                    @endif
                                                                     <button type="submit" value="1"
                                                                         name="sample_submit"
                                                                         class="submit-form-btn btn-1">NEXT</button>
@@ -2565,18 +2584,19 @@ $previous_position = @$auction_product->position - 1;
                                                                                 $black = '';
 
                                                                                 if (@$auction_product->code == $samp->samples) {
-                                                                                    $black = "style=background-color:black!important;color:white!important";
+                                                                                    $black = 'style=background-color:black!important;color:white!important';
                                                                                 }
 
                                                                             @endphp
                                                                             @if ($samp->id == $sentSampleId)
                                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
                                                                                 <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }} {{ $black }}"
-                                                                                    href=" @if ($samp->id == $sentSampleId)  # @else javascript:setSampleToGo({{ $samp->sampleId }}) @endif">
+                                                                                    href="javascript:setSampleToGo({{ $samp->sampleId }})">
                                                                                     {{ @$samp->auctionProduct->code }}
                                                                                 </a>
                                                                             @else
-                                                                                <a class="btn btn-secondary  pager hid_{{ $samp->is_hidden }} {{ $extraclass }}" {{ $black }}
+                                                                                <a class="btn btn-secondary  pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    {{ $black }}
                                                                                     href="javascript:setSampleToGo({{ $samp->id }})">
                                                                                     {{ @$samp->auctionProduct->code }}
                                                                                 </a>
@@ -3649,7 +3669,7 @@ $previous_position = @$auction_product->position - 1;
                 })
 
                 // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
-                $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
+                // $('.acidity_{{ $sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
 
                 // $(".mouthfeel").slider({
                 //     value: parseReview({{ $sampleReview->mouth_feel ?? '8' }})
