@@ -319,6 +319,7 @@ class OpenCuppingController extends Controller
 
     public function saveCuppingReview(Request $request)
     {
+        // return $request->all();
         $userId = $request->userId;
         $user = User::where('id', $userId)->first();
         $sampleSent = OpenCupping::when($userId != 0, function ($q) use ($userId) {
@@ -367,8 +368,14 @@ class OpenCuppingController extends Controller
             $review->manual             = $request->manual_override;
             $review->auction_id             = $request->auction_id;
             $review->sample_code             = $request->sample_code;
+            $review->balance_note             = $request->balance_text;
+            $review->afetr_taste             = $request->after_taste_text;
+            $review->aroma_note             = $request->aroma_text;
+            $review->roast_color_note             = $request->roast_color;
+            $review->flavour_note             = $request->flavour_text;
+            $review->body_note             = $request->body;
+            $review->acidity_note             = $request->acidity;
             $review->save();
-            $review;
             $sampleSent->is_hidden = '1';
             $sampleSent->save();
             // return $sampleSent;

@@ -1829,9 +1829,9 @@ $previous_position = @$auction_product->position - 1;
                                                                             value="50"></div>
                                                                 </div>
                                                                 <div class="entity_input mb-5">
-                                                                    <input type="text" name="quality_notes"
+                                                                    <input type="text" name="roast_color"
                                                                         id="quality_notes"
-                                                                        value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                        value="{{ $sampleReview->roast_color_note ?? '' }}"
                                                                         placeholder="NOTES" class="entity_note">
                                                                 </div>
                                                             </div>
@@ -1898,9 +1898,9 @@ $previous_position = @$auction_product->position - 1;
                                                         <h5 style="margin-top:-6px">Descriptors</h5>
                                                     </div> -->
                                                                 <div class="entity_input mb-5">
-                                                                    <input type="text" name="quality_notes"
+                                                                    <input type="text" name="aroma_text"
                                                                         id="quality_notes"
-                                                                        value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                        value="{{ $sampleReview->aroma_note ?? '' }}"
                                                                         placeholder="NOTES" class="entity_note">
                                                                 </div>
                                                             </div>
@@ -1979,9 +1979,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="quality_notes"
+                                                                        <input type="text" name="acidity"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->acidity_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -1999,9 +1999,9 @@ $previous_position = @$auction_product->position - 1;
                                                                                 id="flavour" value="8"></div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="quality_notes"
+                                                                        <input type="text" name="flavour_text"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->flavour_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2077,9 +2077,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="quality_notes"
+                                                                        <input type="text" name="body"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->body_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2097,9 +2097,9 @@ $previous_position = @$auction_product->position - 1;
                                                                                 id="after_taste" value="8"></div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="quality_notes"
+                                                                        <input type="text" name="after_taste_text"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->afetr_taste ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2120,9 +2120,9 @@ $previous_position = @$auction_product->position - 1;
                                                                         </div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
-                                                                        <input type="text" name="quality_notes"
+                                                                        <input type="text" name="balance_text"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->balance_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
