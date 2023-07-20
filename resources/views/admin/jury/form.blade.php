@@ -444,7 +444,8 @@
     .aromaslider.ui-slider-horizontal {
         height: 1px;
     }
-    #second_number option{
+
+    #second_number option {
         color: black !important;
     }
 
@@ -1107,15 +1108,16 @@
         width: auto !important;
 
     }
-    .bg-sweet--theme h2{
+
+    .bg-sweet--theme h2 {
         font-family: 'Montserrat';
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 12px;
-    letter-spacing: 0.2em;
-    text-align: center;
-    padding-top: 30px;
-    color: white;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0.2em;
+        text-align: center;
+        padding-top: 30px;
+        color: white;
     }
 
     .bg-acid--theme {
@@ -1997,7 +1999,7 @@ $previous_position = @$auction_product->position - 1;
                                                                     <div class="entity_input mb-5">
                                                                         <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->acidity_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2017,7 +2019,7 @@ $previous_position = @$auction_product->position - 1;
                                                                     <div class="entity_input mb-5">
                                                                         <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->flavour_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2101,7 +2103,7 @@ $previous_position = @$auction_product->position - 1;
                                                                     <div class="entity_input mb-5">
                                                                         <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->body_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2114,14 +2116,14 @@ $previous_position = @$auction_product->position - 1;
                                                             <div class="row">
                                                                 <div class="col-lg-12" style="text-align:center">
                                                                     <div class="design-slider mt-5 mb-5">
-                                                                        <div class="customslider "><input
+                                                                        <div class="customslider aftertaste"><input
                                                                                 type="hidden" name="after_taste"
                                                                                 id="after_taste" value="8"></div>
                                                                     </div>
                                                                     <div class="entity_input mb-5">
                                                                         <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->afetr_taste_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2144,7 +2146,7 @@ $previous_position = @$auction_product->position - 1;
                                                                     <div class="entity_input mb-5">
                                                                         <input type="text" name="quality_notes"
                                                                             id="quality_notes"
-                                                                            value="{{ $sampleReview->quality_notes ?? '' }}"
+                                                                            value="{{ $sampleReview->balance_note ?? '' }}"
                                                                             placeholder="NOTES" class="entity_note">
                                                                     </div>
                                                                 </div>
@@ -2483,20 +2485,27 @@ $previous_position = @$auction_product->position - 1;
                                                                     <input class="score_first_number"
                                                                         oninput="if (this.value > 5) this.value = 0;"
                                                                         type="number" id="quantity"
-                                                                        value="{{@$sampleReview->first_number ?? 0}}" name="first_number">
+                                                                        value="{{ @$sampleReview->first_number ?? 0 }}"
+                                                                        name="first_number">
                                                                     <span class="multiply">X</span>
                                                                     <!-- {{-- <input class="score_second_number"
                                                                 oninput="if (this.value > 3) this.value = 0"
                                                                 type="number" id="quantity" maxlength="3"
                                                                 value="second_number" name="second_number"> --}} -->
                                                                     <select id="second_number" name="second_number"
-                                                                        class="score_second_number" value="{{@$sampleReview->second_number}}">
-                                                                        <option  value="2" {{@$sampleReview->second_number  == 2 ? 'selected' : ''}}>Taint : 2
+                                                                        class="score_second_number"
+                                                                        value="{{ @$sampleReview->second_number }}">
+                                                                        <option value="2"
+                                                                            {{ @$sampleReview->second_number == 2 ? 'selected' : '' }}>
+                                                                            Taint : 2
                                                                         </option>
-                                                                        <option value="4" {{@$sampleReview->second_number  == 4 ? 'selected' : ''}}>Fault : 4</option>
+                                                                        <option value="4"
+                                                                            {{ @$sampleReview->second_number == 4 ? 'selected' : '' }}>
+                                                                            Fault : 4</option>
                                                                     </select>
                                                                     <span class="multiply">=</span>
-                                                                    <span class="multiply4">{{@$sampleReview->first_number *@$sampleReview->second_number }}</span>
+                                                                    <span
+                                                                        class="multiply4">{{ @$sampleReview->first_number * @$sampleReview->second_number }}</span>
                                                                     <div class="entity_input">
                                                                         <input type="text" name="notes"
                                                                             id="notes" placeholder="NOTES"
@@ -2558,9 +2567,9 @@ $previous_position = @$auction_product->position - 1;
                                                                     <input type="hidden" id="to_go_sample"
                                                                         name="to_go_sample" value="">
                                                                     {{-- @if ($previous_position != 0) --}}
-                                                                        <button type="submit" value="1"
-                                                                            name="sample_submit_prev"
-                                                                            class="submit-form-btn btn-1">PREVIOUS</button>
+                                                                    <button type="submit" value="1"
+                                                                        name="sample_submit_prev"
+                                                                        class="submit-form-btn btn-1">PREVIOUS</button>
                                                                     {{-- @endif --}}
                                                                     <button type="submit" value="1"
                                                                         name="sample_submit"
@@ -3671,7 +3680,7 @@ $previous_position = @$auction_product->position - 1;
                     value: parseReview({{ $sampleReview->aroma ?? '8' }})
                 })
 
-                // $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
+                $('#acidity_note').val('{{ $sampleReview->acidity_note ?? '' }}');
                 // $('.acidity_{{ @$sampleReview->acidity_chk ?? 'L' }}').prop('checked', true);
 
                 // $(".mouthfeel").slider({
@@ -3685,9 +3694,9 @@ $previous_position = @$auction_product->position - 1;
                 });
                 $('#flavor_note').val('{{ $sampleReview->flavor_note ?? '' }}');
 
-                // $(".aftertaste").slider({
-                //     value: parseReview({{ $sampleReview->after_taste ?? '' }})
-                // })
+                $(".aftertaste").slider({
+                    value: parseReview({{ $sampleReview->after_taste ?? '' }})
+                })
                 $('#notes').val('{{ $sampleReview->note ?? '' }}');
 
                 $(".balance").slider({

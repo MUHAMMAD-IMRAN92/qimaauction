@@ -344,6 +344,7 @@ class OpenCuppingController extends Controller
             $review->aroma_dry              = $request->aroma_dry;
             $review->aroma              = $request->aroma;
             $review->aroma_crust            = $request->aroma_crust;
+            $review->after_taste            = $request->after_taste;
             $review->quality_notes            = $request->quality_notes;
             $review->roast                  = $request->roast;
             $review->first_number           = $request->first_number;
@@ -369,12 +370,12 @@ class OpenCuppingController extends Controller
             $review->auction_id             = $request->auction_id;
             $review->sample_code             = $request->sample_code;
             $review->balance_note             = $request->balance_text;
-            $review->afetr_taste             = $request->after_taste_text;
+            $review->afetr_taste_note             = $request->after_taste_text;
             $review->aroma_note             = $request->aroma_text;
             $review->roast_color_note             = $request->roast_color;
             $review->flavour_note             = $request->flavour_text;
             $review->body_note             = $request->body;
-            $review->acidity_note             = $request->acidity;
+            $review->acidity_note             = $request->acidity_note;
             $review->save();
             $sampleSent->is_hidden = '1';
             $sampleSent->save();
