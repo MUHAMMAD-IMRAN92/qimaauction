@@ -98,7 +98,7 @@
                                             <th>Aroma Dry</th>
                                             <th>Aroma Crust</th>
                                             <th>Aroma Break</th>
-                                            {{-- <th>Aroma Note</th> --}}
+                                            <th>Aroma Note</th>
                                             <th>CleanUp</th>
                                             <th>Clean Sweet Note</th>
                                             <th>Sweetness</th>
@@ -114,13 +114,14 @@
                                             <th>Overall</th>
                                             <th>Overall Note</th>
                                             <th>Roast</th>
+                                            <th>Roast Note</th>
                                             <th>Defect</th>
                                             <th>Defect Note</th>
                                         </tr>
                                             @foreach ($data as $samp)
                                             <tr class="text-center">
                                                 @foreach ($samp as $value => $sample)
-                                                @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note")
+                                                @if($value == "sweetness_note" || $value == "acidity_note" || $value == "aftertaste_note" || $value == "clean_sweet_note" || $value == "flavour_note" || $value == "defect_note" || $value == "overall_note" || $value == "balance_note"|| $value == "aroma_note" || $value == "roast_note")
                                                 @if(isset($sample))
                                                 <td data-toggle="tooltip" data-placement="top" title="{{$sample}}">
                                                     <i class="fas fa-info-circle"></i>

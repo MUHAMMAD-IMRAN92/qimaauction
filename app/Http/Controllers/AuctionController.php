@@ -41,7 +41,7 @@ class AuctionController extends Controller
         $auctionAlchemyWinning = collect();
         $auction = Auction::where('is_active', '1')->first();
         if ($auction) {
-            $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried' , 'Slow Dried Natural'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+            $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
             $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank  AS unsigned) asc')->get();
         }
         return view('admin.dashboard', [
@@ -116,7 +116,7 @@ class AuctionController extends Controller
                 //     $productImage->image = $fileName;
                 //     $productImage->save();
                 // }
-                
+
                 foreach ($request->images as $key => $img) {
                     $fileName = $img->getClientOriginalName();
                     $img->storeAs(
@@ -1180,7 +1180,7 @@ class AuctionController extends Controller
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('images', 'products', 'singleBids', 'winningImages')->get();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('images', 'products', 'singleBids', 'winningImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function ($e) {
 

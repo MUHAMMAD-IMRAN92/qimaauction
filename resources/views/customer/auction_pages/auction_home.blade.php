@@ -1139,7 +1139,7 @@
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
-            {{ date('Y-m-d H:i:s') }}
+            {{ \Carbon\Carbon::now() }}
             <p class="timer_text"></p>
         </div>
         <div class="row boxrow ">
@@ -1570,7 +1570,7 @@
     });
 </script>
 <script>
-    
+
     var total = 0;
     var interval;
     socket.on('auto_bid_updates', function(data) {
@@ -1637,10 +1637,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-                
+
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-                
+
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp

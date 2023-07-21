@@ -195,12 +195,11 @@
         /*
             Label the data
             */
-        /* #no-more-tables td:before {
+    /* #no-more-tables td:before {
             content: attr(data-title);
         } */
-    /* } */ */
-
-    .app-content {
+    /* } */
+    */ .app-content {
         background-color: #FFF;
     }
 
@@ -412,34 +411,43 @@
     html body.blank-page .content.app-content {
         background: rgba(239, 235, 229, 1) !important
     }
-    html body.bg-full-screen-image{
+
+    html body.bg-full-screen-image {
         background: rgba(239, 235, 229, 1) !important
     }
-    html body.blank-page .content-wrapper .flexbox-container{
+
+    html body.blank-page .content-wrapper .flexbox-container {
         height: 100%;
     }
-    @media only screen and (max-width:768px){
-        .p-name{
-            font-size:16px;
+
+    @media only screen and (max-width:768px) {
+        .p-name {
+            font-size: 16px;
             line-height: 20px;
         }
+
         .table td {
-        padding: 15px;
+            padding: 15px;
         }
-        .tabbed h2{
+
+        .tabbed h2 {
             font-size: 16px;
         }
-        .heading-name{
+
+        .heading-name {
             font-size: 16px;
         }
-        .table thead th{
+
+        .table thead th {
             font-size: 15px;
         }
     }
-    .btn-success:active{
+
+    .btn-success:active {
         color: rgba(87, 85, 85, 1) !important;
     }
-     .btn-success:focus{
+
+    .btn-success:focus {
         color: rgba(87, 85, 85, 1) !important;
     }
 </style>
@@ -523,14 +531,13 @@
                                                                             :{{ @$sample->auctionProduct->code }}
                                                                         </td>
                                                                         <td data-title="Action">
-                                                                            @if ($sample->is_hidden == 0)
-                                                                                <a class="btn btn-success"
-                                                                                    target="_blank"
-                                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => @$sample->table, 'sampleId' => $sample->id, 'productId' => @$sample->auctionProduct->product_id]) }}">CUP
-                                                                                    SAMPLE</a>
-                                                                            @else
+                                                                            {{-- @if ($sample->is_hidden == 0) --}}
+                                                                            <a class="btn btn-success" target="_blank"
+                                                                                href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => @$sample->table, 'sampleId' => $sample->id, 'productId' => @$sample->auctionProduct->product_id, 'process' => 1]) }}">CUP
+                                                                                SAMPLE</a>
+                                                                            {{-- @else
                                                                                 Completed
-                                                                            @endif
+                                                                            @endif --}}
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -569,13 +576,13 @@
                                                         </td>
                                                         </td>
                                                         <td data-title="Action">
-                                                            @if ($sample->is_hidden == 0)
+                                                            {{-- @if ($sample->is_hidden == 0) --}}
                                                                 <a class="btn btn-success" target="_blank"
-                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id]) }}">CUP
+                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id, 'process' => 2]) }}">CUP
                                                                     SAMPLE</a>
-                                                            @else
+                                                            {{-- @else
                                                                 Completed
-                                                            @endif
+                                                            @endif --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

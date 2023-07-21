@@ -1742,7 +1742,7 @@
                                                 <hr>
                                                 <div class="category">
                                                     <p>CATEGORY</p>
-                                                    <h2 class="theme-color">{{ @$auction_product->process }}</h2>
+                                                    <h2 class="theme-color">{{ @request()->process == 1 ? 'NATURAL AND DEEP FERMENTATION' : 'ALCHEMY' }}</h2>
                                                 </div>
                                                 <hr>
                                                 <!--Sample ID Section-->
@@ -1805,6 +1805,8 @@
                                                 <form action="{{ url('/jury/link/saveCuppingReview') }}"
                                                     method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
+                                                    <input type="hidden" name="process_no"
+                                                    value="{{ @request()->process }}">
                                                     <input type="hidden" name="table_value"
                                                         value="{{ @$auction_product->table }}">
                                                     <input type="hidden" name="auction_id"

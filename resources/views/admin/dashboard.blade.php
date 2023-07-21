@@ -984,6 +984,10 @@
         display: flex;
         justify-content: center;
     }
+
+    #join-the-auction {
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -996,8 +1000,12 @@
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
-                <button><a
-                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register For The Auction</a></button>
+                <button id="register-for-auction"><a
+                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
+                        For The Auction</a></button>
+                <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                    style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                </button>
             </div>
 
         </div>
@@ -1250,12 +1258,11 @@
 
     </div>
     <script>
-        const targetDate = new Date('August 8, 2023 00:00:00').getTime();
+        const targetDate = new Date('AUGUEST 08, 2023 19:00:00').getTime();
 
         const timer = setInterval(function() {
 
             const now = new Date().getTime();
-
 
             const timeRemaining = targetDate - now;
 
@@ -1270,6 +1277,8 @@
             if (timeRemaining <= 0) {
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = '00:00:00:00';
+                document.getElementById('join-the-auction').style.display = "block";
+                document.getElementById('register-for-auction').style.display = "none";
             }
         }, 1000);
     </script>

@@ -29,6 +29,7 @@ class ReviewController extends Controller
         }
 
         if (isset($slug)) {
+
             $agreement = Agreement::where('slug', $slug)->first();
             return view('admin.agreementDetail', compact('agreement'));
         } else {
@@ -377,7 +378,7 @@ class ReviewController extends Controller
             $data[$key]['aroma_dry']        =   $review->aroma_dry ?? '0.0';
             $data[$key]['aroma_crust']      =   $review->aroma_crust ?? '0.0';
             $data[$key]['aroma_break']      =   $review->aroma_break ?? '0.0';
-            // $data[$key]['aroma_note']    =   $review->aroma_note ?? '---';
+            $data[$key]['aroma_note']    =   $review->aroma_note ?? '';
             $data[$key]['clean_up']         =   $review->clean_up ?? '0.0';
             $data[$key]['clean_sweet_note'] =   $review->clean_sweet_note ?? '';
             $data[$key]['sweetness']        =   $review->sweetness ?? '0.0';
@@ -394,9 +395,11 @@ class ReviewController extends Controller
             $data[$key]['overall_note']     =   $review->overall_note ?? '';
             // $data[$key]['mouthfeel_note']=   $review->mouthfeel_note ?? '----';
             $data[$key]['roast']            =   isset($review->roast) ? $review->roast . '%' : "0%";
+            $data[$key]['roast_note']      =   $review->roast_note ?? '';
             $data[$key]['defect']           =   isset($review->defect) ? '(' . $review->first_number . '*' . $review->second_number . '*4)=' . $review->defect : "(0*0*4)=0";
             $data[$key]['defect_note']      =   $review->defect_note ?? '';
         }
+        // return $data;
         return view('admin.reviewed_details', compact('data', 'sampleID'));
     }
     public function reviewDetailCsv($sample)
