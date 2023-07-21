@@ -518,10 +518,15 @@
                                                             </thead>
                                                             <tbody>
                                                                 {{-- Loop over $samples for Tab 1 content --}}
+                                                                @php
+                                                                    $samples = $samples->sortBy(function ($reservation) {
+                                                                        return $reservation->auctionProduct->rank;
+                                                                    });
+                                                                @endphp
                                                                 @foreach ($samples as $sample)
                                                                     <tr>
                                                                         <td class="sr br-right" data-title="Sr No">
-                                                                            {{ $loop->iteration }}</td>
+                                                                            {{ @$sample->auctionProduct->rank }}</td>
                                                                         <td class="sample br-right"
                                                                             data-title="Sample ID">
                                                                             <p class="p-name">
@@ -564,6 +569,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                $alchemySamples = $alchemySamples->sortBy(function ($reservation) {
+                                                    return $reservation->auctionProduct->rank;
+                                                });
+                                            @endphp
                                                 {{-- Loop over $samples for Tab 1 content --}}
                                                 @foreach ($alchemySamples as $sample)
                                                     <tr>
@@ -577,9 +587,9 @@
                                                         </td>
                                                         <td data-title="Action">
                                                             {{-- @if ($sample->is_hidden == 0) --}}
-                                                                <a class="btn btn-success" target="_blank"
-                                                                    href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id, 'process' => 2]) }}">CUP
-                                                                    SAMPLE</a>
+                                                            <a class="btn btn-success" target="_blank"
+                                                                href="{{ route('give_cupping_review', ['userId' => $userId, 'table' => $sample->table, 'sampleId' => $sample->id, 'productId' => $sample->product_id, 'process' => 2]) }}">CUP
+                                                                SAMPLE</a>
                                                             {{-- @else
                                                                 Completed
                                                             @endif --}}

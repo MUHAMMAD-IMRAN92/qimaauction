@@ -197,7 +197,7 @@ class OpenCuppingController extends Controller
             })
             ->select('products.*', 'open_cuppings.*')
 
-            ->orderBy('open_cuppings.postion', 'asc')
+            // ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         //   return response($samples);
         $alchemtAuctionProduct =  AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->pluck('product_id');
@@ -211,7 +211,7 @@ class OpenCuppingController extends Controller
             })
             ->select('products.*', 'open_cuppings.*')
 
-            ->orderBy('open_cuppings.postion', 'asc')
+            // ->orderBy('open_cuppings.postion', 'asc')
             ->get();
         $user =   OpenCuppingUser::where('id', $request->userId)->first();
         return view('admin.cupping_samples', compact('userId', 'samples', 'tables', 'user', 'alchemySamples'))->render();
@@ -446,9 +446,9 @@ class OpenCuppingController extends Controller
 
         if ($request->to_go_sample) {
             $to_go_to_product = OpenCupping::where('id', $request->to_go_sample)->first();
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample, 'user' => $user, 'product',  'productId' => $sample2Sent->product_id ?? $to_go_to_product->product_id , 'process'=>$request->process_no])->with('success', 'Review submitted successfully');
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $request->to_go_sample, 'user' => $user, 'product',  'productId' => $sample2Sent->product_id ?? $to_go_to_product->product_id, 'process' => $request->process_no])->with('success', 'Review submitted successfully');
         } else {
-            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id, 'user' => $user,  'productId' => @$sample2Sent->product_id, 'process'=>$request->process_no])->with('success', 'Review submitted successfully');
+            return redirect()->route('give_cupping_review', ['userId' => $userId, 'table' => 1, 'sampleId' => $sampleSent->id, 'user' => $user,  'productId' => @$sample2Sent->product_id, 'process' => $request->process_no])->with('success', 'Review submitted successfully');
         }
     }
     public function openCuppingFeedback()

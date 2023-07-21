@@ -12,7 +12,7 @@ class OpenCupping extends Model
 
     public function auctionProduct()
     {
-        return $this->hasOne(AuctionProduct::class, 'code', 'samples');
+        return $this->hasOne(AuctionProduct::class, 'code', 'samples')->orderByRaw('CAST(auction_products.rank AS unsigned) desc');
     }
     public function CodeAuctionProduct()
     {
