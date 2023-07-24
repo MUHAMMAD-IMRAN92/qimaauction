@@ -328,6 +328,11 @@ class OpenCuppingController extends Controller
     {
         // return $request->all();
         $userId = $request->userId;
+        if ($request->process_no  == 1) {
+            $proArr = ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'];
+        } else {
+            $proArr = ['Alchemy'];
+        }
         $user = OpenCuppingUser::where('id', $userId)->first();
         $sampleSent = OpenCupping::when($userId != 0, function ($q) use ($userId) {
             $q->where('user_id', $userId);
@@ -408,11 +413,11 @@ class OpenCuppingController extends Controller
         if (isset($request->sample_submit_prev)) {
             // return $request->current_position;
             $v = ($request->current_position > 0) ? true : false;
-            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
-                // $q->where('position', '<', $request->current_position)->where('table', $request->table_value);
+            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request, $proArr) {
+                $q->where('rank',  $request->rank_no - 1)->whereIn('process', $proArr);
             })->with('auctionProduct')->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
-            })->orderBy('id', 'desc')->where('id', '<', $sampleSent->id)
+            })->where('user_id', $userId)
                 ->first();
             //  dd($request);
             if ($sample2Sent) {
@@ -421,11 +426,11 @@ class OpenCuppingController extends Controller
         }
         if (isset($request->sample_submit)) {
 
-            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request) {
-                // $q->where('position', '>', $request->current_position)->where('table', $request->table_value);
+            $sample2Sent = OpenCupping::whereHas('auctionProduct', function ($q) use ($request, $proArr) {
+                $q->where('rank',  $request->rank_no + 1)->whereIn('process', $proArr);
             })->with('auctionProduct')->when($userId == 0, function ($q) {
                 $q->where('open_cuppings.user_id', '0');
-            })->where('id', '>', $sampleSent->id)
+            })->where('user_id', $userId)
                 ->first();
 
             if (isset($sample2Sent)) {

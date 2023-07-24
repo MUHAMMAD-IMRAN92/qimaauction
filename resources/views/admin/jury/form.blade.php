@@ -1742,7 +1742,9 @@
                                                 <hr>
                                                 <div class="category">
                                                     <p>CATEGORY</p>
-                                                    <h2 class="theme-color">{{ @request()->process == 1 ? 'NATURAL AND DEEP FERMENTATION' : 'ALCHEMY' }}</h2>
+                                                    <h2 class="theme-color">
+                                                        {{ @request()->process == 1 ? 'NATURAL AND DEEP FERMENTATION' : 'ALCHEMY' }}
+                                                    </h2>
                                                 </div>
                                                 <hr>
                                                 <!--Sample ID Section-->
@@ -1806,7 +1808,7 @@
                                                     method="POST" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <input type="hidden" name="process_no"
-                                                    value="{{ @request()->process }}">
+                                                        value="{{ @request()->process }}">
                                                     <input type="hidden" name="table_value"
                                                         value="{{ @$auction_product->table }}">
                                                     <input type="hidden" name="auction_id"
@@ -1815,6 +1817,8 @@
                                                         value="{{ $user->id }}">
                                                     <input type="hidden" name="current_position"
                                                         value="{{ @$auction_product->position }}">
+                                                    <input type="hidden" name="rank_no"
+                                                        value="{{ @$auction_product->rank }}">
                                                     <input type="hidden" name="sample_code"
                                                         value="{{ @$auction_product->code }}">
                                                     <input type="hidden" name="next_position"
@@ -2589,6 +2593,11 @@ $previous_position = @$auction_product->position - 1;
                                                                 <div class="scrollable" style="overflow:auto;">
                                                                     <div class="button-group"
                                                                         style="white-space:nowrap">
+                                                                        @php
+                                                                            $alltablesamples = $alltablesamples->sortBy(function ($reservation) {
+                                                                                return $reservation->auctionProduct->rank;
+                                                                            });
+                                                                        @endphp
                                                                         @foreach ($alltablesamples as $samp)
                                                                             @php $extraclass = ""; @endphp
                                                                             @if ($samp->is_hidden == 1)
@@ -2604,15 +2613,16 @@ $previous_position = @$auction_product->position - 1;
                                                                             @endphp
                                                                             @if ($samp->id == $sentSampleId)
                                                                                 {{-- <a onclick="setSampleToGo({{$samp->sampleId}})" class="btn btn-success pager hid_{{$samp->is_hidden}} {{$extraclass}}" href="{{route('give_review',['juryId'=>$samp->juryId,'table'=>$samp->sampleTable,'sampleId'=>$samp->sampleId ])}}"> --}}
-                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }} {{ $black }}"
+                                                                                <a class="btn btn-success pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
+                                                                                    {{ $black }}
                                                                                     href="@if ($samp->id == $sentSampleId) # @else javascript:setSampleToGo({{ $samp->sampleId }}) @endif ">
-                                                                                    {{ @$samp->auctionProduct->code }}
+                                                                                    {{ @$samp->auctionProduct->rank }}
                                                                                 </a>
                                                                             @else
                                                                                 <a class="btn btn-secondary  pager hid_{{ $samp->is_hidden }} {{ $extraclass }}"
                                                                                     {{ $black }}
                                                                                     href="javascript:setSampleToGo({{ $samp->id }})">
-                                                                                    {{ @$samp->auctionProduct->code }}
+                                                                                    {{ @$samp->auctionProduct->rank }}
                                                                                 </a>
                                                                             @endif
                                                                         @endforeach
