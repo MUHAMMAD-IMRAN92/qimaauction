@@ -1061,20 +1061,20 @@
 
     .bg-roast--theme {
         background: #DBCDB7;
-        padding: 30px;
+        padding: 30px 90px;
         margin: 0px;
         width: auto !important;
     }
 
     .bg-aroma--theme-1 {
         background: linear-gradient(264deg, #C488D9 0%, #C4D3FA 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
     }
 
     .bg-aroma--theme-2 {
         background: linear-gradient(264deg, #C176DC 0%, #B9CDFF 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
@@ -1082,21 +1082,21 @@
     .bg-aroma--theme-3 {
         background: linear-gradient(264deg, #BE6DDB 0%, #B4C7F9 100%);
         ;
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
 
     .bg-defects--theme {
         background: linear-gradient(290deg, #FF5757 0%, #F19393 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
 
     .bg-clean--theme {
         background: linear-gradient(290deg, #93DBF1 0%, #5786FF 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
@@ -1104,7 +1104,7 @@
     .bg-sweet--theme {
         background: linear-gradient(290deg, #FBBAAC 0%, #EC9185 100%);
         ;
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
@@ -1122,14 +1122,14 @@
 
     .bg-acid--theme {
         background: linear-gradient(290deg, #DEF193 0%, #FF9B3F 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
 
     .bg-mouth--theme {
         background: linear-gradient(290deg, #FF563F 0%, #E493F1 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
@@ -1137,15 +1137,12 @@
     .bg-over--theme {
         display: grid;
         background: linear-gradient(180deg, #716EE4 0%, #62CBDA 100%);
-        padding: 30px;
-        place-content: center;
-
-
+        padding: 30px 400px;
     }
 
     .bg-flavor--theme {
         background: linear-gradient(290deg, #55BBA9 45.31%, #ACFBF6 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
@@ -1155,21 +1152,21 @@
             linear-gradient(270deg, #B557FF 0%, #F19393 100%);
 
 
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
 
     .bg-balance--theme {
         background: linear-gradient(290deg, #68BC4A 0%, #44BA6C 46.88%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }
 
     .bg-overall--theme {
         background: linear-gradient(290deg, #716EE4 0%, #62CBDA 100%);
-        padding: 30px;
+        padding: 30px 90px;
         width: auto !important;
 
     }

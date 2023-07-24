@@ -152,6 +152,22 @@
             font-family: 'Montserrat';
             font-size: 15px;
         }
+        .banner-image-new{
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        html body.bg-full-screen-image {
+            background: white;
+            background-size: cover;
+     }
+     html body.blank-page .content-wrapper .flexbox-container{
+            height: 80vh;
+     }
     </style>
     <body
     class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page"
@@ -173,8 +189,10 @@
                             <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100 row">
                                 <div class="card-content">
                                     <div class="card-header">
-                                    <div class="newlogo">
-                                        <img src="{{asset('public/app-assets/images/logo/newlogo.png')}}" style="max-width: 100%;">
+                                    <div class="newlogo banner-image-new">
+                                        <img src="{{asset('public/app-assets/images/logo/new-logo-2023.png')}}" style="max-width:300px;">
+                                        <img class="mt-3" src="{{ asset('public/app-assets/images/logo/heading.png') }} "style="max-width:300px;"
+                                        alt="">
                                     </div>
                                     </div>
                                     <div class="card-content container">
@@ -185,7 +203,7 @@
                                         <label for="email">Email (Optional)</label>
                                         <input type="text" name="email" id="email" class="form-control" ><br>
                                         <input type="submit" class="btn btn-primary btn-lg" value="Continue">
-                                      </form> 
+                                      </form>
                                     </div>
 
                                 </div>
