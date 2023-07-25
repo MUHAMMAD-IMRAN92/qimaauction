@@ -1294,7 +1294,7 @@
                                         @else
                                             <td class="td-res-pl">SL28</td>
                                         @endif --}}
-                                    @endforeach
+                                    {{-- @endforeachz --}}
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
