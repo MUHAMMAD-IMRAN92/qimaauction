@@ -1457,24 +1457,19 @@ border: 1px solid white;
                                                 data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        @if ($products->pro_process == '1')
-                                            <td class="">Natural</td>
-                                        @elseif ($products->pro_process == '2')
+                                    {{-- @foreach ($auctionProduct->products as $products)
+                                        @if ($products->pro_process == '1') --}}
+                                            <td class="">{{$auctionProduct->process}}</td>
+                                        {{-- @elseif ($products->pro_process == '2')
                                             <td class="">Slow Dried</td>
                                         @else
                                             <td class="">Alchemy</td>
                                         @endif
-                                    @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        @if ($products->genetic_id == '1')
-                                            <td class="">Yemenia</td>
-                                        @elseif ($products->genetic_id == '2')
-                                            <td class="">Bourbon</td>
-                                        @else
-                                            <td class="">SL28</td>
-                                        @endif
-                                    @endforeach
+                                    @endforeach --}}
+                                    {{-- @foreach ($auctionProduct->products as $products) --}}
+                                    <td class="">{{$auctionProduct->genetic}}</td>
+
+                                    {{-- @endforeach --}}
                                     {{-- @dd($auctionProduct->groupAutobid) --}}
                                     @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
