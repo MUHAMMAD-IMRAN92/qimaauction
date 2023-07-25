@@ -381,7 +381,7 @@ class AuctionController extends Controller
             $e->groupAutobid = AutoBid::where('auction_product_id', $e->id)->where('is_active', '1')->where('is_group', '1')->orderBy('bid_amount', 'desc')->first();
             return $e;
         });
-        return view('customer.auction_pages.auction_home3', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
+        return view('customer.auction_pages.singleBidData', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
 
     public function singleBidData(Request $request)
