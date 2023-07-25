@@ -1281,23 +1281,19 @@
                                                 data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        @if ($products->pro_process == '1')
-                                            <td class="td-res-pl">Natural</td>
-                                        @elseif ($products->pro_process == '2')
-                                            <td class="td-res-pl">Slow Dried</td>
-                                        @else
-                                            <td class="td-res-pl">Alchemy</td>
-                                        @endif
-                                    @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        @if ($products->genetic_id == '1')
-                                            <td class="td-res-pl">Yemenia</td>
-                                        @elseif ($products->genetic_id == '2')
+                                    {{-- @foreach ($auctionProduct->products as $products) --}}
+                                     
+                                            <td class="td-res-pl">{{ $auctionProduct->process}}</td>
+                                       
+                                    {{-- @endforeach --}}
+                                    {{-- @foreach ($auctionProduct->products as $products) --}}
+                                        {{-- @if ($products->genetic_id == '1') --}}
+                                            <td class="td-res-pl">{{$auctionProduct->genetic}}</td>
+                                        {{-- @elseif ($products->genetic_id == '2')
                                             <td class="td-res-pl">Bourbon</td>
                                         @else
                                             <td class="td-res-pl">SL28</td>
-                                        @endif
+                                        @endif --}}
                                     @endforeach
                                     @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
