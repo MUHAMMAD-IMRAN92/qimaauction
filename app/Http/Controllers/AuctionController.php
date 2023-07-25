@@ -1180,7 +1180,7 @@ class AuctionController extends Controller
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('images', 'products', 'singleBids', 'winningImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function ($e) {
 
