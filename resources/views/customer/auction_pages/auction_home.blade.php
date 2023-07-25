@@ -1278,18 +1278,18 @@
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products) --}}
-                                     
-                                            <td class="td-res-pl">{{ $auctionProduct->process}}</td>
-                                       
+
+                                    <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+
                                     {{-- @endforeach --}}
                                     {{-- @foreach ($auctionProduct->products as $products) --}}
-                                        {{-- @if ($products->genetic_id == '1') --}}
-                                            <td class="td-res-pl">{{$auctionProduct->genetic}}</td>
-                                        {{-- @elseif ($products->genetic_id == '2')
+                                    {{-- @if ($products->genetic_id == '1') --}}
+                                    <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                    {{-- @elseif ($products->genetic_id == '2')
                                             <td class="td-res-pl">Bourbon</td>
                                         @else
                                             <td class="td-res-pl">SL28</td>
@@ -1465,7 +1465,6 @@
             window.location.reload();
         }, 300000)
         $(".openSidebar").click(function() {
-
             $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
             var productid = $(this).attr('data-productid');
@@ -1473,6 +1472,7 @@
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
             var res = source.concat('/' + image);
+            // alert(res);
             $('.img-status').attr('src', res);
             var currentbid = $(".bidData1" + id).html();
             var totalvalue = $(".liability" + id).html();
@@ -1493,7 +1493,7 @@
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
-                    var url = '{{ route('productsidebar', ':id') }}';
+                    var url = '{{ route('product_detail_page_auction', ':id') }}';
                     url = url.replace(':id', productid);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
@@ -1566,7 +1566,6 @@
     });
 </script>
 <script>
-
     var total = 0;
     var interval;
     socket.on('auto_bid_updates', function(data) {

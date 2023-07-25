@@ -310,4 +310,4 @@ Route::get('/bid_agreement', function () {
     return redirect('public/bidding_agreement.pdf');
 }); //'customer/pages/bid_agreement');
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
-Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail']);
+Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('product_detail_page_auction');

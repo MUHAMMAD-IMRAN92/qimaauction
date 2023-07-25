@@ -1180,7 +1180,7 @@ class AuctionController extends Controller
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function ($e) {
 
@@ -1228,7 +1228,8 @@ class AuctionController extends Controller
 
     public function winningProductsSidebar($id)
     {
-        $winningCoffeesData = WinningCofees::where('code', $id)->with('images')->first();
+        $auction = Auction::where('is_active', '1')->first();
+        $winningCoffeesData = AuctionProduct::where('product_id', $id)->where('auction_id', $auction->id)->with('auctionProductImages')->first();
         return view('customer.dashboard.products-landing', compact('winningCoffeesData'));
     }
 
