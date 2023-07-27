@@ -1212,13 +1212,12 @@
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
                                         <td class="fw-bold text-underline td-res-pl name-append"><a
-                                                class="openbtn openSidebar {{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }}"data-id="{{ $auctionProduct->id }} "
+                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
                                                 data-productid="{{ $products->id }}"
                                                 data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
                                                 {{ $products->product_title }}
                                             </a>
-                                            <a
-                                                class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+
                                         </td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
@@ -1243,7 +1242,11 @@
                                         @foreach ($auctionProduct->highestbid->user as $userData)
                                             <td style="width: 500px !important"
                                                 class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                {{ $userData->company ?? '---' }}</td>
+                                                <span
+                                                    class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
+                                                <a
+                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                            </td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
