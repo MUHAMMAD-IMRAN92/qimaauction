@@ -1154,19 +1154,23 @@
     @endphp --}}
     <section>
         <div class="header-heading">
-            <div><a class="header-heading-left"
+            <div>
+                {{-- <a class="header-heading-left"
                     @if (isset($previous)) href="{{ route('auction-winners', $previous->id) }}" @endif> <i
                         class="fa fa-angle-left" style="font-size:50px"></i>
                     <h5 class="header-heading-h5">Previous Auction </h5>
-                </a></div>
+                </a> --}}
+            </div>
             <div>
                 <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
             </div>
-            <div><a
+            <div>
+                {{-- <a
                     class="header-heading-left"@if (isset($next)) href="{{ route('auction-winners', $next->id) }}" @endif>
                     <h5 class="header-heading-h5">Next Auction </h5><i class="fa fa-angle-right"
                         style="font-size:50px"></i>
-                </a> </div>
+                </a> --}}
+            </div>
         </div>
         <div class="header-heading-time mt-5">
             {{-- <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
