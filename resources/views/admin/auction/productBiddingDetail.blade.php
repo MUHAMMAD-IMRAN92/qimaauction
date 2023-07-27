@@ -125,13 +125,13 @@
                     </nav>
                     {{-- @if (isset($auction) && $auction->startTime != '') --}}
                     <div class="col-12 custom_btn_align mb-1">
-                        <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 0) style="display:none;" @endif
+                        <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
                             data-id="{{ $auction->id }}" id="resetauction">Reset Auction<a>
                                 <a class="btn btn-primary waves-effect waves-light endauction"
-                                    @if (isset($auction) && $auction->is_hidden == 0) style="display:none;" @endif
+                                    @if (isset($auction) && $auction->is_hidden == ) style="display:none;" @endif
                                     data-id="{{ $auction->id }}" id="endauction">End Auction<a>
 
-                                        <a class="btn btn-primary waves-effect waves-light publishWinner" style=""
+                                        <a class="btn btn-primary waves-effect waves-light publishWinner"  @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
                                             data-id="{{ $auction->id }}" id="">Publish
                                             Winners<a>
 
