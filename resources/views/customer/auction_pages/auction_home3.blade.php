@@ -2330,10 +2330,11 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+
         //OpenSidebar
-        setTimeout(function() {
-            window.location.reload();
-        }, 300000)
+        // setTimeout(function() {
+        //     window.location.reload();
+        // }, 300000)
         $(".openSidebar").click(function() {
             $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
