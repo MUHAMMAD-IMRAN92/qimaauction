@@ -1505,7 +1505,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png"
+                    <img src="https://bestofyemenauction.com/public/images/logo.land.png"
                         alt="">
                 </div>
             </div>
