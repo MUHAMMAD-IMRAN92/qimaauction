@@ -359,7 +359,8 @@ class AuctionController extends Controller
             $auction->save();
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('images', 'products', 'singleBids', 'winningImages')->get();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderBy('process')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        // $naturalauctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
         $singleBids = AuctionProduct::where('auction_id', $auction->id)->doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function ($e) {
@@ -381,7 +382,9 @@ class AuctionController extends Controller
             $e->groupAutobid = AutoBid::where('auction_product_id', $e->id)->where('is_active', '1')->where('is_group', '1')->orderBy('bid_amount', 'desc')->first();
             return $e;
         });
-        return view('customer.auction_pages.auction_home3', compact('auctionProducts', 'auction', 'agreement', 'singleBids'));
+        $naturalauctionProductsCount = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->count();
+
+        return view('customer.auction_pages.auction_home3', compact('naturalauctionProductsCount', 'auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
 
     public function singleBidData(Request $request)
@@ -1180,7 +1183,8 @@ class AuctionController extends Controller
         if ($auction->is_hidden == 1) {
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $naturalauctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
         $singleBids = AuctionProduct::doesnthave('singleBids')->get();
         $results = $auctionProducts->map(function ($e) {
 
@@ -1197,7 +1201,7 @@ class AuctionController extends Controller
                 ->first();
             return $e;
         });
-        return view('customer.auction_pages.auction_home', compact('auctionProducts', 'auction', 'singleBids'));
+        return view('customer.auction_pages.auction_home', compact('naturalauctionProducts', 'auctionProducts', 'auction', 'singleBids'));
     }
 
     public function winningCoffee()
@@ -1244,7 +1248,7 @@ class AuctionController extends Controller
 
     public function auctionWinners(Request $request, $id)
     {
-            $auction = Auction::where('id', $id)->where('is_hidden', 1)->first();
+        $auction = Auction::where('id', $id)->where('is_hidden', 1)->first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
             //            $auction->is_hidden = 1;
             $auction->save();

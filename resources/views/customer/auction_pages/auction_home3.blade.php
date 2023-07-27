@@ -1397,8 +1397,41 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($auctionProducts as $auctionProduct)
-
+                            @foreach ($auctionProducts as $key => $auctionProduct)
+                                @php
+                                    $sortClass = '';
+                                @endphp
+                                @if ($key == 0 && $key < $naturalauctionProductsCount)
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <b> ALCHEMY
+                                            </b>
+                                        </td>
+                                    </tr>
+                                @elseif($key != 0 && $key == $naturalauctionProductsCount)
+                                    @php
+                                        $sortClass = 'sortByRank';
+                                    @endphp
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <b> NATURAL AND DEEP FERMENTATION </b>
+                                        </td>
+                                    </tr>
+                                @endif
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
@@ -1422,7 +1455,7 @@
                                     }
                                 @endphp
                                 <tr
-                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}
+                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }} {{ $sortClass}}
                                     @if (isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid)) @foreach ($groupUsers as $users)
                                         @if ($users['bidwinner'] == Auth::user()->id)
                                         changecolor @endif
@@ -1743,7 +1776,7 @@
                                                             @else
                                                             @endif
                                                             @if ($userfound == 0)
-                                                                <button
+                                                                <button  @if (isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" @endif
                                                                     class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
@@ -2056,22 +2089,10 @@
                                         {{ $products->product_title }} </a></td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
-                                @if ($products->pro_process == '1')
-                                    <td class="">Natural</td>
-                                @elseif ($products->pro_process == '2')
-                                    <td class="">Slow Dried</td>
-                                @else
-                                    <td class="">Alchemy</td>
-                                @endif
+                                <td class="td-res-pl">{{ $auctionProduct->process }}</td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
-                                @if ($products->genetic_id == '1')
-                                    <td class="">Yemenia</td>
-                                @elseif ($products->genetic_id == '2')
-                                    <td class="">Bourbon</td>
-                                @else
-                                    <td class="">SL28</td>
-                                @endif
+                                <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
                             @endforeach
                             {{-- @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
@@ -3339,13 +3360,13 @@
             seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
-            if (minutes >= 0 && seconds >= 0){
+            if (minutes >= 0 && seconds >= 0) {
 
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
                 $('.seconds').html(seconds);
-            }else{
+            } else {
 
                 $('.seconds').html('00');
             }
@@ -3424,8 +3445,9 @@
         });
 
     }
-</script>
 
+
+</script>
 @include('customer.auction_pages.homejs')
 
 </html>
