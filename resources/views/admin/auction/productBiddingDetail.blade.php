@@ -59,6 +59,15 @@
             align-items:  !important end;
             display:  !important flex;
         }
+
+        .publishWinner {
+            display: none;
+        }
+        #publish_auction_winners{
+            width: fit-content;
+            float: right;
+
+        }
     </style>
 
     <div class="app-content content">
@@ -114,14 +123,14 @@
             <div class="content-header row">
                 <div class="col-12 custom_btn_align mb-1">
                     <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                        data-id="{{ $auction->id }}" id="resetauction">Reset Auction<a>
-                            <a class="btn btn-primary waves-effect waves-light endauction"
-                                @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                                data-id="{{ $auction->id }}" id="endauction">End Auction<a>
+                        data-id="{{ $auction->id }}" id="resetauction">Reset Auction</a>
+                    <a class="btn btn-primary waves-effect waves-light endauction"
+                        @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
+                        id="endauction">End Auction</a>
 
-                                    <a class="btn btn-primary waves-effect waves-light publishWinner" @if (isset($auction) && $auction->is_hidden == 0) style="display:none;" @endif
-                                        data-id="{{ $auction->id }}" id="">Publish
-                                        Winners<a>
+                    <a class="btn btn-primary waves-effect waves-light @if (isset($auction) && $auction->is_hidden == 0) publishWinner @endif"
+                        data-id="{{ $auction->id }}" id="publish_auction_winners">Publish
+                        Winners</a>
 
                 </div>
                 <div class="content-header-left col-md-9 col-lg-12 mb-2">
@@ -532,6 +541,7 @@
                                     socket.emit('add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });
+                                    $('#publish_auction_winners').css('display', 'block');
                                 },
                                 error: function(error) {
                                     console.log(error)
@@ -572,6 +582,8 @@
                                     socket.emit('add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });
+
+
                                 },
                                 error: function(error) {
                                     console.log(error)
