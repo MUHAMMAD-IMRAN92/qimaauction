@@ -1398,9 +1398,10 @@
                         <tbody>
 
                             @foreach ($auctionProducts as $key => $auctionProduct)
-                                @php
+                            @php
                                     $sortClass = '';
                                 @endphp
+                                {{--
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
                                     <tr>
                                         <td></td>
@@ -1431,7 +1432,7 @@
                                             <b> NATURAL AND DEEP FERMENTATION </b>
                                         </td>
                                     </tr>
-                                @endif
+                                @endif --}}
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
