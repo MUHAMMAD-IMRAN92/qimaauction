@@ -109,6 +109,7 @@
                 </div>
             </div>
         </div>
+
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-lg-12 mb-2">
@@ -122,15 +123,21 @@
                             </div>
                         </div>
                     </nav>
-                    @if (isset($auction) && $auction->startTime != '')
-                        <div class="col-12 custom_btn_align mb-1">
-                            <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                                data-id="{{ $auction->id }}" id="resetauction">Reset Auction<a>
-                                    <a class="btn btn-primary waves-effect waves-light endauction"
-                                        @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                                        data-id="{{ $auction->id }}" id="endauction">End Auction<a>
-                        </div>
-                    @endif
+                    {{-- @if (isset($auction) && $auction->startTime != '') --}}
+                    <div class="col-12 custom_btn_align mb-1">
+                        <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 0) style="display:none;" @endif
+                            data-id="{{ $auction->id }}" id="resetauction">Reset Auction<a>
+                                <a class="btn btn-primary waves-effect waves-light endauction"
+                                    @if (isset($auction) && $auction->is_hidden == 0) style="display:none;" @endif
+                                    data-id="{{ $auction->id }}" id="endauction">End Auction<a>
+
+                                        <a class="btn btn-primary waves-effect waves-light publishWinner" style=""
+                                            data-id="{{ $auction->id }}" id="">Publish
+                                            Winners<a>
+
+                    </div>
+                    {{-- @endif --}}
+
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
@@ -387,24 +394,26 @@
 
             $(".openGroupSidebar").click(function() {
                 $("#groupbid_sidebar").addClass('sidebaropen-width');
-                var id     =  $(this).attr('data-id');
+                var id = $(this).attr('data-id');
                 $.ajax({
-                url: "{{ route('groupbidadminsidebar') }}",
-                method: 'POST',
-                data: {
-                    id: id,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    var offerData=response.OffersData;
+                    url: "{{ route('groupbidadminsidebar') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        var offerData = response.OffersData;
                         console.log(offerData)
                         var i;
                         $('#offers').empty();
-                            for (i = 0; i < offerData.length; ++i) {
-                                var weight=offerData[i].weight/20;
-                                $('#offers').append("<li><span class='lotid'>"+offerData[i].auction_product_id+"</span><p>Amount:$"+offerData[i].amount+"<br>Bags:"+weight+"</p></li>");
+                        for (i = 0; i < offerData.length; ++i) {
+                            var weight = offerData[i].weight / 20;
+                            $('#offers').append("<li><span class='lotid'>" + offerData[i]
+                                .auction_product_id + "</span><p>Amount:$" + offerData[i].amount +
+                                "<br>Bags:" + weight + "</p></li>");
 
-                            }
+                        }
                     },
                     error: function(error) {
                         console.log(error)
@@ -412,12 +421,12 @@
                 });
             })
 
-    //             function showBidConfirm() {
-    //     $(".bid-confirm-sec").addClass('show-bidconfirm');
-    // }
-    // function hideBidConfirm() {
-    //     $(".bid-confirm-sec").removeClass('show-bidconfirm');
-    // }
+            //             function showBidConfirm() {
+            //     $(".bid-confirm-sec").addClass('show-bidconfirm');
+            // }
+            // function hideBidConfirm() {
+            //     $(".bid-confirm-sec").removeClass('show-bidconfirm');
+            // }
 
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');
@@ -527,6 +536,47 @@
                                     console.log(error)
                                 }
                             });
+                        } else {
+                            swal('Your Auction is safe');
+                        }
+                    })
+                });
+                $(".publishWinner").on("click", function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr('data-id');
+                    var auctionstatus = 1;
+                    swal({
+                        title: `Are You sure to Publish Winners ?`,
+                        type: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((result) => {
+                        if (result) {
+                            // alert('imran');
+                            $.ajax({
+                                url: "{{ route('publish-winners') }}",
+                                async: false,
+                                method: 'GET',
+                                data: {
+                                    id: id,
+                                    _token: "{{ csrf_token() }}",
+                                },
+                                success: function(response) {
+                                    swal('Auction is Ended');
+                                    var auctionstatus = response;
+                                    if (auctionstatus == 1) {
+                                        $(".endauction").hide();
+                                        $(".resetauction").hide();
+                                    }
+                                    socket.emit('add_auction_status', {
+                                        "auctionstatus": auctionstatus
+                                    });
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                }
+                            });
+
                         } else {
                             swal('Your Auction is safe');
                         }
@@ -657,11 +707,12 @@
                 var offerData = data.adminofferData;
                 var i;
                 $('#offers').empty();
-                    for (i = 0; i < offerData.length; ++i) {
-                        var weight=offerData[i].weight/20;
-                        $('#offers').append("<li><span class='lotid'>"+offerData[i].auction_product_id+"</span><p>Amount:$"+offerData[i].amount+"<br>Bags:"+weight+"</p></li>");
+                for (i = 0; i < offerData.length; ++i) {
+                    var weight = offerData[i].weight / 20;
+                    $('#offers').append("<li><span class='lotid'>" + offerData[i].auction_product_id +
+                        "</span><p>Amount:$" + offerData[i].amount + "<br>Bags:" + weight + "</p></li>");
 
-                    }
+                }
             });
         </script>
 

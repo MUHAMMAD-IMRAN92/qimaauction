@@ -35,6 +35,9 @@ socket.on('add_bid_updates', function (data) {
  socket.on('add_auction_status', function (data) {
     io.emit('add_auction_status', { "auctionstatus":data.auctionstatus});
  });
+ socket.on('publish_winner', function (data) {
+    io.emit('publish_winner', { "publish_winner": 1 });
+});
  socket.on('add_timer_reset', function (data) {
     io.emit('add_timer_reset', { "timerreset":data.timerreset});
  });

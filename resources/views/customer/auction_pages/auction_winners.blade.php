@@ -18,49 +18,63 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,300&display=swap"
         rel="stylesheet">
     {{-- web sockets --}}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+    <script type="text/javascript">
+        var socket = io('<?= env('SOCKETS') ?>');
+    </script>
 </head>
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
         display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
 
     }
 
+    .name-anchors {
+        display: none;
+    }
+
+    .name-spans {
+        display: none !important;
+    }
+
     .navbar {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-      width: 90%;
-    margin: 10px auto;
-}
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        margin: 10px auto;
+    }
 
-.navbar-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0
-}
+    .navbar-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0
+    }
 
-.navbar-list .list-items {
-  display: inline-block;
-  padding: 10px 10px;
-  font-weight: 400;
-}
-#width a img{
-  /* margin-left: 108px;
+    .navbar-list .list-items {
+        display: inline-block;
+        padding: 10px 10px;
+        font-weight: 400;
+    }
+
+    #width a img {
+        /* margin-left: 108px;
   margin-top:20px;
   margin-bottom: 15px; */
-}
-.navbar a {
-  text-decoration: none;
-  color: black;
-  margin-left: 5px;
-  margin-right: 5px;
-}
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: black;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
     /* .navbar {
         width: 100%;
         background-color: #D1AF69;
@@ -157,17 +171,20 @@
         padding: 30px;
         font-family: 'Montserrat';
     }
-    .footer{
-            background-color: #232B38;
-    position: relative;
-    width: 100%;
-    margin-top: auto;
+
+    .footer {
+        background-color: #232B38;
+        position: relative;
+        width: 100%;
+        margin-top: auto;
     }
+
     .footer img {
-    height: auto;
-    width: 270px;
-    max-width: 100%;
-}
+        height: auto;
+        width: 270px;
+        max-width: 100%;
+    }
+
     .searchbar-container--footer {
         position: relative;
         border: 1px solid black;
@@ -609,12 +626,14 @@
         display: flex;
         justify-content: center;
     }
-    #mySidebar{
+
+    #mySidebar {
         box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
     }
+
     .sidebar-container {
         padding: 20px 30px;
-        width:450px;
+        width: 450px;
     }
 
     .lot-header h4 {
@@ -758,19 +777,22 @@
     .moreBtn {
         display: block;
     }
+
     .bid-now-btn-field {
         justify-content: end;
     }
-.lh-zero{
-    line-height: 0;
-}
-.bid-row .form-inline{
-    justify-content: end;
-}
 
-.sidebaropen-width{
-    width: 450px;
-}
+    .lh-zero {
+        line-height: 0;
+    }
+
+    .bid-row .form-inline {
+        justify-content: end;
+    }
+
+    .sidebaropen-width {
+        width: 450px;
+    }
 
     @media (max-width: 1199px) {
         .tablenav a {
@@ -840,17 +862,20 @@
     }
 
     @media screen and (max-width: 800px) {
-                    .navbar {
-                display: block;
-  text-align: center;
-  width: 100%;
-}
-.navbar-list {
-    margin-top: 15px;
-}
-    .footer{
-    position: relative;
-    }
+        .navbar {
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .navbar-list {
+            margin-top: 15px;
+        }
+
+        .footer {
+            position: relative;
+        }
+
         .tab-content {
             width: 100%;
         }
@@ -972,9 +997,10 @@
         .finalliabilitytr td.finalliability {
             display: block;
         }
-    .tdtimer {
-        justify-content: start;
-    }
+
+        .tdtimer {
+            justify-content: start;
+        }
 
     }
 
@@ -982,9 +1008,10 @@
         .tablenav a {
             font-size: 10px;
         }
-        .sidebaropen-width{
-    width: 300px;
-}
+
+        .sidebaropen-width {
+            width: 300px;
+        }
     }
 
     @media screen and (max-height: 450px) {
@@ -996,77 +1023,93 @@
             font-size: 18px;
         }
     }
-    .header-heading{
+
+    .header-heading {
         margin-top: 20px;
-        display:flex;
-        justify-content:space-around;
-        align-items:center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
-    .header-heading-left{
-        display:flex;
-        align-items:center;
-        gap:15px;
-       color:black;
-       text-decoration:none;
+
+    .header-heading-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: black;
+        text-decoration: none;
     }
-    .header-heading-h5{
-        text-align: center;margin-bottom:0px;font-family:'Montserrat';
+
+    .header-heading-h5 {
+        text-align: center;
+        margin-bottom: 0px;
+        font-family: 'Montserrat';
     }
-    .header-heading-left:hover
-    {
+
+    .header-heading-left:hover {
         text-decoration: none;
         color: #D1AF69;
     }
-    .dropdown a{
-        background:white;
-        border:none;
-        padding:0px;
+
+    .dropdown a {
+        background: white;
+        border: none;
+        padding: 0px;
     }
-    .dropdown a:hover{
-        background-color:white !important;
-        color : black !important;
-        border:none !important;
+
+    .dropdown a:hover {
+        background-color: white !important;
+        color: black !important;
+        border: none !important;
     }
-    .btn.show{
-        background-color:white !important;
-        color : black !important;
-        border:none !important;
+
+    .btn.show {
+        background-color: white !important;
+        color: black !important;
+        border: none !important;
     }
-    .btn-secondary.focus, .btn-secondary:focus{
-        background-color:white !important;
-        color : black !important;
-        border:none !important;
+
+    .btn-secondary.focus,
+    .btn-secondary:focus {
+        background-color: white !important;
+        color: black !important;
+        border: none !important;
         box-shadow: none !important;
     }
-    .navbar-list{
-        display:flex;
-        align-items:center;
+
+    .navbar-list {
+        display: flex;
+        align-items: center;
     }
-    .dropdown-menu{
+
+    .dropdown-menu {
         padding: 5px;
-    min-width: 100px;
-}
-   .dropdown-menu a:hover{
-        color:goldenrod !important;
+        min-width: 100px;
+    }
+
+    .dropdown-menu a:hover {
+        color: goldenrod !important;
 
     }
-.button-background{
-    background:white;
-    color:black;
-    border:none;
-}
-.button-background:hover{
-    background:white;
-    color:black;
-    border:none;
-}
+
+    .button-background {
+        background: white;
+        color: black;
+        border: none;
+    }
+
+    .button-background:hover {
+        background: white;
+        color: black;
+        border: none;
+    }
 
     /* hamza starts ends */
 </style>
 
 <body>
     <nav class="navbar navbar-fix">
-        <div id="width"><a href="{{url('/')}}"><img src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
+        <div id="width"><a href="{{ url('/') }}"><img
+                    src="https://bestofyemenauction.com/public/images/logo.land.png" width="180px" alt="">
             </a>
         </div>
         <div>
@@ -1074,20 +1117,25 @@
                 <a href="{{ route('user_logout') }}">
                     <i class="fa fa-sign-out" title="Logout"></i>
                 </a>
-                <a target="_blank" href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram" class="fa fa-instagram"></i> </a>
-                <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook" class="fa fa-facebook"></i></a>
-                <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
-                <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                <a target="_blank" href="https://www.instagram.com/qimacoffee/"><i title="Follow us on Instagram"
+                        class="fa fa-instagram"></i> </a>
+                <a target="_blank" href="https://www.facebook.com/qimacoffee/"><i title="Follow us on Facebook"
+                        class="fa fa-facebook"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/company/qima-coffee/mycompany/"><i
+                        title="Follow us on Linkedin" class="fa fa-linkedin" aria-hidden="true"></i> </a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i
+                        title="View our Youtube Channel" class="fa fa-youtube-play" aria-hidden="true"></i> </a>
                 @auth
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle button-background" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
-                        <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle button-background" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i title="Profile" class="fa fa-user" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
+                            <a class="dropdown-item" href="{{ route('user_logout') }}">Logout</a>
+                        </div>
                     </div>
-                </div>
                 @endauth
             </ul>
         </div>
@@ -1106,14 +1154,22 @@
     @endphp --}}
     <section>
         <div class="header-heading">
-            <div ><a class="header-heading-left"  @if (isset($previous)) href="{{route('auction-winners',$previous->id)}}" @endif > <i class="fa fa-angle-left" style="font-size:50px"></i><h5  class="header-heading-h5" >Previous Auction </h5></a></div>
+            <div><a class="header-heading-left"
+                    @if (isset($previous)) href="{{ route('auction-winners', $previous->id) }}" @endif> <i
+                        class="fa fa-angle-left" style="font-size:50px"></i>
+                    <h5 class="header-heading-h5">Previous Auction </h5>
+                </a></div>
             <div>
                 <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
             </div>
-            <div ><a class="header-heading-left"@if (isset($next)) href="{{route('auction-winners',$next->id)}}"@endif ><h5  class="header-heading-h5" >Next Auction </h5><i class="fa fa-angle-right" style="font-size:50px"></i> </a> </div>
+            <div><a
+                    class="header-heading-left"@if (isset($next)) href="{{ route('auction-winners', $next->id) }}" @endif>
+                    <h5 class="header-heading-h5">Next Auction </h5><i class="fa fa-angle-right"
+                        style="font-size:50px"></i>
+                </a> </div>
         </div>
         <div class="header-heading-time mt-5">
-        {{-- <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
+            {{-- <p style="text-align: center;font-family:'Montserrat';">Name: <span> {{$auction->title}}</span></p>
                 <p style="text-align: center;font-family:'Montserrat';">Date: <span>{{$new_date}}</span></p> --}}
         </div>
         <div class="table-container">
@@ -1127,7 +1183,8 @@
                         </div>
                     </div>
                 </nav>
-                <div class="tab-pane fade auction-data table-responsive show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade auction-data table-responsive show active" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-home-tab">
                     <table class="table auctiontable">
                         <thead>
                             <tr class="text-center">
@@ -1143,8 +1200,7 @@
                         </thead>
                         <tbody>
                             @foreach ($auctionProducts as $auctionProduct)
-                                <tr
-                                class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
                                     <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
@@ -1155,95 +1211,104 @@
                                         </div>
                                     </td>
                                     @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline td-res-pl"><a
-                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}" data-productid="{{ $products->id }}"
-                                                data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1    : '' }}">{{ $products->product_title }}
-                                            </a></td>
+                                        <td class="fw-bold text-underline td-res-pl name-append"><a
+                                                class="openbtn openSidebar {{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }}"data-id="{{ $auctionProduct->id }} "
+                                                data-productid="{{ $products->id }}"
+                                                data-image="{{ isset($auctionProduct->winningImages[0]) ? $auctionProduct->winningImages[0]->image_1 : '' }}">
+                                                {{ $products->product_title }}
+                                            </a>
+                                            <a
+                                                class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                        </td>
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
-                                        @if ($products->pro_process == '1')
-                                            <td class="td-res-pl">Natural</td>
-                                        @elseif ($products->pro_process == '2')
+                                        {{-- @if ($products->pro_process == '1') --}}
+                                        <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+                                        {{-- @elseif ($products->pro_process == '2')
                                             <td class="td-res-pl">Slow Dried</td>
                                         @else
                                             <td class="td-res-pl">Alchemy</td>
-                                        @endif
+                                        @endif --}}
                                     @endforeach
                                     @foreach ($auctionProduct->products as $products)
-                                        @if ($products->genetic_id == '1')
-                                            <td class="td-res-pl">Yemenia</td>
-                                        @elseif ($products->genetic_id == '2')
+                                        {{-- @if ($products->genetic_id == '1') --}}
+                                        <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                        {{-- @elseif ($products->genetic_id == '2')
                                             <td class="td-res-pl">Bourbon</td>
                                         @else
                                             <td class="td-res-pl">SL28</td>
-                                        @endif
+                                        @endif --}}
                                     @endforeach
                                     @if (isset($auctionProduct->highestbid))
                                         @foreach ($auctionProduct->highestbid->user as $userData)
-                                        <td style="width: 500px !important" class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                            <td style="width: 500px !important"
+                                                class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 {{ $userData->company ?? '---' }}</td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
                                     @endif
                                 </tr>
-                                    <tr class="hide-table-padding bid-row">
-                                        <td colspan="13">
-                                            <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
-                                                <div class="card">
-                                                    <h5 class="card-header">You need to login to Bid.</h5>
-                                                    <div class="card-body">
-                                                           <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
-                                                    </div>
+                                <tr class="hide-table-padding bid-row">
+                                    <td colspan="13">
+                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
+                                            <div class="card">
+                                                <h5 class="card-header">You need to login to Bid.</h5>
+                                                <div class="card-body">
+                                                    <a href="{{ route('customer.login') }}"
+                                                        class="btn btn-success">Login</a>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                        @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                        </table>
-            </div>
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div class="sidebar-container">
-                    <div class="lot-header">
-                        <h3 class="rank"></h3>
-                        <h3 class="juryscore"></h3>
-                        <h5 class="name"></h5>
-                        <h5 class="code"></h5>
-                    </div>
-                    <hr>
-                    <div class="lot-description">
-                        <p>LOT SIZE: <span class="size"></span></p>
-                        <p>CURRENT BID: <span class="currentbid"></span></p>
-                        <hr>
-                        <p >WINNING BIDDER: <br> <span class="paddleno"></span></p>
-                    </div>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <div class="lot-description">
-                        <p>PROCESS: <span class="proprocess"></span></p>
-                    </div>
-                    <div class="lot-genetis">
-                        <h3>GENETICS <span class="genetics"></span></h3>
-                    </div>
-                    <div class="moreBtn"></div>
+                    </table>
                 </div>
-            </div>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="sidebar-container">
+                        <div class="lot-header">
+                            <h3 class="rank"></h3>
+                            <h3 class="juryscore"></h3>
+                            <h5 class="name"></h5>
+                            <h5 class="code"></h5>
+                        </div>
+                        <hr>
+                        <div class="lot-description">
+                            <p>LOT SIZE: <span class="size"></span></p>
+                            <p>CURRENT BID: <span class="currentbid"></span></p>
+                            <hr>
+                            <p>WINNING BIDDER: <br> <span class="paddleno"></span></p>
+                        </div>
+                        <div class="lot-featured-img">
+                            <img class="img-status">
+                            <input type="hidden" name="image-source"
+                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                        </div>
+                        <div class="lot-description">
+                            <p>PROCESS: <span class="proprocess"></span></p>
+                        </div>
+                        <div class="lot-genetis">
+                            <h3>GENETICS <span class="genetics"></span></h3>
+                        </div>
+                        <div class="moreBtn"></div>
+                    </div>
+                </div>
     </section>
     <section class="footer">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png" alt="">
+                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png"
+                        alt="">
                 </div>
             </div>
         </div>
     </section>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -1253,6 +1318,8 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+@include('customer.auction_pages.groupbiddingjs');
 <script>
     function closeNav() {
 
@@ -1261,14 +1328,29 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
+        var socket = io('<?= env('SOCKETS') ?>');
         //OpenSidebar
+        $('.name-anchors').css('display', 'none');
+        socket.on('add_auction_status', function(data) {
+            if (data.auctionstatus == 1) {
+                // window.location = window.location.href + "?ended=1";
+                $('.name-anchors').css('display', 'block');
+                $('.name-spans-block').css('display', 'none');
+            }
+        });
+
+        // socket.on('publish_winner', function(data) {
+        //     // alert(data);
+        //     // console.log(data);
+        //     console.log('imran');
+        // });
         setTimeout(function() {
             window.location.reload();
         }, 300000)
         $(".openSidebar").click(function() {
-           $("#mySidebar").addClass('sidebaropen-width');
+            $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
-            var productid=$(this).attr('data-productid');
+            var productid = $(this).attr('data-productid');
             $('.img-status').attr('src', "");
             var image = $(this).attr('data-image');
             var source = $("#image-source").val();
@@ -1336,4 +1418,5 @@
 
     });
 </script>
+
 </html>

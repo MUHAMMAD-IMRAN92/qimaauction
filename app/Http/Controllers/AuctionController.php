@@ -1244,7 +1244,7 @@ class AuctionController extends Controller
 
     public function auctionWinners(Request $request, $id)
     {
-        $auction = Auction::where('id', $id)->where('is_hidden', 1)->first();
+            $auction = Auction::where('id', $id)->where('is_hidden', 1)->first();
         if ($request->ended == 1) { //$auction->auctionStatus() == 'ended'){
             //            $auction->is_hidden = 1;
             $auction->save();
@@ -1680,5 +1680,13 @@ class AuctionController extends Controller
             $auctionImage->save();
         }
         return 'done';
+    }
+    public function publishWinners(Request $request)
+    {
+        $auction = Auction::where('id', $request->id)->first();
+        $auction->is_hidden_winners = 1;
+        $auction->save();
+
+        return 1;
     }
 }
