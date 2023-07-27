@@ -1807,13 +1807,13 @@ border: 1px solid white;
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="col-sm-4 col-lg-4 align-left">
+                                                    {{-- <div class="col-sm-4 col-lg-4 align-left">
                                                         <button class="singlebidbtn btn openGroupSidebar groupbidsidebarbtn{{$auctionProduct->id}}"
                                                             id="{{ $auctionProduct->id }}"
                                                             onclick="closeGroupSidebar()"
                                                             data-id="{{ $auctionProduct->id }}"
                                                             style="border-radius: 5px;">Group Bidding</button>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-4"></div>

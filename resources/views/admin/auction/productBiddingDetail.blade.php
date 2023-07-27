@@ -160,7 +160,7 @@
                                                         {{-- <th>Bid History</th> --}}
                                                         {{-- <th>Action(s)</th> --}}
                                                         <th></th>
-                                                        <th>Group Bid</th>
+                                                        {{-- <th>Group Bid</th> --}}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -254,10 +254,10 @@
                                                                             class="autobid btn btn-primary waves-effect waves-light"
                                                                             style="font-size:16px;">save </button>
                                                                     </td>
-                                                                    <td><button data-id="{{ $auction->id }}"
+                                                                    {{-- <td><button data-id="{{ $auction->id }}"
                                                                             id="bid-{{ $auction->id }}"
                                                                             class="btn btn-primary waves-effect openGroupSidebar">
-                                                                            Details </button></td>
+                                                                            Details </button></td> --}}
 
                                                                 </tr>
                                                             @endforeach
