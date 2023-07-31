@@ -1064,6 +1064,133 @@
     }
 
     /* hamza starts ends */
+    .heading-table-auction{
+        font-family:'Montserrat'!important ;
+        font-size: 27px !important;
+        font-weight: 800 !important;
+        line-height: 32px !important;
+        letter-spacing: 0.2em !important;
+        text-align: center;
+        color: rgba(231, 132, 96, 1) !important;
+        padding: 20px !important;
+    }
+    .table-head-border{
+        border-bottom: 2px solid rgba(231, 132, 96, 1);
+    }
+    
+    font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #303030;
+        text-transform: uppercase;
+        background-color: white;
+        letter-spacing: 0.1em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        margin: 0 1rem;
+        width: 180px;
+    }
+    @media screen and (max-width:1000px) {
+        .complete-wrapper::after {
+            display: none !important;
+        }
+
+        .content-wrapper {
+            margin-bottom: 0vh !important;
+        }
+
+        .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+
+        .banner-text-section-2 .banner-image-2 {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+
+        .banner-text-section {
+            position: initial;
+            width: 100%;
+        }
+
+        .banner-text-section-2 {
+            position: initial;
+            width: 100%;
+        }
+
+        .background-image-1 {
+            display: none;
+        }
+
+        .background-image-2 {
+            display: none;
+
+        }
+
+        .background-image-3 {
+            display: none;
+        }
+
+        .badge-section {
+            position: initial;
+            text-align: center;
+        }
+
+        .complete-wrapper {
+            padding: 10px !important;
+            height: auto;
+        }
+
+        .icons-tab {
+            display: none !important;
+        }
+
+        .content-wrapper {
+            padding: 10px !important;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: end;
+        }
+
+        .badges-wrapper {
+            margin-top: 0px !important;
+            position: initial !important;
+        }
+
+        .display-none-section {
+            display: none;
+        }
+
+        .badge-section {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0px;
+        }
+
+        .banner-text-section-2 {
+            padding: 0px !important;
+        }
+
+        .banner-text-section {
+            padding: 0px !important;
+        }
+
+        .content-wrapper {
+            height: auto !important;
+        }
+    }
+    #score{
+        border: 2px solid lightgray;
+    }
 </style>
 
 <body>
@@ -1096,16 +1223,16 @@
 
             </ul>
         </div>
-        {{-- <div class="menu" id="toggle-button">
+        <!-- {{-- <div class="menu" id="toggle-button">
             <div class="menu-item"></div>
             <div class="menu-item"></div>
             <div class="menu-item"></div>
-        </div> --}}
+        </div> --}} -->
 
 
 
     </nav>
-    {{-- <section>
+    <!-- {{-- <section>
         <div class="navbar">
             <a href="#"><img src="{{ asset('public/images/avatar.png') }}" alt="Avatar" class="avatar"></a>
 
@@ -1135,7 +1262,7 @@
                 <img src="{{ asset('public/images/logo-banner.png') }}" width=40px alt="">
             </div>
         </div>
-    </section> --}}
+    </section> --}} -->
     <div class="container box text-center section-4-text-1 auction_pending" style="display: none;width:auto;">
         <div class="row boxrow">
             {{ $auction->startDate }}
@@ -1175,7 +1302,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container box text-center section-4-text-1 auction_started" style="display: none;">
+    <!-- {{-- <div class="container box text-center section-4-text-1 auction_started" style="display: none;">
         <div class="row boxrow">
             <p class="timer_text"></p>
         </div>
@@ -1198,7 +1325,7 @@
                 <p id="countdown" style="color: red;font-size: small;"></p>
             </div>
         </div>
-    </div> --}}
+    </div> --}} -->
     <section>
         <h2 style="text-align: center;font-family:'Montserrat';">Welcome to the Best of Yemen</h2>
         <!--<h3 style="text-align: center;font-family:'Montserrat';">Auction starting soon.</h3>-->
@@ -1235,16 +1362,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="table-head-border">
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <b> ALCHEMY
-                                    </b>
+                                <td class="heading-table-auction">
+                                    ALCHEMY
+                                    
                                 </td>
                             </tr>
                             @foreach ($auctionProducts as $auctionProduct)
@@ -1350,15 +1477,15 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
+                            <tr  class="table-head-border">
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <b> NATURAL AND DEEP FERMENTATION </b>
+                                <td class="heading-table-auction">
+                                NATURAL AND DEEP FERMENTATION
                                 </td>
                             </tr>
                             @foreach ($naturalauctionProducts as $auctionProduct)
@@ -1470,34 +1597,51 @@
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="sidebar-container">
-                        <div class="lot-header">
-                            <h3 class="rank"></h3>
-                            <h3 class="juryscore"></h3>
-                            <h5 class="name"></h5>
-                            <h5 class="code"></h5>
-                        </div>
-                        <hr>
-                        <div class="lot-description">
-                            <p>LOT SIZE: <span class="size"></span></p>
-                            <p>CURRENT BID: <span class="currentbid"></span></p>
-                            {{-- <p>TOTAL VALUE: <span class="totalvalue"></span></p> --}}
-                            <hr>
-                            <p>WINNING BIDDER: <span class="paddleno"></span></p>
-                        </div>
-                        <div class="lot-featured-img">
-                            <img class="img-status">
-                            <input type="hidden" name="image-source"
-                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                        </div>
-                        <div class="lot-description">
-                            <p>PROCESS: <span class="proprocess"></span></p>
-                        </div>
-                        <div class="lot-genetis">
-                            <h3>GENETICS <span class="genetics"></span></h3>
-
-                        </div>
-
-                        <div class="moreBtn"></div>
+                    <div class="banner-text-section ">
+                    <h2  class="rank"></h2>
+                    <h3 class="name"></h3>
+                    <div class="d-flex align-items-center">
+                    <p>JURY CODE:</p>    
+                    <p style="cursor: auto;" class="code"></p>
+                   </div>
+                    <hr>
+                    <div class="lot-featured-img">
+                        <img class="img-status">
+                        <input type="hidden" name="image-source"
+                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                    </div>
+                    <p>JURY SCORE:</p>
+                    <h2 style="cursor: auto;" class="juryscore"></h2>
+                    <h2></h2>
+                    <hr>
+                    <div>
+                        <p>Genetics :</p>
+                        <h4 class="genetics"></h4>
+                    </div>
+                    <div>
+                        <p>Process :</p>
+                        <h4 class="proprocess"></h4>
+                    </div>
+                    <p style="cursor: auto;">lot size :</p>
+                    <h4 style="cursor: auto;" class="size"></h4>
+                    <hr>
+                    <div>
+                        <h6>traceability</h6>
+                        <p>VILLAGE :</p>
+                        <p> REGION :  </p>
+                        <p>GOVERNORATE :</p>
+                        <p>ALTITUDE :</p>
+                    </div>
+                    <div class="lot-featured-img">
+                        <img class="img-status">
+                        <input type="hidden" name="image-source"
+                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                    </div>
+                    <p>flavour profile</p>
+                        <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING</h4>
+                        
+                    <div class="moreBtn btn-info mt-2"></div>
+                </div>
                     </div>
                 </div>
     </section>
