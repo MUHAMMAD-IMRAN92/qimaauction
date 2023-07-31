@@ -37,16 +37,35 @@
     width: 250px;
 }
 }
+.boy-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
+    .boy-image img {
+        padding: 20px;
+        margin-top: 10px;
+        width: 300px;
+    }
+
+.login-description h2,h6{
+    color: black !important;
+}
     </style>
 
     <body>
         <!-- BEGIN: Content-->
         <div class="login-container">
             <div class="login-description">
-            <h2>WELCOME TO</h2>
+            <h2 >WELCOME TO</h2>
             <a href="/">
-            <img class="login-screen-logo" src="{{ asset('public/images/qima-logo2.png') }}" alt="branding logo">
+            <div class="boy-image">
+                <img src="{{ asset('public/app-assets/images/logo/new-logo-2023.png') }}" alt="">
+                <img src="{{ asset('public/app-assets/images/logo/heading.png') }}" alt="">
+            </div>
+            <!-- <img class="login-screen-logo" src="{{ asset('public/images/qima-logo2.png') }}" alt="branding logo"> -->
             </a>
             <h6>LOGIN</h6>
             </div>

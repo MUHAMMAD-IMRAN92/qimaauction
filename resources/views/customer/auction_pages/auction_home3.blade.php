@@ -27,6 +27,7 @@
 <style>
     #mySidebar {
         box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.2);
+        background: rgba(239, 235, 229, 1);
     }
 
     body {
@@ -407,6 +408,10 @@
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+        color: black;
+    }
+    .sidebar .closebtn:hover {
+        color: black;
     }
 
     /* The button used to open the sidebar */
@@ -677,7 +682,7 @@
     }
 
     .sidebar-container {
-        padding: 20px;
+        padding:0px 20px;
         width: 450px;
     }
 
@@ -1283,6 +1288,330 @@
     }
 
     /* hamza starts ends */
+    
+    .heading-table-auction{
+        font-family:'Montserrat'!important ;
+        font-size: 27px !important;
+        font-weight: 800 !important;
+        line-height: 32px !important;
+        letter-spacing: 0.2em !important;
+        text-align: center;
+        color: rgba(231, 132, 96, 1) !important;
+        padding: 20px !important;
+    }
+    .table-head-border{
+        border-bottom: 2px solid rgba(231, 132, 96, 1);
+    }
+    .banner-text-section {
+      
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        z-index: 10;
+    }
+
+    .banner-text-section h2 {
+        font-family: 'Montserrat';
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 61px;
+        letter-spacing: 0em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+    }
+
+    .banner-text-section h3 {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section p {
+        cursor: pointer;
+
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section h6 {
+        cursor: pointer;
+
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section h4 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        cursor: pointer;
+
+
+
+    }
+
+    .banner-text-section span {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+
+
+    }
+
+    .wrapper-bg-section {
+        position: relative;
+    }
+
+
+
+    .banner-text-section-2 {
+        top: 75%;
+        left: 46%;
+        position: absolute;
+        width: 501px;
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        padding: 25px;
+        z-index: 10;
+    }
+
+    .images-section {
+        z-index: 5;
+    }
+
+    .banner-text-section-2 p {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section-2 h3 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        color: rgba(35, 43, 56, 1);
+
+
+
+    }
+
+    .banner-text-section-2 h6 {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: inherit;
+        max-height: 50vh;
+        overflow-y: auto;
+        display: block;
+    }
+    .banner-text-section-2y::-webkit-scrollbar {
+  width: 1em;
+}
+
+.banner-text-section-2::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text-section-2::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+    .banner-text-section-2 h5 {
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+    }
+    
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
+
+    }
+
+    @font-face {
+        font-family: 'Montserrat-Medium';
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
+
+    }
+    .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+            width: 100%;
+        }
+          .moreBtn{
+            background: transparent;
+    text-align: center;
+          }
+        .btn-info button {
+        padding: 0.6rem 0.4rem;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #303030;
+        text-transform: uppercase;
+        background-color: white;
+        letter-spacing: 0.1em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        margin: 0 1rem;
+        width: 180px;
+    }
+    @media screen and (max-width:1000px) {
+        .complete-wrapper::after {
+            display: none !important;
+        }
+
+        .content-wrapper {
+            margin-bottom: 0vh !important;
+        }
+
+        .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+
+        .banner-text-section-2 .banner-image-2 {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+
+        .banner-text-section {
+            position: initial;
+            width: 100%;
+        }
+
+        .banner-text-section-2 {
+            position: initial;
+            width: 100%;
+        }
+
+        .background-image-1 {
+            display: none;
+        }
+
+        .background-image-2 {
+            display: none;
+
+        }
+
+        .background-image-3 {
+            display: none;
+        }
+
+        .badge-section {
+            position: initial;
+            text-align: center;
+        }
+
+        .complete-wrapper {
+            padding: 10px !important;
+            height: auto;
+        }
+
+        .icons-tab {
+            display: none !important;
+        }
+
+        .content-wrapper {
+            padding: 10px !important;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: end;
+        }
+
+        .badges-wrapper {
+            margin-top: 0px !important;
+            position: initial !important;
+        }
+
+        .display-none-section {
+            display: none;
+        }
+
+        .badge-section {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0px;
+        }
+
+        .banner-text-section-2 {
+            padding: 0px !important;
+        }
+
+        .banner-text-section {
+            padding: 0px !important;
+        }
+
+        .content-wrapper {
+            height: auto !important;
+        }
+    }
+    #score{
+        border: 2px solid #a8a3a3;
+    }
 </style>
 
 <body>
@@ -1403,7 +1732,7 @@
                                 @endphp
                                 {{--
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
-                                    <tr>
+                                    <tr class="table-head-border">
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -1411,16 +1740,15 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                            <b> ALCHEMY
-                                            </b>
+                                        <td class="heading-table-auction">
+                                            ALCHEMY
                                         </td>
                                     </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
                                     @php
                                         $sortClass = 'sortByRank';
                                     @endphp
-                                    <tr>
+                                    <tr class="table-head-border">
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -1428,8 +1756,8 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                            <b> NATURAL AND DEEP FERMENTATION </b>
+                                        <td class="heading-table-auction">
+                                             NATURAL AND DEEP FERMENTATION 
                                         </td>
                                     </tr>
                                 @endif --}}
@@ -2147,34 +2475,51 @@
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="sidebar-container">
-                    <div class="lot-header">
-                        <h3 class="rank"></h3>
-                        <h3 class="juryscore"></h3>
-                        <h5 class="name"></h5>
-                        <h5 class="code"></h5>
-                    </div>
+                    <div class="banner-text-section ">
+                    <h2  class="rank">.</h2>
+                    <h3 class="name"></h3>
+                    <div class="d-flex align-items-center">
+                    <p>JURY CODE:</p>    
+                    <p style="cursor: auto;" class="code"></p>
+                   </div>
                     <hr>
-                    <div class="lot-description">
-                        <p>LOT SIZE: <span class="size"></span></p>
-                        <p>CURRENT BID: <span class="currentbid"></span></p>
-                        <p>TOTAL VALUE: <span class="totalvalue"></span></p>
-                        <hr>
-                        <p>WINNING BIDDER: <span class="paddleno"></span></p>
+                    <div class="lot-featured-img">
+                        <img class="img-status">
+                        <input type="hidden" name="image-source"
+                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                    </div>
+                    <p>JURY SCORE:</p>
+                    <h2 style="cursor: auto;" class="juryscore"></h2>
+                    <h2></h2>
+                    <hr>
+                    <div>
+                        <p>Genetics :</p>
+                        <h4 class="genetics"></h4>
+                    </div>
+                    <div>
+                        <p>Process :</p>
+                        <h4 class="proprocess"></h4>
+                    </div>
+                    <p style="cursor: auto;">lot size :</p>
+                    <h4 style="cursor: auto;" class="size"></h4>
+                    <hr>
+                    <div>
+                        <h6>traceability</h6>
+                        <p>VILLAGE :</p>
+                        <p> REGION :  </p>
+                        <p>GOVERNORATE :</p>
+                        <p>ALTITUDE :</p>
                     </div>
                     <div class="lot-featured-img">
                         <img class="img-status">
                         <input type="hidden" name="image-source"
                             value="{{ asset('/public/images/product_images/') }}" id="image-source" />
                     </div>
-                    <div class="lot-description">
-                        <p>PROCESS: <span class="proprocess"></span></p>
-                    </div>
-                    <div class="lot-genetis">
-                        <h3>GENETICS <span class="genetics"></span></h3>
-
-                    </div>
-
-                    <div class="moreBtn"></div>
+                    <p>flavour profile</p>
+                        <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING</h4>
+                        
+                    <div class="moreBtn btn-info mt-2"></div>
+                </div>
                 </div>
             </div>
 
