@@ -3267,7 +3267,9 @@
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
             $('.autobtnclick').attr("disabled", false);
+                $('.singlebtnclick').attr("disabled", false);
 
+                $(".singlebtnclick").css('background', '#143D30')
             data.checkTimer = 0;
             resetTimer(data);
         }

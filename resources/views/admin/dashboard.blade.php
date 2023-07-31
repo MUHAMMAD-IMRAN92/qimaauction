@@ -1258,7 +1258,7 @@
 
     </div>
     <script>
-        const targetDate = new Date('JULY 08, 2023 19:00:00').getTime();
+        const targetDate = new Date('2023-08-08T14:00').getTime();
 
         const timer = setInterval(function() {
 
