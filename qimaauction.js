@@ -44,6 +44,9 @@ socket.on('add_bid_updates', function (data) {
  socket.on('add_groupbid_updates', function (data) {
     io.emit('add_groupbid_updates', { "offersdata":data.offersdata,"adminofferData":data.adminofferData});
  });
+ socket.on('auction_timer', function (data) {
+    io.emit('auction_timer', { "minutes":data.minutes,"seconds":data.seconds});
+ });
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
     mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {

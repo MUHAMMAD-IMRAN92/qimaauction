@@ -1354,6 +1354,17 @@ class AuctionController extends Controller
         $auctionReset = '1';
         return response()->json($auctionReset);
     }
+
+    public function onloadTimer(Request $request)
+    {
+        $currentDate = date('Y-m-d H:i:s');
+        $convertedTime = date('Y-m-d H:i:s', strtotime('+3 minutes', strtotime($currentDate)));
+        $auction = Auction::where('is_active', '1')->first();
+        $auction->endTime = $convertedTime;
+        // $auction->save();
+        $auctionReset = '1';
+        return response()->json($auctionReset);
+    }
     public function groupBidSideBar(Request $request)
     {
         $groupbidDatas      = UserOffers::where('status', 1)->get();

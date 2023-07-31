@@ -201,6 +201,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/auction/updateAutoBids/{id}', [App\Http\Controllers\AuctionController::class, 'updateAutoBids'])->name('updateAutoBids');
     Route::post('/auction/auctionend', [App\Http\Controllers\AuctionController::class, 'auctionEnd'])->name('auctionEnd');
     Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'auctionReset'])->name('auctionReset');
+    Route::post('/auction/auctinreset', [App\Http\Controllers\AuctionController::class, 'onloadTimer'])->name('onloadTimer');
     Route::post('/groupbidsidebaradmin', [App\Http\Controllers\AuctionController::class, 'groupbidAdminSidebar'])->name('groupbidadminsidebar');
 
 

@@ -2780,6 +2780,11 @@
 </script>
 
 <script>
+     socket.on('auction_timer', function(data) {
+            console.log(data)
+        });
+  
+
     var total = 0;
     var interval;
     socket.on('auto_bid_updates', function(data) {
@@ -3264,17 +3269,17 @@
             endAuctionVar = 1;
         }
     });
+
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
             $('.autobtnclick').attr("disabled", false);
-
             data.checkTimer = 0;
             resetTimer(data);
         }
     });
 
     function resetTimer(data) {
-        // console.log('reset timer');
+        console.log('resetTimer data');
         var timer_text = "";
         var hours = 0;
         var days = 0;
@@ -3287,10 +3292,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
+                
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-
+                
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
@@ -3369,6 +3374,15 @@
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
                 $('.seconds').html(seconds);
+
+
+                socket.emit('auction_timer', {
+                    "data": seconds,
+                });
+                // console.log(minutes + ':' + seconds);
+
+
+                // resetTimer();
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
