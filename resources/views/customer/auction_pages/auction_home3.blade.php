@@ -3372,6 +3372,9 @@
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
                 $('.seconds').html('00');
             }
             if (minutes < 0) clearInterval(interval);
