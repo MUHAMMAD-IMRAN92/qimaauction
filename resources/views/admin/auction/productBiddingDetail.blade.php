@@ -123,7 +123,7 @@
             <div class="content-header row">
                 <div class="col-12 custom_btn_align mb-1">
                     <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                        data-id="{{ $auction->id }}" id="resetauction">Reset Auction</a>
+                        data-id="{{ $auction->id }}" id="resetauction">Reset Timer</a>
                     <a class="btn btn-primary waves-effect waves-light endauction"
                         @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
                         id="endauction">End Auction</a>
@@ -606,7 +606,7 @@
                     }).then((result) => {
                         if (result) {
                             $.ajax({
-                                url: "{{ route('auctionReset') }}",
+                                url: "{{ url('auctionReset') }}",
                                 async: false,
                                 method: 'POST',
                                 data: {
