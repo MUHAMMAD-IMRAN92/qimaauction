@@ -1735,7 +1735,7 @@
                                 @php
                                     $sortClass = '';
                                 @endphp
-                                {{--
+                                
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
                                     <tr class="table-head-border">
                                         <td></td>
@@ -1765,7 +1765,7 @@
                                              NATURAL AND DEEP FERMENTATION 
                                         </td>
                                     </tr>
-                                @endif --}}
+                                @endif
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
