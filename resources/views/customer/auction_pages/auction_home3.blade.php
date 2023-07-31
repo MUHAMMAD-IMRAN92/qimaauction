@@ -1612,6 +1612,11 @@
     #score{
         border: 2px solid #a8a3a3;
     }
+    button.singlebidbtn:not([disabled]) {
+            background-color: #143D30 !important; /* Change this to your desired color */
+            color: white;
+          
+        }
 </style>
 
 <body>
@@ -3611,11 +3616,12 @@
     });
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
+            $('.singlebidbtn').attr("disabled", false);
             $('.autobtnclick').attr("disabled", false);
             $('tr.changecolor').each(function() {
                 $(this).next().find('button').prop('disabled', true);
             });
-
+            $('.autobtnclick').attr("disabled", false);
             data.checkTimer = 0;
             resetTimer(data);
         }

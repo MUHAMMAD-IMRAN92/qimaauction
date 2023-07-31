@@ -1077,21 +1077,194 @@
     .table-head-border{
         border-bottom: 2px solid rgba(231, 132, 96, 1);
     }
-    
-    font-family: 'Montserrat';
-        font-size: 11px;
-        font-weight: 600;
-        line-height: 12px;
-        color: #303030;
-        text-transform: uppercase;
-        background-color: white;
-        letter-spacing: 0.1em;
-        border: none;
-        cursor: pointer;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        border-radius: 24px;
-        margin: 0 1rem;
-        width: 180px;
+    .banner-text-section {
+      
+      height: auto;
+      background-color: rgba(239, 235, 229, 1);
+      z-index: 10;
+  }
+
+  .banner-text-section h2 {
+      font-family: 'Montserrat';
+      font-size: 50px;
+      font-weight: 800;
+      line-height: 61px;
+      letter-spacing: 0em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+
+  }
+
+  .banner-text-section h3 {
+      font-family: 'Montserrat';
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 32px;
+      letter-spacing: 0.1em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+
+
+  }
+
+  .banner-text-section p {
+      cursor: pointer;
+
+      font-family: 'Montserrat-Medium';
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 13px;
+      letter-spacing: 0.2em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+
+
+  }
+
+  .banner-text-section h6 {
+      cursor: pointer;
+
+      font-family: 'Montserrat';
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 13px;
+      letter-spacing: 0.2em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+
+
+  }
+
+  .banner-text-section h4 {
+      font-family: 'Montserrat';
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 0.1em;
+      text-align: left;
+      text-transform: uppercase;
+      cursor: pointer;
+
+
+
+  }
+
+  .banner-text-section span {
+      font-family: 'Montserrat-Medium';
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 13px;
+      letter-spacing: 0.2em;
+      text-align: left;
+      text-transform: uppercase;
+
+
+  }
+
+  .wrapper-bg-section {
+      position: relative;
+  }
+
+
+
+  .banner-text-section-2 {
+      top: 75%;
+      left: 46%;
+      position: absolute;
+      width: 501px;
+      height: auto;
+      background-color: rgba(239, 235, 229, 1);
+      padding: 25px;
+      z-index: 10;
+  }
+
+  .images-section {
+      z-index: 5;
+  }
+
+  .banner-text-section-2 p {
+      font-family: 'Montserrat-Medium';
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 13px;
+      letter-spacing: 0.2em;
+      text-align: left;
+      margin-bottom: 0px;
+
+
+  }
+
+  .banner-text-section-2 h3 {
+      font-family: 'Montserrat';
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 0.1em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+      margin-top: 10px;
+      color: rgba(35, 43, 56, 1);
+
+
+
+  }
+
+  .banner-text-section-2 h6 {
+      font-family: 'Montserrat-Medium';
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 19px;
+      letter-spacing: 0.1em;
+      text-align: left;
+      text-transform: inherit;
+      max-height: 50vh;
+      overflow-y: auto;
+      display: block;
+  }
+  .banner-text-section-2y::-webkit-scrollbar {
+width: 1em;
+}
+
+.banner-text-section-2::-webkit-scrollbar-track {
+box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text-section-2::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+}
+
+  .banner-text-section-2 h5 {
+      font-family: 'Montserrat';
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 13px;
+      letter-spacing: 0.2em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+
+  }
+  #mySidebar{
+    background: rgba(239, 235, 229, 1)
+  }
+  
+
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
+
+    }
+
+    @font-face {
+        font-family: 'Montserrat-Medium';
+        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
+
     }
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
