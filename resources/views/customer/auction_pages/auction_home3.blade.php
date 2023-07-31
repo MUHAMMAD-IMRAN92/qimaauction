@@ -1617,6 +1617,9 @@
             color: white;
           
         }
+        .btn-info:hover{
+            background-color: transparent !important;
+        }
 </style>
 
 <body>

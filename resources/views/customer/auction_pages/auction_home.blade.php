@@ -1213,7 +1213,30 @@
 
 
   }
-
+  .moreBtn{
+            background: transparent;
+    text-align: center;
+          }
+        .btn-info button {
+        padding: 0.6rem 0.4rem;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #303030;
+        text-transform: uppercase;
+        background-color: white;
+        letter-spacing: 0.1em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        margin: 0 1rem;
+        width: 180px;
+    }
+    .btn-info:hover{
+            background-color: transparent !important;
+        }
   .banner-text-section-2 h6 {
       font-family: 'Montserrat-Medium';
       font-size: 11px;
