@@ -1398,7 +1398,7 @@
                         <tbody>
 
                             @foreach ($auctionProducts as $key => $auctionProduct)
-                            @php
+                                @php
                                     $sortClass = '';
                                 @endphp
                                 {{--
@@ -1456,7 +1456,7 @@
                                     }
                                 @endphp
                                 <tr
-                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }} {{ $sortClass}}
+                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }} {{ $sortClass }}
                                     @if (isset($auctionProduct->offerComplete) && isset($auctionProduct->groupAutobid)) @foreach ($groupUsers as $users)
                                         @if ($users['bidwinner'] == Auth::user()->id)
                                         changecolor @endif
@@ -1777,7 +1777,7 @@
                                                             @else
                                                             @endif
                                                             @if ($userfound == 0)
-                                                                <button  @if (isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id) disabled="disabled" @endif
+                                                                <button @if (isset($auctionProduct->latestSingleBid->user_id) && $auctionProduct->latestSingleBid->user_id == Auth::user()->id)  @endif
                                                                     class="btn singlebidbtn autobtnclick  bidnowautobutton{{ $auctionProduct->id }}"
                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}">Auto
@@ -2288,8 +2288,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/logo.land.png"
-                        alt="">
+                    <img src="https://bestofyemenauction.com/public/images/logo.land.png" alt="">
                 </div>
             </div>
         </div>
@@ -2807,7 +2806,7 @@
             $('.autobidamount' + data.bidID).show();
             $('.bidnowautobutton' + data.bidID).show();
             $('.bidnowbutton' + data.bidID).attr("disabled", false);
-            $('.bidnowautobutton' + data.bidID).attr("disabled", false);
+            // $('.bidnowautobutton' + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
         }
         //if triggered from groupbid
@@ -2898,7 +2897,7 @@
                     $('.autobidamount' + data.bidID).show();
                     $('.bidnowautobutton' + data.bidID).show();
                     $('.bidnowbutton' + data.bidID).attr("disabled", false);
-                    $('.bidnowautobutton' + data.bidID).attr("disabled", false);
+                    // $('.bidnowautobutton' + data.bidID).attr("disabled", false);
                     $(".bidnowbutton" + data.bidID).css('background', '##143D30');
                     $(".liabilitybidcollapse" + data.bidID).hide();
                     $(".liability_your" + data.bidID).removeClass('liabilty_shown');
@@ -2923,7 +2922,7 @@
                 $('.autobidamount' + data.bidID).show();
                 $('.bidnowautobutton' + data.bidID).show();
                 $('.bidnowbutton' + data.bidID).attr("disabled", false);
-                $('.bidnowautobutton' + data.bidID).attr("disabled", false);
+                // $('.bidnowautobutton' + data.bidID).attr("disabled", false);
                 $(".bidnowbutton" + data.bidID).css('background', '##143D30');
                 $(".liabilitybidcollapse" + data.bidID).hide();
                 $(".liability_your" + data.bidID).removeClass('liabilty_shown');
@@ -3120,7 +3119,7 @@
                     $('.nextincrement' + data.bidID).show();
                     $(".autobidClass1" + data.bidID).show();
                     $('.bidnowbutton' + data.bidID).attr("disabled", false);
-                    $('.bidnowautobutton' + data.bidID).attr("disabled", false);
+                    // $('.bidnowautobutton' + data.bidID).attr("disabled", false);
                     $(".alertMessage" + data.bidID).css('background', '#f16767');
                     $('.alertMessage' + data.bidID).html('You have been outbid.');
                 }
@@ -3142,7 +3141,7 @@
                 $('.nextincrement' + data.bidID).show();
                 $(".autobidClass1" + data.bidID).show();
                 $('.bidnowbutton' + data.bidID).attr("disabled", false);
-                $('.bidnowautobutton' + data.bidID).attr("disabled", false);
+                // $('.bidnowautobutton' + data.bidID).attr("disabled", false);
                 $(".alertMessage" + data.bidID).css('background', '#f16767');
                 $('.alertMessage' + data.bidID).html('You have been outbid.');
             }
@@ -3151,7 +3150,7 @@
             total = total;
             $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
             $(".bidnowbutton" + data.bidID).attr("disabled", true);
-            $(".bidnowautobutton" + data.bidID).attr("disabled", true);
+            // $(".bidnowautobutton" + data.bidID).attr("disabled", true);
             $(".bidnowbutton" + data.bidID).css('background', '#a6a6a6');
             $(".bidnowbutton" + data.bidID).css('color', '#ffffff');
             $(".alertMessage" + data.bidID).css('background', '#DBFFDA');
@@ -3174,7 +3173,7 @@
                 $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
             }, 10000);
             $(".bidnowbutton" + data.bidID).attr("disabled", false);
-            $(".bidnowautobutton" + data.bidID).attr("disabled", false);
+            // $(".bidnowautobutton" + data.bidID).attr("disabled", false);
             $(".bidnowbutton" + data.bidID).css('background', '#143D30');
             $(".alertMessage" + data.bidID).css('background', '#f16767');
             $(".alertMessage" + data.bidID).html('<p>You have been outbid.</p>');
@@ -3185,7 +3184,7 @@
                 if (data.latestSingleBidUser[i].bidwinner == {{ Auth::user()->id }}) {
                     $(".bidcollapse" + data.bidID).removeClass("changecolorLose");
                     $(".bidnowbutton" + data.bidID).attr("disabled", true);
-                    $(".bidnowautobutton" + data.bidID).attr("disabled", true);
+                    // $(".bidnowautobutton" + data.bidID).attr("disabled", true);
                     $(".bidnowbutton" + data.bidID).css('background', '#a6a6a6');
                     $(".bidnowbutton" + data.bidID).css('color', '#ffffff');
                     $(".alertMessage" + data.bidID).css('background', '#DBFFDA');
@@ -3267,6 +3266,8 @@
     });
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
+            $('.autobtnclick').attr("disabled", false);
+
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -3369,7 +3370,8 @@
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
                 $('.seconds').html(seconds);
             } else {
-
+                $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
                 $('.seconds').html('00');
             }
             if (minutes < 0) clearInterval(interval);
@@ -3447,8 +3449,6 @@
         });
 
     }
-
-
 </script>
 @include('customer.auction_pages.homejs')
 
