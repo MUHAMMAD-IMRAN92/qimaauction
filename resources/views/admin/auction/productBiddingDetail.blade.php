@@ -606,7 +606,7 @@
                     }).then((result) => {
                         if (result) {
                             $.ajax({
-                                url: "{{ url('auctionReset') }}",
+                                url: "{{ route('auctionReset') }}",
                                 async: false,
                                 method: 'POST',
                                 data: {

@@ -1401,7 +1401,7 @@
                                 @php
                                     $sortClass = '';
                                 @endphp
-
+                                {{--
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
                                     <tr>
                                         <td></td>
@@ -1432,7 +1432,7 @@
                                             <b> NATURAL AND DEEP FERMENTATION </b>
                                         </td>
                                     </tr>
-                                @endif
+                                @endif --}}
                                 @php
                                     //increment in singlebid price
                                     $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
@@ -2780,44 +2780,6 @@
 </script>
 
 <script>
-    var timer_min;
-    var timer_sec;
-    socket.on('auction_timer', function(data) {
-        // console.log(data)
-
-        timer_min = data.minutes;
-        timer_sec = data.seconds;
-
-        $('.minutes').html(data.minutes);
-        $('.seconds').html(data.seconds);
-        setCookie('minutes', data.minutes, 1);
-        setCookie('seconds', data.seconds, 1);
-
-    });
-
-
-    function setCookie(c_name, value, exdays) {
-        var exdate = new Date();
-        exdate.setDate(exdate.getDate() + exdays);
-        var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-        document.cookie = c_name + "=" + c_value;
-    }
-
-    function getCookie(c_name) {
-        var i, x, y, ARRcookies = document.cookie.split(";");
-        for (i = 0; i < ARRcookies.length; i++) {
-            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
-            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
-            x = x.replace(/^\s+|\s+$/g, "");
-            if (x == c_name) {
-                return unescape(y);
-            }
-        }
-    }
-
-    $(document).ready(function() {
-
-    });
     var total = 0;
     var interval;
     socket.on('auto_bid_updates', function(data) {
@@ -2978,10 +2940,7 @@
 
         if (data.checkTimer == 0) {
             window.empty = data.checkTimer;
-            setCookie('minutes', '03', 1);
-            setCookie('seconds', '00', 1);
             resetTimer(data);
-
         }
 
     });
@@ -3285,8 +3244,6 @@
         }
         if (data.checkTimer == 0) {
             window.empty = data.checkTimer;
-            setCookie('minutes', '03', 1);
-            setCookie('seconds', '00', 1);
             resetTimer(data);
         }
         var incrementedvalue = roundedToFixed(data.nextIncrement, 1);
@@ -3307,22 +3264,17 @@
             endAuctionVar = 1;
         }
     });
-
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
             $('.autobtnclick').attr("disabled", false);
-                $('.singlebtnclick').attr("disabled", false);
 
-                $(".singlebtnclick").css('background', '#143D30')
             data.checkTimer = 0;
-            setCookie('minutes', '03', 1);
-            setCookie('seconds', '00', 1);
             resetTimer(data);
         }
     });
 
     function resetTimer(data) {
-        console.log('resetTimer data');
+        // console.log('reset timer');
         var timer_text = "";
         var hours = 0;
         var days = 0;
@@ -3335,10 +3287,10 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-                
+
                 $interval = date_diff($date_a, $date_b);
                 $interva13 = date_diff($date_b, $date_c);
-                
+
                 $interval2 = $interval->format('%i:%s');
                 $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
@@ -3375,7 +3327,6 @@
 
         }
         $('.timer_text').html(timer_text);
-
         clearInterval(interval);
         if (timer.length > 2) {
             days = parseInt(timer[0], 10);
@@ -3389,26 +3340,10 @@
         $('.days').html(days.toString().padStart(2, "0"));
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
-        var minutes = parseInt(getCookie('minutes'), 10);
-        var seconds = parseInt(getCookie('seconds'), 10);
-        if (minutes == 0 && seconds == 1) {
-            console.log('here')
-
-            $('.minutes').html('00');
-            $('.seconds').html('00');
-
-            $('.autobtnclick').attr("disabled", true);
-            $('.seconds').html(seconds.toString().padStart(2, "0"));
-            $('.singlebtnclick').attr("disabled", true);
-
-            $(".singlebtnclick").css('background', '#a6a6a6');
-
-        }
+        $('.seconds').html(seconds.toString().padStart(2, "0"));
         if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
             return;
         }
-        console.log('sert interval');
-
         window.interval = setInterval(function() {
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -3421,56 +3356,27 @@
                 var minutes = parseInt(timer[0], 10);
                 var seconds = parseInt(timer[1], 10);
             }
-            var minutes = parseInt(getCookie('minutes'), 10);
-            var seconds = parseInt(getCookie('seconds'), 10);;
-            if (minutes != "undefined" || seconds != "00") {
-                --seconds;
-                minutes = (seconds <= 0) ? --minutes : minutes;
-                seconds = (seconds <= 0) ? 59 : seconds;
-                seconds = seconds.toString().padStart(2, "0");
 
-
-                console.log(minutes + ':' + minutes)
-                console.log(seconds + ':' + seconds)
-            } else {
-                --seconds;
-                minutes = (seconds <= 0) ? --minutes : minutes;
-                seconds = (seconds <= 0) ? 59 : seconds;
-                seconds = seconds.toString().padStart(2, "0");
-            }
+            --seconds;
+            minutes = (seconds <= 0) ? --minutes : minutes;
+            seconds = (seconds <= 0) ? 59 : seconds;
+            seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
             if (minutes >= 0 && seconds >= 0) {
-                console.log(minutes + '>>>>> ' + seconds)
+
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
-                // $('.minutes').html(minutes.toString().padStart(2, "0"));
-                // $('.seconds').html(seconds);
-
-                // emitTimer(minutes.toString().padStart(2, "0"), seconds)
-
-                setCookie('minutes', '03', 1);
-                setCookie('seconds', '00', 1);
-
-                socket.emit('auction_timer', {
-                    "minutes": minutes.toString().padStart(2, "0"),
-                    "seconds": seconds,
-                });
-
-                // console.log(minutes + ':' + seconds);
-
-
-                // resetTimer();
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds);
             } else {
-                console.log('else disabled')
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
 
                 $(".singlebtnclick").css('background', '#a6a6a6');
-                $('.minutes').html('00');
+
                 $('.seconds').html('00');
             }
-
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
             if ((seconds <= 0) && (minutes <= 0) && endAuctionVar == 1) {
@@ -3482,13 +3388,11 @@
                 timer2 = days + ':' + hours + ':' + minutes + ':' + seconds;
             } else {
                 timer2 = minutes + ':' + seconds;
-
             }
         }, 1000);
     }
     $(function() {
         resetTimer();
-
     })
 
     function addCommas(n) {
