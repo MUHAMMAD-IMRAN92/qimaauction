@@ -3319,11 +3319,11 @@
         } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
         } else {
-            $('.auction_started').hide();
-            $('.auction_pending').show();
-            var timer_text = "Auction Starting in";
-            var timer2 = "{{ $interval3 }}";
-            var timer = timer2.split(':');
+            // $('.auction_started').hide();
+            // $('.auction_pending').show();
+            // var timer_text = "Auction Starting in";
+            // var timer2 = "{{ $interval3 }}";
+            // var timer = timer2.split(':');
 
         }
         $('.timer_text').html(timer_text);
@@ -3372,6 +3372,9 @@
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
                 $('.seconds').html('00');
             }
             if (minutes < 0) clearInterval(interval);
