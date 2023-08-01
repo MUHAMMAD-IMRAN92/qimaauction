@@ -3807,14 +3807,3 @@
 @include('customer.auction_pages.homejs')
 
 </html>
-minutes = (seconds <= 0) ? --minutes : minutes; seconds=(seconds <=0) ? 59 : seconds;
-    seconds=seconds.toString().padStart(2, "0" ); //minutes=(minutes < 10) ? minutes : minutes; if (minutes>= 0 &&
-    seconds >= 0) {
-
-    $('.days').html(days.toString().padStart(2, "0"));
-    $('.hours').html(hours.toString().padStart(2, "0"));
-    $('.minutes').html(minutes.toString().padStart(2, "0"));
-    $('.seconds').html(seconds);
-    } else {
-    $('.autobtnclick').attr("disabled", true);
-    $('.singlebtnclick').attr("disabled", true);

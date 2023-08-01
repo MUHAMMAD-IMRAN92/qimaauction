@@ -1064,8 +1064,8 @@
     }
 
     /* hamza starts ends */
-    .heading-table-auction{
-        font-family:'Montserrat'!important ;
+    .heading-table-auction {
+        font-family: 'Montserrat' !important;
         font-size: 27px !important;
         font-weight: 800 !important;
         line-height: 32px !important;
@@ -1074,150 +1074,154 @@
         color: rgba(231, 132, 96, 1) !important;
         padding: 20px !important;
     }
-    .table-head-border{
+
+    .table-head-border {
         border-bottom: 2px solid rgba(231, 132, 96, 1);
     }
+
     .banner-text-section {
-      
-      height: auto;
-      background-color: rgba(239, 235, 229, 1);
-      z-index: 10;
-  }
 
-  .banner-text-section h2 {
-      font-family: 'Montserrat';
-      font-size: 50px;
-      font-weight: 800;
-      line-height: 61px;
-      letter-spacing: 0em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 0px;
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        z-index: 10;
+    }
 
-  }
+    .banner-text-section h2 {
+        font-family: 'Montserrat';
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 61px;
+        letter-spacing: 0em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
-  .banner-text-section h3 {
-      font-family: 'Montserrat';
-      font-size: 20px;
-      font-weight: 800;
-      line-height: 32px;
-      letter-spacing: 0.1em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 0px;
+    }
 
-
-  }
-
-  .banner-text-section p {
-      cursor: pointer;
-
-      font-family: 'Montserrat-Medium';
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 13px;
-      letter-spacing: 0.2em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 0px;
+    .banner-text-section h3 {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
-  }
+    }
 
-  .banner-text-section h6 {
-      cursor: pointer;
+    .banner-text-section p {
+        cursor: pointer;
 
-      font-family: 'Montserrat';
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 13px;
-      letter-spacing: 0.2em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 0px;
-
-
-  }
-
-  .banner-text-section h4 {
-      font-family: 'Montserrat';
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 22px;
-      letter-spacing: 0.1em;
-      text-align: left;
-      text-transform: uppercase;
-      cursor: pointer;
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
+    }
 
-  }
+    .banner-text-section h6 {
+        cursor: pointer;
 
-  .banner-text-section span {
-      font-family: 'Montserrat-Medium';
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 13px;
-      letter-spacing: 0.2em;
-      text-align: left;
-      text-transform: uppercase;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
-  }
+    }
 
-  .wrapper-bg-section {
-      position: relative;
-  }
+    .banner-text-section h4 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        cursor: pointer;
 
 
 
-  .banner-text-section-2 {
-      top: 75%;
-      left: 46%;
-      position: absolute;
-      width: 501px;
-      height: auto;
-      background-color: rgba(239, 235, 229, 1);
-      padding: 25px;
-      z-index: 10;
-  }
+    }
 
-  .images-section {
-      z-index: 5;
-  }
-
-  .banner-text-section-2 p {
-      font-family: 'Montserrat-Medium';
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 13px;
-      letter-spacing: 0.2em;
-      text-align: left;
-      margin-bottom: 0px;
+    .banner-text-section span {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
 
 
-  }
+    }
 
-  .banner-text-section-2 h3 {
-      font-family: 'Montserrat';
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 22px;
-      letter-spacing: 0.1em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 0px;
-      margin-top: 10px;
-      color: rgba(35, 43, 56, 1);
+    .wrapper-bg-section {
+        position: relative;
+    }
 
 
 
-  }
-  .moreBtn{
-            background: transparent;
-    text-align: center;
-          }
-        .btn-info button {
+    .banner-text-section-2 {
+        top: 75%;
+        left: 46%;
+        position: absolute;
+        width: 501px;
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        padding: 25px;
+        z-index: 10;
+    }
+
+    .images-section {
+        z-index: 5;
+    }
+
+    .banner-text-section-2 p {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section-2 h3 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        color: rgba(35, 43, 56, 1);
+
+
+
+    }
+
+    .moreBtn {
+        background: transparent;
+        text-align: center;
+    }
+
+    .btn-info button {
         padding: 0.6rem 0.4rem;
         font-family: 'Montserrat';
         font-size: 11px;
@@ -1234,61 +1238,66 @@
         margin: 0 1rem;
         width: 180px;
     }
-    .btn-info:hover{
-            background-color: transparent !important;
-        }   
-  .banner-text-section-2 h6 {
-      font-family: 'Montserrat-Medium';
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 19px;
-      letter-spacing: 0.1em;
-      text-align: left;
-      text-transform: inherit;
-      max-height: 50vh;
-      overflow-y: auto;
-      display: block;
-  }
-  .banner-text-section-2y::-webkit-scrollbar {
-width: 1em;
-}
 
-.banner-text-section-2::-webkit-scrollbar-track {
-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+    .btn-info:hover {
+        background-color: transparent !important;
+    }
 
-.banner-text-section-2::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
-}
+    .banner-text-section-2 h6 {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: inherit;
+        max-height: 50vh;
+        overflow-y: auto;
+        display: block;
+    }
 
-  .banner-text-section-2 h5 {
-      font-family: 'Montserrat';
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 13px;
-      letter-spacing: 0.2em;
-      text-align: left;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .banner-text-section-2y::-webkit-scrollbar {
+        width: 1em;
+    }
 
-  }
-  #mySidebar{
-    background: rgba(239, 235, 229, 1)
-  }
-  
+    .banner-text-section-2::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-text-section-2::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    .banner-text-section-2 h5 {
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+    }
+
+    #mySidebar {
+        background: rgba(239, 235, 229, 1)
+    }
+
 
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
 
     @font-face {
         font-family: 'Montserrat-Medium';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
+
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
             display: none !important;
@@ -1384,7 +1393,8 @@ outline: 1px solid slategrey;
             height: auto !important;
         }
     }
-    #score{
+
+    #score {
         border: 2px solid lightgray;
     }
 </style>
@@ -1558,8 +1568,8 @@ outline: 1px solid slategrey;
                             </tr>
                         </thead>
                         <tbody>
-                           
-                            <tr  class="table-head-border">
+
+                            <tr class="table-head-border">
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -1567,7 +1577,7 @@ outline: 1px solid slategrey;
                                 <td></td>
                                 <td></td>
                                 <td class="heading-table-auction">
-                                NATURALS AND DEEP FERMENTATION
+                                    NATURALS AND DEEP FERMENTATION
                                 </td>
                             </tr>
                             @foreach ($naturalauctionProducts as $auctionProduct)
@@ -1672,7 +1682,8 @@ outline: 1px solid slategrey;
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach <tr class="table-head-border">
+                            @endforeach
+                            <tr class="table-head-border">
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -1681,7 +1692,7 @@ outline: 1px solid slategrey;
                                 <td></td>
                                 <td class="heading-table-auction">
                                     ALCHEMY
-                                    
+
                                 </td>
                             </tr>
                             @foreach ($auctionProducts as $auctionProduct)
@@ -1793,51 +1804,52 @@ outline: 1px solid slategrey;
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="sidebar-container">
-                    <div class="banner-text-section ">
-                    <h2  class="rank"></h2>
-                    <h3 class="name"></h3>
-                    <div class="d-flex align-items-center">
-                    <p>JURY CODE:</p>    
-                    <p style="cursor: auto;" class="code"></p>
-                   </div>
-                    <hr>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p>JURY SCORE:</p>
-                    <h2 style="cursor: auto;" class="juryscore"></h2>
-                    <h2></h2>
-                    <hr>
-                    <div>
-                        <p>Genetics :</p>
-                        <h4 class="genetics"></h4>
-                    </div>
-                    <div>
-                        <p>Process :</p>
-                        <h4 class="proprocess"></h4>
-                    </div>
-                    <p style="cursor: auto;">lot size :</p>
-                    <h4 style="cursor: auto;" class="size"></h4>
-                    <hr>
-                    <div>
-                        <h6>traceability</h6>
-                        <p>VILLAGE :</p>
-                        <p> REGION :  </p>
-                        <p>GOVERNORATE :</p>
-                        <p>ALTITUDE :</p>
-                    </div>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p>flavour profile</p>
-                        <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING</h4>
-                        
-                    <div class="moreBtn btn-info mt-2"></div>
-                </div>
+                        <div class="banner-text-section ">
+                            <h2 class="rank"></h2>
+                            <h3 class="name"></h3>
+                            <div class="d-flex align-items-center">
+                                <p>JURY CODE:</p>
+                                <p style="cursor: auto;" class="code"></p>
+                            </div>
+                            <hr>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p>JURY SCORE:</p>
+                            <h2 style="cursor: auto;" class="juryscore"></h2>
+                            <h2></h2>
+                            <hr>
+                            <div>
+                                <p>Genetics :</p>
+                                <h4 class="genetics"></h4>
+                            </div>
+                            <div>
+                                <p>Process :</p>
+                                <h4 class="proprocess"></h4>
+                            </div>
+                            <p style="cursor: auto;">lot size :</p>
+                            <h4 style="cursor: auto;" class="size"></h4>
+                            <hr>
+                            <div>
+                                <h6>traceability</h6>
+                                <p>VILLAGE :</p>
+                                <p> REGION : </p>
+                                <p>GOVERNORATE :</p>
+                                <p>ALTITUDE :</p>
+                            </div>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p>flavour profile</p>
+                            <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING
+                            </h4>
+
+                            <div class="moreBtn btn-info mt-2"></div>
+                        </div>
                     </div>
                 </div>
     </section>
@@ -1845,8 +1857,7 @@ outline: 1px solid slategrey;
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/logo.land.png"
-                        alt="">
+                    <img src="https://bestofyemenauction.com/public/images/logo.land.png" alt="">
                 </div>
             </div>
         </div>
@@ -2078,6 +2089,7 @@ outline: 1px solid slategrey;
     });
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
+
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -2098,21 +2110,21 @@ outline: 1px solid slategrey;
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
+                //   dd($date_b);
+                if ($date_b >= $date_a) {
+                    $interval = '00:00';
+                    $interva13 = '00:00:00:00';
+                    $interval2 = '00:00';
+                    $interval3 = '00:00:00:00';
+                } else {
+                    $interval = date_diff($date_a, $date_b);
+                    $interva13 = date_diff($date_b, $date_c);
+                    $interval2 = $interval->format('%i:%s');
+                    $interval3 = $interva13->format('%d:%h:%i:%s');
+                }
+                
             @endphp
             if (data && data.checkTimer == 0) {
-                $('.auction_pending').hide();
-                $('.auction_started').show();
-                var timer_text = "Auction Ending in";
-                var timer2 = "03:00";
-                var timer = timer2.split(':');
-
-            } else if (window.empty != 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
@@ -2130,10 +2142,6 @@ outline: 1px solid slategrey;
         } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
         }
-        // else if("{{ $auction->auctionStatus() }}" == "running")
-        // {
-
-        // }
         else {
             $('.auction_started').hide();
             $('.auction_pending').show();
@@ -2157,9 +2165,9 @@ outline: 1px solid slategrey;
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
-            return;
-        }
+        // if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
+        //     return;
+        // }
         window.interval = setInterval(function() {
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -2182,9 +2190,25 @@ outline: 1px solid slategrey;
             $('.hours').html(hours.toString().padStart(2, "0"));
             $('.minutes').html(minutes.toString().padStart(2, "0"));
             $('.seconds').html(seconds);
+            // if (minutes < 0) clearInterval(interval);
+            if (minutes >= 0 && seconds > 0) {
+
+                $('.days').html(days.toString().padStart(2, "0"));
+                $('.hours').html(hours.toString().padStart(2, "0"));
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds);
+            } else {
+                $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+            }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
-            if ((seconds <= 0) && (minutes <= 0)) {
+            if ((seconds <= 0) && (minutes <= 0) && endAuctionVar == 1) {
                 clearInterval(interval);
                 // set is_hidden of auction = 1
                 window.location = window.location.href + "?ended=1"; //location.reload();
@@ -2207,6 +2231,7 @@ outline: 1px solid slategrey;
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
+  
 </script>
 
 </html>
