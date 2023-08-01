@@ -1704,4 +1704,13 @@ class AuctionController extends Controller
 
         return 1;
     }
+    public function updateTimer()
+    {
+        $auction = Auction::where('is_active', '1')->first();
+        $date = Carbon::now();
+        $dateTimerArr =  $date->toArray();
+       return $time =$dateTimerArr['hour'] . ':' . $dateTimerArr['minute'];
+        $auction->is_hidden_winners = 1;
+        $auction->save();
+    }
 }

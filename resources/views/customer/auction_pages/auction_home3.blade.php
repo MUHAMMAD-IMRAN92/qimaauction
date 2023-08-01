@@ -3644,13 +3644,21 @@
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
+                //   dd($date_b);
+                if( $date_b >= $date_a){
+                    $interval = "00:00";
+                    $interva13 = "00:00:00:00";
+                    $interval2 = "00:00";
+                    
+                }else{
+                    $interval = date_diff($date_a, $date_b);
+                    $interva13 = date_diff($date_b, $date_c);
+                    $interval2 = $interval->format('%i:%s');
+                    $interval3 = $interva13->format('%d:%h:%i:%s');
+                }
                 
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-                
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
             @endphp
+            // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
@@ -3658,14 +3666,8 @@
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            } else if (window.empty != 0) {
-                $('.auction_pending').hide();
-                $('.auction_started').show();
-                var timer_text = "Auction Ending in";
-                var timer2 = "03:00";
-                var timer = timer2.split(':');
-
             } else {
+                alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
@@ -3673,16 +3675,8 @@
                 var timer = timer2.split(':');
 
             }
-        } else if ("{{ $auction->auctionStatus() }}" == "ended") {
-
-        } else {
-            // $('.auction_started').hide();
-            // $('.auction_pending').show();
-            // var timer_text = "Auction Starting in";
-            // var timer2 = "{{ $interval3 }}";
-            // var timer = timer2.split(':');
-
-        }
+        } 
+       
         $('.timer_text').html(timer_text);
         clearInterval(interval);
         if (timer.length > 2) {
@@ -3694,14 +3688,14 @@
             var minutes = parseInt(timer[0], 10);
             var seconds = parseInt(timer[1], 10);
         }
+        
         $('.days').html(days.toString().padStart(2, "0"));
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
-            return;
-        }
+    
         window.interval = setInterval(function() {
+            // alert('here');
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
             if (timer.length > 2) {
@@ -3720,7 +3714,7 @@
             seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
-            if (minutes >= 0 && seconds >= 0) {
+            if (minutes >= 0 && seconds > 0) {
 
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));

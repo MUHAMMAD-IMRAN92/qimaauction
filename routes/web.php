@@ -312,3 +312,4 @@ Route::get('/bid_agreement', function () {
 Route::post('/accept-agrements', [App\Http\Controllers\AgreementController::class, 'acceptAgreement']);
 Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::class, 'productDetail'])->name('product_detail_page_auction');
 Route::get('/publish_winner', [App\Http\Controllers\AuctionController::class, 'publishWinners'])->name('publish-winners');
+Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'updateTimer'])->name('updateTimer');
