@@ -2161,7 +2161,7 @@
                                                                             <p
                                                                                 class="newautobidamount{{ $auctionProduct->id }}">
                                                                                 Current autobid is
-                                                                                ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
+                                                                                ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 2) }}/lb
                                                                                 {{-- <a href="javascript:void(0)"
                                                                         class="removeAutoBID"
                                                                         data-id="{{ $auctionProduct->id }}"
@@ -2197,7 +2197,7 @@
                                                                     <p
                                                                         class="newautobidamount{{ $auctionProduct->id }}">
                                                                         Current autobid is
-                                                                        ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 1) }}/lb
+                                                                        ${{ number_format($auctionProduct->latestAutoBidPrice->bid_amount, 2) }}/lb
                                                                         <a href="javascript:void(0)"
                                                                             class="removeAutoBID"
                                                                             data-id="{{ $auctionProduct->id }}"
@@ -2985,7 +2985,7 @@
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p class="newautobidamount{{ @$auctionProduct->id }}">Current autobid is $' +
-                                addCommas(autobidamount) +
+                               parseFloat(autobidamount).toFixed(2) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');
                             $('.autobidamount' + id).val('');
