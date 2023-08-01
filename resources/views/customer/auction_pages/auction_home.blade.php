@@ -1964,6 +1964,7 @@ color: #9F9B9B;
                 },
                 success: function(response) {
                     var rank = response.rank;
+                      var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
                     var code = response.products[0].sample;
@@ -1985,7 +1986,7 @@ color: #9F9B9B;
                     $(".code").html(code);
                     $(".size").html(size + 'LBS');
                     $(".currentbid").html(currentbid.toLocaleString('en-US'));
-                    $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
+                    // $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
                     $("#cupping_profile").html(cupping_profile);
                     $("#region").html(region);
