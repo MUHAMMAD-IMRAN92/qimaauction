@@ -1397,38 +1397,43 @@
     #score {
         border: 2px solid lightgray;
     }
+
     .hr {
-   border: 2px solid rgb(244, 243, 243);
-}
-.newfooter-bg{
-    background: #EFEBE5;
-}
+        border: 2px solid rgb(244, 243, 243);
+    }
 
-.footer-qima {
-padding: 40px;
-}
+    .newfooter-bg {
+        background: #EFEBE5;
+    }
 
-.footer-qima p a {
-text-decoration: none;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 17px;
-display: flex;
-align-items: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-font-feature-settings: 'kern'off;
-color: #9F9B9B;
-}
-.white-anchor {
+    .footer-qima {
+        padding: 40px;
+    }
+
+    .footer-qima p a {
+        text-decoration: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-feature-settings: 'kern' off;
+        color: #9F9B9B;
+    }
+
+    .white-anchor {
         text-decoration: none;
         color: #9F9B9B !important;
     }
-    .auctiontable tbody tr td P{
+
+    .auctiontable tbody tr td P {
         margin-bottom: 0px;
     }
+
     /* .table.auctiontable tbody tr:nth-child(32) td:nth-child(7) .inner-data{
         white-space: nowrap;
         width: max-content;
@@ -1621,8 +1626,8 @@ color: #9F9B9B;
 
                             <tr class="table-head-border">
 
-                                <td  colspan="14">
-                                <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
+                                <td colspan="14">
+                                    <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
                             </tr>
                             @foreach ($naturalauctionProducts as $auctionProduct)
@@ -1728,10 +1733,10 @@ color: #9F9B9B;
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr  class="table-head-border">
+                            <tr class="table-head-border">
 
-                                <td  colspan="14">
-                                <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
+                                <td colspan="14">
+                                    <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
                                 </td>
 
                             </tr>
@@ -1874,10 +1879,22 @@ color: #9F9B9B;
                             <hr>
                             <div>
                                 <h6>traceability</h6>
-                               <div class="d-flex"> <p>VILLAGE : </p> <p id="village"></p></div>
-                               <div class="d-flex">   <p> REGION :  </p><p id="region"></p></div>
-                                <div class="d-flex"> <p>GOVERNORATE :</p><p id="governorate"></p></div>
-                                    <div class="d-flex"> <p>ALTITUDE :</p><p id="altitude"></p></div>
+                                <div class="d-flex">
+                                    <p>VILLAGE : </p>
+                                    <p id="village"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p> REGION : </p>
+                                    <p id="region"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p>GOVERNORATE :</p>
+                                    <p id="governorate"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p>ALTITUDE :</p>
+                                    <p id="altitude"></p>
+                                </div>
                             </div>
                             <div class="lot-featured-img">
                                 <img class="img-status">
@@ -1885,7 +1902,7 @@ color: #9F9B9B;
                                     value="{{ asset('/public/images/product_images/') }}" id="image-source" />
                             </div>
                             <p id="">flavour profile</p>
-                                <h4 id="cupping_profile"></h4>
+                            <h4 id="cupping_profile"></h4>
 
                             <div class="moreBtn btn-info mt-2"></div>
                         </div>
@@ -1893,16 +1910,16 @@ color: #9F9B9B;
                 </div>
     </section>
     <div class="container-fluid newfooter-bg">
-         <div class="footer-qima">
-                <hr class="hr">
-                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
-                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
-                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
-                        coffee excellence</a></p>
-                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+        <div class="footer-qima">
+            <hr class="hr">
+            <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
+            <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
+            <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                    coffee excellence</a></p>
+            <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
 
-            </div>
         </div>
+    </div>
 
 
 
@@ -1939,9 +1956,7 @@ color: #9F9B9B;
 <script type="text/javascript">
     $(document).ready(function(e) {
         //OpenSidebar
-        setTimeout(function() {
-            window.location.reload();
-        }, 10000)
+      
         $(".openSidebar").click(function() {
             $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
@@ -1964,7 +1979,7 @@ color: #9F9B9B;
                 },
                 success: function(response) {
                     var rank = response.rank;
-                      var rank = response.rank;
+                    var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
                     var code = response.products[0].sample;
@@ -2096,15 +2111,15 @@ color: #9F9B9B;
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
-         var sec =    $('.seconds').html();
-           var min =  $('.minutes').html();
+            var sec = $('.seconds').html();
+            var min = $('.minutes').html();
 
 
-           if(sec == 00 && min == 00){
+            if (sec == 00 && min == 00) {
                 // alert( $('.seconds').html() +'::'+$('.minutes').html());
                 window.location = window.location.href + "?ended=1";
 
-            }else{
+            } else {
 
                 endAuctionVar = 1;
             }
@@ -2135,12 +2150,11 @@ color: #9F9B9B;
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
                 //   dd($date_b);
-                if( $date_b >= $date_a){
-                    $interval = "00:00";
-                    $interva13 = "00:00:00:00";
-                    $interval2 = "00:00";
-
-                }else{
+                if ($date_b >= $date_a) {
+                    $interval = '00:00';
+                    $interva13 = '00:00:00:00';
+                    $interval2 = '00:00';
+                } else {
                     $interval = date_diff($date_a, $date_b);
                     $interva13 = date_diff($date_b, $date_c);
                     $interval2 = $interval->format('%i:%s');
@@ -2150,15 +2164,15 @@ color: #9F9B9B;
             @endphp
             // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
-                // alert("{{$isEmpty}}")
+                // alert("{{ $isEmpty }}")
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            }else if("{{$isEmpty}}" > 0){
-                // alert("{{$isEmpty}}");
+            } else if ("{{ $isEmpty }}" > 0) {
+                // alert("{{ $isEmpty }}");
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
@@ -2193,8 +2207,8 @@ color: #9F9B9B;
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
-       if (!data && "{{$isEmpty}}" != 0) {
-        // alert('here check')
+        if (!data && "{{ $isEmpty }}" != 0) {
+            // alert('here check')
             return;
         }
         // alert('here after');
@@ -2219,7 +2233,7 @@ color: #9F9B9B;
 
             //minutes = (minutes < 10) ?  minutes : minutes;
             if (minutes >= 0 && seconds >= 0) {
-                    console.log(minutes +'::'+seconds);
+                console.log(minutes + '::' + seconds);
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
@@ -2250,6 +2264,7 @@ color: #9F9B9B;
     $(function() {
         resetTimer();
     })
+
     function commify(n) {
         var parts = n.toString().split(".");
         const numberPart = parts[0];
@@ -2257,7 +2272,6 @@ color: #9F9B9B;
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
-
 </script>
 
 </html>

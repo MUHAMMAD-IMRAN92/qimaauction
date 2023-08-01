@@ -2735,7 +2735,10 @@
 <script type="text/javascript">
     $(document).ready(function(e) {
         setTimeout(function() {
-            window.location.reload();
+            if (document.hidden) {
+
+                window.location.reload();
+            }
         }, 10000)
         $(".openSidebar").click(function() {
             $("#mySidebar").addClass('sidebaropen-width');
@@ -3785,6 +3788,12 @@
             return;
         }
         // alert('here after');
+        setTimeout(function() {
+                    if (document.hidden) {
+
+                        window.location.reload();
+                    }
+                }, 10000);
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
@@ -3807,6 +3816,7 @@
             //minutes = (minutes < 10) ?  minutes : minutes;
             if (minutes >= 0 && seconds >= 0) {
                 console.log(minutes + '::' + seconds);
+
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
