@@ -3631,7 +3631,6 @@
             $('.autobtnclick').attr("disabled", false);
             $('.confirm-btn').attr("disabled", false);
                 $('.confirm-btn').css('background', '#143D30;');
-                removeautobid
             data.checkTimer = 0;
             resetTimer(data);
         }
