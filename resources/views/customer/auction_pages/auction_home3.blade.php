@@ -3453,6 +3453,7 @@
         }
     });
     socket.on('add_bid_updates', function(data) {
+        // alert('here');
         if (data.groupusers != undefined) {
             var i;
             for (i = 0; i < data.groupusers.length; ++i) {
@@ -3631,7 +3632,8 @@
     });
 
     function resetTimer(data) {
-        // console.log('reset timer');
+        console.log(data);
+        console.log('reset timer');
         var timer_text = "";
         var hours = 0;
         var days = 0;
@@ -3660,13 +3662,22 @@
             @endphp
             // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
+                // alert("{{$isEmpty}}")
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
 
+            }else if("{{$isEmpty}}" > 0){
+                // alert("{{$isEmpty}}");
+                $('.auction_pending').hide();
+                $('.auction_started').show();
+                var timer_text = "Auction Ending in";
+                var timer2 = "03:00";
+                var timer = timer2.split(':');
             } else {
+               
                 // alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
@@ -3693,7 +3704,12 @@
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
-    
+        // alert('here');
+       if (!data && "{{$isEmpty}}" != 0) {
+        alert('here check')
+            return;
+        }
+        // alert('here after');
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
