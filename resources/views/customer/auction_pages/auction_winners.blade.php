@@ -1382,7 +1382,7 @@
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
                     var url = '{{ route('product_detail_page_auction', ':id') }}';
-                    url = url.replace(':id', code);
+                    url = url.replace(':id', id);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
