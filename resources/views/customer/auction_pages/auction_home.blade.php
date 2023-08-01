@@ -2081,10 +2081,12 @@
         $(".totalliability" + data.bidID).html('$' + data.bidderLiablity.toLocaleString('en-US'));
 
     });
+    var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
-        alert(data.auctionstatus);
         if (data.auctionstatus == 1) {
-            window.location = window.location.href + "?ended=1";
+            console.log('the end')l
+            // window.location = window.location.href + "?ended=1";
+            endAuctionVar = 1;
         }
     });
     socket.on('add_timer_reset', function(data) {
@@ -2191,7 +2193,7 @@
             $('.minutes').html(minutes.toString().padStart(2, "0"));
             $('.seconds').html(seconds);
             // if (minutes < 0) clearInterval(interval);
-            if (minutes >= 0 && seconds > 0) {
+            if (minutes >= 0 && seconds >= 0) {
 
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));

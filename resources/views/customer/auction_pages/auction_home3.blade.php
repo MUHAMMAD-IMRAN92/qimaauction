@@ -3614,6 +3614,7 @@
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
+            alert('socket---->'+endAuctionVar);
             // window.location = window.location.href + "?ended=1";
             endAuctionVar = 1;
         }
@@ -3706,7 +3707,7 @@
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
        if (!data && "{{$isEmpty}}" != 0) {
-        alert('here check')
+        // alert('here check')
             return;
         }
         // alert('here after');
@@ -3730,8 +3731,8 @@
             seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
-            if (minutes >= 0 && seconds > 0) {
-
+            if (minutes >= 0 && seconds >= 0) {
+                    console.log(minutes +'::'+seconds);
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
@@ -3746,7 +3747,8 @@
             }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
-            if ((seconds <= 0) && (minutes <= 0) && endAuctionVar == 1) {
+            if ((seconds <= 1) && (minutes <= 0) && endAuctionVar == 1) {
+                // alert(endAuctionVar);
                 clearInterval(interval);
                 // set is_hidden of auction = 1
                 window.location = window.location.href + "?ended=1"; //location.reload();
