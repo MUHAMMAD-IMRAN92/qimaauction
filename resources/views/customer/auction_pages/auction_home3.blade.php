@@ -3636,9 +3636,18 @@ color: #9F9B9B;
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
-            // alert('socket---->'+endAuctionVar);
-            // window.location = window.location.href + "?ended=1";
-            endAuctionVar = 1;
+         var sec =    $('.seconds').html();
+           var min =  $('.minutes').html();
+
+           
+           if(sec == 00 && min == 00){
+                // alert( $('.seconds').html() +'::'+$('.minutes').html());
+                window.location = window.location.href + "?ended=1";
+
+            }else{
+
+                endAuctionVar = 1;
+            }
         }
     });
     socket.on('add_timer_reset', function(data) {
