@@ -677,7 +677,7 @@
     .table-container {
         width: 90%;
         margin: 0 auto;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
 
@@ -1056,7 +1056,7 @@
         }
 
         .auctiontable tbody tr td {
-            text-align: left;
+            text-align: center;
         }
 
         /* .bid-now-btn-field {
@@ -1620,6 +1620,38 @@
         .btn-info:hover{
             background-color: transparent !important;
         }
+    .hr {
+   border: 2px solid rgb(244, 243, 243);
+}
+.newfooter-bg{
+    background: #EFEBE5;
+}
+
+.footer-qima {   
+padding: 40px;
+}
+
+.footer-qima p a {
+text-decoration: none;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-feature-settings: 'kern'off;
+color: #9F9B9B;
+}
+.white-anchor {
+        text-decoration: none;
+        color: #9F9B9B !important;
+    }
+    .auctiontable tbody tr td P{
+        margin-bottom: 0px;
+    }
 </style>
 
 <body>
@@ -1724,7 +1756,7 @@
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
                                 <th scope="col"></th>
-                                <th scope="col">Total Value</th>
+                                <th scope="col" >Total Value</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
@@ -1740,34 +1772,22 @@
                                 @endphp
                                 
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
-                                    <tr class="table-head-border">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="heading-table-auction">
-                                            ALCHEMY
-                                        </td>
-                                    </tr>
+                                <tr class="table-head-border">
+                              
+                              <td  colspan="14">
+                              <h5 class="inner-data heading-table-auction">ALCHEMY </h5>
+                              </td>
+                          </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
                                     @php
                                         $sortClass = 'sortByRank';
                                     @endphp
                                     <tr class="table-head-border">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="heading-table-auction">
-                                             NATURAL AND DEEP FERMENTATION 
-                                        </td>
-                                    </tr>
+                              
+                              <td  colspan="14">
+                              <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
+                              </td>
+                          </tr>
                                 @endif
                                 @php
                                     //increment in singlebid price
@@ -2385,7 +2405,7 @@
                                     }
                                 }
                             @endphp
-                            <td>
+                            <td >
                                 <p
                                     class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }}
                                         @php $userfound = 0; @endphp
@@ -2637,15 +2657,17 @@
             </div>
 
     </section>
-    <section class="footer">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/logo.land.png" alt="">
-                </div>
+       <div class="container-fluid newfooter-bg">
+         <div class="footer-qima">
+                <hr class="hr">
+                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
+                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                        coffee excellence</a></p>
+                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+
             </div>
         </div>
-    </section>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

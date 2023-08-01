@@ -47,7 +47,7 @@
     }
 
     #width a img {
-        margin-left: 108px;
+        /* margin-left: 108px; */
         margin-top: 20px;
         margin-bottom: 15px;
     }
@@ -595,7 +595,7 @@
     .table-container {
         width: 90%;
         margin: 0 auto;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
 
@@ -892,7 +892,7 @@
         }
 
         .auctiontable tbody tr td {
-            text-align: left;
+            text-align: center;
         }
 
         /* .bid-now-btn-field {
@@ -1397,6 +1397,56 @@
     #score {
         border: 2px solid lightgray;
     }
+    .hr {
+   border: 2px solid rgb(244, 243, 243);
+}
+.newfooter-bg{
+    background: #EFEBE5;
+}
+
+.footer-qima {   
+padding: 40px;
+}
+
+.footer-qima p a {
+text-decoration: none;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-feature-settings: 'kern'off;
+color: #9F9B9B;
+}
+.white-anchor {
+        text-decoration: none;
+        color: #9F9B9B !important;
+    }
+    .auctiontable tbody tr td P{
+        margin-bottom: 0px;
+    }
+    /* .table.auctiontable tbody tr:nth-child(32) td:nth-child(7) .inner-data{
+        white-space: nowrap;
+        width: max-content;
+    } */
+    /* .table.auctiontable tbody tr:nth-child(32) td:nth-child(7) .inner-data{
+        white-space: nowrap;
+        width: max-content;
+    } */
+    /* .table.auctiontable tbody tr td{
+        white-space: nowrap;
+        width: 20%;
+        max-width: 20%;
+        min-width: 20%;
+    } */
+    /* .inner-data{
+        white-space: nowrap;
+        width: max-content;
+    } */
 </style>
 
 <body>
@@ -1547,7 +1597,7 @@
                         </div>
                     </div>
                 </nav>
-                <div class="tab-pane fade auction-data show active" id="nav-home" role="tabpanel"
+                <div class="tab-pane fade auction-data show active table-responsive" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
                     <table class="table auctiontable">
                         <thead>
@@ -1570,14 +1620,9 @@
                         <tbody>
 
                             <tr class="table-head-border">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="heading-table-auction">
-                                    NATURALS AND DEEP FERMENTATION
+                              
+                                <td  colspan="14">
+                                <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
                             </tr>
                             @foreach ($naturalauctionProducts as $auctionProduct)
@@ -1683,17 +1728,12 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr class="table-head-border">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="heading-table-auction">
-                                    ALCHEMY
-
+                            <tr  class="table-head-border">
+                            
+                                <td  colspan="14">
+                                <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
                                 </td>
+                              
                             </tr>
                             @foreach ($auctionProducts as $auctionProduct)
                                 @php
@@ -1853,58 +1893,20 @@
                     </div>
                 </div>
     </section>
-    <section class="section-4">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/logo.land.png" alt="">
-                </div>
+    <div class="container-fluid newfooter-bg">
+         <div class="footer-qima">
+                <hr class="hr">
+                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
+                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                        coffee excellence</a></p>
+                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+
             </div>
         </div>
-    </section>
-    {{-- <section>
-        <div class="footer-container">
-            <div class="row footer-head">
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-policy">
-                    <h2>LEGAL</h2>
-                    <a href="#">Term and Conditions</a>
-                    <a href="#"> Term of Use</a>
-                    <a href="#"> Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-search">
-                    <h2>SEARCH</h2>
-                    <div class="searchbar-container--footer">
-
-                        <input type="text" placeholder="Search" class="search-bar">
-                        <i class="fa fa-search search-icon"></i>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-links">
-                    <h2>QUICK LINKS</h2>
-                    <a href="#">Contact Us</a>
-                    <a href="#"> Blog</a>
-                    <a href="#"> FAQ</a>
-                    <a href="#">Our Sponsers</a>
-
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-contact">
-                    <h2>QIMA COFFEE AUCTION</h2>
-                    <p> <img src="{{ asset('public/images/home-icon1.png') }}" alt=""> 2250
-                        NW 22nd Ave #612
-                        Portland OR 97210</p>
-                    <p><img src="{{ asset('public/images/call-icon1.png') }}" alt="">(503)
-                        208-2872</p>
-                    <p> <img src="{{ asset('public/images/message-icon1.png') }}"
-                            alt="">support@qimacoffeeauction.com</p>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <h3>© 2022 QIMA Coffee Auction. All Rights Reserved. </h3>
-            </div>
-        </div>
-    </section> --}}
+ 
+ 
+  
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
