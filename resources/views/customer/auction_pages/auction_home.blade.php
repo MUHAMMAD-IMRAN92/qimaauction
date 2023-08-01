@@ -1874,19 +1874,18 @@ color: #9F9B9B;
                             <hr>
                             <div>
                                 <h6>traceability</h6>
-                                <p>VILLAGE :</p>
-                                <p> REGION : </p>
-                                <p>GOVERNORATE :</p>
-                                <p>ALTITUDE :</p>
+                               <div class="d-flex"> <p>VILLAGE : </p> <p id="village"></p></div>
+                               <div class="d-flex">   <p> REGION :  </p><p id="region"></p></div>
+                                <div class="d-flex"> <p>GOVERNORATE :</p><p id="governorate"></p></div>
+                                    <div class="d-flex"> <p>ALTITUDE :</p><p id="altitude"></p></div>
                             </div>
                             <div class="lot-featured-img">
                                 <img class="img-status">
                                 <input type="hidden" name="image-source"
                                     value="{{ asset('/public/images/product_images/') }}" id="image-source" />
                             </div>
-                            <p>flavour profile</p>
-                            <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING
-                            </h4>
+                            <p id="">flavour profile</p>
+                                <h4 id="cupping_profile"></h4>
 
                             <div class="moreBtn btn-info mt-2"></div>
                         </div>
@@ -1970,8 +1969,13 @@ color: #9F9B9B;
                     var code = response.products[0].sample;
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
-                    var process = response.products[0].pro_process;
-                    var genetics = response.products[0].genetic_id;
+                    var process = response.process;
+                    var genetics = response.genetic;
+                    var cupping_profile = response.cup_profile;
+                    var village = response.village;
+                    var region = response.region;
+                    var governorate = response.governorate;
+                    var altitude = response.altitude;
                     var url = '{{ route('product_detail_page_auction', ':id') }}';
                     url = url.replace(':id', id);
                     $(".weight").html(response.weight);
@@ -1981,8 +1985,13 @@ color: #9F9B9B;
                     $(".code").html(code);
                     $(".size").html(size + 'LBS');
                     $(".currentbid").html(currentbid.toLocaleString('en-US'));
-                    // $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
+                    $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
+                    $("#cupping_profile").html(cupping_profile);
+                    $("#region").html(region);
+                    $("#village").html(village);
+                    $("#altitude").html(altitude);
+                    $("#governorate").html(governorate);
                     if (genetics == 1) {
                         $(".genetics").html('Yemenia');
                     } else if (genetics == 2) {
