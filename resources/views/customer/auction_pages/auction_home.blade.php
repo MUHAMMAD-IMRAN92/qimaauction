@@ -1404,7 +1404,7 @@
     background: #EFEBE5;
 }
 
-.footer-qima {   
+.footer-qima {
 padding: 40px;
 }
 
@@ -1620,7 +1620,7 @@ color: #9F9B9B;
                         <tbody>
 
                             <tr class="table-head-border">
-                              
+
                                 <td  colspan="14">
                                 <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
@@ -1729,11 +1729,11 @@ color: #9F9B9B;
                                 </tr>
                             @endforeach
                             <tr  class="table-head-border">
-                            
+
                                 <td  colspan="14">
                                 <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
                                 </td>
-                              
+
                             </tr>
                             @foreach ($auctionProducts as $auctionProduct)
                                 @php
@@ -1903,9 +1903,9 @@ color: #9F9B9B;
 
             </div>
         </div>
- 
- 
-  
+
+
+
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1941,7 +1941,7 @@ color: #9F9B9B;
         //OpenSidebar
         setTimeout(function() {
             window.location.reload();
-        }, 300000)
+        }, 10000)
         $(".openSidebar").click(function() {
             $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
@@ -2099,7 +2099,7 @@ color: #9F9B9B;
          var sec =    $('.seconds').html();
            var min =  $('.minutes').html();
 
-           
+
            if(sec == 00 && min == 00){
                 // alert( $('.seconds').html() +'::'+$('.minutes').html());
                 window.location = window.location.href + "?ended=1";
@@ -2139,14 +2139,14 @@ color: #9F9B9B;
                     $interval = "00:00";
                     $interva13 = "00:00:00:00";
                     $interval2 = "00:00";
-                    
+
                 }else{
                     $interval = date_diff($date_a, $date_b);
                     $interva13 = date_diff($date_b, $date_c);
                     $interval2 = $interval->format('%i:%s');
                     $interval3 = $interva13->format('%d:%h:%i:%s');
                 }
-                
+
             @endphp
             // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
@@ -2165,7 +2165,7 @@ color: #9F9B9B;
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
             } else {
-               
+
                 // alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
@@ -2174,8 +2174,8 @@ color: #9F9B9B;
                 var timer = timer2.split(':');
 
             }
-        } 
-       
+        }
+
         $('.timer_text').html(timer_text);
         clearInterval(interval);
         if (timer.length > 2) {
@@ -2187,7 +2187,7 @@ color: #9F9B9B;
             var minutes = parseInt(timer[0], 10);
             var seconds = parseInt(timer[1], 10);
         }
-        
+
         $('.days').html(days.toString().padStart(2, "0"));
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
@@ -2257,7 +2257,7 @@ color: #9F9B9B;
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
-  
+
 </script>
 
 </html>
