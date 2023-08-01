@@ -410,6 +410,7 @@
         margin-left: 50px;
         color: black;
     }
+
     .sidebar .closebtn:hover {
         color: black;
     }
@@ -682,7 +683,7 @@
     }
 
     .sidebar-container {
-        padding:0px 20px;
+        padding: 0px 20px;
         width: 450px;
     }
 
@@ -1288,9 +1289,9 @@
     }
 
     /* hamza starts ends */
-    
-    .heading-table-auction{
-        font-family:'Montserrat'!important ;
+
+    .heading-table-auction {
+        font-family: 'Montserrat' !important;
         font-size: 27px !important;
         font-weight: 800 !important;
         line-height: 32px !important;
@@ -1299,11 +1300,13 @@
         color: rgba(231, 132, 96, 1) !important;
         padding: 20px !important;
     }
-    .table-head-border{
+
+    .table-head-border {
         border-bottom: 2px solid rgba(231, 132, 96, 1);
     }
+
     .banner-text-section {
-      
+
         height: auto;
         background-color: rgba(239, 235, 229, 1);
         z-index: 10;
@@ -1451,18 +1454,19 @@
         overflow-y: auto;
         display: block;
     }
+
     .banner-text-section-2y::-webkit-scrollbar {
-  width: 1em;
-}
+        width: 1em;
+    }
 
-.banner-text-section-2::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+    .banner-text-section-2::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
 
-.banner-text-section-2::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
+    .banner-text-section-2::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
 
     .banner-text-section-2 h5 {
         font-family: 'Montserrat';
@@ -1475,29 +1479,32 @@
         margin-bottom: 10px;
 
     }
-    
+
     @font-face {
         font-family: 'Montserrat';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
 
     }
 
     @font-face {
         font-family: 'Montserrat-Medium';
-        src: url('{{ asset("public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf") }}') format('truetype');
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
+
     .banner-text-section img {
-            margin-top: 20px !important;
-            margin-bottom: 20px !important;
-            display: block;
-            width: 100%;
-        }
-          .moreBtn{
-            background: transparent;
-    text-align: center;
-          }
-        .btn-info button {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        display: block;
+        width: 100%;
+    }
+
+    .moreBtn {
+        background: transparent;
+        text-align: center;
+    }
+
+    .btn-info button {
         padding: 0.6rem 0.4rem;
         font-family: 'Montserrat';
         font-size: 11px;
@@ -1514,6 +1521,7 @@
         margin: 0 1rem;
         width: 180px;
     }
+
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
             display: none !important;
@@ -1609,47 +1617,55 @@
             height: auto !important;
         }
     }
-    #score{
+
+    #score {
         border: 2px solid #a8a3a3;
     }
+
     button.singlebidbtn:not([disabled]) {
-            background-color: #143D30 !important; /* Change this to your desired color */
-            color: white;
-          
-        }
-        .btn-info:hover{
-            background-color: transparent !important;
-        }
+        background-color: #143D30 !important;
+        /* Change this to your desired color */
+        color: white;
+
+    }
+
+    .btn-info:hover {
+        background-color: transparent !important;
+    }
+
     .hr {
-   border: 2px solid rgb(244, 243, 243);
-}
-.newfooter-bg{
-    background: #EFEBE5;
-}
+        border: 2px solid rgb(244, 243, 243);
+    }
 
-.footer-qima {   
-padding: 40px;
-}
+    .newfooter-bg {
+        background: #EFEBE5;
+    }
 
-.footer-qima p a {
-text-decoration: none;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 17px;
-display: flex;
-align-items: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-font-feature-settings: 'kern'off;
-color: #9F9B9B;
-}
-.white-anchor {
+    .footer-qima {
+        padding: 40px;
+    }
+
+    .footer-qima p a {
+        text-decoration: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-feature-settings: 'kern' off;
+        color: #9F9B9B;
+    }
+
+    .white-anchor {
         text-decoration: none;
         color: #9F9B9B !important;
     }
-    .auctiontable tbody tr td P{
+
+    .auctiontable tbody tr td P {
         margin-bottom: 0px;
     }
 </style>
@@ -1756,7 +1772,7 @@ color: #9F9B9B;
                                 <th scope="col">Increment</th>
                                 <th scope="col">Bid</th>
                                 <th scope="col"></th>
-                                <th scope="col" >Total Value</th>
+                                <th scope="col">Total Value</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Process</th>
                                 <th scope="col">Genetics</th>
@@ -1770,24 +1786,25 @@ color: #9F9B9B;
                                 @php
                                     $sortClass = '';
                                 @endphp
-                                
+
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
-                                <tr class="table-head-border">
-                              
-                              <td  colspan="14">
-                              <h5 class="inner-data heading-table-auction">ALCHEMY </h5>
-                              </td>
-                          </tr>
+                                    <tr class="table-head-border">
+
+                                        <td colspan="14">
+                                            <h5 class="inner-data heading-table-auction">ALCHEMY </h5>
+                                        </td>
+                                    </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
                                     @php
                                         $sortClass = 'sortByRank';
                                     @endphp
                                     <tr class="table-head-border">
-                              
-                              <td  colspan="14">
-                              <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
-                              </td>
-                          </tr>
+
+                                        <td colspan="14">
+                                            <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION
+                                            </h5>
+                                        </td>
+                                    </tr>
                                 @endif
                                 @php
                                     //increment in singlebid price
@@ -2405,7 +2422,7 @@ color: #9F9B9B;
                                     }
                                 }
                             @endphp
-                            <td >
+                            <td>
                                 <p
                                     class="liability_your{{ $auctionProduct->id }}  liability{{ $auctionProduct->id }}
                                         @php $userfound = 0; @endphp
@@ -2504,50 +2521,62 @@ color: #9F9B9B;
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="sidebar-container">
                     <div class="banner-text-section ">
-                    <h2  class="rank">.</h2>
-                    <h3 class="name"></h3>
-                    <div class="d-flex align-items-center">
-                    <p>JURY CODE:</p>    
-                    <p style="cursor: auto;" class="code"></p>
-                   </div>
-                    <hr>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p>JURY SCORE:</p>
-                    <h2 style="cursor: auto;" class="juryscore"></h2>
-                    <h2></h2>
-                    <hr>
-                    <div>
-                        <p>Genetics :</p>
-                        <h4 class="genetics"></h4>
-                    </div>
-                    <div>
-                        <p>Process :</p>
-                        <h4 class="proprocess"></h4>
-                    </div>
-                    <p style="cursor: auto;">lot size :</p>
-                    <h4 style="cursor: auto;" class="size"></h4>
-                    <hr>
-                    <div>
-                        <h6>traceability</h6>
-                       <div class="d-flex"> <p>VILLAGE : </p> <p id="village"></p></div>
-                       <div class="d-flex">   <p> REGION :  </p><p id="region"></p></div>
-                        <div class="d-flex"> <p>GOVERNORATE :</p><p id="governorate"></p></div>
-                            <div class="d-flex"> <p>ALTITUDE :</p><p id="altitude"></p></div>
-                    </div>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p id="">flavour profile</p>
+                        <h2 class="rank">.</h2>
+                        <h3 class="name"></h3>
+                        <div class="d-flex align-items-center">
+                            <p>JURY CODE:</p>
+                            <p style="cursor: auto;" class="code"></p>
+                        </div>
+                        <hr>
+                        <div class="lot-featured-img">
+                            <img class="img-status">
+                            <input type="hidden" name="image-source"
+                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                        </div>
+                        <p>JURY SCORE:</p>
+                        <h2 style="cursor: auto;" class="juryscore"></h2>
+                        <h2></h2>
+                        <hr>
+                        <div>
+                            <p>Genetics :</p>
+                            <h4 class="genetics"></h4>
+                        </div>
+                        <div>
+                            <p>Process :</p>
+                            <h4 class="proprocess"></h4>
+                        </div>
+                        <p style="cursor: auto;">lot size :</p>
+                        <h4 style="cursor: auto;" class="size"></h4>
+                        <hr>
+                        <div>
+                            <h6>traceability</h6>
+                            <div class="d-flex">
+                                <p>VILLAGE : </p>
+                                <p id="village"></p>
+                            </div>
+                            <div class="d-flex">
+                                <p> REGION : </p>
+                                <p id="region"></p>
+                            </div>
+                            <div class="d-flex">
+                                <p>GOVERNORATE :</p>
+                                <p id="governorate"></p>
+                            </div>
+                            <div class="d-flex">
+                                <p>ALTITUDE :</p>
+                                <p id="altitude"></p>
+                            </div>
+                        </div>
+                        <div class="lot-featured-img">
+                            <img class="img-status">
+                            <input type="hidden" name="image-source"
+                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                        </div>
+                        <p id="">flavour profile</p>
                         <h4 id="cupping_profile"></h4>
-                        
-                    <div class="moreBtn btn-info mt-2"></div>
-                </div>
+
+                        <div class="moreBtn btn-info mt-2"></div>
+                    </div>
                 </div>
             </div>
 
@@ -2657,17 +2686,17 @@ color: #9F9B9B;
             </div>
 
     </section>
-       <div class="container-fluid newfooter-bg">
-         <div class="footer-qima">
-                <hr class="hr">
-                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
-                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
-                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
-                        coffee excellence</a></p>
-                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+    <div class="container-fluid newfooter-bg">
+        <div class="footer-qima">
+            <hr class="hr">
+            <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
+            <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
+            <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                    coffee excellence</a></p>
+            <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
 
-            </div>
         </div>
+    </div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -2705,11 +2734,9 @@ color: #9F9B9B;
 </script>
 <script type="text/javascript">
     $(document).ready(function(e) {
-
-        //OpenSidebar
-        // setTimeout(function() {
-        //     window.location.reload();
-        // }, 300000)
+        setTimeout(function() {
+            window.location.reload();
+        }, 10000)
         $(".openSidebar").click(function() {
             $("#mySidebar").addClass('sidebaropen-width');
             var id = $(this).attr('data-id');
@@ -3018,7 +3045,7 @@ color: #9F9B9B;
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p class="newautobidamount{{ @$auctionProduct->id }}">Current autobid is $' +
-                               parseFloat(autobidamount).toFixed(2) +
+                                parseFloat(autobidamount).toFixed(2) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');
                             $('.autobidamount' + id).val('');
@@ -3222,8 +3249,8 @@ color: #9F9B9B;
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html(
                         '<p>Current autobid is $' +
-                           
-                            parseFloat(data.autobidamount).toFixed(2) +
+
+                        parseFloat(data.autobidamount).toFixed(2) +
                         ' /lb</p>');
                 }
             }
@@ -3350,8 +3377,8 @@ color: #9F9B9B;
         if (data.user_id == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.id + data.id).html(
                 '<p">Current autobid is $' +
-                   
-                parseFloat(data.autobidamount) .toFixed(2) +
+
+                parseFloat(data.autobidamount).toFixed(2) +
                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                 data.id + '>Remove</a>}</p>');
         }
@@ -3649,15 +3676,15 @@ color: #9F9B9B;
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
-         var sec =    $('.seconds').html();
-           var min =  $('.minutes').html();
+            var sec = $('.seconds').html();
+            var min = $('.minutes').html();
 
-           
-           if(sec == 00 && min == 00){
+
+            if (sec == 00 && min == 00) {
                 // alert( $('.seconds').html() +'::'+$('.minutes').html());
                 window.location = window.location.href + "?ended=1";
 
-            }else{
+            } else {
 
                 endAuctionVar = 1;
             }
@@ -3674,7 +3701,7 @@ color: #9F9B9B;
             });
             $('.autobtnclick').attr("disabled", false);
             $('.confirm-btn').attr("disabled", false);
-                $('.confirm-btn').css('background', '#143D30;');
+            $('.confirm-btn').css('background', '#143D30;');
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -3696,37 +3723,36 @@ color: #9F9B9B;
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
                 //   dd($date_b);
-                if( $date_b >= $date_a){
-                    $interval = "00:00";
-                    $interva13 = "00:00:00:00";
-                    $interval2 = "00:00";
-                    
-                }else{
+                if ($date_b >= $date_a) {
+                    $interval = '00:00';
+                    $interva13 = '00:00:00:00';
+                    $interval2 = '00:00';
+                } else {
                     $interval = date_diff($date_a, $date_b);
                     $interva13 = date_diff($date_b, $date_c);
                     $interval2 = $interval->format('%i:%s');
                     $interval3 = $interva13->format('%d:%h:%i:%s');
                 }
-                
+
             @endphp
             // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
-                // alert("{{$isEmpty}}")
+                // alert("{{ $isEmpty }}")
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            }else if("{{$isEmpty}}" > 0){
-                // alert("{{$isEmpty}}");
+            } else if ("{{ $isEmpty }}" > 0) {
+                // alert("{{ $isEmpty }}");
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
             } else {
-               
+
                 // alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
@@ -3735,8 +3761,8 @@ color: #9F9B9B;
                 var timer = timer2.split(':');
 
             }
-        } 
-       
+        }
+
         $('.timer_text').html(timer_text);
         clearInterval(interval);
         if (timer.length > 2) {
@@ -3748,14 +3774,14 @@ color: #9F9B9B;
             var minutes = parseInt(timer[0], 10);
             var seconds = parseInt(timer[1], 10);
         }
-        
+
         $('.days').html(days.toString().padStart(2, "0"));
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
-       if (!data && "{{$isEmpty}}" != 0) {
-        // alert('here check')
+        if (!data && "{{ $isEmpty }}" != 0) {
+            // alert('here check')
             return;
         }
         // alert('here after');
@@ -3780,7 +3806,7 @@ color: #9F9B9B;
 
             //minutes = (minutes < 10) ?  minutes : minutes;
             if (minutes >= 0 && seconds >= 0) {
-                    console.log(minutes +'::'+seconds);
+                console.log(minutes + '::' + seconds);
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
