@@ -2830,7 +2830,7 @@ color: #9F9B9B;
                     var autobidamount = $(".autobidamount" + id).val();
                     var weightautobid = $(".weightautobid" + id).html();
                     var weight = parseFloat(weightautobid.replace(/[^\d\.]*/g, ''));
-                    $(".autobiddermaxbid" + id).html('$' + autobidamount);
+                    $(".autobiddermaxbid" + id).html('$' + parseFloat(autobidamount).toFixed(2));
                     $(".maximumliability" + id).html('$' + addCommas(parseFloat(weight * autobidamount)
                         .toFixed(2)));
                 } else {
@@ -3078,7 +3078,7 @@ color: #9F9B9B;
                             $('.errorMsgAutoBid' + id + id).html('');
                             $('.errorMsgAutoBid' + id + id).html(
                                 '<p>Current autobid is $' +
-                                addCommas(autobidamount) +
+                                parseFloat(autobidamount).toFixed(2) +
                                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                                 id + '>Remove</a>}</p>');
                             $('.autobidamount' + id).val('');
@@ -3211,7 +3211,8 @@ color: #9F9B9B;
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html('');
                     $('.errorMsgAutoBid' + data.bidID + data.bidID).html(
                         '<p>Current autobid is $' +
-                        addCommas(data.autobidamount) +
+                           
+                            parseFloat(data.autobidamount).toFixed(2) +
                         ' /lb</p>');
                 }
             }
@@ -3338,7 +3339,8 @@ color: #9F9B9B;
         if (data.user_id == {{ Auth::user()->id }}) {
             $('.errorMsgAutoBid' + data.id + data.id).html(
                 '<p">Current autobid is $' +
-                addCommas(data.autobidamount) +
+                   
+                parseFloat(data.autobidamount) .toFixed(2) +
                 ' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id=' +
                 data.id + '>Remove</a>}</p>');
         }
