@@ -658,7 +658,7 @@ var other_check=0;
                             var user_id     = response.userOfffers.user_id;
                             var offersdata  = response.groupbid;
                             var adminofferData = response.adminOffers;
-                        if(isActive==1 && user_id=={{Auth::user()->id}})
+                        if(isActive==1 && user_id=={{Auth::user()->id ?? 0}})
                         {
                             $('#bag_quantity').val('');
                             $('#bid_amount').val('');
