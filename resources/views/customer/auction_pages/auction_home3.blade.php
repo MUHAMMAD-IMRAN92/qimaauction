@@ -3667,7 +3667,7 @@
                 var timer = timer2.split(':');
 
             } else {
-                alert('here{{ $interval2 }}')
+                // alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
