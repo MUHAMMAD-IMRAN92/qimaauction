@@ -2084,7 +2084,7 @@
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
-            console.log('the end');
+            // console.log('the end');
             // window.location = window.location.href + "?ended=1";
             endAuctionVar = 1;
         }

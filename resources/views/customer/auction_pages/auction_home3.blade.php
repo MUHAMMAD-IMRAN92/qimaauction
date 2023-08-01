@@ -2035,7 +2035,7 @@
                                                                         style="border-radius: 5px;">Bid Now</button>
                                                                 @endif
                                                                 <button
-                                                                    class="singlebidbtn btn singlebid singlebidClass{{ $auctionProduct->id }}"
+                                                                    class="singlebidbtn btn confirm-btn singlebid singlebidClass{{ $auctionProduct->id }}"
                                                                     id="{{ $auctionProduct->id }}"
                                                                     href="javascript:void(0)"
                                                                     data-id="{{ $auctionProduct->id }}"
@@ -2119,7 +2119,7 @@
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
                                                                 <button
-                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="btn singlebidbtn  autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="display: none;" id="confirmbtn">Confirm
@@ -2617,7 +2617,7 @@
                                         </tr>
                                     </table>
                                     <div class="mt-15">
-                                        <button class="singlebidbtn btn confirmgroupbidbutton"
+                                        <button class="singlebidbtn confirm-btn btn confirmgroupbidbutton"
                                             href="javascript:void(0)">Confirm</button>
                                         <button type="button" class="singlebidbtn btn cancelgroupbtn">Cancel</button>
                                     </div>
@@ -3389,7 +3389,7 @@
                                 my[i].id +
                                 "'></b> </p><p>Liability: <b class='liabilityappended" +
                                 my[i].id +
-                                "'></b></p><div><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
+                                "'></b></p><div><button class='singlebidbtn confirm-btn btn participategroupbidbutton' data-id='" +
                                 my[i].id + "'lot-id='" + my[i].auction_product_id +
                                 "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                                 my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
@@ -3433,7 +3433,7 @@
                                 my[i].id +
                                 "'></b> </p><p>Liability: <b class='liabilityappended" +
                                 my[i].id +
-                                "'></b></p><div><button class='singlebidbtn btn participategroupbidbutton' data-id='" +
+                                "'></b></p><div><button class='singlebidbtn  confirm-btn btn participategroupbidbutton' data-id='" +
                                 my[i].id + "'lot-id='" + my[i].auction_product_id +
                                 "' href='javascript:void(0)'>Confirm</button><button type='button' class='singlebidbtn btn cancelappendedgroupbtn mx-10' data-id='" +
                                 my[i].id + "'>Cancel</button></div></div> </div> </div></li>");
@@ -3614,7 +3614,7 @@
     var endAuctionVar = 0;
     socket.on('add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
-            alert('socket---->'+endAuctionVar);
+            // alert('socket---->'+endAuctionVar);
             // window.location = window.location.href + "?ended=1";
             endAuctionVar = 1;
         }
@@ -3627,6 +3627,9 @@
                 $(this).next().find('button').prop('disabled', true);
             });
             $('.autobtnclick').attr("disabled", false);
+            $('.confirm-btn').attr("disabled", false);
+                $('.confirm-btn').css('background', '#143D30;');
+            
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -3740,6 +3743,8 @@
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
+                $('.confirm-btn').attr("disabled", true);
+                $('.confirm-btn').css('background', '#a6a6a6');
 
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
