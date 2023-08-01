@@ -41,7 +41,7 @@ var other_check=0;
                     var user_id = my[0].user_id;
                     var lotid = $('.lotproductid').html();
                     var auctionproductid = my[0].auction_product_id;
-                    if (isActive == 1 && user_id == {{ Auth::user()->id }}) {
+                    if (isActive == 1 && user_id == {{ Auth::user()->id ?? 0 }}) {
                         $('#bag_quantity').val('');
                         $('#bid_amount').val('');
                         $('.finalweight').html('');
