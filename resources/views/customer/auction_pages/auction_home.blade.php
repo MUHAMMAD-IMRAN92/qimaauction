@@ -1956,7 +1956,12 @@
 <script type="text/javascript">
     $(document).ready(function(e) {
         //OpenSidebar
-      
+        setTimeout(function() {
+                    if (document.hidden) {
+
+                        window.location.reload();
+                    }
+                }, 10000);
         $(".openSidebar").click(function() {
             $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
@@ -2212,6 +2217,12 @@
             return;
         }
         // alert('here after');
+        setTimeout(function() {
+                    if (document.hidden) {
+
+                        window.location.reload();
+                    }
+                }, 10000);
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
