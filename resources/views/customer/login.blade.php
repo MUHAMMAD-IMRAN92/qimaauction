@@ -48,7 +48,7 @@
                       </form>
                       <div class="col-md-6 offset-md-4">
                         <hr>
-                        <button type="button" onclick="window.location='https://allianceforcoffeeexcellence.org/product/yemen-pca-auction-registration-2022/'" class="btn btn-success">
+                        <button type="button" onclick="window.location='https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/'" class="btn btn-success">
                             Register
                         </button>
                       </div>

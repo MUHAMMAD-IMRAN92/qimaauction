@@ -47,7 +47,7 @@
     }
 
     #width a img {
-        margin-left: 108px;
+        /* margin-left: 108px; */
         margin-top: 20px;
         margin-bottom: 15px;
     }
@@ -1064,8 +1064,8 @@
     }
 
     /* hamza starts ends */
-    .heading-table-auction{
-        font-family:'Montserrat'!important ;
+    .heading-table-auction {
+        font-family: 'Montserrat' !important;
         font-size: 27px !important;
         font-weight: 800 !important;
         line-height: 32px !important;
@@ -1074,11 +1074,156 @@
         color: rgba(231, 132, 96, 1) !important;
         padding: 20px !important;
     }
-    .table-head-border{
+
+    .table-head-border {
         border-bottom: 2px solid rgba(231, 132, 96, 1);
     }
-    
-    font-family: 'Montserrat';
+
+    .banner-text-section {
+
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        z-index: 10;
+    }
+
+    .banner-text-section h2 {
+        font-family: 'Montserrat';
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 61px;
+        letter-spacing: 0em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+    }
+
+    .banner-text-section h3 {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section p {
+        cursor: pointer;
+
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section h6 {
+        cursor: pointer;
+
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section h4 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        cursor: pointer;
+
+
+
+    }
+
+    .banner-text-section span {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+
+
+    }
+
+    .wrapper-bg-section {
+        position: relative;
+    }
+
+
+
+    .banner-text-section-2 {
+        top: 75%;
+        left: 46%;
+        position: absolute;
+        width: 501px;
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        padding: 25px;
+        z-index: 10;
+    }
+
+    .images-section {
+        z-index: 5;
+    }
+
+    .banner-text-section-2 p {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        margin-bottom: 0px;
+
+
+    }
+
+    .banner-text-section-2 h3 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        color: rgba(35, 43, 56, 1);
+
+
+
+    }
+
+    .moreBtn {
+        background: transparent;
+        text-align: center;
+    }
+
+    .btn-info button {
+        padding: 0.6rem 0.4rem;
+        font-family: 'Montserrat';
         font-size: 11px;
         font-weight: 600;
         line-height: 12px;
@@ -1093,6 +1238,66 @@
         margin: 0 1rem;
         width: 180px;
     }
+
+    .btn-info:hover {
+        background-color: transparent !important;
+    }
+
+    .banner-text-section-2 h6 {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: inherit;
+        max-height: 50vh;
+        overflow-y: auto;
+        display: block;
+    }
+
+    .banner-text-section-2y::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    .banner-text-section-2::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-text-section-2::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    .banner-text-section-2 h5 {
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+    }
+
+    #mySidebar {
+        background: rgba(239, 235, 229, 1)
+    }
+
+
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Bold.ttf') }}') format('truetype');
+
+    }
+
+    @font-face {
+        font-family: 'Montserrat-Medium';
+        src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
+
+    }
+
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
             display: none !important;
@@ -1188,7 +1393,8 @@
             height: auto !important;
         }
     }
-    #score{
+
+    #score {
         border: 2px solid lightgray;
     }
     .hr {
@@ -1219,6 +1425,9 @@ color: #9F9B9B;
 .white-anchor {
         text-decoration: none;
         color: #9F9B9B !important;
+    }
+    .auctiontable tbody tr td P{
+        margin-bottom: 0px;
     }
     /* .table.auctiontable tbody tr:nth-child(32) td:nth-child(7) .inner-data{
         white-space: nowrap;
@@ -1409,121 +1618,12 @@ color: #9F9B9B;
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr class="table-head-border">
                               
-                                <td  colspan="12">
-                                <h5 class="inner-data heading-table-auction">ALCHEMY</h5>
+                                <td  colspan="14">
+                                <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
-                            </tr>
-                            @foreach ($auctionProducts as $auctionProduct)
-                                @php
-                                    //increment in singlebid price
-                                    $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
-                                    $bidLimitSinglebid = App\Models\Bidlimit::where('min', '<', $incPriceSinglebid)
-                                        ->orderBy('min', 'desc')
-                                        ->limit(1)
-                                        ->get();
-                                    $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
-                                    $finalIncSinglebid = (float) $incPriceSinglebid + (float) $bidIncrementSinglebid;
-                                    $isEmpty = sizeof($singleBids);
-                                @endphp
-                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    {{-- <td contenteditable='true' class="text-underline yourscore td-res-pl"
-                                        data-id="{{ $auctionProduct->id }}" id="score">
-                                        {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
-                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                    <td class="increment{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
-                                    <td class="fw-bold td-res-pl">
-                                        <div>
-                                            <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
-                                        </div>
-                                    </td>
-                                    <td class="td-res-pl">
-                                        @if ($auction->auctionStatus() == 'active')
-                                            <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
-                                                data-id="{{ $auctionProduct->id }}"
-                                                auction-id="{{ $auctionProduct->auction_id }}" id="accordion1"
-                                                data-toggle="collapse" data-parent="#accordion1"
-                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
-                                        @endif
-                                    </td>
-                                    {{-- <td class="liability{{ $auctionProduct->id }} td-res-pl">
-                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
-                                    </td> --}}
-                                    @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline td-res-pl"><a
-                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
-                                                data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
-                                            </a></td>
-                                    @endforeach
-                                    {{-- @foreach ($auctionProduct->products as $products) --}}
-
-                                    <td class="td-res-pl">{{ $auctionProduct->process }}</td>
-
-                                    {{-- @endforeach --}}
-                                    {{-- @foreach ($auctionProduct->products as $products) --}}
-                                    {{-- @if ($products->genetic_id == '1') --}}
-                                    <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
-                                    {{-- @elseif ($products->genetic_id == '2')
-                                            <td class="td-res-pl">Bourbon</td>
-                                        @else
-                                            <td class="td-res-pl">SL28</td>
-                                        @endif --}}
-                                    {{-- @endforeachz --}}
-                                    @if (isset($auctionProduct->singleBidPricelatest))
-                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                {{ $userData->paddle_number ?? '---' }}</td>
-                                        @endforeach
-                                    @else
-                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
-                                    @endif
-                                    <td class="td-res-pl">
-                                        <div>
-                                            <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
-                                                @if ($auction->auctionStatus() != 'active')
-                                                    -
-                                                @else
-                                                    <div class="tdtimer">
-                                                        <p class="minutes">-</p>
-                                                        <p>:</p>
-                                                        <p class="seconds">-</p>
-                                                    </div>
-                                                @endif
-                                            </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="hide-table-padding bid-row">
-                                    <td colspan="13">
-                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h5 style="margin: 0 20px">You need to login to Bid.</h5>
-                                                    <a style="padding: 5px; border-radius: 4px;"
-                                                        href="{{ route('customer.login') }}"
-                                                        class="startbidbtn">Login</a>
-
-                                                </div>
-                                                {{-- <div class="card-body">
-                                                           <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
-                                                    </div> --}}
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <tr  class="table-head-border">
-                            
-                                <td  colspan="12">
-                                <h5 class="inner-data heading-table-auction ">NATURAL AND DEEP FERMENTATION</h5>
-                                </td>
-                              
                             </tr>
                             @foreach ($naturalauctionProducts as $auctionProduct)
                                 @php
@@ -1628,57 +1728,168 @@ color: #9F9B9B;
                                     </td>
                                 </tr>
                             @endforeach
+                            <tr  class="table-head-border">
+                            
+                                <td  colspan="14">
+                                <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
+                                </td>
+                              
+                            </tr>
+                            @foreach ($auctionProducts as $auctionProduct)
+                                @php
+                                    //increment in singlebid price
+                                    $incPriceSinglebid = isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price;
+                                    $bidLimitSinglebid = App\Models\Bidlimit::where('min', '<', $incPriceSinglebid)
+                                        ->orderBy('min', 'desc')
+                                        ->limit(1)
+                                        ->get();
+                                    $bidIncrementSinglebid = $bidLimitSinglebid[0]->increment ?? '';
+                                    $finalIncSinglebid = (float) $incPriceSinglebid + (float) $bidIncrementSinglebid;
+                                    $isEmpty = sizeof($singleBids);
+                                @endphp
+                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
+                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
+                                    {{-- <td contenteditable='true' class="text-underline yourscore td-res-pl"
+                                        data-id="{{ $auctionProduct->id }}" id="score">
+                                        {{ $auctionProduct->userscore->your_score ?? '' }}</td> --}}
+                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
+                                    <td class="increment{{ $auctionProduct->id }} td-res-pl">
+                                        ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
+                                    <td class="fw-bold td-res-pl">
+                                        <div>
+                                            <span
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                        </div>
+                                    </td>
+                                    <td class="td-res-pl">
+                                        @if ($auction->auctionStatus() == 'active')
+                                            <a class=" startbidbtn btn-success btn accordion-toggle collapsed startBid changetext{{ $auctionProduct->id }}"
+                                                data-id="{{ $auctionProduct->id }}"
+                                                auction-id="{{ $auctionProduct->auction_id }}" id="accordion1"
+                                                data-toggle="collapse" data-parent="#accordion1"
+                                                href="#collapseOne{{ $auctionProduct->id }}">Bid</a>
+                                        @endif
+                                    </td>
+                                    {{-- <td class="liability{{ $auctionProduct->id }} td-res-pl">
+                                        ${{ isset($auctionProduct->latestBidPrice) ? number_format($auctionProduct->latestBidPrice->bid_amount * $auctionProduct->weight, 1) : number_format($auctionProduct->start_price * $auctionProduct->weight, 1) }}
+                                    </td> --}}
+                                    @foreach ($auctionProduct->products as $products)
+                                        <td class="fw-bold text-underline td-res-pl"><a
+                                                class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                                data-productid="{{ $products->id }}"
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
+                                            </a></td>
+                                    @endforeach
+                                    {{-- @foreach ($auctionProduct->products as $products) --}}
+
+                                    <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+
+                                    {{-- @endforeach --}}
+                                    {{-- @foreach ($auctionProduct->products as $products) --}}
+                                    {{-- @if ($products->genetic_id == '1') --}}
+                                    <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                    {{-- @elseif ($products->genetic_id == '2')
+                                            <td class="td-res-pl">Bourbon</td>
+                                        @else
+                                            <td class="td-res-pl">SL28</td>
+                                        @endif --}}
+                                    {{-- @endforeachz --}}
+                                    @if (isset($auctionProduct->singleBidPricelatest))
+                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                                {{ $userData->paddle_number ?? '---' }}</td>
+                                        @endforeach
+                                    @else
+                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
+                                    @endif
+                                    <td class="td-res-pl">
+                                        <div>
+                                            <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
+                                                @if ($auction->auctionStatus() != 'active')
+                                                    -
+                                                @else
+                                                    <div class="tdtimer">
+                                                        <p class="minutes">-</p>
+                                                        <p>:</p>
+                                                        <p class="seconds">-</p>
+                                                    </div>
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hide-table-padding bid-row">
+                                    <td colspan="13">
+                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 style="margin: 0 20px">You need to login to Bid.</h5>
+                                                    <a style="padding: 5px; border-radius: 4px;"
+                                                        href="{{ route('customer.login') }}"
+                                                        class="startbidbtn">Login</a>
+
+                                                </div>
+                                                {{-- <div class="card-body">
+                                                           <a  href="{{ route('customer.login') }}" class="btn btn-success">Login</a>
+                                                    </div> --}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="sidebar-container">
-                    <div class="banner-text-section ">
-                    <h2  class="rank"></h2>
-                    <h3 class="name"></h3>
-                    <div class="d-flex align-items-center">
-                    <p>JURY CODE:</p>    
-                    <p style="cursor: auto;" class="code"></p>
-                   </div>
-                    <hr>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p>JURY SCORE:</p>
-                    <h2 style="cursor: auto;" class="juryscore"></h2>
-                    <h2></h2>
-                    <hr>
-                    <div>
-                        <p>Genetics :</p>
-                        <h4 class="genetics"></h4>
-                    </div>
-                    <div>
-                        <p>Process :</p>
-                        <h4 class="proprocess"></h4>
-                    </div>
-                    <p style="cursor: auto;">lot size :</p>
-                    <h4 style="cursor: auto;" class="size"></h4>
-                    <hr>
-                    <div>
-                        <h6>traceability</h6>
-                        <p>VILLAGE :</p>
-                        <p> REGION :  </p>
-                        <p>GOVERNORATE :</p>
-                        <p>ALTITUDE :</p>
-                    </div>
-                    <div class="lot-featured-img">
-                        <img class="img-status">
-                        <input type="hidden" name="image-source"
-                            value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                    </div>
-                    <p>flavour profile</p>
-                        <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING</h4>
-                        
-                    <div class="moreBtn btn-info mt-2"></div>
-                </div>
+                        <div class="banner-text-section ">
+                            <h2 class="rank"></h2>
+                            <h3 class="name"></h3>
+                            <div class="d-flex align-items-center">
+                                <p>JURY CODE:</p>
+                                <p style="cursor: auto;" class="code"></p>
+                            </div>
+                            <hr>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p>JURY SCORE:</p>
+                            <h2 style="cursor: auto;" class="juryscore"></h2>
+                            <h2></h2>
+                            <hr>
+                            <div>
+                                <p>Genetics :</p>
+                                <h4 class="genetics"></h4>
+                            </div>
+                            <div>
+                                <p>Process :</p>
+                                <h4 class="proprocess"></h4>
+                            </div>
+                            <p style="cursor: auto;">lot size :</p>
+                            <h4 style="cursor: auto;" class="size"></h4>
+                            <hr>
+                            <div>
+                                <h6>traceability</h6>
+                                <p>VILLAGE :</p>
+                                <p> REGION : </p>
+                                <p>GOVERNORATE :</p>
+                                <p>ALTITUDE :</p>
+                            </div>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p>flavour profile</p>
+                            <h4>BLACK CURRANT / JASMINE / PLUM / TROPICAL FRUIT / PANELA / SYRUPY / BRIGHT & LINGERING
+                            </h4>
+
+                            <div class="moreBtn btn-info mt-2"></div>
+                        </div>
                     </div>
                 </div>
     </section>
@@ -1693,6 +1904,8 @@ color: #9F9B9B;
 
             </div>
         </div>
+ 
+ 
   
 
 </body>
@@ -1760,7 +1973,7 @@ color: #9F9B9B;
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
                     var url = '{{ route('product_detail_page_auction', ':id') }}';
-                    url = url.replace(':id', productid);
+                    url = url.replace(':id', id);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
@@ -1878,6 +2091,7 @@ color: #9F9B9B;
     });
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
+
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -1898,21 +2112,21 @@ color: #9F9B9B;
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
+                //   dd($date_b);
+                if ($date_b >= $date_a) {
+                    $interval = '00:00';
+                    $interva13 = '00:00:00:00';
+                    $interval2 = '00:00';
+                    $interval3 = '00:00:00:00';
+                } else {
+                    $interval = date_diff($date_a, $date_b);
+                    $interva13 = date_diff($date_b, $date_c);
+                    $interval2 = $interval->format('%i:%s');
+                    $interval3 = $interva13->format('%d:%h:%i:%s');
+                }
+                
             @endphp
             if (data && data.checkTimer == 0) {
-                $('.auction_pending').hide();
-                $('.auction_started').show();
-                var timer_text = "Auction Ending in";
-                var timer2 = "03:00";
-                var timer = timer2.split(':');
-
-            } else if (window.empty != 0) {
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
@@ -1930,10 +2144,6 @@ color: #9F9B9B;
         } else if ("{{ $auction->auctionStatus() }}" == "ended") {
 
         }
-        // else if("{{ $auction->auctionStatus() }}" == "running")
-        // {
-
-        // }
         else {
             $('.auction_started').hide();
             $('.auction_pending').show();
@@ -1957,9 +2167,9 @@ color: #9F9B9B;
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
-            return;
-        }
+        // if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
+        //     return;
+        // }
         window.interval = setInterval(function() {
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -1982,9 +2192,25 @@ color: #9F9B9B;
             $('.hours').html(hours.toString().padStart(2, "0"));
             $('.minutes').html(minutes.toString().padStart(2, "0"));
             $('.seconds').html(seconds);
+            // if (minutes < 0) clearInterval(interval);
+            if (minutes >= 0 && seconds > 0) {
+
+                $('.days').html(days.toString().padStart(2, "0"));
+                $('.hours').html(hours.toString().padStart(2, "0"));
+                $('.minutes').html(minutes.toString().padStart(2, "0"));
+                $('.seconds').html(seconds);
+            } else {
+                $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+            }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
-            if ((seconds <= 0) && (minutes <= 0)) {
+            if ((seconds <= 0) && (minutes <= 0) && endAuctionVar == 1) {
                 clearInterval(interval);
                 // set is_hidden of auction = 1
                 window.location = window.location.href + "?ended=1"; //location.reload();
@@ -2007,6 +2233,7 @@ color: #9F9B9B;
         const thousands = /\B(?=(\d{3})+(?!\d))/g;
         return numberPart.replace(thousands, ",") + (decimalPart ? "." + decimalPart : "");
     }
+  
 </script>
 
 </html>

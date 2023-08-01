@@ -677,7 +677,7 @@
     .table-container {
         width: 90%;
         margin: 0 auto;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
 
@@ -1612,6 +1612,14 @@
     #score{
         border: 2px solid #a8a3a3;
     }
+    button.singlebidbtn:not([disabled]) {
+            background-color: #143D30 !important; /* Change this to your desired color */
+            color: white;
+          
+        }
+        .btn-info:hover{
+            background-color: transparent !important;
+        }
     .hr {
    border: 2px solid rgb(244, 243, 243);
 }
@@ -1640,6 +1648,9 @@ color: #9F9B9B;
 .white-anchor {
         text-decoration: none;
         color: #9F9B9B !important;
+    }
+    .auctiontable tbody tr td P{
+        margin-bottom: 0px;
     }
 </style>
 
@@ -1759,12 +1770,12 @@ color: #9F9B9B;
                                 @php
                                     $sortClass = '';
                                 @endphp
-
+                                
                                 @if ($key == 0 && $key < $naturalauctionProductsCount)
                                 <tr class="table-head-border">
                               
-                              <td  colspan="12">
-                              <h5 class="inner-data heading-table-auction">ALCHEMY</h5>
+                              <td  colspan="14">
+                              <h5 class="inner-data heading-table-auction">ALCHEMY </h5>
                               </td>
                           </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
@@ -1773,7 +1784,7 @@ color: #9F9B9B;
                                     @endphp
                                     <tr class="table-head-border">
                               
-                              <td  colspan="12">
+                              <td  colspan="14">
                               <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                               </td>
                           </tr>
@@ -2727,8 +2738,8 @@ color: #9F9B9B;
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.products[0].pro_process;
                     var genetics = response.products[0].genetic_id;
-                    var url = '{{ route('productsidebar', ':id') }}';
-                    url = url.replace(':id', productid);
+                    var url = '{{ route('product_detail_page_auction', ':id') }}';
+                    url = url.replace(':id', id);
                     $(".weight").html(response.weight);
                     $(".rank").html('#' + rank);
                     $(".juryscore").html(juryscore);
@@ -3464,6 +3475,7 @@ color: #9F9B9B;
         }
     });
     socket.on('add_bid_updates', function(data) {
+        // alert('here');
         if (data.groupusers != undefined) {
             var i;
             for (i = 0; i < data.groupusers.length; ++i) {
@@ -3630,15 +3642,20 @@ color: #9F9B9B;
     });
     socket.on('add_timer_reset', function(data) {
         if (data.timerreset == 1) {
+            $('.singlebidbtn').attr("disabled", false);
             $('.autobtnclick').attr("disabled", false);
-
+            $('tr.changecolor').each(function() {
+                $(this).next().find('button').prop('disabled', true);
+            });
+            $('.autobtnclick').attr("disabled", false);
             data.checkTimer = 0;
             resetTimer(data);
         }
     });
 
     function resetTimer(data) {
-        // console.log('reset timer');
+        console.log(data);
+        console.log('reset timer');
         var timer_text = "";
         var hours = 0;
         var days = 0;
@@ -3651,28 +3668,39 @@ color: #9F9B9B;
                 $date_a = new DateTime($auction->endTime);
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
-
-                $interval = date_diff($date_a, $date_b);
-                $interva13 = date_diff($date_b, $date_c);
-
-                $interval2 = $interval->format('%i:%s');
-                $interval3 = $interva13->format('%d:%h:%i:%s');
+                //   dd($date_b);
+                if( $date_b >= $date_a){
+                    $interval = "00:00";
+                    $interva13 = "00:00:00:00";
+                    $interval2 = "00:00";
+                    
+                }else{
+                    $interval = date_diff($date_a, $date_b);
+                    $interva13 = date_diff($date_b, $date_c);
+                    $interval2 = $interval->format('%i:%s');
+                    $interval3 = $interva13->format('%d:%h:%i:%s');
+                }
+                
             @endphp
+            // console.log('end--->'++ 'current---->' +${$date_b} );
             if (data && data.checkTimer == 0) {
+                // alert("{{$isEmpty}}")
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
 
-            } else if (window.empty != 0) {
+            }else if("{{$isEmpty}}" > 0){
+                // alert("{{$isEmpty}}");
                 $('.auction_pending').hide();
                 $('.auction_started').show();
                 var timer_text = "Auction Ending in";
                 var timer2 = "03:00";
                 var timer = timer2.split(':');
-
             } else {
+               
+                // alert('here{{ $interval2 }}')
                 $('.auction_started').show();
                 $('.auction_pending').hide();
                 var timer_text = "Auction Ending in";
@@ -3680,16 +3708,8 @@ color: #9F9B9B;
                 var timer = timer2.split(':');
 
             }
-        } else if ("{{ $auction->auctionStatus() }}" == "ended") {
-
-        } else {
-            // $('.auction_started').hide();
-            // $('.auction_pending').show();
-            // var timer_text = "Auction Starting in";
-            // var timer2 = "{{ $interval3 }}";
-            // var timer = timer2.split(':');
-
-        }
+        } 
+       
         $('.timer_text').html(timer_text);
         clearInterval(interval);
         if (timer.length > 2) {
@@ -3701,14 +3721,19 @@ color: #9F9B9B;
             var minutes = parseInt(timer[0], 10);
             var seconds = parseInt(timer[1], 10);
         }
+        
         $('.days').html(days.toString().padStart(2, "0"));
         $('.hours').html(hours.toString().padStart(2, "0"));
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
-        if (window.empty != 0 && "{{ $auction->auctionStatus() }}" == "active") {
+        // alert('here');
+       if (!data && "{{$isEmpty}}" != 0) {
+        alert('here check')
             return;
         }
+        // alert('here after');
         window.interval = setInterval(function() {
+            // alert('here');
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
             if (timer.length > 2) {
@@ -3727,7 +3752,7 @@ color: #9F9B9B;
             seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
-            if (minutes >= 0 && seconds >= 0) {
+            if (minutes >= 0 && seconds > 0) {
 
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
