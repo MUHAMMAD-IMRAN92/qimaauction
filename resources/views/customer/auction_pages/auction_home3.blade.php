@@ -2119,7 +2119,7 @@
                                                                     data-id="{{ $auctionProduct->id }}">Auto
                                                                     Bid</button>
                                                                 <button
-                                                                    class="btn singlebidbtn  autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="btn singlebidbtn confirm-btn  autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="display: none;" id="confirmbtn">Confirm
@@ -2144,7 +2144,7 @@
                                                                             style="display: none;">Auto
                                                                             Bid</button>
                                                                         <button
-                                                                            class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                            class="btn singlebidbtn confirm-btn autobid autobidClass{{ $auctionProduct->id }}"
                                                                             type="button"
                                                                             data-id="{{ $auctionProduct->id }}"
                                                                             style="display: none;"
@@ -2181,7 +2181,7 @@
                                                                     style="display: none;">Auto
                                                                     Bid</button>
                                                                 <button
-                                                                    class="btn singlebidbtn autobid autobidClass{{ $auctionProduct->id }}"
+                                                                    class="btn singlebidbtn confirm-btn autobid autobidClass{{ $auctionProduct->id }}"
                                                                     type="button"
                                                                     data-id="{{ $auctionProduct->id }}"
                                                                     style="display: none;" id="confirmbtn">Confirm
@@ -2617,7 +2617,7 @@
                                         </tr>
                                     </table>
                                     <div class="mt-15">
-                                        <button class="singlebidbtn confirm-btn btn confirmgroupbidbutton"
+                                        <button class="singlebidbtn  confirm-btn btn confirmgroupbidbutton"
                                             href="javascript:void(0)">Confirm</button>
                                         <button type="button" class="singlebidbtn btn cancelgroupbtn">Cancel</button>
                                     </div>
@@ -3625,11 +3625,13 @@
             $('.autobtnclick').attr("disabled", false);
             $('tr.changecolor').each(function() {
                 $(this).next().find('button').prop('disabled', true);
+                $(this).next().find('.confirm-btn').prop('disabled', false);
+                $(this).next().find('.removeautobid').prop('disabled', false);
             });
             $('.autobtnclick').attr("disabled", false);
             $('.confirm-btn').attr("disabled", false);
                 $('.confirm-btn').css('background', '#143D30;');
-            
+                removeautobid
             data.checkTimer = 0;
             resetTimer(data);
         }
@@ -3709,10 +3711,10 @@
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
-       if (!data && "{{$isEmpty}}" != 0) {
-        // alert('here check')
-            return;
-        }
+    //    if (!data && "{{$isEmpty}}" != 0) {
+    //     // alert('here check')
+    //         return;
+    //     }
         // alert('here after');
         window.interval = setInterval(function() {
             // alert('here');
