@@ -3710,10 +3710,10 @@
         $('.minutes').html(minutes.toString().padStart(2, "0"));
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
-    //    if (!data && "{{$isEmpty}}" != 0) {
-    //     // alert('here check')
-    //         return;
-    //     }
+       if (!data && "{{$isEmpty}}" != 0) {
+        // alert('here check')
+            return;
+        }
         // alert('here after');
         window.interval = setInterval(function() {
             // alert('here');

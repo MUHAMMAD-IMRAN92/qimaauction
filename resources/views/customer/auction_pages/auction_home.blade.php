@@ -1604,7 +1604,7 @@
                                     <td class="fw-bold td-res-pl">
                                         <div>
                                             <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->latestBidPrice) ? $auctionProduct->latestBidPrice->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{  $auctionProduct->start_price }}/lbs</span>
                                         </div>
                                     </td>
                                     <td class="td-res-pl">
