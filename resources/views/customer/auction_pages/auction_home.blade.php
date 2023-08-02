@@ -1690,13 +1690,16 @@
                                         <td class="td-res-pl">SL28</td>
                                     @endif --}}
                                     {{-- @endforeachz --}}
-                                    @if (isset($auctionProduct->singleBidPricelatest))
-                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                {{ $userData->paddle_number ?? '---' }}</td>
-                                        @endforeach
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest))
+                                            @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                                <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                                    {{ $userData->paddle_number ?? '---' }}</td>
+                                            @endforeach
+                                    @elseif (isset($auctionProduct->groupAutobid))
+                                        <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                            {{ $auctionProduct->offerComplete->paddle_number ?? '---' }}</td>
                                     @else
-                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
+                                        <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
                                     @endif
                                     <td class="td-res-pl">
                                         <div>
@@ -1800,14 +1803,25 @@
                                             <td class="td-res-pl">SL28</td>
                                         @endif --}}
                                     {{-- @endforeachz --}}
-                                    @if (isset($auctionProduct->singleBidPricelatest))
+                                    {{-- @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
                                             <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 {{ $userData->paddle_number ?? '---' }}</td>
                                         @endforeach
                                     @else
                                         <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
-                                    @endif
+                                    @endif --}}
+                                    @if (!isset($auctionProduct->groupAutobid) && isset($auctionProduct->singleBidPricelatest))
+                                    @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                        <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                            {{ $userData->paddle_number ?? '---' }}</td>
+                                    @endforeach
+                                @elseif (isset($auctionProduct->groupAutobid))
+                                    <td class="paddleno{{ $auctionProduct->id }} fw-bold paddlenumber">
+                                        {{ $auctionProduct->offerComplete->paddle_number ?? '---' }}</td>
+                                @else
+                                    <td class="paddleno{{ $auctionProduct->id }}">Awaiting Bid</td>
+                                @endif
                                     <td class="td-res-pl">
                                         <div>
                                             <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
