@@ -2459,7 +2459,7 @@
                             @foreach ($auctionProduct->products as $products)
                                 <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                         data-id="{{ $auctionProduct->id }}"
-                                        data-image="{{ isset($auctionProduct->images[0]) ? $auctionProduct->images[0]->image_name : '' }}">
+                                        data-image="{{ isset($auctionProduct->auctionProductImages[0]) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
                                         {{ $products->product_title }} </a></td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
