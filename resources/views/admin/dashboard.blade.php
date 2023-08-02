@@ -126,7 +126,7 @@
         text-align: center;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+        font-feature-settings: 'kern' off;
 
         color: #575555;
     }
@@ -159,7 +159,7 @@
         align-items: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-feature-settings: 'kern'off;
+        font-feature-settings: 'kern' off;
 
         color: #9F9B9B;
     }
@@ -1000,12 +1000,15 @@
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
-                <button id="register-for-auction"><a
-                        href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
-                        For The Auction</a></button>
-                <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                    style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                </button>
+                <div class="d-flex">
+                    <button id="register-for-auction"><a
+                            href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
+                            For The Auction</a></button>
+                    <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                        style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                    </button>
+                </div>
+
             </div>
 
         </div>
@@ -1278,7 +1281,7 @@
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = '00:00:00:00';
                 document.getElementById('join-the-auction').style.display = "block";
-                document.getElementById('register-for-auction').style.display = "none";
+                // document.getElementById('register-for-auction').style.display = "none";
             }
         }, 1000);
     </script>
