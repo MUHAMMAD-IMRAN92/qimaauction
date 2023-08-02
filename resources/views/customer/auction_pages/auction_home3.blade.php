@@ -1893,7 +1893,12 @@
                                                 data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
                                                 data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
-                                            </a></td>
+                                            </a>
+                                            <a
+                                            class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                            data-productid="{{ $products->id }}"
+                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                        </a></td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1') --}}
@@ -2460,7 +2465,12 @@
                                 <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                         data-id="{{ $auctionProduct->id }}"
                                         data-image="{{ isset($auctionProduct->auctionProductImages) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
-                                        {{ $products->product_title }} </a></td>
+                                        {{ $products->product_title }} </a>
+                                        <a
+                                        class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                        data-productid="{{ $products->id }}"
+                                        data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                    </a></td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
                                 <td class="td-res-pl">{{ $auctionProduct->process }}</td>
@@ -2530,6 +2540,7 @@
                         <hr>
                         <div class="lot-featured-img">
                             <img class="img-status">
+                            <img class="img-status1">
                             <input type="hidden" name="image-source"
                                 value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                         </div>
@@ -2569,6 +2580,7 @@
                         </div>
                         <div class="lot-featured-img">
                             <img class="img-status">
+                            <img class="img-status1">
                             <input type="hidden" name="image-source"
                                 value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                         </div>
@@ -2745,10 +2757,15 @@
             var id = $(this).attr('data-id');
             var productid = $(this).attr('data-productid');
             $('.img-status').attr('src', "");
+            $('.img-status1').attr('src', "");
             var image = $(this).attr('data-image');
+            var image1 = $(this).attr('data-image1');
             var source = $("#image-source").val();
             var res = source.concat('/' + image);
+            var res1 = source.concat('/' + image1);
+            // alert(res);
             $('.img-status').attr('src', res);
+            $('.img-status1').attr('src', res1);
             var currentbid = $(".bidData1" + id).html();
             var totalvalue = $(".liability" + id).html();
 
