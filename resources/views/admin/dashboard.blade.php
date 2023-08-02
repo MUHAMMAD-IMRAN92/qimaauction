@@ -1005,7 +1005,7 @@
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
                             For The Auction</a></button>
                     <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                        style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                        style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE PRACTICE AUCTION
                     </button>
                 </div>
 
