@@ -1627,7 +1627,6 @@ background: rgba(239, 235, 229, 1)
                                 </div>
                             </div>
                             <div class="lot-featured-img">
-                                <img class="img-status">
 
                                 <img class="img-status1">
                                 <input type="hidden" name="image-source"

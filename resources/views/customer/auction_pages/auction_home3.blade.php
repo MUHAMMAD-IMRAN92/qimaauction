@@ -2466,11 +2466,7 @@
                                         data-id="{{ $auctionProduct->id }}"
                                         data-image="{{ isset($auctionProduct->auctionProductImages) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
                                         {{ $products->product_title }} </a>
-                                        <a
-                                        class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
-                                        data-productid="{{ $products->id }}"
-                                        data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
-                                    </a></td>
+                                       </td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
                                 <td class="td-res-pl">{{ $auctionProduct->process }}</td>
@@ -2579,7 +2575,7 @@
                             </div>
                         </div>
                         <div class="lot-featured-img">
-                            <img class="img-status">
+
                             <img class="img-status1">
                             <input type="hidden" name="image-source"
                                 value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
