@@ -1423,7 +1423,7 @@ background: rgba(239, 235, 229, 1)
                                     <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
                             </tr>
-                            @foreach ($natAuctionProductsas $auctionProduct)
+                            @foreach ($natAuctionProducts  as $auctionProduct)
                                 <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
