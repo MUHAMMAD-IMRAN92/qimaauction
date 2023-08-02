@@ -1892,7 +1892,7 @@
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ isset($auctionProduct->auctionProductImages[0]) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
                                             </a></td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products)
@@ -2459,7 +2459,7 @@
                             @foreach ($auctionProduct->products as $products)
                                 <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                         data-id="{{ $auctionProduct->id }}"
-                                        data-image="{{ isset($auctionProduct->auctionProductImages[0]) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
+                                        data-image="{{ isset($auctionProduct->auctionProductImages) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
                                         {{ $products->product_title }} </a></td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
@@ -2531,7 +2531,7 @@
                         <div class="lot-featured-img">
                             <img class="img-status">
                             <input type="hidden" name="image-source"
-                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                                value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                         </div>
                         <p>JURY SCORE:</p>
                         <h2 style="cursor: auto;" class="juryscore"></h2>
@@ -2570,7 +2570,7 @@
                         <div class="lot-featured-img">
                             <img class="img-status">
                             <input type="hidden" name="image-source"
-                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                                value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                         </div>
                         <p id="">flavour profile</p>
                         <h4 id="cupping_profile"></h4>

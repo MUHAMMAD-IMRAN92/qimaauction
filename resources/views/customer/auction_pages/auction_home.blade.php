@@ -1871,7 +1871,7 @@
                             <div class="lot-featured-img">
                                 <img class="img-status">
                                 <input type="hidden" name="image-source"
-                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                                    value="{{ asset('storage/app/public/auction/')  }}" id="image-source" />
                             </div>
                             <p>JURY SCORE:</p>
                             <h2 style="cursor: auto;" class="juryscore"></h2>
@@ -1910,7 +1910,7 @@
                             <div class="lot-featured-img">
                                 <img class="img-status">
                                 <input type="hidden" name="image-source"
-                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                                    value="{{asset('storage/app/public/auction/') }}" id="image-source" />
                             </div>
                             <p id="">flavour profile</p>
                             <h4 id="cupping_profile"></h4>
