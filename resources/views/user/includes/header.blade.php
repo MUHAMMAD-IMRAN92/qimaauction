@@ -293,10 +293,10 @@
                                     href="{{ url('/user-profile') }}">
                                     <span class="menu-item" data-i18n="Analytics">Profile</span></a>
                                 </li>
-                                <li @if (request()->is('winninglots')) class='active' @endif><a
+                                {{-- <li @if (request()->is('winninglots')) class='active' @endif><a
                                     href="{{ url('/winninglots') }}">
                                     <span class="menu-item " data-i18n="eCommerce">Winning Lots</span></a>
-                                </li>
+                                </li> --}}
                                 <li><a
                                     href="{{ route('auction') }}">
                                     <span class="menu-item" data-i18n="Analytics">Go to Auction</span></a>

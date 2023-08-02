@@ -16,7 +16,7 @@
     /* .btn-save-color{
         background:goldenrod !important;
     } */
-   
+
 </style>
 
 @extends('user.layout.default')
@@ -48,7 +48,7 @@
                                         @csrf
                                     <div class="media mb-2">
                                         <a class="mr-2 my-25" href="#">
-                                            <img src="@if(Auth::user()->user_image) {{ url('/storage/app/public/profile_photo/' . $userData->user_image); }} @else {{asset('public/images/avatar.png')}} @endif" alt="" id="user-image" height="150" width="150"> <br>
+                                            <img src="@if(Auth::user()->user_image) {{ url('/storage/app/public/profile_photo/' . $userData->user_image); }} @endif" alt="User Image" id="user-image" height="150" width="150"> <br>
                                         </a>
                                         <div class="media-body mt-3">
                                             <h4 class="media-heading">{{$userData->name}}</h4>
@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Phone Number</label>
-                                                    <input type="number" class="form-control" name="phone_no" value={{$userData->phone_no}} placeholder="Paddle Number">
+                                                    <input type="number" class="form-control" name="phone_no"  value={{$userData->phone_no}} placeholder="">
                                                     @error('phone_no') <span class="text-danger error">{{ $message }}</span>@enderror
 
                                                 </div>
@@ -96,7 +96,7 @@
 
                                                 <div class="form-group">
                                                     <label>Paddle Number</label>
-                                                    <input type="number" class="form-control" name="paddle_number" value={{$userData->paddle_number}} placeholder="Paddle Number">
+                                                    <input type="number" class="form-control" name="paddle_number" disabled value={{$userData->paddle_number}} placeholder="Paddle Number">
                                                     @error('paddle_number') <span class="text-danger error">{{ $message }}</span>@enderror
 
                                                 </div>
