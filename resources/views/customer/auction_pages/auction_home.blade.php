@@ -1673,13 +1673,10 @@
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"  data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
-                                            <a
-                                            class="openbtn openSidebar "data-id="{{ $auctionProduct->id }}"
-                                            data-productid="{{ $products->id }}"
-                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
-                                        </a></td>
+
+                                        </td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products) --}}
 
@@ -1696,13 +1693,13 @@
                                     @endif --}}
                                     {{-- @endforeachz --}}
                                     @if (isset($auctionProduct->singleBidPricelatest))
-                                    @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
-                                        <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                            {{ $userData->paddle_number ?? '---' }}</td>
-                                    @endforeach
-                                @else
-                                    <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
-                                @endif
+                                        @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
+                                            <td class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                                {{ $userData->paddle_number ?? '---' }}</td>
+                                        @endforeach
+                                    @else
+                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
+                                    @endif
                                     <td class="td-res-pl">
                                         <div>
                                             <span class="waiting{{ $auctionProduct->id }} td-res-pl lh-zero">
@@ -1788,13 +1785,9 @@
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}" data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
-                                            <a
-                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }}"
-                                                data-productid="{{ $products->id }}"
-                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
-                                            </a>
+
                                         </td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products) --}}
@@ -1882,7 +1875,7 @@
                             <div class="lot-featured-img">
                                 <img class="img-status">
                                 <input type="hidden" name="image-source"
-                                    value="{{ asset('storage/app/public/auction/')  }}" id="image-source" />
+                                    value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                             </div>
                             <p>JURY SCORE:</p>
                             <h2 style="cursor: auto;" class="juryscore"></h2>
@@ -1921,7 +1914,7 @@
                             <div class="lot-featured-img">
                                 <img class="img-status1">
                                 <input type="hidden" name="image-source"
-                                    value="{{asset('storage/app/public/auction/') }}" id="image-source" />
+                                    value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                             </div>
                             <p id="">flavour profile</p>
                             <h4 id="cupping_profile"></h4>
@@ -1979,11 +1972,11 @@
     $(document).ready(function(e) {
         //OpenSidebar
         setTimeout(function() {
-                    if (document.hidden) {
+            if (document.hidden) {
 
-                        window.location.reload();
-                    }
-                }, 10000);
+                window.location.reload();
+            }
+        }, 10000);
         $(".openSidebar").click(function() {
             $("#mySidebar").toggleClass('sidebaropen-width');
             var id = $(this).attr('data-id');
@@ -2013,7 +2006,7 @@
                     var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
-                    var code =response.code;
+                    var code = response.code;
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.process;
@@ -2244,11 +2237,11 @@
         }
         // alert('here after');
         setTimeout(function() {
-                    if (document.hidden) {
+            if (document.hidden) {
 
-                        window.location.reload();
-                    }
-                }, 10000);
+                window.location.reload();
+            }
+        }, 10000);
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
