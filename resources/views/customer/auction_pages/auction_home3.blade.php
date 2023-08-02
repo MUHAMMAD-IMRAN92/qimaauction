@@ -1895,7 +1895,7 @@
                                                 data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
                                             </a>
                                             <a
-                                            class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                            class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
                                             data-productid="{{ $products->id }}"
                                             data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                         </a></td>
@@ -2467,7 +2467,7 @@
                                         data-image="{{ isset($auctionProduct->auctionProductImages) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
                                         {{ $products->product_title }} </a>
                                         <a
-                                        class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
+                                        class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
                                         data-productid="{{ $products->id }}"
                                         data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                     </a></td>
