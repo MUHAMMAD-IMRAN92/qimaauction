@@ -130,6 +130,7 @@
 
         <div class="content-wrapper">
             <div class="content-header row">
+                @if (auth()->user()->id == 3)
                 <div class="col-12 custom_btn_align mb-1">
                     <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
                         data-id="{{ $auction->id }}" id="resetauction">Reset Timer</a>
@@ -142,6 +143,8 @@
                         Winners</a>
 
                 </div>
+                @endif
+
                 <div class="content-header-left col-md-9 col-lg-12 mb-2">
                     <nav>
                         <div class="col-4">
