@@ -1275,7 +1275,8 @@ class AuctionController extends Controller
             return redirect('auction-winners');
         }
         if ($auction && $auction->is_hidden == 1) {
-            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->where('auction_id', $auction->id)->get();
+            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->whereIn('process', ['Alchemy'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
+            $natAuctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages')->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function ($e) {
 
@@ -1294,7 +1295,24 @@ class AuctionController extends Controller
                     ->first();
                 return $e;
             });
-            return view('customer.auction_pages.auction_winners', compact('auctionProducts', 'auction', 'singleBids'));
+            $results1 = $natAuctionProducts->map(function ($e) {
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+                $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+                $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+                $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                return $e;
+            });
+            return view('customer.auction_pages.auction_winners', compact('natAuctionProducts','auctionProducts', 'auction', 'singleBids'));
         } else {
             return redirect('auction');
         }
