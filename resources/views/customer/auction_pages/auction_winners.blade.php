@@ -1112,7 +1112,211 @@
         color: rgba(231, 132, 96, 1) !important;
         padding: 20px !important;
     }
+    .banner-text-section {
 
+height: auto;
+background-color: rgba(239, 235, 229, 1);
+z-index: 10;
+}
+
+.banner-text-section h2 {
+font-family: 'Montserrat';
+font-size: 50px;
+font-weight: 800;
+line-height: 61px;
+letter-spacing: 0em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 0px;
+
+}
+
+.banner-text-section h3 {
+font-family: 'Montserrat';
+font-size: 20px;
+font-weight: 800;
+line-height: 32px;
+letter-spacing: 0.1em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 0px;
+
+
+}
+
+.banner-text-section p {
+cursor: pointer;
+
+font-family: 'Montserrat-Medium';
+font-size: 11px;
+font-weight: 500;
+line-height: 13px;
+letter-spacing: 0.2em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 0px;
+
+
+}
+
+.banner-text-section h6 {
+cursor: pointer;
+
+font-family: 'Montserrat';
+font-size: 11px;
+font-weight: 500;
+line-height: 13px;
+letter-spacing: 0.2em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 0px;
+
+
+}
+
+.banner-text-section h4 {
+font-family: 'Montserrat';
+font-size: 18px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: 0.1em;
+text-align: left;
+text-transform: uppercase;
+cursor: pointer;
+
+
+
+}
+
+.banner-text-section span {
+font-family: 'Montserrat-Medium';
+font-size: 11px;
+font-weight: 500;
+line-height: 13px;
+letter-spacing: 0.2em;
+text-align: left;
+text-transform: uppercase;
+
+
+}
+
+.wrapper-bg-section {
+position: relative;
+}
+
+
+
+.banner-text-section-2 {
+top: 75%;
+left: 46%;
+position: absolute;
+width: 501px;
+height: auto;
+background-color: rgba(239, 235, 229, 1);
+padding: 25px;
+z-index: 10;
+}
+
+.images-section {
+z-index: 5;
+}
+
+.banner-text-section-2 p {
+font-family: 'Montserrat-Medium';
+font-size: 11px;
+font-weight: 500;
+line-height: 13px;
+letter-spacing: 0.2em;
+text-align: left;
+margin-bottom: 0px;
+
+
+}
+
+.banner-text-section-2 h3 {
+font-family: 'Montserrat';
+font-size: 18px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: 0.1em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 0px;
+margin-top: 10px;
+color: rgba(35, 43, 56, 1);
+
+
+
+}
+
+.moreBtn {
+background: transparent;
+text-align: center;
+}
+
+.btn-info button {
+padding: 0.6rem 0.4rem;
+font-family: 'Montserrat';
+font-size: 11px;
+font-weight: 600;
+line-height: 12px;
+color: #303030;
+text-transform: uppercase;
+background-color: white;
+letter-spacing: 0.1em;
+border: none;
+cursor: pointer;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+border-radius: 24px;
+margin: 0 1rem;
+width: 180px;
+}
+
+.btn-info:hover {
+background-color: transparent !important;
+}
+
+.banner-text-section-2 h6 {
+font-family: 'Montserrat-Medium';
+font-size: 11px;
+font-weight: 500;
+line-height: 19px;
+letter-spacing: 0.1em;
+text-align: left;
+text-transform: inherit;
+max-height: 50vh;
+overflow-y: auto;
+display: block;
+}
+
+.banner-text-section-2y::-webkit-scrollbar {
+width: 1em;
+}
+
+.banner-text-section-2::-webkit-scrollbar-track {
+box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text-section-2::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+}
+
+.banner-text-section-2 h5 {
+font-family: 'Montserrat';
+font-size: 11px;
+font-weight: 700;
+line-height: 13px;
+letter-spacing: 0.2em;
+text-align: left;
+text-transform: uppercase;
+margin-bottom: 10px;
+
+}
+
+#mySidebar {
+background: rgba(239, 235, 229, 1)
+}
     /* hamza starts ends */
 </style>
 
@@ -1366,31 +1570,63 @@
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="sidebar-container">
-                        <div class="lot-header">
-                            <h3 class="rank"></h3>
-                            <h3 class="juryscore"></h3>
-                            <h5 class="name"></h5>
-                            <h5 class="code"></h5>
-                        </div>
-                        <hr>
-                        <div class="lot-description">
-                            <p>LOT SIZE: <span class="size"></span></p>
-                            <p>CURRENT BID: <span class="currentbid"></span></p>
+                        <div class="banner-text-section ">
+                            <h2 class="rank"></h2>
+                            <h3 class="name"></h3>
+                            <div class="d-flex align-items-center">
+                                <p>JURY CODE:</p>
+                                <p style="cursor: auto;" class="code"></p>
+                            </div>
                             <hr>
-                            <p>WINNING BIDDER: <br> <span class="paddleno"></span></p>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p>JURY SCORE:</p>
+                            <h2 style="cursor: auto;" class="juryscore"></h2>
+                            <h2></h2>
+                            <hr>
+                            <div>
+                                <p>Genetics :</p>
+                                <h4 class="genetics"></h4>
+                            </div>
+                            <div>
+                                <p>Process :</p>
+                                <h4 class="proprocess"></h4>
+                            </div>
+                            <p style="cursor: auto;">lot size :</p>
+                            <h4 style="cursor: auto;" class="size"></h4>
+                            <hr>
+                            <div>
+                                <h6>traceability</h6>
+                                <div class="d-flex">
+                                    <p>VILLAGE : </p>
+                                    <p id="village"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p> REGION : </p>
+                                    <p id="region"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p>GOVERNORATE :</p>
+                                    <p id="governorate"></p>
+                                </div>
+                                <div class="d-flex">
+                                    <p>ALTITUDE :</p>
+                                    <p id="altitude"></p>
+                                </div>
+                            </div>
+                            <div class="lot-featured-img">
+                                <img class="img-status">
+                                <input type="hidden" name="image-source"
+                                    value="{{ asset('/public/images/product_images/') }}" id="image-source" />
+                            </div>
+                            <p id="">flavour profile</p>
+                            <h4 id="cupping_profile"></h4>
+
+                            <div class="moreBtn btn-info mt-2"></div>
                         </div>
-                        <div class="lot-featured-img">
-                            <img class="img-status">
-                            <input type="hidden" name="image-source"
-                                value="{{ asset('/public/images/product_images/') }}" id="image-source" />
-                        </div>
-                        <div class="lot-description">
-                            <p>PROCESS: <span class="proprocess"></span></p>
-                        </div>
-                        <div class="lot-genetis">
-                            <h3>GENETICS <span class="genetics"></span></h3>
-                        </div>
-                        <div class="moreBtn"></div>
                     </div>
                 </div>
     </section>
@@ -1463,14 +1699,21 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
+
+                    var rank = response.rank;
                     var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
-                    var code = response.products[0].sample;
+                    var code =response.code;
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
-                    var process = response.products[0].pro_process;
-                    var genetics = response.products[0].genetic_id;
+                    var process = response.process;
+                    var genetics = response.genetic;
+                    var cupping_profile = response.cup_profile;
+                    var village = response.village;
+                    var region = response.region;
+                    var governorate = response.governorate;
+                    var altitude = response.altitude;
                     var url = '{{ route('product_detail_page_auction', ':id') }}';
                     url = url.replace(':id', id);
                     $(".weight").html(response.weight);
@@ -1480,7 +1723,13 @@
                     $(".code").html(code);
                     $(".size").html(size + 'LBS');
                     $(".currentbid").html(currentbid.toLocaleString('en-US'));
+                    // $(".totalvalue").html(totalvalue.toLocaleString('en-US'));
                     $(".paddleno").html(paddleno);
+                    $("#cupping_profile").html(cupping_profile);
+                    $("#region").html(region);
+                    $("#village").html(village);
+                    $("#altitude").html(altitude);
+                    $("#governorate").html(governorate);
                     if (genetics == 1) {
                         $(".genetics").html('Yemenia');
                     } else if (genetics == 2) {
