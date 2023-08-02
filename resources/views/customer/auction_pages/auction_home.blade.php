@@ -1881,7 +1881,6 @@
                             <hr>
                             <div class="lot-featured-img">
                                 <img class="img-status">
-                                <img class="img-status1">
                                 <input type="hidden" name="image-source"
                                     value="{{ asset('storage/app/public/auction/')  }}" id="image-source" />
                             </div>
