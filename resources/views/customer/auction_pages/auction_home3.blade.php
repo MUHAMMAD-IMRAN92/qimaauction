@@ -1892,13 +1892,9 @@
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"  data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
-                                            <a
-                                            class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
-                                            data-productid="{{ $products->id }}"
-                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
-                                        </a></td>
+                                            </td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1') --}}
@@ -2464,7 +2460,7 @@
                             @foreach ($auctionProduct->products as $products)
                                 <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                         data-id="{{ $auctionProduct->id }}"
-                                        data-image="{{ isset($auctionProduct->auctionProductImages) ? $auctionProduct->auctionProductImages[0]->image_name : '' }}">
+                                        data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}" data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
                                         {{ $products->product_title }} </a>
                                        </td>
                             @endforeach
