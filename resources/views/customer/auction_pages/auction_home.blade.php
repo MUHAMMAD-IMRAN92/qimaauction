@@ -1676,9 +1676,9 @@
                                                 data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
                                             </a>
                                             <a
-                                            class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
+                                            class="openbtn openSidebar "data-id="{{ $auctionProduct->id }}"
                                             data-productid="{{ $products->id }}"
-                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
                                         </a></td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products) --}}
@@ -1791,9 +1791,9 @@
                                                 data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}">{{ $products->product_title }}
                                             </a>
                                             <a
-                                                class="openbtn openSidebar d-none"data-id="{{ $auctionProduct->id }}"
+                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
                                             </a>
                                         </td>
                                     @endforeach
