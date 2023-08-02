@@ -1206,6 +1206,21 @@ class AuctionController extends Controller
                 ->first();
             return $e;
         });
+        $results1 = $naturalauctionProducts->map(function ($e) {
+
+            $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+            $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+            $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+            $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+                ->orderBy('bid_amount', 'desc')
+                ->first();
+
+            $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+                ->orderBy('created_at', 'desc')
+                ->first();
+            return $e;
+        });
         return view('customer.auction_pages.auction_home', compact('naturalauctionProducts', 'auctionProducts', 'auction', 'singleBids'));
     }
 
