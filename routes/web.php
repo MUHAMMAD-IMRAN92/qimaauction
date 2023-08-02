@@ -27,7 +27,7 @@ Route::get('/winningproduct/{id}', [App\Http\Controllers\AuctionController::clas
 Route::get('/auction-home', [App\Http\Controllers\AuctionController::class, 'auctionHome'])->name('auction-home');
 Route::post('/opensidebar', [App\Http\Controllers\AuctionController::class, 'openSideBar'])->name('opensidebar');
 Route::get('/auction-winners-old/{id}', [App\Http\Controllers\AuctionController::class, 'auctionWinnersOld'])->name('auction-winners');
-Route::get('/auction-winners/{id}', [App\Http\Controllers\AuctionController::class, 'auctioauctinWinners'])->name('auction-winners');
+Route::get('/auction-winners/{id}', [App\Http\Controllers\AuctionController::class, 'auctionWinners'])->name('auction-winners');
 
 
 // Route::get('/auction-loggedin', [App\Http\Controllers\AuctionController::class, 'auctionHomeLoggedIn'])->name('auction-loggedin');
