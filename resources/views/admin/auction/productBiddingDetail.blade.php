@@ -34,7 +34,16 @@
             left: 10px;
             border: 4px solid transparent;
         }
-
+        .heading-table-auction {
+        font-family: 'Montserrat' !important;
+        font-size: 27px !important;
+        font-weight: 800 !important;
+        line-height: 32px !important;
+        letter-spacing: 0.2em !important;
+        text-align: center;
+        color: rgba(231, 132, 96, 1) !important;
+        padding: 20px !important;
+    }
         .headerSortDown:after {
             top: 2px;
             border-top-color: silver;
@@ -159,7 +168,7 @@
                                                 <thead class="table-heading">
                                                     <tr>
                                                         {{-- <th>Id</th> --}}
-                                                        {{-- <td></td> --}}
+                                                        <th>Rank</th>
                                                         <th>Product</th>
                                                         <th>Winning Bid</th>
                                                         <th>Paddle No</th>
@@ -177,12 +186,26 @@
                                                         $i = 0;
                                                     @endphp
                                                     @if (isset($auction_products))
-                                                        @foreach ($auction_products as $auction)
+                                                        @foreach ($auction_products as $key1=> $auction)
                                                             @foreach ($auction->products as $key => $pro)
+                                                            @if($key1 == 0)
+                                                            <tr>
+                                                                <td colspan="14">
+                                                                    <h5 class="inner-data heading-table-auction">NATURALS AND DEEP FERMENTATION</h5>
+                                                                </td>
+                                                            </tr>
+                                                            @endif
+                                                            @if($key1 == 18)
+                                                            <tr>
+                                                                <td colspan="14">
+                                                                    <h5 class="inner-data heading-table-auction">Alchemy</h5>
+                                                                </td>
+                                                            </tr>
+                                                            @endif
                                                                 <tr id="{{ ++$i }}" class="mb-1">
 
-                                                                    {{-- <td class="headerSortUp headerSortDown move">
-                                                                </td> --}}
+                                                                    <td class="">{{ $auction->rank}}
+                                                                </td>
                                                                     <td id="product{{ $auction->id }}" type="button"
                                                                         style="width:100%;color:white;height:40px;text-align: center; line-height: 65px; margin-bottom:18px"
                                                                         class="btn product"

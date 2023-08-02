@@ -1155,7 +1155,9 @@ class AuctionController extends Controller
         $auction = Auction::where('id', $auctionId)->first();
         $singleBids = AuctionProduct::where('auction_id', $auction->id)->doesnthave('singleBids')->get();
         $isEmpty = sizeof($singleBids);
-        $auction_products = AuctionProduct::where('auction_id', $auction->id)->with('products', 'latestBidPrice.user')->get();
+        $alProduct = AuctionProduct::where('auction_id', $auction->id)->whereIn('process' , ['Alchemy'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->with('products', 'latestBidPrice.user')->get();
+        $natProduct = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'Deep Fermentation', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->with('products', 'latestBidPrice.user')->get();
+        $auction_products = $natProduct->merge($alProduct);
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
         return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId', 'auction', 'isEmpty'));
     }
