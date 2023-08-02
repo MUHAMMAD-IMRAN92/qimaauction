@@ -1998,7 +1998,7 @@
                     var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
-                    var code = response.products[0].sample;
+                    var code =response.code;
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.process;
