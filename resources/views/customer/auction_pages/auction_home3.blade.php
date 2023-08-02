@@ -1791,7 +1791,7 @@
                                     <tr class="table-head-border">
 
                                         <td colspan="14">
-                                            <h5 class="inner-data heading-table-auction">ALCHEMY </h5>
+                                            <h5 class="inner-data heading-table-auction">NATURALS AND DEEP FERMENTATION</h5>
                                         </td>
                                     </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
@@ -1801,7 +1801,7 @@
                                     <tr class="table-head-border">
 
                                         <td colspan="14">
-                                            <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION
+                                            <h5 class="inner-data heading-table-auction">ALCHEMY
                                             </h5>
                                         </td>
                                     </tr>

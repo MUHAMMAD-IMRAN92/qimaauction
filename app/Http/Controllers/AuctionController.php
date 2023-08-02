@@ -359,8 +359,11 @@ class AuctionController extends Controller
             $auction->save();
             return redirect('auction-winners/' . $auction->id);
         }
-        $auctionProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderBy('process')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
-        // $naturalauctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+
+        // $auctionProducts = $auctionProducts->values()->all();
+        $alchmeyProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->whereIn('process', ['Alchemy'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->get();
+        $naturalauctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $auctionProducts = $naturalauctionProducts->merge($alchmeyProducts);
         $singleBids = AuctionProduct::where('auction_id', $auction->id)->doesnthave('singleBids')->get();
         $agreement = AcceptAgreement::where('user_id', $user)->first();
         $results = $auctionProducts->map(function ($e) {
@@ -382,7 +385,7 @@ class AuctionController extends Controller
             $e->groupAutobid = AutoBid::where('auction_product_id', $e->id)->where('is_active', '1')->where('is_group', '1')->orderBy('bid_amount', 'desc')->first();
             return $e;
         });
-        $naturalauctionProductsCount = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->count();
+        $naturalauctionProductsCount = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->count();
 
         return view('customer.auction_pages.auction_home3', compact('naturalauctionProductsCount', 'auctionProducts', 'auction', 'agreement', 'singleBids'));
     }
