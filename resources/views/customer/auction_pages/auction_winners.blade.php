@@ -1102,6 +1102,16 @@
         color: black;
         border: none;
     }
+    .heading-table-auction {
+        font-family: 'Montserrat' !important;
+        font-size: 27px !important;
+        font-weight: 800 !important;
+        line-height: 32px !important;
+        letter-spacing: 0.2em !important;
+        text-align: center;
+        color: rgba(231, 132, 96, 1) !important;
+        padding: 20px !important;
+    }
 
     /* hamza starts ends */
 </style>
