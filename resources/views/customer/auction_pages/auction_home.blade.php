@@ -2168,19 +2168,19 @@
             resetTimer(data);
         }
     });
-    socket.on('end_of_auction_timer', function(data) {
+    // socket.on('end_of_auction_timer', function(data) {
 
-        console.log('this end_of_auction_timer')
-        $('.autobtnclick').attr("disabled", true);
-        $('.singlebtnclick').attr("disabled", true);
-        $('.confirm-btn').attr("disabled", true);
-        $('.confirm-btn').css('background', '#a6a6a6');
+    //     console.log('this end_of_auction_timer')
+    //     $('.autobtnclick').attr("disabled", true);
+    //     $('.singlebtnclick').attr("disabled", true);
+    //     $('.confirm-btn').attr("disabled", true);
+    //     $('.confirm-btn').css('background', '#a6a6a6');
 
-        $(".singlebtnclick").css('background', '#a6a6a6');
+    //     $(".singlebtnclick").css('background', '#a6a6a6');
 
-        $('.minutes').html('00');
-        $('.seconds').html('00');
-    });
+    //     $('.minutes').html('00');
+    //     $('.seconds').html('00');
+    // });
 
     function resetTimer(data) {
         console.log(data);
@@ -2308,14 +2308,6 @@
 
             }
 
-            if ($('.seconds').html() == '00' && $('.minutes').html() == '00') {
-
-
-                // socket.emit('end_of_auction_timer', {
-                //     "timer": 1,
-                // });
-
-            }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
             if ((seconds <= 1) && (minutes <= 0) && endAuctionVar == 1) {
