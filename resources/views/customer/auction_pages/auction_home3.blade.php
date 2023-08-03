@@ -1668,24 +1668,28 @@
     .auctiontable tbody tr td P {
         margin-bottom: 0px;
     }
+
     .banner-text-section img {
-            margin-top: 20px !important;
-            margin-bottom: 20px !important;
-            display: block;
-        }
-        #score span{
-            border:2px solid #a8a3a3;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        #score span:focus-visible{
-           display: none !important;
-        }
-        #score:focus {
-    outline: none;
-}
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        display: block;
+    }
+
+    #score span {
+        border: 2px solid #a8a3a3;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    #score span:focus-visible {
+        display: none !important;
+    }
+
+    #score:focus {
+        outline: none;
+    }
 </style>
 
 <body>
@@ -1867,7 +1871,8 @@
                                     <td contenteditable='true'
                                         class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id }}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
-                                        <span>{{ $auctionProduct->userscore->your_score ?? '' }}</span></td>
+                                        <span>{{ $auctionProduct->userscore->your_score ?? '' }}</span>
+                                    </td>
                                     <td class=" productweight{{ $auctionProduct->id }}">
                                         {{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} ">
@@ -2418,7 +2423,7 @@
                                 class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id }}"
                                 data-id="{{ $auctionProduct->id }}" id="score">
                                 <span> {{ $auctionProduct->userscore->your_score ?? '' }}</span>
-                               </td>
+                            </td>
                             <td class="fw-bold ">{{ $auctionProduct->weight }}lbs</td>
                             <td class="increment{{ $auctionProduct->id }} ">
                                 ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
@@ -2487,7 +2492,7 @@
                                 </td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
-                                <td >{{ $auctionProduct->process }}</td>
+                                <td>{{ $auctionProduct->process }}</td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
                                 <td class="">{{ $auctionProduct->genetic }}</td>
@@ -3845,6 +3850,19 @@
 
         window.interval = setInterval(function() {
             // alert('here');
+            socket.on('end_of_auction_timer', function(data) {
+
+                console.log('this end_of_auction_timer')
+                $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+                $('.confirm-btn').attr("disabled", true);
+                $('.confirm-btn').css('background', '#a6a6a6');
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+            });
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
             if (timer.length > 2) {
@@ -3880,9 +3898,9 @@
 
                 $('.seconds').html('00');
                 console.log('else of timer')
-                // socket.emit('end_of_auction_timer', {
-                //     "timer": 1,
-                // });
+                socket.emit('end_of_auction_timer', {
+                    "timer": 1,
+                });
             }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
