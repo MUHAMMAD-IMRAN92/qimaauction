@@ -2304,13 +2304,10 @@
 
                 $('.seconds').html('00');
                 console.log('here alse');
-                if($date_a){
 
-                    socket.emit('end_of_auction_timer', {
-                        "timer": 1,
-                    });
-                }
             }
+
+            if($('.seconds').html('00');)
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
             if ((seconds <= 1) && (minutes <= 0) && endAuctionVar == 1) {
