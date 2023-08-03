@@ -2168,6 +2168,7 @@
     });
     socket.on('end_of_auction_timer', function(data) {
 
+        console.log('this end_of_auction_timer')
         $('.autobtnclick').attr("disabled", true);
         $('.singlebtnclick').attr("disabled", true);
         $('.confirm-btn').attr("disabled", true);
@@ -2177,7 +2178,6 @@
 
         $('.minutes').html('00');
         $('.seconds').html('00');
-        // console.log('this')
     });
 
     function resetTimer(data) {
@@ -2303,7 +2303,7 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
-
+                console.log('here alse');
                 socket.emit('end_of_auction_timer', {
                     "timer": 1,
                 });
