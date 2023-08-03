@@ -47,6 +47,9 @@ socket.on('add_bid_updates', function (data) {
  socket.on('auction_timer', function (data) {
     io.emit('auction_timer', { "minutes":data.minutes,"seconds":data.seconds});
  });
+ socket.on('end_of_auction_timer', function (data) {
+    io.emit('end_of_auction_timer', { "timer": data.timer });
+});
 socket.on('disconnect', function () {
 if (sockets[socket.id] != undefined) {
     mydb.releaseRequest(sockets[socket.id].user_id).then(function (result) {
