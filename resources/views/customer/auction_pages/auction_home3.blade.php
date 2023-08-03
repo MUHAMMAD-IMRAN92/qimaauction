@@ -2492,10 +2492,10 @@
                                     </a></td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
-                                <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+                                <td >{{ $auctionProduct->process }}</td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
-                                <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                <td class="">{{ $auctionProduct->genetic }}</td>
                             @endforeach
                             {{-- @if (isset($auctionProduct->singleBidPricelatest))
                                         @foreach ($auctionProduct->singleBidPricelatest->user as $userData)
