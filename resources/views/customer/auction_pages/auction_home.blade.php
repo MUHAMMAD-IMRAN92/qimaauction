@@ -2267,7 +2267,6 @@
 
                     $('.minutes').html('00');
                     $('.seconds').html('00');
-
                 }
             });
             // alert('here');
@@ -2302,7 +2301,7 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
-                console.log('here alse');
+                // console.log('here alse');
                 socket.emit('end_of_auction_timer', {
                     "timer": 1,
                 });

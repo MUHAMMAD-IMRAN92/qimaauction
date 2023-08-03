@@ -3881,7 +3881,7 @@
             seconds = seconds.toString().padStart(2, "0");
 
             //minutes = (minutes < 10) ?  minutes : minutes;
-            if (minutes >= 0 && seconds >= 0) {
+            if (minutes >= 0 && seconds >= 1) {
                 console.log(minutes + '::' + seconds);
 
                 $('.days').html(days.toString().padStart(2, "0"));
