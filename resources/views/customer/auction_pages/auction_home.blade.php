@@ -2242,6 +2242,17 @@
                 window.location.reload();
             }
         }, 10000);
+        socket.on('end_of_auction_timer', function(data) {
+            $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+                $('.confirm-btn').attr("disabled", true);
+                $('.confirm-btn').css('background', '#a6a6a6');
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+    });
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
@@ -2275,6 +2286,9 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
+                socket.emit('end_of_auction_timer', {
+                    "timer": 1,
+                });
             }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0

@@ -1791,7 +1791,8 @@
                                     <tr class="table-head-border">
 
                                         <td colspan="14">
-                                            <h5 class="inner-data heading-table-auction">NATURALS AND DEEP FERMENTATION</h5>
+                                            <h5 class="inner-data heading-table-auction">NATURALS AND DEEP FERMENTATION
+                                            </h5>
                                         </td>
                                     </tr>
                                 @elseif($key != 0 && $key == $naturalauctionProductsCount)
@@ -1892,9 +1893,10 @@
                                         <td class="fw-bold text-underline"><a class="openbtn openSidebar"
                                                 data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"  data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
-                                            </td>
+                                        </td>
                                     @endforeach
                                     {{-- @foreach ($auctionProduct->products as $products)
                                         @if ($products->pro_process == '1') --}}
@@ -2460,9 +2462,10 @@
                             @foreach ($auctionProduct->products as $products)
                                 <td class="fw-bold text-underline "> <a class="openbtn openSidebar"
                                         data-id="{{ $auctionProduct->id }}"
-                                        data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}" data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
+                                        data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                        data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
                                         {{ $products->product_title }} </a>
-                                       </td>
+                                </td>
                             @endforeach
                             @foreach ($auctionProduct->products as $products)
                                 <td class="td-res-pl">{{ $auctionProduct->process }}</td>
@@ -2772,7 +2775,7 @@
                     var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
-                    var code =response.code;
+                    var code = response.code;
 
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
@@ -3797,12 +3800,24 @@
             return;
         }
         // alert('here after');
-        setTimeout(function() {
-                    if (document.hidden) {
 
-                        window.location.reload();
-                    }
-                }, 10000);
+        setTimeout(function() {
+            if (document.hidden) {
+
+                window.location.reload();
+            }
+        }, 10000);
+        socket.on('end_of_auction_timer', function(data) {
+            $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+                $('.confirm-btn').attr("disabled", true);
+                $('.confirm-btn').css('background', '#a6a6a6');
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+    });
         window.interval = setInterval(function() {
             // alert('here');
             var timer = timer2.split(':');
@@ -3839,6 +3854,9 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
+                socket.emit('end_of_auction_timer', {
+                    "timer": 1,
+                });
             }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0

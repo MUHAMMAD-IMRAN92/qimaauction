@@ -59,6 +59,9 @@ io.on('connection', function (socket) {
     socket.on('add_timer_reset', function (data) {
         io.emit('add_timer_reset', { "timerreset": data.timerreset });
     });
+    socket.on('end_of_auction_timer', function (data) {
+        io.emit('end_of_auction_timer', { "timer": 1 });
+    });
     socket.on('add_groupbid_updates', function (data) {
         io.emit('add_groupbid_updates', { "offersdata": data.offersdata, "adminofferData": data.adminofferData });
     });
