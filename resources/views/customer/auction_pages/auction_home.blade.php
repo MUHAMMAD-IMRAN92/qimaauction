@@ -2311,9 +2311,9 @@
             if ($('.seconds').html() == '00' && $('.minutes').html() == '00') {
 
 
-                socket.emit('end_of_auction_timer', {
-                    "timer": 1,
-                });
+                // socket.emit('end_of_auction_timer', {
+                //     "timer": 1,
+                // });
 
             }
             if (minutes < 0) clearInterval(interval);
