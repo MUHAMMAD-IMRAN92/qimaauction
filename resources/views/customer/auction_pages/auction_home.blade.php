@@ -2168,19 +2168,7 @@
             resetTimer(data);
         }
     });
-    // socket.on('end_of_auction_timer', function(data) {
 
-    //     console.log('this end_of_auction_timer')
-    //     $('.autobtnclick').attr("disabled", true);
-    //     $('.singlebtnclick').attr("disabled", true);
-    //     $('.confirm-btn').attr("disabled", true);
-    //     $('.confirm-btn').css('background', '#a6a6a6');
-
-    //     $(".singlebtnclick").css('background', '#a6a6a6');
-
-    //     $('.minutes').html('00');
-    //     $('.seconds').html('00');
-    // });
 
     function resetTimer(data) {
         console.log(data);
@@ -2263,6 +2251,7 @@
             return;
         }
         // alert('here after');
+
         setTimeout(function() {
             if (document.hidden) {
 
@@ -2271,7 +2260,19 @@
 
         }, 5000);
         window.interval = setInterval(function() {
+            socket.on('end_of_auction_timer', function(data) {
 
+                console.log('this end_of_auction_timer')
+                $('.autobtnclick').attr("disabled", true);
+                $('.singlebtnclick').attr("disabled", true);
+                $('.confirm-btn').attr("disabled", true);
+                $('.confirm-btn').css('background', '#a6a6a6');
+
+                $(".singlebtnclick").css('background', '#a6a6a6');
+
+                $('.minutes').html('00');
+                $('.seconds').html('00');
+            });
             // alert('here');
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -2305,7 +2306,9 @@
 
                 $('.seconds').html('00');
                 console.log('here alse');
-
+                socket.emit('end_of_auction_timer', {
+                    "timer": 1,
+                });
             }
 
             if (minutes < 0) clearInterval(interval);
