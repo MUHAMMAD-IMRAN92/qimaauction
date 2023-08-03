@@ -2196,7 +2196,12 @@
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
                 //   dd($date_b);
-                if ($date_b >= $date_a) {
+                if($auction->endTime){
+                    $interval = '03:00';
+                    $interva13 = '00:00:03:00';
+                    $interval2 = '03:00';
+                }
+                else if ($date_b >= $date_a) {
                     $interval = '00:00';
                     $interva13 = '00:00:00:00';
                     $interval2 = '00:00';
