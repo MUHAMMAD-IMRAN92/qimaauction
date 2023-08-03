@@ -3772,6 +3772,7 @@
                 $date_c = new DateTime($auction->startDate);
                 //   dd($date_b);
                 if ($date_b >= $date_a) {
+                    console.log('herer it is');
                     $interval = '00:00';
                     $interva13 = '00:00:00:00';
                     $interval2 = '00:00';
