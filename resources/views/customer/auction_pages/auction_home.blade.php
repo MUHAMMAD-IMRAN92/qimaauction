@@ -2190,7 +2190,7 @@
                     $interval = '03:00';
                     $interva13 = '00:00:03:00';
                     $interval2 = '03:00';
-                } elseif ($date_b >= $date_a) {
+                }else if ($date_b >= $date_a) {
                     $interval = '00:00';
                     $interva13 = '00:00:00:00';
                     $interval2 = '00:00';
