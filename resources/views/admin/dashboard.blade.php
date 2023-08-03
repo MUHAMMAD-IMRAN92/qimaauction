@@ -988,6 +988,12 @@
     #join-the-auction {
         cursor: pointer;
     }
+    .btn-group-table{
+        align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
 </style>
 
 <body>
@@ -1000,7 +1006,7 @@
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
-                <div class="d-flex">
+                <div class="d-flex btn-group-table">
                     <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
                             For The Auction</a></button>
