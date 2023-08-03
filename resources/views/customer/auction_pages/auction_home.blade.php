@@ -2259,7 +2259,6 @@
         $('.seconds').html(seconds.toString().padStart(2, "0"));
         // alert('here');
         if (!data && "{{ $isEmpty }}" != 0) {
-            console.log('here check')
             return;
         }
         // alert('here after');
@@ -2292,7 +2291,6 @@
 
             //minutes = (minutes < 10) ?  minutes : minutes;
             if (minutes >= 0 && seconds >= 0) {
-                console.log('minutes check')
                 console.log(minutes + '::' + seconds);
                 $('.days').html(days.toString().padStart(2, "0"));
                 $('.hours').html(hours.toString().padStart(2, "0"));
@@ -2306,7 +2304,6 @@
 
                 $('.seconds').html('00');
 
-                console.log('else check')
                 socket.emit('end_of_auction_timer', {
                     "timer": 1,
                 });
