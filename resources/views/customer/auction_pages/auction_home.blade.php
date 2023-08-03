@@ -2304,7 +2304,7 @@
 
                 $('.seconds').html('00');
                 console.log('here alse');
-                if("{{$date_a}}"){
+                if($date_a){
 
                     socket.emit('end_of_auction_timer', {
                         "timer": 1,
