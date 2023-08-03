@@ -563,7 +563,8 @@
         background-color: #143D30 !important;
         color: white;
     }
-    .text-decoration-none:hover{
+
+    .text-decoration-none:hover {
         text-decoration: none !important;
     }
 
@@ -1300,11 +1301,12 @@
         src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
+
     .banner-text-section img {
-            margin-top: 20px !important;
-            margin-bottom: 20px !important;
-            display: block;
-        }
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        display: block;
+    }
 
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
@@ -2196,12 +2198,11 @@
                 $date_b = new DateTime(date('Y-m-d H:i:s'));
                 $date_c = new DateTime($auction->startDate);
                 //   dd($date_b);
-                if($auction->endTime){
+                if ($auction->endTime) {
                     $interval = '03:00';
                     $interva13 = '00:00:03:00';
                     $interval2 = '03:00';
-                }
-                else if ($date_b >= $date_a) {
+                } elseif ($date_b >= $date_a) {
                     $interval = '00:00';
                     $interva13 = '00:00:00:00';
                     $interval2 = '00:00';
@@ -2307,7 +2308,14 @@
 
             }
 
-            if($('.seconds').html('00');)
+            if ($('.seconds').html() == '00' && $('.minutes').html() == '00') {
+
+
+                socket.emit('end_of_auction_timer', {
+                    "timer": 1,
+                });
+
+            }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
             if ((seconds <= 1) && (minutes <= 0) && endAuctionVar == 1) {
