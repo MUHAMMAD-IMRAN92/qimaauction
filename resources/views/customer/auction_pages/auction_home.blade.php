@@ -563,6 +563,9 @@
         background-color: #143D30 !important;
         color: white;
     }
+    .text-decoration-none:hover{
+        text-decoration: none !important;
+    }
 
     .fa-star {
         color: #7A602B;
@@ -1297,6 +1300,11 @@
         src: url('{{ asset('public/app-assets/fonts/Montserrat/Montserrat-Medium.ttf') }}') format('truetype');
 
     }
+    .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
 
     @media screen and (max-width:1000px) {
         .complete-wrapper::after {
@@ -1727,7 +1735,7 @@
                                                     <h5 style="margin: 0 20px">You need to login to Bid.</h5>
                                                     <a style="padding: 5px; border-radius: 4px;"
                                                         href="{{ route('customer.login') }}"
-                                                        class="startbidbtn">Login</a>
+                                                        class="startbidbtn text-decoration-none">Login</a>
 
                                                 </div>
                                                 {{-- <div class="card-body">
@@ -1854,7 +1862,7 @@
                                                     <h5 style="margin: 0 20px">You need to login to Bid.</h5>
                                                     <a style="padding: 5px; border-radius: 4px;"
                                                         href="{{ route('customer.login') }}"
-                                                        class="startbidbtn">Login</a>
+                                                        class="startbidbtn text-decoration-none">Login</a>
 
                                                 </div>
                                                 {{-- <div class="card-body">

@@ -1618,9 +1618,9 @@
         }
     }
 
-    #score {
+    /* #score {
         border: 2px solid #a8a3a3;
-    }
+    } */
 
     button.singlebidbtn:not([disabled]) {
         background-color: #143D30 !important;
@@ -1668,6 +1668,24 @@
     .auctiontable tbody tr td P {
         margin-bottom: 0px;
     }
+    .banner-text-section img {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+        #score span{
+            border:2px solid #a8a3a3;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        #score span:focus-visible{
+           display: none !important;
+        }
+        #score:focus {
+    outline: none;
+}
 </style>
 
 <body>
@@ -1848,7 +1866,7 @@
                                     <td contenteditable='true'
                                         class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id }}"
                                         data-id="{{ $auctionProduct->id }}" id="score">
-                                        {{ $auctionProduct->userscore->your_score ?? '' }}</td>
+                                        <span>{{ $auctionProduct->userscore->your_score ?? '' }}</span></td>
                                     <td class=" productweight{{ $auctionProduct->id }}">
                                         {{ $auctionProduct->weight }}lbs</td>
                                     <td class="increment{{ $auctionProduct->id }} ">
@@ -2401,7 +2419,8 @@
                             <td contenteditable='true'
                                 class="text-underline yourscore  auctionyourscore{{ $auctionProduct->id }}"
                                 data-id="{{ $auctionProduct->id }}" id="score">
-                                {{ $auctionProduct->userscore->your_score ?? '' }}</td>
+                                <span> {{ $auctionProduct->userscore->your_score ?? '' }}</span>
+                               </td>
                             <td class="fw-bold ">{{ $auctionProduct->weight }}lbs</td>
                             <td class="increment{{ $auctionProduct->id }} ">
                                 ${{ number_format((float) $bidIncrementSinglebid, 1) }}</td>
@@ -2545,7 +2564,7 @@
                                 value="{{ asset('storage/app/public/auction/') }}" id="image-source" />
                         </div>
                         <p>JURY SCORE:</p>
-                        <h2 style="cursor: auto;" class="juryscore"></h2>
+                        <h2 style="cursor: auto;" class="juryscore"> </h2>
                         <h2></h2>
                         <hr>
                         <div>
