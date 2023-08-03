@@ -3741,19 +3741,19 @@
         }
     });
 
-    socket.on('end_of_auction_timer', function(data) {
+    // socket.on('end_of_auction_timer', function(data) {
 
-        $('.autobtnclick').attr("disabled", true);
-        $('.singlebtnclick').attr("disabled", true);
-        $('.confirm-btn').attr("disabled", true);
-        $('.confirm-btn').css('background', '#a6a6a6');
+    //     $('.autobtnclick').attr("disabled", true);
+    //     $('.singlebtnclick').attr("disabled", true);
+    //     $('.confirm-btn').attr("disabled", true);
+    //     $('.confirm-btn').css('background', '#a6a6a6');
 
-        $(".singlebtnclick").css('background', '#a6a6a6');
+    //     $(".singlebtnclick").css('background', '#a6a6a6');
 
-        $('.minutes').html('00');
-        $('.seconds').html('00');
-        // console.log('this')
-    });
+    //     $('.minutes').html('00');
+    //     $('.seconds').html('00');
+    //     // console.log('this')
+    // });
 
     function resetTimer(data) {
         console.log(data);
@@ -3880,9 +3880,9 @@
 
                 $('.seconds').html('00');
                 console.log('else of timer')
-                socket.emit('end_of_auction_timer', {
-                    "timer": 1,
-                });
+                // socket.emit('end_of_auction_timer', {
+                //     "timer": 1,
+                // });
             }
             if (minutes < 0) clearInterval(interval);
             //check if both minutes and seconds are 0
