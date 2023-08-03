@@ -1673,7 +1673,8 @@
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"  data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
 
                                         </td>
@@ -1785,7 +1786,8 @@
                                         <td class="fw-bold text-underline td-res-pl"><a
                                                 class="openbtn openSidebar"data-id="{{ $auctionProduct->id }}"
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}" data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">{{ $products->product_title }}
                                             </a>
 
                                         </td>
@@ -2156,7 +2158,19 @@
             resetTimer(data);
         }
     });
+    socket.on('end_of_auction_timer', function(data) {
 
+        $('.autobtnclick').attr("disabled", true);
+        $('.singlebtnclick').attr("disabled", true);
+        $('.confirm-btn').attr("disabled", true);
+        $('.confirm-btn').css('background', '#a6a6a6');
+
+        $(".singlebtnclick").css('background', '#a6a6a6');
+
+        $('.minutes').html('00');
+        $('.seconds').html('00');
+        // console.log('this')
+    });
 
     function resetTimer(data) {
         console.log(data);
@@ -2241,19 +2255,10 @@
 
                 window.location.reload();
             }
-        }, 10000);
-        socket.on('end_of_auction_timer', function(data) {
-            $('.autobtnclick').attr("disabled", true);
-                $('.singlebtnclick').attr("disabled", true);
-                $('.confirm-btn').attr("disabled", true);
-                $('.confirm-btn').css('background', '#a6a6a6');
 
-                $(".singlebtnclick").css('background', '#a6a6a6');
-
-                $('.minutes').html('00');
-                $('.seconds').html('00');
-    });
+        }, 5000);
         window.interval = setInterval(function() {
+
             // alert('here');
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing

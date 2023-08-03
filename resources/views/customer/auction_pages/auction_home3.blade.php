@@ -3721,19 +3721,21 @@
             resetTimer(data);
         }
     });
+
     socket.on('end_of_auction_timer', function(data) {
 
-alert('socket hits');
-$('.autobtnclick').attr("disabled", true);
-    $('.singlebtnclick').attr("disabled", true);
-    $('.confirm-btn').attr("disabled", true);
-    $('.confirm-btn').css('background', '#a6a6a6');
+        $('.autobtnclick').attr("disabled", true);
+        $('.singlebtnclick').attr("disabled", true);
+        $('.confirm-btn').attr("disabled", true);
+        $('.confirm-btn').css('background', '#a6a6a6');
 
-    $(".singlebtnclick").css('background', '#a6a6a6');
+        $(".singlebtnclick").css('background', '#a6a6a6');
 
-    $('.minutes').html('00');
-    $('.seconds').html('00');
-});
+        $('.minutes').html('00');
+        $('.seconds').html('00');
+        // console.log('this')
+    });
+
     function resetTimer(data) {
         console.log(data);
         console.log('reset timer');
@@ -3818,7 +3820,8 @@ $('.autobtnclick').attr("disabled", true);
 
                 window.location.reload();
             }
-        }, 10000);
+
+        }, 5000);
 
         window.interval = setInterval(function() {
             // alert('here');
