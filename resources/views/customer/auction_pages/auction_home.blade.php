@@ -2256,20 +2256,20 @@
 
         }, 5000);
         window.interval = setInterval(function() {
-            // socket.on('end_of_auction_timer', function(data) {
-            //     if (data.timer == 1) {
-            //         $('.autobtnclick').attr("disabled", true);
-            //         $('.singlebtnclick').attr("disabled", true);
-            //         $('.confirm-btn').attr("disabled", true);
-            //         $('.confirm-btn').css('background', '#a6a6a6');
+            socket.on('end_of_auction_timer', function(data) {
+                if (data.timer == 1) {
+                    $('.autobtnclick').attr("disabled", true);
+                    $('.singlebtnclick').attr("disabled", true);
+                    $('.confirm-btn').attr("disabled", true);
+                    $('.confirm-btn').css('background', '#a6a6a6');
 
-            //         $(".singlebtnclick").css('background', '#a6a6a6');
+                    $(".singlebtnclick").css('background', '#a6a6a6');
 
-            //         $('.minutes').html('00');
-            //         $('.seconds').html('00');
+                    $('.minutes').html('00');
+                    $('.seconds').html('00');
 
-            //     }
-            // });
+                }
+            });
             // alert('here');
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -2302,7 +2302,7 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
-                // console.log('here alse');
+                console.log('here alse');
                 socket.emit('end_of_auction_timer', {
                     "timer": 1,
                 });

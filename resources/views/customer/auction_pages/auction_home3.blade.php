@@ -3851,8 +3851,8 @@
         window.interval = setInterval(function() {
             // alert('here');
             socket.on('end_of_auction_timer', function(data) {
-
-                console.log('this end_of_auction_timer')
+                if (data.timer == 1) {
+                // console.log('this end_of_auction_timer')
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
                 $('.confirm-btn').attr("disabled", true);
@@ -3861,7 +3861,7 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.minutes').html('00');
-                $('.seconds').html('00');
+                $('.seconds').html('00');}
             });
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
@@ -3897,7 +3897,7 @@
                 $(".singlebtnclick").css('background', '#a6a6a6');
 
                 $('.seconds').html('00');
-                console.log('else of timer')
+                // console.log('else of timer')
                 socket.emit('end_of_auction_timer', {
                     "timer": 1,
                 });
