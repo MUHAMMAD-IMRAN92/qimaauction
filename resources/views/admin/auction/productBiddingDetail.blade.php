@@ -396,6 +396,9 @@
                         <div class="tab-pane fade" id="nav-winner" role="tabpanel" aria-labelledby="nav-winner-tab">
                             <div class="tab-pane fade auction-data table-responsive show active" id="nav-home"
                                 role="tabpanel" aria-labelledby="nav-home-tab">
+                                @if ($auction->is_hidden == 1)
+
+
                                 <table class="table auctiontable">
                                     <thead>
                                         <tr class="text-center">
@@ -584,6 +587,12 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                <center>
+                                    <h3 class="inner-data heading-table-auction">Auction Is In Progress !
+                                    </h3>
+                                </center>
+                                @endif
                             </div>
                         </div>
                     </div>
