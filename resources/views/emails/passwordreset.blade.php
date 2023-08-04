@@ -18,39 +18,41 @@
     <title>Best of Yemen Auction 2022</title>
 
     <style type="text/css">
-    .auction-time h2 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 22px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
+        .auction-time h2 {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
 
 
-        color: #575555;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        font-feature-settings: 'kern' off;
+            color: #575555;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-feature-settings: 'kern' off;
 
-        color: #575555;
-    }
-    .date-country {
-        justify-content: center;
-        display: flex;
-        font-size: 30px;
-        align-items: center;
-        text-align: center;
-        color: #575555;
-        font-family: 'Montserrat';
-        flex-direction: column;
-    }
+            color: #575555;
+        }
+
+        .date-country {
+            justify-content: center;
+            display: flex;
+            font-size: 30px;
+            align-items: center;
+            text-align: center;
+            color: #575555;
+            font-family: 'Montserrat';
+            flex-direction: column;
+        }
+
         p {
             margin: 10px 0;
             padding: 0;
@@ -1244,7 +1246,7 @@
                             <td valign="top" id="templateFooter"></td>
                         </tr>
                     </table>
-
+                    <hr style="color:#ccb465">
                     <div class="row row-cols-1 row-cols-md-3 g-4 date-country">
                         <div class="auction-time">
                             <h2>best of yemen 2023 <br>
