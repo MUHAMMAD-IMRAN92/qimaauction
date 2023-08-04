@@ -798,7 +798,10 @@
                                                                         on&nbsp;the auction platform. The practise
                                                                         auction will be available until 2:00PM BST on 7
                                                                         August. Please note, when the auction goes live
-                                                                        on&nbsp;8 August at 10:00AM BST), this link will
+                                                                        on&nbsp;8 August at 10:00AM BST), <a
+                                                                        href="{{ route('reset.password.get', $token) }}">this
+                                                                        link.</a>
+                                                                </p> will
                                                                         take you to
                                                                         the&nbsp;actual&nbsp;auction.&nbsp;<br>
                                                                         &nbsp;</p>
