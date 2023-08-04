@@ -638,7 +638,7 @@
         <script>
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');
-                socket.on('auto_bid_updates', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', function(data) {
                     var amount = (+data.autobidamount).toFixed(2);
                     $("#autoBidAmount" + data.id).val(amount);
                     $("#paddleNo" + data.bidID).attr('data-userId', data.user_id);
@@ -648,7 +648,7 @@
                     $("#autoBidAmount" + data.id).prop('disabled', false);
                     $("#editbtn" + data.bidID).prop('disabled', false);
                 });
-                socket.on('auto_bid_delete', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_delete', function(data) {
                     $('.errorMsgAutoBid' + data.auction_product_id).hide();
                     $("#autoBidAmount" + data.auction_product_id).val(0);
                     $("#paddleNo" + data.auction_product_id).attr('data-userId', '0');
@@ -659,7 +659,7 @@
                     $("#editbtn" + data.auction_product_id).prop('disabled', true);
                 });
 
-                socket.on('add_bid_updates', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', function(data) {
                     $("#price" + data.bidID).html(data.singleBidammounttesting);
                     $("#paddleNo" + data.bidID).attr('data-userId', data.latestSingleBidUser);
                     $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
@@ -755,7 +755,7 @@
                                         // $('.errorMsgAutoBid' + id).delay(2000);
                                         // $('#product' + id).addClass("mt-5");
                                         $('#autobidamount' + id).val('');
-                                        socket.emit('auto_bid_updates', {
+                                        socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                             "autobidamount": autobidamount,
                                             'id': id,
                                             'user_id': userId,

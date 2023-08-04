@@ -2108,7 +2108,7 @@
 <script>
     var total = 0;
     var interval;
-    socket.on('auto_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', function(data) {
         $(".paddleno" + data.bidID).html(data.paddleNo);
         $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
         $(".nextincrement" + data.bidID).html('$' + data.nextIncrement.toLocaleString('en-US'));
@@ -2117,7 +2117,7 @@
         data.checkTimer = 0;
         resetTimer(data);
     });
-    socket.on('auto_bid_delete', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_delete', function(data) {
         $(".alertMessage" + data.bidID).html('');
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
         $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
@@ -2130,7 +2130,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('add_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', function(data) {
         if (data.checkTimer == 0) {
             window.empty = data.checkTimer;
             resetTimer(data);
@@ -2145,7 +2145,7 @@
 
     });
     var endAuctionVar = 0;
-    socket.on('add_auction_status', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
             var sec = $('.seconds').html();
             var min = $('.minutes').html();
@@ -2161,7 +2161,7 @@
             }
         }
     });
-    socket.on('add_timer_reset', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_timer_reset', function(data) {
         if (data.timerreset == 1) {
 
             data.checkTimer = 0;
@@ -2256,7 +2256,7 @@
 
         }, 5000);
         window.interval = setInterval(function() {
-            socket.on('end_of_auction_timer', function(data) {
+            socket.on('{{env('SOCKET_PREFIX' , '')}}end_of_auction_timer', function(data) {
                 if (data.timer == 1) {
                     $('.autobtnclick').attr("disabled", true);
                     $('.singlebtnclick').attr("disabled", true);
@@ -2302,7 +2302,7 @@
 
                 $('.seconds').html('00');
                 // console.log('here alse');
-                socket.emit('end_of_auction_timer', {
+                socket.emit('{{env('SOCKET_PREFIX' , '')}}end_of_auction_timer', {
                     "timer": 1,
                 });
             }

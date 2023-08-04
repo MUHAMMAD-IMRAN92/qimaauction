@@ -722,7 +722,7 @@
 
             $(document).ready(function() {
                 var socket = io('<?= env('SOCKETS') ?>');
-                socket.on('auto_bid_updates', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', function(data) {
                     var amount = (+data.autobidamount).toFixed(2);
                     var current_amount = $("#autoBidAmount" + data.id).val();
                     if (amount > current_amount) {
@@ -741,7 +741,7 @@
                         $("#editbtn" + data.bidID).prop('disabled', false);
                     }
                 });
-                socket.on('auto_bid_delete', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_delete', function(data) {
                     $('.errorMsgAutoBid' + data.auction_product_id).hide();
                     $("#autoBidAmount" + data.auction_product_id).val(0);
                     // $("#paddleNo" + data.auction_product_id).attr('data-userId', '0');
@@ -750,7 +750,7 @@
                     $("#autoBidAmount" + data.auction_product_id).prop('disabled', true);
                     $("#editbtn" + data.auction_product_id).prop('disabled', true);
                 });
-                socket.on('add_bid_updates', function(data) {
+                socket.on('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', function(data) {
                     $("#price" + data.bidID).html('$' + data.singleBidammounttesting + '/lbs');
                     $("#paddleNo" + data.bidID).attr('data-userId', data.latestSingleBidUser);
                     $("#paddleNo" + data.bidID).attr('data-target', "#user_model");
@@ -820,7 +820,7 @@
                                         $(".endauction").hide();
                                         $(".resetauction").hide();
                                     }
-                                    socket.emit('add_auction_status', {
+                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });
                                     $('#publish_auction_winners').css('display', 'block');
@@ -861,7 +861,7 @@
                                         $(".endauction").hide();
                                         $(".resetauction").hide();
                                     }
-                                    socket.emit('add_auction_status', {
+                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });
 
@@ -898,7 +898,7 @@
                                 success: function(response) {
                                     swal('Timer is Reset');
                                     var timerreset = response;
-                                    socket.emit('add_timer_reset', {
+                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_timer_reset', {
                                         "timerreset": timerreset
                                     });
                                 },
@@ -971,7 +971,7 @@
                                         // $('.errorMsgAutoBid' + id).delay(2000);
                                         // $('#product' + id).addClass("mt-5");
                                         $('#autobidamount' + id).val('');
-                                        socket.emit('auto_bid_update_user_amount', {
+                                        socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_update_user_amount', {
                                             "autobidamount": autobidamount,
                                             'id': id,
                                             'user_id': userId,
@@ -997,7 +997,7 @@
 
             });
             //group bid sockets data
-            socket.on('add_groupbid_updates', function(data) {
+            socket.on('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', function(data) {
                 // console.log(data.adminofferData);
                 var offerData = data.adminofferData;
                 var i;
