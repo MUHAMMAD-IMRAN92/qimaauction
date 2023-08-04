@@ -2049,14 +2049,14 @@
                     } else if (genetics == 2) {
                         $(".genetics").html('Bourbon');
                     } else {
-                        $(".genetics").html('SL28');
+                        $(".genetics").html(genetics);
                     }
                     if (process == 1) {
                         $(".proprocess").html('Natural');
                     } else if (process == 2) {
                         $(".proprocess").html('Slow Dried');
                     } else {
-                        $(".proprocess").html('Alchemy');
+                        $(".proprocess").html(process);
                     }
                     if (response.products[0].pro_lot_type == 1) {
                         $(".lotName").html('Farmer Lot');

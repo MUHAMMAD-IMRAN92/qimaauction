@@ -535,7 +535,7 @@ link.</a> </p>
                             <div>
 <p style="color: #222222;text-align: left;"><strong>Practice Auction&nbsp;</strong></p>
 
-<p style="color: #222222;text-align: left;">Once you've signed in using your credentials, you can follow the link below to&nbsp;practice bidding on&nbsp;the auction platform. The practise auction will be available until 2:00PM BST on 7 August. Please note, when the auction goes live on&nbsp;8 August at 10:00AM BST), this link will take you to the&nbsp;actual&nbsp;auction.&nbsp;<br>
+<p style="color: #222222;text-align: left;">Once you've signed in using your credentials, you can follow the link below to&nbsp;practice bidding on&nbsp;the auction platform. The practice auction will be available until 2:00PM BST on 7 August. Please note, when the auction goes live on&nbsp;8 August at 10:00AM BST), this link will take you to the&nbsp;actual&nbsp;auction.&nbsp;<br>
 &nbsp;</p>
 </div>
 

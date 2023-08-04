@@ -79,7 +79,7 @@ class CustomerController extends Controller
           Mail::send('emails.passwordreset', ['token' => $token,'customer' => $customer,'password'=>$password], function($message) use($request){
               $message->to($request->email);
               $message->subject('Your Best of Yemen Login Credentials & Practice Auction Link');
-              $message->from('noreply@mg.bestofyemenauction.com','Best of Yemen 2022');
+              $message->from('noreply@mg.bestofyemenauction.com','Best of Yemen');
           });
         return redirect('/customer/index');
     }
@@ -169,6 +169,7 @@ class CustomerController extends Controller
         // $customer['password']    =   $user->password;
         $customer['name']        =   $user->name;
         $customer['email']       =   $user->email;
+        $customer['paddle_number']       =   $user->paddle_number;
         $password           =   '12345678';
         $token = Str::random(64);
           DB::table('password_resets')->insert([
