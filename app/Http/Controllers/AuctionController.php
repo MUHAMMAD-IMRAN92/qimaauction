@@ -1209,7 +1209,11 @@ class AuctionController extends Controller
     public function prductBiddingDashboard()
     {
         $auction = Auction::where('is_active', '1')->first();
-        $auction_products = AuctionProduct::where('auction_id', $auction->id)->with('products')->get();
+        // $auction_products = AuctionProduct::where('auction_id', $auction->id)->with('products')->get();
+
+        $alchmeyProducts = AuctionProduct::where('auction_id', $auction->id)->with('productImages', 'products', 'singleBids', 'auctionProductImages')->whereIn('process', ['Alchemy'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->get();
+        $naturalauctionProducts = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->with('productImages', 'products', 'singleBids', 'auctionProductImages')->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
+        $auction_products = $naturalauctionProducts->merge($alchmeyProducts);
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
         return view('admin.auction.productBiddingDashboard', compact('auction_products', 'products'));
     }
