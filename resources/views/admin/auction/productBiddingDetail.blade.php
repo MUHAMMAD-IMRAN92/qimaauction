@@ -340,8 +340,24 @@
                                                         $i = 0;
                                                     @endphp
                                                     @if (count($auction_products) > 0)
-                                                        @foreach ($auction_products as $auction)
+                                                        @foreach ($auction_products as $key1 => $auction)
                                                             @foreach ($auction->products as $key => $pro)
+                                                                @if ($key1 == 0)
+                                                                    <tr>
+                                                                        <td colspan="14">
+                                                                            <h5 class="inner-data heading-table-auction">
+                                                                                NATURALS AND DEEP FERMENTATION</h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
+                                                                @if ($key1 == 18)
+                                                                    <tr>
+                                                                        <td colspan="14">
+                                                                            <h5 class="inner-data heading-table-auction">
+                                                                                Alchemy</h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
                                                                 <tr id="{{ ++$i }}">
                                                                     {{-- <td class="headerSortUp headerSortDown move">
                                                                    <a href=""></a>
@@ -399,179 +415,182 @@
                                 @if ($auction->is_hidden == 1)
 
 
-                                <table class="table auctiontable">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th scope="col">Rank</th>
-                                            <th scope="col">Jury Score</th>
-                                            <th scope="col">Weight</th>
-                                            <th scope="col">Highest Bid</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Process</th>
-                                            <th scope="col">Genetics</th>
-                                            <th scope="col">High Bidder</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="table-head-border">
+                                    <table class="table auctiontable">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th scope="col">Rank</th>
+                                                <th scope="col">Jury Score</th>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Highest Bid</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Process</th>
+                                                <th scope="col">Genetics</th>
+                                                <th scope="col">High Bidder</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-head-border">
 
-                                            <td colspan="14">
-                                                <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION
-                                                </h5>
-                                            </td>
-                                        </tr>
-                                        @foreach ($natAuctionProducts as $auctionProduct)
-                                            <tr
-                                                class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
-                                                <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
-                                                <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                                <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                                <td class="fw-bold td-res-pl">
-                                                    <div>
-                                                        <span
-                                                            class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
-                                                    </div>
+                                                <td colspan="14">
+                                                    <h5 class="inner-data heading-table-auction">NATURAL AND DEEP
+                                                        FERMENTATION
+                                                    </h5>
                                                 </td>
-                                                @foreach ($auctionProduct->products as $products)
-                                                    <td class="fw-bold text-underline td-res-pl name-append"><a
-                                                            class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
-                                                            data-productid="{{ $products->id }}"
-                                                            data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
-                                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
-                                                            {{ $products->product_title }}
-                                                        </a>
-
+                                            </tr>
+                                            @foreach ($natAuctionProducts as $auctionProduct)
+                                                <tr
+                                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
+                                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
+                                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
+                                                    <td class="fw-bold td-res-pl">
+                                                        <div>
+                                                            <span
+                                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                        </div>
                                                     </td>
-                                                @endforeach
-                                                @foreach ($auctionProduct->products as $products)
-                                                    {{-- @if ($products->pro_process == '1') --}}
-                                                    <td class="td-res-pl">{{ $auctionProduct->process }}</td>
-                                                    {{-- @elseif ($products->pro_process == '2')
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        <td class="fw-bold text-underline td-res-pl name-append"><a
+                                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
+                                                                data-productid="{{ $products->id }}"
+                                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
+                                                                {{ $products->product_title }}
+                                                            </a>
+
+                                                        </td>
+                                                    @endforeach
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        {{-- @if ($products->pro_process == '1') --}}
+                                                        <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+                                                        {{-- @elseif ($products->pro_process == '2')
                                                     <td class="td-res-pl">Slow Dried</td>
                                                 @else
                                                     <td class="td-res-pl">Alchemy</td>
                                                 @endif --}}
-                                                @endforeach
-                                                @foreach ($auctionProduct->products as $products)
-                                                    {{-- @if ($products->genetic_id == '1') --}}
-                                                    <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
-                                                    {{-- @elseif ($products->genetic_id == '2')
+                                                    @endforeach
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        {{-- @if ($products->genetic_id == '1') --}}
+                                                        <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                                        {{-- @elseif ($products->genetic_id == '2')
                                                     <td class="td-res-pl">Bourbon</td>
                                                 @else
                                                     <td class="td-res-pl">SL28</td>
                                                 @endif --}}
-                                                @endforeach
-                                                @if($auctionProduct->winnerNames)
-                                                <td style="width: 500px !important"
+                                                    @endforeach
+                                                    @if ($auctionProduct->winnerNames)
+                                                        <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
                                                                 class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
 
                                                         </td>
-                                                @elseif  (isset($auctionProduct->highestbid))
-                                                    @foreach ($auctionProduct->highestbid->user as $userData)
-                                                        <td style="width: 500px !important"
-                                                            class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                            <span
-                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                            {{-- <a
+                                                    @elseif (isset($auctionProduct->highestbid))
+                                                        @foreach ($auctionProduct->highestbid->user as $userData)
+                                                            <td style="width: 500px !important"
+                                                                class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                                                <span
+                                                                    class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
+                                                                {{-- <a
                                                                 class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a> --}}
+                                                            </td>
+                                                        @endforeach
+                                                    @else
+                                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting
+                                                            Bid
                                                         </td>
-                                                    @endforeach
-                                                @else
-                                                    <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid
-                                                    </td>
-                                                @endif
-                                                <td class=""> <i class="fa fa-pencil editIcon"
-                                                        data-id="{{ $auctionProduct->id }}"></i></td>
-                                            </tr>
-                                            <tr class="hide-table-padding bid-row">
-                                                <td colspan="13">
-                                                    <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
-                                                        <div class="card">
-                                                            <h5 class="card-header">You need to login to Bid.</h5>
-                                                            <div class="card-body">
-                                                                <a href="{{ route('customer.login') }}"
-                                                                    class="btn btn-success">Login</a>
+                                                    @endif
+                                                    <td class=""> <i class="fa fa-pencil editIcon"
+                                                            data-id="{{ $auctionProduct->id }}"></i></td>
+                                                </tr>
+                                                <tr class="hide-table-padding bid-row">
+                                                    <td colspan="13">
+                                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
+                                                            <div class="card">
+                                                                <h5 class="card-header">You need to login to Bid.</h5>
+                                                                <div class="card-body">
+                                                                    <a href="{{ route('customer.login') }}"
+                                                                        class="btn btn-success">Login</a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        <tr class="table-head-border">
-
-                                            <td colspan="14">
-                                                <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
-                                            </td>
-
-                                        </tr>
-                                        @foreach ($auctionProducts as $auctionProduct)
-                                            <tr
-                                                class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
-                                                <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
-                                                <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                                <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                                <td class="fw-bold td-res-pl">
-                                                    <div>
-                                                        <span
-                                                            class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
-                                                    </div>
-                                                </td>
-                                                @foreach ($auctionProduct->products as $products)
-                                                    <td class="fw-bold text-underline td-res-pl name-append"><a
-                                                            class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
-                                                            data-productid="{{ $products->id }}"
-                                                            data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
-                                                            data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
-                                                            {{ $products->product_title }}
-                                                        </a>
-
                                                     </td>
-                                                @endforeach
-                                                @foreach ($auctionProduct->products as $products)
-                                                    {{-- @if ($products->pro_process == '1') --}}
-                                                    <td class="td-res-pl">{{ $auctionProduct->process }}</td>
-                                                    {{-- @elseif ($products->pro_process == '2')
+                                                </tr>
+                                            @endforeach
+                                            <tr class="table-head-border">
+
+                                                <td colspan="14">
+                                                    <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
+                                                </td>
+
+                                            </tr>
+                                            @foreach ($auctionProducts as $auctionProduct)
+                                                <tr
+                                                    class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
+                                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
+                                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
+                                                    <td class="fw-bold td-res-pl">
+                                                        <div>
+                                                            <span
+                                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                                        </div>
+                                                    </td>
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        <td class="fw-bold text-underline td-res-pl name-append"><a
+                                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
+                                                                data-productid="{{ $products->id }}"
+                                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
+                                                                {{ $products->product_title }}
+                                                            </a>
+
+                                                        </td>
+                                                    @endforeach
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        {{-- @if ($products->pro_process == '1') --}}
+                                                        <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+                                                        {{-- @elseif ($products->pro_process == '2')
                                                     <td class="td-res-pl">Slow Dried</td>
                                                 @else
                                                     <td class="td-res-pl">Alchemy</td>
                                                 @endif --}}
-                                                @endforeach
-                                                @foreach ($auctionProduct->products as $products)
-                                                    {{-- @if ($products->genetic_id == '1') --}}
-                                                    <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
-                                                    {{-- @elseif ($products->genetic_id == '2')
+                                                    @endforeach
+                                                    @foreach ($auctionProduct->products as $products)
+                                                        {{-- @if ($products->genetic_id == '1') --}}
+                                                        <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                                        {{-- @elseif ($products->genetic_id == '2')
                                                     <td class="td-res-pl">Bourbon</td>
                                                 @else
                                                     <td class="td-res-pl">SL28</td>
                                                 @endif --}}
-                                                @endforeach
-                                                @if($auctionProduct->winner_names)
-                                                <td style="width: 500px !important"
+                                                    @endforeach
+                                                    @if ($auctionProduct->winner_names)
+                                                        <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
                                                                 class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winner_names->company ?? '---' }}</span>
 
                                                         </td>
-                                                @elseif (isset($auctionProduct->highestbid))
-                                                    @foreach ($auctionProduct->highestbid->user as $userData)
-                                                        <td style="width: 500px !important"
-                                                            class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                            <span
-                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                            <a
-                                                                class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                                    @elseif (isset($auctionProduct->highestbid))
+                                                        @foreach ($auctionProduct->highestbid->user as $userData)
+                                                            <td style="width: 500px !important"
+                                                                class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                                                <span
+                                                                    class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
+                                                                <a
+                                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                                            </td>
+                                                        @endforeach
+                                                    @else
+                                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting
+                                                            Bid
                                                         </td>
-                                                    @endforeach
-                                                @else
-                                                    <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid
-                                                    </td>
-                                                @endif
-                                                <td class=""> <i class="fa fa-pencil editIcon"
-                                                        data-id="{{ $auctionProduct->id }}"></i></td>
-                                            </tr>
-                                            {{-- <tr class="hide-table-padding bid-row">
+                                                    @endif
+                                                    <td class=""> <i class="fa fa-pencil editIcon"
+                                                            data-id="{{ $auctionProduct->id }}"></i></td>
+                                                </tr>
+                                                {{-- <tr class="hide-table-padding bid-row">
                                             <td colspan="13">
                                                 <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
                                                     <div class="card">
@@ -584,14 +603,14 @@
                                                 </div>
                                             </td>
                                         </tr> --}}
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 @else
-                                <center>
-                                    <h3 class="inner-data heading-table-auction">Auction Is In Progress !
-                                    </h3>
-                                </center>
+                                    <center>
+                                        <h3 class="inner-data heading-table-auction">Auction Is In Progress !
+                                        </h3>
+                                    </center>
                                 @endif
                             </div>
                         </div>
@@ -609,8 +628,10 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Companies</label>
-                                            <input type="hidden" name="product_id" id="auctionProductId" placeholder="" class="form-control">
-                                            <input type="hidden" name="auction_id" id="" value="{{$auction->id}}"placeholder="" class="form-control">
+                                            <input type="hidden" name="product_id" id="auctionProductId" placeholder=""
+                                                class="form-control">
+                                            <input type="hidden" name="auction_id" id=""
+                                                value="{{ $auction->id }}"placeholder="" class="form-control">
                                             <textarea name="companies" id="" cols="20" rows="6"></textarea>
                                         </div>
                                     </div>
@@ -618,7 +639,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-dark">Submit</button>
-                                <button type="button" id="close" class="btn btn-secondary" data-dismiss="editModal">Close</button>
+                                <button type="button" id="close" class="btn btn-secondary"
+                                    data-dismiss="editModal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -994,9 +1016,9 @@
                 $('#editModal').show();
             })
 
-            $('#close').on('click' , function(){
+            $('#close').on('click', function() {
                 $('#editModal').hide();
             })
-            </script>
+        </script>
 
     @endsection
