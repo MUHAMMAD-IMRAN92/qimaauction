@@ -1102,6 +1102,7 @@
         color: black;
         border: none;
     }
+
     .heading-table-auction {
         font-family: 'Montserrat' !important;
         font-size: 27px !important;
@@ -1112,211 +1113,213 @@
         color: rgba(231, 132, 96, 1) !important;
         padding: 20px !important;
     }
+
     .banner-text-section {
 
-height: auto;
-background-color: rgba(239, 235, 229, 1);
-z-index: 10;
-}
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        z-index: 10;
+    }
 
-.banner-text-section h2 {
-font-family: 'Montserrat';
-font-size: 50px;
-font-weight: 800;
-line-height: 61px;
-letter-spacing: 0em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 0px;
+    .banner-text-section h2 {
+        font-family: 'Montserrat';
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 61px;
+        letter-spacing: 0em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
-}
+    }
 
-.banner-text-section h3 {
-font-family: 'Montserrat';
-font-size: 20px;
-font-weight: 800;
-line-height: 32px;
-letter-spacing: 0.1em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 0px;
-
-
-}
-
-.banner-text-section p {
-cursor: pointer;
-
-font-family: 'Montserrat-Medium';
-font-size: 11px;
-font-weight: 500;
-line-height: 13px;
-letter-spacing: 0.2em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 0px;
+    .banner-text-section h3 {
+        font-family: 'Montserrat';
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
-}
+    }
 
-.banner-text-section h6 {
-cursor: pointer;
+    .banner-text-section p {
+        cursor: pointer;
 
-font-family: 'Montserrat';
-font-size: 11px;
-font-weight: 500;
-line-height: 13px;
-letter-spacing: 0.2em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 0px;
-
-
-}
-
-.banner-text-section h4 {
-font-family: 'Montserrat';
-font-size: 18px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: 0.1em;
-text-align: left;
-text-transform: uppercase;
-cursor: pointer;
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
+    }
 
-}
+    .banner-text-section h6 {
+        cursor: pointer;
 
-.banner-text-section span {
-font-family: 'Montserrat-Medium';
-font-size: 11px;
-font-weight: 500;
-line-height: 13px;
-letter-spacing: 0.2em;
-text-align: left;
-text-transform: uppercase;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
 
 
-}
+    }
 
-.wrapper-bg-section {
-position: relative;
-}
+    .banner-text-section h4 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        cursor: pointer;
 
 
 
-.banner-text-section-2 {
-top: 75%;
-left: 46%;
-position: absolute;
-width: 501px;
-height: auto;
-background-color: rgba(239, 235, 229, 1);
-padding: 25px;
-z-index: 10;
-}
+    }
 
-.images-section {
-z-index: 5;
-}
-
-.banner-text-section-2 p {
-font-family: 'Montserrat-Medium';
-font-size: 11px;
-font-weight: 500;
-line-height: 13px;
-letter-spacing: 0.2em;
-text-align: left;
-margin-bottom: 0px;
+    .banner-text-section span {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
 
 
-}
+    }
 
-.banner-text-section-2 h3 {
-font-family: 'Montserrat';
-font-size: 18px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: 0.1em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 0px;
-margin-top: 10px;
-color: rgba(35, 43, 56, 1);
+    .wrapper-bg-section {
+        position: relative;
+    }
 
 
 
-}
+    .banner-text-section-2 {
+        top: 75%;
+        left: 46%;
+        position: absolute;
+        width: 501px;
+        height: auto;
+        background-color: rgba(239, 235, 229, 1);
+        padding: 25px;
+        z-index: 10;
+    }
 
-.moreBtn {
-background: transparent;
-text-align: center;
-}
+    .images-section {
+        z-index: 5;
+    }
 
-.btn-info button {
-padding: 0.6rem 0.4rem;
-font-family: 'Montserrat';
-font-size: 11px;
-font-weight: 600;
-line-height: 12px;
-color: #303030;
-text-transform: uppercase;
-background-color: white;
-letter-spacing: 0.1em;
-border: none;
-cursor: pointer;
-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-border-radius: 24px;
-margin: 0 1rem;
-width: 180px;
-}
+    .banner-text-section-2 p {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        margin-bottom: 0px;
 
-.btn-info:hover {
-background-color: transparent !important;
-}
 
-.banner-text-section-2 h6 {
-font-family: 'Montserrat-Medium';
-font-size: 11px;
-font-weight: 500;
-line-height: 19px;
-letter-spacing: 0.1em;
-text-align: left;
-text-transform: inherit;
-max-height: 50vh;
-overflow-y: auto;
-display: block;
-}
+    }
 
-.banner-text-section-2y::-webkit-scrollbar {
-width: 1em;
-}
+    .banner-text-section-2 h3 {
+        font-family: 'Montserrat';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        color: rgba(35, 43, 56, 1);
 
-.banner-text-section-2::-webkit-scrollbar-track {
-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
 
-.banner-text-section-2::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
-}
 
-.banner-text-section-2 h5 {
-font-family: 'Montserrat';
-font-size: 11px;
-font-weight: 700;
-line-height: 13px;
-letter-spacing: 0.2em;
-text-align: left;
-text-transform: uppercase;
-margin-bottom: 10px;
+    }
 
-}
+    .moreBtn {
+        background: transparent;
+        text-align: center;
+    }
 
-#mySidebar {
-background: rgba(239, 235, 229, 1)
-}
+    .btn-info button {
+        padding: 0.6rem 0.4rem;
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #303030;
+        text-transform: uppercase;
+        background-color: white;
+        letter-spacing: 0.1em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        margin: 0 1rem;
+        width: 180px;
+    }
+
+    .btn-info:hover {
+        background-color: transparent !important;
+    }
+
+    .banner-text-section-2 h6 {
+        font-family: 'Montserrat-Medium';
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: inherit;
+        max-height: 50vh;
+        overflow-y: auto;
+        display: block;
+    }
+
+    .banner-text-section-2y::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    .banner-text-section-2::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-text-section-2::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    .banner-text-section-2 h5 {
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0.2em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+    }
+
+    #mySidebar {
+        background: rgba(239, 235, 229, 1)
+    }
+
     /* hamza starts ends */
 </style>
 
@@ -1423,7 +1426,7 @@ background: rgba(239, 235, 229, 1)
                                     <h5 class="inner-data heading-table-auction">NATURAL AND DEEP FERMENTATION</h5>
                                 </td>
                             </tr>
-                            @foreach ($natAuctionProducts  as $auctionProduct)
+                            @foreach ($natAuctionProducts as $auctionProduct)
                                 <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
                                     <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
@@ -1438,7 +1441,91 @@ background: rgba(239, 235, 229, 1)
                                         <td class="fw-bold text-underline td-res-pl name-append"><a
                                                 class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
                                                 data-productid="{{ $products->id }}"
-                                                data-image="{{  @$auctionProduct->auctionProductImages[0]->image}}" data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
+                                                {{ $products->product_title }}
+                                            </a>
+
+                                        </td>
+                                    @endforeach
+                                    @foreach ($auctionProduct->products as $products)
+                                        {{-- @if ($products->pro_process == '1') --}}
+                                        <td class="td-res-pl">{{ $auctionProduct->process }}</td>
+                                        {{-- @elseif ($products->pro_process == '2')
+                                            <td class="td-res-pl">Slow Dried</td>
+                                        @else
+                                            <td class="td-res-pl">Alchemy</td>
+                                        @endif --}}
+                                    @endforeach
+                                    @foreach ($auctionProduct->products as $products)
+                                        {{-- @if ($products->genetic_id == '1') --}}
+                                        <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
+                                        {{-- @elseif ($products->genetic_id == '2')
+                                            <td class="td-res-pl">Bourbon</td>
+                                        @else
+                                            <td class="td-res-pl">SL28</td>
+                                        @endif --}}
+                                    @endforeach
+                                    @if ($auctionProduct->winnerNames)
+                                        <td style="width: 500px !important"
+                                            class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                            <span
+                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
+                                                <a
+                                                class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                        </td>
+                                    @elseif (isset($auctionProduct->highestbid))
+                                        @foreach ($auctionProduct->highestbid->user as $userData)
+                                            <td style="width: 500px !important"
+                                                class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                                <span
+                                                    class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
+                                                <a
+                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+                                            </td>
+                                        @endforeach
+                                    @else
+                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
+                                    @endif
+                                </tr>
+                                <tr class="hide-table-padding bid-row">
+                                    <td colspan="13">
+                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
+                                            <div class="card">
+                                                <h5 class="card-header">You need to login to Bid.</h5>
+                                                <div class="card-body">
+                                                    <a href="{{ route('customer.login') }}"
+                                                        class="btn btn-success">Login</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr class="table-head-border">
+
+                                <td colspan="14">
+                                    <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
+                                </td>
+
+                            </tr>
+                            @foreach ($auctionProducts as $auctionProduct)
+                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
+                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
+                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
+                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
+                                    <td class="fw-bold td-res-pl">
+                                        <div>
+                                            <span
+                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
+                                        </div>
+                                    </td>
+                                    @foreach ($auctionProduct->products as $products)
+                                        <td class="fw-bold text-underline td-res-pl name-append"><a
+                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
+                                                data-productid="{{ $products->id }}"
+                                                data-image="{{ @$auctionProduct->auctionProductImages[0]->image }}"
+                                                data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
                                                 {{ $products->product_title }}
                                             </a>
 
@@ -1490,80 +1577,6 @@ background: rgba(239, 235, 229, 1)
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr class="table-head-border">
-
-                                <td colspan="14">
-                                    <h5 class="inner-data heading-table-auction ">ALCHEMY</h5>
-                                </td>
-
-                            </tr>
-                            @foreach ($auctionProducts as $auctionProduct)
-                                <tr class="tr-bb table-pt-res text-center bidcollapse{{ $auctionProduct->id }}">
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->rank }}</td>
-                                    <td class="fw-bold td-res-pl">{{ $auctionProduct->jury_score }}</td>
-                                    <td class="td-res-pl">{{ $auctionProduct->weight }}lbs</td>
-                                    <td class="fw-bold td-res-pl">
-                                        <div>
-                                            <span
-                                                class="bidData1{{ $auctionProduct->id }} intialinc">${{ isset($auctionProduct->highestbid) ? $auctionProduct->highestbid->bid_amount : $auctionProduct->start_price }}/lbs</span>
-                                        </div>
-                                    </td>
-                                    @foreach ($auctionProduct->products as $products)
-                                        <td class="fw-bold text-underline td-res-pl name-append"><a
-                                                class="openbtn openSidebar "data-id="{{ $auctionProduct->id }} "
-                                                data-productid="{{ $products->id }}"
-                                                data-image="{{  @$auctionProduct->auctionProductImages[0]->image}}"  data-image1="{{ @$auctionProduct->auctionProductImages[1]->image }}">
-                                                {{ $products->product_title }}
-                                            </a>
-
-                                        </td>
-                                    @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        {{-- @if ($products->pro_process == '1') --}}
-                                        <td class="td-res-pl">{{ $auctionProduct->process }}</td>
-                                        {{-- @elseif ($products->pro_process == '2')
-                                            <td class="td-res-pl">Slow Dried</td>
-                                        @else
-                                            <td class="td-res-pl">Alchemy</td>
-                                        @endif --}}
-                                    @endforeach
-                                    @foreach ($auctionProduct->products as $products)
-                                        {{-- @if ($products->genetic_id == '1') --}}
-                                        <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
-                                        {{-- @elseif ($products->genetic_id == '2')
-                                            <td class="td-res-pl">Bourbon</td>
-                                        @else
-                                            <td class="td-res-pl">SL28</td>
-                                        @endif --}}
-                                    @endforeach
-                                    @if (isset($auctionProduct->highestbid))
-                                        @foreach ($auctionProduct->highestbid->user as $userData)
-                                            <td style="width: 500px !important"
-                                                class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
-                                                <span
-                                                    class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                <a
-                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
-                                            </td>
-                                        @endforeach
-                                    @else
-                                        <td class="paddleno{{ $auctionProduct->id }} td-res-pl">Awaiting Bid</td>
-                                    @endif
-                                </tr>
-                                <tr class="hide-table-padding bid-row">
-                                    <td colspan="13">
-                                        <div id="collapseOne{{ $auctionProduct->id }}" class="collapse">
-                                            <div class="card">
-                                                <h5 class="card-header">You need to login to Bid.</h5>
-                                                <div class="card-body">
-                                                    <a href="{{ route('customer.login') }}"
-                                                        class="btn btn-success">Login</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -1710,7 +1723,7 @@ background: rgba(239, 235, 229, 1)
                     var rank = response.rank;
                     var juryscore = response.jury_score;
                     var name = response.products[0].product_title;
-                    var code =response.code;
+                    var code = response.code;
                     var size = response.size;
                     var paddleno = $('.paddleno' + id).html();
                     var process = response.process;
