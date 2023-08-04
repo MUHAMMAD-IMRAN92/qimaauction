@@ -412,7 +412,7 @@
                         <div class="tab-pane fade" id="nav-winner" role="tabpanel" aria-labelledby="nav-winner-tab">
                             <div class="tab-pane fade auction-data table-responsive show active" id="nav-home"
                                 role="tabpanel" aria-labelledby="nav-home-tab">
-                                @if ($auction->is_hidden == 0)
+                                @if ($auction->is_hidden == 1)
 
 
                                     <table class="table auctiontable">
