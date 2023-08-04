@@ -662,7 +662,7 @@
 
                                                                 <div>
                                                                     <p style="color: #222222;text-align: left;">Dear
-                                                                        Adeel Qureshi<br>
+                                                                        {{ $customer['name'] }}<br>
                                                                         &nbsp;</p>
 
                                                                     <p style="color: #222222;text-align: left;">Thank
@@ -675,8 +675,8 @@
                                                                         follows:&nbsp;<br>
                                                                         <br>
                                                                         Username:
-                                                                        <strong>adeel@qimacoffee.com</strong><br>
-                                                                        Password: <strong>qimacoffee</strong><br>
+                                                                        <strong>{{ $customer['email'] }}</strong><br>
+                                                                        Password: <strong> {{ $password }}</strong><br>
                                                                         <br>
                                                                         You can reset your password by following this
                                                                         link.
@@ -828,11 +828,11 @@
                                                                 class="mcnButtonContent"
                                                                 style="font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 18px; padding: 18px;">
                                                                 <a class="mcnButton "
-                                                                    title="Best of Yemen 2022 Auction"
+                                                                    title="Best of Yemen 2023 Auction"
                                                                     href="https://bestofyemenauction.com/"
                                                                     target="_blank"
                                                                     style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Best
-                                                                    of Yemen 2022 Auction</a>
+                                                                    of Yemen 2023 Auction</a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
