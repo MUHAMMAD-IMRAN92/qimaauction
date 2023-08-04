@@ -416,7 +416,7 @@
                                                             $i = 0;
                                                         @endphp
                                                         @if (isset($auction_products))
-                                                            @foreach ($auction_products as $auction)
+                                                            @foreach ($auction_products as $key1 => $auction)
                                                                 @foreach ($auction->products as $key => $pro)
                                                                     @if ($key1 == 0)
                                                                         <tr>
@@ -438,7 +438,7 @@
                                                                     @endif
                                                                     <tr id="{{ ++$i }}" class="mb-1">
                                                                         <td>
-                                                                            {{ $auction->rank}}
+                                                                            {{ $auction->rank }}
                                                                         </td>
                                                                         <td id="product{{ $auction->id }}"
                                                                             type="button"
@@ -558,9 +558,9 @@
                                                             $i = 0;
                                                         @endphp
                                                         @if (count($auction_products) > 0)
-                                                            @foreach ($auction_products as $auction)
+                                                            @foreach ($auction_products as $key1 => $auction)
                                                                 @foreach ($auction->products as $key => $pro)
-                                                                @if ($key1 == 0)
+                                                                    @if ($key1 == 0)
                                                                         <tr>
                                                                             <td colspan="14">
                                                                                 <h5
