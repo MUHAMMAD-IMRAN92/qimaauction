@@ -455,7 +455,7 @@ Your registration details are&nbsp;as follows:&nbsp;<br>
 Username: <strong>{{ $customer['email'] }}</strong><br>
 Password: <strong>{{ $password }}</strong><br>
 <br>
-Paddle Number : <strong>1234</strong><br>
+Paddle Number : <strong>{{ $customer['paddle_number'] }}</strong><br>
 <br>
 You can reset your password by following  <a
 href="{{ route('reset.password.get', $token) }}">this
