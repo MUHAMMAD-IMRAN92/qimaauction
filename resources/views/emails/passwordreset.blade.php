@@ -1082,14 +1082,10 @@
                                                                         <strong>Auction Platform Tutorial&nbsp;</strong>
                                                                     </p>
 
-                                                                    <p style="color: #222222;text-align: left;">We've
-                                                                        designed the platform to be simple and user
-                                                                        intuitive. But to make it clearer, we've put
-                                                                        together a <a
+                                                                    <p style="color: #222222;text-align: left;"> We've designed the platform to be simple and user intuitive. But to make it clearer, we've put together a <a
                                                                             href="https://youtu.be/6B8xRAPZiss"
                                                                             target="_blank">short instructional
-                                                                            video</a> to guide you through the process
-                                                                        of using the auction.&nbsp;</p>
+                                                                            video</a> to guide you through the process of using the auction.&nbsp;</p>
                                                                 </div>
 
                                                             </td>
@@ -1187,12 +1183,7 @@
                                                                         <strong>Practice Auction&nbsp;</strong>
                                                                     </p>
 
-                                                                    <p style="color: #222222;text-align: left;">Once
-                                                                        you've signed in using your credentials, you can
-                                                                        follow the link below to practice using the
-                                                                        auction platform. Please note, when the auction
-                                                                        goes live (18th August at 14:00 UK time), this
-                                                                        link will take you to the real auction.&nbsp;
+                                                                    <p style="color: #222222;text-align: left;">Once you've signed in using your credentials, you can follow the link below to practice bidding on the auction platform. The practise auction will be available until 2:00PM BST on 7 August. Please note, when the auction goes live on 8 August at 10:00AM BST), this link will take you to the actual auction.&nbsp;
                                                                     </p>
                                                                 </div>
 
