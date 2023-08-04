@@ -2371,7 +2371,7 @@
                         </thead>
                         <tbody>
                             @php $total_liability = 0; @endphp
-                            @foreach ($auctionProducts as $auctionProduct)
+                            @foreach ($auctionProducts as $key=> $auctionProduct)
                                 @php
                                     $i = 0;
                                     if (isset($auctionProduct->offerComplete)) {
@@ -2387,6 +2387,30 @@
                                     $isEmpty = sizeof($singleBids);
                                     $userfound = 0;
                                 @endphp
+                                @php
+                                    $sortClass = '';
+                                @endphp
+
+                                @if ($key == 0 && $key < $naturalauctionProductsCount)
+                                    <tr class="table-head-border">
+
+                                        <td colspan="14">
+                                            <h5 class="inner-data heading-table-auction">NATURALS AND DEEP FERMENTATION
+                                            </h5>
+                                        </td>
+                                    </tr>
+                                @elseif($key != 0 && $key == $naturalauctionProductsCount)
+                                    @php
+                                        $sortClass = 'sortByRank';
+                                    @endphp
+                                    <tr class="table-head-border">
+
+                                        <td colspan="14">
+                                            <h5 class="inner-data heading-table-auction">ALCHEMY
+                                            </h5>
+                                        </td>
+                                    </tr>
+                                @endif
                                 <tr id="bid_row_{{ $auctionProduct->id }}" {{-- single bid / autobid winner --}}
                                     @if (
                                         !isset($auctionProduct->groupAutobid) &&
@@ -3852,16 +3876,17 @@
             // alert('here');
             socket.on('end_of_auction_timer', function(data) {
                 if (data.timer == 1) {
-                // console.log('this end_of_auction_timer')
-                $('.autobtnclick').attr("disabled", true);
-                $('.singlebtnclick').attr("disabled", true);
-                $('.confirm-btn').attr("disabled", true);
-                $('.confirm-btn').css('background', '#a6a6a6');
+                    // console.log('this end_of_auction_timer')
+                    $('.autobtnclick').attr("disabled", true);
+                    $('.singlebtnclick').attr("disabled", true);
+                    $('.confirm-btn').attr("disabled", true);
+                    $('.confirm-btn').css('background', '#a6a6a6');
 
-                $(".singlebtnclick").css('background', '#a6a6a6');
+                    $(".singlebtnclick").css('background', '#a6a6a6');
 
-                $('.minutes').html('00');
-                $('.seconds').html('00');}
+                    $('.minutes').html('00');
+                    $('.seconds').html('00');
+                }
             });
             var timer = timer2.split(':');
             //by parsing integer, I avoid all extra string processing
