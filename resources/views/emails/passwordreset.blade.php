@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Best of Yemen Auction 2022</title>
-        
+
     <style type="text/css">
 		p{
 			margin:10px 0;
@@ -565,15 +565,15 @@
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;">
-                        
+
                             <a href="*|ARCHIVE|*" target="_blank">View this email in your browser</a>
                         </td>
                     </tr>
@@ -581,7 +581,7 @@
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -599,11 +599,11 @@
                     <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                
-                                    
-                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/c048a60e-5404-4f5c-eab6-f2cf7c867b01.png" width="496.32" style="max-width:945px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-                                    
-                                
+
+
+                                        <img align="center" alt="" src="https://mcusercontent.com/a170449c48fad40af8005caec/images/0146908d-7745-cff4-40d7-5d21bacc38a6.png" width="496.32" style="max-width:945px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+
+
                             </td>
                         </tr>
                     </tbody></table>
@@ -621,19 +621,19 @@
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #222222;text-align: left;">
-                        
+
                             <div style="text-align: center;">
 <p style="text-align: left;color: #222222;">Dear {{$customer['name']}}<br>
 <br>
-Thank you for your registration to the Best of Yemen auction.&nbsp;<br>
+Thank you for registering for Best of Yemen 2023: Cultivating Innovation auction. Qima Coffee and ACE look forward to hosting you.&nbsp;<br>
 <br>
 Your registration details are&nbsp;as follows:&nbsp;<br>
 <br>
@@ -649,7 +649,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -668,7 +668,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
                         </td>
                     </tr>
                 </tbody></table>
-<!--            
+<!--
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 -->
@@ -683,15 +683,15 @@ You can reset your password by following <a href="{{ route('reset.password.get',
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #222222;text-align: left;">
-                        
+
                             <div style="text-align: center;">
 <p style="text-align: left;color: #222222;"><strong>Auction Platform Tutorial&nbsp;</strong></p>
 
@@ -704,7 +704,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -717,13 +717,13 @@ You can reset your password by following <a href="{{ route('reset.password.get',
     <tbody class="mcnImageCardBlockOuter">
         <tr>
             <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                
+
 <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnImageCardBottomContent" width="100%" style="background-color: #404040;">
     <tbody><tr>
         <td class="mcnImageCardBottomImageContent" align="left" valign="top" style="padding-top:0px; padding-right:0px; padding-bottom:0; padding-left:0px;">
-        
+
             <table style="width: 564px;" class="mcpreview-image-uploader" data-mc-id=""></table>
-        
+
         </td>
     </tr>
     <tr>
@@ -752,7 +752,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
                         </td>
                     </tr>
                 </tbody></table>
-<!--            
+<!--
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 -->
@@ -767,15 +767,15 @@ You can reset your password by following <a href="{{ route('reset.password.get',
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #222222;text-align: left;">
-                        
+
                             <div style="text-align: center;">
 <p style="text-align: left;color: #222222;"><strong>Practice Auction&nbsp;</strong></p>
 
@@ -788,7 +788,7 @@ You can reset your password by following <a href="{{ route('reset.password.get',
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
