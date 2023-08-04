@@ -9,6 +9,7 @@ use App\Models\AuctionProductImages;
 use App\Models\AuctionWinners;
 use App\Models\AutoBid;
 use App\Models\Bidlimit;
+use App\Models\winnerNames;
 use App\Models\Genetic;
 use App\Models\Product;
 use App\Models\Process;
@@ -1155,11 +1156,54 @@ class AuctionController extends Controller
         $auction = Auction::where('id', $auctionId)->first();
         $singleBids = AuctionProduct::where('auction_id', $auction->id)->doesnthave('singleBids')->get();
         $isEmpty = sizeof($singleBids);
-        $alProduct = AuctionProduct::where('auction_id', $auction->id)->whereIn('process' , ['Alchemy'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->with('products', 'latestBidPrice.user')->get();
+        $alProduct = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->with('products', 'latestBidPrice.user')->get();
         $natProduct = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'Deep Fermentation', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw("CAST(auction_products.rank AS unsigned) asc")->with('products', 'latestBidPrice.user')->get();
         $auction_products = $natProduct->merge($alProduct);
         $products = Product::with('region', 'village', 'governorate', 'reviews')->get();
-        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId', 'auction', 'isEmpty'));
+
+        //   $auction = Auction::where('id', $auctionId)->first();
+        $natAuctionProducts = collect();
+        $auctionProducts = collect();
+        if ($auction && $auction->is_hidden == 1) {
+           $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages' ,'winnerNames')->whereIn('process', ['Alchemy'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
+            $natAuctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages' , 'winnerNames')->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
+            $singleBids = AuctionProduct::doesnthave('singleBids')->get();
+            $results = $auctionProducts->map(function ($e) {
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+                $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+                $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+                $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                return $e;
+            });
+            $results1 = $natAuctionProducts->map(function ($e) {
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+
+                $e->openCheck = SingleBid::where('auction_product_id', $e->id)->first();
+                $e->openCheckautobid = AutoBid::where('auction_product_id', $e->id)->first();
+                $e->singleBidPricelatest = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                $e->latestSingleBid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+                $e->highestbid = SingleBid::where('auction_product_id', $e->id)
+                    ->orderBy('bid_amount', 'desc')
+                    ->first();
+                return $e;
+            });
+        }
+        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId', 'auction', 'isEmpty', 'natAuctionProducts', 'auctionProducts', 'auction', 'singleBids'));
     }
 
     public function prductBiddingDashboard()
@@ -1312,7 +1356,7 @@ class AuctionController extends Controller
                     ->first();
                 return $e;
             });
-            return view('customer.auction_pages.auction_winners', compact('natAuctionProducts','auctionProducts', 'auction', 'singleBids'));
+            return view('customer.auction_pages.auction_winners', compact('natAuctionProducts', 'auctionProducts', 'auction', 'singleBids'));
         } else {
             return redirect('auction');
         }
@@ -1750,5 +1794,24 @@ class AuctionController extends Controller
         return $time = $dateTimerArr['hour'] . ':' . $dateTimerArr['minute'];
         $auction->is_hidden_winners = 1;
         $auction->save();
+    }
+    public function updateComapnyName(Request $request)
+    {
+        $winnerExist =  winnerNames::where('auction_id', $request->auction_id)->where('auction_product_id', $request->product_id)->first();
+        if ($winnerExist) {
+
+            $winnerExist->auction_id = $request->auction_id;
+            $winnerExist->auction_product_id = $request->product_id;
+            $winnerExist->company = $request->companies;
+            $winnerExist->save();
+        } else {
+
+            $companyNames = new winnerNames();
+            $companyNames->auction_id = $request->auction_id;
+            $companyNames->auction_product_id = $request->product_id;
+            $companyNames->company = $request->companies;
+            $companyNames->save();
+        }
+        return redirect()->back();
     }
 }

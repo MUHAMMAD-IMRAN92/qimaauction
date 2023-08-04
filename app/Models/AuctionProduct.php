@@ -96,4 +96,8 @@ class AuctionProduct extends Model
     {
         return $this->hasOne(OpenCupping::class, 'product_id', 'product_id');
     }
+    public function winnerNames()
+    {
+        return $this->hasOne(winnerNames::class, 'auction_product_id', 'id');
+    }
 }
