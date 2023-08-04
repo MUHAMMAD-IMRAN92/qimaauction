@@ -15,9 +15,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>*|MC:SUBJECT|*</title>
+    <title>Best of Yemen Auction 2022</title>
 
     <style type="text/css">
+        .auction-time h2 {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+
+
+            color: #575555;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-feature-settings: 'kern' off;
+
+            color: #575555;
+        }
+
+        .date-country {
+            justify-content: center;
+            display: flex;
+            font-size: 30px;
+            align-items: center;
+            text-align: center;
+            color: #575555;
+            font-family: 'Montserrat';
+            flex-direction: column;
+        }
+
         p {
             margin: 10px 0;
             padding: 0;
@@ -155,7 +190,7 @@
 
         /*
  @tab Page
- @section Background Style
+ @--section Background Style
  @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
  */
         body,
@@ -166,7 +201,7 @@
 
         /*
  @tab Page
- @section Background Style
+ @--section Background Style
  @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
  */
         #bodyCell {
@@ -176,7 +211,7 @@
 
         /*
  @tab Page
- @section Email Border
+ @--section Email Border
  @tip Set the border for your email.
  */
         .templateContainer {
@@ -186,7 +221,7 @@
 
         /*
  @tab Page
- @section Heading 1
+ @--section Heading 1
  @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
  @style heading 1
  */
@@ -211,7 +246,7 @@
 
         /*
  @tab Page
- @section Heading 2
+ @--section Heading 2
  @tip Set the styling for all second-level headings in your emails.
  @style heading 2
  */
@@ -236,7 +271,7 @@
 
         /*
  @tab Page
- @section Heading 3
+ @--section Heading 3
  @tip Set the styling for all third-level headings in your emails.
  @style heading 3
  */
@@ -261,7 +296,7 @@
 
         /*
  @tab Page
- @section Heading 4
+ @--section Heading 4
  @tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
  @style heading 4
  */
@@ -286,7 +321,7 @@
 
         /*
  @tab Preheader
- @section Preheader Style
+ @--section Preheader Style
  @tip Set the background color and borders for your email's preheader area.
  */
         #templatePreheader {
@@ -312,7 +347,7 @@
 
         /*
  @tab Preheader
- @section Preheader Text
+ @--section Preheader Text
  @tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
  */
         #templatePreheader .mcnTextContent,
@@ -331,7 +366,7 @@
 
         /*
  @tab Preheader
- @section Preheader Link
+ @--section Preheader Link
  @tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
  */
         #templatePreheader .mcnTextContent a,
@@ -346,7 +381,7 @@
 
         /*
  @tab Header
- @section Header Style
+ @--section Header Style
  @tip Set the background color and borders for your email's header area.
  */
         #templateHeader {
@@ -372,7 +407,7 @@
 
         /*
  @tab Header
- @section Header Text
+ @--section Header Text
  @tip Set the styling for your email's header text. Choose a size and color that is easy to read.
  */
         #templateHeader .mcnTextContent,
@@ -391,7 +426,7 @@
 
         /*
  @tab Header
- @section Header Link
+ @--section Header Link
  @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
  */
         #templateHeader .mcnTextContent a,
@@ -406,7 +441,7 @@
 
         /*
  @tab Body
- @section Body Style
+ @--section Body Style
  @tip Set the background color and borders for your email's body area.
  */
         #templateBody {
@@ -432,7 +467,7 @@
 
         /*
  @tab Body
- @section Body Text
+ @--section Body Text
  @tip Set the styling for your email's body text. Choose a size and color that is easy to read.
  */
         #templateBody .mcnTextContent,
@@ -451,7 +486,7 @@
 
         /*
  @tab Body
- @section Body Link
+ @--section Body Link
  @tip Set the styling for your email's body links. Choose a color that helps them stand out from your text.
  */
         #templateBody .mcnTextContent a,
@@ -466,7 +501,7 @@
 
         /*
  @tab Footer
- @section Footer Style
+ @--section Footer Style
  @tip Set the background color and borders for your email's footer area.
  */
         #templateFooter {
@@ -492,7 +527,7 @@
 
         /*
  @tab Footer
- @section Footer Text
+ @--section Footer Text
  @tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
  */
         #templateFooter .mcnTextContent,
@@ -511,7 +546,7 @@
 
         /*
  @tab Footer
- @section Footer Link
+ @--section Footer Link
  @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
  */
         #templateFooter .mcnTextContent a,
@@ -679,7 +714,7 @@
 
             /*
  @tab Mobile Styles
- @section Heading 1
+ @--section Heading 1
  @tip Make the first-level headings larger in size for better readability on small screens.
  */
             h1 {
@@ -695,7 +730,7 @@
 
             /*
  @tab Mobile Styles
- @section Heading 2
+ @--section Heading 2
  @tip Make the second-level headings larger in size for better readability on small screens.
  */
             h2 {
@@ -711,7 +746,7 @@
 
             /*
  @tab Mobile Styles
- @section Heading 3
+ @--section Heading 3
  @tip Make the third-level headings larger in size for better readability on small screens.
  */
             h3 {
@@ -727,7 +762,7 @@
 
             /*
  @tab Mobile Styles
- @section Heading 4
+ @--section Heading 4
  @tip Make the fourth-level headings larger in size for better readability on small screens.
  */
             h4 {
@@ -743,7 +778,7 @@
 
             /*
  @tab Mobile Styles
- @section Boxed Text
+ @--section Boxed Text
  @tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
  */
             .mcnBoxedTextContentContainer .mcnTextContent,
@@ -760,7 +795,7 @@
 
             /*
  @tab Mobile Styles
- @section Preheader Visibility
+ @--section Preheader Visibility
  @tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
  */
             #templatePreheader {
@@ -774,7 +809,7 @@
 
             /*
  @tab Mobile Styles
- @section Preheader Text
+ @--section Preheader Text
  @tip Make the preheader text larger in size for better readability on small screens.
  */
             #templatePreheader .mcnTextContent,
@@ -791,7 +826,7 @@
 
             /*
  @tab Mobile Styles
- @section Header Text
+ @--section Header Text
  @tip Make the header text larger in size for better readability on small screens.
  */
             #templateHeader .mcnTextContent,
@@ -808,7 +843,7 @@
 
             /*
  @tab Mobile Styles
- @section Body Text
+ @--section Body Text
  @tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
  */
             #templateBody .mcnTextContent,
@@ -825,7 +860,7 @@
 
             /*
  @tab Mobile Styles
- @section Footer Text
+ @--section Footer Text
  @tip Make the footer content text larger in size for better readability on small screens.
  */
             #templateFooter .mcnTextContent,
@@ -843,7 +878,8 @@
 <body>
     <!--*|IF:MC_PREVIEW_TEXT|*-->
     <!--[if !gte mso 9]><!----><span class="mcnPreviewText"
-        style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+        style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Login
+        information</span><!--<![endif]-->
     <!--*|END:IF|*-->
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
@@ -919,8 +955,8 @@
 
                                                                 <img align="center" alt=""
                                                                     src="https://mcusercontent.com/a170449c48fad40af8005caec/images/0146908d-7745-cff4-40d7-5d21bacc38a6.png"
-                                                                    width="260.52"
-                                                                    style="max-width:501px; padding-bottom: 0; display: inline !important; vertical-align: bottom;"
+                                                                    width="496.32"
+                                                                    style="max-width:945px; padding-bottom: 0; display: inline !important; vertical-align: bottom;"
                                                                     class="mcnImage">
 
 
@@ -958,27 +994,22 @@
                                                             <td valign="top" class="mcnTextContent"
                                                                 style="padding: 0px 18px 9px;color: #222222;text-align: left;">
 
-                                                                <div>
-                                                                    <p style="color: #222222;text-align: left;">Dear
+                                                                <div style="text-align: center;">
+                                                                    <p style="text-align: left;color: #222222;">Dear
                                                                         {{ $customer['name'] }}<br>
-                                                                        &nbsp;</p>
-
-                                                                    <p style="color: #222222;text-align: left;">Thank
-                                                                        you for registering for Best of Yemen 2023:
-                                                                        Cultivating Innovation auction. Qima Coffee and
-                                                                        ACE look forward to hosting you.&nbsp;</p>
-
-                                                                    <p style="color: #222222;text-align: left;"><br>
+                                                                        <br>
+                                                                        Thank you for registering for Best of Yemen
+                                                                        2023: Cultivating Innovation auction. Qima
+                                                                        Coffee and ACE look forward to hosting
+                                                                        you.&nbsp;<br>
+                                                                        <br>
                                                                         Your registration details are&nbsp;as
                                                                         follows:&nbsp;<br>
                                                                         <br>
-                                                                        Username: <strong>
-                                                                            {{ $customer['email'] }}</strong><br>
-                                                                        Password:
-                                                                        <strong>{{ $password }}</strong><br>
+                                                                        <strong>Username: {{ $customer['email'] }}<br>
+                                                                            Password: {{ $password }}</strong><br>
                                                                         <br>
-                                                                        You can reset your password by following this
-                                                                        link. <a
+                                                                        You can reset your password by following <a
                                                                             href="{{ route('reset.password.get', $token) }}">this
                                                                             link.</a>
                                                                     </p>
@@ -1046,19 +1077,15 @@
                                                             <td valign="top" class="mcnTextContent"
                                                                 style="padding: 0px 18px 9px;color: #222222;text-align: left;">
 
-                                                                <div>
-                                                                    <p style="color: #222222;text-align: left;">
+                                                                <div style="text-align: center;">
+                                                                    <p style="text-align: left;color: #222222;">
                                                                         <strong>Auction Platform Tutorial&nbsp;</strong>
                                                                     </p>
 
-                                                                    <p style="color: #222222;text-align: left;">We've
-                                                                        designed the platform to be simple and user
-                                                                        intuitive. But to make it clearer, we've put
-                                                                        together a&nbsp;<a
-                                                                            href="https://vimeo.com/851012948"
+                                                                    <p style="color: #222222;text-align: left;"> We've designed the platform to be simple and user intuitive. But to make it clearer, we've put together a <a
+                                                                            href="https://youtu.be/6B8xRAPZiss"
                                                                             target="_blank">short instructional
-                                                                            video</a>&nbsp;to guide you through the
-                                                                        process of using the auction.</p>
+                                                                            video</a> to guide you through the process of using the auction.&nbsp;</p>
                                                                 </div>
 
                                                             </td>
@@ -1077,6 +1104,34 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                {{-- <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
+    <tbody class="mcnImageCardBlockOuter">
+        <tr>
+            <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+<table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnImageCardBottomContent" width="100%" style="background-color: #404040;">
+    <tbody><tr>
+        <td class="mcnImageCardBottomImageContent" align="left" valign="top" style="padding-top:0px; padding-right:0px; padding-bottom:0; padding-left:0px;">
+
+            <table style="width: 564px;" class="mcpreview-image-uploader" data-mc-id=""></table>
+
+        </td>
+    </tr>
+    <tr>
+        <td class="mcnTextContent" valign="top" style="padding: 9px 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;" width="546">
+            Input caption text here. Use the block's Settings tab to change the caption position and set other styles.
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+
+
+            </td>
+        </tr>
+    </tbody>
+</table> --}}
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%"
                                     class="mcnDividerBlock" style="min-width:100%;">
                                     <tbody class="mcnDividerBlockOuter">
@@ -1096,7 +1151,7 @@
                                                 <!--
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
--->
+                            -->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1107,13 +1162,13 @@
                                         <tr>
                                             <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
                                                 <!--[if mso]>
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-    <tr>
-    <![endif]-->
+                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                    <tr>
+                    <![endif]-->
 
                                                 <!--[if mso]>
-    <td valign="top" width="600" style="width:600px;">
-    <![endif]-->
+                    <td valign="top" width="600" style="width:600px;">
+                    <![endif]-->
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0"
                                                     style="max-width:100%; min-width:100%;" width="100%"
                                                     class="mcnTextContentContainer">
@@ -1123,20 +1178,13 @@
                                                             <td valign="top" class="mcnTextContent"
                                                                 style="padding: 0px 18px 9px;color: #222222;text-align: left;">
 
-                                                                <div>
-                                                                    <p style="color: #222222;text-align: left;">
-                                                                        <strong>Practice Auction&nbsp;</strong></p>
+                                                                <div style="text-align: center;">
+                                                                    <p style="text-align: left;color: #222222;">
+                                                                        <strong>Practice Auction&nbsp;</strong>
+                                                                    </p>
 
-                                                                    <p style="color: #222222;text-align: left;">Once
-                                                                        you've signed in using your credentials, you can
-                                                                        follow the link below to&nbsp;practice bidding
-                                                                        on&nbsp;the auction platform. The practise
-                                                                        auction will be available until 2:00PM BST on 7
-                                                                        August. Please note, when the auction goes live
-                                                                        on&nbsp;8 August at 10:00AM BST), this link will
-                                                                        take you to
-                                                                        the&nbsp;actual&nbsp;auction.&nbsp;<br>
-                                                                        &nbsp;</p>
+                                                                    <p style="color: #222222;text-align: left;">Once you've signed in using your credentials, you can follow the link below to practice bidding on the auction platform. The practise auction will be available until 2:00PM BST on 7 August. Please note, when the auction goes live on 8 August at 10:00AM BST), this link will take you to the actual auction.&nbsp;
+                                                                    </p>
                                                                 </div>
 
                                                             </td>
@@ -1144,13 +1192,13 @@
                                                     </tbody>
                                                 </table>
                                                 <!--[if mso]>
-    </td>
-    <![endif]-->
+                </td>
+                <![endif]-->
 
                                                 <!--[if mso]>
-    </tr>
-    </table>
-    <![endif]-->
+                </tr>
+                </table>
+                <![endif]-->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1170,8 +1218,8 @@
                                                                 class="mcnButtonContent"
                                                                 style="font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 18px; padding: 18px;">
                                                                 <a class="mcnButton "
-                                                                    title="Best of Yemen 2023 Auction"
-                                                                    href="https://bestofyemenauction.com/"
+                                                                    title="Best of Yemen 2022 Auction"
+                                                                    href="{{ route('customer.login') }}"
                                                                     target="_blank"
                                                                     style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Best
                                                                     of Yemen 2022 Auction</a>
@@ -1183,91 +1231,35 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                                    class="mcnDividerBlock" style="min-width:100%;">
-                                    <tbody class="mcnDividerBlockOuter">
-                                        <tr>
-                                            <td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
-                                                <table class="mcnDividerContent" border="0" cellpadding="0"
-                                                    cellspacing="0" width="100%"
-                                                    style="min-width: 100%;border-top: 2px solid #CCB465;">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span></span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <!--
-                <td class="mcnDividerBlockInner" style="padding: 18px;">
-                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
--->
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                                    class="mcnTextBlock" style="min-width:100%;">
-                                    <tbody class="mcnTextBlockOuter">
-                                        <tr>
-                                            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-                                                <!--[if mso]>
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-    <tr>
-    <![endif]-->
-
-                                                <!--[if mso]>
-    <td valign="top" width="600" style="width:600px;">
-    <![endif]-->
-                                                <table align="left" border="0" cellpadding="0" cellspacing="0"
-                                                    style="max-width:100%; min-width:100%;" width="100%"
-                                                    class="mcnTextContentContainer">
-                                                    <tbody>
-                                                        <tr>
-
-                                                            <td valign="top" class="mcnTextContent"
-                                                                style="padding: 0px 18px 9px;color: #222222;text-align: center;">
-
-                                                                <div>
-                                                                    <p style="text-align: center;color: #222222;"><span
-                                                                            style="font-size:15px"><strong>BEST OF
-                                                                                YEMEN 2023 AUGUST 8TH</strong><br>
-                                                                            <br>
-                                                                            10:00AM BST&nbsp;LONDON, UNITED KINGDOM<br>
-                                                                            2:00AM PDT&nbsp;LA, USA<br>
-                                                                            5:00AM EDT&nbsp;NY, USA<br>
-                                                                            11:00AM CEST AMSTERDAM, NETHERLANDS<br>
-                                                                            12:00PM AST&nbsp;RIYADH, SAUDI ARABIA<br>
-                                                                            1:00PM GST DUBAI, UAE<br>
-                                                                            5:00PM HKT HONG KONG, HONG KONG<br>
-                                                                            6:00PM JST&nbsp; TOKYO, JAPAN<br>
-                                                                            6:00PM KST SEOUL, SOUTH KOREA<br>
-                                                                            7:00PM AEST SYDNEY, AUSTRALIA</span></p>
-                                                                </div>
-
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <!--[if mso]>
-    </td>
-    <![endif]-->
-
-                                                <!--[if mso]>
-    </tr>
-    </table>
-    <![endif]-->
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </td>
                         </tr>
                         <tr>
                             <td valign="top" id="templateFooter"></td>
                         </tr>
                     </table>
+                    <hr style="color:#ccb465">
+                    <div class="row row-cols-1 row-cols-md-3 g-4 date-country">
+                        <div class="auction-time">
+                            <h2>best of yemen 2023 <br>
+                                AUGUST 8TH</h2>
+                        </div>
+                        <div class="col card-display-3">
+                            <div class="card bg-none text-color h-100" style="text-transform:uppercase;">
+                                <p class="m-0 text-start">10:00am BST &nbsp;- London, United Kingdom</p>
+                                <p class="m-0 text-start">2:00am PDT &nbsp;- LA, USA</p>
+                                <p class="m-0">5:00am EDT &nbsp;&nbsp;- NY, USA</p>
+                                <p class="m-0">11:00am CEST - Amsterdam, Netherlands</p>
+                                <p class="m-0">12:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
+                                <p class="m-0">1:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
+                                <p class="m-0">5:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
+                                <p class="m-0">6:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
+                                <p class="m-0">6:00pm KST &nbsp;- Seoul, South Korea</p>
+                                <p class="m-0">7:00pm AEST - Sydney, Australia</p>
+                            </div>
+                        </div>
+
+
+                    </div>
                     <!--[if (gte mso 9)|(IE)]>
                         </td>
                         </tr>
@@ -1278,7 +1270,7 @@
             </tr>
         </table>
     </center>
-    <script type="text/javascript" src="/gZsRaV/7/U/aXzopv67opkW/w7iphVSL2kpu/YEZIU28/EAdeDR/BpJgcB"></script>
+    <script type="text/javascript" src="/yiO1d9OPKhdQ/0zdvr4/BSoeNA/Q73ircpS3Yub/ahssI1QC/FDQ7/ARspJyE"></script>
 </body>
 
 </html>
