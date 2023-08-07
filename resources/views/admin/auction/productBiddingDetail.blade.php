@@ -830,6 +830,7 @@
                                         "auctionstatus": auctionstatus
                                     });
                                     $('#publish_auction_winners').css('display', 'block');
+                                    window.location.reload();
                                 },
                                 error: function(error) {
                                     console.log(error)
@@ -870,7 +871,7 @@
                                     socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
                                         "auctionstatus": auctionstatus
                                     });
-
+                                    window.location.reload();
                                 },
                                 error: function(error) {
                                     console.log(error)
@@ -912,6 +913,7 @@
                                         "auctionstatusForce": 1
                                     });
                                     $('#publish_auction_winners').css('display', 'block');
+                                    window.location.reload();
                                 },
                                 error: function(error) {
                                     console.log(error)
