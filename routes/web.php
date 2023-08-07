@@ -314,6 +314,6 @@ Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::clas
 Route::get('/publish_winner', [App\Http\Controllers\AuctionController::class, 'publishWinners'])->name('publish-winners');
 Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'updateTimer'])->name('updateTimer');
 Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class, 'updateComapnyName']);
-Route::post('/servertime', function () {
+Route::get('/servertime', function () {
     return \Carbon\Carbon::now();
 });
