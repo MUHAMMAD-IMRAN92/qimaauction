@@ -3755,8 +3755,8 @@
     });
     socket.on('{{env('SOCKET_PREFIX' , '')}}add_auction_forced_status', function(data) {
         if (data.auctionstatusForce == 1) {
-            alert('imran')
-                // window.location = window.location.href + "?ended=1";
+            // alert('imran')
+                window.location = window.location.href + "?ended=1";
             }
     });
     socket.on('{{env('SOCKET_PREFIX' , '')}}add_timer_reset', function(data) {

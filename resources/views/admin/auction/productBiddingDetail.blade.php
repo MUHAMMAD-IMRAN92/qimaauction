@@ -823,6 +823,7 @@
                                     if (auctionstatus == 1) {
                                         $(".endauction").hide();
                                         $(".resetauction").hide();
+                                        $(".endauctionForced").hide();
                                     }
                                     socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
                                         "auctionstatus": auctionstatus
@@ -863,6 +864,7 @@
                                     if (auctionstatus == 1) {
                                         $(".endauction").hide();
                                         $(".resetauction").hide();
+                                        $(".endauctionForced").hide();
                                     }
                                     socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_forced_status', {
                                         "auctionstatusForce": 1
