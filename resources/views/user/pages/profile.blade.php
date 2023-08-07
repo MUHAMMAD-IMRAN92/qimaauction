@@ -47,9 +47,9 @@
                                     <form class="form" action="{{ url('/userprofile/update') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                     <div class="media mb-2">
-                                        <a class="mr-2 my-25" href="#">
+                                        {{-- <a class="mr-2 my-25" href="#">
                                             <img src="@if(Auth::user()->user_image) {{ url('/storage/app/public/profile_photo/' . $userData->user_image); }} @endif" alt="User Image" id="user-image" height="150" width="150"> <br>
-                                        </a>
+                                        </a> --}}
                                         <div class="media-body mt-3">
                                             <h4 class="media-heading">{{$userData->name}}</h4>
                                             <div class="col-12 d-flex mt-1 px-0">
@@ -68,20 +68,20 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label>Name</label>
-                                                        <input type="text" class="form-control" placeholder="Name" name="name" value={{$userData->name}} required data-validation-required-message="This name field is required">
+                                                        <input type="text" class="form-control" placeholder="Name" disabled name="name" value={{$userData->name}} required data-validation-required-message="This name field is required">
                                                         @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
 
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Company</label>
-                                                    <input type="text" class="form-control" name="company" value={{$userData->company}} placeholder="Company name">
+                                                    <input type="text" class="form-control" name="company" value={{$userData->company}} disabled placeholder="Company name">
                                                     @error('company') <span class="text-danger error">{{ $message }}</span>@enderror
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Phone Number</label>
-                                                    <input type="number" class="form-control" name="phone_no"  value={{$userData->phone_no}} placeholder="">
+                                                    <input type="number" class="form-control" name="phone_no"  value={{$userData->phone_no}} disabled placeholder="">
                                                     @error('phone_no') <span class="text-danger error">{{ $message }}</span>@enderror
 
                                                 </div>

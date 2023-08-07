@@ -131,9 +131,7 @@
 
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                      </span></div><span><img class="round"
-                                        src="{{asset('public/images/avatar.png')}}"
-                                        alt="avatar" height="40" width="40"></span>
+                                      </span></div><span></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
