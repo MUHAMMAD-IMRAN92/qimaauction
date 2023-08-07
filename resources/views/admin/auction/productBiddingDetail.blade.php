@@ -839,7 +839,48 @@
                         }
                     })
                 });
+                $(".publishWinner").on("click", function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr('data-id');
+                    var auctionstatus = 1;
+                    swal({
+                        title: `Are You sure to Publish Winners ?`,
+                        type: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((result) => {
+                        if (result) {
+                            // alert('imran');
+                            $.ajax({
+                                url: "{{ route('publish-winners') }}",
+                                async: false,
+                                method: 'GET',
+                                data: {
+                                    id: id,
+                                    _token: "{{ csrf_token() }}",
+                                },
+                                success: function(response) {
+                                    swal('Auction is Ended');
+                                    var auctionstatus = response;
+                                    if (auctionstatus == 1) {
+                                        $(".endauction").hide();
+                                        $(".resetauction").hide();
+                                    }
+                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
+                                        "auctionstatus": auctionstatus
+                                    });
 
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                }
+                            });
+
+                        } else {
+                            swal('Your Auction is safe');
+                        }
+                    })
+                });
                 $(".endauctionForced").on("click", function(e) {
                     e.preventDefault();
                     var id = $(this).attr('data-id');
@@ -881,49 +922,7 @@
                     })
                 });
 
-                $(".publishWinner").on("click", function(e) {
-                    e.preventDefault();
-                    var id = $(this).attr('data-id');
-                    var auctionstatus = 1;
-                    swal({
-                        title: `Are You sure to Publish Winners ?`,
-                        type: "error",
-                        buttons: true,
-                        dangerMode: true,
-                    }).then((result) => {
-                        if (result) {
-                            // alert('imran');
-                            $.ajax({
-                                url: "{{ route('publish-winners') }}",
-                                async: false,
-                                method: 'GET',
-                                data: {
-                                    id: id,
-                                    _token: "{{ csrf_token() }}",
-                                },
-                                success: function(response) {
-                                    swal('Auction is Ended');
-                                    var auctionstatus = response;
-                                    if (auctionstatus == 1) {
-                                        $(".endauction").hide();
-                                        $(".resetauction").hide();
-                                    }
-                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_status', {
-                                        "auctionstatus": auctionstatus
-                                    });
 
-
-                                },
-                                error: function(error) {
-                                    console.log(error)
-                                }
-                            });
-
-                        } else {
-                            swal('Your Auction is safe');
-                        }
-                    })
-                });
                 $(".resetauction").on("click", function(e) {
                     e.preventDefault();
                     var id = $(this).attr('data-id');
