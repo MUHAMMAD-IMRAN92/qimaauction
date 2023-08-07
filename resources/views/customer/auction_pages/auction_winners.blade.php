@@ -1480,8 +1480,7 @@
                                                 class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 <span
                                                     class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                <a
-                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+
                                             </td>
                                         @endforeach
                                     @else
@@ -1549,14 +1548,19 @@
                                             <td class="td-res-pl">SL28</td>
                                         @endif --}}
                                     @endforeach
-                                    @if (isset($auctionProduct->highestbid))
+                                    @if ($auctionProduct->winnerNames)
+                                        <td style="width: 500px !important"
+                                            class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
+                                            <span
+                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
+
+                                    @elseif (isset($auctionProduct->highestbid))
                                         @foreach ($auctionProduct->highestbid->user as $userData)
                                             <td style="width: 500px !important"
                                                 class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                 <span
                                                     class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                <a
-                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+
                                             </td>
                                         @endforeach
                                     @else
