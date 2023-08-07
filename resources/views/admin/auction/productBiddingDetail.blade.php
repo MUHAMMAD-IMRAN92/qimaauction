@@ -478,12 +478,13 @@
                                                         {{-- @if ($products->genetic_id == '1') --}}
                                                         <td class="td-res-pl">{{ $auctionProduct->genetic }}</td>
                                                         {{-- @elseif ($products->genetic_id == '2')
-                                                    <td class="td-res-pl">Bourbon</td>
-                                                @else
-                                                    <td class="td-res-pl">SL28</td>
-                                                @endif --}}
+                                                            <td class="td-res-pl">Bourbon</td>
+                                                        @else
+                                                            <td class="td-res-pl">SL28</td>
+                                                        @endif --}}
                                                     @endforeach
                                                     @if ($auctionProduct->winnerNames)
+
                                                         <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
@@ -570,11 +571,11 @@
                                                     <td class="td-res-pl">SL28</td>
                                                 @endif --}}
                                                     @endforeach
-                                                    @if ($auctionProduct->winner_names)
+                                                    @if ($auctionProduct->winnerNames)
                                                         <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
-                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winner_names->company ?? '---' }}</span>
+                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
 
                                                         </td>
                                                     @elseif (isset($auctionProduct->highestbid))
@@ -593,7 +594,7 @@
                                                         </td>
                                                     @endif
                                                     <td class=""> <i class="fa fa-pencil editIcon"
-                                                            data-id="{{ $auctionProduct->id }}"></i></td>
+                                                        data-id="{{ $auctionProduct->id }}"></i></td>
                                                 </tr>
                                                 {{-- <tr class="hide-table-padding bid-row">
                                             <td colspan="13">

@@ -1805,17 +1805,18 @@ class AuctionController extends Controller
     }
     public function updateComapnyName(Request $request)
     {
+        // return $request->all();
         $winnerExist =  winnerNames::where('auction_id', $request->auction_id)->where('auction_product_id', $request->product_id)->first();
         if ($winnerExist) {
 
-            $winnerExist->auction_id = $request->auction_id;
+            $winnerExist->auction_id = 4;
             $winnerExist->auction_product_id = $request->product_id;
             $winnerExist->company = $request->companies;
             $winnerExist->save();
         } else {
 
             $companyNames = new winnerNames();
-            $companyNames->auction_id = $request->auction_id;
+            $companyNames->auction_id = 4;
             $companyNames->auction_product_id = $request->product_id;
             $companyNames->company = $request->companies;
             $companyNames->save();
