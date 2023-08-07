@@ -141,6 +141,10 @@
                             @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
                             id="endauction">End Auction</a>
 
+                            <a class="btn btn-primary waves-effect waves-light endauctionForced"
+                            @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
+                            id="endauction">End Auction Forcefully</a>
+
                         <a class="btn btn-primary waves-effect waves-light @if (isset($auction) && $auction->is_hidden == 0) publishWinner @endif"
                             data-id="{{ $auction->id }}" id="publish_auction_winners">Publish
                             Winners</a>
@@ -834,6 +838,47 @@
                         }
                     })
                 });
+
+                $(".endauctionForced").on("click", function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr('data-id');
+                    swal({
+                        title: `Are You sure to End Auction ?`,
+                        type: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((result) => {
+                        if (result) {
+                            $.ajax({
+                                url: "{{ route('auctionEnd') }}",
+                                async: false,
+                                method: 'POST',
+                                data: {
+                                    id: id,
+                                    _token: "{{ csrf_token() }}",
+                                },
+                                success: function(response) {
+                                    swal('Auction is Ended');
+                                    var auctionstatus = response;
+                                    if (auctionstatus == 1) {
+                                        $(".endauction").hide();
+                                        $(".resetauction").hide();
+                                    }
+                                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_auction_forced_status', {
+                                        "auctionstatusForce": 1
+                                    });
+                                    $('#publish_auction_winners').css('display', 'block');
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                }
+                            });
+                        } else {
+                            swal('Your Auction is safe');
+                        }
+                    })
+                });
+
                 $(".publishWinner").on("click", function(e) {
                     e.preventDefault();
                     var id = $(this).attr('data-id');
