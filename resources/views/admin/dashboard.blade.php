@@ -1287,7 +1287,7 @@
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = '00:00:00:00';
                 document.getElementById('join-the-auction').style.display = "block";
-                // document.getElementById('register-for-auction').style.display = "none";
+                document.getElementById('register-for-auction').style.display = "none";
             }
         }, 1000);
     </script>
