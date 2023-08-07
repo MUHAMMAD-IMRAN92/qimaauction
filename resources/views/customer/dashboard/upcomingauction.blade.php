@@ -520,7 +520,7 @@
                                                             <div class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}">
                                                                 <p>Current autobid is {{$auctionProduct->latestAutoBidPrice->bid_amount}} <a href="javascript:void(0)" class="removeAutoBID" data-id="{{ $auctionProduct->id }}">Remove</a></p>
                                                             </div>
-                                                        {{-- @else 
+                                                        {{-- @else
                                                         <div  class="errormsgautobid errorMsgAutoBid{{$auctionProduct->id}}"><p>You are outbidated</p></div> --}}
                                                         @endif
                                                     </form>
@@ -852,8 +852,8 @@
                     var outbid          =   response.outAutobid;
                     var userID          =   response.autoBidUserID;
                     $('.alertMessage'+id).html('<p>Your $'+ bidPrice +'/lb Bid is confirmned.</p>');
-                   
-                    socket.emit('add_bid_updates', {
+
+                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
                         "increment":increment,
@@ -913,7 +913,7 @@
                         $(".singlebidClass"+id ).css("display", "none");
                         $(".autobidClass"+id ).css("display", "none");
                         // var bidPrice    =   response.bid_amount;
-                        socket.emit('auto_bid_updates', {
+                        socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                         "autobidamount": autobidamount,
                                         'id' : id,
                                         'user_id':response.user_id,
@@ -960,7 +960,7 @@
                             $(".singlebidClass"+id ).css("display", "block");
                             $(".autobidClass"+id ).css("display", "block");
                         }
-                        socket.emit('auto_bid_updates', {
+                        socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                         "autobidamount": 0;
                                  });
                     },
@@ -978,13 +978,13 @@
         })
 </script>
 <script>
-    socket.on('auto_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', function(data) {
         // if(data.user_id == {{Auth::user()->id}})
         // {
             $('.errorMsgAutoBid'+ data.id).html('<p>Current autobid is $'+ data.autobidamount +' /lb.{<a href="javascript:void(0)" class="removeAutoBID" data-id='+data.id+'>Remove</a>}</p>');
         // }
     });
-    socket.on('add_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', function(data) {
         if(data.outbidresponse == 0 && data.userID == {{Auth::user()->id}})
         {
             $('.errorMsgAutoBid'+data.bidID).html('');

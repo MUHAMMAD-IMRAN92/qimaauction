@@ -258,7 +258,7 @@ var other_check=0;
                         $('.show-bid-confirm').show();
                         $('.liabiltysec').hide();
                         var offersdata=response.groupbid;
-                            socket.emit('add_groupbid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', {
                              "offersdata": offersdata,
                             //  "adminofferData":adminofferData,
 
@@ -345,7 +345,7 @@ var other_check=0;
                                 "changecolor");
                             $(".liabilitybidcollapse" + bidID).addClass(
                                 "changecolor");
-                            socket.emit('auto_bid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                 "autobidamount": userbidAmount,
                                 "latestAutoBidId": latestAutoBidId,
                                 'id': id,
@@ -411,7 +411,7 @@ var other_check=0;
                         }
                         var offersdata  = response.groupbid;
                         var adminofferData = response.adminOffers;
-                            socket.emit('add_groupbid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
                         });
@@ -578,7 +578,7 @@ var other_check=0;
                                 "changecolor");
                             $(".liabilitybidcollapse" + bidID).addClass(
                                 "changecolor");
-                            socket.emit('auto_bid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                 "autobidamount": userbidAmount,
                                 "latestAutoBidId": latestAutoBidId,
                                 'id': id,
@@ -666,7 +666,7 @@ var other_check=0;
                             $('.liabiltysec').hide();
                             $('.confirmgroupbidbutton').prop('disabled', false);
                         }
-                            socket.emit('add_groupbid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', {
                              "offersdata": offersdata,
                              "adminofferData":adminofferData,
                         });

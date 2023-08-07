@@ -3038,7 +3038,7 @@
                     //     $('.alertMessage' + id).html('<p>Your $' + bidPrice +
                     //         '/lb Bid is confirmed.</p>');
                     // }
-                    socket.emit('add_bid_updates', {
+                    socket.emit('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', {
                         "singleBidammounttesting": bidPrice,
                         "bidID": bidID,
                         "increment": increment,
@@ -3154,7 +3154,7 @@
                                 "changecolor");
                             $(".liabilitybidcollapse" + bidID).addClass(
                                 "changecolor");
-                            socket.emit('auto_bid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', {
                                 "autobidamount": autobidamount,
                                 "latestAutoBidId": latestAutoBidId,
                                 'id': id,
@@ -3238,7 +3238,7 @@
                                     $(".bidcollapse" + id).addClass("changecolor");
                                 }
                             }
-                            socket.emit('auto_bid_delete', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}auto_bid_delete', {
                                 "autobidamount": 0,
                                 "auction_product_id": auction_product_id,
                             });
@@ -3258,7 +3258,7 @@
 <script>
     var total = 0;
     var interval;
-    socket.on('auto_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_updates', function(data) {
         console.log(data);
         if (data.groupPaddleNo == null) {
             $(".paddleno" + data.bidID).html(data.paddleNo);
@@ -3426,7 +3426,7 @@
         var rounded = Math.pow(10, digits);
         return (Math.round(input * rounded) / rounded).toFixed(digits);
     }
-    socket.on('auto_bid_delete', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_delete', function(data) {
         $(".alertMessage" + data.bidID).html('');
         $('.errorMsgAutoBid' + data.auction_product_id).html('');
         $(".autobidamount" + data.auction_product_id).removeClass("mb-2");
@@ -3434,7 +3434,7 @@
         $(".totalliability" + data.auction_product_id).html('$' + total.toLocaleString('en-US'));
         $(".AutoSingleBidClick" + data.auction_product_id).css("display", "none");
     });
-    socket.on('auto_bid_update_user_amount', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}auto_bid_update_user_amount', function(data) {
         $('.errorMsgAutoBid' + data.id).html('');
         $('.errorMsgAutoBid' + data.id + data.id).html('');
         if (data.user_id == {{ Auth::user()->id }}) {
@@ -3446,7 +3446,7 @@
                 data.id + '>Remove</a>}</p>');
         }
     });
-    socket.on('add_groupbid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', function(data) {
         console.log('reset timer add_groupbid_updates');
         var my = data.offersdata;
         var lotid = $('.lotproductid').html();
@@ -3577,7 +3577,7 @@
             $('#other-offers').empty();
         }
     });
-    socket.on('add_bid_updates', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_bid_updates', function(data) {
         // alert('here');
         if (data.groupusers != undefined) {
             var i;
@@ -3737,7 +3737,7 @@
 
     });
     var endAuctionVar = 0;
-    socket.on('add_auction_status', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_auction_status', function(data) {
         if (data.auctionstatus == 1) {
             var sec = $('.seconds').html();
             var min = $('.minutes').html();
@@ -3753,7 +3753,7 @@
             }
         }
     });
-    socket.on('add_timer_reset', function(data) {
+    socket.on('{{env('SOCKET_PREFIX' , '')}}add_timer_reset', function(data) {
         if (data.timerreset == 1) {
             $('.singlebidbtn').attr("disabled", false);
             $('.autobtnclick').attr("disabled", false);
@@ -3770,7 +3770,7 @@
         }
     });
 
-    // socket.on('end_of_auction_timer', function(data) {
+    // socket.on('{{env('SOCKET_PREFIX' , '')}}end_of_auction_timer', function(data) {
 
     //     $('.autobtnclick').attr("disabled", true);
     //     $('.singlebtnclick').attr("disabled", true);
@@ -3874,7 +3874,7 @@
 
         window.interval = setInterval(function() {
             // alert('here');
-            socket.on('end_of_auction_timer', function(data) {
+            socket.on('{{env('SOCKET_PREFIX' , '')}}end_of_auction_timer', function(data) {
                 if (data.timer == 1) {
                     // console.log('this end_of_auction_timer')
                     $('.autobtnclick').attr("disabled", true);
@@ -3923,7 +3923,7 @@
 
                 $('.seconds').html('00');
                 // console.log('else of timer')
-                socket.emit('end_of_auction_timer', {
+                socket.emit('{{env('SOCKET_PREFIX' , '')}}end_of_auction_timer', {
                     "timer": 1,
                 });
             }
@@ -3989,7 +3989,7 @@
 
                         var offersdata = response.offersdata;
 
-                        socket.emit('add_groupbid_updates', {
+                        socket.emit('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', {
                             "offersdata": offersdata,
                         });
                     },

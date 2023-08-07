@@ -44,7 +44,7 @@ function doSomething(offer_id) {
                 success: function(response) {
                             var my=response;
                             var offersdata=response.offersdata
-                            socket.emit('add_groupbid_updates', {
+                            socket.emit('{{env('SOCKET_PREFIX' , '')}}add_groupbid_updates', {
                              "offersdata": offersdata,
                             //  "adminofferData":adminofferData,
 

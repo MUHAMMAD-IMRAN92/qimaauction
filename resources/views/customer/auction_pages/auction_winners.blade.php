@@ -1678,7 +1678,7 @@
         var socket = io('<?= env('SOCKETS') ?>');
         //OpenSidebar
         $('.name-anchors').css('display', 'none');
-        socket.on('add_auction_status', function(data) {
+        socket.on('{{env('SOCKET_PREFIX' , '')}}add_auction_status', function(data) {
             if (data.auctionstatus == 1) {
                 // window.location = window.location.href + "?ended=1";
                 $('.name-anchors').css('display', 'block');
@@ -1686,7 +1686,7 @@
             }
         });
 
-        // socket.on('publish_winner', function(data) {
+        // socket.on('{{env('SOCKET_PREFIX' , '')}}publish_winner', function(data) {
         //     // alert(data);
         //     // console.log(data);
         //     console.log('imran');
