@@ -1319,7 +1319,27 @@
     #mySidebar {
         background: rgba(239, 235, 229, 1)
     }
+    .newfooter-bg {
+        background: #EFEBE5;
+    }
+    .footer-qima {
+        padding: 40px;
+    }
 
+    .footer-qima p a {
+        text-decoration: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-feature-settings: 'kern' off;
+        color: #9F9B9B;
+    }
     /* hamza starts ends */
 </style>
 
@@ -1648,16 +1668,17 @@
                     </div>
                 </div>
     </section>
-    <section class="footer">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 pb-2 text-center section-4-img">
-                    <img src="https://bestofyemenauction.com/public/images/LOGO_0003_Vector-Smart-Object 1.png"
-                        alt="">
-                </div>
-            </div>
+    <div class="container-fluid newfooter-bg">
+        <div class="footer-qima">
+            <hr class="hr">
+            <p> <a href="{{ url('/auction/results') }}" target="_blank"  class="white-anchor"> best of yemen 2022 results</a></p>
+            <p><a href="https://www.qimacoffee.com" target="_blank" >qima coffee</a> </p>
+            <p><a target="_blank"  href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                    coffee excellence</a></p>
+            <p><a target="_blank"  href="https://www.qimafoundation.org/">qima foundation</a></p>
+
         </div>
-    </section>
+    </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
