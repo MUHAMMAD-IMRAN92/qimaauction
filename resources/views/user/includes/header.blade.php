@@ -102,7 +102,7 @@
             <div class="navbar-container content">
 
                 <div class="navbar-collapse" id="navbar-mobile">
-                    <h3> Best Of Yemen Coffee 2023</h3>
+                    <h3> Best Of Yemen Coffee</h3>
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a
