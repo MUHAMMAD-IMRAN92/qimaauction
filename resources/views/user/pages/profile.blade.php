@@ -52,12 +52,12 @@
                                         </a> --}}
                                         <div class="media-body mt-3">
                                             <h4 class="media-heading">{{$userData->name}}</h4>
-                                            <div class="col-12 d-flex mt-1 px-0">
+                                            {{-- <div class="col-12 d-flex mt-1 px-0">
                                                 <a href="#" class="btn btn-primary d-none d-sm-block mr-75" onclick="document.getElementById('profile_photo').click()">Change</a>
                                                 <a href="javascript:void(0)" class="btn btn-outline-danger d-none d-sm-block removeimage" data-id="{{$userData->id}}">Remove</a>
                                                 <input type="file" style="visibility:hidden" name="profile_photo" id="profile_photo" onchange="document.getElementById('user-image').src = window.URL.createObjectURL(this.files[0])">
 
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <!-- users edit media object ends -->
