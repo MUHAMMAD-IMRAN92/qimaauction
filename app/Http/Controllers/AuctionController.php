@@ -38,6 +38,7 @@ class AuctionController extends Controller
      */
     function dashboard()
     {
+        $currentTime = Carbon::now()->getTimestampMs();
         $auctionNaturalWinning = collect();
         $auctionAlchemyWinning = collect();
         $auction = Auction::where('is_active', '1')->first();
@@ -47,7 +48,8 @@ class AuctionController extends Controller
         }
         return view('admin.dashboard', [
             'natural' => $auctionNaturalWinning,
-            'alchmey' =>  $auctionAlchemyWinning
+            'alchmey' =>  $auctionAlchemyWinning,
+            'currentTime' => $currentTime
         ]);
     }
     public function index()
@@ -1165,8 +1167,8 @@ class AuctionController extends Controller
         $natAuctionProducts = collect();
         $auctionProducts = collect();
         if ($auction && $auction->is_hidden == 1) {
-           $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages' ,'winnerNames')->whereIn('process', ['Alchemy'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
-            $natAuctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages' , 'winnerNames')->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
+            $auctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages', 'winnerNames')->whereIn('process', ['Alchemy'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
+            $natAuctionProducts = AuctionProduct::with('products', 'singleBids', 'winningImages', 'winnerNames')->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->where('auction_id', $auction->id)->get();
             $singleBids = AuctionProduct::doesnthave('singleBids')->get();
             $results = $auctionProducts->map(function ($e) {
 

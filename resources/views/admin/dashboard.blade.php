@@ -1271,7 +1271,7 @@
 
         const timer = setInterval(function() {
 
-            const now = new Date().getTime();
+            const now = "{{$currentTime}}";
 
             const timeRemaining = targetDate - now;
 
