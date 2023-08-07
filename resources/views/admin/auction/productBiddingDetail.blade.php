@@ -488,7 +488,7 @@
                                                         <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
-                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
+                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company  }}</span>
 
                                                         </td>
                                                     @elseif (isset($auctionProduct->highestbid))
@@ -575,7 +575,7 @@
                                                         <td style="width: 500px !important"
                                                             class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                             <span
-                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company ?? '---' }}</span>
+                                                                class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $auctionProduct->winnerNames->company  }}</span>
 
                                                         </td>
                                                     @elseif (isset($auctionProduct->highestbid))
