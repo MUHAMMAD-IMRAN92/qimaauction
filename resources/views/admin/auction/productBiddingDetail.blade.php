@@ -584,8 +584,7 @@
                                                                 class="paddleno{{ $auctionProduct->id }} fw-bold td-res-pl">
                                                                 <span
                                                                     class="{{ $auction->is_hidden_winners == 0 ? 'name-anchors' : '' }} ">{{ $userData->company ?? '---' }}</span>
-                                                                <a
-                                                                    class="{{ $auction->is_hidden_winners == 1 ? 'name-spans' : 'name-spans-block' }}">__</a>
+
                                                             </td>
                                                         @endforeach
                                                     @else
