@@ -1205,7 +1205,9 @@ class AuctionController extends Controller
                 return $e;
             });
         }
-        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId', 'auction', 'isEmpty', 'natAuctionProducts', 'auctionProducts', 'auction', 'singleBids'));
+        $checkAuctionId = Auction::where('id', $auctionId)->first();
+
+        return view('admin.auction.productBiddingDetail', compact('auction_products', 'products', 'auctionId', 'checkAuctionId', 'isEmpty', 'natAuctionProducts', 'auctionProducts', 'auction', 'singleBids'));
     }
 
     public function prductBiddingDashboard()

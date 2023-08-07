@@ -135,18 +135,18 @@
             <div class="content-header row">
                 @if (auth()->user()->id == 3)
                     <div class="col-12 custom_btn_align mb-1">
-                        <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif
-                            data-id="{{ $auction->id }}" id="resetauction">Reset Timer</a>
+                        <a class="btn btn-primary waves-effect waves-light resetauction"@if (isset($checkAuctionId) && $checkAuctionId->is_hidden == 1) style="display:none;" @endif
+                            data-id="{{ $checkAuctionId->id }}" id="resetauction">Reset Timer</a>
                         <a class="btn btn-primary waves-effect waves-light endauction"
-                            @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
+                            @if (isset($checkAuctionId) && $checkAuctionId->is_hidden == 1) style="display:none;" @endif data-id="{{ $checkAuctionId->id }}"
                             id="endauction">End Auction</a>
 
                             <a class="btn btn-primary waves-effect waves-light endauctionForced"
-                            @if (isset($auction) && $auction->is_hidden == 1) style="display:none;" @endif data-id="{{ $auction->id }}"
+                            @if (isset($checkAuctionId) && $checkAuctionId->is_hidden == 1) style="display:none;" @endif data-id="{{ $checkAuctionId->id }}"
                             id="endauction">End Auction Forcefully</a>
 
-                        <a class="btn btn-primary waves-effect waves-light @if (isset($auction) && $auction->is_hidden == 0) publishWinner @endif"
-                            data-id="{{ $auction->id }}" id="publish_auction_winners">Publish
+                        <a class="btn btn-primary waves-effect waves-light @if (isset($checkAuctionId) && $checkAuctionId->is_hidden == 0) publishWinner @endif"
+                            data-id="{{ $checkAuctionId->id }}" id="publish_auction_winners">Publish
                             Winners</a>
 
                     </div>
@@ -416,7 +416,8 @@
                         <div class="tab-pane fade" id="nav-winner" role="tabpanel" aria-labelledby="nav-winner-tab">
                             <div class="tab-pane fade auction-data table-responsive show active" id="nav-home"
                                 role="tabpanel" aria-labelledby="nav-home-tab">
-                                @if ($auction->is_hidden == 1)
+
+                                @if ($checkAuctionId->is_hidden == 1)
 
 
                                     <table class="table auctiontable">
@@ -839,7 +840,7 @@
                         }
                     })
                 });
-                $(".publishWinner").on("click", function(e) {
+                $("#publish_auction_winners").on("click", function(e) {
                     e.preventDefault();
                     var id = $(this).attr('data-id');
                     var auctionstatus = 1;
