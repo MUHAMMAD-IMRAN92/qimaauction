@@ -1260,14 +1260,11 @@
                 <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
                         coffee excellence</a></p>
                 <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
-
             </div>
         </div>
-
-
     </div>
     <script>
-        const targetDate = new Date('2023-08-08T14:00').getTime();
+        const targetDate = new Date('2023-08-08T10:00').getTime();
 
         const timer = setInterval(function() {
 
