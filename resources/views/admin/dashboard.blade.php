@@ -1255,11 +1255,11 @@
 
             <div class="footer-qima">
                 <hr class="hr">
-                <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
-                <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
-                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+                <p> <a href="{{ url('/auction/results') }}" target="_blank" class="white-anchor"> best of yemen 2022 results</a></p>
+                <p><a href="https://www.qimacoffee.com" target="_blank" >qima coffee</a> </p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/" target="_blank" >Alliance for
                         coffee excellence</a></p>
-                <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+                <p><a href="https://www.qimafoundation.org/" target="_blank" >qima foundation</a></p>
 
             </div>
         </div>

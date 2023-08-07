@@ -1939,11 +1939,11 @@
     <div class="container-fluid newfooter-bg">
         <div class="footer-qima">
             <hr class="hr">
-            <p> <a href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
-            <p><a href="https://www.qimacoffee.com">qima coffee</a> </p>
-            <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
+            <p> <a target="_blank"  href="{{ url('/auction/results') }}" class="white-anchor"> best of yemen 2022 results</a></p>
+            <p><a target="_blank"  href="https://www.qimacoffee.com">qima coffee</a> </p>
+            <p><a target="_blank"  href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/">Alliance for
                     coffee excellence</a></p>
-            <p><a href="https://www.qimafoundation.org/">qima foundation</a></p>
+            <p><a target="_blank"  href="https://www.qimafoundation.org/">qima foundation</a></p>
 
         </div>
     </div>
