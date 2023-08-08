@@ -3728,7 +3728,7 @@
         var incrementedvalue = roundedToFixed(data.nextIncrement, 1);
         $(".bidData1" + data.bidID).html('$' + data.singleBidammounttesting.toLocaleString('en-US') + '/lbs');
         //liability parseFloat(autobidamount).toFixed(2)
-        $(".liability" + data.bidID).html('$' + parseFloat(data.liability).toFixed(1));
+        $(".liability" + data.bidID).html('$' + addCommas(parseFloat(data.liability).toFixed(1)));
         $(".nextincrement" + data.bidID).html('$' + addCommas(incrementedvalue));
         $(".increment" + data.bidID).html('$' + data.increment.toLocaleString('en-US'));
         $(".paddleno" + data.bidID).html(data.paddleNo);
