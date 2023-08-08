@@ -315,5 +315,5 @@ Route::get('/publish_winner', [App\Http\Controllers\AuctionController::class, 'p
 Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'updateTimer'])->name('updateTimer');
 Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class, 'updateComapnyName']);
 Route::get('/servertime', function () {
-    return \Carbon\Carbon::now();
+    return \Carbon\Carbon::now()->locale('uk');
 });
