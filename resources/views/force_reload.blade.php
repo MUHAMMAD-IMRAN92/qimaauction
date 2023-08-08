@@ -40,7 +40,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(e) {
-        console.log('imran');
+        // console.log('imran');
         socket.emit('force_reload', {
             "force_reload": 1,
         });
