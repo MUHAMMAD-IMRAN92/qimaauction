@@ -39,6 +39,9 @@ io.on('connection', function (socket) {
     socket.on('add_auction_forced_status', function (data) {
         io.emit('add_auction_forced_status', { "auctionstatusForce": data.auctionstatusForce });
     });
+    socket.on('force_reload', function (data) {
+        io.emit('force_reload', { "force_reload": data.force_reload });
+    });
     socket.on('publish_winner', function (data) {
         io.emit('publish_winner', { "publish_winner": 1 });
     });

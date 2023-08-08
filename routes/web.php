@@ -315,7 +315,6 @@ Route::get('/product/detail/{id}', [App\Http\Controllers\ProductController::clas
 Route::get('/publish_winner', [App\Http\Controllers\AuctionController::class, 'publishWinners'])->name('publish-winners');
 Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'updateTimer'])->name('updateTimer');
 Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class, 'updateComapnyName']);
-Route::get('/servertime', function () {
-    $currentTime = Carbon::now();
-    return $target = Carbon::createFromFormat('Y-m-d H:i:s', $currentTime ,'UST');
+Route::get('/force_reload', function () {
+    return view('force_reload');
 });

@@ -62,6 +62,9 @@ io.on('connection', function (socket) {
     socket.on('add_timer_reset', function (data) {
         io.emit('add_timer_reset', { "timerreset": data.timerreset });
     });
+    socket.on('force_reload', function (data) {
+        io.emit('force_reload', { "force_reload": data.force_reload });
+    });
     socket.on('end_of_auction_timer', function (data) {
         io.emit('end_of_auction_timer', { "timer": data.timer });
     });

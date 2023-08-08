@@ -48,6 +48,9 @@ io.on('connection', function (socket) {
     socket.on('add_auction_status', function (data) {
         io.emit('add_auction_status', { "auctionstatus": data.auctionstatus });
     });
+    socket.on('force_reload', function (data) {
+        io.emit('force_reload', { "force_reload": data.force_reload });
+    });
     socket.on('add_auction_forced_status', function (data) {
         io.emit('add_auction_forced_status', { "auctionstatusForce": data.auctionstatusForce });
     });
