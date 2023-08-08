@@ -317,5 +317,5 @@ Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'upda
 Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class, 'updateComapnyName']);
 Route::get('/servertime', function () {
     $currentTime = Carbon::now();
-    return $target = Carbon::createFromFormat('Y-m-d H:i:s', $currentTime +2 ,'BST');
+    return $target = Carbon::createFromFormat('Y-m-d H:i:s', $currentTime ,'BST');
 });
