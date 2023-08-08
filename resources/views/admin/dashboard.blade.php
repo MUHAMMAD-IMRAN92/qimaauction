@@ -988,11 +988,12 @@
     #join-the-auction {
         cursor: pointer;
     }
-    .btn-group-table{
+
+    .btn-group-table {
         align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 </style>
 
@@ -1255,11 +1256,13 @@
 
             <div class="footer-qima">
                 <hr class="hr">
-                <p> <a href="{{ url('/auction/results') }}" target="_blank" class="white-anchor"> best of yemen 2022 results</a></p>
-                <p><a href="https://www.qimacoffee.com" target="_blank" >qima coffee</a> </p>
-                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/" target="_blank" >Alliance for
+                <p> <a href="{{ url('/auction/results') }}" target="_blank" class="white-anchor"> best of yemen 2022
+                        results</a></p>
+                <p><a href="https://www.qimacoffee.com" target="_blank">qima coffee</a> </p>
+                <p><a href="https://allianceforcoffeeexcellence.org/ace-private-collection-auctions/"
+                        target="_blank">Alliance for
                         coffee excellence</a></p>
-                <p><a href="https://www.qimafoundation.org/" target="_blank" >qima foundation</a></p>
+                <p><a href="https://www.qimafoundation.org/" target="_blank">qima foundation</a></p>
 
             </div>
         </div>
@@ -1267,11 +1270,11 @@
 
     </div>
     <script>
-        const targetDate = "{{$target}}";
+        const targetDateStr = "2023-08-08T14:00:00"; // Replace this with your target date in ISO format
+        const targetDate = new Date(targetDateStr);
 
         const timer = setInterval(function() {
-
-            const now = "{{$currentTime}}";
+            const now = new Date();
 
             const timeRemaining = targetDate - now;
 
