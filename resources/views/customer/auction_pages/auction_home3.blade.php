@@ -3342,7 +3342,7 @@
                 }, 10000);
             }
         }
-        $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + 'lbs');
+        $(".bidData1" + data.bidID).html('$' + data.bid_amountNew.toLocaleString('en-US') + '/lbs');
         data.nextIncrement = parseFloat(data.nextIncrement).toFixed(1);
         $(".nextincrement" + data.bidID).html('$' + addCommas(data.nextIncrement));
         if (data.groupUsers != null) {
