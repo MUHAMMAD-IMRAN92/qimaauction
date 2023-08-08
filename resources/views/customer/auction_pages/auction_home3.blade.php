@@ -3893,6 +3893,7 @@
                     // console.log('this end_of_auction_timer')
                     $('.autobtnclick').attr("disabled", true);
                     $('.singlebtnclick').attr("disabled", true);
+                    console.log('test');
                     $('.confirm-btn').attr("disabled", true);
                     $('.confirm-btn').css('background', '#a6a6a6');
 
@@ -3930,6 +3931,7 @@
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
+                console.log('test1')
                 $('.confirm-btn').attr("disabled", true);
                 $('.confirm-btn').css('background', '#a6a6a6');
 
