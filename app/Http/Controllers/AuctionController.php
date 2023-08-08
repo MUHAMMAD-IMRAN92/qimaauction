@@ -39,7 +39,7 @@ class AuctionController extends Controller
     function dashboard()
     {
         $currentTime = Carbon::now()->getTimestampMs();
-        $target = Carbon::createFromFormat('Y-m-d H:i:s', $currentTime , 'BST')->getTimestampMs();
+        $target = Carbon::createFromFormat('Y-m-d H:i:s', '2023-08-08 10:00:00', 'BST')->getTimestampMs();
         // $currentTime = Carbon::now()->format('Y-m-d H:i:s', 'BST')->getTimestampMs();
         $auctionNaturalWinning = collect();
         $auctionAlchemyWinning = collect();
