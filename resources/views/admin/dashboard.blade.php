@@ -1271,7 +1271,7 @@
 
         const timer = setInterval(function() {
 
-            const now = "{{$currentTime}}";
+            const now = "{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', '2023-08-08 11:00:00', 'BST')}}";
 
             const timeRemaining = targetDate - now;
 
