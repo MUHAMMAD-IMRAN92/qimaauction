@@ -39,6 +39,8 @@ class AuctionController extends Controller
     function dashboard()
     {
         $currentTime = Carbon::now()->getTimestampMs();
+        $target = Carbon::createFromFormat('Y-m-d H:i:s', '2023-08-08 11:00:00', 'BST')->getTimestampMs();
+        // $currentTime = Carbon::now()->format('Y-m-d H:i:s', 'BST')->getTimestampMs();
         $auctionNaturalWinning = collect();
         $auctionAlchemyWinning = collect();
         $auction = Auction::where('is_active', '1')->first();
@@ -49,7 +51,8 @@ class AuctionController extends Controller
         return view('admin.dashboard', [
             'natural' => $auctionNaturalWinning,
             'alchmey' =>  $auctionAlchemyWinning,
-            'currentTime' => $currentTime
+            'currentTime' => $currentTime,
+            'target' => $target
         ]);
     }
     public function index()
