@@ -3762,7 +3762,7 @@
     socket.on('{{env('SOCKET_PREFIX' , '')}}force_reload', function(data) {
         if (data.force_reload == 1) {
             // alert('')
-            // window.location.reload();
+            window.location.reload();
             }
     });
     socket.on('{{env('SOCKET_PREFIX' , '')}}add_timer_reset', function(data) {
