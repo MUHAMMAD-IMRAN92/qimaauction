@@ -315,6 +315,6 @@ Route::get('/publish_winner', [App\Http\Controllers\AuctionController::class, 'p
 Route::get('/updateTimer', [App\Http\Controllers\AuctionController::class, 'updateTimer'])->name('updateTimer');
 Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class, 'updateComapnyName']);
 Route::get('/servertime', function () {
-    $currentTime = \Carbon::now();
-    return $target = \Carbon::createFromFormat('Y-m-d H:i:s', $currentTime ,'BST');
+    $currentTime = \Carbon\Carbon::now();
+    return $target = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $currentTime ,'BST');
 });
