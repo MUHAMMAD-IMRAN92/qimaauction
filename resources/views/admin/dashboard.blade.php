@@ -1011,8 +1011,11 @@
                     {{-- <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
                             For The Auction</a></button> --}}
-                    <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                            {{--<button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
                         style="" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                    </button>--}}
+                    <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                        style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
                     </button>
                 </div>
 
