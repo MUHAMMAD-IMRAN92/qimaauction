@@ -1,5 +1,5 @@
 <html lang="en">
-<!--#fae2e2-->
+
 
 <head>
     <meta charset="utf-8">
@@ -40,12 +40,17 @@
 
 <script type="text/javascript">
     $(document).ready(function(e) {
-
-        socket.emit('{{ env('SOCKET_PREFIX', '') }}force_reload', {
+        console.log('imran');
+        socket.emit('force_reload', {
             "force_reload": 1,
         });
-
-    }, 10000)
+        // socket.on('{{ env('SOCKET_PREFIX', '') }}force_reload', function(data) {
+        //     if (data.force_reload == 1) {
+        //         alert('imran')
+        //         window.location.reload();
+        //     }
+        // });
+    });
 </script>
 @include('customer.auction_pages.homejs')
 
