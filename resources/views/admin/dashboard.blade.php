@@ -1008,11 +1008,11 @@
                 <h2 id="timer">00:00:00:00</h2>
                 <h3>AUGUST 8TH</h3>
                 <div class="d-flex btn-group-table">
-                    <button id="register-for-auction"><a
+                    {{-- <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
-                            For The Auction</a></button>
+                            For The Auction</a></button> --}}
                     <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                        style="display: none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                        style="" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
                     </button>
                 </div>
 
@@ -1267,7 +1267,6 @@
             </div>
         </div>
 
-
     </div>
     <script>
         var targetDateStr = "{{ $target }}"; // Replace this with your target date in ISO format
@@ -1303,7 +1302,7 @@
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = '00:00:00:00';
                 document.getElementById('join-the-auction').style.display = "block";
-                document.getElementById('register-for-auction').style.display = "none";
+                // document.getElementById('register-for-auction').style.display = "none";
             }
         }, 1000);
     </script>
