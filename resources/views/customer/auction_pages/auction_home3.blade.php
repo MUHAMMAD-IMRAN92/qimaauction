@@ -3928,6 +3928,12 @@
                 $('.hours').html(hours.toString().padStart(2, "0"));
                 $('.minutes').html(minutes.toString().padStart(2, "0"));
                 $('.seconds').html(seconds);
+                $('.autobtnclick').attr("disabled", false);
+                $('.singlebtnclick').attr("disabled", false);
+                $('.confirm-btn').attr("disabled", false);
+                $('.confirm-btn').css('background', '#143D30');
+
+                $(".singlebtnclick").css('background', '#143D30');
             } else {
                 $('.autobtnclick').attr("disabled", true);
                 $('.singlebtnclick').attr("disabled", true);
