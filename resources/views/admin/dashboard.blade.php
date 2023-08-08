@@ -1270,7 +1270,7 @@
 
     </div>
     <script>
-        const targetDateStr = "2023-08-08T14:00:00"; // Replace this with your target date in ISO format
+        const targetDateStr = "{{$target}}"; // Replace this with your target date in ISO format
         const targetDate = new Date(targetDateStr);
 
         const timer = setInterval(function() {
