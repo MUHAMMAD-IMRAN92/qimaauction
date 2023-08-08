@@ -1270,13 +1270,26 @@
 
     </div>
     <script>
-        const targetDateStr = "{{$target}}"; // Replace this with your target date in ISO format
-        const targetDate = new Date(targetDateStr);
+        var targetDateStr = "{{ $target }}"; // Replace this with your target date in ISO format
+        var targetDate = new Date(targetDateStr);
 
         const timer = setInterval(function() {
-            const now = new Date();
+            var now = "{{ $current }}";
+            let options = {
+                    timeZone: 'Europe/London',
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                },
+                formatter = new Intl.DateTimeFormat([], options);
 
-            const timeRemaining = targetDate - now;
+           var now2 =  (new Date()).toLocaleString([], options)
+            var currentDate = new Date(now2);
+            var timeRemaining = targetDate - currentDate;
+            console.log(timeRemaining);
 
             const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
