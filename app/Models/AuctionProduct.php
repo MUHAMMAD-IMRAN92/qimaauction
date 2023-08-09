@@ -98,6 +98,6 @@ class AuctionProduct extends Model
     }
     public function winnerNames()
     {
-        return $this->hasOne(winnerNames::class, 'auction_product_id', 'id');
+        return $this->hasOne(winnerNames::class, 'auction_product_id', 'id')->orderBy('id' , 'desc');
     }
 }
