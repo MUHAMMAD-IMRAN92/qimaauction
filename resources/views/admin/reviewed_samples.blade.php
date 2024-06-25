@@ -15,7 +15,7 @@
                     <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
                         <div class="card-content">
                             <div class="card-body text-center">
-                                {{-- <p class="text-right">  
+                                {{-- <p class="text-right">
                                       <a href="{{ url('/jury/send_to_jury') }}" class="btn btn-primary waves-effect waves-light custom_btn">Send To
                                     Jury</a></p> --}}
                                 <div class="table-responsive">
@@ -40,14 +40,14 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $sample->samples }}</td>
                                                 <td>{{date('m-d-Y',strtotime($dateArr[$value]))}}</td>
-                                                <td>{{$reviewed[$value] .'/'.$sample->total}}</td> 
+                                                <td>{{$reviewed[$value] .'/'.$sample->total}}</td>
                                                 {{-- ,'productId'=>$sample->product_id,'juryId'=>$sample->jury_id --}}
                                                 @if($opencupping)
                                                 <td> <a href="{{route('openCuppingReviewDetail',['sample'=>$sample->samples])}}"><span class="product-link-a">View</span></a></td>
                                                 @else
                                                 <td> <a href="{{route('review_detail',['sample'=>$sample->samples])}}"><span class="product-link-a">View</span></a></td>
                                                 @endif
-                                               
+
                                             </tr>
                                             @empty
                                                 <tr><td></td><td></td><td>No Sample for review</td></tr>

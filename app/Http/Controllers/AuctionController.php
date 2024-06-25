@@ -38,7 +38,7 @@ class AuctionController extends Controller
      */
     function dashboard()
     {
-        $current = Carbon::createFromFormat('Y-m-d H:i:s' , Carbon::now() , 'BST');
+        $current = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now(), 'BST');
         $target = Carbon::createFromFormat('Y-m-d H:i:s', '2023-08-08 10:00:00', 'BST');
         // $currentTime = Carbon::now()->format('Y-m-d H:i:s', 'BST')->getTimestampMs();
         $auctionNaturalWinning = collect();
@@ -47,7 +47,9 @@ class AuctionController extends Controller
         if ($auction) {
             $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
             $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank  AS unsigned) asc')->get();
+            $target = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::parse($auction->startDate)->format('Y-m-d H:i:s'), 'BST');
         }
+        // return 'ok';
         return view('admin.dashboard', [
             'natural' => $auctionNaturalWinning,
             'alchmey' =>  $auctionAlchemyWinning,
