@@ -109,10 +109,23 @@
                                                             <select class="form-select form-select-lg mb-3 form-control"
                                                                 aria-label=".form-select-lg example " name="is_active">
                                                                 <option value="" selected>Select Status</option>
-                                                                <option value="2">Cupping</option>
-                                                                <option value="3">Sample Purchase</option>
+
                                                                 <option value="1">Active</option>
                                                                 <option value="0">In Active</option>
+                                                            </select>
+                                                            @error('is_Active')
+                                                                <span class="text-danger error">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <select class="form-select form-select-lg mb-3 form-control"
+                                                                aria-label=".form-select-lg example " name="status">
+                                                                <option value="" selected>Select Status</option>
+                                                                <option value="2">Cupping</option>
+                                                                <option value="3">Sample Purchase</option>
+
                                                             </select>
                                                             @error('is_Active')
                                                                 <span class="text-danger error">{{ $message }}</span>
@@ -418,7 +431,7 @@
                 reader.readAsDataURL(this.files[0]);
 
             });
-            $('select[name="is_active"]').on('change', function() {
+            $('select[name="status"]').on('change', function() {
                 var value = $(this).val();
                 // alert(value)
                 if (value == 3) {
@@ -428,39 +441,39 @@
                     $('#sample_link').prop('disabled', true)
                 }
             });
-                if (window.File && window.FileList && window.FileReader) {
-                    $("#files").on("change", function(e) {
-                        var files = e.target.files,
-                            filesLength = files.length;
-                        for (var i = 0; i < filesLength; i++) {
-                            var f = files[i]
-                            var fileReader = new FileReader();
-                            fileReader.onload = (function(e) {
-                                var file = e.target;
-                                $("<span class=\"pip\">" +
-                                    "<img class=\"imageThumb\" src=\"" + e.target.result +
-                                    "\" title=\"" + file.name + "\"/>" +
-                                    "<br/><span class=\"remove\">Remove image</span>" +
-                                    "</span>").insertAfter("#files");
-                                $(".remove").click(function() {
-                                    $(this).parent(".pip").remove();
-                                });
-
-                                // Old code here
-                                /*$("<img></img>", {
-                                class: "imageThumb",
-                                src: e.target.result,
-                                title: file.name + " | Click to remove"
-                                }).insertAfter("#files").click(function(){$(this).remove();});*/
-
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function(e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function(e) {
+                            var file = e.target;
+                            $("<span class=\"pip\">" +
+                                "<img class=\"imageThumb\" src=\"" + e.target.result +
+                                "\" title=\"" + file.name + "\"/>" +
+                                "<br/><span class=\"remove\">Remove image</span>" +
+                                "</span>").insertAfter("#files");
+                            $(".remove").click(function() {
+                                $(this).parent(".pip").remove();
                             });
-                            fileReader.readAsDataURL(f);
-                        }
-                        console.log(files);
-                    });
-                } else {
-                    alert("Your browser doesn't support to File API")
-                }
+
+                            // Old code here
+                            /*$("<img></img>", {
+                            class: "imageThumb",
+                            src: e.target.result,
+                            title: file.name + " | Click to remove"
+                            }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+                        });
+                        fileReader.readAsDataURL(f);
+                    }
+                    console.log(files);
+                });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
         });
         $(document).load(function() {
             $('.datepicker').pickadate({

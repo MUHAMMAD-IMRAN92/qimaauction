@@ -36,10 +36,11 @@
             background: white;
             color: black;
         }
-        .new-img-group{
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
+
+        .new-img-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
     </style>
     <div class="app-content content">
@@ -114,12 +115,7 @@
                                                             <select class="form-select form-select-lg mb-3 form-control"
                                                                 aria-label=".form-select-lg example " name="is_active">
                                                                 <option value="" selected>Select Status</option>
-                                                                <option
-                                                                    value="2"{{ $auction->is_active == '2' ? 'selected' : '' }}>
-                                                                    Cupping</option>
-                                                                <option
-                                                                    value="3"{{ $auction->is_active == '3' ? 'selected' : '' }}>
-                                                                    Sample Purchase</option>
+
                                                                 <option
                                                                     value="1"{{ $auction->is_active == '1' ? 'selected' : '' }}>
                                                                     Active</option>
@@ -132,6 +128,22 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <select class="form-select form-select-lg mb-3 form-control"
+                                                                aria-label=".form-select-lg example " name="status">
+                                                                <option
+                                                                    value="2"{{ $auction->status == '2' ? 'selected' : '' }}>
+                                                                    Cupping</option>
+                                                                <option
+                                                                    value="3"{{ $auction->status == '3' ? 'selected' : '' }}>
+                                                                    Sample Purchase</option>
+                                                                @error('role')
+                                                                    <span class="text-danger error">{{ $message }}</span>
+                                                                @enderror
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample_link"
@@ -399,15 +411,14 @@
                                                         <div class="form-label-group new-img-group">
 
                                                             @foreach ($auctionimages->jury as $img)
-                                                            <div>
-                                                                <img width="100px" height="100px"
-                                                                    src="{{  url('public/storage/auction/jury_images/' . $img->image_name)  }}"
-                                                                    alt="">
-                                                                <a class="ml-1"
-                                                                    href="{{ url('/auction/delete_product_image/' . $img->id) }}">
-                                                                    <i class="fa fa-times"
-                                                                        aria-hidden="true"></i></a>
-                                                                    </div>
+                                                                <div>
+                                                                    <img width="100px" height="100px"
+                                                                        src="{{ url('public/storage/auction/jury_images/' . $img->image_name) }}"
+                                                                        alt="">
+                                                                    <a class="ml-1"
+                                                                        href="{{ url('/auction/delete_product_image/' . $img->id) }}">
+                                                                        <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                                </div>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -477,7 +488,7 @@
                 reader.readAsDataURL(this.files[0]);
 
             });
-            $('select[name="is_active"]').on('change', function() {
+            $('select[name="status"]').on('change', function() {
                 var value = $(this).val();
                 // alert(value)
                 if (value == 3) {

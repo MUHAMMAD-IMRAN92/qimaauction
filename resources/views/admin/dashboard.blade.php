@@ -1011,19 +1011,21 @@
         display: flex;
         justify-content: center;
     }
-    .international-jury-section{
+
+    .international-jury-section {
         display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0px;
     }
+
     .jury-images {
-    text-align: center;
-    max-width: 50%;
-    margin-bottom: 5%;
-    aspect-ratio: 3 / 2;
-}
+        text-align: center;
+        max-width: 50%;
+        margin-bottom: 5%;
+        aspect-ratio: 3 / 2;
+    }
 </style>
 
 <body>
@@ -1040,23 +1042,20 @@
                 <h3>{{ $auction->startDateFormated }}</h3>
                 <div class="d-flex btn-group-table">
 
-                    @if ($auction->is_active == 1)
-                        <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                            style="" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                        </button>
-                    @elseif($auction->is_active == 3)
-                        <button id="samples"><a href="{{ $auction->sample_link }}">Purchase
+                    @if ($auction->is_active == 1 && $auction->status == 3)
+                        <button id="samples-purchase"><a href="{{ $auction->sample_link }}">Purchase
                                 Sample</a></button>
-                    @elseif($auction->is_active == 2)
-                        <button id="cupping"><a href="#">Cupping</a></button>
+                    @elseif($auction->is_active == 1 && $auction->status == 2)
+                        <button id="cupping-button"><a href="#">Cupping</a></button>
                     @else
                         <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
                             style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
                         </button>
                     @endif
 
-                    <button id="samples-disable" ><a href="{{ $auction->sample_link }}">Purchase
-                            Sample</a></button>
+                    <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                        style="display:none" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                    </button>
 
                     {{-- <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
@@ -1410,10 +1409,13 @@
                 document.getElementById('timer').innerHTML = '00:00:00:00';
                 document.getElementById('join-the-auction').style.display = "block";
                 document.getElementById('samples-disable').style.display = "none";
+                document.getElementById('samples-purchase').style.display = "none";
+                document.getElementById('samples-purchase').style.display = "none";
                 // document.getElementById('register-for-auction').style.display = "none";
             } else {
                 document.getElementById('samples-disable').style.display = "block";
                 document.getElementById('join-the-auction').style.display = "none";
+
             }
         }, 1000);
     </script>
