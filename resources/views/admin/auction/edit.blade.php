@@ -390,8 +390,9 @@
                                                     </div>
 
                                                     <div class="col-md-12 col-12 mt-2">
+                                                        <span>Selected Jury Image:</span> <br>
                                                         <div class="form-label-group">
-                                                            <span>Selected Jury Image:</span> <br>
+
                                                             @foreach ($auctionimages->jury as $img)
                                                             <div>
                                                                 <img width="100px" height="100px"
