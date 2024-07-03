@@ -36,6 +36,11 @@
             background: white;
             color: black;
         }
+        .new-img-group{
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
     </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -391,7 +396,7 @@
 
                                                     <div class="col-md-12 col-12 mt-2">
                                                         <span>Selected Jury Image:</span> <br>
-                                                        <div class="form-label-group">
+                                                        <div class="form-label-group new-img-group">
 
                                                             @foreach ($auctionimages->jury as $img)
                                                             <div>
