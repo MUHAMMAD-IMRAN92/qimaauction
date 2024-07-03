@@ -1011,6 +1011,19 @@
         display: flex;
         justify-content: center;
     }
+    .international-jury-section{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    }
+    .jury-images {
+    text-align: center;
+    max-width: 50%;
+    margin-bottom: 5%;
+    aspect-ratio: 3 / 2;
+}
 </style>
 
 <body>
