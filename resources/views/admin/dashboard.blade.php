@@ -1000,15 +1000,17 @@
     .timings {
         white-space: pre-line;
     }
-    .modification-timings>*{
+
+    .modification-timings>* {
         font-family: 'Montserrat-Medium';
-    font-weight: 500;
-    font-size: 16px;
+        font-weight: 500;
+        font-size: 16px;
     }
+
     .auction-time.mt-1 {
-    display: flex;
-    justify-content: center;
-}
+        display: flex;
+        justify-content: center;
+    }
 </style>
 
 <body>
@@ -1039,6 +1041,10 @@
                             style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
                         </button>
                     @endif
+
+                    <button id="samples-disable" ><a href="{{ $auction->sample_link }}">Purchase
+                            Sample</a></button>
+
                     {{-- <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
                             For The Auction</a></button> --}}
@@ -1278,7 +1284,8 @@
 
                 </div>
                 <div class="col card-display-3">
-                    <div class="card bg-none text-color h-100 timings modification-timings" style="text-transform:uppercase;">
+                    <div class="card bg-none text-color h-100 timings modification-timings"
+                        style="text-transform:uppercase;">
                         <p class="m-0"> {!! $auction->timings !!}</p>
                     </div>
                 </div>
@@ -1389,7 +1396,11 @@
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = '00:00:00:00';
                 document.getElementById('join-the-auction').style.display = "block";
+                document.getElementById('samples-disable').style.display = "none";
                 // document.getElementById('register-for-auction').style.display = "none";
+            } else {
+                document.getElementById('samples-disable').style.display = "block";
+                document.getElementById('join-the-auction').style.display = "none";
             }
         }, 1000);
     </script>
