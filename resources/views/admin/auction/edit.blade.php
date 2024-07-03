@@ -394,7 +394,7 @@
                                                             <span>Selected Jury Image:</span> <br>
                                                             @foreach ($auctionimages->jury as $img)
                                                                 <img width="100px" height="100px"
-                                                                    src="{{ url('storage/app/public/auction/' . $img->image_name) }}"
+                                                                    src="{{  url('public/storage/auction/jury_images/' . $img->image_name)  }}"
                                                                     alt="">
                                                                 <a class="ml-1"
                                                                     href="{{ url('/auction/delete_product_image/' . $img->id) }}">
