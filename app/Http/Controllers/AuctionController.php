@@ -43,18 +43,25 @@ class AuctionController extends Controller
         // $currentTime = Carbon::now()->format('Y-m-d H:i:s', 'BST')->getTimestampMs();
         $auctionNaturalWinning = collect();
         $auctionAlchemyWinning = collect();
-        $auction = Auction::where('is_active', '1')->first();
+        $auction = Auction::where('is_active', '1')->with('backgroundImage', 'logo', 'jury')->first();
         if ($auction) {
             $auctionNaturalWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Natural', 'DEEP FERMENTATION', 'Slow Dried', 'Slow Dried Natural'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank AS unsigned) asc')->get();
             $auctionAlchemyWinning = AuctionProduct::where('auction_id', $auction->id)->whereIn('process', ['Alchemy'])->where('home_page', 1)->orderByRaw('CAST(auction_products.rank  AS unsigned) asc')->get();
             $target = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::parse($auction->startDate)->format('Y-m-d H:i:s'), 'BST');
+            $startDate = Carbon::parse($auction->startDate)->format('F jS');
+            $auction->startDateFormated =  $startDate;
+        } else {
+            $auction = Auction::where('is_completed', '1')->first();
+            $startDate = Carbon::parse($auction->startDate)->format('F jS');
+            $auction->startDateFormated =  $startDate;
         }
         // return 'ok';
         return view('admin.dashboard', [
             'natural' => $auctionNaturalWinning,
             'alchmey' =>  $auctionAlchemyWinning,
             'current' => $current,
-            'target' => $target
+            'target' => $target,
+            'auction' => $auction
         ]);
     }
     public function index()
@@ -247,6 +254,7 @@ class AuctionController extends Controller
         $auction->product_detail = $request->product_detail;
         $auction->startDate = $request->startDatetime;
         $auction->is_active = $request->is_active;
+        $auction->timings = $request->timings;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([
                 'is_active' => '0'
@@ -264,6 +272,34 @@ class AuctionController extends Controller
                 $productImage = new Image();
                 $productImage->auction_id = $auction->id;
                 $productImage->image_name = $fileName;
+                $productImage->save();
+            }
+        }
+        if ($request->logo) {
+            $logoName = $request->logo->getClientOriginalName();
+            $request->logo->storeAs(
+                'auction/logo',
+                $logoName,
+                'public'
+            );
+            $logo = new Image();
+            $logo->auction_id = $auction->id;
+            $logo->image_name = $logoName;
+            $logo->type = 1; //for logo
+            $logo->save();
+        }
+        if ($request->jury_images) {
+            foreach ($request->jury_images as $img) {
+                $fileName = $img->getClientOriginalName();
+                $img->storeAs(
+                    'auction/jury_images',
+                    $fileName,
+                    'public'
+                );
+                $productImage = new Image();
+                $productImage->auction_id = $auction->id;
+                $productImage->image_name = $fileName;
+                $productImage->type = 2; //for jury
                 $productImage->save();
             }
         }
@@ -295,7 +331,7 @@ class AuctionController extends Controller
     public function edit(Request $request, $id)
     {
         $auction = Auction::find(base64_decode($id));
-        $auctionimages = Auction::where('id', base64_decode($id))->with('images')->first();
+        $auctionimages = Auction::where('id', base64_decode($id))->with('backgroundImage', 'logo')->first();
         $products = Product::all();
         $genetics = Genetic::all();
         $process = Process::all();
@@ -323,6 +359,7 @@ class AuctionController extends Controller
         $auction->product_detail = $request->product_detail;
         $auction->startDate = $request->startDatetime;
         $auction->is_active = $request->is_active;
+        $auction->timings = $request->timings;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([
                 'is_active' => '0'
@@ -330,6 +367,7 @@ class AuctionController extends Controller
         }
         $auction->save();
         if ($request->image) {
+            // return   'here';
             foreach ($request->image as $img) {
                 $fileName = $img->getClientOriginalName();
                 $img->storeAs(
@@ -343,7 +381,34 @@ class AuctionController extends Controller
                 $productImage->save();
             }
         }
-
+        if ($request->logo) {
+            $logoName = $request->logo->getClientOriginalName();
+            $request->logo->storeAs(
+                'auction/logo',
+                $logoName,
+                'public'
+            );
+            $logo = new Image();
+            $logo->auction_id = $auction->id;
+            $logo->image_name = $logoName;
+            $logo->type = 1; //for logo
+            $logo->save();
+        }
+        if ($request->jury_images) {
+            foreach ($request->jury_images as $img) {
+                $fileName = $img->getClientOriginalName();
+                $img->storeAs(
+                    'auction/jury_images',
+                    $fileName,
+                    'public'
+                );
+                $productImage = new Image();
+                $productImage->auction_id = $auction->id;
+                $productImage->image_name = $fileName;
+                $productImage->type = 2; //for jury
+                $productImage->save();
+            }
+        }
         return redirect('/auction/index')->with('success', 'Auction updated successfully.');
     }
 

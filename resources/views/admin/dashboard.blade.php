@@ -13,7 +13,7 @@
     }
 
     .landing-page-bg {
-        background-image: url("{{ asset('public/app-assets/images/banner/new-bg.png') }}");
+        background-image: url("{{ url('public/storage/auction/' . @$auction->backgroundImage->image_name) }}");
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
@@ -995,28 +995,47 @@
         flex-direction: column;
         justify-content: center;
     }
+
+    .timings {
+        white-space: pre-line;
+    }
 </style>
 
 <body>
     <div class="bg-theme-color">
         <div class="landing-page-bg">
             <div class="boy-image">
-                <img src="{{ asset('public/app-assets/images/banner/bestofyemen.png') }}" alt="">
-                <img src="{{ asset('public/app-assets/images/banner/midbanner.png') }}" alt="">
+                {{-- <img src="{{ asset('public/app-assets/images/banner/bestofyemen.png') }}" alt="">
+                <img src="{{ asset('public/app-assets/images/banner/midbanner.png') }}" alt=""> --}}
+                <img src="{{ url('public/storage/auction/logo/' . @$auction->logo->image_name) }}" alt="">
             </div>
             <div class="timer-section">
                 <h2 id="timer">00:00:00:00</h2>
-                <h3>AUGUST 8TH</h3>
+
+                <h3>{{ $auction->startDateFormated }}</h3>
                 <div class="d-flex btn-group-table">
+
+                    @if ($auction->is_active == 1)
+                        <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                            style="" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
+                        </button>
+                    @elseif($auction->is_active == 3)
+                        <button id="samples"><a href="{{ $auction->sample_link }}">Purchase
+                                Sample</a></button>
+                    @elseif($auction->is_active == 2)
+                        <button id="cupping"><a href="#">Cupping</a></button>
+                    @else
+                        <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
+                            style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
+                        </button>
+                    @endif
                     {{-- <button id="register-for-auction"><a
                             href="https://allianceforcoffeeexcellence.org/product/best-of-yemen-auction-only-2023/">Register
                             For The Auction</a></button> --}}
-                            {{--<button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                        style="" OnClick=" location.href='/auction-home' ">JOIN THE AUCTION
-                    </button>--}}
-                    <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
-                        style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
-                    </button>
+                    {{--  --}}
+                    {{-- <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction" style=""
+                        OnClick=" location.href='/auction-home' ">VIEW RESULTS
+                    </button> --}}
                 </div>
 
             </div>
@@ -1161,6 +1180,24 @@
             <div class="international-jury-section">
                 <h2>INTERNATIONAL JURY</h2>
                 <div class="jury-images">
+                    @foreach ($auction->jury as $jury)
+                        <img src="{{ url('public/storage/auction/jury_images/' . $jury->image_name) }}"
+                            alt="">
+                    @endforeach
+                </div>
+                {{-- <div class="jury-images">
+                    <img src="{{ asset('public/app-assets/images/international-jury/2023_0003_Layer-1.png') }}"
+                        alt="">
+                    <img src="{{ asset('public/app-assets/images/international-jury/2023_0015_boy2022-logo_0028_AROMA_logo.png') }}"
+                        alt="">
+                    <img src="{{ asset('public/app-assets/images/international-jury/2023_0016_boy2022-logo_0026_Blue_Bottle_Coffee_logo.svg.png') }}"
+                        alt="">
+                    <img src="{{ asset('public/app-assets/images/international-jury/2023_0023_boy2022-logo_0010_logo_default01.png') }}"
+                        alt="">
+                    <img src="{{ asset('public/app-assets/images/international-jury/2023_0006_new2_0003_Layer-5.png') }}"
+                        alt="">
+                </div> --}}
+                <div class="jury-images">
                     <img src="{{ asset('public/app-assets/images/international-jury/2023_0003_Layer-1.png') }}"
                         alt="">
                     <img src="{{ asset('public/app-assets/images/international-jury/2023_0015_boy2022-logo_0028_AROMA_logo.png') }}"
@@ -1237,6 +1274,11 @@
 
                 </div>
                 <div class="col card-display-3">
+                    <div class="card bg-none text-color h-100 timings" style="text-transform:uppercase;">
+                        <p class="m-0 "> {!! $auction->timings !!}</p>
+                    </div>
+                </div>
+                {{-- <div class="col card-display-3">
                     <div class="card bg-none text-color h-100" style="text-transform:uppercase;">
                         <p class="m-0 text-start">10:00am BST &nbsp;- London, United Kingdom</p>
                         <p class="m-0 text-start">2:00am PDT &nbsp;- LA, USA</p>
@@ -1249,10 +1291,10 @@
                         <p class="m-0">6:00pm KST &nbsp;- Seoul, South Korea</p>
                         <p class="m-0">7:00pm AEST - Sydney, Australia</p>
                     </div>
-                </div>
-                <div class="auction-time">
+                </div> --}}
+                <div class="auction-time mt-1">
                     <h2>best of yemen 2023 <br>
-                        AUGUST 8TH</h2>
+                        {{ $auction->startDateFormated }}</h2>
                 </div>
 
             </div>
@@ -1271,7 +1313,7 @@
         </div>
 
     </div>
-    <script>
+    {{-- <script>
         var targetDateStr = "{{ $target }}"; // Replace this with your target date in ISO format
         var targetDate = new Date(targetDateStr);
 
@@ -1308,7 +1350,46 @@
                 // document.getElementById('register-for-auction').style.display = "none";
             }
         }, 1000);
+    </script> --}}
+    <script>
+        var targetDateStr = "{{ $target }}"; // Replace this with your target date in ISO format
+        var targetDate = new Date(targetDateStr);
+
+        const timer = setInterval(function() {
+            // Get the current date and time in a cross-browser compatible way
+            var now = new Date().toLocaleString('en-US', {
+                timeZone: 'Europe/London'
+            });
+            var currentDate = new Date(now);
+
+            // Ensure correct handling of time zones
+            if (isNaN(currentDate.getTime())) {
+                // Fallback for Safari by manually parsing the date
+                currentDate = new Date(new Date().toLocaleString('en-US', {
+                    timeZone: 'Europe/London'
+                }));
+            }
+
+            var timeRemaining = targetDate - currentDate;
+            console.log(timeRemaining);
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML =
+                `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(timer);
+                document.getElementById('timer').innerHTML = '00:00:00:00';
+                document.getElementById('join-the-auction').style.display = "block";
+                // document.getElementById('register-for-auction').style.display = "none";
+            }
+        }, 1000);
     </script>
+
 </body>
 
 </html>

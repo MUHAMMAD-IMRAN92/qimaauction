@@ -12,7 +12,18 @@ class Auction extends Model
     {
         return $this->hasMany(Image::class, 'auction_id', 'id');
     }
-
+    public function backgroundImage()
+    {
+        return $this->hasOne(Image::class, 'auction_id', 'id')->whereNull('type')->orderBy('created_at', 'DESC');
+    }
+    public function logo()
+    {
+        return $this->hasOne(Image::class, 'auction_id', 'id')->where('type', 1)->orderBy('created_at', 'DESC');
+    }
+    public function jury()
+    {
+        return $this->hasMany(Image::class, 'auction_id', 'id')->where('type', 2)->orderBy('created_at', 'DESC');
+    }
     public function auctionStatus()
     {
         $auction_startdate = date_create($this->startDate);
