@@ -1208,76 +1208,13 @@
             <div class="international-jury-section">
                 <h2>INTERNATIONAL JURY</h2>
 
-                @if ($auction->id == 4)
-                    <div class="jury-images">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0003_Layer-1.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0015_boy2022-logo_0028_AROMA_logo.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0016_boy2022-logo_0026_Blue_Bottle_Coffee_logo.svg.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0023_boy2022-logo_0010_logo_default01.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0006_new2_0003_Layer-5.png') }}"
-                            alt="">
-                    </div>
-                    <div class="jury-images">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0012_new_0001_Layer-2-copy.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0018_boy2022-logo_0019_logo_0000s_0017_CYP_Logo_v9_130417_Black_RGB_REL_Arabic.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0014_decam.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0019_boy2022-logo_0017_logo_0000s_0012_gh_logo1.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0017_boy2022-logo_0022_logo_0000s_0019_10270314_385016148315984_5518205311371855319_n.png') }}"
-                            alt="">
-                    </div>
-                    <div class="jury-images">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0020_boy2022-logo_0016_logos.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0021_boy2022-logo_0015_IMG_1001.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0007_new2_0002_Layer-5-copy.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0022_boy2022-logo_0012_original.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0004_new2_0005_Layer-4.png') }}"
-                            alt="">
-                    </div>
-                    <div class="jury-images">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0005_new2_0004_Layer-6.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0013_new_0000_Layer-2.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0009_new2_0000_images.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0024_boy2022-logo_0005_visual_logo.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/square.png') }}"
-                            alt="">
 
-                    </div>
-                    <div class="jury-images">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0025_boy2022-logo_0004_Layer-0.png') }}"
+                <div class="jury-images">
+                    @foreach ($auction->jury as $jury)
+                        <img src="{{ url('public/storage/auction/jury_images/' . $jury->image_name) }}"
                             alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0026_boy2022-logo_0003_Sulalat-Logo-2021.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0008_new2_0001_download-1.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0027_boy2022-logo_0000_zephyr-file-2-rgb-scaled.png') }}"
-                            alt="">
-                        <img src="{{ asset('public/app-assets/images/international-jury/2023_0010_new_0003_Layer-2-copy-3.png') }}"
-                            alt="">
-                    </div>
-                @else
-                    <div class="jury-images">
-                        @foreach ($auction->jury as $jury)
-                            <img src="{{ url('public/storage/auction/jury_images/' . $jury->image_name) }}"
-                                alt="">
-                        @endforeach
-                    </div>
-                @endif
+                    @endforeach
+                </div>
 
 
             </div>
