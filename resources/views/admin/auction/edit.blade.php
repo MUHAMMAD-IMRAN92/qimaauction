@@ -393,6 +393,7 @@
                                                         <div class="form-label-group">
                                                             <span>Selected Jury Image:</span> <br>
                                                             @foreach ($auctionimages->jury as $img)
+                                                            <div>
                                                                 <img width="100px" height="100px"
                                                                     src="{{  url('public/storage/auction/jury_images/' . $img->image_name)  }}"
                                                                     alt="">
@@ -400,6 +401,7 @@
                                                                     href="{{ url('/auction/delete_product_image/' . $img->id) }}">
                                                                     <i class="fa fa-times"
                                                                         aria-hidden="true"></i></a>
+                                                                    </div>
                                                             @endforeach
                                                         </div>
                                                     </div>
