@@ -1046,7 +1046,8 @@
                         <button id="samples-purchase"><a href="{{ $auction->sample_link }}">Purchase
                                 Sample</a></button>
                     @elseif($auction->is_active == 1 && $auction->status == 2)
-                        <button id="cupping-button"><a href="#">Cupping</a></button>
+                        <button id="cupping-button"><a
+                                href="{{url('cupping/index')}}">Cupping</a></button>
                     @else
                         <button type="button" class="btn btn-primary banner-btns mb-1" id="join-the-auction"
                             style="" OnClick=" location.href='/auction-home' ">VIEW RESULTS
