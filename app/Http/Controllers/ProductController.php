@@ -54,14 +54,14 @@ class ProductController extends Controller
         $product_count = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
         })->when($request->auction, function ($q) use ($request) {
-            $q->whereHas('productAuctions', function ($q)use ($request) {
+            $q->whereHas('productAuctions', function ($q) use ($request) {
                 $q->where('auction_id', $request->auction);
             });
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
         })->when($request->auction, function ($q) use ($request) {
-            $q->whereHas('productAuctions', function ($q)use ($request) {
+            $q->whereHas('productAuctions', function ($q) use ($request) {
                 $q->where('auction_id', $request->auction);
             });
         })->with('category', 'origin', 'flavor', 'governorate', 'region', 'village', 'productAuctions.auction')->whereHas('category');
@@ -243,12 +243,7 @@ class ProductController extends Controller
                 $auctionproductUpdate = AuctionProduct::where('product_id', $request->id)->where('auction_id', $auct)->updateOrCreate(
                     [
                         'product_id' => $product->id,
-                        'village' => $product->village->title,
                         'auction_id' => $auct,
-                        'region' => $product->region->title,
-                        'governorate' => $product->governorate->title,
-                        'name' => $request->title,
-
                     ]
                 );
             }
