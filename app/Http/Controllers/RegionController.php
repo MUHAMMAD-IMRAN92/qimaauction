@@ -32,7 +32,7 @@ class RegionController extends Controller
         // })->where('is_hidden', '0')->count();
         $region = Region::when($search, function ($q) use ($search) {
             $q->where('title', 'LIKE', "%$search%");
-        });
+        })->with('governerate');
 
         $region = $region->skip((int)$start)->take((int)$length)->get();
         // $region = $region->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();

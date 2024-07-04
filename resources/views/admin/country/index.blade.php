@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
-                            {{-- <h2 class="content-header-title float-left mb-0">Governorates</h2> --}}
+                            {{-- <h2 class="content-header-title float-left mb-0">Countries</h2> --}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Governorates
+                                    <li class="breadcrumb-item active">Countries
                                     </li>
                                 </ol>
                             </div>
@@ -24,8 +24,8 @@
                     </div>
                 </div>
                 <div class="col-6 custom_btn_align">
-                    <a href="{{ url('/governorate/create') }}" class="btn btn-primary waves-effect waves-light">Create
-                        Governorate<a>
+                    <a href="{{ url('/country/create') }}" class="btn btn-primary waves-effect waves-light">Create
+                        Country<a>
                 </div>
                 {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
@@ -50,12 +50,11 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration" id="governorate-table">
+                                            <table class="table zero-configuration" id="country-table">
                                                 <thead>
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
-                                                        <th>Country</th>
                                                         <th>Action</th>
 
                                                     </tr>
@@ -81,7 +80,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        var t = $('#governorate-table').DataTable({
+        var t = $('#country-table').DataTable({
             "processing": true,
             "serverSide": true,
             "deferRender": true,
@@ -92,7 +91,7 @@
                 "searchPlaceholder": "Search here"
             },
             "ajax": {
-                url: '<?= asset('/governorate/allgovernorator') ?>'
+                url: '<?= asset('/country/allcountry') ?>'
             },
             "columns": [{
                     "data": null
@@ -104,28 +103,15 @@
                             row.title + '</td>';
                     }
                 },
-                {
-
-                    "mRender": function(data, type, row) {
-                        var country = '';
-                        if (row.country != null) {
-                            country = row.country.title;
-                        } else {
-                            country = '--';
-                        }
-
-                        return '<td >' +
-                            country + '</td>';
-                    }
-                },
+                
                 {
 
                     "mRender": function(data, type, row) {
                         var ids = btoa(row.id);
                         return `<td>` +
-                            `<a class="" href="/governorate/edit/` + ids +
+                            `<a class="" href="/country/edit/` + ids +
                             `">Edit</a>&nbsp&nbsp` +
-                            // `<a class="" href="/governorate/delete/` + ids +
+                            // `<a class="" href="/country/delete/` + ids +
                             // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
                             '</td>'
                     }
@@ -138,7 +124,7 @@
         });
 
         t.on('draw.dt', function() {
-            var BlogInfo = $('#governorate-table').DataTable().page.info();
+            var BlogInfo = $('#country-table').DataTable().page.info();
             t.column(0, {
                 page: 'current'
             }).nodes().each(function(cell, i) {

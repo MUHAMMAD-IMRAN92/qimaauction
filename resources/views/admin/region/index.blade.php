@@ -55,6 +55,7 @@
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
+                                                        <th>Governerate</th>
                                                         <th>Action</th>
 
                                                     </tr>
@@ -94,13 +95,27 @@
                 url: '<?= asset('/region/allregion') ?>'
             },
             "columns": [{
-                    "data": null  
+                    "data": null
                 },
                 {
 
                     "mRender": function(data, type, row) {
                         return '<td >' +
                             row.title + '</td>';
+                    }
+                },
+                {
+
+                    "mRender": function(data, type, row) {
+                        var gov = '';
+                        if (row.governerate != null) {
+                            gov = row.governerate.title;
+                        } else {
+                            gov = '--';
+                        }
+
+                        return '<td >' +
+                            gov + '</td>';
                     }
                 },
                 {

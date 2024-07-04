@@ -23,7 +23,23 @@
 
                     </div>
                 </div>
-                <div class="col-6 custom_btn_align">
+                <div class="col-4">
+                    <div class="form-group">
+
+
+                        <select class="select2 form-control" name="auction" id="auction-dropdown">
+
+                            <option selected disabled>Please
+                                Select Auction</option>
+                            @foreach ($auctions as $key => $auction)
+                                <option value="{{ $auction->id }}">
+                                    {{ $auction->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 custom_btn_align">
                     <a href="{{ url('/product/create') }}" class="btn btn-primary waves-effect waves-light">Create
                         Product<a>
                 </div>
@@ -228,5 +244,12 @@
             });
 
         }).draw();
+        $('#auction-dropdown').on('change', function() {
+            auction = $('#auction-dropdown').val() == null ? '' : $('#auction-dropdown').val();
+            // alert('ok');
+
+            t.ajax.url('<?= url('/product/allproduct') ?>?auction=' + auction)
+                .load();
+        });
     });
 </script>

@@ -55,6 +55,7 @@
                                                     <tr>
                                                         <th>Sr</th>
                                                         <th>Title</th>
+                                                        <th>Region</th>
                                                         <th>Action</th>
 
                                                     </tr>
@@ -94,13 +95,27 @@
                 url: '<?= asset('/village/allvillage') ?>'
             },
             "columns": [{
-                    "data": null  
+                    "data": null
                 },
                 {
 
                     "mRender": function(data, type, row) {
                         return '<td >' +
                             row.title + '</td>';
+                    }
+                },
+                {
+
+                    "mRender": function(data, type, row) {
+                        var reg = '';
+                        if (row.region != null) {
+                            reg = row.region.title;
+                        } else {
+                            reg = '--';
+                        }
+
+                        return '<td >' +
+                            reg + '</td>';
                     }
                 },
                 {

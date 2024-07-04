@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+    public function governerate()
+    {
+        return $this->hasOne(Governorate::class, 'id', 'gov_id');
+    }
 }

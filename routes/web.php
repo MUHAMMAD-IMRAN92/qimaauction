@@ -98,6 +98,15 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/flavour/edit', [App\Http\Controllers\FlavourController::class, 'update']);
     Route::get('/flavour/delete/{id}', [App\Http\Controllers\FlavourController::class, 'delete']);
 
+    //Country CRUD Routes
+    Route::get('/country/index', [App\Http\Controllers\CountryController::class, 'index']);
+    Route::get('/country/allcountry', [App\Http\Controllers\CountryController::class, 'allcountry']);
+    Route::get('/country/create', [App\Http\Controllers\CountryController::class, 'create']);
+    Route::post('/country/create', [App\Http\Controllers\CountryController::class, 'save']);
+    Route::get('/country/edit/{id}', [App\Http\Controllers\CountryController::class, 'edit']);
+    Route::post('/country/edit', [App\Http\Controllers\CountryController::class, 'update']);
+    Route::get('/country/delete/{id}', [App\Http\Controllers\CountryController::class, 'delete']);
+
     //Village CRUD Routes
     Route::get('/village/index', [App\Http\Controllers\VillageController::class, 'index']);
     Route::get('/village/allvillage', [App\Http\Controllers\VillageController::class, 'allvillage']);

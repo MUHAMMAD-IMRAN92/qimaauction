@@ -4,13 +4,13 @@
 
     <style>
         /* .custom_btn_align{
-                                                                                                                                                                                                                                                                                display: contents;
-                                                                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                                                                                    display: contents;
+                                                                                                                                                                                                                                                                                                  } */
         /* .content-header.row{
-                                                                                                                                                                                                                                                                                margin-right: -15px;
-                                                                                                                                                                                                                                                                                margin-left: 30px;
-                                                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                                                                                    margin-right: -15px;
+                                                                                                                                                                                                                                                                                                    margin-left: 30px;
+                                                                                                                                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                                                                                                                                  } */
 
         .row {
             margin-left: 0;
@@ -615,7 +615,7 @@
                     </div>
                 </section>
                 <!-- // Basic Vertical form layout section end -->
-
+                <input type="hidden" value ="{{ $products }}" id="products-array">
             </div>
         </div>
     </div>
@@ -645,10 +645,9 @@
             $('#auction_product_id').val(productId);
             $('#region').html('');
             $('#village').html('');
-            var products = `{{ $products }}`;
+            var products = $('#products-array').val();
             // console.log(products);
-            var data = JSON.parse(products.replace(/&quot;/g, '"'));
-            console.log(data);
+            var data = JSON.parse(products);
             $(data).each(function(prod, value) {
                 if (value.id == productId) {
                     if (value.region != null)

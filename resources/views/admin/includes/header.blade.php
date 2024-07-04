@@ -410,16 +410,14 @@
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <span class="menu-title" data-i18n="Dashboard" style="font-size: 14px">Product Management</span></a> --}}
                     <ul class="menu-content custom_bullets">
-                        <li @if (request()->is('categories/*')) class='active' @endif><a
+                        {{-- <li @if (request()->is('categories/*')) class='active' @endif><a
                                 href="{{ url('/categories/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
                                 <span class="menu-item" data-i18n="Analytics">Category</span></a>
-                        </li>
-                        <li @if (request()->is('flavour/*')) class='active' @endif><a
+                        </li> --}}
+                        {{-- <li @if (request()->is('flavour/*')) class='active' @endif><a
                                 href="{{ url('/flavour/index') }}">
-                                {{-- <i class="feather icon-circle"></i> --}}
                                 <span class="menu-item " data-i18n="eCommerce">Flavour</span></a>
-                        </li>
+                        </li> --}}
                         <li @if (request()->is('process/*')) class='active' @endif><a
                                 href="{{ url('/process/index') }}">
                                 {{-- <i class="feather icon-circle"></i> --}}
@@ -452,6 +450,11 @@
                         <li class="nav-item">
                             <a href="#"><span class="menu-title" data-i18n="Ecommerce1">Locations</span></a>
                             <ul>
+                                <li @if (request()->is('country/*')) class='active' @endif><a
+                                    href="{{ url('/country/index') }}">
+                                    {{-- <i class="feather icon-circle"></i> --}}
+                                    <span class="menu-item " data-i18n="eCommerce">Country</span></a>
+                            </li>
                                 <li @if (request()->is('governorate/*')) class='active' @endif><a
                                         href="{{ url('/governorate/index') }}">
                                         {{-- <i class="feather icon-circle"></i> --}}

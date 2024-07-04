@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Governorate extends Model
 {
     use HasFactory;
+    public function country()
+    {
+        return $this->hasOne(Country::class, 'id', 'count_id');
+    }
 }

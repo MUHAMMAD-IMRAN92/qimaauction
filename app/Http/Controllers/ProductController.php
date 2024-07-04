@@ -39,7 +39,10 @@ class ProductController extends Controller
     }
     public function index()
     {
-        return view('admin.product.index');
+        $auctions = Auction::get();
+        return view('admin.product.index', [
+            'auctions' => $auctions
+        ]);
     }
     public function allProduct(Request $request)
     {
@@ -50,9 +53,17 @@ class ProductController extends Controller
         $search = $request->search['value'];
         $product_count = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
+        })->when($request->auction, function ($q) use ($request) {
+            $q->whereHas('productAuctions', function ($q)use ($request) {
+                $q->where('auction_id', $request->auction);
+            });
         })->count();
         $product = Product::when($search, function ($q) use ($search) {
             $q->where('product_title', 'LIKE', "%$search%");
+        })->when($request->auction, function ($q) use ($request) {
+            $q->whereHas('productAuctions', function ($q)use ($request) {
+                $q->where('auction_id', $request->auction);
+            });
         })->with('category', 'origin', 'flavor', 'governorate', 'region', 'village', 'productAuctions.auction')->whereHas('category');
 
         $product = $product->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->get();
@@ -227,8 +238,9 @@ class ProductController extends Controller
         // }
 
         if ($request->auction) {
+            AuctionProduct::where('product_id', $request->id)->whereNotIn('auction_id', $request->auction)->delete();
             foreach ($request->auction as $auct) {
-                $auctionproductUpdate = AuctionProduct::where('product_id', $request->product_id)->where('auction_id', $auct)->updateOrCreate(
+                $auctionproductUpdate = AuctionProduct::where('product_id', $request->id)->where('auction_id', $auct)->updateOrCreate(
                     [
                         'product_id' => $product->id,
                         'village' => $product->village->title,
@@ -394,7 +406,7 @@ class ProductController extends Controller
 
     public function productDetail($id)
     {
-        $product = AuctionProduct::where('id', $id)->with('auctionProductImages', 'villages', 'regions', 'governorates' , 'processes' , 'genetics')->first();
+        $product = AuctionProduct::where('id', $id)->with('auctionProductImages', 'villages', 'regions', 'governorates', 'processes', 'genetics')->first();
 
         return view('admin.auction.auction_product_detail', [
             'product' => $product

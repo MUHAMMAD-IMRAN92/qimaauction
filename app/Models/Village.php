@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Village extends Model
 {
     use HasFactory;
+    public function region()
+    {
+        return $this->hasOne(Region::class, 'id', 'reg_id');
+    }
 }
