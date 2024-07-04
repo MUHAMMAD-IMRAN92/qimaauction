@@ -141,6 +141,7 @@
                                                                 @error('role')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
+                                                            </select>
                                                         </div>
                                                     </div>
 
