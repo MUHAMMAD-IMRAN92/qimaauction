@@ -1254,7 +1254,7 @@
                     </div>
                 </div> --}}
                 <div class="auction-time mt-1">
-                    <h2>best of yemen 2023 <br>
+                    <h2>{{$auction->title}}<br>
                         {{ $auction->startDateFormated }}</h2>
                 </div>
 
