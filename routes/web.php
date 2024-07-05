@@ -327,3 +327,6 @@ Route::post('/updateCompanyName', [App\Http\Controllers\AuctionController::class
 Route::get('/force_reload', function () {
     return view('force_reload');
 });
+Route::get('/dev', function () {
+    return php_info();
+});
