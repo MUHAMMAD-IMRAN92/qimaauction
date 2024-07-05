@@ -41,13 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    function bid(){
-        return $this->hasMany(SingleBid::class,'user_id');
+    function bid()
+    {
+        return $this->hasMany(SingleBid::class, 'user_id');
     }
-    function products(){
-        return $this->hasManyThrough(Product::class, SingleBid::class,'user_id','id','id','auction_product_id')->select('products.id','product_title','single_bids.bid_amount')->orderBy('id','asc')->orderBy('bid_amount','desc');
+    function products()
+    {
+        return $this->hasManyThrough(Product::class, SingleBid::class, 'user_id', 'id', 'id', 'auction_product_id')->select('products.id', 'product_title', 'single_bids.bid_amount')->orderBy('id', 'asc')->orderBy('bid_amount', 'desc');
     }
-    function higestBid(){
+    function higestBid()
+    {
         // return $this->
+    }
+    function autoBid()
+    {
+        return $this->hasMany(AutoBid::class, 'user_id');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SentToJury extends Model
 {
     use HasFactory;
-    protected $table ='sample_sent_to_jury';
+    protected $table = 'sample_sent_to_jury';
 
     public function juries()
     {

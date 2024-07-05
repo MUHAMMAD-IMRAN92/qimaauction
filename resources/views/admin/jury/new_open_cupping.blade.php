@@ -119,13 +119,13 @@
                                                                         value="{{ $product->sample }}"
                                                                         placeholder="Enter Sample Id">
                                                                 </div>
-                                                                <div class="col-md-2">
+                                                                {{-- <div class="col-md-2">
                                                                     <input type="number" class="form-control"
                                                                         name="" id="postion" placeholder="Postion"
                                                                         value="{{ $product->postion }}"
                                                                         oninput="if (this.value > 9) this.value = 0;">
 
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="col-4 mt-1">
                                                                     <input type="checkbox" value="{{ $product->id }}"
                                                                         name="selected_product[]" id="">

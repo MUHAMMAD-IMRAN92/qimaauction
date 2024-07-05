@@ -28,4 +28,9 @@ class Jury extends Model
 
         return  @$sentToJury->auction_id;
     }
+    public function auctionSamples()
+    {
+        return $this->hasMany(SentToJury::class , 'jury_id' , 'id');
+    }
+
 }

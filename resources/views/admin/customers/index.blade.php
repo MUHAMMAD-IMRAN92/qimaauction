@@ -1,7 +1,7 @@
 <style>
-    .table-heading{
-    font-size: 5rem !important;
-  }
+    .table-heading {
+        font-size: 5rem !important;
+    }
 </style>
 
 @extends('admin.layout.default')
@@ -29,7 +29,23 @@
 
                     </div>
                 </div>
-                <div class="col-6 custom_btn_align">
+                <div class="col-4">
+                    <div class="form-group">
+
+
+                        <select class="select2 form-control" name="auction" id="auction-dropdown">
+
+                            <option selected disabled>Please
+                                Select Auction</option>
+                            @foreach ($auctions as $key => $auction)
+                                <option value="{{ $auction->id }}">
+                                    {{ $auction->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 custom_btn_align">
                     <a href="{{ url('/customer/create') }}" class="btn btn-primary waves-effect waves-light">Create
                         Customer<a>
                 </div>
@@ -162,23 +178,23 @@
                 {
 
                     "mRender": function(data, type, row) {
-                                    var ids = btoa(row.id);
-                                    return `<td>` +
-                                        `<a  href="/customer/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
-                                            // `<a  href="/categories/delete/`+ids+`">Resend Email</a>` +
-                                        '</td>'
-                                }
+                        var ids = btoa(row.id);
+                        return `<td>` +
+                            `<a  href="/customer/edit/` + ids + `">Edit</a>&nbsp&nbsp` +
+                            // `<a  href="/categories/delete/`+ids+`">Resend Email</a>` +
+                            '</td>'
+                    }
                 },
                 {
 
                     "mRender": function(data, type, row) {
-                                    var ids = row.id;
-                                    return `<td>` +
-                                        // `<a  href="/customer/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
-                                            `<a  href="/customer/email_resend/`+ids+`">Resend Email</a>` +
-                                        '</td>'
-                                }
-                    },
+                        var ids = row.id;
+                        return `<td>` +
+                            // `<a  href="/customer/edit/`+ids+`">Edit</a>&nbsp&nbsp` +
+                            `<a  href="/customer/email_resend/` + ids + `">Resend Email</a>` +
+                            '</td>'
+                    }
+                },
             ],
             "columnDefs": [{
                 "orderable": false,
@@ -195,5 +211,12 @@
             });
 
         }).draw();
+        $('#auction-dropdown').on('change', function() {
+            auction = $('#auction-dropdown').val() == null ? '' : $('#auction-dropdown').val();
+            // alert('ok');
+
+            t.ajax.url('<?= url('/customer/allcustomers') ?>?auction=' + auction)
+                .load();
+        });
     });
 </script>

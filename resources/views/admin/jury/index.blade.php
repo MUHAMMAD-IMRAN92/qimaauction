@@ -13,7 +13,7 @@
                 </div>
             @endif
             <div class="content-header row">
-                <div class="content-header-left col-md-6 col-sm-6 col-6 mb-2">
+                <div class="content-header-left col-md-5 col-sm-6 col-6 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-11">
                             {{-- <h2 class="content-header-title float-left mb-0">Jury</h2> --}}
@@ -29,7 +29,23 @@
 
                     </div>
                 </div>
-                <div class="col-6 custom_btn_align">
+                <div class="col-3">
+                    <div class="form-group">
+
+
+                        <select class="select2 form-control" name="auction" id="auction-dropdown">
+
+                            <option selected disabled>Please
+                                Select Auction</option>
+                            @foreach ($auctions as $key => $auction)
+                                <option value="{{ $auction->id }}">
+                                    {{ $auction->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4 custom_btn_align">
                     <a href="{{ url('/jury/send_to_jury') }}"
                         class="btn btn-primary waves-effect waves-light custom_btn">Send To
                         Jury</a>
@@ -143,10 +159,11 @@
                         var link = '';
                         if (row.recent_auction == null) {
 
-                            link =  `<a class="" disable href="#" >
+                            link = `<a class="" disable href="#" >
                                 Not Sent</a>`
-                        }else{
-                            link =  `<a class="" target="_blank" href="/jury/links/` + row.linkurl +
+                        } else {
+                            link = `<a class="" target="_blank" href="/jury/links/` + row
+                                .linkurl +
                                 `/` + row.recent_auction + `">
                                 View link</a>`
 
@@ -154,8 +171,7 @@
                         return `<td>` +
                             `<a class="" href="/jury/edit/` + ids +
                             `">Edit</a><br>` +
-                            link
-                            +
+                            link +
                             // +
                             // `<a class="" href="/jury/delete/` + ids +
                             // `"><i class="fa fa-eye-slash" style="font-size:15px;color:red"></i></a>` +
@@ -178,5 +194,11 @@
             });
 
         }).draw();
+        $('#auction-dropdown').on('change', function() {
+            auction = $('#auction-dropdown').val() == null ? '' : $('#auction-dropdown').val();
+
+            t.ajax.url('<?= url('/jury/alljury') ?>?auction=' + auction)
+                .load();
+        });
     });
 </script>

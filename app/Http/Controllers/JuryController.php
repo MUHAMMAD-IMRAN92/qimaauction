@@ -27,10 +27,10 @@ class JuryController extends Controller
     }
     public function index()
     {
-        // return $this->user;
-
-        // return Jury::all();
-        return view('admin.jury.index');
+        $auctions  = Auction::get();
+        return view('admin.jury.index', [
+            'auctions' => $auctions
+        ]);
     }
     public function alljury(Request $request)
     {
@@ -40,9 +40,17 @@ class JuryController extends Controller
         $search = $request->search['value'];
         $jury_count = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
-        })->where('is_hidden', '0')->count();
+        })->where('is_hidden', '0')->when($request->auction, function ($q) use ($request) {
+            $q->whereHas('auctionSamples', function ($q) use ($request) {
+                $q->where('auction_id', $request->auction);
+            });
+        })->count();
         $juries = Jury::when($search, function ($q) use ($search) {
             $q->where('name', 'LIKE', "%$search%");
+        })->when($request->auction, function ($q) use ($request) {
+            $q->whereHas('auctionSamples', function ($q) use ($request) {
+                $q->where('auction_id', $request->auction);
+            });
         });
 
         $juries = $juries->where('is_hidden', '0')->skip((int)$start)->take((int)$length)->orderBy('created_at', 'desc')->get();

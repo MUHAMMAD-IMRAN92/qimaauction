@@ -113,7 +113,9 @@ class OpenCuppingController extends Controller
             array_push($table,  $cProduct['table']);
         }
 
-        $products = Product::orderBy('table', 'asc')->get();
+        $products = Product::whereHas('productAuctions', function ($q) use ($request) {
+            $q->where('auction_id', $request->auction_id);
+        })->orderBy('table', 'asc')->get();
         if ($request->cuppingScreen == 1) {
             return view('admin.jury.cupping_product_ajax', [
                 'products' => $products,
@@ -458,8 +460,9 @@ class OpenCuppingController extends Controller
     }
     public function openCuppingFeedback()
     {
+        $auctions = Auction::get();
         $samples = OpenCupping::groupBy('samples')
-            ->select('samples', DB::raw('count(*) as total'))
+            ->select('samples', \DB::raw('count(*) as total'))
             ->where('user_id', '!=', '0')
             ->get();
 
@@ -480,7 +483,7 @@ class OpenCuppingController extends Controller
             array_push($dateArr, $sampleDate->created_at);
         }
         $opencupping = true;
-        return view('admin.reviewed_samples', compact('samples', 'reviewed', 'dateArr', 'opencupping'));
+        return view('admin.reviewed_samples', compact('samples', 'reviewed', 'dateArr', 'opencupping', 'auctions'));
     }
     public function openCuppingReviewDetail($sample)
     {
