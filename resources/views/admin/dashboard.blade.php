@@ -1230,8 +1230,6 @@
                     <a href="https://www.youtube.com/channel/UCcgmMB11TkfAsGO1uiHuKnQ"><i href=""
                             class="fa fa-youtube-play"></i>
                     </a>
-
-
                 </div>
                 <div class="col card-display-3">
                     <div class="card bg-none text-color h-100 timings modification-timings"
