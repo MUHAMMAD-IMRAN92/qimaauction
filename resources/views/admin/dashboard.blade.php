@@ -1024,7 +1024,7 @@
         text-align: center;
         max-width: 50%;
         margin-bottom: 5%;
-        aspect-ratio: 3 / 2;
+        /* aspect-ratio: 3 / 2; */
     }
 </style>
 
