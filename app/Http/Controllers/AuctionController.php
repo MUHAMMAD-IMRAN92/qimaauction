@@ -255,6 +255,7 @@ class AuctionController extends Controller
         $auction->startDate = $request->startDatetime;
         $auction->is_active = $request->is_active;
         $auction->status = $request->status;
+        $auction->button_title = $request->button_title;
         $auction->timings = $request->timings;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([
@@ -361,6 +362,7 @@ class AuctionController extends Controller
         $auction->startDate = $request->startDatetime;
         $auction->is_active = $request->is_active;
         $auction->status = $request->status;
+        $auction->button_title = $request->button_title;
         $auction->timings = $request->timings;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([

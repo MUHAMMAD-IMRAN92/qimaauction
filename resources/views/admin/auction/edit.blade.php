@@ -144,7 +144,18 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="name"
+                                                                class="form-control @error('button_title') is-invalid @enderror"
+                                                                name="button_title" value="{{ $auction->sample_link }}"
+                                                                required>
+                                                            <label for="name">Button Title</label>
+                                                            @error('button_title')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <input type="text" id="sample_link"
@@ -358,7 +369,8 @@
                                                         <div class="col-md-12 mb-2">
                                                             <img id="preview-image-before-upload"
                                                                 src="{{ url('public/storage/auction') . '/' . @$auctionimages->backgroundImage->image_name }}"
-                                                                alt="" style="max-height: 100px;max-width: 100px;">
+                                                                alt=""
+                                                                style="max-height: 100px;max-width: 100px;">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-6">
