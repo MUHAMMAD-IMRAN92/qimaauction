@@ -148,7 +148,7 @@
                                                         <div class="form-label-group">
                                                             <input type="text" id="name"
                                                                 class="form-control @error('button_title') is-invalid @enderror"
-                                                                name="button_title" value="{{ $auction->sample_link }}"
+                                                                name="button_title" value="{{ $auction->button_title }}"
                                                                 required>
                                                             <label for="name">Button Title</label>
                                                             @error('button_title')
