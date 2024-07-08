@@ -355,7 +355,7 @@
                                                                 @enderror
                                                     </div>
                                                 </div> --}}
-                                                    <div class="col-md-6 col-6 ">
+                                                    <div class="col-md-6 col-6 mt-1">
                                                         <div class="form-label-group d-flex">
 
                                                             <div class="">

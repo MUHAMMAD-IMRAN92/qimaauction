@@ -164,7 +164,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-6 ">
+                                                    <div class="col-md-6 col-6 mt-1">
                                                         <div class="form-label-group d-flex">
 
                                                             <div class="">
@@ -183,8 +183,8 @@
 
 
                                                     </div>
-                                                    <div class="col-md-6 col-6">
-                                                        <div class="form-label-group">
+                                                    <div class="col-md-6 col-6 ">
+                                                        <div class="form-label-group ">
                                                             <input type="file" id="image" class="form-control"
                                                                 accept="" name="image[]"
                                                                 required>
@@ -193,7 +193,7 @@
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-md-12 mb-2">
+                                                        <div class="col-md-12 mt-2">
                                                             <img id="preview-image-before-upload"
                                                                 src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                                                                 alt=""
