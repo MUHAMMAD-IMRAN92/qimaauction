@@ -355,7 +355,27 @@
                                                                 @enderror
                                                     </div>
                                                 </div> --}}
+                                                    <div class="col-md-6 col-6 ">
+                                                        <div class="form-label-group d-flex">
 
+                                                            <div class="">
+                                                                <label class="" for="image"> Image
+                                                                </label>
+                                                                <input type="radio" name="media_type" value="1"
+                                                                    class=""
+                                                                    {{ @$auctionimages->backgroundImage->image_name == 1 ? 'checked' : '' }}>
+                                                            </div>
+                                                            <div class="ml-2">
+                                                                <label class="" for="video"> Video
+                                                                </label>
+                                                                <input type="radio" name="media_type" value="2"
+                                                                    class=""
+                                                                    {{ @$auctionimages->backgroundImage->image_name == 2 ? 'checked' : '' }}>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <input type="file" id="image"
@@ -367,10 +387,16 @@
                                                             @enderror
                                                         </div>
                                                         <div class="col-md-12 mb-2">
-                                                            <img id="preview-image-before-upload"
-                                                                src="{{ url('public/storage/auction') . '/' . @$auctionimages->backgroundImage->image_name }}"
-                                                                alt=""
-                                                                style="max-height: 100px;max-width: 100px;">
+                                                            @if (@$auctionimages->backgroundImage->media_type == 1)
+                                                                <img id="preview-image-before-upload"
+                                                                    src="{{ url('public/storage/auction') . '/' . @$auctionimages->backgroundImage->image_name }}"
+                                                                    alt=""
+                                                                    style="max-height: 100px;max-width: 100px;">
+                                                            @else
+                                                                <video
+                                                                    src="{{ url('public/storage/auction') . '/' . @$auctionimages->backgroundImage->image_name }}"
+                                                                    style="max-height: 100px;max-width: 100px;"></video>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-6">
@@ -407,6 +433,18 @@
                                                             </textarea>
                                                             <label for="timings">Auction Timmings</label>
                                                             @error('timings')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <textarea id="blurb" class="form-control" name="blurb" @error('blurb') is-invalid @enderror>
+                                                                {{ $auction->blurb }}
+
+                                                            </textarea>
+                                                            <label for="blurb">Blurb</label>
+                                                            @error('product_detail')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
                                                         </div>

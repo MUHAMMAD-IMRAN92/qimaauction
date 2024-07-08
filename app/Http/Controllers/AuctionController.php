@@ -257,6 +257,7 @@ class AuctionController extends Controller
         $auction->status = $request->status;
         $auction->button_title = $request->button_title;
         $auction->sample_link = $request->sample_link;
+        $auction->blurb = $request->blurb;
         $auction->timings = $request->timings;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([
@@ -275,6 +276,7 @@ class AuctionController extends Controller
                 $productImage = new Image();
                 $productImage->auction_id = $auction->id;
                 $productImage->image_name = $fileName;
+                $productImage->media_type = $request->media_type;
                 $productImage->save();
             }
         }
@@ -366,6 +368,7 @@ class AuctionController extends Controller
         $auction->status = $request->status;
         $auction->button_title = $request->button_title;
         $auction->timings = $request->timings;
+        $auction->blurb = $request->blurb;
         $auction->sample_link = $request->sample_link;
         if ($request->is_active == 1) {
             Auction::where('id', '!=', $request->id)->update([
@@ -385,6 +388,7 @@ class AuctionController extends Controller
                 $productImage = new Image();
                 $productImage->auction_id = $auction->id;
                 $productImage->image_name = $fileName;
+                $productImage->media_type = $request->media_type;
                 $productImage->save();
             }
         }

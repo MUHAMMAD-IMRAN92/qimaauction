@@ -157,19 +157,38 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <textarea id="product-detail" class="form-control" name="product_detail" @error('product_detail') is-invalid @enderror>
-                                                    </textarea>
+                                                            </textarea>
                                                             <label for="product-detail">Auction Detail</label>
                                                             @error('product_detail')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6 col-6 ">
+                                                        <div class="form-label-group d-flex">
+
+                                                            <div class="">
+                                                                <label class="" for="image"> Image
+                                                                </label>
+                                                                <input type="radio" name="media_type" value="1"
+                                                                    class="" checked>
+                                                            </div>
+                                                            <div class="ml-2">
+                                                                <label class="" for="video"> Video
+                                                                </label>
+                                                                <input type="radio" name="media_type" value="2"
+                                                                    class="">
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <input type="file" id="image" class="form-control"
-                                                                accept="image/png, image/jpeg" name="image[]" multiple
+                                                                accept="" name="image[]"
                                                                 required>
-                                                            <label for="city-column">Auction Image</label>
+                                                            <label for="city-column">Auction Image/Video</label>
                                                             @error('image')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
@@ -202,6 +221,16 @@
                                                             <textarea id="summernote" class="form-control" name="product_detail" @error('product_detail') is-invalid @enderror>
                                                     </textarea>
                                                             <label for="product-detail">Auction Timmings</label>
+                                                            @error('product_detail')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <textarea id="blurb" class="form-control" name="blurb" @error('blurb') is-invalid @enderror>
+                                                            </textarea>
+                                                            <label for="blurb">Blurb</label>
                                                             @error('product_detail')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror

@@ -13,7 +13,7 @@
     }
 
     .landing-page-bg {
-        background-image: url("{{ url('public/storage/auction/' . @$auction->backgroundImage->image_name) }}");
+        /* background-image: url("{{ url('public/storage/auction/' . @$auction->backgroundImage->image_name) }}"); */
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
@@ -22,6 +22,7 @@
         align-items: center;
         flex-direction: column;
     }
+
 
     .boy-image {
         display: flex;
@@ -1026,11 +1027,47 @@
         margin-bottom: 5%;
         /* aspect-ratio: 3 / 2; */
     }
+
+    .blurb {
+        text-align: center;
+        height: 8rem;
+        align-content: center;
+        font-weight: bold;
+    }
+
+    .landing-page-bg .first-img {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .boy-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        top: 20%;
+    }
+
+    .timer-section {
+        text-align: center;
+        position: absolute;
+        bottom: 10%;
+    }
 </style>
 
 <body>
     <div class="bg-theme-color">
         <div class="landing-page-bg">
+            @if (@$auction->backgroundImage->media_type == 2)
+                <video class="first-video" autoplay="" width="100%" style="height: 100vh;object-fit:cover;">
+                    <source type="video/mp4"
+                        src="{{ url('public/storage/auction/' . @$auction->backgroundImage->image_name) }}">
+                </video>
+            @else
+                <img class="first-img"
+                    src="{{ url('public/storage/auction/' . @$auction->backgroundImage->image_name) }}" />
+            @endif
             <div class="boy-image">
                 {{-- <img src="{{ asset('public/app-assets/images/banner/bestofyemen.png') }}" alt="">
                 <img src="{{ asset('public/app-assets/images/banner/midbanner.png') }}" alt=""> --}}
@@ -1205,6 +1242,17 @@
                 </div>
             </div>
         @endif
+        @if ($auction->blurb)
+            <div class="container-fluid blurb">
+                <div class="row row-cols-1 row-cols-md-3 g-4 ">
+                    {{ $auction->blurb }}
+
+                </div>
+
+
+            </div>
+        @endif
+
         <div class="wrapper-jury">
             <div class="international-jury-section">
                 <h2>INTERNATIONAL JURY</h2>
@@ -1237,20 +1285,7 @@
                         <p class="m-0"> {!! $auction->timings !!}</p>
                     </div>
                 </div>
-                {{-- <div class="col card-display-3">
-                    <div class="card bg-none text-color h-100" style="text-transform:uppercase;">
-                        <p class="m-0 text-start">10:00am BST &nbsp;- London, United Kingdom</p>
-                        <p class="m-0 text-start">2:00am PDT &nbsp;- LA, USA</p>
-                        <p class="m-0">5:00am EDT &nbsp;&nbsp;- NY, USA</p>
-                        <p class="m-0">11:00am CEST - Amsterdam, Netherlands</p>
-                        <p class="m-0">12:00pm AST &nbsp;&nbsp;- Riyadh, Saudi Arabia</p>
-                        <p class="m-0">1:00pm GST &nbsp;&nbsp;- Dubai, UAE</p>
-                        <p class="m-0">5:00pm HKT &nbsp;&nbsp;- Hong Kong, Hong Kong</p>
-                        <p class="m-0">6:00pm JST &nbsp;&nbsp;- Tokyo, Japan</p>
-                        <p class="m-0">6:00pm KST &nbsp;- Seoul, South Korea</p>
-                        <p class="m-0">7:00pm AEST - Sydney, Australia</p>
-                    </div>
-                </div> --}}
+
                 <div class="auction-time mt-1">
                     <h2>{{ $auction->title }}<br>
                         {{ $auction->startDateFormated }}</h2>
