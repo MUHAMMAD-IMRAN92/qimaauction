@@ -351,7 +351,7 @@ class AuctionController extends Controller
     }
 
     public function update(Request $request)
-    {
+    {return $request->all();
         $request->validate([
             'title' => 'required',
             'startDatetime' => 'required',
