@@ -161,7 +161,7 @@
                                                             <input type="text" id="sample_link"
                                                                 class="form-control @error('sample_link') is-invalid @enderror"
                                                                 name="sample_link" value="{{ $auction->sample_link }}"
-                                                                {{ $auction->is_active == '3' ? '' : 'disabled' }}>
+                                                                {{ $auction->status == '3' ? '' : 'disabled' }}>
                                                             <label for="sample_link">Sample Link</label>
                                                             @error('sample_link')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
