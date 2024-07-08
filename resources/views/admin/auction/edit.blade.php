@@ -363,14 +363,14 @@
                                                                 </label>
                                                                 <input type="radio" name="media_type" value="1"
                                                                     class=""
-                                                                    {{ @$auctionimages->backgroundImage->image_name == 1 ? 'checked' : '' }}>
+                                                                    {{ @$auctionimages->backgroundImage->media_type == 1 ? 'checked' : '' }}>
                                                             </div>
                                                             <div class="ml-2">
                                                                 <label class="" for="video"> Video
                                                                 </label>
                                                                 <input type="radio" name="media_type" value="2"
                                                                     class=""
-                                                                    {{ @$auctionimages->backgroundImage->image_name == 2 ? 'checked' : '' }}>
+                                                                    {{ @$auctionimages->backgroundImage->media_type == 2 ? 'checked' : '' }}>
                                                             </div>
                                                         </div>
 
